@@ -28,6 +28,14 @@ python3 -m http.server 8000
 
 然后访问 `http://localhost:8000`。
 
+## 在线访问
+
+GitHub Pages 启用后，站点访问地址为：
+
+https://monica137142.github.io/iqb-designsystem/
+
+如果该地址返回 404，请在 GitHub 仓库中进入 `Settings` -> `Pages`，将 Source 设置为 `Deploy from a branch`，Branch 选择 `main`，目录选择 `/root`，保存后等待部署完成。
+
 ## 设计系统范围
 
 当前规范围绕后台工作台和 Agent 配置场景展开，优先覆盖高频表单、选择、时间日期、上传和基础数据展示组件。
