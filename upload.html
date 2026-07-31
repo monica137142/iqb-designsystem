@@ -1,0 +1,2218 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload 上传 - IQB Design</title>
+    <style>
+      :root {
+        --brand-500: #22b573;
+        --gray-950: #0b0d0f;
+        --gray-900: #14171a;
+        --gray-800: #22262a;
+        --gray-700: #343a40;
+        --gray-600: #59616a;
+        --gray-500: #78818c;
+        --gray-400: #a5adb6;
+        --gray-300: #d4d9de;
+        --gray-200: #e7eaee;
+        --gray-100: #f3f5f7;
+        --gray-50: #fafbfc;
+        --white: #ffffff;
+        --topbar-height: 60px;
+        --sidebar-width: 300px;
+        --radius-sm: 6px;
+        --shadow-focus: 0 0 0 3px rgba(34, 181, 115, 0.16);
+        font-family:
+          Inter, "Inter var", ui-sans-serif, system-ui, -apple-system,
+          BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+          "Microsoft YaHei", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        min-width: 320px;
+        min-height: 100%;
+        margin: 0;
+        color: var(--gray-900);
+        background: var(--white);
+      }
+
+      body {
+        overflow: hidden;
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        font: inherit;
+      }
+
+      .app-shell {
+        display: grid;
+        grid-template-rows: var(--topbar-height) 1fr;
+        width: 100vw;
+        height: 100vh;
+        background: var(--white);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        height: var(--topbar-height);
+        padding: 0 24px;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--gray-200);
+        backdrop-filter: blur(12px);
+        z-index: 3;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        min-width: 0;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        width: auto;
+        height: 24px;
+        object-fit: contain;
+        display: block;
+        transform: translateY(1px);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.14);
+      }
+
+      .workspace {
+        display: grid;
+        grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+        min-height: 0;
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-width: 0;
+        min-height: 0;
+        padding: 22px 18px;
+        background: var(--white);
+        border-right: 1px solid var(--gray-200);
+      }
+
+      .nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .nav-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .nav-category {
+        display: block;
+        padding: 0 12px 4px;
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .nav-sublist {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .nav-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 40px;
+        padding: 0 12px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        text-align: left;
+        text-decoration: none;
+      }
+
+      .nav-button:hover {
+        color: var(--gray-950);
+        background: var(--gray-50);
+      }
+
+      .nav-button:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .nav-button[aria-current="page"] {
+        color: var(--brand-500);
+        background: var(--gray-100);
+      }
+
+      .nav-label {
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .sidebar-footer {
+        margin-top: auto;
+        padding: 14px 6px 0;
+        color: var(--gray-500);
+        border-top: 1px solid var(--gray-200);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .canvas {
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+        background: var(--white);
+      }
+
+      .canvas-inner {
+        display: grid;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--brand-500);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+
+      .doc-title {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        color: var(--gray-600);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .doc-meta-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color: var(--gray-600);
+        background: var(--gray-100);
+        border-radius: 999px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .doc-section {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        margin: 0 0 14px;
+        color: var(--gray-900);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .doc-section h3 {
+        margin: 0 0 8px;
+        color: var(--gray-800);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section p {
+        margin: 0;
+        color: var(--gray-600);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .rule-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .rule-list li {
+        position: relative;
+        padding-left: 16px;
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .rule-list li::before {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        content: "";
+        background: var(--brand-500);
+        border-radius: 999px;
+      }
+
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .example-block {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .example-block.full {
+        grid-column: 1 / -1;
+      }
+
+      .example-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 20px;
+        margin-top: 14px;
+      }
+
+      .spec-btn {
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 0 14px;
+        border: 1px solid #dde1e5;
+        border-radius: 8px;
+        background: #fff;
+        color: #33383d;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.2;
+        transition:
+          background-color 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .spec-btn:hover {
+        border-color: var(--brand-500);
+        color: #1b9c61;
+      }
+
+      .spec-btn:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .spec-btn.primary {
+        border-color: var(--brand-500);
+        background: var(--brand-500);
+        color: #fff;
+      }
+
+      .spec-btn.primary:hover {
+        border-color: #1b9c61;
+        background: #1b9c61;
+        color: #fff;
+      }
+
+      .spec-btn.permission {
+        border-color: #bfead2;
+        background: transparent;
+        color: #1b9c61;
+      }
+
+      .spec-btn.permission:hover {
+        border-color: #8fd9b3;
+        background: rgba(34, 181, 115, 0.06);
+        color: #12824c;
+      }
+
+      .spec-btn.subtle {
+        border-color: transparent;
+        background: #f5f6f8;
+        color: #4f565d;
+      }
+
+      .spec-btn.subtle:hover {
+        background: #eef1f3;
+        color: #1a1d1f;
+      }
+
+      .spec-btn.danger-subtle {
+        border-color: transparent;
+        background: #fff5f5;
+        color: #d92d20;
+      }
+
+      .spec-btn.danger-subtle:hover {
+        background: #fee4e2;
+        color: #b42318;
+      }
+
+      .spec-btn.text {
+        min-height: 28px;
+        padding: 0 8px;
+        border-color: transparent;
+        background: transparent;
+        color: var(--gray-600);
+      }
+
+      .spec-btn.text:hover {
+        background: var(--gray-100);
+        color: var(--gray-900);
+      }
+
+      .spec-icon {
+        width: 14px;
+        height: 14px;
+        flex: 0 0 auto;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      .upload-demo-stack {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .upload-state-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .upload-state-card {
+        min-width: 0;
+        display: grid;
+        align-content: start;
+        gap: 10px;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+      }
+
+      .upload-state-unit {
+        display: grid;
+        align-content: start;
+        gap: 10px;
+      }
+
+      .upload-state-label {
+        color: var(--gray-600);
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .upload-state-card .upload-file-list,
+      .upload-state-unit .upload-file-list,
+      .upload-state-card .upload-dropzone,
+      .upload-state-unit .upload-dropzone,
+      .upload-state-card .photo-wall-upload,
+      .upload-state-unit .photo-wall-upload,
+      .upload-state-card .photo-wall-item,
+      .upload-state-unit .photo-wall-item,
+      .upload-state-card .photo-wall {
+        width: 100%;
+        margin: 0;
+      }
+
+      .upload-state-card .upload-file-item {
+        grid-template-columns: 18px minmax(0, 1fr) auto auto auto;
+      }
+
+      .upload-state-card .spec-btn,
+      .upload-state-unit .spec-btn,
+      .upload-state-card .upload-file-button,
+      .upload-state-unit .upload-file-button,
+      .upload-state-card .upload-dropzone,
+      .upload-state-unit .upload-dropzone,
+      .upload-state-card .photo-wall-upload,
+      .upload-state-unit .photo-wall-upload,
+      .upload-state-card .photo-wall-item,
+      .upload-state-unit .photo-wall-item,
+      .upload-state-card .upload-file-remove {
+        pointer-events: none;
+      }
+
+      .upload-state-card .is-disabled,
+      .upload-state-unit .is-disabled {
+        pointer-events: auto;
+        cursor: not-allowed;
+      }
+
+      .upload-state-card .is-disabled *,
+      .upload-state-unit .is-disabled * {
+        cursor: not-allowed;
+      }
+
+      .upload-state-unit .spec-btn.is-disabled:hover {
+        border-color: #e2e6ea;
+        background: #f0f2f4;
+        color: #a5adb6;
+      }
+
+      .upload-state-grid.is-basic {
+        grid-template-columns: repeat(3, max-content);
+      }
+
+      .upload-state-grid.is-drag {
+        grid-template-columns: minmax(0, 640px);
+      }
+
+      .upload-state-grid.is-drag .upload-dropzone {
+        width: 640px;
+        height: 132px;
+        min-height: 132px;
+      }
+
+      .upload-state-grid.is-photo {
+        grid-template-columns: repeat(3, 116px);
+      }
+
+      .upload-state-grid.is-basic,
+      .upload-state-grid.is-photo {
+        gap: 24px;
+      }
+
+      .upload-state-grid.is-photo .photo-wall-upload {
+        width: 116px;
+        height: 116px;
+        min-height: 116px;
+      }
+
+      .spec-btn.is-focus,
+      .upload-file-button.is-focus {
+        border-color: #12824c;
+        background: #12824c;
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .spec-btn:disabled,
+      .spec-btn.is-disabled {
+        border-color: #e2e6ea;
+        background: #f0f2f4;
+        color: #a5adb6;
+        cursor: not-allowed;
+      }
+
+      .upload-file-button {
+        position: relative;
+        width: fit-content;
+        overflow: hidden;
+      }
+
+      .upload-trigger-input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .upload-dropzone {
+        position: relative;
+        min-height: 132px;
+        display: grid;
+        place-items: center;
+        width: min(100%, 640px);
+        overflow: hidden;
+        padding: 22px;
+        border: 1px dashed #d4d9de;
+        border-radius: 8px;
+        background: #f3f5f7;
+        color: #59616a;
+        text-align: center;
+        cursor: pointer;
+        transition:
+          border-color 0.15s ease,
+          background-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .upload-dropzone:focus-within {
+        border-color: #d4d9de;
+        box-shadow: none;
+      }
+
+      .upload-dropzone:hover,
+      .upload-dropzone.is-dragging {
+        border-color: var(--brand-500);
+        background: rgba(34, 181, 115, 0.04);
+      }
+
+      .upload-dropzone.is-focus {
+        border-color: var(--brand-500);
+        background: rgba(34, 181, 115, 0.04);
+        box-shadow: none;
+      }
+
+      .upload-dropzone.is-error {
+        border-color: #d92d20;
+        background: #fff5f5;
+      }
+
+      .upload-dropzone.is-disabled {
+        border-color: #e2e6ea;
+        background: #f0f2f4;
+        color: #a5adb6;
+        cursor: not-allowed;
+      }
+
+      .upload-dropzone.is-disabled .upload-dropzone-icon {
+        background: #e7eaee;
+        color: #a5adb6;
+      }
+
+      .upload-dropzone.is-disabled .upload-input {
+        cursor: not-allowed;
+      }
+
+      .upload-dropzone-inner {
+        display: grid;
+        justify-items: center;
+        gap: 8px;
+      }
+
+      .upload-dropzone-icon {
+        width: 36px;
+        height: 36px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        background: rgba(34, 181, 115, 0.08);
+        color: var(--brand-500);
+      }
+
+      .upload-dropzone-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      .upload-dropzone-title {
+        color: #33383d;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .upload-dropzone-hint {
+        color: #969ba1;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .upload-file-list {
+        display: grid;
+        gap: 8px;
+        width: min(100%, 640px);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .photo-wall {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+        gap: 12px;
+        width: min(100%, 640px);
+        margin-top: 14px;
+      }
+
+      .photo-wall-item,
+      .photo-wall-upload {
+        min-height: 112px;
+        border: 1px solid #dde1e5;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .photo-wall-upload {
+        position: relative;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border-style: dashed;
+        border-color: #d4d9de;
+        background: #f3f5f7;
+        color: #4f565d;
+        cursor: pointer;
+      }
+
+      .photo-wall-upload:hover {
+        border-color: var(--brand-500);
+        background: rgba(34, 181, 115, 0.04);
+        color: #1b9c61;
+      }
+
+      .photo-wall-upload.is-focus {
+        border-color: var(--brand-500);
+        background: rgba(34, 181, 115, 0.04);
+        color: #1b9c61;
+        box-shadow: none;
+      }
+
+      .photo-wall-upload.is-error {
+        border-color: #d92d20;
+        background: #fff5f5;
+        color: #d92d20;
+      }
+
+      .photo-wall-upload.is-disabled {
+        border-color: #e2e6ea;
+        background: #f0f2f4;
+        color: #a5adb6;
+        cursor: not-allowed;
+      }
+
+      .photo-wall-upload.is-disabled .upload-input {
+        cursor: not-allowed;
+      }
+
+      .photo-wall-upload-inner {
+        display: grid;
+        justify-items: center;
+        gap: 8px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .photo-wall-item {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .photo-wall-item.is-success::after,
+      .photo-wall-item.is-error::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background: rgba(0, 0, 0, 0.58);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.16s ease;
+      }
+
+      .photo-wall-item.is-success:hover::after,
+      .photo-wall-item.is-success:focus-within::after,
+      .photo-wall-item.is-error:hover::after,
+      .photo-wall-item.is-error:focus-within::after {
+        opacity: 1;
+      }
+
+      .photo-wall-item.is-error {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px;
+        border-color: #d92d20;
+        background: #fff;
+      }
+
+      .photo-wall-thumb {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        display: block;
+        background:
+          linear-gradient(135deg, rgba(34, 181, 115, 0.2), rgba(22, 119, 255, 0.22)),
+          linear-gradient(45deg, #eef1f3 25%, transparent 25%),
+          linear-gradient(-45deg, #eef1f3 25%, transparent 25%);
+        background-size: auto, 14px 14px, 14px 14px;
+      }
+
+      .photo-wall-thumb.warm {
+        background:
+          linear-gradient(135deg, rgba(240, 68, 56, 0.16), rgba(217, 154, 34, 0.24)),
+          linear-gradient(160deg, #fff7e8, #f3f5f7);
+      }
+
+      .photo-wall-thumb.cool {
+        background:
+          linear-gradient(135deg, rgba(22, 119, 255, 0.18), rgba(34, 181, 115, 0.22)),
+          linear-gradient(160deg, #eaf3ff, #f3f5f7);
+      }
+
+      .photo-wall-remove {
+        position: absolute;
+        top: 6px;
+        right: 6px;
+        z-index: 2;
+        width: 26px;
+        height: 26px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 7px;
+        background: rgba(255, 255, 255, 0.88);
+        color: #59616a;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(20, 30, 40, 0.08);
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.16s ease,
+          background-color 0.16s ease,
+          color 0.16s ease;
+      }
+
+      .photo-wall-item:hover .photo-wall-remove,
+      .photo-wall-item:focus-within .photo-wall-remove {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .photo-wall-remove:hover {
+        background: #fff5f5;
+        color: #d92d20;
+      }
+
+      .photo-wall-item.is-success .photo-wall-remove {
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .photo-wall-item.is-success .photo-wall-remove:hover {
+        background: transparent;
+        color: #fff;
+      }
+
+      .photo-wall-item.is-loading .photo-wall-remove,
+      .photo-wall-item.is-error .photo-wall-remove {
+        background: transparent;
+        color: #fff;
+        box-shadow: none;
+      }
+
+      .photo-wall-item.is-loading .photo-wall-remove:hover,
+      .photo-wall-item.is-error .photo-wall-remove:hover {
+        background: transparent;
+        color: #fff;
+      }
+
+      .photo-wall-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.58);
+        color: #fff;
+        text-align: center;
+      }
+
+      .photo-wall-item.is-error .photo-wall-overlay {
+        position: static;
+        inset: auto;
+        z-index: auto;
+        min-height: auto;
+        padding: 0;
+        background: transparent;
+        color: #d92d20;
+      }
+
+      .photo-wall-overlay .upload-loading-ring {
+        width: 18px;
+        height: 18px;
+        border-color: rgba(255, 255, 255, 0.35);
+        border-top-color: #fff;
+      }
+
+      .photo-wall-progress,
+      .photo-wall-error-text {
+        color: #fff;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .upload-file-status.success::before {
+        content: "";
+        width: 8px;
+        height: 5px;
+        flex: 0 0 auto;
+        border-bottom: 1.6px solid currentColor;
+        border-left: 1.6px solid currentColor;
+        transform: rotate(-45deg) translateY(-1px);
+      }
+
+      .photo-wall-error-text {
+        color: #d92d20;
+        font-weight: 500;
+      }
+
+      .photo-wall-name {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+      }
+
+      .photo-wall-item.is-error .photo-wall-name {
+        position: static;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+        clip: auto;
+        color: #33383d;
+        font-size: 12px;
+        line-height: 1.4;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .upload-file-item {
+        min-height: 42px;
+        display: grid;
+        grid-template-columns: 18px minmax(0, 1fr) auto auto auto;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 10px;
+        border: 1px solid #e7eaee;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      .upload-file-icon {
+        width: 18px;
+        height: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #78818c;
+      }
+
+      .upload-file-icon svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      .upload-loading-ring {
+        width: 14px;
+        height: 14px;
+        display: inline-block;
+        border: 1.6px solid #dce3ea;
+        border-top-color: var(--brand-500);
+        border-radius: 999px;
+        animation: upload-loading-spin 0.72s linear infinite;
+      }
+
+      @keyframes upload-loading-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .upload-file-main {
+        min-width: 0;
+      }
+
+      .upload-file-name {
+        overflow: hidden;
+        color: #33383d;
+        font-size: 12.5px;
+        font-weight: 500;
+        line-height: 1.4;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .upload-file-status {
+        min-width: 54px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 4px;
+        color: #59616a;
+        font-size: 12px;
+        line-height: 1.4;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .upload-file-status.success {
+        color: #1b9c61;
+      }
+
+      .upload-file-status.loading {
+        color: var(--gray-600);
+      }
+
+      .upload-file-status.error {
+        color: #d92d20;
+      }
+
+      .upload-file-retry {
+        grid-column: -2;
+        min-height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+        border: 1px solid #dde1e5;
+        border-radius: 7px;
+        background: #fff;
+        color: #4f565d;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 1.2;
+        white-space: nowrap;
+      }
+
+      .upload-file-retry:hover {
+        border-color: #cfd5db;
+        background: #f5f6f8;
+        color: #1a1d1f;
+      }
+
+      .upload-file-remove {
+        grid-column: -1;
+        width: 24px;
+        height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 7px;
+        background: transparent;
+        color: #969ba1;
+        cursor: pointer;
+      }
+
+      .upload-file-remove:hover {
+        background: #fff5f5;
+        color: #d92d20;
+      }
+
+      .upload-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .upload-label {
+        color: var(--gray-700);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .spec-upload {
+        position: relative;
+        min-height: 42px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 8px 12px;
+        border: 1px dashed #dde1e5;
+        border-radius: 8px;
+        background: #fff;
+        color: #4f565d;
+        cursor: pointer;
+        transition:
+          border-color 0.15s ease,
+          background-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .spec-upload:hover,
+      .spec-upload.is-hover {
+        border-color: var(--brand-500);
+        background: rgba(34, 181, 115, 0.04);
+      }
+
+      .spec-upload:focus-within {
+        border-color: var(--brand-500);
+        box-shadow: var(--shadow-focus);
+      }
+
+      .spec-upload.has-file {
+        border-style: solid;
+        border-color: #bfead2;
+        background: rgba(34, 181, 115, 0.04);
+      }
+
+      .spec-upload.is-error {
+        border-style: solid;
+        border-color: #f04438;
+        background: #fff5f5;
+      }
+
+      .spec-upload.is-loading {
+        border-style: solid;
+        border-color: #bfead2;
+        cursor: progress;
+      }
+
+      .spec-upload.is-disabled {
+        border-color: #e2e6ea;
+        background: #f0f2f4;
+        color: #a5adb6;
+        cursor: not-allowed;
+      }
+
+      .upload-input {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .spec-upload.is-disabled .upload-input {
+        cursor: not-allowed;
+      }
+
+      .upload-mark {
+        width: 18px;
+        height: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        color: var(--brand-500);
+      }
+
+      .upload-mark svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 1.8;
+      }
+
+      .upload-main {
+        min-width: 0;
+        display: grid;
+        gap: 2px;
+        flex: 1 1 auto;
+      }
+
+      .upload-title {
+        overflow: hidden;
+        color: #33383d;
+        font-size: 12.5px;
+        font-weight: 500;
+        line-height: 1.4;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .upload-hint {
+        overflow: hidden;
+        color: #969ba1;
+        font-size: 12px;
+        line-height: 1.4;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .upload-remove {
+        position: relative;
+        z-index: 2;
+        width: 24px;
+        height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        padding: 0;
+        border: 0;
+        border-radius: 7px;
+        background: transparent;
+        color: #969ba1;
+        cursor: pointer;
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .upload-remove:hover {
+        background: #eef1f3;
+        color: #4f565d;
+      }
+
+      .upload-remove[hidden] {
+        display: none;
+      }
+
+      .upload-confirm-layer {
+        position: fixed;
+        inset: 0;
+        z-index: 20;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgba(11, 13, 15, 0.18);
+      }
+
+      .upload-confirm-layer[hidden] {
+        display: none;
+      }
+
+      .upload-confirm-dialog {
+        width: min(100%, 360px);
+        padding: 18px;
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 18px 44px rgba(20, 30, 40, 0.18);
+      }
+
+      .upload-confirm-title {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .upload-confirm-desc {
+        margin: 8px 0 0;
+        color: var(--gray-600);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .upload-confirm-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 18px;
+      }
+
+      .upload-feedback {
+        color: #d92d20;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .upload-progress {
+        height: 4px;
+        overflow: hidden;
+        background: #edf0f2;
+        border-radius: 999px;
+      }
+
+      .upload-progress span {
+        display: block;
+        width: 62%;
+        height: 100%;
+        background: var(--brand-500);
+        border-radius: inherit;
+      }
+
+      .upload-composer {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+        padding: 12px;
+        background: #fff;
+        border: 1px solid #e7eaee;
+        border-radius: 8px;
+      }
+
+      .upload-composer textarea {
+        width: 100%;
+        min-height: 78px;
+        resize: vertical;
+        padding: 10px 12px;
+        border: 1px solid #dde1e5;
+        border-radius: 8px;
+        color: #33383d;
+        background: #fff;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .upload-composer textarea:focus {
+        outline: none;
+        border-color: var(--brand-500);
+        box-shadow: var(--shadow-focus);
+      }
+
+      .upload-composer-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .upload-composer-tools {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-width: 0;
+        color: var(--gray-500);
+        font-size: 12px;
+      }
+
+      .upload-icon-btn {
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        padding: 0;
+        border: 1px solid #dde1e5;
+        border-radius: 8px;
+        background: #fff;
+        color: #4f565d;
+        cursor: pointer;
+      }
+
+      .upload-icon-btn:hover {
+        border-color: var(--brand-500);
+        color: #1b9c61;
+      }
+
+      .spec-table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .spec-table {
+        width: 100%;
+        min-width: 680px;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .spec-table th,
+      .spec-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--gray-200);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .spec-table th {
+        color: var(--gray-700);
+        background: var(--gray-50);
+        font-weight: 600;
+      }
+
+      .spec-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .spec-table code {
+        color: var(--gray-800);
+        background: var(--gray-100);
+        border-radius: 4px;
+        padding: 2px 5px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+      }
+
+      @media (max-width: 880px) {
+        .app-shell {
+          grid-template-rows: auto 1fr;
+        }
+
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          flex-direction: row;
+          gap: 12px;
+          width: 100%;
+          min-height: auto;
+          padding: 12px 14px;
+          overflow-x: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--gray-200);
+        }
+
+        .sidebar-footer {
+          display: none;
+        }
+
+        .nav-list {
+          flex-direction: row;
+          gap: 8px;
+        }
+
+        .nav-section,
+        .nav-sublist {
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .nav-category {
+          padding: 0 2px;
+          white-space: nowrap;
+        }
+
+        .nav-button {
+          width: auto;
+          min-height: 36px;
+          padding: 0 12px;
+        }
+
+        .canvas-inner {
+          min-height: 560px;
+          padding: 18px;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 22px 18px;
+        }
+
+        .doc-title {
+          font-size: 24px;
+        }
+
+        .doc-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .upload-state-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .upload-composer-bar {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .upload-file-item {
+          grid-template-columns: 18px minmax(0, 1fr) auto auto;
+        }
+
+        .upload-file-status {
+          grid-column: 2;
+          text-align: left;
+        }
+
+        .upload-file-retry {
+          grid-column: 3;
+          grid-row: 1 / span 2;
+        }
+
+        .upload-file-remove {
+          grid-column: 4;
+          grid-row: 1 / span 2;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="index.html#overview" aria-label="IQB.design 首页">
+          <img class="brand-mark" src="logo-cropped.png" alt="" aria-hidden="true" />
+          <span class="brand-title">IQB Design</span>
+        </a>
+        <div class="topbar-actions" aria-label="系统状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Enterprise Agent UI Guidelines</span>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="index.html#overview">
+                  <span class="nav-label">组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">通用</span>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="index.html#button"><span class="nav-label">Button 按钮</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">数据录入</span>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="index.html#input"><span class="nav-label">Input 输入框</span></a></li>
+                  <li><a class="nav-button" href="index.html#input-number"><span class="nav-label">InputNumber 数字输入框</span></a></li>
+                  <li><a class="nav-button" href="index.html#radio"><span class="nav-label">Radio 单选框</span></a></li>
+                  <li><a class="nav-button" href="index.html#checkbox"><span class="nav-label">Checkbox 复选框</span></a></li>
+                  <li><a class="nav-button" href="index.html#switch"><span class="nav-label">Switch 开关</span></a></li>
+                  <li><a class="nav-button" href="index.html#select"><span class="nav-label">Select 选择器</span></a></li>
+                  <li><a class="nav-button" href="date-picker.html"><span class="nav-label">DatePicker 日期选择器</span></a></li>
+                  <li><a class="nav-button" href="time-picker.html"><span class="nav-label">TimePicker 时间选择器</span></a></li>
+                  <li><a class="nav-button" href="upload.html" aria-current="page"><span class="nav-label">Upload 上传</span></a></li>
+                  <li><a class="nav-button" href="form.html"><span class="nav-label">Form 表单</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">数据展示</span>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="index.html#card"><span class="nav-label">卡片 Card</span></a></li>
+                  <li><a class="nav-button" href="index.html#table"><span class="nav-label">表格 Table</span></a></li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+
+        <section class="canvas" aria-label="组件说明详情区">
+          <div class="canvas-inner">
+            <article class="doc-page">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Entry / Upload</p>
+                <h1 class="doc-title">Upload 上传</h1>
+                <p class="doc-summary">
+                  上传用于在 Agent 对话、任务创建和任务详情中提交素材、配置包和执行附件。IQB Agent
+                  平台的上传控件应保持紧凑、低噪声，并清楚表达文件名、格式约束和后续处理动作。
+                </p>
+                <ul class="doc-meta-list" aria-label="上传基础规格">
+                  <li>默认高度 42px</li>
+                  <li>圆角 8px</li>
+                  <li>支持 .zip 参数包</li>
+                  <li>跟随按钮主色 #22B573</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>何时使用</h2>
+                <ul class="rule-list">
+                  <li>用于 Tiktok 上传、素材处理、媒资汇总等需要把文件交给 Agent 继续执行的任务流程。</li>
+                  <li>任务参数类上传优先使用上传按钮加文件列表，列表展示文件名、上传状态、失败重传和删除动作。</li>
+                  <li>聊天输入区的附件入口使用图标按钮，不在首屏展开完整上传面板，避免打断自然语言输入。</li>
+                  <li>已上传文件应保留可识别文件名；重新选择或继续上传时复用同一文件选择入口。</li>
+                  <li>格式、大小或解析失败时直接在上传控件下方给出错误说明，不只依赖 toast。</li>
+                </ul>
+              </section>
+
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>任务参数上传</h3>
+                    <p>用于新建 Tiktok 上传任务时选择参数包。按钮负责触发文件选择，下方文件列表展示上传失败、上传中、上传完成状态。</p>
+                    <div class="upload-demo-stack">
+                      <label class="spec-btn primary upload-file-button">
+                        <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+                        上传文件
+                        <input class="upload-trigger-input" type="file" accept=".zip,application/zip" data-upload-list-input />
+                      </label>
+                      <ul class="upload-file-list" aria-label="已上传文件列表" data-upload-file-list>
+                        <li class="upload-file-item">
+                          <span class="upload-file-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"></path><path d="M14 3v4h4"></path></svg>
+                          </span>
+                          <span class="upload-file-main">
+                            <span class="upload-file-name">tiktok-materials-error.rar</span>
+                          </span>
+                          <span class="upload-file-status error">上传失败</span>
+                          <button class="upload-file-retry" type="button" data-retry-upload>点击重试</button>
+                          <button class="upload-file-remove" type="button" aria-label="删除 tiktok-materials-error.rar" data-remove-upload-file>
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                          </button>
+                        </li>
+                        <li class="upload-file-item">
+                          <span class="upload-file-icon" aria-hidden="true">
+                            <span class="upload-loading-ring"></span>
+                          </span>
+                          <span class="upload-file-main">
+                            <span class="upload-file-name">tiktok-materials-v2.zip</span>
+                          </span>
+                          <span class="upload-file-status loading">上传中 62%</span>
+                          <button class="upload-file-remove" type="button" aria-label="删除 tiktok-materials-v2.zip" data-remove-upload-file>
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                          </button>
+                        </li>
+                        <li class="upload-file-item">
+                          <span class="upload-file-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"></path><path d="M14 3v4h4"></path></svg>
+                          </span>
+                          <span class="upload-file-main">
+                            <span class="upload-file-name">tiktok-materials.zip</span>
+                          </span>
+                          <span class="upload-file-status success" aria-label="上传完成"></span>
+                          <button class="upload-file-remove" type="button" aria-label="删除 tiktok-materials.zip" data-remove-upload-file>
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>拖拽上传</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>批量素材包上传</h3>
+                    <p>用于批量素材包或配置包上传，支持点击选择文件，也支持将文件拖入上传区域。</p>
+                    <div class="upload-demo-stack">
+                      <label class="upload-dropzone">
+                        <span class="upload-dropzone-inner">
+                          <span class="upload-dropzone-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+                          </span>
+                          <span class="upload-dropzone-title">点击或拖拽文件到此处上传</span>
+                          <span class="upload-dropzone-hint">支持 .zip 参数包，单次建议不超过 200MB</span>
+                        </span>
+                        <input class="upload-input" type="file" accept=".zip,application/zip" />
+                      </label>
+                      <ul class="upload-file-list" aria-label="拖拽上传文件列表">
+                        <li class="upload-file-item">
+                          <span class="upload-file-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"></path><path d="M14 3v4h4"></path></svg>
+                          </span>
+                          <span class="upload-file-main">
+                            <span class="upload-file-name">materials.rar</span>
+                          </span>
+                          <span class="upload-file-status error">上传失败</span>
+                          <button class="upload-file-retry" type="button" data-retry-upload>点击重试</button>
+                          <button class="upload-file-remove" type="button" aria-label="删除 materials.rar" data-remove-upload-file>
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                          </button>
+                        </li>
+                        <li class="upload-file-item">
+                          <span class="upload-file-icon" aria-hidden="true">
+                            <span class="upload-loading-ring"></span>
+                          </span>
+                          <span class="upload-file-main">
+                            <span class="upload-file-name">campaign-materials.zip</span>
+                          </span>
+                          <span class="upload-file-status loading">上传中 38%</span>
+                          <button class="upload-file-remove" type="button" aria-label="删除 campaign-materials.zip" data-remove-upload-file>
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                          </button>
+                        </li>
+                        <li class="upload-file-item">
+                          <span class="upload-file-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"></path><path d="M14 3v4h4"></path></svg>
+                          </span>
+                          <span class="upload-file-main">
+                            <span class="upload-file-name">publish-config.zip</span>
+                          </span>
+                          <span class="upload-file-status success" aria-label="上传完成"></span>
+                          <button class="upload-file-remove" type="button" aria-label="删除 publish-config.zip" data-remove-upload-file>
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                          </button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>照片墙</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>图片素材上传</h3>
+                    <p>用于海报素材、商品图、封面图等图片类上传，缩略图承载预览、上传状态和删除动作。</p>
+                    <div class="photo-wall" aria-label="照片墙上传示例">
+                      <label class="photo-wall-upload">
+                        <span class="photo-wall-upload-inner">
+                          <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+                          上传图片
+                        </span>
+                        <input class="upload-input" type="file" accept="image/*" />
+                      </label>
+                      <div class="photo-wall-item is-success">
+                        <span class="photo-wall-thumb cool" aria-hidden="true"></span>
+                        <span class="photo-wall-name">product-cover.png</span>
+                        <button class="photo-wall-remove" type="button" aria-label="删除 product-cover.png" data-remove-upload-file>
+                          <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                        </button>
+                      </div>
+                      <div class="photo-wall-item is-loading">
+                        <span class="photo-wall-thumb warm" aria-hidden="true"></span>
+                        <span class="photo-wall-name">campaign-poster.jpg</span>
+                        <div class="photo-wall-overlay" aria-label="上传中 45%">
+                          <span class="upload-loading-ring" aria-hidden="true"></span>
+                          <span class="photo-wall-progress">45%</span>
+                        </div>
+                        <button class="photo-wall-remove" type="button" aria-label="删除 campaign-poster.jpg" data-remove-upload-file>
+                          <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                        </button>
+                      </div>
+                      <div class="photo-wall-item is-error">
+                        <span class="photo-wall-name">hero-source.webp</span>
+                        <div class="photo-wall-overlay" aria-label="上传失败">
+                          <span class="photo-wall-error-text">上传失败</span>
+                        </div>
+                        <button class="photo-wall-remove" type="button" aria-label="删除 hero-source.webp" data-remove-upload-file>
+                          <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>状态</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>基础用法</h3>
+                    <p>按钮入口跟随按钮 tab 规范，状态示例仅用于静态对照。</p>
+                    <div class="upload-state-grid is-basic">
+                      <div class="upload-state-unit">
+                        <span class="upload-state-label">Default</span>
+                        <span class="spec-btn primary upload-file-button">
+                          <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+                          上传文件
+                        </span>
+                      </div>
+                      <div class="upload-state-unit">
+                        <span class="upload-state-label">Focus</span>
+                        <span class="spec-btn primary upload-file-button is-focus">
+                          <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+                          上传文件
+                        </span>
+                      </div>
+                      <div class="upload-state-unit">
+                        <span class="upload-state-label">Disabled</span>
+                        <span class="spec-btn primary upload-file-button is-disabled">
+                          <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+                          上传文件
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>拖拽上传</h3>
+                    <p>拖拽区域使用灰底虚线，Focus 以绿色描边和浅绿底色静态呈现。</p>
+                    <div class="upload-state-grid is-drag">
+                      <div class="upload-state-card">
+                        <span class="upload-state-label">Default</span>
+                        <div class="upload-dropzone">
+                          <span class="upload-dropzone-inner">
+                            <span class="upload-dropzone-icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+                            </span>
+                            <span class="upload-dropzone-title">点击或拖拽文件上传</span>
+                            <span class="upload-dropzone-hint">支持 .zip 参数包</span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="upload-state-card">
+                        <span class="upload-state-label">Focus</span>
+                        <div class="upload-dropzone is-focus">
+                          <span class="upload-dropzone-inner">
+                            <span class="upload-dropzone-icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+                            </span>
+                            <span class="upload-dropzone-title">点击或拖拽文件上传</span>
+                            <span class="upload-dropzone-hint">支持 .zip 参数包</span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="upload-state-card">
+                        <span class="upload-state-label">Disabled</span>
+                        <div class="upload-dropzone is-disabled">
+                          <span class="upload-dropzone-inner">
+                            <span class="upload-dropzone-icon" aria-hidden="true">
+                              <svg viewBox="0 0 24 24"><path d="M12 16V4"></path><path d="m7 9 5-5 5 5"></path><path d="M5 20h14"></path></svg>
+                            </span>
+                            <span class="upload-dropzone-title">不可上传</span>
+                            <span class="upload-dropzone-hint">当前任务不可编辑</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>照片墙</h3>
+                    <p>照片墙入口按图片上传场景展示 Default、Focus、Disabled 状态。</p>
+                    <div class="upload-state-grid is-photo">
+                      <div class="upload-state-unit">
+                        <span class="upload-state-label">Default</span>
+                        <div class="photo-wall-upload">
+                          <span class="photo-wall-upload-inner">
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+                            上传图片
+                          </span>
+                        </div>
+                      </div>
+                      <div class="upload-state-unit">
+                        <span class="upload-state-label">Focus</span>
+                        <div class="photo-wall-upload is-focus">
+                          <span class="photo-wall-upload-inner">
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+                            上传图片
+                          </span>
+                        </div>
+                      </div>
+                      <div class="upload-state-unit">
+                        <span class="upload-state-label">Disabled</span>
+                        <div class="photo-wall-upload is-disabled">
+                          <span class="photo-wall-upload-inner">
+                            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg>
+                            上传图片
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>variant</code></td>
+                        <td>上传形态。基础用法为绿色按钮，拖拽上传为灰底虚线区域，照片墙为图片方格入口。</td>
+                        <td><code>button | drag | picture-card</code></td>
+                        <td><code>button</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>accept</code></td>
+                        <td>允许上传的文件类型。参数包默认限制为 .zip，照片墙默认限制为图片。</td>
+                        <td><code>string</code></td>
+                        <td><code>.zip,application/zip</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>multiple</code></td>
+                        <td>是否支持多文件选择或批量拖拽。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>fileList</code></td>
+                        <td>已上传文件列表，列表项包含文件名、状态、进度和删除/重试动作。</td>
+                        <td><code>UploadFile[]</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>status</code></td>
+                        <td>单个文件上传状态。完成态仅展示对勾图标，上传中展示 loading 环和进度，失败态展示重试或错误反馈。</td>
+                        <td><code>uploading | success | error</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>progress</code></td>
+                        <td>上传进度百分比。文件列表展示在右侧文案后，照片墙展示在蒙层 loading 下方。</td>
+                        <td><code>number</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>disabled</code></td>
+                        <td>禁用上传入口，不响应文件选择，hover 时显示禁止光标。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>buttonText</code></td>
+                        <td>基础用法按钮文案。</td>
+                        <td><code>string</code></td>
+                        <td><code>上传文件</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>dropTitle</code></td>
+                        <td>拖拽上传主文案。</td>
+                        <td><code>string</code></td>
+                        <td><code>点击或拖拽文件到此处上传</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>dropHint</code></td>
+                        <td>拖拽上传辅助说明。</td>
+                        <td><code>string</code></td>
+                        <td><code>支持 .zip 参数包，单次建议不超过 200MB</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>pictureText</code></td>
+                        <td>照片墙上传入口文案。</td>
+                        <td><code>string</code></td>
+                        <td><code>上传图片</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>showRemove</code></td>
+                        <td>是否展示删除按钮。照片墙删除按钮仅在图片卡片 hover 或聚焦时展示。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>confirmRemove</code></td>
+                        <td>点击删除时是否弹出确认删除弹窗。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onChange</code></td>
+                        <td>文件选择或拖拽上传后触发。</td>
+                        <td><code>(files: File[]) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onRemove</code></td>
+                        <td>确认删除文件后触发。</td>
+                        <td><code>(file: UploadFile) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onRetry</code></td>
+                        <td>失败文件点击重试后触发，进入 uploading 状态。</td>
+                        <td><code>(file: UploadFile) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onDrop</code></td>
+                        <td>文件拖入拖拽上传区域后触发。</td>
+                        <td><code>(files: File[]) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>值</th>
+                        <th>用途</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>--upload-button-height</code></td>
+                        <td><code>32px</code></td>
+                        <td>基础用法上传按钮高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-radius</code></td>
+                        <td><code>8px</code></td>
+                        <td>上传按钮、拖拽区域、照片墙入口和文件列表圆角。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-border-color</code></td>
+                        <td><code>#D4D9DE</code></td>
+                        <td>拖拽上传和照片墙入口默认虚线边框。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-active-color</code></td>
+                        <td><code>#22B573</code></td>
+                        <td>上传按钮主色、hover/focus 边框和 loading 环强调色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-focus-button-bg</code></td>
+                        <td><code>#12824C</code></td>
+                        <td>状态示例中基础按钮 Focus 深绿色背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-active-bg</code></td>
+                        <td><code>rgba(34, 181, 115, 0.04)</code></td>
+                        <td>拖拽上传和照片墙入口 hover/focus 浅绿底色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-surface-muted</code></td>
+                        <td><code>#F3F5F7</code></td>
+                        <td>拖拽上传区域和照片墙上传入口默认灰底。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-error-color</code></td>
+                        <td><code>#D92D20</code></td>
+                        <td>文件列表失败文案、照片墙失败卡片描边与失败文案。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-disabled-bg</code></td>
+                        <td><code>#F0F2F4</code></td>
+                        <td>禁用态上传入口背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-disabled-text</code></td>
+                        <td><code>#A5ADB6</code></td>
+                        <td>禁用态文字和图标颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-list-height</code></td>
+                        <td><code>42px</code></td>
+                        <td>文件列表单项最小高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-list-text-size</code></td>
+                        <td><code>12.5px</code></td>
+                        <td>文件名文本字号。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-status-size</code></td>
+                        <td><code>12px</code></td>
+                        <td>上传状态、重试按钮和辅助说明字号。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-dropzone-size</code></td>
+                        <td><code>640px x 132px</code></td>
+                        <td>拖拽上传区域规格。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-picture-size</code></td>
+                        <td><code>116px x 116px</code></td>
+                        <td>照片墙上传入口规格。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-photo-overlay-bg</code></td>
+                        <td><code>rgba(0, 0, 0, 0.58)</code></td>
+                        <td>照片墙上传中和 hover 删除蒙层背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-state-gap</code></td>
+                        <td><code>24px</code></td>
+                        <td>状态模块中基础用法和照片墙状态项间距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--upload-motion-duration</code></td>
+                        <td><code>0.15s</code></td>
+                        <td>边框、背景和颜色变化时长。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div class="upload-confirm-layer" role="presentation" hidden data-upload-confirm-layer>
+      <div class="upload-confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="uploadDeleteTitle" aria-describedby="uploadDeleteDesc">
+        <h2 class="upload-confirm-title" id="uploadDeleteTitle">确认删除文件</h2>
+        <p class="upload-confirm-desc" id="uploadDeleteDesc" data-upload-confirm-desc>删除后需要重新上传该文件。</p>
+        <div class="upload-confirm-actions">
+          <button class="spec-btn subtle" type="button" data-upload-delete-cancel>取消</button>
+          <button class="spec-btn danger-subtle" type="button" data-upload-delete-confirm>确认删除</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const uploadConfirmLayer = document.querySelector("[data-upload-confirm-layer]");
+      const uploadConfirmDesc = document.querySelector("[data-upload-confirm-desc]");
+      const uploadDeleteCancel = document.querySelector("[data-upload-delete-cancel]");
+      const uploadDeleteConfirm = document.querySelector("[data-upload-delete-confirm]");
+      let pendingUploadFileItem = null;
+
+      const closeUploadDeleteConfirm = () => {
+        if (uploadConfirmLayer) uploadConfirmLayer.hidden = true;
+        pendingUploadFileItem = null;
+      };
+
+      const openUploadDeleteConfirm = (item) => {
+        pendingUploadFileItem = item;
+        const fileName =
+          item?.querySelector(".upload-file-name, .photo-wall-name")?.textContent?.trim() || "该文件";
+        if (uploadConfirmDesc) uploadConfirmDesc.textContent = `确定删除「${fileName}」吗？删除后需要重新上传该文件。`;
+        if (uploadConfirmLayer) uploadConfirmLayer.hidden = false;
+      };
+
+      const bindUploadFileRemove = (button) => {
+        button.addEventListener("click", () => {
+          openUploadDeleteConfirm(button.closest(".upload-file-item, .photo-wall-item"));
+        });
+      };
+
+      document.querySelectorAll("[data-remove-upload-file]").forEach(bindUploadFileRemove);
+
+      uploadDeleteCancel?.addEventListener("click", closeUploadDeleteConfirm);
+      uploadConfirmLayer?.addEventListener("click", (event) => {
+        if (event.target === uploadConfirmLayer) closeUploadDeleteConfirm();
+      });
+      uploadDeleteConfirm?.addEventListener("click", () => {
+        pendingUploadFileItem?.remove();
+        closeUploadDeleteConfirm();
+      });
+
+      document.querySelectorAll("[data-retry-upload]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const item = button.closest(".upload-file-item");
+          const status = item?.querySelector(".upload-file-status");
+          const icon = item?.querySelector(".upload-file-icon");
+          if (!status) return;
+          status.classList.remove("error", "success");
+          status.classList.add("loading");
+          status.textContent = "上传中 0%";
+          if (icon) icon.innerHTML = '<span class="upload-loading-ring"></span>';
+          button.hidden = true;
+
+          window.setTimeout(() => {
+            status.textContent = "上传中 62%";
+          }, 400);
+        });
+      });
+
+      document.querySelector("[data-upload-list-input]")?.addEventListener("change", (event) => {
+        const input = event.currentTarget;
+        const file = input.files?.[0];
+        const list = document.querySelector("[data-upload-file-list]");
+        if (!file || !list) return;
+
+        const item = document.createElement("li");
+        item.className = "upload-file-item";
+        item.innerHTML = `
+          <span class="upload-file-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M14 3H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7z"></path><path d="M14 3v4h4"></path></svg>
+          </span>
+          <span class="upload-file-main">
+            <span class="upload-file-name"></span>
+          </span>
+          <span class="upload-file-status success" aria-label="上传完成"></span>
+          <button class="upload-file-remove" type="button" aria-label="删除文件" data-remove-upload-file>
+            <svg class="spec-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18"></path><path d="M8 6V4h8v2"></path><path d="m19 6-1 14H6L5 6"></path><path d="M10 11v5"></path><path d="M14 11v5"></path></svg>
+          </button>
+        `;
+        item.querySelector(".upload-file-name").textContent = file.name;
+        item.querySelector(".upload-file-remove").setAttribute("aria-label", `删除 ${file.name}`);
+        bindUploadFileRemove(item.querySelector(".upload-file-remove"));
+        list.appendChild(item);
+        input.value = "";
+      });
+    </script>
+  </body>
+</html>
