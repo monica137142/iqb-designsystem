@@ -152,11 +152,19 @@
       }
 
       .nav-category {
-        display: block;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
         padding: 0 12px 4px;
         color: var(--gray-500);
         font-size: 12px;
         line-height: 1.4;
+      }
+
+      .nav-category-count {
+        color: var(--gray-400);
+        font-weight: 400;
       }
 
       .nav-sublist {
@@ -3376,13 +3384,13 @@
                 </a>
               </li>
               <li class="nav-section">
-                <span class="nav-category">通用</span>
+                <span class="nav-category">通用<span class="nav-category-count">1</span></span>
                 <ul class="nav-sublist">
                   <li><a class="nav-button" href="index.html#button"><span class="nav-label">Button 按钮</span></a></li>
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">数据录入</span>
+                <span class="nav-category">数据录入<span class="nav-category-count">10</span></span>
                 <ul class="nav-sublist">
                   <li><a class="nav-button" href="index.html#input"><span class="nav-label">Input 输入框</span></a></li>
                   <li><a class="nav-button" href="index.html#input-number"><span class="nav-label">InputNumber 数字输入框</span></a></li>
@@ -3397,10 +3405,10 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">数据展示</span>
+                <span class="nav-category">数据展示<span class="nav-category-count">2</span></span>
                 <ul class="nav-sublist">
-                  <li><a class="nav-button" href="index.html#card"><span class="nav-label">卡片 Card</span></a></li>
                   <li><a class="nav-button" href="table.html"><span class="nav-label">表格 Table</span></a></li>
+                  <li><a class="nav-button" href="index.html#card"><span class="nav-label">卡片 Card</span></a></li>
                 </ul>
               </li>
             </ul>

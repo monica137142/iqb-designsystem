@@ -152,11 +152,19 @@
       }
 
       .nav-category {
-        display: block;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
         padding: 0 12px 4px;
         color: var(--gray-500);
         font-size: 12px;
         line-height: 1.4;
+      }
+
+      .nav-category-count {
+        color: var(--gray-400);
+        font-weight: 400;
       }
 
       .nav-sublist {
@@ -3287,7 +3295,7 @@
                 </button>
               </li>
               <li class="nav-section">
-                <span class="nav-category">通用</span>
+                <span class="nav-category">通用<span class="nav-category-count">1</span></span>
                 <ul class="nav-sublist">
                   <li>
                     <button class="nav-button" type="button" data-page="button">
@@ -3297,7 +3305,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">数据录入</span>
+                <span class="nav-category">数据录入<span class="nav-category-count">10</span></span>
                 <ul class="nav-sublist">
                   <li>
                     <button class="nav-button" type="button" data-page="input">
@@ -3352,17 +3360,17 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">数据展示</span>
+                <span class="nav-category">数据展示<span class="nav-category-count">2</span></span>
                 <ul class="nav-sublist">
-                  <li>
-                    <button class="nav-button" type="button" data-page="card">
-                      <span class="nav-label">卡片 Card</span>
-                    </button>
-                  </li>
                   <li>
                     <a class="nav-button" href="table.html">
                       <span class="nav-label">表格 Table</span>
                     </a>
+                  </li>
+                  <li>
+                    <button class="nav-button" type="button" data-page="card">
+                      <span class="nav-label">卡片 Card</span>
+                    </button>
                   </li>
                 </ul>
               </li>
@@ -3516,15 +3524,6 @@
                     </div>
                     <ul class="component-index">
                       <li>
-                        <button class="component-index-button" type="button" data-page="card">
-                          <span class="component-index-name">
-                            <span>卡片 Card</span>
-                            <span class="component-status pending">待补齐</span>
-                          </span>
-                          <span class="component-index-desc">承载信息摘要、资源对象和轻量操作。</span>
-                        </button>
-                      </li>
-                      <li>
                         <a class="component-index-button" href="table.html">
                           <span class="component-index-name">
                             <span>表格 Table</span>
@@ -3532,6 +3531,15 @@
                           </span>
                           <span class="component-index-desc">组织结构化数据、批量操作和状态对比。</span>
                         </a>
+                      </li>
+                      <li>
+                        <button class="component-index-button" type="button" data-page="card">
+                          <span class="component-index-name">
+                            <span>卡片 Card</span>
+                            <span class="component-status pending">待补齐</span>
+                          </span>
+                          <span class="component-index-desc">承载信息摘要、资源对象和轻量操作。</span>
+                        </button>
                       </li>
                     </ul>
                   </div>
