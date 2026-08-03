@@ -1542,7 +1542,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span>Enterprise Agent UI Guidelines</span>
+          <span data-component-count-label>Active components 12/13</span>
         </div>
       </header>
 
@@ -1580,7 +1580,7 @@
                 <span class="nav-category">数据展示</span>
                 <ul class="nav-sublist">
                   <li><a class="nav-button" href="index.html#card"><span class="nav-label">卡片 Card</span></a></li>
-                  <li><a class="nav-button" href="index.html#table"><span class="nav-label">表格 Table</span></a></li>
+                  <li><a class="nav-button" href="table.html"><span class="nav-label">表格 Table</span></a></li>
                 </ul>
               </li>
             </ul>
@@ -2133,6 +2133,27 @@
     </div>
 
     <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector("[data-component-count-label]");
+        if (!label) return;
+
+        const indexItems = Array.from(document.querySelectorAll(".component-index-button"));
+        if (indexItems.length > 0) {
+          const activeCount = document.querySelectorAll(".component-status.done").length;
+          label.textContent = `Active components ${activeCount}/${indexItems.length}`;
+          return;
+        }
+
+        const pendingKeys = new Set(["card"]);
+        const navItems = Array.from(document.querySelectorAll(".nav-sublist .nav-button"));
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute("href") || "").split("#").pop().replace(/\.html$/, "");
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
       const uploadConfirmLayer = document.querySelector("[data-upload-confirm-layer]");
       const uploadConfirmDesc = document.querySelector("[data-upload-confirm-desc]");
       const uploadDeleteCancel = document.querySelector("[data-upload-delete-cancel]");

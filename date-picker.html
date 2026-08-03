@@ -1270,9 +1270,11 @@
           color 0.15s ease;
       }
 
-      .spec-select:hover {
-        border-color: #cfd6dc;
+      .spec-select:hover,
+      .spec-select.hover {
+        border-color: var(--brand-500);
         background: #fff;
+        box-shadow: none;
       }
 
       .spec-select.open,
@@ -1296,6 +1298,12 @@
         color: #969ba1;
         cursor: not-allowed;
         opacity: 0.6;
+      }
+
+      .spec-select.disabled:hover {
+        border-color: #dde1e5;
+        background: #f0f2f4;
+        box-shadow: none;
       }
 
       .spec-select.small {
@@ -1685,8 +1693,10 @@
           color 0.15s ease;
       }
 
-      .spec-date:hover {
-        border-color: #cfd6dc;
+      .spec-date:hover,
+      .spec-date.hover {
+        border-color: var(--brand-500);
+        box-shadow: none;
       }
 
       .spec-date.open,
@@ -1708,6 +1718,11 @@
         color: #969ba1;
         cursor: not-allowed;
         opacity: 0.6;
+      }
+
+      .spec-date.disabled:hover {
+        border-color: #dde1e5;
+        box-shadow: none;
       }
 
       .spec-date.small {
@@ -2144,8 +2159,8 @@
 
       .range-scope-tab {
         min-height: 30px;
-        padding: 0 13px;
-        border: 0;
+        padding: 0 12px;
+        border: 1px solid transparent;
         border-radius: 7px;
         background: transparent;
         color: #4f565d;
@@ -2155,8 +2170,10 @@
       }
 
       .range-scope-tab:hover {
+        border-color: var(--brand-500);
         background: var(--gray-100);
         color: #33383d;
+        box-shadow: none;
       }
 
       .range-scope-tab.active {
@@ -3257,7 +3274,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span>Enterprise Agent UI Guidelines</span>
+          <span data-component-count-label>Active components 12/13</span>
         </div>
       </header>
 
@@ -3295,7 +3312,7 @@
                 <span class="nav-category">数据展示</span>
                 <ul class="nav-sublist">
                   <li><a class="nav-button" href="index.html#card"><span class="nav-label">卡片 Card</span></a></li>
-                  <li><a class="nav-button" href="index.html#table"><span class="nav-label">表格 Table</span></a></li>
+                  <li><a class="nav-button" href="table.html"><span class="nav-label">表格 Table</span></a></li>
                 </ul>
               </li>
             </ul>
@@ -3772,6 +3789,16 @@
                     </div>
                   </div>
                   <div class="example-block">
+                    <h3>Hover</h3>
+                    <p>悬停时只将边框切换为品牌绿，不增加外扩散。</p>
+                    <div class="date-demo-stack">
+                      <button class="spec-date hover" type="button">
+                        <span class="date-value">2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="example-block">
                     <h3>Focus / Open</h3>
                     <p>聚焦或展开时使用品牌绿边框与浅色外发光。</p>
                     <div class="date-demo-stack">
@@ -3981,6 +4008,12 @@
                         <td><code>-</code></td>
                       </tr>
                       <tr>
+                        <td><code>status</code></td>
+                        <td>校验状态，用于错误或警告反馈。</td>
+                        <td><code>error | warning</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
                         <td><code>disabled</code></td>
                         <td>是否禁用日期选择器。</td>
                         <td><code>boolean</code></td>
@@ -4078,8 +4111,8 @@
                       </tr>
                       <tr>
                         <td><code>--date-picker-hover-border-color</code></td>
-                        <td><code>#CFD6DC</code></td>
-                        <td>触发器 hover 边框。</td>
+                        <td><code>#22B573</code></td>
+                        <td>触发器 hover 边框，无外发光。</td>
                       </tr>
                       <tr>
                         <td><code>--date-picker-focus-color</code></td>
@@ -4162,6 +4195,11 @@
                         <td>每小时、每日、每周切换标签高度。</td>
                       </tr>
                       <tr>
+                        <td><code>--date-picker-scope-tab-hover-border-color</code></td>
+                        <td><code>#22B573</code></td>
+                        <td>一级切换标签 hover 边框，无外发光。</td>
+                      </tr>
+                      <tr>
                         <td><code>--date-picker-time-list-height</code></td>
                         <td><code>208px</code></td>
                         <td>小时、分钟、秒滚动列表最大高度。</td>
@@ -4189,6 +4227,27 @@
     </div>
 
     <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector("[data-component-count-label]");
+        if (!label) return;
+
+        const indexItems = Array.from(document.querySelectorAll(".component-index-button"));
+        if (indexItems.length > 0) {
+          const activeCount = document.querySelectorAll(".component-status.done").length;
+          label.textContent = `Active components ${activeCount}/${indexItems.length}`;
+          return;
+        }
+
+        const pendingKeys = new Set(["card"]);
+        const navItems = Array.from(document.querySelectorAll(".nav-sublist .nav-button"));
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute("href") || "").split("#").pop().replace(/\.html$/, "");
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
       const navButtons = document.querySelectorAll(".nav-button");
       const pageTriggers = document.querySelectorAll("[data-page]");
       const panels = document.querySelectorAll("[data-panel]");

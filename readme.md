@@ -9,6 +9,7 @@ IQB Design System 是面向 IQB Agent 平台的静态设计规范站点，当前
 - `time-picker.html`: TimePicker 时间选择器独立规范页。
 - `upload.html`: Upload 上传组件独立规范页。
 - `form.html`: Form 表单组件独立规范页。
+- `table.html`: Table 表格组件独立规范页。
 - `logo-cropped.png`: 站点品牌标识资源。
 - `design.md`: 设计系统说明，包括设计原则、视觉 Token、组件结构和维护约定。
 

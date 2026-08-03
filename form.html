@@ -379,6 +379,13 @@
         align-items: end;
       }
 
+      .form-demo.inline .spec-btn {
+        align-self: end;
+        height: 32px;
+        min-height: 32px;
+        margin-bottom: 3px;
+      }
+
       .form-item {
         display: grid;
         gap: 7px;
@@ -515,6 +522,10 @@
         background: #f5f6f8;
       }
 
+      .select-option[hidden] {
+        display: none;
+      }
+
       .select-option.active {
         color: #1b9c61;
         background: rgba(34, 181, 115, 0.08);
@@ -552,8 +563,12 @@
 
       .spec-input:hover,
       .spec-select:hover,
-      .spec-textarea:hover {
-        border-color: var(--gray-400);
+      .spec-textarea:hover,
+      .spec-input.is-hover,
+      .spec-select.is-hover,
+      .spec-textarea.is-hover {
+        border-color: var(--brand-500);
+        box-shadow: none;
       }
 
       .spec-input:focus,
@@ -572,6 +587,13 @@
         background: var(--gray-100);
         cursor: not-allowed;
         opacity: 0.6;
+      }
+
+      .spec-input:disabled:hover,
+      .spec-select:disabled:hover,
+      .spec-textarea:disabled:hover {
+        border-color: #dde1e5;
+        box-shadow: none;
       }
 
       .form-item.error .spec-input,
@@ -606,6 +628,177 @@
         color: var(--success-500);
       }
 
+      .form-check {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 32px;
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.4;
+      }
+
+      .form-check input {
+        width: 14px;
+        height: 14px;
+        margin: 0;
+        accent-color: var(--brand-500);
+      }
+
+      .radio-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      .spec-radio {
+        min-height: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        padding: 3px 8px 3px 4px;
+        border-radius: 999px;
+        color: #4f565d;
+        cursor: pointer;
+        font-size: 12.5px;
+        line-height: 1.5;
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease,
+          opacity 0.15s ease;
+      }
+
+      .spec-radio:hover {
+        background: #f5f6f8;
+        color: #33383d;
+      }
+
+      .spec-radio input {
+        position: relative;
+        width: 14px;
+        height: 14px;
+        flex: 0 0 auto;
+        margin: 0;
+        appearance: none;
+        background: #fff;
+        border: 1.4px solid #cfd6dc;
+        border-radius: 50%;
+        cursor: pointer;
+        outline: 0;
+        transition:
+          border-color 0.15s ease,
+          background-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .spec-radio input::after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        content: "";
+        background: #fff;
+        border-radius: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
+        transition:
+          opacity 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .spec-radio input:checked {
+        background: var(--brand-500);
+        border-color: var(--brand-500);
+        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+      }
+
+      .spec-radio input:checked::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .spec-radio input:focus-visible {
+        box-shadow: var(--shadow-focus);
+      }
+
+      .spec-radio:has(input:checked) {
+        color: #1a1d1f;
+      }
+
+      .linkage-summary {
+        display: grid;
+        gap: 6px;
+        padding: 10px 12px;
+        color: var(--gray-700);
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .linkage-summary strong {
+        color: var(--gray-900);
+        font-size: 13px;
+        font-weight: 500;
+      }
+
+      .dynamic-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .dynamic-item {
+        display: grid;
+        grid-template-columns: 28px 180px 180px 64px;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .dynamic-item.single {
+        grid-template-columns: 28px 260px 64px;
+      }
+
+      .dynamic-index {
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray-500);
+        background: var(--gray-100);
+        border-radius: 999px;
+        font-size: 12px;
+        line-height: 1;
+      }
+
+      .dynamic-remove {
+        height: 32px;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-600);
+      }
+
+      .dynamic-remove:hover {
+        color: var(--danger-500);
+      }
+
+      .dynamic-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .dynamic-count {
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
       .form-actions {
         display: inline-flex;
         align-items: center;
@@ -638,6 +831,14 @@
       .spec-btn:hover {
         border-color: var(--brand-500);
         color: #1b9c61;
+      }
+
+      .spec-btn:disabled {
+        color: var(--gray-400);
+        background: var(--gray-100);
+        border-color: var(--gray-200);
+        cursor: not-allowed;
+        opacity: 0.7;
       }
 
       .spec-btn:focus-visible {
@@ -785,6 +986,25 @@
         .form-actions {
           margin-left: 0;
         }
+
+        .dynamic-item,
+        .dynamic-item.single {
+          grid-template-columns: 24px minmax(0, 1fr);
+        }
+
+        .dynamic-item .spec-input {
+          grid-column: 2;
+        }
+
+        .dynamic-remove {
+          grid-column: 2;
+          justify-self: start;
+        }
+
+        .dynamic-actions {
+          align-items: flex-start;
+          flex-direction: column;
+        }
       }
     </style>
   </head>
@@ -797,7 +1017,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span>Enterprise Agent UI Guidelines</span>
+          <span data-component-count-label>Active components 12/13</span>
         </div>
       </header>
 
@@ -835,7 +1055,7 @@
                 <span class="nav-category">数据展示</span>
                 <ul class="nav-sublist">
                   <li><a class="nav-button" href="index.html#card"><span class="nav-label">卡片 Card</span></a></li>
-                  <li><a class="nav-button" href="index.html#table"><span class="nav-label">表格 Table</span></a></li>
+                  <li><a class="nav-button" href="table.html"><span class="nav-label">表格 Table</span></a></li>
                 </ul>
               </li>
             </ul>
@@ -851,13 +1071,15 @@
                 <h1 class="doc-title">Form 表单</h1>
                 <p class="doc-summary">
                   表单用于收集、校验并提交结构化任务配置。IQB Agent 平台中常用于创建 Agent、
-                  配置自动化任务、编辑店铺资料和批量操作参数，布局应保持字段关系清晰、错误反馈贴近字段。
+                  配置自动化任务、编辑店铺资料和批量操作参数，布局应保持字段关系清晰，并支持控件联动、
+                  动态增减、键盘流转与贴近字段的校验反馈。
                 </p>
                 <ul class="doc-meta-list" aria-label="表单基础规格">
                   <li>默认控件高度 38px</li>
                   <li>标签宽度 96px</li>
                   <li>字段间距 18px</li>
-                  <li>支持水平、垂直与行内布局</li>
+                  <li>行内按钮 32px 居中对齐</li>
+                  <li>支持联动、动态项与校验</li>
                 </ul>
               </header>
 
@@ -866,6 +1088,8 @@
                 <ul class="rule-list">
                   <li>用于需要用户输入多个字段并统一提交的场景，例如创建任务、编辑策略、配置 Agent。</li>
                   <li>字段之间存在明确依赖或校验规则时，使用表单承载状态、帮助信息和错误反馈。</li>
+                  <li>可变数量的参数、取值或规则应使用动态表单项，并明确最小/最大数量与键盘流转顺序。</li>
+                  <li>行内筛选区域的查询按钮保持 32px 高度，并与 38px 选择器触发器视觉居中对齐。</li>
                   <li>简单开关或单一即时操作不应放入完整表单，可直接使用 Switch、Checkbox 或 Button。</li>
                   <li>错误信息应放在对应字段下方，避免只在页面顶部或 toast 中说明。</li>
                 </ul>
@@ -993,6 +1217,190 @@
               </section>
 
               <section class="doc-section">
+                <h2>表单控件联动</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>级联选择</h3>
+                    <p>前置单选框变化后，后续选择器只展示当前上下文可用选项，并自动同步默认值。</p>
+                    <div class="form-demo" data-linked-form>
+                      <div class="form-item">
+                        <span class="form-label">业务域</span>
+                        <div class="form-control">
+                          <div class="radio-group" role="radiogroup" aria-label="联动业务域" data-linked-parent>
+                            <label class="spec-radio">
+                              <input type="radio" name="linked-domain" value="商品运营" checked />
+                              <span>商品运营</span>
+                            </label>
+                            <label class="spec-radio">
+                              <input type="radio" name="linked-domain" value="广告投放" />
+                              <span>广告投放</span>
+                            </label>
+                            <label class="spec-radio">
+                              <input type="radio" name="linked-domain" value="客户服务" />
+                              <span>客户服务</span>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-item">
+                        <span class="form-label">任务类型</span>
+                        <div class="form-control">
+                          <div class="select-demo-stack" data-select-demo data-linked-child>
+                            <button class="spec-select" type="button" aria-haspopup="listbox" aria-expanded="false">
+                              <span class="select-value" data-select-value>Listing 优化</span>
+                              <span class="select-chevron" aria-hidden="true"></span>
+                            </button>
+                            <div class="select-dropdown" role="listbox" aria-label="联动任务类型" hidden>
+                              <ul class="select-option-list">
+                                <li class="select-option active" role="option" data-parent="商品运营" data-value="Listing 优化" aria-selected="true">
+                                  <span>Listing 优化</span>
+                                  <span class="select-option-check" aria-hidden="true"></span>
+                                </li>
+                                <li class="select-option" role="option" data-parent="商品运营" data-value="商品诊断" aria-selected="false"><span>商品诊断</span></li>
+                                <li class="select-option" role="option" data-parent="商品运营" data-value="竞品分析" aria-selected="false"><span>竞品分析</span></li>
+                                <li class="select-option" role="option" data-parent="广告投放" data-value="预算监控" aria-selected="false" hidden><span>预算监控</span></li>
+                                <li class="select-option" role="option" data-parent="广告投放" data-value="关键词扩展" aria-selected="false" hidden><span>关键词扩展</span></li>
+                                <li class="select-option" role="option" data-parent="广告投放" data-value="投放诊断" aria-selected="false" hidden><span>投放诊断</span></li>
+                                <li class="select-option" role="option" data-parent="客户服务" data-value="消息分流" aria-selected="false" hidden><span>消息分流</span></li>
+                                <li class="select-option" role="option" data-parent="客户服务" data-value="售后跟进" aria-selected="false" hidden><span>售后跟进</span></li>
+                                <li class="select-option" role="option" data-parent="客户服务" data-value="评价回复" aria-selected="false" hidden><span>评价回复</span></li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="linkage-summary" aria-live="polite" data-linked-summary>
+                        <strong>当前配置</strong>
+                        <span>商品运营 / Listing 优化</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>条件启用</h3>
+                    <p>勾选配置项后启用后续字段；关闭时字段禁用并保留当前值，避免误提交。</p>
+                    <div class="form-demo" data-conditional-form>
+                      <label class="form-check">
+                        <input type="checkbox" checked data-conditional-toggle />
+                        <span>开启定时执行</span>
+                      </label>
+                      <label class="form-item">
+                        <span class="form-label">执行时间</span>
+                        <span class="form-control">
+                          <input class="spec-input" type="text" value="每天 09:30" data-conditional-control />
+                          <span class="form-help" data-conditional-help>任务将在设定时间自动触发。</span>
+                        </span>
+                      </label>
+                      <label class="form-item">
+                        <span class="form-label">失败重试</span>
+                        <span class="form-control">
+                          <input class="spec-input" type="text" value="最多 3 次" data-conditional-control />
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>动态增减表单项</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>动态参数值</h3>
+                    <p>用于维护同一参数下的可变取值列表；输入 tab 宽度 260px，Tab 顺序按编号流转到新增按钮。</p>
+                    <div class="form-demo" data-dynamic-form data-dynamic-tab-order data-dynamic-min="1" data-dynamic-max="4" data-dynamic-type="single">
+                      <div class="dynamic-list" data-dynamic-list>
+                        <div class="dynamic-item single" data-dynamic-item>
+                          <span class="dynamic-index" data-dynamic-index>1</span>
+                          <input class="spec-input" type="text" value="US" aria-label="参数值 1" />
+                          <button class="spec-btn subtle dynamic-remove" type="button" data-dynamic-remove>删除</button>
+                        </div>
+                        <div class="dynamic-item single" data-dynamic-item>
+                          <span class="dynamic-index" data-dynamic-index>2</span>
+                          <input class="spec-input" type="text" value="CA" aria-label="参数值 2" />
+                          <button class="spec-btn subtle dynamic-remove" type="button" data-dynamic-remove>删除</button>
+                        </div>
+                      </div>
+                      <div class="dynamic-actions">
+                        <button class="spec-btn primary" type="button" data-dynamic-add>新增参数值</button>
+                        <span class="dynamic-count" data-dynamic-count>2 / 4</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>动态参数值对</h3>
+                    <p>用于配置可变数量的参数名与参数值；两列 tab 宽度 180px，新增后自动编号。</p>
+                    <div class="form-demo" data-dynamic-form data-dynamic-min="1" data-dynamic-max="5" data-dynamic-type="pair">
+                      <div class="dynamic-list" data-dynamic-list>
+                        <div class="dynamic-item" data-dynamic-item>
+                          <span class="dynamic-index" data-dynamic-index>1</span>
+                          <input class="spec-input" type="text" value="campaignId" aria-label="参数名 1" />
+                          <input class="spec-input" type="text" value="TK-2026-07" aria-label="参数值 1" />
+                          <button class="spec-btn subtle dynamic-remove" type="button" data-dynamic-remove>删除</button>
+                        </div>
+                        <div class="dynamic-item" data-dynamic-item>
+                          <span class="dynamic-index" data-dynamic-index>2</span>
+                          <input class="spec-input" type="text" value="publishRegion" aria-label="参数名 2" />
+                          <input class="spec-input" type="text" value="US" aria-label="参数值 2" />
+                          <button class="spec-btn subtle dynamic-remove" type="button" data-dynamic-remove>删除</button>
+                        </div>
+                      </div>
+                      <div class="dynamic-actions">
+                        <button class="spec-btn primary" type="button" data-dynamic-add>新增参数值对</button>
+                        <span class="dynamic-count" data-dynamic-count>2 / 5</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>表单校验</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>实时字段校验</h3>
+                    <p>输入变化时同步字段状态，错误信息贴近控件展示，修正后立即恢复成功反馈。</p>
+                    <div class="form-demo" data-field-validation-demo>
+                      <label class="form-item success" data-validation-item data-validation-rule="required" data-validation-message="请输入任务名称">
+                        <span class="form-label required">任务名称</span>
+                        <span class="form-control">
+                          <input class="spec-input" type="text" value="Tiktok 发布任务" data-validation-input />
+                          <span class="form-help" data-validation-help>任务名称可用。</span>
+                        </span>
+                      </label>
+                      <label class="form-item success" data-validation-item data-validation-rule="url" data-validation-message="请输入 https:// 开头的回调地址">
+                        <span class="form-label">回调地址</span>
+                        <span class="form-control">
+                          <input class="spec-input" type="text" value="https://iqb.design/callback" data-validation-input />
+                          <span class="form-help" data-validation-help>地址格式正确。</span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>提交校验</h3>
+                    <p>点击提交后批量校验必填、格式和数值范围，错误信息贴近对应字段展示。</p>
+                    <div class="form-demo" data-submit-validation-demo>
+                      <label class="form-item" data-validation-item data-validation-rule="required" data-validation-message="请输入授权 Token">
+                        <span class="form-label required">授权 Token</span>
+                        <span class="form-control">
+                          <input class="spec-input" type="text" placeholder="请输入 Token" data-validation-input />
+                          <span class="form-help" data-validation-help>用于调用外部平台接口。</span>
+                        </span>
+                      </label>
+                      <label class="form-item" data-validation-item data-validation-rule="range" data-validation-min="1" data-validation-max="5" data-validation-message="重试次数需在 1-5 次之间">
+                        <span class="form-label">失败重试</span>
+                        <span class="form-control">
+                          <input class="spec-input" type="text" value="8" inputmode="numeric" data-validation-input />
+                          <span class="form-help" data-validation-help>建议设置 1-5 次。</span>
+                        </span>
+                      </label>
+                      <button class="spec-btn primary" type="button" data-submit-validation>提交校验</button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
                 <h2>状态</h2>
                 <div class="doc-grid">
                   <div class="example-block">
@@ -1002,6 +1410,10 @@
                       <label class="form-item">
                         <span class="form-label">默认字段</span>
                         <span class="form-control"><input class="spec-input" type="text" value="Chrome Profile 01" /></span>
+                      </label>
+                      <label class="form-item">
+                        <span class="form-label">Hover 字段</span>
+                        <span class="form-control"><input class="spec-input is-hover" type="text" value="Browser Agent" /></span>
                       </label>
                       <label class="form-item">
                         <span class="form-label">聚焦字段</span>
@@ -1074,6 +1486,12 @@
                         <td><code>-</code></td>
                       </tr>
                       <tr>
+                        <td><code>interactionState</code></td>
+                        <td>用于静态规范或受控演示的交互态；hover 仅使用品牌绿边框，不出现外发光。</td>
+                        <td><code>default | hover | focus</code></td>
+                        <td><code>default</code></td>
+                      </tr>
+                      <tr>
                         <td><code>help</code></td>
                         <td>字段下方的帮助或错误文案。</td>
                         <td><code>string</code></td>
@@ -1084,6 +1502,54 @@
                         <td>是否禁用表单或单个字段。</td>
                         <td><code>boolean</code></td>
                         <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>dependencies</code></td>
+                        <td>字段联动关系。前置字段变化后，可过滤后续选项、重置默认值或启停相关字段。</td>
+                        <td><code>FormDependency[]</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>dynamicItems</code></td>
+                        <td>动态表单项数据源，支持单值列表和键值对列表。</td>
+                        <td><code>Array&lt;string&gt; | Array&lt;{ key: string; value: string }&gt;</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>minItems</code></td>
+                        <td>动态表单项最小保留数量，达到下限时删除按钮禁用。</td>
+                        <td><code>number</code></td>
+                        <td><code>0</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>maxItems</code></td>
+                        <td>动态表单项最大数量，达到上限时新增按钮禁用。</td>
+                        <td><code>number</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>keyboardOrder</code></td>
+                        <td>动态项键盘流转策略。动态参数值按编号聚焦到每个输入项，最后聚焦新增按钮。</td>
+                        <td><code>natural | input-first</code></td>
+                        <td><code>natural</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>rules</code></td>
+                        <td>字段校验规则，支持必填、URL 格式和数值范围等规则。</td>
+                        <td><code>FormRule[]</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>validateTrigger</code></td>
+                        <td>校验触发时机，可用于实时字段校验或提交时批量校验。</td>
+                        <td><code>input | blur | submit</code></td>
+                        <td><code>submit</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onValuesChange</code></td>
+                        <td>字段值变化时触发，常用于联动更新、动态项同步和实时校验。</td>
+                        <td><code>(values) =&gt; void</code></td>
+                        <td><code>-</code></td>
                       </tr>
                     </tbody>
                   </table>
@@ -1123,6 +1589,11 @@
                         <td>输入、选择和文本域圆角。</td>
                       </tr>
                       <tr>
+                        <td><code>--form-control-hover-border-color</code></td>
+                        <td><code>#22B573</code></td>
+                        <td>表单输入 tab、选择器和文本域 hover 边框，无外发光。</td>
+                      </tr>
+                      <tr>
                         <td><code>--form-required-color</code></td>
                         <td><code>#D92D20</code></td>
                         <td>必填星号与错误状态颜色。</td>
@@ -1131,6 +1602,51 @@
                         <td><code>--form-focus-shadow</code></td>
                         <td><code>0 0 0 3px rgba(34, 181, 115, 0.16)</code></td>
                         <td>聚焦态外发光。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-error-focus-shadow</code></td>
+                        <td><code>0 0 0 3px rgba(217, 45, 32, 0.12)</code></td>
+                        <td>错误字段聚焦态外发光。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-inline-action-height</code></td>
+                        <td><code>32px</code></td>
+                        <td>行内布局查询按钮高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-inline-action-offset</code></td>
+                        <td><code>3px</code></td>
+                        <td>32px 行内按钮与 38px 选择器触发器的垂直居中偏移。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-radio-hotspot-height</code></td>
+                        <td><code>24px</code></td>
+                        <td>联动单选框最小点击热区高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-dynamic-index-size</code></td>
+                        <td><code>28px</code></td>
+                        <td>动态表单项编号圆点尺寸。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-dynamic-single-width</code></td>
+                        <td><code>260px</code></td>
+                        <td>动态参数值单字段 tab 宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-dynamic-pair-width</code></td>
+                        <td><code>180px</code></td>
+                        <td>动态参数值对中参数名与参数值 tab 宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-dynamic-remove-width</code></td>
+                        <td><code>64px</code></td>
+                        <td>动态项删除按钮列宽。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-dynamic-row-gap</code></td>
+                        <td><code>10px</code></td>
+                        <td>动态表单项行间距。</td>
                       </tr>
                     </tbody>
                   </table>
@@ -1142,6 +1658,27 @@
       </main>
     </div>
     <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector("[data-component-count-label]");
+        if (!label) return;
+
+        const indexItems = Array.from(document.querySelectorAll(".component-index-button"));
+        if (indexItems.length > 0) {
+          const activeCount = document.querySelectorAll(".component-status.done").length;
+          label.textContent = `Active components ${activeCount}/${indexItems.length}`;
+          return;
+        }
+
+        const pendingKeys = new Set(["card"]);
+        const navItems = Array.from(document.querySelectorAll(".nav-sublist .nav-button"));
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute("href") || "").split("#").pop().replace(/\.html$/, "");
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
       const selectDemos = document.querySelectorAll("[data-select-demo]");
 
       const syncSelectOption = (option, selected) => {
@@ -1167,6 +1704,14 @@
         trigger?.classList.remove("open");
         trigger?.setAttribute("aria-expanded", "false");
         if (dropdown) dropdown.hidden = true;
+      };
+
+      const setSelectValue = (demo, option) => {
+        const valueNode = demo?.querySelector("[data-select-value]");
+        const options = Array.from(demo?.querySelectorAll(".select-option") || []);
+        if (!option) return;
+        options.forEach((item) => syncSelectOption(item, item === option));
+        if (valueNode) valueNode.textContent = option.dataset.value || option.textContent.trim();
       };
 
       selectDemos.forEach((demo) => {
@@ -1195,9 +1740,217 @@
 
         options.forEach((option) => {
           option.addEventListener("click", () => {
-            options.forEach((item) => syncSelectOption(item, item === option));
-            if (valueNode) valueNode.textContent = option.dataset.value || option.textContent.trim();
+            setSelectValue(demo, option);
             closeSelectDemo(demo);
+            demo.dispatchEvent(
+              new CustomEvent("select-change", {
+                detail: { value: option.dataset.value || option.textContent.trim() },
+              }),
+            );
+          });
+        });
+      });
+
+      document.querySelectorAll("[data-linked-form]").forEach((form) => {
+        const parentDemo = form.querySelector("[data-linked-parent]");
+        const childDemo = form.querySelector("[data-linked-child]");
+        const summaryValue = form.querySelector("[data-linked-summary] span");
+        const childOptions = Array.from(childDemo?.querySelectorAll(".select-option") || []);
+        const getParentValue = () => {
+          const checkedRadio = parentDemo?.querySelector('input[type="radio"]:checked');
+          return checkedRadio?.value || parentDemo?.querySelector("[data-select-value]")?.textContent.trim();
+        };
+
+        const syncLinkedChild = () => {
+          const parentValue = getParentValue();
+          const visibleOptions = childOptions.filter((option) => option.dataset.parent === parentValue);
+          childOptions.forEach((option) => {
+            option.hidden = option.dataset.parent !== parentValue;
+          });
+          setSelectValue(childDemo, visibleOptions[0]);
+          const childValue = childDemo?.querySelector("[data-select-value]")?.textContent.trim();
+          if (summaryValue) summaryValue.textContent = `${parentValue} / ${childValue}`;
+        };
+
+        parentDemo?.addEventListener("select-change", syncLinkedChild);
+        parentDemo?.querySelectorAll('input[type="radio"]').forEach((radio) => {
+          radio.addEventListener("change", syncLinkedChild);
+        });
+        childDemo?.addEventListener("select-change", () => {
+          const parentValue = getParentValue();
+          const childValue = childDemo?.querySelector("[data-select-value]")?.textContent.trim();
+          if (summaryValue) summaryValue.textContent = `${parentValue} / ${childValue}`;
+        });
+        syncLinkedChild();
+      });
+
+      document.querySelectorAll("[data-conditional-form]").forEach((form) => {
+        const toggle = form.querySelector("[data-conditional-toggle]");
+        const controls = Array.from(form.querySelectorAll("[data-conditional-control]"));
+        const help = form.querySelector("[data-conditional-help]");
+
+        const syncConditionalControls = () => {
+          const enabled = !!toggle?.checked;
+          controls.forEach((control) => {
+            control.disabled = !enabled;
+          });
+          if (help) {
+            help.textContent = enabled ? "任务将在设定时间自动触发。" : "开启定时执行后可编辑时间和重试规则。";
+          }
+        };
+
+        toggle?.addEventListener("change", syncConditionalControls);
+        syncConditionalControls();
+      });
+
+      document.querySelectorAll("[data-dynamic-form]").forEach((form) => {
+        const list = form.querySelector("[data-dynamic-list]");
+        const addButton = form.querySelector("[data-dynamic-add]");
+        const countNode = form.querySelector("[data-dynamic-count]");
+        const min = Number(form.dataset.dynamicMin || 0);
+        const max = Number(form.dataset.dynamicMax || Number.POSITIVE_INFINITY);
+        const type = form.dataset.dynamicType || "single";
+        const shouldManageTabOrder = form.hasAttribute("data-dynamic-tab-order");
+
+        const getDynamicTabTargets = () => [
+          ...Array.from(list?.querySelectorAll("[data-dynamic-item] input") || []),
+          ...(addButton && !addButton.disabled ? [addButton] : []),
+        ];
+
+        const syncDynamicTabOrder = () => {
+          if (!shouldManageTabOrder) return;
+          getDynamicTabTargets().forEach((target) => {
+            target.tabIndex = 0;
+          });
+          list?.querySelectorAll("[data-dynamic-remove]").forEach((button) => {
+            button.tabIndex = -1;
+          });
+        };
+
+        const createDynamicItem = (index) => {
+          const item = document.createElement("div");
+          item.className = type === "pair" ? "dynamic-item" : "dynamic-item single";
+          item.dataset.dynamicItem = "";
+
+          const firstPlaceholder = type === "pair" ? `参数名 ${index}` : `参数值 ${index}`;
+          const secondInput =
+            type === "pair"
+              ? `<input class="spec-input" type="text" placeholder="参数值" aria-label="参数值 ${index}" />`
+              : "";
+
+          item.innerHTML = `
+            <span class="dynamic-index" data-dynamic-index>${index}</span>
+            <input class="spec-input" type="text" placeholder="${firstPlaceholder}" aria-label="${firstPlaceholder}" />
+            ${secondInput}
+            <button class="spec-btn subtle dynamic-remove" type="button" data-dynamic-remove>删除</button>
+          `;
+          return item;
+        };
+
+        const syncDynamicList = () => {
+          const items = Array.from(list?.querySelectorAll("[data-dynamic-item]") || []);
+          items.forEach((item, index) => {
+            const displayIndex = index + 1;
+            const indexNode = item.querySelector("[data-dynamic-index]");
+            if (indexNode) indexNode.textContent = String(displayIndex);
+            item.querySelectorAll("input").forEach((input, inputIndex) => {
+              const label =
+                type === "pair"
+                  ? inputIndex === 0
+                    ? `参数名 ${displayIndex}`
+                    : `参数值 ${displayIndex}`
+                  : `参数值 ${displayIndex}`;
+              input.setAttribute("aria-label", label);
+            });
+          });
+
+          const count = items.length;
+          if (countNode) countNode.textContent = `${count} / ${max}`;
+          if (addButton) addButton.disabled = count >= max;
+          items.forEach((item) => {
+            const removeButton = item.querySelector("[data-dynamic-remove]");
+            if (removeButton) removeButton.disabled = count <= min;
+          });
+          syncDynamicTabOrder();
+        };
+
+        form.addEventListener("keydown", (event) => {
+          if (!shouldManageTabOrder || event.key !== "Tab") return;
+          const target = event.target.closest("input, button");
+          if (!target || !form.contains(target)) return;
+
+          const tabTargets = getDynamicTabTargets();
+          const currentIndex = tabTargets.indexOf(target);
+          if (currentIndex === -1) return;
+
+          const nextIndex = event.shiftKey ? currentIndex - 1 : currentIndex + 1;
+          if (nextIndex < 0 || nextIndex >= tabTargets.length) return;
+
+          event.preventDefault();
+          tabTargets[nextIndex].focus();
+        });
+
+        addButton?.addEventListener("click", () => {
+          const count = list?.querySelectorAll("[data-dynamic-item]").length || 0;
+          if (!list || count >= max) return;
+          const item = createDynamicItem(count + 1);
+          list.appendChild(item);
+          item.querySelector("input")?.focus();
+          syncDynamicList();
+        });
+
+        list?.addEventListener("click", (event) => {
+          const removeButton = event.target.closest("[data-dynamic-remove]");
+          if (!removeButton) return;
+          const items = Array.from(list.querySelectorAll("[data-dynamic-item]"));
+          if (items.length <= min) return;
+          removeButton.closest("[data-dynamic-item]")?.remove();
+          syncDynamicList();
+        });
+
+        syncDynamicList();
+      });
+
+      const validateFieldValue = (item) => {
+        const input = item?.querySelector("[data-validation-input]");
+        const rule = item?.dataset.validationRule;
+        const value = input?.value.trim() || "";
+
+        if (rule === "required") return value.length > 0;
+        if (rule === "url") return /^https:\/\/\S+\.\S+/.test(value);
+        if (rule === "range") {
+          const numberValue = Number(value);
+          const min = Number(item.dataset.validationMin);
+          const max = Number(item.dataset.validationMax);
+          return Number.isFinite(numberValue) && numberValue >= min && numberValue <= max;
+        }
+
+        return true;
+      };
+
+      const setValidationState = (item, valid) => {
+        const help = item?.querySelector("[data-validation-help]");
+        item?.classList.toggle("error", !valid);
+        item?.classList.toggle("success", valid);
+        if (help) {
+          help.textContent = valid ? "校验通过。" : item.dataset.validationMessage || "请检查该字段。";
+        }
+      };
+
+      document.querySelectorAll("[data-field-validation-demo] [data-validation-item]").forEach((item) => {
+        const input = item.querySelector("[data-validation-input]");
+        input?.addEventListener("input", () => {
+          setValidationState(item, validateFieldValue(item));
+        });
+      });
+
+      document.querySelectorAll("[data-submit-validation-demo]").forEach((form) => {
+        const items = Array.from(form.querySelectorAll("[data-validation-item]"));
+
+        form.querySelector("[data-submit-validation]")?.addEventListener("click", () => {
+          items.forEach((item) => {
+            const valid = validateFieldValue(item);
+            setValidationState(item, valid);
           });
         });
       });

@@ -1270,9 +1270,11 @@
           color 0.15s ease;
       }
 
-      .spec-select:hover {
-        border-color: #cfd6dc;
+      .spec-select:hover,
+      .spec-select.hover {
+        border-color: var(--brand-500);
         background: #fff;
+        box-shadow: none;
       }
 
       .spec-select.open,
@@ -1296,6 +1298,12 @@
         color: #969ba1;
         cursor: not-allowed;
         opacity: 0.6;
+      }
+
+      .spec-select.disabled:hover {
+        border-color: #dde1e5;
+        background: #f0f2f4;
+        box-shadow: none;
       }
 
       .spec-select.small {
@@ -1685,8 +1693,10 @@
           color 0.15s ease;
       }
 
-      .spec-date:hover {
-        border-color: #cfd6dc;
+      .spec-date:hover,
+      .spec-date.hover {
+        border-color: var(--brand-500);
+        box-shadow: none;
       }
 
       .spec-date.open,
@@ -1708,6 +1718,11 @@
         color: #969ba1;
         cursor: not-allowed;
         opacity: 0.6;
+      }
+
+      .spec-date.disabled:hover {
+        border-color: #dde1e5;
+        box-shadow: none;
       }
 
       .spec-date.small {
@@ -2276,8 +2291,8 @@
 
       .range-scope-tab {
         min-height: 30px;
-        padding: 0 13px;
-        border: 0;
+        padding: 0 12px;
+        border: 1px solid transparent;
         border-radius: 7px;
         background: transparent;
         color: #4f565d;
@@ -2287,8 +2302,10 @@
       }
 
       .range-scope-tab:hover {
+        border-color: var(--brand-500);
         background: var(--gray-100);
         color: #33383d;
+        box-shadow: none;
       }
 
       .range-scope-tab.active {
@@ -3345,7 +3362,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span>Enterprise Agent UI Guidelines</span>
+          <span data-component-count-label>Active components 12/13</span>
         </div>
       </header>
 
@@ -3383,7 +3400,7 @@
                 <span class="nav-category">数据展示</span>
                 <ul class="nav-sublist">
                   <li><a class="nav-button" href="index.html#card"><span class="nav-label">卡片 Card</span></a></li>
-                  <li><a class="nav-button" href="index.html#table"><span class="nav-label">表格 Table</span></a></li>
+                  <li><a class="nav-button" href="table.html"><span class="nav-label">表格 Table</span></a></li>
                 </ul>
               </li>
             </ul>
@@ -3719,6 +3736,16 @@
                     </div>
                   </div>
                   <div class="example-block">
+                    <h3>Hover</h3>
+                    <p>悬停时只将边框切换为品牌绿，不增加外扩散。</p>
+                    <div class="time-picker-stack">
+                      <button class="spec-date spec-time hover" type="button">
+                        <span class="date-value">14:30:00</span>
+                        <span class="time-icon" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="example-block">
                     <h3>Focus / Open</h3>
                     <p>聚焦或展开时使用品牌绿边框与浅色外发光。</p>
                     <div class="time-picker-stack">
@@ -4021,6 +4048,11 @@
                         <td>输入圆角。</td>
                       </tr>
                       <tr>
+                        <td><code>--time-picker-hover-border-color</code></td>
+                        <td><code>#22B573</code></td>
+                        <td>触发器与 UTC 时区 tab hover 边框，无外发光。</td>
+                      </tr>
+                      <tr>
                         <td><code>--time-picker-panel-width</code></td>
                         <td><code>264px</code></td>
                         <td>基础时间面板宽度。</td>
@@ -4138,6 +4170,27 @@
     </div>
 
     <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector("[data-component-count-label]");
+        if (!label) return;
+
+        const indexItems = Array.from(document.querySelectorAll(".component-index-button"));
+        if (indexItems.length > 0) {
+          const activeCount = document.querySelectorAll(".component-status.done").length;
+          label.textContent = `Active components ${activeCount}/${indexItems.length}`;
+          return;
+        }
+
+        const pendingKeys = new Set(["card"]);
+        const navItems = Array.from(document.querySelectorAll(".nav-sublist .nav-button"));
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute("href") || "").split("#").pop().replace(/\.html$/, "");
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
       const navButtons = document.querySelectorAll(".nav-button");
       const pageTriggers = document.querySelectorAll("[data-page]");
       const panels = document.querySelectorAll("[data-panel]");
