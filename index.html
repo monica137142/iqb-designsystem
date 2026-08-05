@@ -23,6 +23,25 @@
         --sidebar-width: 300px;
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgba(34, 181, 115, 0.16);
+        --input-border-color: #dde1e5;
+        --input-hover-border-color: #22b573;
+        --input-focus-color: #22b573;
+        --input-focus-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+        --input-error-color: #f04438;
+        --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        --input-text-color: #1a1d1f;
+        --input-placeholder-color: #a5abb1;
+        --input-disabled-border-color: #dde1e5;
+        --input-disabled-bg: #f0f2f4;
+        --input-disabled-color: #969ba1;
+        --input-number-hover-border-color: #22b573;
+        --input-number-focus-color: #22b573;
+        --input-number-focus-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+        --input-number-error-color: #f04438;
+        --input-number-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        --input-number-disabled-border-color: #dde1e5;
+        --input-number-disabled-bg: #f0f2f4;
+        --input-number-disabled-color: #969ba1;
         font-family:
           Inter, "Inter var", ui-sans-serif, system-ui, -apple-system,
           BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
@@ -998,10 +1017,10 @@
       .spec-input,
       .spec-textarea {
         width: 100%;
-        border: 1px solid #dde1e5;
+        border: 1px solid var(--input-border-color);
         border-radius: 10px;
         background: #fff;
-        color: #1a1d1f;
+        color: var(--input-text-color);
         font-size: 13px;
         outline: 0;
         transition:
@@ -1025,7 +1044,7 @@
 
       .spec-input::placeholder,
       .spec-textarea::placeholder {
-        color: #a5abb1;
+        color: var(--input-placeholder-color);
       }
 
       .spec-input[type="search"]::-webkit-search-cancel-button {
@@ -1043,18 +1062,45 @@
         appearance: textfield;
       }
 
+      .spec-input:hover,
+      .spec-textarea:hover,
+      .spec-input.hover,
+      .spec-textarea.hover,
+      .spec-input.is-hover,
+      .spec-textarea.is-hover,
+      .spec-input-wrap:hover,
+      .spec-input-wrap.hover,
+      .spec-input-wrap.is-hover {
+        border-color: var(--input-hover-border-color);
+        background: #fff;
+        box-shadow: none;
+      }
+
       .spec-input:focus,
+      .spec-input.focus,
+      .spec-input.is-focus,
       .spec-textarea:focus,
-      .spec-input-wrap:focus-within {
-        border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+      .spec-textarea.focus,
+      .spec-textarea.is-focus,
+      .spec-input-wrap:focus-within,
+      .spec-input-wrap.focus,
+      .spec-input-wrap.is-focus {
+        border-color: var(--input-focus-color);
+        box-shadow: var(--input-focus-shadow);
       }
 
       .spec-input:disabled,
       .spec-textarea:disabled {
-        background: #f0f2f4;
-        color: #969ba1;
+        border-color: var(--input-disabled-border-color);
+        background: var(--input-disabled-bg);
+        color: var(--input-disabled-color);
         cursor: not-allowed;
+      }
+
+      .spec-input-wrap:has(.spec-input:disabled):hover {
+        border-color: var(--input-disabled-border-color);
+        background: var(--input-disabled-bg);
+        box-shadow: none;
       }
 
       .spec-input-wrap {
@@ -1063,7 +1109,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid #dde1e5;
+        border: 1px solid var(--input-border-color);
         border-radius: 10px;
         background: #fff;
         padding: 0 12px;
@@ -1194,16 +1240,26 @@
       .spec-field.over-limit .spec-input,
       .spec-field.over-limit .spec-textarea,
       .spec-input-wrap.error {
-        border-color: #f04438;
+        border-color: var(--input-error-color);
       }
 
       .spec-field.error .spec-input:focus,
+      .spec-field.error .spec-input.focus,
+      .spec-field.error .spec-input.is-focus,
       .spec-field.error .spec-textarea:focus,
+      .spec-field.error .spec-textarea.focus,
+      .spec-field.error .spec-textarea.is-focus,
       .spec-field.over-limit .spec-input:focus,
+      .spec-field.over-limit .spec-input.focus,
+      .spec-field.over-limit .spec-input.is-focus,
       .spec-field.over-limit .spec-textarea:focus,
-      .spec-input-wrap.error:focus-within {
-        border-color: #f04438;
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+      .spec-field.over-limit .spec-textarea.focus,
+      .spec-field.over-limit .spec-textarea.is-focus,
+      .spec-input-wrap.error:focus-within,
+      .spec-input-wrap.error.focus,
+      .spec-input-wrap.error.is-focus {
+        border-color: var(--input-error-color);
+        box-shadow: var(--input-error-shadow);
       }
 
       .spec-field.error .spec-field-help {
@@ -2487,9 +2543,19 @@
           background-color 0.15s ease;
       }
 
-      .number-input:focus-within {
-        border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+      .number-input:hover,
+      .number-input.hover,
+      .number-input.is-hover {
+        border-color: var(--input-number-hover-border-color);
+        background: #fff;
+        box-shadow: none;
+      }
+
+      .number-input:focus-within,
+      .number-input.focus,
+      .number-input.is-focus {
+        border-color: var(--input-number-focus-color);
+        box-shadow: var(--input-number-focus-shadow);
       }
 
       .number-input .spec-input {
@@ -2589,20 +2655,23 @@
       }
 
       .number-input.error {
-        border-color: #f04438;
+        border-color: var(--input-number-error-color);
       }
 
-      .number-input.error:focus-within {
-        border-color: #f04438;
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+      .number-input.error:focus-within,
+      .number-input.error.focus,
+      .number-input.error.is-focus {
+        border-color: var(--input-number-error-color);
+        box-shadow: var(--input-number-error-shadow);
       }
 
       .number-input.disabled {
-        background: #f0f2f4;
+        border-color: var(--input-number-disabled-border-color);
+        background: var(--input-number-disabled-bg);
       }
 
       .number-input.disabled .spec-input {
-        color: #969ba1;
+        color: var(--input-number-disabled-color);
         cursor: not-allowed;
       }
 
@@ -4005,7 +4074,7 @@
                   <li>默认高度 38px</li>
                   <li>圆角 10px</li>
                   <li>边框 #DDE1E5</li>
-                  <li>Focus 使用品牌绿</li>
+                  <li>Hover / Focus 使用品牌绿</li>
                 </ul>
               </header>
 
@@ -4091,12 +4160,22 @@
                     </div>
                   </div>
                   <div class="example-block">
+                    <h3>Hover</h3>
+                    <p>悬停时边框变为品牌绿，与选择器保持一致，不出现外发光。</p>
+                    <div class="input-demo-stack">
+                      <label class="spec-field">
+                        <span class="spec-label">浏览器</span>
+                        <input class="spec-input hover" type="text" value="Chrome Profile 01" />
+                      </label>
+                    </div>
+                  </div>
+                  <div class="example-block">
                     <h3>Focus</h3>
                     <p>聚焦时使用品牌绿边框与浅色 focus ring。</p>
                     <div class="input-demo-stack">
                       <label class="spec-field success">
                         <span class="spec-label">Cron 表达式</span>
-                        <input class="spec-input" type="text" value="0 * * * *" />
+                        <input class="spec-input focus" type="text" value="0 * * * *" />
                         <span class="spec-field-help">当前输入格式可用</span>
                       </label>
                     </div>
@@ -4246,8 +4325,14 @@
                       </tr>
                       <tr>
                         <td><code>status</code></td>
-                        <td>语义状态，用于校验反馈。</td>
+                        <td>语义状态，用于校验反馈和禁用展示；hover、focus 由 interactionState 表达。</td>
                         <td><code>default | success | error | disabled</code></td>
+                        <td><code>default</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>interactionState</code></td>
+                        <td>用于静态规范或受控演示的交互态；与 status 组合后覆盖 default、hover、focus、error、disabled 五类状态。</td>
+                        <td><code>default | hover | focus</code></td>
                         <td><code>default</code></td>
                       </tr>
                       <tr>
@@ -4347,14 +4432,19 @@
                         <td>默认边框。</td>
                       </tr>
                       <tr>
+                        <td><code>--input-hover-border-color</code></td>
+                        <td><code>#22B573</code></td>
+                        <td>输入框、搜索框、带前后缀输入容器和文本域 hover 边框，无外发光。</td>
+                      </tr>
+                      <tr>
                         <td><code>--input-focus-color</code></td>
                         <td><code>#22B573</code></td>
-                        <td>聚焦边框。</td>
+                        <td>聚焦态内层绿色描边。</td>
                       </tr>
                       <tr>
                         <td><code>--input-focus-shadow</code></td>
                         <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
-                        <td>聚焦外发光。</td>
+                        <td>聚焦态外层浅绿色描边。</td>
                       </tr>
                       <tr>
                         <td><code>--input-error-color</code></td>
@@ -4364,7 +4454,7 @@
                       <tr>
                         <td><code>--input-error-shadow</code></td>
                         <td><code>0 0 0 3px rgba(240, 68, 56, 0.12)</code></td>
-                        <td>错误态聚焦外发光。</td>
+                        <td>错误态聚焦外层浅红色描边。</td>
                       </tr>
                       <tr>
                         <td><code>--input-text-color</code></td>
@@ -4400,6 +4490,16 @@
                         <td><code>--input-disabled-bg</code></td>
                         <td><code>#F0F2F4</code></td>
                         <td>禁用态背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--input-disabled-border-color</code></td>
+                        <td><code>#DDE1E5</code></td>
+                        <td>禁用态输入框和前后缀容器边框。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--input-disabled-color</code></td>
+                        <td><code>#969BA1</code></td>
+                        <td>禁用态输入文本。</td>
                       </tr>
                       <tr>
                         <td><code>--input-font-size</code></td>
@@ -4439,6 +4539,7 @@
                   <li>默认高度 38px</li>
                   <li>圆角 10px</li>
                   <li>支持步进器</li>
+                  <li>Hover 使用品牌绿边框</li>
                   <li>支持单位后缀</li>
                 </ul>
               </header>
@@ -4611,6 +4712,46 @@
                     </div>
                   </div>
                   <div class="example-block">
+                    <h3>Hover</h3>
+                    <p>悬停时数字输入框容器边框变为品牌绿，步进器和输入区不增加外发光。</p>
+                    <div class="input-demo-stack">
+                      <label class="spec-field">
+                        <span class="spec-label">随机执行次数</span>
+                        <span class="number-input hover">
+                          <input class="spec-input" type="number" value="3" />
+                          <span class="number-stepper" aria-hidden="true">
+                            <button class="number-step" type="button" aria-label="增加">
+                              <svg viewBox="0 0 16 16"><path d="m4 10 4-4 4 4"></path></svg>
+                            </button>
+                            <button class="number-step" type="button" aria-label="减少">
+                              <svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg>
+                            </button>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Focus</h3>
+                    <p>聚焦时数字输入框容器使用品牌绿边框与外层浅绿色描边。</p>
+                    <div class="input-demo-stack">
+                      <label class="spec-field">
+                        <span class="spec-label">随机执行次数</span>
+                        <span class="number-input focus">
+                          <input class="spec-input" type="number" value="3" />
+                          <span class="number-stepper" aria-hidden="true">
+                            <button class="number-step" type="button" aria-label="增加">
+                              <svg viewBox="0 0 16 16"><path d="m4 10 4-4 4 4"></path></svg>
+                            </button>
+                            <button class="number-step" type="button" aria-label="减少">
+                              <svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg>
+                            </button>
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="example-block">
                     <h3>Error</h3>
                     <p>错误状态用于超出范围或格式无效。</p>
                     <div class="input-demo-stack">
@@ -4648,19 +4789,6 @@
                               <svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg>
                             </button>
                           </span>
-                        </span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="example-block">
-                    <h3>ReadOnly</h3>
-                    <p>只读态用于展示系统计算值，不呈现步进器。</p>
-                    <div class="input-demo-stack">
-                      <label class="spec-field">
-                        <span class="spec-label">预计执行次数</span>
-                        <span class="number-input no-controls with-unit">
-                          <input class="spec-input" type="number" value="24" readonly />
-                          <span class="number-unit">次</span>
                         </span>
                       </label>
                     </div>
@@ -4783,19 +4911,19 @@
                       </tr>
                       <tr>
                         <td><code>status</code></td>
-                        <td>语义状态，用于校验反馈。</td>
-                        <td><code>default | error | disabled | readonly</code></td>
+                        <td>语义状态，仅承载默认、错误和禁用；hover、focus 由 interactionState 表达。</td>
+                        <td><code>default | error | disabled</code></td>
+                        <td><code>default</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>interactionState</code></td>
+                        <td>用于静态规范或受控演示的交互态；与 status 组合后覆盖 default、hover、focus、error、disabled 五类状态。</td>
+                        <td><code>default | hover | focus</code></td>
                         <td><code>default</code></td>
                       </tr>
                       <tr>
                         <td><code>disabled</code></td>
                         <td>禁用键入和步进操作。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>false</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>readOnly</code></td>
-                        <td>只读展示数值，不建议展示步进器。</td>
                         <td><code>boolean</code></td>
                         <td><code>false</code></td>
                       </tr>
@@ -4842,19 +4970,29 @@
                         <td>默认边框。</td>
                       </tr>
                       <tr>
+                        <td><code>--input-number-hover-border-color</code></td>
+                        <td><code>#22B573</code></td>
+                        <td>数字输入框 hover 容器边框，无外发光。</td>
+                      </tr>
+                      <tr>
                         <td><code>--input-number-focus-color</code></td>
                         <td><code>#22B573</code></td>
-                        <td>聚焦边框。</td>
+                        <td>聚焦态容器内层绿色描边。</td>
                       </tr>
                       <tr>
                         <td><code>--input-number-focus-shadow</code></td>
                         <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
-                        <td>聚焦外发光。</td>
+                        <td>聚焦态容器外层浅绿色描边。</td>
                       </tr>
                       <tr>
                         <td><code>--input-number-error-color</code></td>
                         <td><code>#F04438</code></td>
                         <td>错误边框。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--input-number-error-shadow</code></td>
+                        <td><code>0 0 0 3px rgba(240, 68, 56, 0.12)</code></td>
+                        <td>错误态聚焦外层浅红色描边。</td>
                       </tr>
                       <tr>
                         <td><code>--input-number-stepper-width</code></td>
@@ -4875,6 +5013,16 @@
                         <td><code>--input-number-disabled-bg</code></td>
                         <td><code>#F0F2F4</code></td>
                         <td>禁用态背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--input-number-disabled-border-color</code></td>
+                        <td><code>#DDE1E5</code></td>
+                        <td>禁用态容器边框。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--input-number-disabled-color</code></td>
+                        <td><code>#969BA1</code></td>
+                        <td>禁用态输入文本。</td>
                       </tr>
                       <tr>
                         <td><code>--input-number-font-size</code></td>

@@ -1042,8 +1042,14 @@
       }
 
       .spec-input:focus,
+      .spec-input.focus,
+      .spec-input.is-focus,
       .spec-textarea:focus,
-      .spec-input-wrap:focus-within {
+      .spec-textarea.focus,
+      .spec-textarea.is-focus,
+      .spec-input-wrap:focus-within,
+      .spec-input-wrap.focus,
+      .spec-input-wrap.is-focus {
         border-color: var(--brand-500);
         box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
       }
@@ -1196,10 +1202,20 @@
       }
 
       .spec-field.error .spec-input:focus,
+      .spec-field.error .spec-input.focus,
+      .spec-field.error .spec-input.is-focus,
       .spec-field.error .spec-textarea:focus,
+      .spec-field.error .spec-textarea.focus,
+      .spec-field.error .spec-textarea.is-focus,
       .spec-field.over-limit .spec-input:focus,
+      .spec-field.over-limit .spec-input.focus,
+      .spec-field.over-limit .spec-input.is-focus,
       .spec-field.over-limit .spec-textarea:focus,
-      .spec-input-wrap.error:focus-within {
+      .spec-field.over-limit .spec-textarea.focus,
+      .spec-field.over-limit .spec-textarea.is-focus,
+      .spec-input-wrap.error:focus-within,
+      .spec-input-wrap.error.focus,
+      .spec-input-wrap.error.is-focus {
         border-color: #f04438;
         box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
       }

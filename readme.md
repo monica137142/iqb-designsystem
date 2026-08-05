@@ -4,7 +4,7 @@ IQB Design System 是面向 IQB Agent 平台的静态设计规范站点，当前
 
 ## 内容
 
-- `index.html`: 组件总览，以及 Button、Input、InputNumber、Radio、Checkbox、Switch、Select、DatePicker、TimePicker、Card、Table 等入口或规范内容。
+- `index.html`: 组件总览，以及 Button、Input、InputNumber、Radio、CheckBox、Switch、Select、DatePicker、TimePicker、Table 等入口或规范内容。
 - `date-picker.html`: DatePicker 日期选择器独立规范页。
 - `time-picker.html`: TimePicker 时间选择器独立规范页。
 - `upload.html`: Upload 上传组件独立规范页。
@@ -12,6 +12,29 @@ IQB Design System 是面向 IQB Agent 平台的静态设计规范站点，当前
 - `table.html`: Table 表格组件独立规范页。
 - `logo-cropped.png`: 站点品牌标识资源。
 - `design.md`: 设计系统说明，包括设计原则、视觉 Token、组件结构和维护约定。
+
+## Components
+
+当前可复用组件包括：
+
+- Button
+- Input
+- InputNumber
+- Radio
+- CheckBox
+- Switch
+- Select
+- DatePicker
+- TimePicker
+- Upload
+- Form
+- Table
+
+组件使用约定：
+
+- 优先复用已有组件。
+- 不要新建组件。
+- 不存在时再提出建议。
 
 ## 本地预览
 
@@ -54,8 +77,9 @@ https://monica137142.github.io/iqb-designsystem/
 ## 维护约定
 
 - 保持导航中的组件名称、页面标题和文档标题一致。
-- 新增组件时，同步补充使用场景、状态、尺寸、API 和 Token。
-- 优先复用现有颜色、间距、圆角和阴影变量。
+- 优先从 Components 清单中选择已有组件；确实不存在时，先提出新增建议。
+- 调整组件状态时，同步更新状态示例、API 和设计 Token。
+- 优先复用现有颜色、间距、圆角和阴影变量，不为同类状态重复定义新变量。
 - 示例文案应贴近 IQB Agent 平台的真实业务语境。
 - 避免提交本机系统文件，`.DS_Store` 已加入 `.gitignore`。
 
