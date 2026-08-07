@@ -6,7 +6,21 @@
     <title>IQB Design</title>
     <style>
       :root {
-        --brand-500: #22b573;
+        --brand-500: #00d157;
+        --brand-50: #effff6;
+        --brand-100: #d8ffe8;
+        --brand-200: #b5ffd1;
+        --brand-300: #7dffb0;
+        --brand-400: #35f47c;
+        --brand-600: #00b84b;
+        --brand-700: #008f3f;
+        --brand-800: #067037;
+        --brand-900: #075a2f;
+        --brand-rgb: 0, 209, 87;
+        --brand-text: #00b84b;
+        --brand-text-hover: #008f3f;
+        --brand-border-soft: #bfead2;
+        --brand-border-hover: #8fd9b3;
         --gray-950: #0b0d0f;
         --gray-900: #14171a;
         --gray-800: #22262a;
@@ -22,11 +36,11 @@
         --topbar-height: 60px;
         --sidebar-width: 300px;
         --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgba(34, 181, 115, 0.16);
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
         --input-border-color: #dde1e5;
-        --input-hover-border-color: #22b573;
-        --input-focus-color: #22b573;
-        --input-focus-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+        --input-hover-border-color: var(--brand-500);
+        --input-focus-color: var(--brand-500);
+        --input-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
         --input-error-color: #f04438;
         --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
         --input-text-color: #1a1d1f;
@@ -34,9 +48,9 @@
         --input-disabled-border-color: #dde1e5;
         --input-disabled-bg: #f0f2f4;
         --input-disabled-color: #969ba1;
-        --input-number-hover-border-color: #22b573;
-        --input-number-focus-color: #22b573;
-        --input-number-focus-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+        --input-number-hover-border-color: var(--brand-500);
+        --input-number-focus-color: var(--brand-500);
+        --input-number-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
         --input-number-error-color: #f04438;
         --input-number-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
         --input-number-disabled-border-color: #dde1e5;
@@ -73,6 +87,39 @@
         font: inherit;
       }
 
+      :root[data-product-theme="test-theme-1"] :where(
+        .product-select-trigger,
+        .product-select-menu,
+        .product-select-option,
+        .palette-select-trigger,
+        .palette-select-menu,
+        .palette-select-option,
+        .component-index-button,
+        .acard,
+        .doc-chip,
+        .spec-btn,
+        .spec-input-wrap,
+        .spec-select,
+        .spec-date,
+        .spec-upload,
+        .upload-dropzone,
+        .upload-file-item,
+        .photo-wall-upload,
+        .photo-wall-item,
+        .number-input,
+        .radio-card,
+        .checkbox-card,
+        .date-panel,
+        .time-panel,
+        .select-dropdown,
+        .spec-table-wrap,
+        .table-card,
+        .table-toolbar,
+        .pagination-btn
+      ) {
+        border-radius: var(--radius-sm);
+      }
+
       .app-shell {
         display: grid;
         grid-template-rows: var(--topbar-height) 1fr;
@@ -104,11 +151,23 @@
 
       .brand-mark {
         flex: 0 0 auto;
-        width: auto;
-        height: 24px;
-        object-fit: contain;
         display: block;
+        width: 30px;
+        height: 30px;
         transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
       }
 
       .brand-title {
@@ -122,9 +181,106 @@
         white-space: nowrap;
       }
 
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
       .topbar-actions {
         display: flex;
         align-items: center;
+        margin-left: auto;
         gap: 8px;
         color: var(--gray-600);
         font-size: 13px;
@@ -135,7 +291,33 @@
         height: 8px;
         border-radius: 999px;
         background: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.14);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand-title {
+          display: none;
+        }
+
+        .product-select {
+          width: min(124px, calc(100vw - 92px));
+        }
       }
 
       .workspace {
@@ -151,8 +333,27 @@
         min-width: 0;
         min-height: 0;
         padding: 22px 18px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-gutter: stable;
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
         background: var(--white);
         border-right: 1px solid var(--gray-200);
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
       }
 
       .nav-list {
@@ -168,6 +369,10 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
+      }
+
+      .nav-list > .nav-section:nth-child(2) {
+        margin-top: -16px;
       }
 
       .nav-category {
@@ -398,8 +603,8 @@
       }
 
       .component-index-button:hover {
-        border-color: rgba(34, 181, 115, 0.34);
-        background: rgba(34, 181, 115, 0.04);
+        border-color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.04);
         box-shadow: 0 10px 24px rgba(20, 28, 36, 0.06);
         transform: translateY(-1px);
       }
@@ -428,16 +633,20 @@
 
       .component-status {
         flex: 0 0 auto;
-        padding: 2px 6px;
+        display: inline-flex;
+        align-items: center;
+        min-height: 22px;
+        padding: 2px 7px;
+        border: 1px solid transparent;
         border-radius: 999px;
         font-size: 11px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 1.4;
       }
 
       .component-status.done {
-        color: #1b9c61;
-        background: rgba(34, 181, 115, 0.08);
+        color: var(--brand-500);
+        background: rgba(var(--brand-rgb), 0.14);
       }
 
       .component-status.pending {
@@ -451,6 +660,18 @@
 
       .doc-section:last-child {
         border-bottom: 0;
+      }
+
+      .doc-section.no-divider {
+        border-bottom: 0;
+      }
+
+      .color-role-section {
+        padding-bottom: 14px;
+      }
+
+      .color-palette-section {
+        padding-top: 14px;
       }
 
       .doc-section h2 {
@@ -521,6 +742,238 @@
         grid-column: 1 / -1;
       }
 
+      .color-system-group {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .color-palette {
+        display: grid;
+        gap: 12px;
+      }
+
+      .color-system-group .color-palette {
+        grid-column: auto;
+      }
+
+      .color-section-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin: 0 0 14px;
+      }
+
+      .doc-section .color-section-heading h2 {
+        margin: 0;
+      }
+
+      .doc-section .color-section-heading h3 {
+        margin: 0;
+      }
+
+      .color-palette-select {
+        position: relative;
+        flex: 0 0 auto;
+        min-width: 188px;
+      }
+
+      .color-palette-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 32px;
+        padding: 0 30px 0 12px;
+        color: var(--gray-800);
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .color-palette-trigger:hover,
+      .color-palette-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+      }
+
+      .color-palette-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .color-palette-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        width: 7px;
+        height: 7px;
+        content: "";
+        border-right: 1.5px solid var(--gray-500);
+        border-bottom: 1.5px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .color-palette-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .color-palette-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 5;
+        display: grid;
+        width: 100%;
+        min-width: 188px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .color-palette-menu[hidden] {
+        display: none;
+      }
+
+      .color-palette-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .color-palette-option:hover,
+      .color-palette-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .color-palette-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .color-palette-header h3 {
+        margin-bottom: 4px;
+      }
+
+      .color-palette-base {
+        flex: 0 0 auto;
+        padding: 5px 8px;
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+        border-radius: 999px;
+        font-size: 12px;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .color-ramp {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .color-swatch {
+        display: block;
+        align-items: stretch;
+        min-width: 0;
+        overflow: hidden;
+        background: var(--swatch);
+      }
+
+      .color-swatch:first-child {
+        border-top-left-radius: var(--radius-sm);
+        border-top-right-radius: var(--radius-sm);
+      }
+
+      .color-swatch:last-child {
+        border-bottom-right-radius: var(--radius-sm);
+        border-bottom-left-radius: var(--radius-sm);
+      }
+
+      .color-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 0;
+        min-height: 42px;
+        gap: 10px;
+        padding: 0 14px;
+        color: var(--swatch-ink);
+      }
+
+      .color-token {
+        overflow: hidden;
+        color: inherit;
+        font-size: 12px;
+        line-height: 1.4;
+        opacity: 0.9;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .color-hex {
+        color: inherit;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-size: 12px;
+        line-height: 1.4;
+        opacity: 0.9;
+      }
+
+      .color-role-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .color-role {
+        min-width: 0;
+        padding: 14px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .color-role strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--gray-900);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .color-role span {
+        color: var(--gray-600);
+        font-size: 12px;
+        line-height: 1.65;
+      }
+
       .example-row {
         display: flex;
         flex-wrap: wrap;
@@ -553,7 +1006,7 @@
 
       .spec-btn:hover {
         border-color: var(--brand-500);
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .spec-btn:focus-visible {
@@ -568,8 +1021,8 @@
       }
 
       .spec-btn.primary:hover {
-        border-color: #1b9c61;
-        background: #1b9c61;
+        border-color: var(--brand-text);
+        background: var(--brand-text);
         color: #fff;
       }
 
@@ -593,12 +1046,12 @@
       .spec-btn.ghost-primary {
         border-color: var(--brand-500);
         background: transparent;
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .spec-btn.ghost-primary:hover {
-        background: rgba(34, 181, 115, 0.06);
-        color: #12824c;
+        background: rgb(var(--brand-rgb) / 0.06);
+        color: var(--brand-text-hover);
       }
 
       .spec-btn.solid {
@@ -610,117 +1063,117 @@
       .spec-btn.solid:hover {
         border-color: var(--brand-500);
         background: #fff;
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .spec-btn.permission {
-        border-color: #bfead2;
+        border-color: var(--brand-500);
         background: transparent;
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .spec-btn.permission:hover {
-        border-color: #8fd9b3;
-        background: rgba(34, 181, 115, 0.06);
-        color: #12824c;
+        border-color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.06);
+        color: var(--brand-text);
       }
 
       .spec-btn.warning {
-        border-color: #f1b84b;
-        background: #fff7e8;
-        color: #b66b18;
+        border-color: #fdb022;
+        background: #fffaeb;
+        color: #b54708;
       }
 
       .spec-btn.warning-primary {
-        border-color: #d99a22;
-        background: #d99a22;
+        border-color: #f79009;
+        background: #f79009;
         color: #fff;
       }
 
       .spec-btn.warning-primary:hover {
-        border-color: #bf7d12;
-        background: #bf7d12;
+        border-color: #dc6803;
+        background: #dc6803;
         color: #fff;
       }
 
       .spec-btn.warning-secondary {
-        border-color: #f1b84b;
+        border-color: #fdb022;
         background: transparent;
-        color: #b66b18;
+        color: #b54708;
       }
 
       .spec-btn.warning-secondary:hover {
-        border-color: #d99a22;
-        background: #fff1d6;
-        color: #8f5200;
+        border-color: #f79009;
+        background: #fef0c7;
+        color: #93370d;
       }
 
       .spec-btn.warning-subtle {
         border-color: transparent;
-        background: #fff7e8;
-        color: #b66b18;
+        background: #fffaeb;
+        color: #b54708;
       }
 
       .spec-btn.warning-subtle:hover {
-        background: #fff1d6;
-        color: #8f5200;
+        background: #fef0c7;
+        color: #93370d;
       }
 
       .spec-btn.warning-text {
         border-color: transparent;
         background: transparent;
-        color: #b66b18;
+        color: #b54708;
       }
 
       .spec-btn.warning-text:hover {
-        background: #fff7e8;
-        color: #8f5200;
+        background: #fffaeb;
+        color: #93370d;
       }
 
       .spec-btn.info-primary {
-        border-color: #1677ff;
-        background: #1677ff;
+        border-color: #2e90fa;
+        background: #2e90fa;
         color: #fff;
       }
 
       .spec-btn.info-primary:hover {
-        border-color: #0f63d9;
-        background: #0f63d9;
+        border-color: #1570ef;
+        background: #1570ef;
         color: #fff;
       }
 
       .spec-btn.info-secondary {
-        border-color: #1677ff;
+        border-color: #2e90fa;
         background: transparent;
-        color: #0958d9;
+        color: #1570ef;
       }
 
       .spec-btn.info-secondary:hover {
-        border-color: #0f63d9;
-        background: #eaf3ff;
-        color: #003eb3;
+        border-color: #1570ef;
+        background: #eff8ff;
+        color: #175cd3;
       }
 
       .spec-btn.info-subtle {
         border-color: transparent;
-        background: #eaf3ff;
-        color: #0958d9;
+        background: #eff8ff;
+        color: #1570ef;
       }
 
       .spec-btn.info-subtle:hover {
-        background: #d8eaff;
-        color: #003eb3;
+        background: #d1e9ff;
+        color: #175cd3;
       }
 
       .spec-btn.info-text {
         border-color: transparent;
         background: transparent;
-        color: #0958d9;
+        color: #1570ef;
       }
 
       .spec-btn.info-text:hover {
-        background: #eaf3ff;
-        color: #003eb3;
+        background: #eff8ff;
+        color: #175cd3;
       }
 
       .spec-btn.danger {
@@ -743,18 +1196,18 @@
 
       .spec-btn.danger-secondary:hover {
         border-color: #d92d20;
-        background: #fff5f5;
+        background: #fff1f0;
         color: #b42318;
       }
 
       .spec-btn.danger-subtle {
         border-color: transparent;
-        background: #fff5f5;
+        background: #fff1f0;
         color: #d92d20;
       }
 
       .spec-btn.danger-subtle:hover {
-        background: #fee4e2;
+        background: #ffe0de;
         color: #b42318;
       }
 
@@ -765,7 +1218,7 @@
       }
 
       .spec-btn.danger-text:hover {
-        background: #fff5f5;
+        background: #fff1f0;
         color: #b42318;
       }
 
@@ -848,9 +1301,9 @@
       }
 
       .spec-btn.permission[disabled]:hover {
-        border-color: #bfead2;
+        border-color: var(--brand-500);
         background: transparent;
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .spec-btn.subtle[disabled]:hover {
@@ -878,51 +1331,51 @@
       }
 
       .spec-btn.warning-primary[disabled]:hover {
-        border-color: #d99a22;
-        background: #d99a22;
+        border-color: #f79009;
+        background: #f79009;
         color: #fff;
       }
 
       .spec-btn.warning-secondary[disabled]:hover {
-        border-color: #f1b84b;
+        border-color: #fdb022;
         background: transparent;
-        color: #b66b18;
+        color: #b54708;
       }
 
       .spec-btn.warning-subtle[disabled]:hover {
         border-color: transparent;
-        background: #fff7e8;
-        color: #b66b18;
+        background: #fffaeb;
+        color: #b54708;
       }
 
       .spec-btn.warning-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: #b66b18;
+        color: #b54708;
       }
 
       .spec-btn.info-primary[disabled]:hover {
-        border-color: #1677ff;
-        background: #1677ff;
+        border-color: #2e90fa;
+        background: #2e90fa;
         color: #fff;
       }
 
       .spec-btn.info-secondary[disabled]:hover {
-        border-color: #1677ff;
+        border-color: #2e90fa;
         background: transparent;
-        color: #0958d9;
+        color: #1570ef;
       }
 
       .spec-btn.info-subtle[disabled]:hover {
         border-color: transparent;
-        background: #eaf3ff;
-        color: #0958d9;
+        background: #eff8ff;
+        color: #1570ef;
       }
 
       .spec-btn.info-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: #0958d9;
+        color: #1570ef;
       }
 
       .spec-btn.danger[disabled]:hover {
@@ -939,7 +1392,7 @@
 
       .spec-btn.danger-subtle[disabled]:hover {
         border-color: transparent;
-        background: #fff5f5;
+        background: #fff1f0;
         color: #d92d20;
       }
 
@@ -970,8 +1423,8 @@
       }
 
       .loading-dot.brand {
-        border-color: rgba(34, 181, 115, 0.24);
-        border-top-color: #1b9c61;
+        border-color: rgb(var(--brand-rgb) / 0.24);
+        border-top-color: var(--brand-text);
       }
 
       .loading-dot.neutral {
@@ -1273,7 +1726,7 @@
       }
 
       .spec-field.success .spec-field-help {
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .count-demo-grid {
@@ -1346,7 +1799,7 @@
       .spec-select.open,
       .spec-select.focus {
         border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
       .spec-select.error {
@@ -1682,8 +2135,13 @@
       }
 
       .select-option.active {
-        color: #1b9c61;
-        background: rgba(34, 181, 115, 0.08);
+        color: var(--brand-text);
+        background: transparent;
+      }
+
+      .select-option.active:hover {
+        color: var(--brand-text);
+        background: #f5f6f8;
       }
 
       .select-option.disabled {
@@ -1768,7 +2226,7 @@
       .spec-date.open,
       .spec-date.focus {
         border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
       .spec-date.error {
@@ -1988,6 +2446,11 @@
         color: #fff;
       }
 
+      .date-time-option.active:hover {
+        background: var(--gray-100);
+        color: var(--brand-text);
+      }
+
       .date-time-actions {
         display: flex;
         justify-content: flex-end;
@@ -2057,7 +2520,8 @@
         color: #a5abb1;
       }
 
-      .time-input-control.has-value .time-icon {
+      .time-input-control.has-value:hover .time-icon,
+      .time-range-inputs.has-value:hover .time-icon {
         opacity: 0;
       }
 
@@ -2076,7 +2540,8 @@
         transform: translateY(-50%);
       }
 
-      .time-input-control.has-value .time-clear-btn {
+      .time-input-control.has-value:hover .time-clear-btn:not([hidden]),
+      .time-range-inputs.has-value:hover .time-clear-btn:not([hidden]) {
         display: inline-flex;
       }
 
@@ -2217,6 +2682,7 @@
         display: inline-flex;
         flex-wrap: wrap;
         gap: 4px;
+        margin-top: 16px;
         padding: 4px;
         border: 1px solid var(--gray-200);
         border-radius: 10px;
@@ -2236,19 +2702,28 @@
       }
 
       .range-scope-tab:hover {
-        border-color: var(--brand-500);
+        border-color: transparent;
         background: var(--gray-100);
         color: #33383d;
         box-shadow: none;
       }
 
       .range-scope-tab.active {
-        background: rgba(34, 181, 115, 0.08);
-        color: #1b9c61;
+        background-color: rgba(var(--brand-rgb), 0.14);
+        color: var(--brand-text);
+      }
+
+      .range-scope-tab:focus,
+      .range-scope-tab:focus-visible {
+        outline: none;
+        border-color: transparent;
+        background-color: rgba(var(--brand-rgb), 0.14);
+        color: var(--brand-text);
+        box-shadow: none;
       }
 
       .range-scope-body {
-        margin-top: 16px;
+        margin-top: 8px;
       }
 
       .range-scope-panel[hidden] {
@@ -2283,19 +2758,37 @@
         width: 260px;
       }
 
-      .range-filter-field [data-weekday-filter-demo],
-      .range-filter-field [data-weekday-filter-demo] .spec-select,
-      .range-filter-field [data-weekday-filter-demo] .select-dropdown {
-        width: 130px;
+      .range-filter-field [data-select-collapse-fit],
+      .range-filter-field [data-select-collapse-fit] .spec-select,
+      .range-filter-field [data-select-collapse-fit] .select-dropdown {
+        width: 140px;
       }
 
       .range-filter-field[data-time-filter-demo] .spec-date,
       .range-filter-field[data-time-filter-demo] .time-filter-panel {
-        width: 260px;
+        width: 264px;
+      }
+
+      .range-scope-body .select-option.active,
+      .range-scope-body .date-time-option.active {
+        background: rgb(var(--brand-rgb) / 0.08);
+        color: var(--brand-text);
+      }
+
+      .range-scope-body .select-option.active:hover,
+      .range-scope-body .date-time-option.active:hover {
+        background: var(--gray-100);
+        color: var(--brand-text);
+      }
+
+      .range-scope-body .time-filter-panel .date-time-option.active,
+      .range-scope-body .time-filter-panel .date-time-option.active:hover {
+        background: var(--brand-500);
+        color: #fff;
       }
 
       .time-filter-panel {
-        width: 260px;
+        width: 264px;
       }
 
       .weekday-filter-panel {
@@ -2350,8 +2843,8 @@
 
       .date-shortcut:hover,
       .date-shortcut.active {
-        color: #1b9c61;
-        background: rgba(34, 181, 115, 0.08);
+        color: var(--brand-text);
+        background: rgb(var(--brand-rgb) / 0.08);
       }
 
       .date-calendar {
@@ -2449,7 +2942,7 @@
       }
 
       .date-cell.today {
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .date-cell.active,
@@ -2459,18 +2952,18 @@
       }
 
       .date-cell.in-range {
-        background: rgba(34, 181, 115, 0.1);
-        color: #1b9c61;
+        background: var(--gray-100);
+        color: var(--brand-text);
       }
 
       .date-cell.range-preview {
-        background: rgba(34, 181, 115, 0.1);
-        color: #1b9c61;
+        background: rgb(var(--brand-rgb) / 0.1);
+        color: var(--brand-text);
       }
 
       .date-cell.range-preview-edge {
-        background: rgba(34, 181, 115, 0.16);
-        color: #1b9c61;
+        background: rgb(var(--brand-rgb) / 0.16);
+        color: var(--brand-text);
       }
 
       .date-cell.range-edge.range-preview-edge {
@@ -2763,7 +3256,7 @@
       .spec-radio input:checked {
         border-color: var(--brand-500);
         background: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.1);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
       .spec-radio input:checked::after {
@@ -2835,9 +3328,9 @@
       }
 
       .radio-card:has(input:checked) {
-        border-color: rgba(34, 181, 115, 0.36);
-        background: rgba(34, 181, 115, 0.08);
-        color: #1b9c61;
+        border-color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+        color: var(--brand-text);
       }
 
       .radio-card.disabled,
@@ -2853,9 +3346,9 @@
       }
 
       .radio-card:has(input:checked:disabled):hover {
-        border-color: rgba(34, 181, 115, 0.36);
-        background: rgba(34, 181, 115, 0.08);
-        color: #1b9c61;
+        border-color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+        color: var(--brand-text);
       }
 
       .checkbox-demo-stack {
@@ -3084,7 +3577,7 @@
 
       .spec-switch input:checked + .switch-track::after {
         left: 26px;
-        border-color: rgba(34, 181, 115, 0.2);
+        border-color: rgba(79, 86, 93, 0.18);
         border-top-color: var(--brand-500);
       }
 
@@ -3276,6 +3769,7 @@
           min-height: auto;
           padding: 12px 14px;
           overflow-x: auto;
+          overflow-y: hidden;
           border-right: 0;
           border-bottom: 1px solid var(--gray-200);
         }
@@ -3294,6 +3788,10 @@
           flex-direction: row;
           align-items: center;
           gap: 8px;
+        }
+
+        .nav-list > .nav-section:nth-child(2) {
+          margin-top: 0;
         }
 
         .nav-category {
@@ -3329,6 +3827,23 @@
           grid-template-columns: 1fr;
         }
 
+        .color-system-group {
+          grid-template-columns: 1fr;
+        }
+
+        .color-section-heading {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .color-palette-select {
+          width: 100%;
+        }
+
+        .color-role-grid {
+          grid-template-columns: 1fr;
+        }
+
         .overview-grid,
         .component-index,
         .overview-group.full .component-index {
@@ -3339,18 +3854,170 @@
           grid-template-columns: 1fr;
         }
       }
-    </style>
+
+      :root[data-product-theme="iq-theme"] .spec-input:focus,
+      :root[data-product-theme="iq-theme"] .spec-input.focus,
+      :root[data-product-theme="iq-theme"] .spec-input.is-focus,
+      :root[data-product-theme="iq-theme"] .spec-textarea:focus,
+      :root[data-product-theme="iq-theme"] .spec-textarea.focus,
+      :root[data-product-theme="iq-theme"] .spec-textarea.is-focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap.focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap.is-focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap:focus-within,
+      :root[data-product-theme="iq-theme"] .product-select-trigger[aria-expanded="true"],
+      :root[data-product-theme="iq-theme"] .palette-select-trigger[aria-expanded="true"],
+      :root[data-product-theme="iq-theme"] .number-input:focus-within,
+      :root[data-product-theme="iq-theme"] .spec-select.open,
+      :root[data-product-theme="iq-theme"] .spec-date.open,
+      :root[data-product-theme="iq-theme"] .spec-time.open,
+      :root[data-product-theme="iq-theme"] .time-input-control.open,
+      :root[data-product-theme="iq-theme"] .time-range-inputs:has(.time-range-segment.open),
+      :root[data-product-theme="iq-theme"] .table-spec-select.open,
+      :root[data-product-theme="iq-theme"] .page-size-select.open .page-size-trigger,
+      :root[data-product-theme="iq-theme"] .table-select-demo.open .table-spec-select {
+        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
+      }
+
+      :root[data-product-theme="iq-theme"] .spec-input-wrap .spec-input:focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap .spec-input.focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap .spec-input.is-focus,
+      :root[data-product-theme="iq-theme"] .number-input .spec-input:focus,
+      :root[data-product-theme="iq-theme"] .number-input .spec-input.focus,
+      :root[data-product-theme="iq-theme"] .number-input .spec-input.is-focus {
+        box-shadow: none;
+      }
+
+      :root[data-product-theme="iq-buddy-theme"] .spec-select.open,
+      :root[data-product-theme="iq-buddy-theme"] .spec-date.open,
+      :root[data-product-theme="iq-buddy-theme"] .spec-time.open,
+      :root[data-product-theme="iq-buddy-theme"] .time-input-control.open,
+      :root[data-product-theme="iq-buddy-theme"] .time-range-inputs:has(.time-range-segment.open),
+      :root[data-product-theme="iq-buddy-theme"] .table-spec-select.open,
+      :root[data-product-theme="iq-buddy-theme"] .table-select-demo.open .table-spec-select {
+        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
+      }
+
+      /* test主题1 使用更克制的 2px 控件圆角。 */
+      :root[data-product-theme="test-theme-1"] .spec-btn,
+      :root[data-product-theme="test-theme-1"] .spec-btn.small,
+      :root[data-product-theme="test-theme-1"] .spec-btn.medium,
+      :root[data-product-theme="test-theme-1"] .spec-btn.large,
+      :root[data-product-theme="test-theme-1"] .spec-input,
+      :root[data-product-theme="test-theme-1"] .spec-textarea,
+      :root[data-product-theme="test-theme-1"] .spec-input-wrap,
+      :root[data-product-theme="test-theme-1"] .spec-select,
+      :root[data-product-theme="test-theme-1"] .spec-select.small,
+      :root[data-product-theme="test-theme-1"] .spec-select.large,
+      :root[data-product-theme="test-theme-1"] .select-dropdown,
+      :root[data-product-theme="test-theme-1"] .select-option,
+      :root[data-product-theme="test-theme-1"] .select-tag,
+      :root[data-product-theme="test-theme-1"] .select-clear,
+      :root[data-product-theme="test-theme-1"] .spec-date,
+      :root[data-product-theme="test-theme-1"] .spec-date.small,
+      :root[data-product-theme="test-theme-1"] .spec-date.large,
+      :root[data-product-theme="test-theme-1"] .spec-time,
+      :root[data-product-theme="test-theme-1"] .time-input-control,
+      :root[data-product-theme="test-theme-1"] .time-input-control.small,
+      :root[data-product-theme="test-theme-1"] .time-input-control.large,
+      :root[data-product-theme="test-theme-1"] .time-range-inputs .time-input-control,
+      :root[data-product-theme="test-theme-1"] .date-dropdown,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.range-panel,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.datetime-panel,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.static,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.range-panel.static,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.shortcut-range-panel.static,
+      :root[data-product-theme="test-theme-1"] .date-calendar,
+      :root[data-product-theme="test-theme-1"] .date-cell,
+      :root[data-product-theme="test-theme-1"] .date-period-grid .date-cell,
+      :root[data-product-theme="test-theme-1"] .date-shortcut,
+      :root[data-product-theme="test-theme-1"] .date-nav-btn,
+      :root[data-product-theme="test-theme-1"] .range-scope-tab,
+      :root[data-product-theme="test-theme-1"] .date-time-option,
+      :root[data-product-theme="test-theme-1"] .date-time-list,
+      :root[data-product-theme="test-theme-1"] .date-time-actions,
+      :root[data-product-theme="test-theme-1"] .form-demo,
+      :root[data-product-theme="test-theme-1"] .form-actions,
+      :root[data-product-theme="test-theme-1"] .dynamic-item,
+      :root[data-product-theme="test-theme-1"] .dynamic-index,
+      :root[data-product-theme="test-theme-1"] .remove-dynamic-item {
+        border-radius: 2px !important;
+      }
+</style>
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="#" aria-label="IQB.design 首页">
-          <img class="brand-mark" src="logo-cropped.png" alt="" aria-hidden="true" />
-          <span class="brand-title">IQB Design</span>
+        <a class="brand" href="#" aria-label="IQ Enterprise Design 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQ Enterprise Design</span>
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
           <span data-component-count-label>Active components 12/13</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>IQ主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="iq-buddy"
+              >
+                IQ主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="iq-buddy-theme"
+              >
+                IQ Buddy主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                test主题1
+              </button>
+            </li>
+          </ul>
         </div>
       </header>
 
@@ -3358,6 +4025,11 @@
         <aside class="sidebar" aria-label="设计规范导航">
           <nav>
             <ul class="nav-list">
+              <li class="nav-section">
+                <button class="nav-button" type="button" data-page="color" data-nav-scope="global-style">
+                  <span class="nav-label">全局样式</span>
+                </button>
+              </li>
               <li class="nav-section">
                 <button class="nav-button" type="button" aria-current="page" data-page="overview">
                   <span class="nav-label">组件总览</span>
@@ -3616,6 +4288,212 @@
               </section>
             </article>
 
+            <article class="content-panel doc-page" data-panel="color" hidden>
+              <header class="doc-hero">
+                <p class="doc-kicker">Global Style</p>
+                <h1 class="doc-title">全局样式</h1>
+                <p class="doc-summary">
+                  全局样式定义产品界面的基础视觉语言，覆盖颜色、字体、布局、投影和主题。
+                  这些规范共同约束组件状态、信息层级、空间节奏和跨主题的一致体验。
+                </p>
+              </header>
+
+              <section class="doc-section">
+                <h2>颜色</h2>
+                <p>
+                  以当前色板的品牌 500 色为主色基准，按品牌色、中性色与功能色组织完整色阶。
+                  色阶编号从 50 到 900，数值越大颜色越深，500 作为常规态或语义基准色。
+                </p>
+                <ul class="doc-meta-list" aria-label="颜色规范摘要">
+                  <li data-color-brand-meta>品牌色 #00D157</li>
+                  <li>10 阶梯度 50-900</li>
+                  <li>功能色覆盖红 / 黄 / 蓝</li>
+                  <li>适用于组件、状态与主题变量</li>
+                </ul>
+              </section>
+
+              <section class="doc-section no-divider color-role-section">
+                <h3>色彩角色</h3>
+                <div class="color-role-grid" aria-label="颜色角色">
+                  <div class="color-role">
+                    <strong>品牌色</strong>
+                    <span>用于主按钮、关键操作、选中态、聚焦态和高价值数据。</span>
+                  </div>
+                  <div class="color-role">
+                    <strong>中性色</strong>
+                    <span>用于文本、边框、分割线、背景和弱化信息层级。</span>
+                  </div>
+                  <div class="color-role">
+                    <strong>功能色</strong>
+                    <span>用于错误、警告、提示、链接、信息反馈和状态徽标。</span>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section color-palette-section">
+                <div class="color-section-heading">
+                  <h3>色板</h3>
+                  <div class="color-palette-select" data-color-palette-select>
+                    <button
+                      class="color-palette-trigger"
+                      type="button"
+                      aria-haspopup="listbox"
+                      aria-expanded="false"
+                      data-color-palette-trigger
+                    >
+                      <span data-color-palette-value>iQIYI标准色</span>
+                    </button>
+                    <ul class="color-palette-menu" role="listbox" aria-label="切换色板" hidden data-color-palette-menu>
+                      <li>
+                        <button
+                          class="color-palette-option"
+                          type="button"
+                          role="option"
+                          aria-selected="true"
+                          data-color-palette-option="iQIYI标准色"
+                        >
+                          iQIYI标准色
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="color-palette-option"
+                          type="button"
+                          role="option"
+                          aria-selected="false"
+                          data-color-palette-option="IQ Buddy主题色"
+                        >
+                          IQ Buddy主题色
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          class="color-palette-option"
+                          type="button"
+                          role="option"
+                          aria-selected="false"
+                          data-color-palette-option="test主题色"
+                        >
+                          test主题色
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="color-system-group">
+                  <div class="example-block full color-palette" data-color-palette="brand">
+                    <div class="color-palette-header">
+                      <div>
+                        <h3 data-color-palette-title>Primary Green</h3>
+                        <p data-color-palette-desc>品牌主色，500 固定为 #00D157。</p>
+                      </div>
+                      <span class="color-palette-base" data-color-palette-base>primary-500</span>
+                    </div>
+                    <ul class="color-ramp" aria-label="品牌色色板" data-color-palette-ramp>
+                      <li class="color-swatch" style="--swatch: #effff6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-50</span><span class="color-hex">#EFFFF6</span></div></li>
+                      <li class="color-swatch" style="--swatch: #d8ffe8; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-100</span><span class="color-hex">#D8FFE8</span></div></li>
+                      <li class="color-swatch" style="--swatch: #b5ffd1; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-200</span><span class="color-hex">#B5FFD1</span></div></li>
+                      <li class="color-swatch" style="--swatch: #7dffb0; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-300</span><span class="color-hex">#7DFFB0</span></div></li>
+                      <li class="color-swatch" style="--swatch: #35f47c; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-400</span><span class="color-hex">#35F47C</span></div></li>
+                      <li class="color-swatch" style="--swatch: #00d157; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-500</span><span class="color-hex">#00D157</span></div></li>
+                      <li class="color-swatch" style="--swatch: #00b84b; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-600</span><span class="color-hex">#00B84B</span></div></li>
+                      <li class="color-swatch" style="--swatch: #008f3f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-700</span><span class="color-hex">#008F3F</span></div></li>
+                      <li class="color-swatch" style="--swatch: #067037; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-800</span><span class="color-hex">#067037</span></div></li>
+                      <li class="color-swatch" style="--swatch: #075a2f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-900</span><span class="color-hex">#075A2F</span></div></li>
+                    </ul>
+                  </div>
+
+                  <div class="example-block full color-palette">
+                    <div class="color-palette-header">
+                      <div>
+                        <h3>Neutral Gray</h3>
+                        <p>承载文本、边框、背景与分割线层级。</p>
+                      </div>
+                      <span class="color-palette-base">neutral-500</span>
+                    </div>
+                    <ul class="color-ramp" aria-label="中性色色板">
+                      <li class="color-swatch" style="--swatch: #fafbfc; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-50</span><span class="color-hex">#FAFBFC</span></div></li>
+                      <li class="color-swatch" style="--swatch: #f3f5f7; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-100</span><span class="color-hex">#F3F5F7</span></div></li>
+                      <li class="color-swatch" style="--swatch: #e7eaee; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-200</span><span class="color-hex">#E7EAEE</span></div></li>
+                      <li class="color-swatch" style="--swatch: #d4d9de; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-300</span><span class="color-hex">#D4D9DE</span></div></li>
+                      <li class="color-swatch" style="--swatch: #a5adb6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-400</span><span class="color-hex">#A5ADB6</span></div></li>
+                      <li class="color-swatch" style="--swatch: #78818c; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-500</span><span class="color-hex">#78818C</span></div></li>
+                      <li class="color-swatch" style="--swatch: #59616a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-600</span><span class="color-hex">#59616A</span></div></li>
+                      <li class="color-swatch" style="--swatch: #343a40; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-700</span><span class="color-hex">#343A40</span></div></li>
+                      <li class="color-swatch" style="--swatch: #22262a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-800</span><span class="color-hex">#22262A</span></div></li>
+                      <li class="color-swatch" style="--swatch: #14171a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-900</span><span class="color-hex">#14171A</span></div></li>
+                    </ul>
+                  </div>
+
+                  <div class="example-block full color-palette">
+                    <div class="color-palette-header">
+                      <div>
+                        <h3>Red 红色</h3>
+                        <p>用于错误、失败、危险操作和阻断状态。</p>
+                      </div>
+                      <span class="color-palette-base">red-500</span>
+                    </div>
+                    <ul class="color-ramp" aria-label="红色色板">
+                      <li class="color-swatch" style="--swatch: #fff1f0; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-50</span><span class="color-hex">#FFF1F0</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ffe0de; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-100</span><span class="color-hex">#FFE0DE</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ffc2bd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-200</span><span class="color-hex">#FFC2BD</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ff9b94; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-300</span><span class="color-hex">#FF9B94</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ff6b61; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-400</span><span class="color-hex">#FF6B61</span></div></li>
+                      <li class="color-swatch" style="--swatch: #f04438; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-500</span><span class="color-hex">#F04438</span></div></li>
+                      <li class="color-swatch" style="--swatch: #d92d20; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-600</span><span class="color-hex">#D92D20</span></div></li>
+                      <li class="color-swatch" style="--swatch: #b42318; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-700</span><span class="color-hex">#B42318</span></div></li>
+                      <li class="color-swatch" style="--swatch: #912018; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-800</span><span class="color-hex">#912018</span></div></li>
+                      <li class="color-swatch" style="--swatch: #7a1b16; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-900</span><span class="color-hex">#7A1B16</span></div></li>
+                    </ul>
+                  </div>
+
+                  <div class="example-block full color-palette">
+                    <div class="color-palette-header">
+                      <div>
+                        <h3>Yellow 黄色</h3>
+                        <p>用于警告、等待、注意和中风险提示。</p>
+                      </div>
+                      <span class="color-palette-base">yellow-500</span>
+                    </div>
+                    <ul class="color-ramp" aria-label="黄色色板">
+                      <li class="color-swatch" style="--swatch: #fffaeb; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-50</span><span class="color-hex">#FFFAEB</span></div></li>
+                      <li class="color-swatch" style="--swatch: #fef0c7; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-100</span><span class="color-hex">#FEF0C7</span></div></li>
+                      <li class="color-swatch" style="--swatch: #fedf89; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-200</span><span class="color-hex">#FEDF89</span></div></li>
+                      <li class="color-swatch" style="--swatch: #fec84b; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-300</span><span class="color-hex">#FEC84B</span></div></li>
+                      <li class="color-swatch" style="--swatch: #fdb022; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-400</span><span class="color-hex">#FDB022</span></div></li>
+                      <li class="color-swatch" style="--swatch: #f79009; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-500</span><span class="color-hex">#F79009</span></div></li>
+                      <li class="color-swatch" style="--swatch: #dc6803; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-600</span><span class="color-hex">#DC6803</span></div></li>
+                      <li class="color-swatch" style="--swatch: #b54708; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-700</span><span class="color-hex">#B54708</span></div></li>
+                      <li class="color-swatch" style="--swatch: #93370d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-800</span><span class="color-hex">#93370D</span></div></li>
+                      <li class="color-swatch" style="--swatch: #7a2e0e; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-900</span><span class="color-hex">#7A2E0E</span></div></li>
+                    </ul>
+                  </div>
+
+                  <div class="example-block full color-palette">
+                    <div class="color-palette-header">
+                      <div>
+                        <h3>Blue 蓝色</h3>
+                        <p>用于信息提示、链接、进行中状态和可查看入口。</p>
+                      </div>
+                      <span class="color-palette-base">blue-500</span>
+                    </div>
+                    <ul class="color-ramp" aria-label="蓝色色板">
+                      <li class="color-swatch" style="--swatch: #eff8ff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-50</span><span class="color-hex">#EFF8FF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #d1e9ff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-100</span><span class="color-hex">#D1E9FF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #b2ddff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-200</span><span class="color-hex">#B2DDFF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #84caff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-300</span><span class="color-hex">#84CAFF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #53b1fd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-400</span><span class="color-hex">#53B1FD</span></div></li>
+                      <li class="color-swatch" style="--swatch: #2e90fa; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-500</span><span class="color-hex">#2E90FA</span></div></li>
+                      <li class="color-swatch" style="--swatch: #1570ef; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-600</span><span class="color-hex">#1570EF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #175cd3; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-700</span><span class="color-hex">#175CD3</span></div></li>
+                      <li class="color-swatch" style="--swatch: #1849a9; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-800</span><span class="color-hex">#1849A9</span></div></li>
+                      <li class="color-swatch" style="--swatch: #194185; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-900</span><span class="color-hex">#194185</span></div></li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </article>
+
             <article class="content-panel doc-page" data-panel="button" hidden>
               <header class="doc-hero">
                 <p class="doc-kicker">General / Button</p>
@@ -3628,7 +4506,7 @@
                   <li>基础高度 32px</li>
                   <li>小尺寸 28px</li>
                   <li>圆角 7-8px</li>
-                  <li>品牌主色 #22B573</li>
+                  <li>品牌主色 #00D157</li>
                 </ul>
               </header>
 
@@ -3928,47 +4806,47 @@
                     <tbody>
                       <tr>
                         <td><code>--button-color-primary</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>主要按钮背景、品牌强调、主 loading 颜色。</td>
                       </tr>
                       <tr>
                         <td><code>--button-color-primary-hover</code></td>
-                        <td><code>#1B9C61</code></td>
+                        <td><code>#00B84B</code></td>
                         <td>主要按钮 hover 背景与品牌文字 hover。</td>
                       </tr>
                       <tr>
                         <td><code>--button-color-testing</code></td>
-                        <td><code>#D99A22</code></td>
+                        <td><code>#F79009</code></td>
                         <td>Testing 主要按钮背景。</td>
                       </tr>
                       <tr>
                         <td><code>--button-color-testing-weak</code></td>
-                        <td><code>#FFF7E8</code></td>
+                        <td><code>#FFFAEB</code></td>
                         <td>Testing 弱强调背景。</td>
                       </tr>
                       <tr>
                         <td><code>--button-color-info</code></td>
-                        <td><code>#1677FF</code></td>
+                        <td><code>#2E90FA</code></td>
                         <td>Info 主要按钮背景。</td>
                       </tr>
                       <tr>
                         <td><code>--button-color-info-hover</code></td>
-                        <td><code>#0F63D9</code></td>
+                        <td><code>#1570EF</code></td>
                         <td>Info 主要按钮 hover 背景。</td>
                       </tr>
                       <tr>
                         <td><code>--button-color-info-weak</code></td>
-                        <td><code>#EAF3FF</code></td>
+                        <td><code>#EFF8FF</code></td>
                         <td>Info 弱强调背景。</td>
                       </tr>
                       <tr>
                         <td><code>--button-color-info-text</code></td>
-                        <td><code>#0958D9</code></td>
+                        <td><code>#1570EF</code></td>
                         <td>Info 次要按钮、弱强调按钮和文字按钮文本。</td>
                       </tr>
                       <tr>
                         <td><code>--button-color-info-text-hover</code></td>
-                        <td><code>#003EB3</code></td>
+                        <td><code>#175CD3</code></td>
                         <td>Info 次要、弱强调、文字按钮 hover 文本。</td>
                       </tr>
                       <tr>
@@ -3978,7 +4856,7 @@
                       </tr>
                       <tr>
                         <td><code>--button-color-danger-weak</code></td>
-                        <td><code>#FFF5F5</code></td>
+                        <td><code>#FFF1F0</code></td>
                         <td>Danger 弱强调背景。</td>
                       </tr>
                       <tr>
@@ -4433,17 +5311,17 @@
                       </tr>
                       <tr>
                         <td><code>--input-hover-border-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>输入框、搜索框、带前后缀输入容器和文本域 hover 边框，无外发光。</td>
                       </tr>
                       <tr>
                         <td><code>--input-focus-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>聚焦态内层绿色描边。</td>
                       </tr>
                       <tr>
                         <td><code>--input-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
                         <td>聚焦态外层浅绿色描边。</td>
                       </tr>
                       <tr>
@@ -4971,17 +5849,17 @@
                       </tr>
                       <tr>
                         <td><code>--input-number-hover-border-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>数字输入框 hover 容器边框，无外发光。</td>
                       </tr>
                       <tr>
                         <td><code>--input-number-focus-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>聚焦态容器内层绿色描边。</td>
                       </tr>
                       <tr>
                         <td><code>--input-number-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
                         <td>聚焦态容器外层浅绿色描边。</td>
                       </tr>
                       <tr>
@@ -5050,7 +5928,7 @@
                 </p>
                 <ul class="doc-meta-list" aria-label="单选框基础规格">
                   <li>圆点尺寸 14px</li>
-                  <li>选中主色 #22B573</li>
+                  <li>选中主色 #00D157</li>
                   <li>文本字号 12.5px</li>
                   <li>支持胶囊选项</li>
                 </ul>
@@ -5317,12 +6195,12 @@
                       </tr>
                       <tr>
                         <td><code>--radio-color-checked</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>选中态填充与边框。</td>
                       </tr>
                       <tr>
                         <td><code>--radio-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
                         <td>选中或聚焦外发光。</td>
                       </tr>
                       <tr>
@@ -5347,7 +6225,7 @@
                       </tr>
                       <tr>
                         <td><code>--radio-option-checked-bg</code></td>
-                        <td><code>rgba(34, 181, 115, 0.08)</code></td>
+                        <td><code>rgba(0, 209, 87, 0.08)</code></td>
                         <td>胶囊型选项选中背景。</td>
                       </tr>
                       <tr>
@@ -5382,7 +6260,7 @@
                 <ul class="doc-meta-list" aria-label="复选框基础规格">
                   <li>方框尺寸 14px</li>
                   <li>圆角 4px</li>
-                  <li>选中主色 #22B573</li>
+                  <li>选中主色 #00D157</li>
                   <li>支持半选状态</li>
                 </ul>
               </header>
@@ -5637,7 +6515,7 @@
                       </tr>
                       <tr>
                         <td><code>--checkbox-color-checked</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>选中与半选态填充。</td>
                       </tr>
                       <tr>
@@ -5662,7 +6540,7 @@
                       </tr>
                       <tr>
                         <td><code>--checkbox-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
                         <td>键盘聚焦外发光。</td>
                       </tr>
                       <tr>
@@ -5707,7 +6585,7 @@
                 <ul class="doc-meta-list" aria-label="开关基础规格">
                   <li>默认尺寸 36×20px</li>
                   <li>滑块尺寸 16px</li>
-                  <li>开启主色 #22B573</li>
+                  <li>开启主色 #00D157</li>
                   <li>支持禁用态</li>
                 </ul>
               </header>
@@ -6033,7 +6911,7 @@
                       </tr>
                       <tr>
                         <td><code>--switch-color-on</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>开启态轨道背景。</td>
                       </tr>
                       <tr>
@@ -6058,7 +6936,7 @@
                       </tr>
                       <tr>
                         <td><code>--switch-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
                         <td>键盘聚焦外发光。</td>
                       </tr>
                       <tr>
@@ -6616,17 +7494,17 @@
                       </tr>
                       <tr>
                         <td><code>--select-hover-border-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>触发器 hover 边框，无外发光。</td>
                       </tr>
                       <tr>
                         <td><code>--select-focus-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>聚焦与展开边框。</td>
                       </tr>
                       <tr>
                         <td><code>--select-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
                         <td>聚焦与展开外发光。</td>
                       </tr>
                       <tr>
@@ -6651,7 +7529,7 @@
                       </tr>
                       <tr>
                         <td><code>--select-option-active-bg</code></td>
-                        <td><code>rgba(34, 181, 115, 0.08)</code></td>
+                        <td><code>rgba(0, 209, 87, 0.08)</code></td>
                         <td>选中项背景。</td>
                       </tr>
                       <tr>
@@ -7055,11 +7933,12 @@
                         <div class="range-filter-row">
                           <div class="range-filter-field" data-time-filter-demo>
                             <span class="range-filter-label">时间筛选器</span>
-                            <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false" data-time-filter-trigger>
-                              <span class="date-value" data-time-filter-value>14:30:00</span>
-                              <span class="date-icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="date-dropdown time-filter-panel" role="dialog" aria-label="选择时间" hidden>
+                            <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-filter-trigger>
+                              <input class="time-input-field" type="text" value="14:30:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" readonly data-time-filter-value>
+                              <span class="time-icon" aria-hidden="true"></span>
+                              <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-filter-clear></button>
+                            </div>
+                            <div class="date-dropdown time-picker-dropdown time-filter-panel" role="dialog" aria-label="选择时间" hidden>
                               <div class="date-time-columns">
                                 <div>
                                   <span class="date-time-label">小时</span>
@@ -7086,31 +7965,36 @@
                         <div class="range-filter-row">
                           <div class="range-filter-field">
                             <span class="range-filter-label">周筛选器</span>
-                            <div class="select-demo-stack" data-weekday-filter-demo>
-                              <button class="spec-select" type="button" aria-haspopup="listbox" aria-expanded="false" data-weekday-filter-trigger data-weekday-filter-placeholder="请选择星期">
-                                <span class="select-value" data-weekday-filter-value>周一、周三、周五</span>
+                            <div class="select-demo-stack" data-select-demo data-select-multiple data-select-collapse-fit data-select-placeholder="请选择星期">
+                              <button class="spec-select" type="button" aria-label="选择星期" aria-haspopup="listbox" aria-expanded="false">
+                                <span class="select-tags nowrap" data-select-tags>
+                                  <span class="select-tag" data-value="周一"><span>周一</span><span class="select-tag-remove">×</span></span>
+                                  <span class="select-tag" data-value="周三"><span>周三</span><span class="select-tag-remove">×</span></span>
+                                  <span class="select-tag" data-value="周五"><span>周五</span><span class="select-tag-remove">×</span></span>
+                                </span>
                                 <span class="select-chevron" aria-hidden="true"></span>
                               </button>
                               <div class="select-dropdown weekday-filter-panel" role="listbox" aria-label="选择周" hidden>
                                 <ul class="select-option-list weekday-filter-list">
-                                  <li class="select-option active" role="option" aria-selected="true" data-weekday-filter-option="周一"><span>周一</span><span class="select-option-check" aria-hidden="true"></span></li>
-                                  <li class="select-option" role="option" aria-selected="false" data-weekday-filter-option="周二"><span>周二</span><span class="select-option-check" aria-hidden="true"></span></li>
-                                  <li class="select-option active" role="option" aria-selected="true" data-weekday-filter-option="周三"><span>周三</span><span class="select-option-check" aria-hidden="true"></span></li>
-                                  <li class="select-option" role="option" aria-selected="false" data-weekday-filter-option="周四"><span>周四</span><span class="select-option-check" aria-hidden="true"></span></li>
-                                  <li class="select-option active" role="option" aria-selected="true" data-weekday-filter-option="周五"><span>周五</span><span class="select-option-check" aria-hidden="true"></span></li>
-                                  <li class="select-option" role="option" aria-selected="false" data-weekday-filter-option="周六"><span>周六</span><span class="select-option-check" aria-hidden="true"></span></li>
-                                  <li class="select-option" role="option" aria-selected="false" data-weekday-filter-option="周日"><span>周日</span><span class="select-option-check" aria-hidden="true"></span></li>
+                                  <li class="select-option active" role="option" aria-selected="true" data-value="周一"><span>周一</span><span class="select-option-check" aria-hidden="true"></span></li>
+                                  <li class="select-option" role="option" aria-selected="false" data-value="周二"><span>周二</span></li>
+                                  <li class="select-option active" role="option" aria-selected="true" data-value="周三"><span>周三</span><span class="select-option-check" aria-hidden="true"></span></li>
+                                  <li class="select-option" role="option" aria-selected="false" data-value="周四"><span>周四</span></li>
+                                  <li class="select-option active" role="option" aria-selected="true" data-value="周五"><span>周五</span><span class="select-option-check" aria-hidden="true"></span></li>
+                                  <li class="select-option" role="option" aria-selected="false" data-value="周六"><span>周六</span></li>
+                                  <li class="select-option" role="option" aria-selected="false" data-value="周日"><span>周日</span></li>
                                 </ul>
                               </div>
                             </div>
                           </div>
                           <div class="range-filter-field" data-time-filter-demo>
                             <span class="range-filter-label">时间筛选器</span>
-                            <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false" data-time-filter-trigger>
-                              <span class="date-value" data-time-filter-value>09:00:00</span>
-                              <span class="date-icon" aria-hidden="true"></span>
-                            </button>
-                            <div class="date-dropdown time-filter-panel" role="dialog" aria-label="选择时间" hidden>
+                            <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-filter-trigger>
+                              <input class="time-input-field" type="text" value="09:00:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" readonly data-time-filter-value>
+                              <span class="time-icon" aria-hidden="true"></span>
+                              <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-filter-clear></button>
+                            </div>
+                            <div class="date-dropdown time-picker-dropdown time-filter-panel" role="dialog" aria-label="选择时间" hidden>
                               <div class="date-time-columns">
                                 <div>
                                   <span class="date-time-label">小时</span>
@@ -7474,17 +8358,17 @@
                       </tr>
                       <tr>
                         <td><code>--date-picker-hover-border-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>触发器 hover 边框，无外发光。</td>
                       </tr>
                       <tr>
                         <td><code>--date-picker-focus-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>聚焦、选中与范围端点颜色。</td>
                       </tr>
                       <tr>
                         <td><code>--date-picker-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
                         <td>聚焦外发光。</td>
                       </tr>
                       <tr>
@@ -7544,7 +8428,7 @@
                       </tr>
                       <tr>
                         <td><code>--date-picker-range-bg</code></td>
-                        <td><code>rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>#f3f5f7</code></td>
                         <td>范围中间态背景。</td>
                       </tr>
                       <tr>
@@ -7559,8 +8443,8 @@
                       </tr>
                       <tr>
                         <td><code>--date-picker-scope-tab-hover-border-color</code></td>
-                        <td><code>#22B573</code></td>
-                        <td>一级切换标签 hover 边框，无外发光。</td>
+                        <td><code>transparent</code></td>
+                        <td>一级切换标签 hover 无描边，仅使用浅灰底。</td>
                       </tr>
                       <tr>
                         <td><code>--date-picker-time-list-height</code></td>
@@ -8116,7 +9000,7 @@
                       </tr>
                       <tr>
                         <td><code>--time-picker-hover-border-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>触发器 hover 边框，无外发光。</td>
                       </tr>
                       <tr>
@@ -8151,7 +9035,7 @@
                       </tr>
                       <tr>
                         <td><code>--time-picker-active-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>聚焦、确认按钮与选中项颜色。</td>
                       </tr>
                       <tr>
@@ -8161,7 +9045,7 @@
                       </tr>
                       <tr>
                         <td><code>--time-picker-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(34, 181, 115, 0.1)</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
                         <td>聚焦外发光。</td>
                       </tr>
                       <tr>
@@ -8213,7 +9097,9 @@
         }
 
         const pendingKeys = new Set(["card"]);
-        const navItems = Array.from(document.querySelectorAll(".nav-sublist .nav-button"));
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
         const getComponentKey = (item) =>
           item.dataset.page || (item.getAttribute("href") || "").split("#").pop().replace(/\.html$/, "");
         const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
@@ -8222,11 +9108,203 @@
 
       syncComponentCountLabel();
 
+      const productOptions = Array.from(document.querySelectorAll("[data-product-option]"));
+      const productSelect = document.querySelector("[data-product-select]");
+      const productSelectTrigger = document.querySelector("[data-product-select-trigger]");
+      const productSelectMenu = document.querySelector("[data-product-select-menu]");
+      const productSelectValue = document.querySelector("[data-product-select-value]");
+      const productStorageKey = "iqb-design-active-product";
+      const productLabels = {
+        "iq-buddy": "IQ主题",
+        "iq-buddy-theme": "IQ Buddy主题",
+        decentralized: "test主题1",
+      };
+      const defaultProductThemeVars = [
+        "--brand-500",
+        "--brand-50",
+        "--brand-100",
+        "--brand-200",
+        "--brand-300",
+        "--brand-400",
+        "--brand-600",
+        "--brand-700",
+        "--brand-800",
+        "--brand-900",
+        "--brand-rgb",
+        "--brand-text",
+        "--brand-text-hover",
+        "--brand-border-soft",
+        "--brand-border-hover",
+        "--radius-sm",
+        "--shadow-focus",
+        "--input-hover-border-color",
+        "--input-focus-color",
+        "--input-focus-shadow",
+        "--input-number-hover-border-color",
+        "--input-number-focus-color",
+        "--input-number-focus-shadow",
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty("font-family");
+        root.removeAttribute("data-product-theme");
+        if (activeProduct === "iq-buddy") {
+          root.dataset.productTheme = "iq-theme";
+          return;
+        }
+
+        if (activeProduct === "iq-buddy-theme") {
+          root.dataset.productTheme = "iq-buddy-theme";
+          root.style.setProperty("--brand-50", "#f0fff6");
+          root.style.setProperty("--brand-100", "#ddfbea");
+          root.style.setProperty("--brand-200", "#bef5d5");
+          root.style.setProperty("--brand-300", "#91e9b8");
+          root.style.setProperty("--brand-400", "#5fd897");
+          root.style.setProperty("--brand-500", "#22b573");
+          root.style.setProperty("--brand-600", "#1b9c61");
+          root.style.setProperty("--brand-700", "#147c4d");
+          root.style.setProperty("--brand-800", "#12633f");
+          root.style.setProperty("--brand-900", "#104f34");
+          root.style.setProperty("--brand-rgb", "34, 181, 115");
+          root.style.setProperty("--brand-text", "#1b9c61");
+          root.style.setProperty("--brand-text-hover", "#147c4d");
+          root.style.setProperty("--brand-border-soft", "#bef5d5");
+          root.style.setProperty("--brand-border-hover", "#91e9b8");
+          root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(34, 181, 115, 0.16)");
+          root.style.setProperty("--input-hover-border-color", "#22b573");
+          root.style.setProperty("--input-focus-color", "#22b573");
+          root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
+          root.style.setProperty("--input-number-hover-border-color", "#22b573");
+          root.style.setProperty("--input-number-focus-color", "#22b573");
+          root.style.setProperty("--input-number-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
+          return;
+        }
+
+        if (activeProduct !== "decentralized") return;
+
+        root.dataset.productTheme = "test-theme-1";
+        root.style.setProperty("--brand-50", "#eff6ff");
+        root.style.setProperty("--brand-100", "#dbeafe");
+        root.style.setProperty("--brand-200", "#bfdbfe");
+        root.style.setProperty("--brand-300", "#93c5fd");
+        root.style.setProperty("--brand-400", "#60a5fa");
+        root.style.setProperty("--brand-500", "#2672ff");
+        root.style.setProperty("--brand-600", "#1d5fd7");
+        root.style.setProperty("--brand-700", "#1e4fb3");
+        root.style.setProperty("--brand-800", "#1e3f8a");
+        root.style.setProperty("--brand-900", "#172f68");
+        root.style.setProperty("--brand-rgb", "38, 114, 255");
+        root.style.setProperty("--brand-text", "#1d5fd7");
+        root.style.setProperty("--brand-text-hover", "#1e4fb3");
+        root.style.setProperty("--brand-border-soft", "#bfdbfe");
+        root.style.setProperty("--brand-border-hover", "#93c5fd");
+        root.style.setProperty("--radius-sm", "2px");
+        root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(38, 114, 255, 0.16)");
+        root.style.setProperty("--input-hover-border-color", "#2672ff");
+        root.style.setProperty("--input-focus-color", "#2672ff");
+        root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
+        root.style.setProperty("--input-number-hover-border-color", "#2672ff");
+        root.style.setProperty("--input-number-focus-color", "#2672ff");
+        root.style.setProperty("--input-number-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
+        root.style.fontFamily = '"Pingfang FC", "PingFang SC", Inter, "Inter var", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels["iq-buddy"];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute("aria-selected", String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute("aria-expanded", "false");
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : "iq-buddy";
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute("aria-expanded") === "true";
+        productSelectTrigger.setAttribute("aria-expanded", String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener("click", (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeProductSelectMenu();
+        }
+      });
+
+      const centerNavItem = (item, behavior = "smooth") => {
+        if (!item) return;
+        const sidebar = item.closest(".sidebar");
+        if (!sidebar) return;
+
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+
+        if (isHorizontal) {
+          sidebar.scrollTo({
+            left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2,
+            behavior,
+          });
+          return;
+        }
+
+        sidebar.scrollTo({
+          top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2,
+          behavior,
+        });
+      };
+
+      const centerCurrentNavItem = (behavior = "smooth") => {
+        requestAnimationFrame(() => {
+          centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]'), behavior);
+        });
+      };
+
       const navButtons = document.querySelectorAll(".nav-button");
       const pageTriggers = document.querySelectorAll("[data-page]");
       const panels = document.querySelectorAll("[data-panel]");
 
-      const switchPage = (page) => {
+      const switchPage = (page, behavior = "smooth") => {
         navButtons.forEach((item) => {
           const isCurrent = item.dataset.page === page;
           if (isCurrent) {
@@ -8238,6 +9316,7 @@
         panels.forEach((panel) => {
           panel.hidden = panel.dataset.panel !== page;
         });
+        centerCurrentNavItem(behavior);
       };
 
       const getHashPage = () => {
@@ -8245,7 +9324,7 @@
         return page && document.querySelector(`[data-panel="${page}"]`) ? page : "overview";
       };
 
-      switchPage(getHashPage());
+      switchPage(getHashPage(), "auto");
 
       pageTriggers.forEach((button) => {
         button.addEventListener("click", () => {
@@ -8259,6 +9338,122 @@
 
       window.addEventListener("hashchange", () => {
         switchPage(getHashPage());
+      });
+
+      const colorPaletteSelect = document.querySelector("[data-color-palette-select]");
+      const colorPaletteTrigger = document.querySelector("[data-color-palette-trigger]");
+      const colorPaletteMenu = document.querySelector("[data-color-palette-menu]");
+      const colorPaletteValue = document.querySelector("[data-color-palette-value]");
+      const colorPaletteOptions = Array.from(document.querySelectorAll("[data-color-palette-option]"));
+      const colorBrandMeta = document.querySelector("[data-color-brand-meta]");
+      const colorBrandPalette = document.querySelector('[data-color-palette="brand"]');
+      const colorBrandRamp = colorBrandPalette?.querySelector("[data-color-palette-ramp]");
+      const colorPaletteTitle = colorBrandPalette?.querySelector("[data-color-palette-title]");
+      const colorPaletteDesc = colorBrandPalette?.querySelector("[data-color-palette-desc]");
+      const colorPaletteBase = colorBrandPalette?.querySelector("[data-color-palette-base]");
+      const colorPaletteLevels = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+      const colorPaletteSets = {
+        "iQIYI标准色": {
+          title: "iQIYI Green",
+          desc: "iQIYI 标准品牌色，500 固定为 #00D157。",
+          base: "iqiyi-500",
+          tokenPrefix: "iqiyi",
+          colors: ["#EFFFF6", "#D8FFE8", "#B5FFD1", "#7DFFB0", "#35F47C", "#00D157", "#00B84B", "#008F3F", "#067037", "#075A2F"],
+        },
+        "IQ Buddy主题色": {
+          title: "IQ Buddy Green",
+          desc: "IQ Buddy 主题品牌色，500 固定为 #22B573。",
+          base: "iq-buddy-500",
+          tokenPrefix: "iq-buddy",
+          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
+        },
+        "test主题色": {
+          title: "Test Blue",
+          desc: "test 主题品牌色，500 固定为 #2672FF。",
+          base: "test-500",
+          tokenPrefix: "test",
+          colors: ["#EEF5FF", "#D9E8FF", "#B8D4FF", "#88B9FF", "#5796FF", "#2672FF", "#1358E6", "#0F45B8", "#12388F", "#142F73"],
+        },
+      };
+
+      const closeColorPaletteMenu = () => {
+        colorPaletteTrigger?.setAttribute("aria-expanded", "false");
+        if (colorPaletteMenu) {
+          colorPaletteMenu.hidden = true;
+        }
+      };
+
+      const applyColorPalette = (paletteName) => {
+        const activePaletteName = colorPaletteSets[paletteName] ? paletteName : "IQ Buddy主题色";
+        const palette = colorPaletteSets[activePaletteName];
+        if (colorPaletteValue) {
+          colorPaletteValue.textContent = activePaletteName;
+        }
+        if (colorPaletteTitle) {
+          colorPaletteTitle.textContent = palette.title;
+        }
+        if (colorPaletteDesc) {
+          colorPaletteDesc.textContent = palette.desc;
+        }
+        if (colorPaletteBase) {
+          colorPaletteBase.textContent = palette.base;
+        }
+        if (colorBrandMeta) {
+          colorBrandMeta.textContent = `品牌色 ${palette.colors[5]}`;
+        }
+        colorBrandRamp?.setAttribute("aria-label", `${activePaletteName}品牌色色板`);
+        colorBrandRamp?.querySelectorAll(".color-swatch").forEach((swatch, index) => {
+          const hex = palette.colors[index];
+          const isDark = index >= 5;
+          swatch.style.setProperty("--swatch", hex.toLowerCase());
+          swatch.style.setProperty("--swatch-ink", isDark ? "#ffffff" : "#0b0d0f");
+          const token = swatch.querySelector(".color-token");
+          const value = swatch.querySelector(".color-hex");
+          if (token) {
+            token.textContent = `${palette.tokenPrefix}-${colorPaletteLevels[index]}`;
+          }
+          if (value) {
+            value.textContent = hex;
+          }
+        });
+        colorPaletteOptions.forEach((item) => {
+          item.setAttribute(
+            "aria-selected",
+            String((item.dataset.colorPaletteOption || item.textContent.trim()) === activePaletteName),
+          );
+        });
+      };
+
+      colorPaletteTrigger?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = colorPaletteTrigger.getAttribute("aria-expanded") === "true";
+        colorPaletteTrigger.setAttribute("aria-expanded", String(!isOpen));
+        if (colorPaletteMenu) {
+          colorPaletteMenu.hidden = isOpen;
+        }
+      });
+
+      colorPaletteOptions.forEach((option) => {
+        option.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const value = option.dataset.colorPaletteOption || option.textContent.trim();
+          applyColorPalette(value);
+          closeColorPaletteMenu();
+        });
+      });
+
+      applyColorPalette("iQIYI标准色");
+
+      document.addEventListener("click", (event) => {
+        if (!colorPaletteSelect?.contains(event.target)) {
+          closeColorPaletteMenu();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeColorPaletteMenu();
+        }
       });
 
       const loadingDemoBtn = document.getElementById("loadingDemoBtn");
@@ -8942,11 +10137,12 @@
       const closeTimeFilterDemo = (demo, options = {}) => {
         if (!demo) return;
         if (options.restoreTime !== false) {
+          demo.dataset.timeFilterEmpty = demo.dataset.committedTimeFilterEmpty || "false";
           demo.dataset.selectedHour = demo.dataset.committedHour || "00";
           demo.dataset.selectedMinute = demo.dataset.committedMinute || "00";
           demo.dataset.selectedSecond = demo.dataset.committedSecond || "00";
           syncTimeFilterValue(demo);
-          syncDateTimeOptions(demo);
+          syncTimeFilterOptions(demo);
         }
         const trigger = demo.querySelector("[data-time-filter-trigger]");
         const dropdown = demo.querySelector(".date-dropdown");
@@ -8955,17 +10151,61 @@
         if (dropdown) dropdown.hidden = true;
       };
 
+      const getTimeFilterValueText = (demo) => {
+        const valueNode = demo.querySelector("[data-time-filter-value]");
+        return valueNode?.matches?.("input") ? valueNode.value.trim() : valueNode?.textContent.trim() || "";
+      };
+
       const syncTimeFilterValue = (demo) => {
         const valueNode = demo.querySelector("[data-time-filter-value]");
         if (!valueNode) return;
-        valueNode.textContent = `${demo.dataset.selectedHour || "00"}:${demo.dataset.selectedMinute || "00"}:${demo.dataset.selectedSecond || "00"}`;
+        const trigger = demo.querySelector("[data-time-filter-trigger]");
+        const clearButton = demo.querySelector("[data-time-filter-clear]");
+        const value =
+          demo.dataset.timeFilterEmpty === "true"
+            ? ""
+            : `${demo.dataset.selectedHour || "00"}:${demo.dataset.selectedMinute || "00"}:${demo.dataset.selectedSecond || "00"}`;
+        if (valueNode.matches?.("input")) {
+          valueNode.value = value;
+        } else {
+          valueNode.textContent = value || "请选择时间";
+          valueNode.classList.toggle("date-placeholder", !value);
+        }
+        trigger?.classList.toggle("has-value", Boolean(value));
+        if (clearButton) clearButton.hidden = !value;
+      };
+
+      const syncTimeFilterOptions = (demo) => {
+        syncDateTimeOptions(demo);
+        if (demo.dataset.timeFilterEmpty === "true") {
+          demo.querySelectorAll(".date-time-option.active").forEach((option) => option.classList.remove("active"));
+        }
+      };
+
+      const scrollTimeFilterActiveOptions = (demo, options = {}) => {
+        const behavior = options.smooth ? "smooth" : "auto";
+        demo.querySelectorAll(".date-time-list").forEach((list) => {
+          const active = list.querySelector(".date-time-option.active");
+          if (!active) {
+            list.scrollTo({ top: 0, behavior });
+            return;
+          }
+          const listRect = list.getBoundingClientRect();
+          const activeRect = active.getBoundingClientRect();
+          list.scrollTo({
+            top: list.scrollTop + activeRect.top - listRect.top,
+            behavior,
+          });
+        });
       };
 
       timeFilterDemos.forEach((demo) => {
-        const value = demo.querySelector("[data-time-filter-value]")?.textContent.trim() || "00:00:00";
+        const value = getTimeFilterValueText(demo) || "00:00:00";
         const [, hour = "00", minute = "00", second = "00"] =
           value.match(/\b(\d{2}):(\d{2})(?::(\d{2}))?\b/) || [];
 
+        demo.dataset.timeFilterEmpty = value ? "false" : "true";
+        demo.dataset.committedTimeFilterEmpty = demo.dataset.timeFilterEmpty;
         demo.dataset.selectedHour = hour;
         demo.dataset.selectedMinute = minute;
         demo.dataset.selectedSecond = second;
@@ -8973,6 +10213,8 @@
         demo.dataset.committedMinute = minute;
         demo.dataset.committedSecond = second;
         renderDateTimeOptions(demo);
+        syncTimeFilterValue(demo);
+        syncTimeFilterOptions(demo);
 
         demo.querySelector("[data-time-filter-trigger]")?.addEventListener("click", () => {
           const trigger = demo.querySelector("[data-time-filter-trigger]");
@@ -8985,6 +10227,10 @@
           trigger.classList.add("open");
           trigger.setAttribute("aria-expanded", "true");
           if (dropdown) dropdown.hidden = false;
+          requestAnimationFrame(() => {
+            scrollTimeFilterActiveOptions(demo);
+            requestAnimationFrame(() => scrollTimeFilterActiveOptions(demo));
+          });
           timeFilterDemos.forEach((item) => {
             if (item !== demo) closeTimeFilterDemo(item);
           });
@@ -8995,14 +10241,27 @@
           if (!option || !demo.contains(option)) return;
           event.stopPropagation();
           const unit = option.dataset.timeUnitValue;
+          demo.dataset.timeFilterEmpty = "false";
           if (unit === "hour") demo.dataset.selectedHour = option.dataset.timeValue || "00";
           if (unit === "minute") demo.dataset.selectedMinute = option.dataset.timeValue || "00";
           if (unit === "second") demo.dataset.selectedSecond = option.dataset.timeValue || "00";
-          syncDateTimeOptions(demo);
+          syncTimeFilterValue(demo);
+          syncTimeFilterOptions(demo);
+          requestAnimationFrame(() => scrollTimeFilterActiveOptions(demo, { smooth: true }));
+        });
+
+        demo.querySelector("[data-time-filter-clear]")?.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          demo.dataset.timeFilterEmpty = "true";
+          syncTimeFilterValue(demo);
+          syncTimeFilterOptions(demo);
+          requestAnimationFrame(() => scrollTimeFilterActiveOptions(demo, { smooth: true }));
         });
 
         demo.querySelector("[data-time-filter-confirm]")?.addEventListener("click", (event) => {
           event.stopPropagation();
+          demo.dataset.committedTimeFilterEmpty = demo.dataset.timeFilterEmpty || "false";
           demo.dataset.committedHour = demo.dataset.selectedHour || "00";
           demo.dataset.committedMinute = demo.dataset.selectedMinute || "00";
           demo.dataset.committedSecond = demo.dataset.selectedSecond || "00";
@@ -9430,55 +10689,7 @@
             panels.forEach((panel) => {
               panel.hidden = panel.dataset.rangeScopePanel !== tab.dataset.rangeScopeTab;
             });
-          });
-        });
-      });
-
-      const weekdayFilterDemos = document.querySelectorAll("[data-weekday-filter-demo]");
-
-      const closeWeekdayFilterDemo = (demo) => {
-        if (!demo) return;
-        const trigger = demo.querySelector("[data-weekday-filter-trigger]");
-        const dropdown = demo.querySelector(".select-dropdown");
-        trigger?.classList.remove("open");
-        trigger?.setAttribute("aria-expanded", "false");
-        if (dropdown) dropdown.hidden = true;
-      };
-
-      weekdayFilterDemos.forEach((demo) => {
-        const trigger = demo.querySelector("[data-weekday-filter-trigger]");
-        const dropdown = demo.querySelector(".select-dropdown");
-        const valueNode = demo.querySelector("[data-weekday-filter-value]");
-        const options = Array.from(demo.querySelectorAll("[data-weekday-filter-option]"));
-
-        const syncWeekdayFilterValue = () => {
-          const selected = options
-            .filter((option) => option.classList.contains("active"))
-            .map((option) => option.dataset.weekdayFilterOption);
-          options.forEach((option) => {
-            option.setAttribute("aria-selected", String(option.classList.contains("active")));
-          });
-          if (!valueNode) return;
-          valueNode.textContent = selected.length > 0 ? selected.join("、") : trigger?.dataset.weekdayFilterPlaceholder || "请选择星期";
-          valueNode.classList.toggle("select-placeholder", selected.length === 0);
-        };
-
-        syncWeekdayFilterValue();
-
-        trigger?.addEventListener("click", () => {
-          const isOpen = trigger.classList.toggle("open");
-          trigger.setAttribute("aria-expanded", String(isOpen));
-          if (dropdown) dropdown.hidden = !isOpen;
-          weekdayFilterDemos.forEach((item) => {
-            if (item !== demo) closeWeekdayFilterDemo(item);
-          });
-        });
-
-        options.forEach((option) => {
-          option.addEventListener("click", (event) => {
-            event.stopPropagation();
-            option.classList.toggle("active");
-            syncWeekdayFilterValue();
+            scheduleSelectTagRender();
           });
         });
       });
@@ -9581,6 +10792,8 @@
             const { start, end } = getShortcutRange(button.dataset.shortcutPreset);
             demo.dataset.shortcutStart = formatDateValue(start);
             demo.dataset.shortcutEnd = formatDateValue(end);
+            demo.dataset.shortcutRangePending = "false";
+            demo.dataset.shortcutAnchor = "";
             demo.dataset.viewYear = String(end.getFullYear());
             demo.dataset.viewMonth = String(end.getMonth());
             demo.querySelectorAll("[data-shortcut-preset]").forEach((item) => {
@@ -9604,12 +10817,27 @@
           });
         });
 
-        demo.querySelector(".date-days")?.addEventListener("click", (event) => {
+        demo.addEventListener("click", (event) => {
           const cell = event.target.closest("[data-shortcut-date]");
           if (!cell || !demo.contains(cell)) return;
           const selected = parseDateValue(cell.dataset.shortcutDate);
-          demo.dataset.shortcutStart = formatDateValue(selected);
-          demo.dataset.shortcutEnd = formatDateValue(selected);
+          const isRangeDemo = demo.classList.contains("shortcut-range-panel");
+          const isPendingRange = demo.dataset.shortcutRangePending === "true";
+          const anchor = demo.dataset.shortcutAnchor ? parseDateValue(demo.dataset.shortcutAnchor) : null;
+
+          if (isRangeDemo && isPendingRange && anchor) {
+            const start = compareDate(anchor, selected) <= 0 ? anchor : selected;
+            const end = compareDate(anchor, selected) <= 0 ? selected : anchor;
+            demo.dataset.shortcutStart = formatDateValue(start);
+            demo.dataset.shortcutEnd = formatDateValue(end);
+            demo.dataset.shortcutRangePending = "false";
+            demo.dataset.shortcutAnchor = "";
+          } else {
+            demo.dataset.shortcutStart = formatDateValue(selected);
+            demo.dataset.shortcutEnd = formatDateValue(selected);
+            demo.dataset.shortcutRangePending = isRangeDemo ? "true" : "false";
+            demo.dataset.shortcutAnchor = isRangeDemo ? formatDateValue(selected) : "";
+          }
           demo.querySelectorAll("[data-shortcut-preset]").forEach((item) => {
             item.classList.remove("active");
           });
@@ -9810,9 +11038,6 @@
         });
         periodDemos.forEach((demo) => {
           if (!demo.contains(event.target)) closePeriodDemo(demo);
-        });
-        weekdayFilterDemos.forEach((demo) => {
-          if (!demo.contains(event.target)) closeWeekdayFilterDemo(demo);
         });
         timeFilterDemos.forEach((demo) => {
           if (!demo.contains(event.target)) closeTimeFilterDemo(demo);

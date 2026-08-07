@@ -6,7 +6,21 @@
     <title>Upload 上传 - IQB Design</title>
     <style>
       :root {
-        --brand-500: #22b573;
+        --brand-500: #00d157;
+        --brand-50: #effff6;
+        --brand-100: #d8ffe8;
+        --brand-200: #b5ffd1;
+        --brand-300: #7dffb0;
+        --brand-400: #35f47c;
+        --brand-600: #00b84b;
+        --brand-700: #008f3f;
+        --brand-800: #067037;
+        --brand-900: #075a2f;
+        --brand-rgb: 0, 209, 87;
+        --brand-text: #00b84b;
+        --brand-text-hover: #008f3f;
+        --brand-border-soft: #bfead2;
+        --brand-border-hover: #8fd9b3;
         --gray-950: #0b0d0f;
         --gray-900: #14171a;
         --gray-800: #22262a;
@@ -22,7 +36,7 @@
         --topbar-height: 60px;
         --sidebar-width: 300px;
         --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgba(34, 181, 115, 0.16);
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
         font-family:
           Inter, "Inter var", ui-sans-serif, system-ui, -apple-system,
           BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
@@ -52,6 +66,39 @@
       select,
       textarea {
         font: inherit;
+      }
+
+      :root[data-product-theme="test-theme-1"] :where(
+        .product-select-trigger,
+        .product-select-menu,
+        .product-select-option,
+        .palette-select-trigger,
+        .palette-select-menu,
+        .palette-select-option,
+        .component-index-button,
+        .acard,
+        .doc-chip,
+        .spec-btn,
+        .spec-input-wrap,
+        .spec-select,
+        .spec-date,
+        .spec-upload,
+        .upload-dropzone,
+        .upload-file-item,
+        .photo-wall-upload,
+        .photo-wall-item,
+        .number-input,
+        .radio-card,
+        .checkbox-card,
+        .date-panel,
+        .time-panel,
+        .select-dropdown,
+        .spec-table-wrap,
+        .table-card,
+        .table-toolbar,
+        .pagination-btn
+      ) {
+        border-radius: var(--radius-sm);
       }
 
       .app-shell {
@@ -85,11 +132,23 @@
 
       .brand-mark {
         flex: 0 0 auto;
-        width: auto;
-        height: 24px;
-        object-fit: contain;
         display: block;
+        width: 30px;
+        height: 30px;
         transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
       }
 
       .brand-title {
@@ -103,9 +162,106 @@
         white-space: nowrap;
       }
 
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
       .topbar-actions {
         display: flex;
         align-items: center;
+        margin-left: auto;
         gap: 8px;
         color: var(--gray-600);
         font-size: 13px;
@@ -116,7 +272,33 @@
         height: 8px;
         border-radius: 999px;
         background: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.14);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand-title {
+          display: none;
+        }
+
+        .product-select {
+          width: min(124px, calc(100vw - 92px));
+        }
       }
 
       .workspace {
@@ -132,8 +314,27 @@
         min-width: 0;
         min-height: 0;
         padding: 22px 18px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-gutter: stable;
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
         background: var(--white);
         border-right: 1px solid var(--gray-200);
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
       }
 
       .nav-list {
@@ -149,6 +350,10 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
+      }
+
+      .nav-list > .nav-section:nth-child(2) {
+        margin-top: -16px;
       }
 
       .nav-category {
@@ -401,7 +606,7 @@
 
       .spec-btn:hover {
         border-color: var(--brand-500);
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .spec-btn:focus-visible {
@@ -416,21 +621,21 @@
       }
 
       .spec-btn.primary:hover {
-        border-color: #1b9c61;
-        background: #1b9c61;
+        border-color: var(--brand-text);
+        background: var(--brand-text);
         color: #fff;
       }
 
       .spec-btn.permission {
-        border-color: #bfead2;
+        border-color: var(--brand-500);
         background: transparent;
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .spec-btn.permission:hover {
-        border-color: #8fd9b3;
-        background: rgba(34, 181, 115, 0.06);
-        color: #12824c;
+        border-color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.06);
+        color: var(--brand-text);
       }
 
       .spec-btn.subtle {
@@ -446,12 +651,12 @@
 
       .spec-btn.danger-subtle {
         border-color: transparent;
-        background: #fff5f5;
+        background: #fff1f0;
         color: #d92d20;
       }
 
       .spec-btn.danger-subtle:hover {
-        background: #fee4e2;
+        background: #ffe0de;
         color: #b42318;
       }
 
@@ -595,8 +800,8 @@
 
       .spec-btn.is-focus,
       .upload-file-button.is-focus {
-        border-color: #12824c;
-        background: #12824c;
+        border-color: var(--brand-text-hover);
+        background: var(--brand-text-hover);
         color: #fff;
         box-shadow: none;
       }
@@ -652,18 +857,18 @@
       .upload-dropzone:hover,
       .upload-dropzone.is-dragging {
         border-color: var(--brand-500);
-        background: rgba(34, 181, 115, 0.04);
+        background: rgb(var(--brand-rgb) / 0.04);
       }
 
       .upload-dropzone.is-focus {
         border-color: var(--brand-500);
-        background: rgba(34, 181, 115, 0.04);
+        background: rgb(var(--brand-rgb) / 0.04);
         box-shadow: none;
       }
 
       .upload-dropzone.is-error {
         border-color: #d92d20;
-        background: #fff5f5;
+        background: #fff1f0;
       }
 
       .upload-dropzone.is-disabled {
@@ -695,7 +900,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 8px;
-        background: rgba(34, 181, 115, 0.08);
+        background: rgb(var(--brand-rgb) / 0.08);
         color: var(--brand-500);
       }
 
@@ -761,20 +966,20 @@
 
       .photo-wall-upload:hover {
         border-color: var(--brand-500);
-        background: rgba(34, 181, 115, 0.04);
-        color: #1b9c61;
+        background: rgb(var(--brand-rgb) / 0.04);
+        color: var(--brand-text);
       }
 
       .photo-wall-upload.is-focus {
         border-color: var(--brand-500);
-        background: rgba(34, 181, 115, 0.04);
-        color: #1b9c61;
+        background: rgb(var(--brand-rgb) / 0.04);
+        color: var(--brand-text);
         box-shadow: none;
       }
 
       .photo-wall-upload.is-error {
         border-color: #d92d20;
-        background: #fff5f5;
+        background: #fff1f0;
         color: #d92d20;
       }
 
@@ -837,7 +1042,7 @@
         aspect-ratio: 1 / 1;
         display: block;
         background:
-          linear-gradient(135deg, rgba(34, 181, 115, 0.2), rgba(22, 119, 255, 0.22)),
+          linear-gradient(135deg, rgb(var(--brand-rgb) / 0.2), rgba(22, 119, 255, 0.22)),
           linear-gradient(45deg, #eef1f3 25%, transparent 25%),
           linear-gradient(-45deg, #eef1f3 25%, transparent 25%);
         background-size: auto, 14px 14px, 14px 14px;
@@ -846,13 +1051,13 @@
       .photo-wall-thumb.warm {
         background:
           linear-gradient(135deg, rgba(240, 68, 56, 0.16), rgba(217, 154, 34, 0.24)),
-          linear-gradient(160deg, #fff7e8, #f3f5f7);
+          linear-gradient(160deg, #fffaeb, #f3f5f7);
       }
 
       .photo-wall-thumb.cool {
         background:
-          linear-gradient(135deg, rgba(22, 119, 255, 0.18), rgba(34, 181, 115, 0.22)),
-          linear-gradient(160deg, #eaf3ff, #f3f5f7);
+          linear-gradient(135deg, rgba(22, 119, 255, 0.18), rgb(var(--brand-rgb) / 0.22)),
+          linear-gradient(160deg, #eff8ff, #f3f5f7);
       }
 
       .photo-wall-remove {
@@ -887,7 +1092,7 @@
       }
 
       .photo-wall-remove:hover {
-        background: #fff5f5;
+        background: #fff1f0;
         color: #d92d20;
       }
 
@@ -1067,7 +1272,7 @@
       }
 
       .upload-file-status.success {
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .upload-file-status.loading {
@@ -1117,7 +1322,7 @@
       }
 
       .upload-file-remove:hover {
-        background: #fff5f5;
+        background: #fff1f0;
         color: #d92d20;
       }
 
@@ -1154,7 +1359,7 @@
       .spec-upload:hover,
       .spec-upload.is-hover {
         border-color: var(--brand-500);
-        background: rgba(34, 181, 115, 0.04);
+        background: rgb(var(--brand-rgb) / 0.04);
       }
 
       .spec-upload:focus-within {
@@ -1164,19 +1369,19 @@
 
       .spec-upload.has-file {
         border-style: solid;
-        border-color: #bfead2;
-        background: rgba(34, 181, 115, 0.04);
+        border-color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.04);
       }
 
       .spec-upload.is-error {
         border-style: solid;
         border-color: #f04438;
-        background: #fff5f5;
+        background: #fff1f0;
       }
 
       .spec-upload.is-loading {
         border-style: solid;
-        border-color: #bfead2;
+        border-color: var(--brand-500);
         cursor: progress;
       }
 
@@ -1403,7 +1608,7 @@
 
       .upload-icon-btn:hover {
         border-color: var(--brand-500);
-        color: #1b9c61;
+        color: var(--brand-text);
       }
 
       .spec-table-wrap {
@@ -1462,6 +1667,7 @@
           min-height: auto;
           padding: 12px 14px;
           overflow-x: auto;
+          overflow-y: hidden;
           border-right: 0;
           border-bottom: 1px solid var(--gray-200);
         }
@@ -1480,6 +1686,10 @@
           flex-direction: row;
           align-items: center;
           gap: 8px;
+        }
+
+        .nav-list > .nav-section:nth-child(2) {
+          margin-top: 0;
         }
 
         .nav-category {
@@ -1539,18 +1749,170 @@
           grid-row: 1 / span 2;
         }
       }
-    </style>
+
+      :root[data-product-theme="iq-theme"] .spec-input:focus,
+      :root[data-product-theme="iq-theme"] .spec-input.focus,
+      :root[data-product-theme="iq-theme"] .spec-input.is-focus,
+      :root[data-product-theme="iq-theme"] .spec-textarea:focus,
+      :root[data-product-theme="iq-theme"] .spec-textarea.focus,
+      :root[data-product-theme="iq-theme"] .spec-textarea.is-focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap.focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap.is-focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap:focus-within,
+      :root[data-product-theme="iq-theme"] .product-select-trigger[aria-expanded="true"],
+      :root[data-product-theme="iq-theme"] .palette-select-trigger[aria-expanded="true"],
+      :root[data-product-theme="iq-theme"] .number-input:focus-within,
+      :root[data-product-theme="iq-theme"] .spec-select.open,
+      :root[data-product-theme="iq-theme"] .spec-date.open,
+      :root[data-product-theme="iq-theme"] .spec-time.open,
+      :root[data-product-theme="iq-theme"] .time-input-control.open,
+      :root[data-product-theme="iq-theme"] .time-range-inputs:has(.time-range-segment.open),
+      :root[data-product-theme="iq-theme"] .table-spec-select.open,
+      :root[data-product-theme="iq-theme"] .page-size-select.open .page-size-trigger,
+      :root[data-product-theme="iq-theme"] .table-select-demo.open .table-spec-select {
+        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
+      }
+
+      :root[data-product-theme="iq-theme"] .spec-input-wrap .spec-input:focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap .spec-input.focus,
+      :root[data-product-theme="iq-theme"] .spec-input-wrap .spec-input.is-focus,
+      :root[data-product-theme="iq-theme"] .number-input .spec-input:focus,
+      :root[data-product-theme="iq-theme"] .number-input .spec-input.focus,
+      :root[data-product-theme="iq-theme"] .number-input .spec-input.is-focus {
+        box-shadow: none;
+      }
+
+      :root[data-product-theme="iq-buddy-theme"] .spec-select.open,
+      :root[data-product-theme="iq-buddy-theme"] .spec-date.open,
+      :root[data-product-theme="iq-buddy-theme"] .spec-time.open,
+      :root[data-product-theme="iq-buddy-theme"] .time-input-control.open,
+      :root[data-product-theme="iq-buddy-theme"] .time-range-inputs:has(.time-range-segment.open),
+      :root[data-product-theme="iq-buddy-theme"] .table-spec-select.open,
+      :root[data-product-theme="iq-buddy-theme"] .table-select-demo.open .table-spec-select {
+        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
+      }
+
+      /* test主题1 使用更克制的 2px 控件圆角。 */
+      :root[data-product-theme="test-theme-1"] .spec-btn,
+      :root[data-product-theme="test-theme-1"] .spec-btn.small,
+      :root[data-product-theme="test-theme-1"] .spec-btn.medium,
+      :root[data-product-theme="test-theme-1"] .spec-btn.large,
+      :root[data-product-theme="test-theme-1"] .spec-input,
+      :root[data-product-theme="test-theme-1"] .spec-textarea,
+      :root[data-product-theme="test-theme-1"] .spec-input-wrap,
+      :root[data-product-theme="test-theme-1"] .spec-select,
+      :root[data-product-theme="test-theme-1"] .spec-select.small,
+      :root[data-product-theme="test-theme-1"] .spec-select.large,
+      :root[data-product-theme="test-theme-1"] .select-dropdown,
+      :root[data-product-theme="test-theme-1"] .select-option,
+      :root[data-product-theme="test-theme-1"] .select-tag,
+      :root[data-product-theme="test-theme-1"] .select-clear,
+      :root[data-product-theme="test-theme-1"] .spec-date,
+      :root[data-product-theme="test-theme-1"] .spec-date.small,
+      :root[data-product-theme="test-theme-1"] .spec-date.large,
+      :root[data-product-theme="test-theme-1"] .spec-time,
+      :root[data-product-theme="test-theme-1"] .time-input-control,
+      :root[data-product-theme="test-theme-1"] .time-input-control.small,
+      :root[data-product-theme="test-theme-1"] .time-input-control.large,
+      :root[data-product-theme="test-theme-1"] .time-range-inputs .time-input-control,
+      :root[data-product-theme="test-theme-1"] .date-dropdown,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.range-panel,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.datetime-panel,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.static,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.range-panel.static,
+      :root[data-product-theme="test-theme-1"] .date-dropdown.shortcut-range-panel.static,
+      :root[data-product-theme="test-theme-1"] .date-calendar,
+      :root[data-product-theme="test-theme-1"] .date-cell,
+      :root[data-product-theme="test-theme-1"] .date-period-grid .date-cell,
+      :root[data-product-theme="test-theme-1"] .date-shortcut,
+      :root[data-product-theme="test-theme-1"] .date-nav-btn,
+      :root[data-product-theme="test-theme-1"] .range-scope-tab,
+      :root[data-product-theme="test-theme-1"] .date-time-option,
+      :root[data-product-theme="test-theme-1"] .date-time-list,
+      :root[data-product-theme="test-theme-1"] .date-time-actions,
+      :root[data-product-theme="test-theme-1"] .form-demo,
+      :root[data-product-theme="test-theme-1"] .form-actions,
+      :root[data-product-theme="test-theme-1"] .dynamic-item,
+      :root[data-product-theme="test-theme-1"] .dynamic-index,
+      :root[data-product-theme="test-theme-1"] .remove-dynamic-item {
+        border-radius: 2px !important;
+      }
+</style>
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="index.html#overview" aria-label="IQB.design 首页">
-          <img class="brand-mark" src="logo-cropped.png" alt="" aria-hidden="true" />
-          <span class="brand-title">IQB Design</span>
+        <a class="brand" href="index.html#overview" aria-label="IQ Enterprise Design 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQ Enterprise Design</span>
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
           <span data-component-count-label>Active components 12/13</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>IQ主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="iq-buddy"
+              >
+                IQ主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="iq-buddy-theme"
+              >
+                IQ Buddy主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                test主题1
+              </button>
+            </li>
+          </ul>
         </div>
       </header>
 
@@ -1558,6 +1920,11 @@
         <aside class="sidebar" aria-label="设计规范导航">
           <nav>
             <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">全局样式</span>
+                </a>
+              </li>
               <li class="nav-section">
                 <a class="nav-button" href="index.html#overview">
                   <span class="nav-label">组件总览</span>
@@ -1611,7 +1978,7 @@
                   <li>默认高度 42px</li>
                   <li>圆角 8px</li>
                   <li>支持 .zip 参数包</li>
-                  <li>跟随按钮主色 #22B573</li>
+                  <li>跟随按钮主色 #00D157</li>
                 </ul>
               </header>
 
@@ -2041,12 +2408,12 @@
                       </tr>
                       <tr>
                         <td><code>--upload-border-color</code></td>
-                        <td><code>#D4D9DE</code></td>
+                        <td><code>#d4d9de</code></td>
                         <td>拖拽上传和照片墙入口默认虚线边框。</td>
                       </tr>
                       <tr>
                         <td><code>--upload-active-color</code></td>
-                        <td><code>#22B573</code></td>
+                        <td><code>#00D157</code></td>
                         <td>上传按钮主色、hover/focus 边框和 loading 环强调色。</td>
                       </tr>
                       <tr>
@@ -2056,17 +2423,17 @@
                       </tr>
                       <tr>
                         <td><code>--upload-active-bg</code></td>
-                        <td><code>rgba(34, 181, 115, 0.04)</code></td>
+                        <td><code>rgba(0, 209, 87, 0.04)</code></td>
                         <td>拖拽上传和照片墙入口 hover/focus 浅绿底色。</td>
                       </tr>
                       <tr>
                         <td><code>--upload-surface-muted</code></td>
-                        <td><code>#F3F5F7</code></td>
+                        <td><code>#f3f5f7</code></td>
                         <td>拖拽上传区域和照片墙上传入口默认灰底。</td>
                       </tr>
                       <tr>
                         <td><code>--upload-error-color</code></td>
-                        <td><code>#D92D20</code></td>
+                        <td><code>#d92d20</code></td>
                         <td>文件列表失败文案、照片墙失败卡片描边与失败文案。</td>
                       </tr>
                       <tr>
@@ -2076,7 +2443,7 @@
                       </tr>
                       <tr>
                         <td><code>--upload-disabled-text</code></td>
-                        <td><code>#A5ADB6</code></td>
+                        <td><code>#a5adb6</code></td>
                         <td>禁用态文字和图标颜色。</td>
                       </tr>
                       <tr>
@@ -2153,7 +2520,9 @@
         }
 
         const pendingKeys = new Set(["card"]);
-        const navItems = Array.from(document.querySelectorAll(".nav-sublist .nav-button"));
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
         const getComponentKey = (item) =>
           item.dataset.page || (item.getAttribute("href") || "").split("#").pop().replace(/\.html$/, "");
         const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
@@ -2161,6 +2530,196 @@
       };
 
       syncComponentCountLabel();
+
+      const productOptions = Array.from(document.querySelectorAll("[data-product-option]"));
+      const productSelect = document.querySelector("[data-product-select]");
+      const productSelectTrigger = document.querySelector("[data-product-select-trigger]");
+      const productSelectMenu = document.querySelector("[data-product-select-menu]");
+      const productSelectValue = document.querySelector("[data-product-select-value]");
+      const productStorageKey = "iqb-design-active-product";
+      const productLabels = {
+        "iq-buddy": "IQ主题",
+        "iq-buddy-theme": "IQ Buddy主题",
+        decentralized: "test主题1",
+      };
+      const defaultProductThemeVars = [
+        "--brand-500",
+        "--brand-50",
+        "--brand-100",
+        "--brand-200",
+        "--brand-300",
+        "--brand-400",
+        "--brand-600",
+        "--brand-700",
+        "--brand-800",
+        "--brand-900",
+        "--brand-rgb",
+        "--brand-text",
+        "--brand-text-hover",
+        "--brand-border-soft",
+        "--brand-border-hover",
+        "--radius-sm",
+        "--shadow-focus",
+        "--input-hover-border-color",
+        "--input-focus-color",
+        "--input-focus-shadow",
+        "--input-number-hover-border-color",
+        "--input-number-focus-color",
+        "--input-number-focus-shadow",
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty("font-family");
+        root.removeAttribute("data-product-theme");
+        if (activeProduct === "iq-buddy") {
+          root.dataset.productTheme = "iq-theme";
+          return;
+        }
+
+        if (activeProduct === "iq-buddy-theme") {
+          root.dataset.productTheme = "iq-buddy-theme";
+          root.style.setProperty("--brand-50", "#f0fff6");
+          root.style.setProperty("--brand-100", "#ddfbea");
+          root.style.setProperty("--brand-200", "#bef5d5");
+          root.style.setProperty("--brand-300", "#91e9b8");
+          root.style.setProperty("--brand-400", "#5fd897");
+          root.style.setProperty("--brand-500", "#22b573");
+          root.style.setProperty("--brand-600", "#1b9c61");
+          root.style.setProperty("--brand-700", "#147c4d");
+          root.style.setProperty("--brand-800", "#12633f");
+          root.style.setProperty("--brand-900", "#104f34");
+          root.style.setProperty("--brand-rgb", "34, 181, 115");
+          root.style.setProperty("--brand-text", "#1b9c61");
+          root.style.setProperty("--brand-text-hover", "#147c4d");
+          root.style.setProperty("--brand-border-soft", "#bef5d5");
+          root.style.setProperty("--brand-border-hover", "#91e9b8");
+          root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(34, 181, 115, 0.16)");
+          root.style.setProperty("--input-hover-border-color", "#22b573");
+          root.style.setProperty("--input-focus-color", "#22b573");
+          root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
+          root.style.setProperty("--input-number-hover-border-color", "#22b573");
+          root.style.setProperty("--input-number-focus-color", "#22b573");
+          root.style.setProperty("--input-number-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
+          return;
+        }
+
+        if (activeProduct !== "decentralized") return;
+
+        root.dataset.productTheme = "test-theme-1";
+        root.style.setProperty("--brand-50", "#eff6ff");
+        root.style.setProperty("--brand-100", "#dbeafe");
+        root.style.setProperty("--brand-200", "#bfdbfe");
+        root.style.setProperty("--brand-300", "#93c5fd");
+        root.style.setProperty("--brand-400", "#60a5fa");
+        root.style.setProperty("--brand-500", "#2672ff");
+        root.style.setProperty("--brand-600", "#1d5fd7");
+        root.style.setProperty("--brand-700", "#1e4fb3");
+        root.style.setProperty("--brand-800", "#1e3f8a");
+        root.style.setProperty("--brand-900", "#172f68");
+        root.style.setProperty("--brand-rgb", "38, 114, 255");
+        root.style.setProperty("--brand-text", "#1d5fd7");
+        root.style.setProperty("--brand-text-hover", "#1e4fb3");
+        root.style.setProperty("--brand-border-soft", "#bfdbfe");
+        root.style.setProperty("--brand-border-hover", "#93c5fd");
+        root.style.setProperty("--radius-sm", "2px");
+        root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(38, 114, 255, 0.16)");
+        root.style.setProperty("--input-hover-border-color", "#2672ff");
+        root.style.setProperty("--input-focus-color", "#2672ff");
+        root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
+        root.style.setProperty("--input-number-hover-border-color", "#2672ff");
+        root.style.setProperty("--input-number-focus-color", "#2672ff");
+        root.style.setProperty("--input-number-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
+        root.style.fontFamily = '"Pingfang FC", "PingFang SC", Inter, "Inter var", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels["iq-buddy"];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute("aria-selected", String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute("aria-expanded", "false");
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : "iq-buddy";
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute("aria-expanded") === "true";
+        productSelectTrigger.setAttribute("aria-expanded", String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener("click", (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeProductSelectMenu();
+        }
+      });
+
+      const centerNavItem = (item, behavior = "smooth") => {
+        if (!item) return;
+        const sidebar = item.closest(".sidebar");
+        if (!sidebar) return;
+
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+
+        if (isHorizontal) {
+          sidebar.scrollTo({
+            left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2,
+            behavior,
+          });
+          return;
+        }
+
+        sidebar.scrollTo({
+          top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2,
+          behavior,
+        });
+      };
+
+      requestAnimationFrame(() => {
+        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]'), "auto");
+      });
 
       const uploadConfirmLayer = document.querySelector("[data-upload-confirm-layer]");
       const uploadConfirmDesc = document.querySelector("[data-upload-confirm-desc]");
