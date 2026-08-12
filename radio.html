@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TimePicker 时间选择器 - IQB Design</title>
+    <title>Radio 单选框 - IQB Design</title>
     <style>
       :root {
         --brand-500: #00d157;
@@ -37,6 +37,25 @@
         --sidebar-width: 300px;
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --input-border-color: #dde1e5;
+        --input-hover-border-color: var(--brand-500);
+        --input-focus-color: var(--brand-500);
+        --input-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        --input-error-color: #f04438;
+        --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        --input-text-color: #1a1d1f;
+        --input-placeholder-color: #a5abb1;
+        --input-disabled-border-color: #dde1e5;
+        --input-disabled-bg: #f0f2f4;
+        --input-disabled-color: #969ba1;
+        --input-number-hover-border-color: var(--brand-500);
+        --input-number-focus-color: var(--brand-500);
+        --input-number-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        --input-number-error-color: #f04438;
+        --input-number-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        --input-number-disabled-border-color: #dde1e5;
+        --input-number-disabled-bg: #f0f2f4;
+        --input-number-disabled-color: #969ba1;
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -393,6 +412,7 @@
         border-radius: var(--radius-sm);
         cursor: pointer;
         text-align: left;
+        text-decoration: none;
       }
 
       .nav-button:hover {
@@ -573,6 +593,7 @@
         color: inherit;
         cursor: pointer;
         text-align: left;
+        text-decoration: none;
         transition:
           border-color 0.16s ease,
           background-color 0.16s ease,
@@ -625,7 +646,6 @@
       .component-status.done {
         color: var(--brand-500);
         background: rgba(var(--brand-rgb), 0.14);
-        border-color: rgba(var(--brand-rgb), 0.22);
       }
 
       .component-status.pending {
@@ -639,6 +659,26 @@
 
       .doc-section:last-child {
         border-bottom: 0;
+      }
+
+      .doc-section.no-divider {
+        border-bottom: 0;
+      }
+
+      .color-role-section {
+        padding-bottom: 14px;
+      }
+
+      .color-palette-section {
+        padding-top: 14px;
+      }
+
+      .color-palette-section [data-test-success-palette] {
+        display: none;
+      }
+
+      .color-palette-section[data-active-color-palette="test主题色"] [data-test-success-palette] {
+        display: block;
       }
 
       .doc-section h2 {
@@ -707,6 +747,238 @@
 
       .example-block.full {
         grid-column: 1 / -1;
+      }
+
+      .color-system-group {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .color-palette {
+        display: grid;
+        gap: 12px;
+      }
+
+      .color-system-group .color-palette {
+        grid-column: auto;
+      }
+
+      .color-section-heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin: 0 0 14px;
+      }
+
+      .doc-section .color-section-heading h2 {
+        margin: 0;
+      }
+
+      .doc-section .color-section-heading h3 {
+        margin: 0;
+      }
+
+      .color-palette-select {
+        position: relative;
+        flex: 0 0 auto;
+        min-width: 188px;
+      }
+
+      .color-palette-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 32px;
+        padding: 0 30px 0 12px;
+        color: var(--gray-800);
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .color-palette-trigger:hover,
+      .color-palette-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+      }
+
+      .color-palette-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .color-palette-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        width: 7px;
+        height: 7px;
+        content: "";
+        border-right: 1.5px solid var(--gray-500);
+        border-bottom: 1.5px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .color-palette-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .color-palette-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 5;
+        display: grid;
+        width: 100%;
+        min-width: 188px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .color-palette-menu[hidden] {
+        display: none;
+      }
+
+      .color-palette-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .color-palette-option:hover,
+      .color-palette-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .color-palette-header {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .color-palette-header h3 {
+        margin-bottom: 4px;
+      }
+
+      .color-palette-base {
+        flex: 0 0 auto;
+        padding: 5px 8px;
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+        border-radius: 999px;
+        font-size: 12px;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .color-ramp {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .color-swatch {
+        display: block;
+        align-items: stretch;
+        min-width: 0;
+        overflow: hidden;
+        background: var(--swatch);
+      }
+
+      .color-swatch:first-child {
+        border-top-left-radius: var(--radius-sm);
+        border-top-right-radius: var(--radius-sm);
+      }
+
+      .color-swatch:last-child {
+        border-bottom-right-radius: var(--radius-sm);
+        border-bottom-left-radius: var(--radius-sm);
+      }
+
+      .color-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 0;
+        min-height: 42px;
+        gap: 10px;
+        padding: 0 14px;
+        color: var(--swatch-ink);
+      }
+
+      .color-token {
+        overflow: hidden;
+        color: inherit;
+        font-size: 12px;
+        line-height: 1.4;
+        opacity: 0.9;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .color-hex {
+        color: inherit;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size: 12px;
+        line-height: 1.4;
+        opacity: 0.9;
+      }
+
+      .color-role-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .color-role {
+        min-width: 0;
+        padding: 14px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .color-role strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--gray-900);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .color-role span {
+        color: var(--gray-600);
+        font-size: 12px;
+        line-height: 1.65;
       }
 
       .example-row {
@@ -1205,10 +1477,10 @@
       .spec-input,
       .spec-textarea {
         width: 100%;
-        border: 1px solid #dde1e5;
+        border: 1px solid var(--input-border-color);
         border-radius: 10px;
         background: #fff;
-        color: #1a1d1f;
+        color: var(--input-text-color);
         font-size: 13px;
         outline: 0;
         transition:
@@ -1232,7 +1504,7 @@
 
       .spec-input::placeholder,
       .spec-textarea::placeholder {
-        color: #a5abb1;
+        color: var(--input-placeholder-color);
       }
 
       .spec-input[type="search"]::-webkit-search-cancel-button {
@@ -1250,6 +1522,20 @@
         appearance: textfield;
       }
 
+      .spec-input:hover,
+      .spec-textarea:hover,
+      .spec-input.hover,
+      .spec-textarea.hover,
+      .spec-input.is-hover,
+      .spec-textarea.is-hover,
+      .spec-input-wrap:hover,
+      .spec-input-wrap.hover,
+      .spec-input-wrap.is-hover {
+        border-color: var(--input-hover-border-color);
+        background: #fff;
+        box-shadow: none;
+      }
+
       .spec-input:focus,
       .spec-input.focus,
       .spec-input.is-focus,
@@ -1259,15 +1545,22 @@
       .spec-input-wrap:focus-within,
       .spec-input-wrap.focus,
       .spec-input-wrap.is-focus {
-        border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        border-color: var(--input-focus-color);
+        box-shadow: var(--input-focus-shadow);
       }
 
       .spec-input:disabled,
       .spec-textarea:disabled {
-        background: #f0f2f4;
-        color: #969ba1;
+        border-color: var(--input-disabled-border-color);
+        background: var(--input-disabled-bg);
+        color: var(--input-disabled-color);
         cursor: not-allowed;
+      }
+
+      .spec-input-wrap:has(.spec-input:disabled):hover {
+        border-color: var(--input-disabled-border-color);
+        background: var(--input-disabled-bg);
+        box-shadow: none;
       }
 
       .spec-input-wrap {
@@ -1276,7 +1569,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid #dde1e5;
+        border: 1px solid var(--input-border-color);
         border-radius: 10px;
         background: #fff;
         padding: 0 12px;
@@ -1407,7 +1700,7 @@
       .spec-field.over-limit .spec-input,
       .spec-field.over-limit .spec-textarea,
       .spec-input-wrap.error {
-        border-color: #f04438;
+        border-color: var(--input-error-color);
       }
 
       .spec-field.error .spec-input:focus,
@@ -1425,8 +1718,8 @@
       .spec-input-wrap.error:focus-within,
       .spec-input-wrap.error.focus,
       .spec-input-wrap.error.is-focus {
-        border-color: #f04438;
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        border-color: var(--input-error-color);
+        box-shadow: var(--input-error-shadow);
       }
 
       .spec-field.error .spec-field-help {
@@ -2285,16 +2578,18 @@
       }
 
       .time-picker-basic-row .time-picker-stack.time-range-stack {
-        width: 260px;
+        width: 360px;
       }
 
       .time-range-inputs {
         display: flex;
         align-items: center;
-        gap: 0;
-        width: 100%;
-        min-height: 38px;
-        padding: 0;
+        gap: 8px;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease;
       }
 
       .time-range-inputs .time-input-control {
@@ -2302,44 +2597,14 @@
         min-width: 0;
       }
 
-      .time-range-inputs:has(.time-range-segment.open),
       .time-range-inputs:has(.time-input-control.open) {
         border-color: var(--brand-500);
         box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
-      .time-range-segment {
-        min-height: inherit;
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        padding: 0 14px;
-        border-radius: inherit;
-        cursor: pointer;
-      }
-
-      .time-range-segment .time-input-field {
-        padding: 0;
-      }
-
-      .time-range-segment.open {
+      .time-range-inputs .time-input-control.open {
         border-color: transparent;
-        background: #f7f9fa;
         box-shadow: none;
-      }
-
-      .time-range-segment[data-time-picker-range-value="start"] {
-        border-radius: 9px 0 0 9px;
-      }
-
-      .time-range-segment[data-time-picker-range-value="end"] {
-        border-radius: 0;
-      }
-
-      .time-range-action {
-        align-self: stretch;
-        flex: 0 0 36px;
-        position: relative;
       }
 
       .time-range-separator {
@@ -2394,10 +2659,6 @@
         width: 264px;
       }
 
-      .time-picker-dropdown:has(.time-picker-columns.minute-only) {
-        width: 182px;
-      }
-
       .time-picker-dropdown.range-panel {
         width: 552px;
         max-width: calc(100vw - 40px);
@@ -2432,97 +2693,11 @@
       }
 
       .time-picker-columns.minute-only {
-        grid-template-columns: repeat(2, 74px);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .time-picker-columns.with-period {
         grid-template-columns: 58px repeat(2, minmax(0, 1fr));
-      }
-
-      .utc-time-picker {
-        display: grid;
-        grid-template-columns: 98px minmax(0, 1fr);
-        align-items: start;
-        gap: 8px;
-        margin-top: 14px;
-      }
-
-      .utc-zone-picker {
-        position: relative;
-      }
-
-      .utc-zone-trigger {
-        width: 100%;
-        min-height: 40px;
-        height: 40px;
-        padding-right: 30px;
-      }
-
-      .utc-zone-caret {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        width: 7px;
-        height: 7px;
-        border-right: 1.5px solid currentColor;
-        border-bottom: 1.5px solid currentColor;
-        color: #969ba1;
-        pointer-events: none;
-        transform: translateY(-70%) rotate(45deg);
-      }
-
-      .utc-zone-dropdown {
-        width: 116px;
-        padding: 6px;
-      }
-
-      .utc-zone-list {
-        max-height: 208px;
-        display: grid;
-        gap: 2px;
-        padding-bottom: 178px;
-        overflow: auto;
-        scrollbar-color: rgba(31, 41, 51, 0.22) transparent;
-        scrollbar-width: thin;
-      }
-
-      .utc-zone-list::-webkit-scrollbar {
-        width: 4px;
-      }
-
-      .utc-zone-list::-webkit-scrollbar-track {
-        background: transparent;
-      }
-
-      .utc-zone-list::-webkit-scrollbar-thumb {
-        border-radius: 999px;
-        background: rgba(31, 41, 51, 0.22);
-      }
-
-      .utc-zone-option {
-        min-height: 30px;
-        padding: 0 10px;
-        border: 0;
-        border-radius: 8px;
-        background: transparent;
-        color: #33383d;
-        cursor: pointer;
-        font: inherit;
-        font-size: 13px;
-        text-align: left;
-      }
-
-      .utc-zone-option:hover {
-        background: var(--gray-100);
-      }
-
-      .utc-zone-option.active {
-        background: var(--brand-500);
-        color: #fff;
-      }
-
-      .utc-time-stack {
-        margin-top: 0;
       }
 
       .range-scope-tabs {
@@ -2580,7 +2755,7 @@
       .range-filter-row {
         display: flex;
         flex-wrap: wrap;
-        align-items: flex-start;
+        align-items: center;
         gap: 16px;
       }
 
@@ -2594,6 +2769,26 @@
         color: #737a82;
         font-size: 12px;
         line-height: 1.4;
+      }
+
+      .range-filter-field .select-demo-stack {
+        margin-top: 0;
+      }
+
+      .range-filter-field .spec-select,
+      .range-filter-field .select-dropdown {
+        width: 260px;
+      }
+
+      .range-filter-field [data-select-collapse-fit],
+      .range-filter-field [data-select-collapse-fit] .spec-select,
+      .range-filter-field [data-select-collapse-fit] .select-dropdown {
+        width: 140px;
+      }
+
+      .range-filter-field[data-time-filter-demo] .spec-date,
+      .range-filter-field[data-time-filter-demo] .time-filter-panel {
+        width: 264px;
       }
 
       .range-scope-body .select-option.active,
@@ -2616,6 +2811,30 @@
 
       .time-filter-panel {
         width: 264px;
+      }
+
+      .weekday-filter-panel {
+        width: 260px;
+      }
+
+      .weekday-filter-list {
+        max-height: none;
+      }
+
+      .weekday-filter-list .select-option:not(.active) .select-option-check {
+        visibility: hidden;
+      }
+
+      .range-scope-hint {
+        width: min(100%, 360px);
+        margin: 0;
+        padding: 12px 14px;
+        border: 1px solid var(--gray-200);
+        border-radius: 10px;
+        background: #fff;
+        color: #33383d;
+        font-size: 13px;
+        line-height: 1.7;
       }
 
       .date-panel-layout {
@@ -2839,9 +3058,19 @@
           background-color 0.15s ease;
       }
 
-      .number-input:focus-within {
-        border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+      .number-input:hover,
+      .number-input.hover,
+      .number-input.is-hover {
+        border-color: var(--input-number-hover-border-color);
+        background: #fff;
+        box-shadow: none;
+      }
+
+      .number-input:focus-within,
+      .number-input.focus,
+      .number-input.is-focus {
+        border-color: var(--input-number-focus-color);
+        box-shadow: var(--input-number-focus-shadow);
       }
 
       .number-input .spec-input {
@@ -2941,20 +3170,23 @@
       }
 
       .number-input.error {
-        border-color: #f04438;
+        border-color: var(--input-number-error-color);
       }
 
-      .number-input.error:focus-within {
-        border-color: #f04438;
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+      .number-input.error:focus-within,
+      .number-input.error.focus,
+      .number-input.error.is-focus {
+        border-color: var(--input-number-error-color);
+        box-shadow: var(--input-number-error-shadow);
       }
 
       .number-input.disabled {
-        background: #f0f2f4;
+        border-color: var(--input-number-disabled-border-color);
+        background: var(--input-number-disabled-bg);
       }
 
       .number-input.disabled .spec-input {
-        color: #969ba1;
+        color: var(--input-number-disabled-color);
         cursor: not-allowed;
       }
 
@@ -3621,6 +3853,23 @@
           grid-template-columns: 1fr;
         }
 
+        .color-system-group {
+          grid-template-columns: 1fr;
+        }
+
+        .color-section-heading {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .color-palette-select {
+          width: 100%;
+        }
+
+        .color-role-grid {
+          grid-template-columns: 1fr;
+        }
+
         .overview-grid,
         .component-index,
         .overview-group.full .component-index {
@@ -3631,9 +3880,6 @@
           grid-template-columns: 1fr;
         }
       }
-    </style>
-    <style>
-      .standalone-shell .nav-button { text-decoration: none; }
 
       :root[data-product-theme="iq-theme"] .spec-input:focus,
       :root[data-product-theme="iq-theme"] .spec-input.focus,
@@ -3742,10 +3988,10 @@
       }
 </style>
   </head>
-  <body class="standalone-shell">
+  <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="index.html" aria-label="IQ Enterprise Design 首页">
+        <a class="brand" href="#" aria-label="IQ Enterprise Design 首页">
           <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
@@ -3892,7 +4138,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="radio.html">
+                    <a class="nav-button" href="radio.html" aria-current="page">
                       <span class="nav-label">Radio 单选框</span>
                     </a>
                   </li>
@@ -3917,7 +4163,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="time-picker.html" aria-current="page">
+                    <a class="nav-button" href="time-picker.html">
                       <span class="nav-label">TimePicker 时间选择器</span>
                     </a>
                   </li>
@@ -3984,177 +4230,74 @@
           <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
         </aside>
 
-        <section class="canvas" aria-label="组件规范内容">
+        <section class="canvas" aria-label="组件说明详情区">
           <div class="canvas-inner">
-<article class="content-panel doc-page" data-panel="time-picker">
+            <article class="content-panel doc-page" data-panel="radio">
               <header class="doc-hero">
-                <p class="doc-kicker">Data Entry / TimePicker</p>
-                <h1 class="doc-title">TimePicker 时间选择器</h1>
+                <p class="doc-kicker">Data Entry / Radio</p>
+                <h1 class="doc-title">Radio 单选框</h1>
                 <p class="doc-summary">
-                  时间选择器用于选择一天内的具体时间点或时间范围。IQB Agent 平台中常用于自动化任务触发时间、
-                  执行窗口、跨时区排期、定时策略和记录筛选，需要保持紧凑输入、清晰选项、明确确认和稳定的浮层互斥。
+                  单选框用于在一组互斥选项中选择一个结果。IQB Agent 平台中常用于任务调度方式、并发策略、错过执行策略等配置项，
+                  需要让当前选择、选项关系和可选范围都保持清晰。
                 </p>
-                <ul class="doc-meta-list" aria-label="时间选择器基础规格">
-                  <li>默认高度 38px</li>
-                  <li>默认宽度 260px</li>
-                  <li>支持时分秒</li>
-                  <li>支持单选、范围、定制步长、UTC 时区与 12 小时制</li>
+                <ul class="doc-meta-list" aria-label="单选框基础规格">
+                  <li>圆点尺寸 14px</li>
+                  <li>选中主色 #00D157</li>
+                  <li>文本字号 12.5px</li>
+                  <li>支持胶囊选项</li>
                 </ul>
               </header>
 
               <section class="doc-section">
                 <h2>何时使用</h2>
                 <ul class="rule-list">
-                  <li>用于配置精确触发时间，例如任务开始时间、自动执行时间和消息发送时间。</li>
-                  <li>用于筛选某一天内的执行窗口，例如 09:00:00 到 18:00:00。</li>
-                  <li>只需要小时或分钟粒度时应隐藏无关列，降低选择成本。</li>
-                  <li>需要固定执行间隔时使用定制步长，例如 15 分钟或 30 秒粒度。</li>
-                  <li>跨时区任务使用 UTC 时区 tab 与时分秒 tab 组合，时区下拉和时间下拉保持互斥。</li>
-                  <li>涉及范围、秒级时间或关键任务生效时间时，使用确认按钮完成提交；范围确认时若开始时间大于结束时间，应自动交换起止值。</li>
-                  <li>清空按钮仅在有值且 hover 时出现，点击后只清空当前值，不自动展开选择器菜单。</li>
+                  <li>用于一组选项中只能选择一个的场景，例如调度方式、并发策略、错过执行策略。</li>
+                  <li>选项数量建议控制在 2-5 个；选项过多或需要搜索时优先使用 Select。</li>
+                  <li>选项文案应互斥且同一维度，避免把“状态”和“动作”混在一组 radio 中。</li>
+                  <li>需要更强的可扫读性时，可使用胶囊型 radio option 承载短选项。</li>
                 </ul>
               </section>
 
               <section class="doc-section">
                 <h2>基础用法</h2>
                 <div class="doc-grid">
-                  <div class="example-block full">
-                    <h3>基础时间</h3>
-                    <p>用于选择单个时间点，支持小时、分钟、秒三列滚动选择。</p>
-                    <div class="time-picker-basic-row">
-                      <div class="time-picker-stack" data-time-picker-demo data-time-mode="single" data-time-precision="second">
-                        <span class="time-picker-example-title">默认有值</span>
-                        <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                          <input class="time-input-field" type="text" value="14:30:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-value>
-                          <span class="time-icon" aria-hidden="true"></span>
-                          <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                        </div>
-                        <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择时间" hidden>
-                          <div class="date-time-columns" data-time-panel="single">
-                            <div>
-                              <span class="date-time-label">小时</span>
-                              <div class="date-time-list" data-time-unit="hour"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">分钟</span>
-                              <div class="date-time-list" data-time-unit="minute"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">秒</span>
-                              <div class="date-time-list" data-time-unit="second"></div>
-                            </div>
-                          </div>
-                          <div class="date-time-actions">
-                            <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                            <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-picker-stack" data-time-picker-demo data-time-mode="single" data-time-precision="second" data-time-empty="true">
-                        <span class="time-picker-example-title">默认为空</span>
-                        <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                          <input class="time-input-field" type="text" placeholder="请选择时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-value data-time-placeholder="请选择时间">
-                          <span class="time-icon" aria-hidden="true"></span>
-                          <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                        </div>
-                        <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择空状态时间" hidden>
-                          <div class="date-time-columns" data-time-panel="single">
-                            <div>
-                              <span class="date-time-label">小时</span>
-                              <div class="date-time-list" data-time-unit="hour"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">分钟</span>
-                              <div class="date-time-list" data-time-unit="minute"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">秒</span>
-                              <div class="date-time-list" data-time-unit="second"></div>
-                            </div>
-                          </div>
-                          <div class="date-time-actions">
-                            <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                            <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                          </div>
-                        </div>
+                  <div class="example-block">
+                    <h3>基础单选框</h3>
+                    <p>用于普通表单配置，选项之间保持同一语义维度。</p>
+                    <div class="radio-demo-stack">
+                      <div class="radio-group" role="radiogroup" aria-label="调度方式">
+                        <label class="spec-radio">
+                          <input type="radio" name="radioScheduleDemo" checked />
+                          <span>固定时刻（Cron）</span>
+                        </label>
+                        <label class="spec-radio">
+                          <input type="radio" name="radioScheduleDemo" />
+                          <span>窗口内随机</span>
+                        </label>
+                        <label class="spec-radio">
+                          <input type="radio" name="radioScheduleDemo" />
+                          <span>单次执行</span>
+                        </label>
                       </div>
                     </div>
                   </div>
-                  <div class="example-block full">
-                    <h3>范围选择</h3>
-                    <p>用于设置任务可执行时间段，开始与结束时间在同一面板内完成。</p>
-                    <div class="time-picker-basic-row">
-                      <div class="time-picker-stack time-range-stack" data-time-picker-demo data-time-mode="range" data-time-precision="second">
-                        <span class="time-picker-example-title">默认有值</span>
-                        <div class="spec-date spec-time time-range-inputs">
-                          <div class="time-range-segment time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger data-time-picker-range-value="start">
-                            <input class="time-input-field" type="text" value="09:00:00" placeholder="开始时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-range-input="start">
-                          </div>
-                          <span class="time-range-separator">~</span>
-                          <div class="time-range-segment time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger data-time-picker-range-value="end">
-                            <input class="time-input-field" type="text" value="18:00:00" placeholder="结束时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-range-input="end">
-                          </div>
-                          <div class="time-range-action">
-                            <span class="time-icon" aria-hidden="true"></span>
-                            <button class="time-clear-btn" type="button" aria-label="清空时间范围" data-time-picker-clear data-time-picker-range-clear="range"></button>
-                          </div>
-                        </div>
-                        <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择时间范围" hidden>
-                          <div class="date-time-columns" data-time-panel="active">
-                            <div>
-                              <span class="date-time-label">小时</span>
-                              <div class="date-time-list" data-time-unit="hour"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">分钟</span>
-                              <div class="date-time-list" data-time-unit="minute"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">秒</span>
-                              <div class="date-time-list" data-time-unit="second"></div>
-                            </div>
-                          </div>
-                          <div class="date-time-actions">
-                            <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                            <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="time-picker-stack time-range-stack" data-time-picker-demo data-time-mode="range" data-time-precision="second" data-time-empty="true">
-                        <span class="time-picker-example-title">默认为空</span>
-                        <div class="spec-date spec-time time-range-inputs">
-                          <div class="time-range-segment time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger data-time-picker-range-value="start">
-                            <input class="time-input-field" type="text" placeholder="开始时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-range-input="start">
-                          </div>
-                          <span class="time-range-separator">~</span>
-                          <div class="time-range-segment time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger data-time-picker-range-value="end">
-                            <input class="time-input-field" type="text" placeholder="结束时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-range-input="end">
-                          </div>
-                          <div class="time-range-action">
-                            <span class="time-icon" aria-hidden="true"></span>
-                            <button class="time-clear-btn" type="button" aria-label="清空时间范围" data-time-picker-clear data-time-picker-range-clear="range"></button>
-                          </div>
-                        </div>
-                        <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择空状态时间范围" hidden>
-                          <div class="date-time-columns" data-time-panel="active">
-                            <div>
-                              <span class="date-time-label">小时</span>
-                              <div class="date-time-list" data-time-unit="hour"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">分钟</span>
-                              <div class="date-time-list" data-time-unit="minute"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">秒</span>
-                              <div class="date-time-list" data-time-unit="second"></div>
-                            </div>
-                          </div>
-                          <div class="date-time-actions">
-                            <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                            <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                          </div>
-                        </div>
+                  <div class="example-block">
+                    <h3>垂直排列</h3>
+                    <p>长文案选项建议垂直排列，减少阅读跳跃。</p>
+                    <div class="radio-demo-stack">
+                      <div class="radio-group vertical" role="radiogroup" aria-label="并发策略">
+                        <label class="spec-radio">
+                          <input type="radio" name="radioConcurrencyDemo" checked />
+                          <span>跳过（有执行中任务时不触发）</span>
+                        </label>
+                        <label class="spec-radio">
+                          <input type="radio" name="radioConcurrencyDemo" />
+                          <span>允许（可并行执行）</span>
+                        </label>
+                        <label class="spec-radio">
+                          <input type="radio" name="radioConcurrencyDemo" />
+                          <span>取消旧任务后执行</span>
+                        </label>
                       </div>
                     </div>
                   </div>
@@ -4164,135 +4307,26 @@
               <section class="doc-section">
                 <h2>组合类型</h2>
                 <div class="doc-grid">
-                  <div class="example-block">
-                    <h3>小时分钟</h3>
-                    <p>用于只需要分钟粒度的配置，隐藏秒列以保持面板紧凑。</p>
-                    <div class="time-picker-stack" data-time-picker-demo data-time-mode="single" data-time-precision="minute">
-                      <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                        <input class="time-input-field" type="text" value="10:30" placeholder="请选择时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-value>
-                        <span class="time-icon" aria-hidden="true"></span>
-                        <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                      </div>
-                      <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择小时分钟" hidden>
-                        <div class="date-time-columns time-picker-columns minute-only" data-time-panel="single">
-                          <div>
-                            <span class="date-time-label">小时</span>
-                            <div class="date-time-list" data-time-unit="hour"></div>
-                          </div>
-                          <div>
-                            <span class="date-time-label">分钟</span>
-                            <div class="date-time-list" data-time-unit="minute"></div>
-                          </div>
-                        </div>
-                        <div class="date-time-actions">
-                          <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                          <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="example-block">
-                    <h3>12 小时制</h3>
-                    <p>用于面向海外用户或业务配置中需要 AM / PM 的时间表达。</p>
-                    <div class="time-picker-stack" data-time-picker-demo data-time-mode="single" data-time-precision="minute" data-time-hour-cycle="12">
-                      <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                        <input class="time-input-field" type="text" value="03:30 PM" placeholder="请选择时间" autocomplete="off" data-time-picker-input data-time-picker-value>
-                        <span class="time-icon" aria-hidden="true"></span>
-                        <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                      </div>
-                      <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择 12 小时时间" hidden>
-                        <div class="date-time-columns time-picker-columns with-period" data-time-panel="single">
-                          <div>
-                            <span class="date-time-label">时段</span>
-                            <div class="date-time-list" data-time-unit="period"></div>
-                          </div>
-                          <div>
-                            <span class="date-time-label">小时</span>
-                            <div class="date-time-list" data-time-unit="hour"></div>
-                          </div>
-                          <div>
-                            <span class="date-time-label">分钟</span>
-                            <div class="date-time-list" data-time-unit="minute"></div>
-                          </div>
-                        </div>
-                        <div class="date-time-actions">
-                          <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                          <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="example-block">
-                    <h3>定制步长</h3>
-                    <p>用于按固定间隔配置执行时间，例如分钟按 15 分钟、秒按 30 秒开放可选项。</p>
-                    <div class="time-picker-stack" data-time-picker-demo data-time-mode="single" data-time-precision="second" data-time-minute-step="15" data-time-second-step="30">
-                      <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                        <input class="time-input-field" type="text" value="09:15:30" placeholder="请选择时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-value>
-                        <span class="time-icon" aria-hidden="true"></span>
-                        <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                      </div>
-                      <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择定制步长时间" hidden>
-                        <div class="date-time-columns" data-time-panel="single">
-                          <div>
-                            <span class="date-time-label">小时</span>
-                            <div class="date-time-list" data-time-unit="hour"></div>
-                          </div>
-                          <div>
-                            <span class="date-time-label">分钟</span>
-                            <div class="date-time-list" data-time-unit="minute"></div>
-                          </div>
-                          <div>
-                            <span class="date-time-label">秒</span>
-                            <div class="date-time-list" data-time-unit="second"></div>
-                          </div>
-                        </div>
-                        <div class="date-time-actions">
-                          <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                          <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="example-block">
-                    <h3>UTC时间</h3>
-                    <p>用于跨时区任务排期，以 UTC 作为统一时间基准，减少本地时区换算误差。</p>
-                    <div class="utc-time-picker">
-                      <div class="utc-zone-picker" data-utc-zone-demo data-utc-zone="UTC+8">
-                        <button class="spec-date spec-time utc-zone-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" data-utc-zone-trigger>
-                          <span class="date-value" data-utc-zone-value>UTC+8</span>
-                          <span class="utc-zone-caret" aria-hidden="true"></span>
-                        </button>
-                        <div class="date-dropdown utc-zone-dropdown" role="listbox" aria-label="选择 UTC 时区" hidden>
-                          <div class="utc-zone-list" data-utc-zone-options></div>
-                        </div>
-                      </div>
-                      <div class="time-picker-stack utc-time-stack" data-time-picker-demo data-time-mode="single" data-time-precision="second">
-                        <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                          <input class="time-input-field" type="text" value="08:00:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-value>
-                          <span class="time-icon" aria-hidden="true"></span>
-                          <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                        </div>
-                        <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择 UTC 时间" hidden>
-                          <div class="date-time-columns" data-time-panel="single">
-                            <div>
-                              <span class="date-time-label">小时</span>
-                              <div class="date-time-list" data-time-unit="hour"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">分钟</span>
-                              <div class="date-time-list" data-time-unit="minute"></div>
-                            </div>
-                            <div>
-                              <span class="date-time-label">秒</span>
-                              <div class="date-time-list" data-time-unit="second"></div>
-                            </div>
-                          </div>
-                          <div class="date-time-actions">
-                            <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                            <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                          </div>
-                        </div>
-                      </div>
+                  <div class="example-block full">
+                    <h3>胶囊型选项</h3>
+                    <p>用于周期、筛选维度等短选项，提升横向扫描效率，可与其他控件联动使用。</p>
+                    <div class="radio-card-group radio-card-group-offset" role="radiogroup" aria-label="Cron 周期">
+                      <label class="radio-card">
+                        <input type="radio" name="radioCycleDemo" checked />
+                        <span>每小时</span>
+                      </label>
+                      <label class="radio-card">
+                        <input type="radio" name="radioCycleDemo" />
+                        <span>每天</span>
+                      </label>
+                      <label class="radio-card">
+                        <input type="radio" name="radioCycleDemo" />
+                        <span>每周</span>
+                      </label>
+                      <label class="radio-card">
+                        <input type="radio" name="radioCycleDemo" />
+                        <span>高级</span>
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -4303,52 +4337,52 @@
                 <div class="doc-grid">
                   <div class="example-block">
                     <h3>Default</h3>
-                    <p>默认状态使用白底、轻边框和中性时钟图标。</p>
-                    <div class="time-picker-stack">
-                      <button class="spec-date spec-time" type="button">
-                        <span class="date-value">14:30:00</span>
-                        <span class="time-icon" aria-hidden="true"></span>
-                      </button>
+                    <p>默认状态使用轻边框圆点和中性文字。</p>
+                    <div class="radio-demo-stack">
+                      <label class="spec-radio">
+                        <input type="radio" name="radioStateDefault" />
+                        <span>未选中</span>
+                      </label>
                     </div>
                   </div>
                   <div class="example-block">
-                    <h3>Hover</h3>
-                    <p>悬停时只将边框切换为品牌绿，不增加外扩散。</p>
-                    <div class="time-picker-stack">
-                      <button class="spec-date spec-time hover" type="button">
-                        <span class="date-value">14:30:00</span>
-                        <span class="time-icon" aria-hidden="true"></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="example-block">
-                    <h3>Focus / Open</h3>
-                    <p>聚焦或展开时使用品牌绿边框与浅色外发光。</p>
-                    <div class="time-picker-stack">
-                      <button class="spec-date spec-time open" type="button">
-                        <span class="date-value">14:30:00</span>
-                        <span class="time-icon" aria-hidden="true"></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="example-block">
-                    <h3>Error</h3>
-                    <p>时间格式不合法或超出可选范围时使用错误边框。</p>
-                    <div class="time-picker-stack">
-                      <button class="spec-date spec-time error focus" type="button">
-                        <span class="date-value">25:80:00</span>
-                        <span class="time-icon" aria-hidden="true"></span>
-                      </button>
+                    <h3>Checked</h3>
+                    <p>选中后圆点使用品牌绿填充，并展示浅色 focus ring。</p>
+                    <div class="radio-demo-stack">
+                      <label class="spec-radio">
+                        <input type="radio" name="radioStateChecked" checked />
+                        <span>已选中</span>
+                      </label>
                     </div>
                   </div>
                   <div class="example-block">
                     <h3>Disabled</h3>
-                    <p>禁用态透明度保持 0.6，面板不可打开且选项不可选。</p>
-                    <div class="time-picker-stack">
-                      <button class="spec-date spec-time disabled" type="button" disabled>
-                        <span class="date-value">14:30:00</span>
-                        <span class="time-icon" aria-hidden="true"></span>
-                      </button>
+                    <p>禁用态保留可读性，不响应 hover 或切换。</p>
+                    <div class="radio-demo-stack">
+                      <div class="radio-group" role="radiogroup" aria-label="禁用单选框">
+                        <label class="spec-radio">
+                          <input type="radio" name="radioDisabledDemo" disabled />
+                          <span>禁用未选</span>
+                        </label>
+                        <label class="spec-radio">
+                          <input type="radio" name="radioDisabledDemoChecked" checked disabled />
+                          <span>禁用已选</span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Option Disabled</h3>
+                    <p>胶囊型选项也需要提供禁用态，避免不可选项看起来仍可操作。</p>
+                    <div class="radio-card-group radio-card-group-offset" role="radiogroup" aria-label="禁用胶囊选项">
+                      <label class="radio-card">
+                        <input type="radio" name="radioCardDisabledDemo" checked />
+                        <span>每天</span>
+                      </label>
+                      <label class="radio-card disabled">
+                        <input type="radio" name="radioCardDisabledDemo" disabled />
+                        <span>每周</span>
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -4358,61 +4392,23 @@
                 <h2>尺寸</h2>
                 <div class="example-block full">
                   <h3>Size</h3>
-                  <p>默认使用 38px，高密度筛选可使用 30px，关键配置区域可使用 44px。</p>
-                  <div class="example-row time-picker-size-demo-row">
-                    <div class="time-picker-stack" data-time-picker-demo data-time-mode="single" data-time-precision="second">
-                      <div class="spec-date spec-time time-input-control small" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                        <input class="time-input-field" type="text" value="09:30:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-value>
-                        <span class="time-icon" aria-hidden="true"></span>
-                        <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                      </div>
-                      <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择小尺寸时间" hidden>
-                        <div class="date-time-columns" data-time-panel="single">
-                          <div><span class="date-time-label">小时</span><div class="date-time-list" data-time-unit="hour"></div></div>
-                          <div><span class="date-time-label">分钟</span><div class="date-time-list" data-time-unit="minute"></div></div>
-                          <div><span class="date-time-label">秒</span><div class="date-time-list" data-time-unit="second"></div></div>
-                        </div>
-                        <div class="date-time-actions">
-                          <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                          <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                        </div>
-                      </div>
+                  <p>Radio 默认跟随企业表单紧凑节奏，不额外放大圆点；胶囊选项使用 28px 最小高度。</p>
+                  <div class="radio-demo-stack">
+                    <div class="radio-group" role="radiogroup" aria-label="尺寸示例">
+                      <label class="spec-radio">
+                        <input type="radio" name="radioSizeDemo" checked />
+                        <span>Radio 24</span>
+                      </label>
                     </div>
-                    <div class="time-picker-stack" data-time-picker-demo data-time-mode="single" data-time-precision="second">
-                      <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                        <input class="time-input-field" type="text" value="14:30:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-value>
-                        <span class="time-icon" aria-hidden="true"></span>
-                        <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                      </div>
-                      <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择中尺寸时间" hidden>
-                        <div class="date-time-columns" data-time-panel="single">
-                          <div><span class="date-time-label">小时</span><div class="date-time-list" data-time-unit="hour"></div></div>
-                          <div><span class="date-time-label">分钟</span><div class="date-time-list" data-time-unit="minute"></div></div>
-                          <div><span class="date-time-label">秒</span><div class="date-time-list" data-time-unit="second"></div></div>
-                        </div>
-                        <div class="date-time-actions">
-                          <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                          <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="time-picker-stack" data-time-picker-demo data-time-mode="single" data-time-precision="second">
-                      <div class="spec-date spec-time time-input-control large" aria-haspopup="dialog" aria-expanded="false" data-time-picker-trigger>
-                        <input class="time-input-field" type="text" value="18:00:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" data-time-picker-input data-time-picker-value>
-                        <span class="time-icon" aria-hidden="true"></span>
-                        <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-picker-clear></button>
-                      </div>
-                      <div class="date-dropdown time-picker-dropdown" role="dialog" aria-label="选择大尺寸时间" hidden>
-                        <div class="date-time-columns" data-time-panel="single">
-                          <div><span class="date-time-label">小时</span><div class="date-time-list" data-time-unit="hour"></div></div>
-                          <div><span class="date-time-label">分钟</span><div class="date-time-list" data-time-unit="minute"></div></div>
-                          <div><span class="date-time-label">秒</span><div class="date-time-list" data-time-unit="second"></div></div>
-                        </div>
-                        <div class="date-time-actions">
-                          <button class="spec-btn subtle small" type="button" data-time-picker-cancel>取消</button>
-                          <button class="spec-btn primary small" type="button" data-time-picker-confirm>确认</button>
-                        </div>
-                      </div>
+                    <div class="radio-card-group" role="radiogroup" aria-label="胶囊尺寸示例">
+                      <label class="radio-card">
+                        <input type="radio" name="radioCardSizeDemo" checked />
+                        <span>Option 28</span>
+                      </label>
+                      <label class="radio-card">
+                        <input type="radio" name="radioCardSizeDemo" />
+                        <span>Option</span>
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -4424,7 +4420,7 @@
                   <table class="spec-table">
                     <thead>
                       <tr>
-                        <th>参数</th>
+                        <th>属性</th>
                         <th>说明</th>
                         <th>类型</th>
                         <th>默认值</th>
@@ -4433,152 +4429,50 @@
                     <tbody>
                       <tr>
                         <td><code>value</code></td>
-                        <td>当前受控时间值；范围选择为起止时间数组，UTC 组合可携带时区值。</td>
-                        <td><code>string | Date | [string, string] | { timezone: string, time: string }</code></td>
+                        <td>当前选中的值。</td>
+                        <td><code>string | number | boolean</code></td>
                         <td><code>-</code></td>
                       </tr>
                       <tr>
                         <td><code>defaultValue</code></td>
-                        <td>默认时间值，非受控场景初始化展示。</td>
-                        <td><code>string | Date | [string, string] | { timezone: string, time: string }</code></td>
+                        <td>默认选中的值。</td>
+                        <td><code>string | number | boolean</code></td>
                         <td><code>-</code></td>
                       </tr>
                       <tr>
-                        <td><code>range</code></td>
-                        <td>是否启用时间范围选择；范围触发器为一个胶囊，内部分为开始、分隔符、结束和 icon 区。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>false</code></td>
+                        <td><code>options</code></td>
+                        <td>选项列表，适合通过配置生成 RadioGroup；单个选项可通过 <code>disabled</code> 声明不可选。</td>
+                        <td><code>Array&lt;RadioOption&gt;</code></td>
+                        <td><code>[]</code></td>
                       </tr>
                       <tr>
-                        <td><code>autoSwapRange</code></td>
-                        <td>范围确认时，若开始时间大于结束时间，是否自动交换起止值。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>true</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>allowClear</code></td>
-                        <td>是否允许清除已选择时间；清空按钮仅在有值且 hover 时出现，点击后不自动展开面板。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>true</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>format</code></td>
-                        <td>展示与输出格式，默认精确到秒。</td>
-                        <td><code>HH:mm:ss | HH:mm | hh:mm A</code></td>
-                        <td><code>HH:mm:ss</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>precision</code></td>
-                        <td>时间选择精度，用于控制小时、分钟、秒列。</td>
-                        <td><code>hour | minute | second</code></td>
-                        <td><code>second</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>step</code></td>
-                        <td>时、分、秒选项步长；手动输入也需要符合对应步长。</td>
-                        <td><code>{ hour?: number, minute?: number, second?: number }</code></td>
-                        <td><code>{ hour: 1, minute: 1, second: 1 }</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>use12Hours</code></td>
-                        <td>是否使用 12 小时制并展示 AM / PM 选择。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>false</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>timezone</code></td>
-                        <td>是否展示 UTC 时区选择 tab，与右侧时分秒选择器组合使用。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>false</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>timezoneValue</code></td>
-                        <td>当前 UTC 时区值，选中项打开时应完整露出并位于菜单顶部。</td>
-                        <td><code>string</code></td>
-                        <td><code>UTC+0</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>timezoneOptions</code></td>
-                        <td>可选 UTC 时区列表，默认覆盖 UTC-12 到 UTC+12。</td>
-                        <td><code>string[]</code></td>
-                        <td><code>UTC-12 ... UTC+12</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>placeholder</code></td>
-                        <td>未选择时的提示文案，范围选择可配置起止占位。</td>
-                        <td><code>string | [string, string]</code></td>
-                        <td><code>请选择时间</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>size</code></td>
-                        <td>时间选择器尺寸，切换尺寸仅改变高度与字号，触发器宽度保持一致。</td>
-                        <td><code>small | default | large</code></td>
-                        <td><code>default</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>open</code></td>
-                        <td>控制面板展开状态，展开面板为覆盖关系，不改变页面高度；同一页面内下拉浮层应互斥。</td>
-                        <td><code>boolean</code></td>
+                        <td><code>RadioOption</code></td>
+                        <td>单个选项结构，胶囊型 option 也复用该结构。</td>
+                        <td><code>{ label, value, disabled }</code></td>
                         <td><code>-</code></td>
                       </tr>
                       <tr>
-                        <td><code>disableConfirm</code></td>
-                        <td>是否跳过底部确认操作，选择后直接写入。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>false</code></td>
+                        <td><code>direction</code></td>
+                        <td>排列方向，长文案建议 vertical。</td>
+                        <td><code>horizontal | vertical</code></td>
+                        <td><code>horizontal</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>type</code></td>
+                        <td>单选框展示类型。</td>
+                        <td><code>radio | option</code></td>
+                        <td><code>radio</code></td>
                       </tr>
                       <tr>
                         <td><code>disabled</code></td>
-                        <td>是否禁用时间选择器。</td>
+                        <td>禁用整组或单个选项。</td>
                         <td><code>boolean</code></td>
                         <td><code>false</code></td>
                       </tr>
                       <tr>
-                        <td><code>status</code></td>
-                        <td>校验状态，用于错误或警告反馈。</td>
-                        <td><code>error | warning</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>disabledHours</code></td>
-                        <td>自定义不可选小时。</td>
-                        <td><code>() =&gt; number[]</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>disabledMinutes</code></td>
-                        <td>自定义不可选分钟。</td>
-                        <td><code>(selectedHour) =&gt; number[]</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>disabledSeconds</code></td>
-                        <td>自定义不可选秒。</td>
-                        <td><code>(selectedHour, selectedMinute) =&gt; number[]</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>onSelect</code></td>
-                        <td>面板内选中时间项时触发，不等同于最终确认。</td>
-                        <td><code>(value, timeString) =&gt; void</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
                         <td><code>onChange</code></td>
-                        <td>时间值变化并确认后触发；范围自动交换后返回交换后的值。</td>
-                        <td><code>(value, timeString) =&gt; void</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>onTimezoneChange</code></td>
-                        <td>UTC 时区 tab 选择变化时触发。</td>
-                        <td><code>(timezone) =&gt; void</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>onOpenChange</code></td>
-                        <td>面板展开或收起时触发。</td>
-                        <td><code>(open) =&gt; void</code></td>
+                        <td>选中值变化时触发。</td>
+                        <td><code>(value) =&gt; void</code></td>
                         <td><code>-</code></td>
                       </tr>
                     </tbody>
@@ -4599,139 +4493,69 @@
                     </thead>
                     <tbody>
                       <tr>
-                        <td><code>--time-picker-trigger-width</code></td>
-                        <td><code>260px</code></td>
-                        <td>基础、小、大尺寸触发器统一宽度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-height</code></td>
-                        <td><code>38px</code></td>
-                        <td>默认输入高度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-height-small</code></td>
-                        <td><code>30px</code></td>
-                        <td>Small 尺寸高度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-height-large</code></td>
-                        <td><code>44px</code></td>
-                        <td>Large 尺寸高度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-radius</code></td>
-                        <td><code>10px</code></td>
-                        <td>输入圆角。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-hover-border-color</code></td>
-                        <td><code>#00D157</code></td>
-                        <td>触发器与 UTC 时区 tab hover 边框，无外发光。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-panel-width</code></td>
-                        <td><code>264px</code></td>
-                        <td>基础时间面板宽度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-range-panel-width</code></td>
-                        <td><code>552px</code></td>
-                        <td>范围时间面板宽度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-range-trigger-width</code></td>
-                        <td><code>260px</code></td>
-                        <td>范围选择胶囊触发器宽度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-range-segment-padding-x</code></td>
+                        <td><code>--radio-size</code></td>
                         <td><code>14px</code></td>
-                        <td>范围选择开始和结束输入段左右内距。</td>
+                        <td>Radio 圆点尺寸。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-range-action-width</code></td>
-                        <td><code>36px</code></td>
-                        <td>范围选择右侧 icon / clear 独立区域宽度。</td>
+                        <td><code>--radio-dot-size</code></td>
+                        <td><code>6px</code></td>
+                        <td>选中态内部圆点尺寸。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-minute-panel-width</code></td>
-                        <td><code>182px</code></td>
-                        <td>小时分钟两列面板宽度。</td>
+                        <td><code>--radio-border-color</code></td>
+                        <td><code>#CFD6DC</code></td>
+                        <td>默认圆点边框。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-minute-column-width</code></td>
-                        <td><code>74px</code></td>
-                        <td>小时分钟选择器每列宽度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-panel-radius</code></td>
-                        <td><code>12px</code></td>
-                        <td>下拉面板圆角。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-column-gap</code></td>
-                        <td><code>8px</code></td>
-                        <td>小时、分钟、秒列间距。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-option-height</code></td>
-                        <td><code>30px</code></td>
-                        <td>时间选项高度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-list-height</code></td>
-                        <td><code>208px</code></td>
-                        <td>时间滚动列表最大高度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-active-color</code></td>
+                        <td><code>--radio-color-checked</code></td>
                         <td><code>#00D157</code></td>
-                        <td>聚焦、确认按钮与选中项颜色。</td>
+                        <td>选中态填充与边框。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-hover-bg</code></td>
-                        <td><code>#F5F6F7</code></td>
-                        <td>时间选项 hover 背景。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--time-picker-focus-shadow</code></td>
+                        <td><code>--radio-focus-shadow</code></td>
                         <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
-                        <td>聚焦外发光。</td>
+                        <td>选中或聚焦外发光。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-scrollbar-width</code></td>
-                        <td><code>4px</code></td>
-                        <td>时间列表弱化滚动条宽度。</td>
+                        <td><code>--radio-text-color</code></td>
+                        <td><code>#4F565D</code></td>
+                        <td>默认文本。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-utc-zone-width</code></td>
-                        <td><code>98px</code></td>
-                        <td>UTC 时区 tab 宽度。</td>
+                        <td><code>--radio-text-checked</code></td>
+                        <td><code>#1A1D1F</code></td>
+                        <td>选中态文本。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-utc-trigger-height</code></td>
-                        <td><code>40px</code></td>
-                        <td>UTC 时区 tab 按钮高度，与时间 tab 垂直对齐。</td>
+                        <td><code>--radio-hover-bg</code></td>
+                        <td><code>#F5F6F8</code></td>
+                        <td>普通 Radio hover 背景。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-utc-gap</code></td>
-                        <td><code>8px</code></td>
-                        <td>UTC 时区 tab 与时分秒 tab 间距。</td>
+                        <td><code>--radio-option-height</code></td>
+                        <td><code>28px</code></td>
+                        <td>胶囊型选项最小高度。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-utc-dropdown-width</code></td>
-                        <td><code>116px</code></td>
-                        <td>UTC 时区下拉菜单宽度。</td>
+                        <td><code>--radio-option-checked-bg</code></td>
+                        <td><code>rgba(0, 209, 87, 0.08)</code></td>
+                        <td>胶囊型选项选中背景。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-utc-list-padding-bottom</code></td>
-                        <td><code>178px</code></td>
-                        <td>UTC 时区列表底部滚动缓冲，保证选中项可完整露出在顶部。</td>
+                        <td><code>--radio-radius</code></td>
+                        <td><code>999px</code></td>
+                        <td>普通 hover 区与胶囊选项圆角。</td>
                       </tr>
                       <tr>
-                        <td><code>--time-picker-disabled-opacity</code></td>
+                        <td><code>--radio-disabled-opacity</code></td>
                         <td><code>0.6</code></td>
-                        <td>禁用态透明度。</td>
+                        <td>普通 Radio 禁用态透明度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--radio-option-disabled-opacity</code></td>
+                        <td><code>0.6</code></td>
+                        <td>胶囊型选项禁用态透明度。</td>
                       </tr>
                     </tbody>
                   </table>
@@ -4739,7 +4563,18 @@
               </section>
             </article>
 
-            
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
         </section>
       </main>
@@ -4963,29 +4798,143 @@
 
       const navButtons = document.querySelectorAll(".nav-button");
       const pageTriggers = document.querySelectorAll("[data-page]");
-      const panels = document.querySelectorAll("[data-panel]");
-
-      const switchPage = (page, behavior = "smooth") => {
-        navButtons.forEach((item) => {
-          const isCurrent = item.dataset.page === page;
-          if (isCurrent) {
-            item.setAttribute("aria-current", "page");
-          } else {
-            item.removeAttribute("aria-current");
-          }
-        });
-        panels.forEach((panel) => {
-          panel.hidden = panel.dataset.panel !== page;
-        });
-        centerCurrentNavItem(behavior);
-      };
 
       centerCurrentNavItem("auto");
 
       pageTriggers.forEach((button) => {
         button.addEventListener("click", () => {
-          switchPage(button.dataset.page);
+          const page = button.dataset.page;
+          if (page) window.location.href = `index.html#${page}`;
         });
+      });
+
+      const colorPaletteSelect = document.querySelector("[data-color-palette-select]");
+      const colorPaletteTrigger = document.querySelector("[data-color-palette-trigger]");
+      const colorPaletteMenu = document.querySelector("[data-color-palette-menu]");
+      const colorPaletteValue = document.querySelector("[data-color-palette-value]");
+      const colorPaletteOptions = Array.from(document.querySelectorAll("[data-color-palette-option]"));
+      const colorPaletteSection = document.querySelector(".color-palette-section");
+      const colorBrandMeta = document.querySelector("[data-color-brand-meta]");
+      const functionalColorMeta = document.querySelector("[data-functional-color-meta]");
+      const colorBrandPalette = document.querySelector('[data-color-palette="brand"]');
+      const colorBrandRamp = colorBrandPalette?.querySelector("[data-color-palette-ramp]");
+      const testSuccessPalette = document.querySelector("[data-test-success-palette]");
+      const colorPaletteTitle = colorBrandPalette?.querySelector("[data-color-palette-title]");
+      const colorPaletteDesc = colorBrandPalette?.querySelector("[data-color-palette-desc]");
+      const colorPaletteBase = colorBrandPalette?.querySelector("[data-color-palette-base]");
+      const colorPaletteLevels = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+      const colorPaletteSets = {
+        "iQIYI标准色": {
+          title: "iQIYI Green",
+          desc: "iQIYI 标准品牌色，500 固定为 #00D157。",
+          base: "iqiyi-500",
+          tokenPrefix: "iqiyi",
+          colors: ["#EFFFF6", "#D8FFE8", "#B5FFD1", "#7DFFB0", "#35F47C", "#00D157", "#00B84B", "#008F3F", "#067037", "#075A2F"],
+        },
+        "IQ Buddy主题色": {
+          title: "IQ Buddy Green",
+          desc: "IQ Buddy 主题品牌色，500 固定为 #22B573。",
+          base: "iq-buddy-500",
+          tokenPrefix: "iq-buddy",
+          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
+        },
+        "test主题色": {
+          title: "Test Blue",
+          desc: "test 主题品牌色，500 固定为 #2672FF。",
+          base: "test-500",
+          tokenPrefix: "test",
+          colors: ["#EEF5FF", "#D9E8FF", "#B8D4FF", "#88B9FF", "#5796FF", "#2672FF", "#1358E6", "#0F45B8", "#12388F", "#142F73"],
+        },
+      };
+
+      const closeColorPaletteMenu = () => {
+        colorPaletteTrigger?.setAttribute("aria-expanded", "false");
+        if (colorPaletteMenu) {
+          colorPaletteMenu.hidden = true;
+        }
+      };
+
+      const applyColorPalette = (paletteName) => {
+        const activePaletteName = colorPaletteSets[paletteName] ? paletteName : "IQ Buddy主题色";
+        const palette = colorPaletteSets[activePaletteName];
+        colorPaletteSection?.setAttribute("data-active-color-palette", activePaletteName);
+        if (colorPaletteValue) {
+          colorPaletteValue.textContent = activePaletteName;
+        }
+        if (colorPaletteTitle) {
+          colorPaletteTitle.textContent = palette.title;
+        }
+        if (colorPaletteDesc) {
+          colorPaletteDesc.textContent = palette.desc;
+        }
+        if (colorPaletteBase) {
+          colorPaletteBase.textContent = palette.base;
+        }
+        if (colorBrandMeta) {
+          colorBrandMeta.textContent = `品牌色 ${palette.colors[5]}`;
+        }
+        const shouldShowTestSuccess = activePaletteName === "test主题色";
+        if (functionalColorMeta) {
+          functionalColorMeta.textContent = shouldShowTestSuccess
+            ? "功能色覆盖红 / 黄 / 蓝 / 绿"
+            : "功能色覆盖红 / 黄 / 蓝";
+        }
+        if (testSuccessPalette) {
+          testSuccessPalette.hidden = !shouldShowTestSuccess;
+        }
+        colorBrandRamp?.setAttribute("aria-label", `${activePaletteName}品牌色色板`);
+        colorBrandRamp?.querySelectorAll(".color-swatch").forEach((swatch, index) => {
+          const hex = palette.colors[index];
+          const isDark = index >= 5;
+          swatch.style.setProperty("--swatch", hex.toLowerCase());
+          swatch.style.setProperty("--swatch-ink", isDark ? "#ffffff" : "#0b0d0f");
+          const token = swatch.querySelector(".color-token");
+          const value = swatch.querySelector(".color-hex");
+          if (token) {
+            token.textContent = `${palette.tokenPrefix}-${colorPaletteLevels[index]}`;
+          }
+          if (value) {
+            value.textContent = hex;
+          }
+        });
+        colorPaletteOptions.forEach((item) => {
+          item.setAttribute(
+            "aria-selected",
+            String((item.dataset.colorPaletteOption || item.textContent.trim()) === activePaletteName),
+          );
+        });
+      };
+
+      colorPaletteTrigger?.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isOpen = colorPaletteTrigger.getAttribute("aria-expanded") === "true";
+        colorPaletteTrigger.setAttribute("aria-expanded", String(!isOpen));
+        if (colorPaletteMenu) {
+          colorPaletteMenu.hidden = isOpen;
+        }
+      });
+
+      colorPaletteOptions.forEach((option) => {
+        option.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const value = option.dataset.colorPaletteOption || option.textContent.trim();
+          applyColorPalette(value);
+          closeColorPaletteMenu();
+        });
+      });
+
+      applyColorPalette("iQIYI标准色");
+
+      document.addEventListener("click", (event) => {
+        if (!colorPaletteSelect?.contains(event.target)) {
+          closeColorPaletteMenu();
+        }
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          closeColorPaletteMenu();
+        }
       });
 
       const loadingDemoBtn = document.getElementById("loadingDemoBtn");
@@ -5187,7 +5136,6 @@
           trigger.setAttribute("aria-expanded", String(isOpen));
           if (dropdown) dropdown.hidden = !isOpen;
           if (isOpen) {
-            utcZoneDemos.forEach((item) => closeUtcZoneDemo(item));
             if (searchInput && valueNode) {
               searchInput.placeholder = valueNode.classList.contains("select-placeholder")
                 ? placeholder
@@ -5564,7 +5512,6 @@
           trigger.classList.add("open");
           trigger.setAttribute("aria-expanded", "true");
           if (dropdown) dropdown.hidden = false;
-          utcZoneDemos.forEach((item) => closeUtcZoneDemo(item));
           dateDemos.forEach((item) => {
             if (item !== demo) closeDateDemo(item);
           });
@@ -5671,11 +5618,12 @@
       const closeTimeFilterDemo = (demo, options = {}) => {
         if (!demo) return;
         if (options.restoreTime !== false) {
+          demo.dataset.timeFilterEmpty = demo.dataset.committedTimeFilterEmpty || "false";
           demo.dataset.selectedHour = demo.dataset.committedHour || "00";
           demo.dataset.selectedMinute = demo.dataset.committedMinute || "00";
           demo.dataset.selectedSecond = demo.dataset.committedSecond || "00";
           syncTimeFilterValue(demo);
-          syncDateTimeOptions(demo);
+          syncTimeFilterOptions(demo);
         }
         const trigger = demo.querySelector("[data-time-filter-trigger]");
         const dropdown = demo.querySelector(".date-dropdown");
@@ -5684,17 +5632,61 @@
         if (dropdown) dropdown.hidden = true;
       };
 
+      const getTimeFilterValueText = (demo) => {
+        const valueNode = demo.querySelector("[data-time-filter-value]");
+        return valueNode?.matches?.("input") ? valueNode.value.trim() : valueNode?.textContent.trim() || "";
+      };
+
       const syncTimeFilterValue = (demo) => {
         const valueNode = demo.querySelector("[data-time-filter-value]");
         if (!valueNode) return;
-        valueNode.textContent = `${demo.dataset.selectedHour || "00"}:${demo.dataset.selectedMinute || "00"}:${demo.dataset.selectedSecond || "00"}`;
+        const trigger = demo.querySelector("[data-time-filter-trigger]");
+        const clearButton = demo.querySelector("[data-time-filter-clear]");
+        const value =
+          demo.dataset.timeFilterEmpty === "true"
+            ? ""
+            : `${demo.dataset.selectedHour || "00"}:${demo.dataset.selectedMinute || "00"}:${demo.dataset.selectedSecond || "00"}`;
+        if (valueNode.matches?.("input")) {
+          valueNode.value = value;
+        } else {
+          valueNode.textContent = value || "请选择时间";
+          valueNode.classList.toggle("date-placeholder", !value);
+        }
+        trigger?.classList.toggle("has-value", Boolean(value));
+        if (clearButton) clearButton.hidden = !value;
+      };
+
+      const syncTimeFilterOptions = (demo) => {
+        syncDateTimeOptions(demo);
+        if (demo.dataset.timeFilterEmpty === "true") {
+          demo.querySelectorAll(".date-time-option.active").forEach((option) => option.classList.remove("active"));
+        }
+      };
+
+      const scrollTimeFilterActiveOptions = (demo, options = {}) => {
+        const behavior = options.smooth ? "smooth" : "auto";
+        demo.querySelectorAll(".date-time-list").forEach((list) => {
+          const active = list.querySelector(".date-time-option.active");
+          if (!active) {
+            list.scrollTo({ top: 0, behavior });
+            return;
+          }
+          const listRect = list.getBoundingClientRect();
+          const activeRect = active.getBoundingClientRect();
+          list.scrollTo({
+            top: list.scrollTop + activeRect.top - listRect.top,
+            behavior,
+          });
+        });
       };
 
       timeFilterDemos.forEach((demo) => {
-        const value = demo.querySelector("[data-time-filter-value]")?.textContent.trim() || "00:00:00";
+        const value = getTimeFilterValueText(demo) || "00:00:00";
         const [, hour = "00", minute = "00", second = "00"] =
           value.match(/\b(\d{2}):(\d{2})(?::(\d{2}))?\b/) || [];
 
+        demo.dataset.timeFilterEmpty = value ? "false" : "true";
+        demo.dataset.committedTimeFilterEmpty = demo.dataset.timeFilterEmpty;
         demo.dataset.selectedHour = hour;
         demo.dataset.selectedMinute = minute;
         demo.dataset.selectedSecond = second;
@@ -5702,6 +5694,8 @@
         demo.dataset.committedMinute = minute;
         demo.dataset.committedSecond = second;
         renderDateTimeOptions(demo);
+        syncTimeFilterValue(demo);
+        syncTimeFilterOptions(demo);
 
         demo.querySelector("[data-time-filter-trigger]")?.addEventListener("click", () => {
           const trigger = demo.querySelector("[data-time-filter-trigger]");
@@ -5714,7 +5708,10 @@
           trigger.classList.add("open");
           trigger.setAttribute("aria-expanded", "true");
           if (dropdown) dropdown.hidden = false;
-          utcZoneDemos.forEach((item) => closeUtcZoneDemo(item));
+          requestAnimationFrame(() => {
+            scrollTimeFilterActiveOptions(demo);
+            requestAnimationFrame(() => scrollTimeFilterActiveOptions(demo));
+          });
           timeFilterDemos.forEach((item) => {
             if (item !== demo) closeTimeFilterDemo(item);
           });
@@ -5725,14 +5722,27 @@
           if (!option || !demo.contains(option)) return;
           event.stopPropagation();
           const unit = option.dataset.timeUnitValue;
+          demo.dataset.timeFilterEmpty = "false";
           if (unit === "hour") demo.dataset.selectedHour = option.dataset.timeValue || "00";
           if (unit === "minute") demo.dataset.selectedMinute = option.dataset.timeValue || "00";
           if (unit === "second") demo.dataset.selectedSecond = option.dataset.timeValue || "00";
-          syncDateTimeOptions(demo);
+          syncTimeFilterValue(demo);
+          syncTimeFilterOptions(demo);
+          requestAnimationFrame(() => scrollTimeFilterActiveOptions(demo, { smooth: true }));
+        });
+
+        demo.querySelector("[data-time-filter-clear]")?.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          demo.dataset.timeFilterEmpty = "true";
+          syncTimeFilterValue(demo);
+          syncTimeFilterOptions(demo);
+          requestAnimationFrame(() => scrollTimeFilterActiveOptions(demo, { smooth: true }));
         });
 
         demo.querySelector("[data-time-filter-confirm]")?.addEventListener("click", (event) => {
           event.stopPropagation();
+          demo.dataset.committedTimeFilterEmpty = demo.dataset.timeFilterEmpty || "false";
           demo.dataset.committedHour = demo.dataset.selectedHour || "00";
           demo.dataset.committedMinute = demo.dataset.selectedMinute || "00";
           demo.dataset.committedSecond = demo.dataset.selectedSecond || "00";
@@ -5747,7 +5757,6 @@
       });
 
       const timePickerDemos = document.querySelectorAll("[data-time-picker-demo]");
-      const utcZoneDemos = document.querySelectorAll("[data-utc-zone-demo]");
       const capitalizeTimeKey = (value) => value.charAt(0).toUpperCase() + value.slice(1);
       const timeDataKey = (state, panel, unit) =>
         `${state}${capitalizeTimeKey(panel)}${capitalizeTimeKey(unit)}`;
@@ -5755,11 +5764,6 @@
 
       const getTimePanels = (demo) =>
         demo.dataset.timeMode === "range" ? ["start", "end"] : ["single"];
-
-      const getTimeStep = (demo, unit) => {
-        const stepKey = unit === "minute" ? "timeMinuteStep" : "timeSecondStep";
-        return Math.max(1, Math.min(60, Number(demo.dataset[stepKey] || 1)));
-      };
 
       const parseTimeParts = (value, hourCycle = "24") => {
         const match = String(value || "").match(/(\d{1,2}):(\d{2})(?::(\d{2}))?\s*(AM|PM)?/i);
@@ -5791,21 +5795,15 @@
           if (!match) return false;
           const hour = Number(match[1]);
           if (hour < 1 || hour > 12) return false;
-          if (Number(match[2]) % getTimeStep(demo, "minute") !== 0) return false;
-          if (precision !== "second") return true;
-          return Boolean(match[3]) && Number(match[3]) % getTimeStep(demo, "second") === 0;
+          return precision === "second" ? Boolean(match[3]) : true;
         }
-        const match = text.match(
+        const pattern =
           precision === "hour"
             ? /^([01]\d|2[0-3])$/
             : precision === "minute"
               ? /^([01]\d|2[0-3]):([0-5]\d)$/
-              : /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/,
-        );
-        if (!match) return false;
-        if (precision === "hour") return true;
-        if (Number(match[2]) % getTimeStep(demo, "minute") !== 0) return false;
-        return precision !== "second" || Number(match[3]) % getTimeStep(demo, "second") === 0;
+              : /^([01]\d|2[0-3]):([0-5]\d):([0-5]\d)$/;
+        return pattern.test(text);
       };
 
       const getTimeValueNodeText = (node) =>
@@ -5823,32 +5821,6 @@
         demo.dataset[timeDataKey(state, panel, "minute")] = time.minute || "00";
         demo.dataset[timeDataKey(state, panel, "second")] = time.second || "00";
         demo.dataset[timeDataKey(state, panel, "period")] = time.period || "AM";
-      };
-
-      const getTimeOrderValue = (demo, time) => {
-        let hour = Number(time.hour || 0);
-        if (demo.dataset.timeHourCycle === "12") {
-          hour %= 12;
-          if (time.period === "PM") hour += 12;
-        }
-        return hour * 3600 + Number(time.minute || 0) * 60 + Number(time.second || 0);
-      };
-
-      const normalizeSelectedTimeRange = (demo) => {
-        if (demo.dataset.timeMode !== "range") return;
-        if (
-          demo.dataset[timeEmptyKey("selected", "start")] === "true" ||
-          demo.dataset[timeEmptyKey("selected", "end")] === "true"
-        ) {
-          return;
-        }
-
-        const startTime = getSelectedTime(demo, "start");
-        const endTime = getSelectedTime(demo, "end");
-        if (getTimeOrderValue(demo, startTime) <= getTimeOrderValue(demo, endTime)) return;
-
-        setTimeState(demo, "start", endTime);
-        setTimeState(demo, "end", startTime);
       };
 
       const restoreTimePickerState = (demo) => {
@@ -5889,14 +5861,6 @@
           const hasValue = Boolean(input?.value.trim());
           control.classList.toggle("has-value", hasValue);
           if (clearButton) clearButton.hidden = !hasValue;
-        });
-        demo.querySelectorAll(".time-range-inputs").forEach((range) => {
-          const hasRangeValue = Array.from(range.querySelectorAll("[data-time-picker-range-input]")).some((input) =>
-            Boolean(input.value.trim()),
-          );
-          const clearButton = range.querySelector('[data-time-picker-range-clear="range"]');
-          range.classList.toggle("has-value", hasRangeValue);
-          if (clearButton) clearButton.hidden = !hasRangeValue;
         });
       };
 
@@ -6005,10 +5969,7 @@
               );
             }
             if (unit === "minute" || unit === "second") {
-              const step = getTimeStep(demo, unit);
-              values = Array.from({ length: Math.ceil(60 / step) }, (_, index) =>
-                String(index * step).padStart(2, "0"),
-              ).filter((value) => Number(value) < 60);
+              values = Array.from({ length: 60 }, (_, index) => String(index).padStart(2, "0"));
             }
             list.innerHTML = "";
             values.forEach((value) => {
@@ -6056,35 +6017,30 @@
         renderTimePickerOptions(demo);
         syncTimePickerValue(demo);
 
-        const openTimePickerTrigger = (trigger) => {
-          const dropdown = demo.querySelector(".date-dropdown");
-          if (!trigger || trigger.disabled || trigger.classList.contains("disabled")) return;
-          const rangePanel = trigger.dataset.timePickerRangeValue;
-          if (rangePanel) demo.dataset.activePanel = rangePanel;
-          const isOpen = !trigger.classList.contains("open");
-          if (!isOpen && !rangePanel && !trigger.querySelector?.(".time-input-field")) {
-            closeTimePickerDemo(demo);
-            return;
-          }
-          demo.querySelectorAll("[data-time-picker-trigger]").forEach((item) => {
-            item.classList.toggle("open", item === trigger);
-            item.setAttribute("aria-expanded", String(item === trigger));
-          });
-          syncTimePickerOptions(demo);
-          if (dropdown) dropdown.hidden = false;
-          utcZoneDemos.forEach((item) => closeUtcZoneDemo(item));
-          requestAnimationFrame(() => {
-            scrollTimePickerActiveOptions(demo);
-            requestAnimationFrame(() => scrollTimePickerActiveOptions(demo));
-          });
-          timePickerDemos.forEach((item) => {
-            if (item !== demo) closeTimePickerDemo(item);
-          });
-        };
-
         demo.querySelectorAll("[data-time-picker-trigger]").forEach((trigger) => {
           const openTimePicker = () => {
-            openTimePickerTrigger(trigger);
+            const dropdown = demo.querySelector(".date-dropdown");
+            if (trigger?.disabled || trigger.classList.contains("disabled")) return;
+            const rangePanel = trigger.dataset.timePickerRangeValue;
+            if (rangePanel) demo.dataset.activePanel = rangePanel;
+            const isOpen = !trigger.classList.contains("open");
+            if (!isOpen && !rangePanel && !trigger.querySelector?.(".time-input-field")) {
+              closeTimePickerDemo(demo);
+              return;
+            }
+            demo.querySelectorAll("[data-time-picker-trigger]").forEach((item) => {
+              item.classList.toggle("open", item === trigger);
+              item.setAttribute("aria-expanded", String(item === trigger));
+            });
+            syncTimePickerOptions(demo);
+            if (dropdown) dropdown.hidden = false;
+            requestAnimationFrame(() => {
+              scrollTimePickerActiveOptions(demo);
+              requestAnimationFrame(() => scrollTimePickerActiveOptions(demo));
+            });
+            timePickerDemos.forEach((item) => {
+              if (item !== demo) closeTimePickerDemo(item);
+            });
           };
 
           trigger.addEventListener("click", openTimePicker);
@@ -6165,28 +6121,10 @@
         });
 
         demo.querySelectorAll("[data-time-picker-clear]").forEach((button) => {
-          button.addEventListener("pointerdown", (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-          });
-
           button.addEventListener("click", (event) => {
             event.preventDefault();
             event.stopPropagation();
             const panel = button.dataset.timePickerRangeClear || "single";
-            if (panel === "range") {
-              getTimePanels(demo).forEach((rangePanel) => {
-                const input = demo.querySelector(`[data-time-picker-range-input="${rangePanel}"]`);
-                if (input) input.value = "";
-                demo.dataset[timeEmptyKey("selected", rangePanel)] = "true";
-                demo.dataset[timeEmptyKey("committed", rangePanel)] = "true";
-              });
-              syncRangeEmptyState();
-              syncTimePickerValue(demo);
-              syncTimePickerOptions(demo);
-              demo.dataset.activePanel = "start";
-              return;
-            }
             const input =
               panel === "single"
                 ? demo.querySelector("[data-time-picker-input]")
@@ -6202,11 +6140,6 @@
 
         demo.querySelector("[data-time-picker-confirm]")?.addEventListener("click", (event) => {
           event.stopPropagation();
-          const shouldOpenEndPanel =
-            demo.dataset.timeMode === "range" &&
-            demo.dataset.activePanel === "start" &&
-            demo.dataset[timeEmptyKey("selected", "end")] === "true";
-          normalizeSelectedTimeRange(demo);
           getTimePanels(demo).forEach((panel) => {
             setTimeState(demo, panel, getSelectedTime(demo, panel), "committed");
             demo.dataset[timeEmptyKey("committed", panel)] = demo.dataset[timeEmptyKey("selected", panel)] || "false";
@@ -6214,91 +6147,12 @@
           demo.dataset.timeEmpty = getTimePanels(demo).every((panel) => demo.dataset[timeEmptyKey("selected", panel)] === "true") ? "true" : "false";
           demo.dataset.committedEmpty = demo.dataset.timeEmpty;
           syncTimePickerValue(demo);
-          if (shouldOpenEndPanel) {
-            const endTrigger = demo.querySelector('[data-time-picker-range-value="end"]');
-            openTimePickerTrigger(endTrigger);
-            return;
-          }
           closeTimePickerDemo(demo, { restoreTime: false });
         });
 
         demo.querySelector("[data-time-picker-cancel]")?.addEventListener("click", (event) => {
           event.stopPropagation();
           closeTimePickerDemo(demo);
-        });
-      });
-
-      const closeUtcZoneDemo = (demo) => {
-        const trigger = demo.querySelector("[data-utc-zone-trigger]");
-        const dropdown = demo.querySelector(".utc-zone-dropdown");
-        trigger?.classList.remove("open");
-        trigger?.setAttribute("aria-expanded", "false");
-        if (dropdown) dropdown.hidden = true;
-      };
-
-      const closeFloatingDemosForUtc = () => {
-        selectDemos.forEach((item) => closeSelectDemo(item));
-        dateDemos.forEach((item) => closeDateDemo(item));
-        timeFilterDemos.forEach((item) => closeTimeFilterDemo(item));
-        timePickerDemos.forEach((item) => closeTimePickerDemo(item));
-        periodDemos.forEach((item) => closePeriodDemo(item));
-      };
-
-      utcZoneDemos.forEach((demo) => {
-        const trigger = demo.querySelector("[data-utc-zone-trigger]");
-        const valueNode = demo.querySelector("[data-utc-zone-value]");
-        const optionsNode = demo.querySelector("[data-utc-zone-options]");
-        const dropdown = demo.querySelector(".utc-zone-dropdown");
-        const formatUtcZone = (offset) => `UTC${offset >= 0 ? "+" : ""}${offset}`;
-        const syncUtcZoneOptions = () => {
-          demo.querySelectorAll("[data-utc-zone-option]").forEach((option) => {
-            option.classList.toggle("active", option.dataset.utcZoneOption === demo.dataset.utcZone);
-            option.setAttribute("aria-selected", String(option.dataset.utcZoneOption === demo.dataset.utcZone));
-          });
-        };
-        const scrollUtcZoneActiveToTop = () => {
-          const active = optionsNode.querySelector(".utc-zone-option.active");
-          if (!active) return;
-          const listRect = optionsNode.getBoundingClientRect();
-          const activeRect = active.getBoundingClientRect();
-          optionsNode.scrollTop += activeRect.top - listRect.top;
-        };
-
-        optionsNode.innerHTML = "";
-        Array.from({ length: 25 }, (_, index) => index - 12).forEach((offset) => {
-          const value = formatUtcZone(offset);
-          const option = document.createElement("button");
-          option.className = "utc-zone-option";
-          option.type = "button";
-          option.role = "option";
-          option.dataset.utcZoneOption = value;
-          option.textContent = value;
-          optionsNode.appendChild(option);
-        });
-        syncUtcZoneOptions();
-
-        trigger?.addEventListener("click", (event) => {
-          event.stopPropagation();
-          const isOpen = !trigger.classList.contains("open");
-          utcZoneDemos.forEach((item) => {
-            if (item !== demo) closeUtcZoneDemo(item);
-          });
-          if (isOpen) closeFloatingDemosForUtc();
-          trigger.classList.toggle("open", isOpen);
-          trigger.setAttribute("aria-expanded", String(isOpen));
-          if (dropdown) dropdown.hidden = !isOpen;
-          if (isOpen) requestAnimationFrame(scrollUtcZoneActiveToTop);
-        });
-
-        optionsNode?.addEventListener("click", (event) => {
-          const option = event.target.closest("[data-utc-zone-option]");
-          if (!option || !optionsNode.contains(option)) return;
-          event.stopPropagation();
-          demo.dataset.utcZone = option.dataset.utcZoneOption;
-          if (valueNode) valueNode.textContent = demo.dataset.utcZone;
-          syncUtcZoneOptions();
-          scrollUtcZoneActiveToTop();
-          closeUtcZoneDemo(demo);
         });
       });
 
@@ -6316,6 +6170,7 @@
             panels.forEach((panel) => {
               panel.hidden = panel.dataset.rangeScopePanel !== tab.dataset.rangeScopeTab;
             });
+            scheduleSelectTagRender();
           });
         });
       });
@@ -6333,6 +6188,12 @@
 
         if (preset === "last30") {
           start.setDate(today.getDate() - 29);
+        }
+
+        const agoMatch = String(preset || "").match(/^ago(\d+)$/);
+        if (agoMatch) {
+          start.setDate(today.getDate() - Number(agoMatch[1]));
+          end.setDate(today.getDate() - Number(agoMatch[1]));
         }
 
         const recentMatch = String(preset || "").match(/^recent(\d+)$/);
@@ -6586,7 +6447,6 @@
           const isOpen = trigger.classList.toggle("open");
           trigger.setAttribute("aria-expanded", String(isOpen));
           if (dropdown) dropdown.hidden = !isOpen;
-          if (isOpen) utcZoneDemos.forEach((item) => closeUtcZoneDemo(item));
         });
 
         demo.querySelectorAll(".date-nav-btn").forEach((button) => {
@@ -6665,9 +6525,6 @@
         });
         timePickerDemos.forEach((demo) => {
           if (!demo.contains(event.target)) closeTimePickerDemo(demo);
-        });
-        utcZoneDemos.forEach((demo) => {
-          if (!demo.contains(event.target)) closeUtcZoneDemo(demo);
         });
       });
 

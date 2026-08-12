@@ -1,0 +1,2048 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>滑块 Slider - IQB Design</title>
+    <style>
+      :root{--brand-500:#00d157;--brand-rgb:0,209,87;--gray-900:#14171a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--gray-900)}.app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--gray-200)}.brand{color:var(--gray-900);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--gray-600);font-size:13px}.workspace{display:grid;grid-template-columns:300px 1fr}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--gray-200);background:var(--gray-50)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--gray-500);font-size:12px}.nav-category-count{margin-left:6px}.nav-button{min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:6px;color:var(--gray-700);font-size:13px;text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--brand-500);background:rgb(var(--brand-rgb)/.08)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--brand-500);font-size:12px;font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--gray-600);font-size:14px;line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--gray-200)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--gray-200);border-radius:8px}.slider{width:min(100%,420px);padding:14px 4px}.track{height:6px;border-radius:999px;background:linear-gradient(90deg,var(--brand-500) 0 62%,var(--gray-200) 62%)}.thumb{width:18px;height:18px;margin-top:-12px;margin-left:62%;border:3px solid var(--brand-500);border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgb(var(--brand-rgb)/.12)}.slider-meta{display:flex;justify-content:space-between;margin-top:12px;color:var(--gray-500);font-size:12px}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--gray-200)}.content{padding:28px 20px 56px}}
+      /* Shared side navigation */
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        overflow: hidden;
+      }
+      .app-shell {
+        height: 100vh;
+      }
+      .content {
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+      }
+      .workspace {
+        grid-template-columns: 300px minmax(0, 1fr);
+        min-height: 0;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-width: 0;
+        min-height: 0;
+        padding: 22px 18px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-gutter: stable;
+        scrollbar-color: var(--gray-300, #d4d9de) transparent;
+        scrollbar-width: thin;
+        background: var(--white, #ffffff);
+        border-right: 1px solid var(--gray-200);
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--gray-300, #d4d9de);
+        border-radius: 999px;
+      }
+      .nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 0;
+        padding: 0 0 calc((100vh - var(--topbar-height, 60px)) / 2);
+        list-style: none;
+      }
+      .nav-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .nav-list > .nav-section:nth-child(2) {
+        margin-top: -16px;
+      }
+      .nav-sublist {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .nav-category {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
+        padding: 0 12px 4px;
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .nav-category-count {
+        margin-left: 0;
+        color: var(--gray-400, #a5adb6);
+        font-weight: 400;
+      }
+      .nav-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 40px;
+        padding: 0 12px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm, 6px);
+        cursor: pointer;
+        text-align: left;
+        text-decoration: none;
+      }
+      .nav-button:hover {
+        color: var(--gray-950, #0b0d0f);
+        background: var(--gray-50);
+      }
+      .nav-button[aria-current=page] {
+        color: var(--brand-500);
+        background: var(--gray-100);
+      }
+      .nav-label {
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar-footer {
+        margin-top: auto;
+        padding: 14px 6px 0;
+        color: var(--gray-500);
+        border-top: 1px solid var(--gray-200);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      @media (max-width: 860px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          flex-direction: row;
+          align-items: center;
+          gap: 12px;
+          width: 100%;
+          min-height: auto;
+          max-height: none;
+          padding: 12px 14px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          border-right: 0;
+          border-bottom: 1px solid var(--gray-200);
+        }
+        .sidebar-footer {
+          display: none;
+        }
+        .nav-list,
+        .nav-section,
+        .nav-sublist {
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+        }
+        .nav-list > .nav-section:nth-child(2) {
+          margin-top: -16px;
+        }
+        .nav-category {
+          padding: 0 2px;
+          white-space: nowrap;
+        }
+        .nav-button {
+          width: auto;
+          min-height: 36px;
+          padding: 0 12px;
+        }
+
+        .nav-list {
+          padding: 0;
+        }
+      }
+      /* Shared top navigation */
+      :root {
+        --brand-50: #effff6;
+        --brand-100: #d8ffe8;
+        --brand-200: #b5ffd1;
+        --brand-300: #7dffb0;
+        --brand-400: #35f47c;
+        --brand-600: #00b84b;
+        --brand-700: #008f3f;
+        --brand-800: #067037;
+        --brand-900: #075a2f;
+        --brand-text: #00b84b;
+        --brand-text-hover: #008f3f;
+        --brand-border-soft: #bfead2;
+        --brand-border-hover: #8fd9b3;
+        --gray-800: #22262a;
+        --gray-400: #a5adb6;
+        --white: #ffffff;
+        --topbar-height: 60px;
+        --radius-sm: 6px;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        height: var(--topbar-height);
+        padding: 0 24px;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--gray-200);
+        backdrop-filter: blur(12px);
+        z-index: 3;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        min-width: 0;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand-title {
+          display: none;
+        }
+
+        .product-select {
+          width: min(124px, calc(100vw - 92px));
+        }
+      }
+      .canvas {
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+        background: var(--white);
+      }
+
+      .canvas-inner {
+        display: grid;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .content-panel[hidden] {
+        display: none;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--brand-500);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.4;
+        text-transform: none;
+      }
+
+      .doc-title {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        color: var(--gray-600);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .doc-meta-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color: var(--gray-600);
+        background: var(--gray-100);
+        border-radius: 999px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .doc-section {
+        margin: 0;
+        border-top: 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        margin: 0 0 14px;
+        color: var(--gray-900);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .doc-section h3 {
+        margin: 0 0 8px;
+        color: var(--gray-800);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section p {
+        margin: 0;
+        color: var(--gray-600);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .rule-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .rule-list li {
+        position: relative;
+        padding-left: 16px;
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .rule-list li::before {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        content: "";
+        background: var(--brand-500);
+        border-radius: 999px;
+      }
+
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .example-block {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .example-block.full {
+        grid-column: 1 / -1;
+      }
+
+      .slider-demo-stack {
+        display: grid;
+        gap: 18px;
+        margin-top: 16px;
+      }
+
+      .slider-demo-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 80px;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .slider-demo-row.range {
+        grid-template-columns: minmax(0, 1fr) 118px;
+      }
+
+      .slider-value {
+        color: var(--gray-700);
+        font-size: 12px;
+        line-height: 1.4;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .spec-slider {
+        --slider-min: 0%;
+        --slider-max: 62%;
+        --slider-rail-size: 4px;
+        --slider-thumb-size: 16px;
+        --slider-color-track: var(--brand-500);
+        --slider-color-rail: #e7eaee;
+        --slider-color-thumb-bg: #ffffff;
+        --slider-color-disabled: #c7cdd3;
+        --slider-color-disabled-bg: #f0f2f4;
+        --slider-thumb-disabled-hover-shadow: rgba(120, 129, 140, 0.16) 0px 0px 0px 3px;
+        --slider-thumb-hover-scale: 1.18;
+        --slider-thumb-focus-shadow: rgba(0, 209, 87, 0.16) 0px 0px 0px 3px;
+        --slider-thumb-focus-strong-shadow: rgba(0, 209, 87, 0.16) 0px 0px 0px 3px;
+        position: relative;
+        width: 100%;
+        min-height: 40px;
+        padding: 18px 0;
+        cursor: pointer;
+        outline: none;
+        touch-action: none;
+        user-select: none;
+      }
+
+      .spec-slider::before,
+      .spec-slider::after {
+        position: absolute;
+        top: 50%;
+        height: var(--slider-rail-size);
+        content: "";
+        border-radius: 999px;
+        transform: translateY(-50%);
+      }
+
+      .spec-slider::before {
+        right: 0;
+        left: 0;
+        background: var(--slider-color-rail);
+      }
+
+      .spec-slider::after {
+        left: var(--slider-min);
+        width: calc(var(--slider-max) - var(--slider-min));
+        background: var(--slider-color-track);
+      }
+
+      .slider-thumb {
+        position: absolute;
+        top: 50%;
+        left: var(--slider-max);
+        z-index: 1;
+        width: var(--slider-thumb-size);
+        height: var(--slider-thumb-size);
+        background: var(--slider-color-thumb-bg);
+        border: 2px solid var(--slider-color-track);
+        border-radius: 999px;
+        box-shadow: 0 0 0 4px rgb(var(--brand-rgb) / 0.12);
+        transform: translate(-50%, -50%);
+        transition:
+          transform 0.15s ease,
+          box-shadow 0.15s ease,
+          border-color 0.15s ease,
+        background-color 0.15s ease;
+      }
+
+      .slider-thumb[role="slider"] {
+        outline: none;
+      }
+
+      .slider-thumb,
+      .spec-slider[role="slider"] {
+        cursor: grab;
+      }
+
+      .slider-thumb:active,
+      .spec-slider[role="slider"]:active {
+        cursor: grabbing;
+      }
+
+      .slider-thumb.start {
+        left: var(--slider-min);
+      }
+
+      .spec-slider:not(.is-post-drag) .slider-thumb:hover:not(.is-post-drag),
+      .slider-thumb.is-active,
+      .spec-slider[role="slider"].is-active .slider-thumb,
+      .spec-slider.hover .slider-thumb {
+        box-shadow: var(--slider-thumb-focus-shadow);
+        transform: translate(-50%, -50%) scale(var(--slider-thumb-hover-scale));
+      }
+
+      .slider-thumb[role="slider"]:focus-visible:not(.is-post-drag),
+      .spec-slider[role="slider"]:focus-visible:not(.is-post-drag) .slider-thumb,
+      .spec-slider.focus .slider-thumb {
+        box-shadow: var(--slider-thumb-focus-strong-shadow);
+        transform: translate(-50%, -50%) scale(var(--slider-thumb-hover-scale));
+      }
+
+      .spec-slider.disabled {
+        --slider-color-track: var(--slider-color-disabled);
+        --slider-color-rail: var(--slider-color-disabled-bg);
+        cursor: not-allowed;
+      }
+
+      .spec-slider.disabled .slider-thumb {
+        background: #f7f8fa;
+        border-color: var(--slider-color-disabled);
+        box-shadow: none;
+        cursor: not-allowed;
+        transform: translate(-50%, -50%);
+      }
+
+      .spec-slider.disabled .slider-thumb:hover {
+        box-shadow: var(--slider-thumb-disabled-hover-shadow);
+      }
+
+      .slider-ticks {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .slider-tick {
+        position: absolute;
+        top: 50%;
+        left: var(--pos);
+        width: 6px;
+        height: 6px;
+        background: #ffffff;
+        border: 1px solid var(--slider-color-rail);
+        border-radius: 999px;
+        transform: translate(-50%, -50%);
+      }
+
+      .slider-tick.active {
+        border-color: var(--slider-color-track);
+      }
+
+      .slider-marks {
+        display: flex;
+        justify-content: space-between;
+        margin-top: -4px;
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .slider-tooltip {
+        position: absolute;
+        top: -10px;
+        left: var(--slider-max);
+        z-index: 2;
+        padding: 4px 8px;
+        color: #ffffff;
+        background: var(--gray-900);
+        border-radius: 4px;
+        font-size: 12px;
+        line-height: 1.35;
+        transform: translate(-50%, -100%);
+        white-space: nowrap;
+      }
+
+      .slider-tooltip::after {
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        content: "";
+        background: inherit;
+        transform: translateX(-50%) rotate(45deg);
+      }
+
+      .vertical-slider-wrap {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        min-height: 190px;
+      }
+
+      .spec-slider.vertical {
+        width: 40px;
+        height: 170px;
+        min-height: 170px;
+        padding: 0 18px;
+      }
+
+      .spec-slider.vertical::before {
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: var(--slider-rail-size);
+        height: auto;
+        transform: translateX(-50%);
+      }
+
+      .spec-slider.vertical::after {
+        top: var(--slider-max);
+        bottom: var(--slider-min);
+        left: 50%;
+        width: var(--slider-rail-size);
+        height: auto;
+        transform: translateX(-50%);
+      }
+
+      .spec-slider.vertical .slider-thumb {
+        top: var(--slider-max);
+        left: 50%;
+      }
+
+      .spec-slider.small {
+        --slider-rail-size: 3px;
+        --slider-thumb-size: 14px;
+        min-height: 32px;
+        padding: 14px 0;
+      }
+
+      .spec-slider.large {
+        --slider-rail-size: 6px;
+        --slider-thumb-size: 20px;
+        min-height: 48px;
+        padding: 20px 0;
+      }
+
+      .spec-input {
+        width: 76px;
+        height: 38px;
+        padding: 0 12px;
+        color: #1a1d1f;
+        background: #ffffff;
+        border: 1px solid #dde1e5;
+        border-radius: 10px;
+        font-size: 13px;
+        outline: 0;
+        text-align: right;
+      }
+
+      .spec-input[type="number"] {
+        appearance: textfield;
+      }
+
+      .spec-input[type="number"]::-webkit-outer-spin-button,
+      .spec-input[type="number"]::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+
+      .number-input {
+        --slider-input-number-width: 80px;
+        --slider-number-stepper-width: 28px;
+        width: var(--slider-input-number-width);
+        min-height: 38px;
+        display: inline-flex;
+        align-items: stretch;
+        overflow: hidden;
+        background: #ffffff;
+        border: 1px solid #dde1e5;
+        border-radius: 10px;
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease,
+          background-color 0.15s ease;
+      }
+
+      .number-input:hover,
+      .number-input.hover,
+      .number-input.is-hover {
+        border-color: var(--brand-500);
+        background: #ffffff;
+        box-shadow: none;
+      }
+
+      .number-input:focus-within,
+      .number-input.focus,
+      .number-input.is-focus {
+        border-color: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+      }
+
+      .number-input .spec-input {
+        flex: 1;
+        min-width: 0;
+        width: auto;
+        height: 36px;
+        padding: 0 10px 0 12px;
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        text-align: left;
+      }
+
+      .number-stepper {
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        flex: 0 0 auto;
+        width: var(--slider-number-stepper-width);
+        background: #fafbfc;
+        border-left: 1px solid #dde1e5;
+      }
+
+      .number-step {
+        display: grid;
+        place-items: center;
+        min-width: 0;
+        min-height: 0;
+        padding: 0;
+        color: #6b7178;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+      }
+
+      .number-step + .number-step {
+        border-top: 1px solid #dde1e5;
+      }
+
+      .number-step:hover {
+        color: #33383d;
+        background: #f0f2f4;
+      }
+
+      .number-step:disabled {
+        color: #c0c6cc;
+        cursor: default;
+      }
+
+      .number-step svg {
+        width: 10px;
+        height: 10px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .spec-table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .spec-table {
+        width: 100%;
+        min-width: 680px;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .spec-table th,
+      .spec-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--gray-200);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .spec-table th {
+        color: var(--gray-700);
+        background: var(--gray-50);
+        font-weight: 600;
+      }
+
+      .spec-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .spec-table code {
+        color: var(--gray-800);
+        background: var(--gray-100);
+        border-radius: 4px;
+        padding: 2px 5px;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size: 12px;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          overflow: auto;
+        }
+
+        .app-shell {
+          min-height: 100vh;
+          height: auto;
+        }
+
+        .topbar {
+          position: sticky;
+          top: 0;
+          padding: 0 16px;
+        }
+
+        .workspace,
+        .doc-grid,
+        .slider-demo-row,
+        .slider-demo-row.range {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: sticky;
+          top: var(--topbar-height);
+          z-index: 2;
+        }
+
+        .canvas-inner {
+          min-height: auto;
+          padding: 0;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 24px 20px;
+        }
+
+        .example-block.full {
+          grid-column: auto;
+        }
+
+        .slider-value {
+          text-align: left;
+        }
+      }
+      /* End shared top navigation */
+    </style>
+  </head>
+  <body><div class="app-shell"><header class="topbar">
+        <a class="brand" href="#" aria-label="IQ Enterprise Design 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQ Enterprise Design</span>
+        </a>
+        <div class="topbar-actions" aria-label="系统状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 19/20</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>IQ主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="iq-buddy"
+              >
+                IQ主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="iq-buddy-theme"
+              >
+                IQ Buddy主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                test主题1
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header><main class="workspace">
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="slider.html" aria-current="page">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+
+        <section class="canvas" aria-label="组件说明详情区">
+          <div class="canvas-inner">
+            <article class="content-panel doc-page" data-panel="slider">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Entry / Slider</p>
+                <h1 class="doc-title">Slider 滑块</h1>
+                <p class="doc-summary">
+                  滑块用于在连续或分段范围内选择数值，适合阈值、比例、预算、权重和进度控制。IQB Agent
+                  平台的滑块应保持轨道轻量、控制点清晰；更多用法可承载刻度、提示气泡，并在需要精确值时与数字输入框联动。
+                </p>
+                <ul class="doc-meta-list" aria-label="滑块基础规格">
+                  <li>默认范围 0-100</li>
+                  <li>默认步长 1</li>
+                  <li>支持单值与范围选择</li>
+                  <li>Hover / Focus 使用 3px focus shadow</li>
+                  <li>数字输入框联动宽度 80px</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>何时使用</h2>
+                <ul class="rule-list">
+                  <li>用于调整成功率阈值、资源占比、预算比例、优先级权重等有明确上下限的数值。</li>
+                  <li>需要用户快速感知范围和当前位置时优先使用滑块；需要精确录入时搭配 80px 数字输入框。</li>
+                  <li>可枚举档位少且语义明确时，在更多用法中使用 marks；只能选择档位时开启 onlyMarkValue。</li>
+                  <li>连续数值不要放置过密刻度，避免轨道噪声过高。</li>
+                  <li>范围选择用于表达上下限、时间窗口、价格区间等双端约束。</li>
+                </ul>
+              </section>
+
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>单值选择</h3>
+                    <p>默认从 0 到 100，当前值由轨道高亮和控制点共同表达。</p>
+                    <div class="slider-demo-stack">
+                      <div class="slider-demo-row">
+                        <div class="spec-slider" style="--slider-max: 62%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="62" aria-label="自动通过率阈值">
+                          <span class="slider-thumb"></span>
+                        </div>
+                        <span class="slider-value">62%</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>范围选择</h3>
+                    <p>用于选择上下限，两个控制点之间的轨道高亮。</p>
+                    <div class="slider-demo-stack">
+                      <div class="slider-demo-row range">
+                        <div class="spec-slider" style="--slider-min: 24%; --slider-max: 78%" role="group" aria-label="预算区间">
+                          <span class="slider-thumb start" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="24" aria-label="最小预算占比"></span>
+                          <span class="slider-thumb" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="78" aria-label="最大预算占比"></span>
+                        </div>
+                        <span class="slider-value">24% - 78%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>更多用法</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>刻度与步长</h3>
+                    <p>步长控制可选精度；marks 用于在轨道上展示业务档位。</p>
+                    <div class="slider-demo-stack">
+                      <div class="spec-slider" style="--slider-max: 75%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" aria-label="步长刻度滑块" data-step="25">
+                        <span class="slider-ticks" aria-hidden="true">
+                          <span class="slider-tick active" style="--pos: 0%"></span>
+                          <span class="slider-tick active" style="--pos: 25%"></span>
+                          <span class="slider-tick active" style="--pos: 50%"></span>
+                          <span class="slider-tick active" style="--pos: 75%"></span>
+                          <span class="slider-tick" style="--pos: 100%"></span>
+                        </span>
+                        <span class="slider-thumb"></span>
+                      </div>
+                      <div class="slider-marks" aria-hidden="true">
+                        <span>0</span>
+                        <span>25</span>
+                        <span>50</span>
+                        <span>75</span>
+                        <span>100</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>提示气泡</h3>
+                    <p>需要即时反馈时展示 Tooltip，可通过 formatTooltip 输出带单位文案。</p>
+                    <div class="slider-demo-stack">
+                      <div class="spec-slider focus" style="--slider-max: 84%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="84" aria-label="带提示滑块" data-tooltip-suffix="% 通过率">
+                        <span class="slider-tooltip">84% 通过率</span>
+                        <span class="slider-thumb"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>输入框联动</h3>
+                    <p>精确数值场景使用 showInput，与 InputNumber 规格保持同一高度。</p>
+                    <div class="slider-demo-stack">
+                      <div class="slider-demo-row">
+                        <div class="spec-slider" style="--slider-max: 36%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="36" aria-label="并发上限">
+                          <span class="slider-thumb"></span>
+                        </div>
+                        <span class="number-input" data-slider-number-input>
+                          <input class="spec-input" type="number" min="0" max="100" step="1" value="36" aria-label="并发上限数值" />
+                          <span class="number-stepper" aria-hidden="true">
+                            <button class="number-step" type="button" data-number-step="up" aria-label="增加">
+                              <svg viewBox="0 0 16 16"><path d="m4 10 4-4 4 4"></path></svg>
+                            </button>
+                            <button class="number-step" type="button" data-number-step="down" aria-label="减少">
+                              <svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg>
+                            </button>
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>状态</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>Default</h3>
+                    <p>默认状态只显示轨道、选中段和控制点。</p>
+                    <div class="slider-demo-stack">
+                      <div class="spec-slider" style="--slider-max: 42%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="42" aria-label="默认滑块">
+                        <span class="slider-thumb"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Hover</h3>
+                    <p>悬停时仅当前圆形控制点放大，并显示 3px 绿色 focus shadow；范围滑块两侧互不影响。</p>
+                    <div class="slider-demo-stack">
+                      <div class="spec-slider hover" style="--slider-max: 56%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="56" aria-label="悬停滑块">
+                        <span class="slider-thumb"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Focus</h3>
+                    <p>键盘聚焦时仅当前控制点显示 3px 绿色 focus shadow，拖动释放后恢复默认状态。</p>
+                    <div class="slider-demo-stack">
+                      <div class="spec-slider focus" style="--slider-max: 68%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68" aria-label="聚焦滑块">
+                        <span class="slider-thumb"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Disabled</h3>
+                    <p>禁用态降低轨道与控制点对比度，不响应拖拽；圆形控制点 hover 时仅显示浅灰 shadow。</p>
+                    <div class="slider-demo-stack">
+                      <div class="spec-slider disabled" style="--slider-max: 48%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="48" aria-disabled="true" aria-label="禁用滑块">
+                        <span class="slider-thumb"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>尺寸与方向</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>Size</h3>
+                    <p>默认尺寸用于表单区域；紧凑工具栏可降低轨道和控制点尺寸，重点配置可放大。</p>
+                    <div class="slider-demo-stack">
+                      <div class="spec-slider small" style="--slider-max: 40%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="40" aria-label="小尺寸滑块">
+                        <span class="slider-thumb"></span>
+                      </div>
+                      <div class="spec-slider" style="--slider-max: 58%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="58" aria-label="默认尺寸滑块">
+                        <span class="slider-thumb"></span>
+                      </div>
+                      <div class="spec-slider large" style="--slider-max: 72%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72" aria-label="大尺寸滑块">
+                        <span class="slider-thumb"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Vertical</h3>
+                    <p>垂直滑块用于空间受限的参数面板，标签应放在旁侧说明区域。</p>
+                    <div class="vertical-slider-wrap">
+                      <div class="spec-slider vertical" style="--slider-min: 0%; --slider-max: 34%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="66" aria-orientation="vertical" aria-label="垂直滑块">
+                        <span class="slider-thumb"></span>
+                      </div>
+                      <span class="slider-value">66%</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>value</code></td>
+                        <td>当前值，单值模式为 number，范围模式为 number[]。</td>
+                        <td><code>number | number[]</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>defaultValue</code></td>
+                        <td>非受控默认值。</td>
+                        <td><code>number | number[]</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>min</code></td>
+                        <td>滑动范围最小值。</td>
+                        <td><code>number</code></td>
+                        <td><code>0</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>max</code></td>
+                        <td>滑动范围最大值。</td>
+                        <td><code>number</code></td>
+                        <td><code>100</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>step</code></td>
+                        <td>每次滑动的步长。</td>
+                        <td><code>number</code></td>
+                        <td><code>1</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>range</code></td>
+                        <td>是否启用范围选择；可配置范围轨道是否可拖拽。</td>
+                        <td><code>boolean | { draggableBar: boolean }</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>marks</code></td>
+                        <td>刻度标签，key 必须在 min 和 max 范围内。</td>
+                        <td><code>Record&lt;number, ReactNode&gt;</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>showTicks</code></td>
+                        <td>是否显示步长刻度线。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onlyMarkValue</code></td>
+                        <td>只能选择 marks 中的值，此时 step 会被忽略。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>showInput</code></td>
+                        <td>是否展示右侧数字输入框。IQB 规范中使用 InputNumber 结构，默认整体宽度 80px，步进器宽度 28px；onlyMarkValue 或范围多点选择时隐藏。</td>
+                        <td><code>boolean | InputNumberProps | InputNumberProps[]</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>tooltipVisible</code></td>
+                        <td>控制 Tooltip 展示，true 常显，false 始终隐藏。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>tooltipPosition</code></td>
+                        <td>Tooltip 展示位置。</td>
+                        <td><code>top | bottom | left | right | tl | tr | bl | br | lt | lb | rt | rb</code></td>
+                        <td><code>top</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>formatTooltip</code></td>
+                        <td>格式化 Tooltip 内容，例如补充百分比、单位或业务阈值说明。</td>
+                        <td><code>(value: number) =&gt; string | ReactNode</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>vertical</code></td>
+                        <td>是否使用垂直方向。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>reverse</code></td>
+                        <td>是否反向坐标轴。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>disabled</code></td>
+                        <td>禁用滑块，不响应点击、拖拽和键盘操作；圆形控制点 hover 时使用浅灰 shadow，不放大。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>interactionState</code></td>
+                        <td>用于静态规范或受控演示的交互态；hover、focus 仅作用于当前圆形控制点，拖动释放后恢复 default。</td>
+                        <td><code>default | hover | focus | disabled</code></td>
+                        <td><code>default</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onChange</code></td>
+                        <td>选择值变化时触发。</td>
+                        <td><code>(value: number | number[]) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onAfterChange</code></td>
+                        <td>鼠标或拖拽释放后触发，用于提交最终值。</td>
+                        <td><code>(value: number | number[]) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>值</th>
+                        <th>用途</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>--slider-rail-size</code></td>
+                        <td><code>4px</code></td>
+                        <td>默认轨道高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-thumb-size</code></td>
+                        <td><code>16px</code></td>
+                        <td>默认控制点尺寸。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-thumb-hover-scale</code></td>
+                        <td><code>1.18</code></td>
+                        <td>Hover、Focus 和拖动中当前圆形控制点放大比例；范围选择只作用于当前控制点。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-color-track</code></td>
+                        <td><code>#00D157</code></td>
+                        <td>已选择轨道和控制点描边。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-color-rail</code></td>
+                        <td><code>#E7EAEE</code></td>
+                        <td>未选择轨道。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-color-thumb-bg</code></td>
+                        <td><code>#FFFFFF</code></td>
+                        <td>控制点背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-color-disabled</code></td>
+                        <td><code>#C7CDD3</code></td>
+                        <td>禁用态已选轨道和控制点描边。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-color-disabled-bg</code></td>
+                        <td><code>#F0F2F4</code></td>
+                        <td>禁用态未选轨道。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-thumb-focus-shadow</code></td>
+                        <td><code>rgba(0, 209, 87, 0.16) 0px 0px 0px 3px</code></td>
+                        <td>Hover 圆形控制点反馈。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-thumb-focus-strong-shadow</code></td>
+                        <td><code>rgba(0, 209, 87, 0.16) 0px 0px 0px 3px</code></td>
+                        <td>Focus 和拖动中圆形控制点反馈；拖动释放后恢复默认。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-thumb-disabled-hover-shadow</code></td>
+                        <td><code>rgba(120, 129, 140, 0.16) 0px 0px 0px 3px</code></td>
+                        <td>Disabled 态圆形控制点 hover 浅灰反馈，不放大。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-input-number-width</code></td>
+                        <td><code>80px</code></td>
+                        <td>showInput 右侧数字输入框整体宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--slider-number-stepper-width</code></td>
+                        <td><code>28px</code></td>
+                        <td>showInput 数字输入框右侧步进器宽度。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script data-product-theme-script>
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'iqb-design-active-product';
+      const productLabels = {
+        'iq-buddy': 'IQ主题',
+        'iq-buddy-theme': 'IQ Buddy主题',
+        decentralized: 'test主题1',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'iq-buddy') {
+          root.dataset.productTheme = 'iq-theme';
+          return;
+        }
+        if (activeProduct === 'iq-buddy-theme') {
+          root.dataset.productTheme = 'iq-buddy-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', '#22b573');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['iq-buddy'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'iq-buddy';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      (() => {
+        const sliderNodes = Array.from(document.querySelectorAll('.spec-slider'));
+        const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+        const getHandles = (slider) => {
+          if (slider.getAttribute('role') === 'slider') return [slider];
+          return Array.from(slider.querySelectorAll('.slider-thumb[role="slider"]'));
+        };
+
+        const getBounds = (handle) => ({
+          min: Number(handle.getAttribute('aria-valuemin') || 0),
+          max: Number(handle.getAttribute('aria-valuemax') || 100),
+        });
+
+        const getValue = (handle) => Number(handle.getAttribute('aria-valuenow') || 0);
+        const getStep = (slider) => Number(slider.dataset.step || 1);
+        const isVertical = (slider) => slider.classList.contains('vertical');
+
+        const formatValue = (value, step = 1) => {
+          const decimals = String(step).includes('.') ? String(step).split('.')[1].length : 0;
+          const rounded = Number(value.toFixed(decimals));
+          return Number.isInteger(rounded) ? String(rounded) : String(rounded);
+        };
+
+        const snapValue = (slider, handle, value) => {
+          const { min, max } = getBounds(handle);
+          const step = getStep(slider);
+          const snapped = min + Math.round((value - min) / step) * step;
+          return clamp(snapped, min, max);
+        };
+
+        const valueToPercent = (slider, handle, value) => {
+          const { min, max } = getBounds(handle);
+          const ratio = (clamp(value, min, max) - min) / (max - min || 1);
+          return isVertical(slider) ? (1 - ratio) * 100 : ratio * 100;
+        };
+
+        const percentToValue = (slider, handle, percent) => {
+          const { min, max } = getBounds(handle);
+          const ratio = isVertical(slider) ? 1 - percent / 100 : percent / 100;
+          return min + ratio * (max - min);
+        };
+
+        const getPointerPercent = (slider, event) => {
+          const rect = slider.getBoundingClientRect();
+          if (isVertical(slider)) {
+            return clamp(((event.clientY - rect.top) / rect.height) * 100, 0, 100);
+          }
+          return clamp(((event.clientX - rect.left) / rect.width) * 100, 0, 100);
+        };
+
+        const getClosestHandle = (slider, percent) => {
+          const handles = getHandles(slider);
+          if (handles.length <= 1) return handles[0];
+          return handles.reduce((closest, handle) => {
+            const currentDistance = Math.abs(valueToPercent(slider, handle, getValue(handle)) - percent);
+            const closestDistance = Math.abs(valueToPercent(slider, closest, getValue(closest)) - percent);
+            return currentDistance < closestDistance ? handle : closest;
+          }, handles[0]);
+        };
+
+        const syncTicks = (slider, minPercent, maxPercent) => {
+          slider.querySelectorAll('.slider-tick').forEach((tick) => {
+            const raw = tick.style.getPropertyValue('--pos').replace('%', '');
+            const tickPercent = Number(raw);
+            tick.classList.toggle('active', tickPercent >= minPercent - 0.01 && tickPercent <= maxPercent + 0.01);
+          });
+        };
+
+        const syncOutput = (slider, values) => {
+          const row = slider.closest('.slider-demo-row, .vertical-slider-wrap');
+          const output = row?.querySelector('.slider-value');
+          const input = row?.querySelector('.spec-input');
+          const upButton = row?.querySelector('[data-number-step="up"]');
+          const downButton = row?.querySelector('[data-number-step="down"]');
+          const step = getStep(slider);
+
+          if (values.length === 1) {
+            const label = formatValue(values[0], step);
+            if (output) output.textContent = `${label}%`;
+            if (input) input.value = label;
+            if (upButton || downButton) {
+              const handle = getHandles(slider)[0];
+              const { min, max } = getBounds(handle);
+              if (upButton) upButton.disabled = values[0] >= max;
+              if (downButton) downButton.disabled = values[0] <= min;
+            }
+          } else if (output) {
+            output.textContent = `${formatValue(values[0], step)}% - ${formatValue(values[1], step)}%`;
+          }
+
+          const tooltip = slider.querySelector('.slider-tooltip');
+          if (tooltip && values.length === 1) {
+            const suffix = slider.dataset.tooltipSuffix || '%';
+            tooltip.textContent = `${formatValue(values[0], step)}${suffix}`;
+          }
+        };
+
+        const syncSlider = (slider) => {
+          const handles = getHandles(slider);
+          if (!handles.length) return;
+
+          const pairs = handles
+            .map((handle) => ({
+              handle,
+              value: getValue(handle),
+              percent: valueToPercent(slider, handle, getValue(handle)),
+            }))
+            .sort((a, b) => a.percent - b.percent);
+
+          if (pairs.length === 1) {
+            const percent = pairs[0].percent;
+            slider.style.setProperty('--slider-min', '0%');
+            slider.style.setProperty('--slider-max', `${percent}%`);
+            syncTicks(slider, 0, percent);
+            syncOutput(slider, [pairs[0].value]);
+            return;
+          }
+
+          slider.style.setProperty('--slider-min', `${pairs[0].percent}%`);
+          slider.style.setProperty('--slider-max', `${pairs[pairs.length - 1].percent}%`);
+          syncTicks(slider, pairs[0].percent, pairs[pairs.length - 1].percent);
+          syncOutput(slider, pairs.map((pair) => pair.value).sort((a, b) => a - b));
+        };
+
+        const setHandleValue = (slider, handle, nextValue) => {
+          if (!handle || slider.classList.contains('disabled')) return;
+
+          const handles = getHandles(slider);
+          let value = snapValue(slider, handle, nextValue);
+
+          if (handles.length === 2) {
+            const [start, end] = handles;
+            if (handle === start) value = Math.min(value, getValue(end));
+            if (handle === end) value = Math.max(value, getValue(start));
+          }
+
+          handle.setAttribute('aria-valuenow', formatValue(value, getStep(slider)));
+          syncSlider(slider);
+        };
+
+        const startDrag = (slider, handle, event) => {
+          if (!handle || slider.classList.contains('disabled')) return;
+          event.preventDefault();
+          handle.focus?.();
+          handle.classList.remove('is-post-drag');
+          handle.classList.add('is-active');
+
+          const move = (pointerEvent) => {
+            const percent = getPointerPercent(slider, pointerEvent);
+            setHandleValue(slider, handle, percentToValue(slider, handle, percent));
+          };
+
+          const stop = () => {
+            handle.classList.remove('is-active');
+            handle.classList.add('is-post-drag');
+            handle.blur?.();
+            window.removeEventListener('pointermove', move);
+            window.removeEventListener('pointerup', stop);
+            window.removeEventListener('pointercancel', stop);
+          };
+
+          move(event);
+          window.addEventListener('pointermove', move);
+          window.addEventListener('pointerup', stop, { once: true });
+          window.addEventListener('pointercancel', stop, { once: true });
+        };
+
+        const handleKeyboard = (slider, handle, event) => {
+          if (slider.classList.contains('disabled')) return;
+          const { min, max } = getBounds(handle);
+          const step = getStep(slider);
+          const value = getValue(handle);
+          const actions = {
+            ArrowLeft: -step,
+            ArrowDown: -step,
+            ArrowRight: step,
+            ArrowUp: step,
+            Home: min - value,
+            End: max - value,
+          };
+
+          if (!(event.key in actions)) return;
+          event.preventDefault();
+          setHandleValue(slider, handle, value + actions[event.key]);
+        };
+
+        sliderNodes.forEach((slider) => {
+          syncSlider(slider);
+
+          if (slider.classList.contains('disabled')) {
+            getHandles(slider).forEach((handle) => handle.setAttribute('tabindex', '-1'));
+          }
+
+          slider.addEventListener('pointerdown', (event) => {
+            const sliderThumb = event.target.closest?.('.slider-thumb[role="slider"]');
+            const percent = getPointerPercent(slider, event);
+            const handle = sliderThumb || getClosestHandle(slider, percent);
+            startDrag(slider, handle, event);
+          });
+
+          getHandles(slider).forEach((handle) => {
+            handle.addEventListener('keydown', (event) => handleKeyboard(slider, handle, event));
+            handle.addEventListener('pointerleave', () => handle.classList.remove('is-post-drag'));
+          });
+
+          const row = slider.closest('.slider-demo-row, .vertical-slider-wrap');
+          const input = row?.querySelector('.spec-input');
+          input?.addEventListener('input', () => {
+            const handle = getHandles(slider)[0];
+            if (!handle || input.value === '') return;
+            setHandleValue(slider, handle, Number(input.value));
+          });
+          input?.addEventListener('blur', () => {
+            const handle = getHandles(slider)[0];
+            if (handle) input.value = formatValue(getValue(handle), getStep(slider));
+          });
+
+          row?.querySelectorAll('[data-number-step]').forEach((button) => {
+            button.addEventListener('click', () => {
+              const handle = getHandles(slider)[0];
+              if (!handle) return;
+              const direction = button.dataset.numberStep === 'up' ? 1 : -1;
+              setHandleValue(slider, handle, getValue(handle) + getStep(slider) * direction);
+            });
+          });
+        });
+      })();
+
+      const centerNavItem = (item, behavior = 'smooth') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+
+        if (isHorizontal) {
+          sidebar.scrollTo({
+            left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2,
+            behavior,
+          });
+          return;
+        }
+
+        sidebar.scrollTo({
+          top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2,
+          behavior,
+        });
+      };
+
+      requestAnimationFrame(() => {
+        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]'), 'auto');
+      });
+    </script>
+  </body>
+</html>

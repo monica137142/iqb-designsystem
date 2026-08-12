@@ -38,9 +38,8 @@
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
         font-family:
-          Inter, "Inter var", ui-sans-serif, system-ui, -apple-system,
-          BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
-          "Microsoft YaHei", sans-serif;
+          Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
+          "Microsoft YaHei", Arial, sans-serif;
       }
 
       * {
@@ -342,7 +341,7 @@
         flex-direction: column;
         gap: 20px;
         margin: 0;
-        padding: 0;
+        padding: 0 0 calc((100vh - var(--topbar-height, 60px)) / 2);
         list-style: none;
       }
 
@@ -1470,7 +1469,7 @@
         background: var(--gray-100);
         border-radius: 4px;
         padding: 2px 5px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
         font-size: 12px;
       }
 
@@ -3432,7 +3431,7 @@
         background: var(--gray-100);
         border-radius: 4px;
         padding: 2px 5px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
         font-size: 12px;
       }
 
@@ -3493,7 +3492,7 @@
         }
 
         .nav-list > .nav-section:nth-child(2) {
-          margin-top: 0;
+          margin-top: -16px;
         }
 
         .nav-category {
@@ -3505,6 +3504,10 @@
           width: auto;
           min-height: 36px;
           padding: 0 12px;
+        }
+
+        .nav-list {
+          padding: 0;
         }
 
         .canvas-inner {
@@ -3659,7 +3662,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 12/13</span>
+          <span data-component-count-label>Active components 19/20</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -3715,44 +3718,162 @@
             <ul class="nav-list">
               <li class="nav-section">
                 <a class="nav-button" href="index.html#color" data-nav-scope="global-style">
-                  <span class="nav-label">全局样式</span>
+                  <span class="nav-label">Styles 全局样式</span>
                 </a>
               </li>
               <li class="nav-section">
                 <a class="nav-button" href="index.html#overview">
-                  <span class="nav-label">组件总览</span>
+                  <span class="nav-label">Components 组件总览</span>
                 </a>
               </li>
               <li class="nav-section">
-                <span class="nav-category">通用<span class="nav-category-count">1</span></span>
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
                 <ul class="nav-sublist">
-                  <li><a class="nav-button" href="index.html#button"><span class="nav-label">Button 按钮</span></a></li>
+                  <li>
+                    <a class="nav-button" href="button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">数据录入<span class="nav-category-count">10</span></span>
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
                 <ul class="nav-sublist">
-                  <li><a class="nav-button" href="index.html#input"><span class="nav-label">Input 输入框</span></a></li>
-                  <li><a class="nav-button" href="index.html#input-number"><span class="nav-label">InputNumber 数字输入框</span></a></li>
-                  <li><a class="nav-button" href="index.html#radio"><span class="nav-label">Radio 单选框</span></a></li>
-                  <li><a class="nav-button" href="index.html#checkbox"><span class="nav-label">Checkbox 复选框</span></a></li>
-                  <li><a class="nav-button" href="index.html#switch"><span class="nav-label">Switch 开关</span></a></li>
-                  <li><a class="nav-button" href="index.html#select"><span class="nav-label">Select 选择器</span></a></li>
-                  <li><a class="nav-button" href="date-picker.html" aria-current="page"><span class="nav-label">DatePicker 日期选择器</span></a></li>
-                  <li><a class="nav-button" href="time-picker.html"><span class="nav-label">TimePicker 时间选择器</span></a></li>
-                  <li><a class="nav-button" href="upload.html"><span class="nav-label">Upload 上传</span></a></li>
-                  <li><a class="nav-button" href="form.html"><span class="nav-label">Form 表单</span></a></li>
+                  <li>
+                    <a class="nav-button" href="divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">数据展示<span class="nav-category-count">2</span></span>
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
                 <ul class="nav-sublist">
-                  <li><a class="nav-button" href="table.html"><span class="nav-label">表格 Table</span></a></li>
-                  <li><a class="nav-button" href="index.html#card"><span class="nav-label">卡片 Card</span></a></li>
+                  <li>
+                    <a class="nav-button" href="input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="date-picker.html" aria-current="page">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
           </nav>
+
           <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
         </aside>
 
@@ -4791,7 +4912,7 @@
         root.style.setProperty("--input-number-hover-border-color", "#2672ff");
         root.style.setProperty("--input-number-focus-color", "#2672ff");
         root.style.setProperty("--input-number-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
-        root.style.fontFamily = '"Pingfang FC", "PingFang SC", Inter, "Inter var", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
         if (productSelectValue) {

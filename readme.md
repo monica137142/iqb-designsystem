@@ -4,11 +4,30 @@ IQB Design System 是面向 IQB Agent 平台的静态设计规范站点，当前
 
 ## 内容
 
-- `index.html`: 组件总览，以及 Button、Input、InputNumber、Radio、CheckBox、Switch、Select、DatePicker、TimePicker、Table 等入口或规范内容。
+- `index.html`: 组件总览与全局样式入口。
+- `button.html`: Button 按钮独立规范页。
+- `typography.html`: Typography 排版独立规范页。
+- `divider.html`: Divider 分割线独立规范页。
+- `space.html`: Space 间距独立规范页。
+- `grid.html`: Grid 栅格独立规范页。
+- `layout.html`: Layout 布局独立规范页。
+- `splitter.html`: Splitter 分隔面板独立规范页。
+- `input.html`: Input 输入框独立规范页。
+- `input-number.html`: InputNumber 数字输入框独立规范页。
+- `radio.html`: Radio 单选框独立规范页。
+- `checkbox.html`: Checkbox 复选框独立规范页。
+- `switch.html`: Switch 开关独立规范页。
+- `select.html`: Select 选择器独立规范页。
 - `date-picker.html`: DatePicker 日期选择器独立规范页。
 - `time-picker.html`: TimePicker 时间选择器独立规范页。
 - `upload.html`: Upload 上传组件独立规范页。
 - `form.html`: Form 表单组件独立规范页。
+- `autocomplete.html`: AutoComplete 自动补全独立规范页。
+- `cascader.html`: Cascader 联级选择独立规范页。
+- `mentions.html`: Mentions 提及独立规范页。
+- `verification-code.html`: VerficationCode 验证码输入框独立规范页。
+- `rate.html`: Rate 评分独立规范页。
+- `slider.html`: Slider 滑块独立规范页。
 - `table.html`: Table 表格组件独立规范页。
 - `logo-cropped.png`: 站点品牌标识资源。
 - `design.md`: 设计系统说明，包括设计原则、视觉 Token、组件结构和维护约定。
@@ -18,6 +37,12 @@ IQB Design System 是面向 IQB Agent 平台的静态设计规范站点，当前
 当前可复用组件包括：
 
 - Button
+- Typography
+- Divider
+- Space
+- Grid
+- Layout
+- Splitter
 - Input
 - InputNumber
 - Radio
@@ -28,6 +53,12 @@ IQB Design System 是面向 IQB Agent 平台的静态设计规范站点，当前
 - TimePicker
 - Upload
 - Form
+- AutoComplete
+- Cascader
+- Mentions
+- VerficationCode
+- Rate
+- Slider
 - Table
 
 组件使用约定：
