@@ -21,6 +21,12 @@
         --brand-text-hover: #008f3f;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
+        --link-color: #1570ef;
+        --link-hover-color: #175cd3;
+        --link-disabled-color: #a5adb6;
+        --typography-color-link: var(--link-color);
+        --typography-color-link-hover: var(--link-hover-color);
+        --typography-color-link-disabled: var(--link-disabled-color);
         --gray-950: #0b0d0f;
         --gray-900: #14171a;
         --gray-800: #22262a;
@@ -3753,7 +3759,7 @@
         line-height: 1;
       }
 
-      .typography-display {
+      .doc-section .typography-display {
         margin: 0;
         color: var(--gray-950);
         font-size: 32px;
@@ -3761,7 +3767,7 @@
         line-height: 1.25;
       }
 
-      .typography-title {
+      .doc-section .typography-title {
         margin: 0;
         color: var(--gray-900);
         font-size: 24px;
@@ -3769,7 +3775,7 @@
         line-height: 1.32;
       }
 
-      .typography-heading {
+      .doc-section .typography-heading {
         margin: 0;
         color: var(--gray-900);
         font-size: 18px;
@@ -3777,7 +3783,54 @@
         line-height: 1.45;
       }
 
-      .typography-body {
+      .doc-section .typography-h1,
+      .doc-section .typography-h2,
+      .doc-section .typography-h3,
+      .doc-section .typography-h4,
+      .doc-section .typography-h5,
+      .doc-section .typography-h6 {
+        margin: 0;
+        color: var(--gray-900);
+      }
+
+      .doc-section .typography-h1 {
+        color: var(--gray-950);
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+
+      .doc-section .typography-h2 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.32;
+      }
+
+      .doc-section .typography-h3 {
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .doc-section .typography-h4 {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      .doc-section .typography-h5 {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .doc-section .typography-h6 {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.55;
+      }
+
+      .doc-section .typography-body {
         margin: 0;
         color: var(--gray-700);
         font-size: 14px;
@@ -3785,7 +3838,7 @@
         line-height: 1.75;
       }
 
-      .typography-caption {
+      .doc-section .typography-caption {
         margin: 0;
         color: var(--gray-500);
         font-size: 12px;
@@ -3858,46 +3911,350 @@
       }
 
       .typography-prose p {
-        max-width: 62ch;
+        max-width: none;
       }
 
       .typography-prose a {
-        color: var(--brand-text);
+        color: var(--typography-color-link);
         text-decoration: none;
       }
 
       .typography-prose a:hover {
-        color: var(--brand-text-hover);
+        color: var(--typography-color-link-hover);
         text-decoration: underline;
       }
 
-      .typography-state-row {
+      .typography-prose mark {
+        padding: 0 4px;
+        border-radius: 4px;
+        background: #fffaeb;
+        color: #93370d;
+      }
+
+      .typography-prose del {
+        color: var(--gray-500);
+        text-decoration-color: #d92d20;
+      }
+
+      .typography-prose blockquote {
+        margin: 2px 0;
+        padding: 10px 14px;
+        border-left: 3px solid var(--brand-500);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        background: rgb(var(--brand-rgb) / 0.06);
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .typography-prose-section {
         display: grid;
-        grid-template-columns: 92px minmax(0, 1fr);
-        align-items: start;
+        gap: 6px;
+        padding-top: 12px;
+        border-top: 1px solid var(--gray-200);
+      }
+
+      .typography-prose-section h5 {
+        margin: 0;
+        color: var(--gray-800);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      .typography-case-list {
+        display: grid;
         gap: 12px;
         margin-top: 14px;
       }
 
-      .typography-state-label {
-        color: var(--gray-500);
-        font-size: 12px;
-        line-height: 1.5;
+      .typography-title-stack {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
       }
 
-      .typography-structure {
-        display: grid;
-        gap: 6px;
+      .doc-section .typography-text-muted {
+        color: var(--gray-500);
+      }
+
+      .doc-section .typography-text-success {
+        color: var(--brand-text);
+      }
+
+      .doc-section .typography-text-warning {
+        color: #b54708;
+      }
+
+      .doc-section .typography-text-danger {
+        color: #d92d20;
+      }
+
+      .typography-interactive-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 18px;
         margin-top: 14px;
-        padding: 14px;
+      }
+
+      .typography-link {
+        color: var(--typography-color-link);
+        font-size: 14px;
+        line-height: 1.5;
+        text-decoration: none;
+      }
+
+      .typography-link:hover {
+        color: var(--typography-color-link-hover);
+        text-decoration: underline;
+      }
+
+      .typography-link.disabled {
+        color: var(--typography-color-link-disabled);
+        cursor: not-allowed;
+        text-decoration: none;
+      }
+
+      .typography-end-action-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .typography-end-action-item {
+        display: flex;
+        align-items: center;
+        min-width: 0;
+        gap: 6px;
+        padding: 12px;
         border: 1px solid var(--gray-200);
         border-radius: var(--radius-sm);
-        background: var(--gray-950);
-        color: #dce3ea;
-        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        background: var(--white);
+      }
+
+      .typography-end-action-item.is-editing {
+        border-color: var(--gray-200);
+        background: var(--white);
+        box-shadow: none;
+      }
+
+      .typography-end-action-text {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .typography-end-actions {
+        position: relative;
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        gap: 2px;
+      }
+
+      .typography-end-action-item.is-editing .typography-end-actions {
+        display: none;
+      }
+
+      .typography-icon-action {
+        width: 28px;
+        height: 28px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--gray-500);
+        cursor: pointer;
+      }
+
+      .typography-icon-action:hover {
+        background: var(--brand-50);
+        color: var(--brand-text);
+      }
+
+      .typography-icon-action.is-copied {
+        background: var(--brand-50);
+        color: var(--brand-text);
+      }
+
+      .typography-icon-action:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .typography-icon-action svg {
+        width: 15px;
+        height: 15px;
+        stroke: currentColor;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+
+      .typography-copy-tooltip {
+        --copy-tooltip-bg: var(--gray-900);
+        position: absolute;
+        left: 50%;
+        bottom: calc(100% + 8px);
+        z-index: 20;
+        padding: 4px 8px;
+        border-radius: 6px;
+        background: var(--copy-tooltip-bg);
+        color: var(--white);
         font-size: 12px;
-        line-height: 1.7;
-        overflow-x: auto;
+        line-height: 1.5;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, 4px);
+        transition:
+          opacity 0.16s ease,
+          transform 0.16s ease;
+      }
+
+      .typography-copy-tooltip::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        width: 0;
+        height: 0;
+        border: 5px solid transparent;
+        border-top-color: var(--copy-tooltip-bg);
+        transform: translateX(-50%);
+      }
+
+      .typography-copy-tooltip.is-visible {
+        opacity: 1;
+        transform: translate(-50%, 0);
+      }
+
+      .typography-copy-tooltip.is-error {
+        --copy-tooltip-bg: #d92d20;
+      }
+
+      .typography-end-action-input {
+        flex: 1 1 auto;
+        min-width: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 38px;
+        padding: 0 12px;
+        border: 1px solid var(--input-border-color);
+        border-radius: 10px;
+        background: var(--white);
+        color: var(--input-text-color);
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: normal;
+        outline: none;
+        transition:
+          border-color 0.15s ease,
+          box-shadow 0.15s ease,
+          background-color 0.15s ease,
+          color 0.15s ease;
+      }
+
+      .typography-end-action-input:hover {
+        border-color: var(--input-hover-border-color);
+        background: var(--white);
+      }
+
+      .typography-end-action-input:focus {
+        border-color: var(--input-focus-color);
+        background: var(--white);
+        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.1);
+      }
+
+      .typography-ellipsis-demo {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .typography-ellipsis-box {
+        min-width: 0;
+        padding: 12px;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+      }
+
+      .typography-ellipsis-single {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .typography-ellipsis-multiple {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      .typography-ellipsis-control.is-expanded .typography-ellipsis-multiple {
+        display: block;
+        -webkit-line-clamp: initial;
+      }
+
+      .typography-ellipsis-inline {
+        display: flex;
+        align-items: baseline;
+        min-width: 0;
+        gap: 4px;
+        margin: 0;
+      }
+
+      .typography-ellipsis-control.is-expanded .typography-ellipsis-inline {
+        display: block;
+      }
+
+      .typography-ellipsis-inline [data-ellipsis-control-text] {
+        min-width: 0;
+      }
+
+      .typography-ellipsis-control:not(.is-expanded) [data-ellipsis-control-text] {
+        display: block;
+        flex: 1 1 auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .typography-ellipsis-toggle {
+        flex: 0 0 auto;
+        display: inline;
+        margin-left: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--brand-text);
+        font: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .typography-ellipsis-control.is-expanded .typography-ellipsis-toggle {
+        margin-left: 4px;
+      }
+
+      .typography-ellipsis-toggle:hover {
+        color: var(--brand-text-hover);
+        text-decoration: underline;
+      }
+
+      .typography-ellipsis-toggle:focus-visible {
+        outline: none;
+        border-radius: 4px;
+        box-shadow: var(--shadow-focus);
       }
 
       .spec-table-wrap {
@@ -4045,8 +4402,7 @@
           grid-template-columns: 1fr;
         }
 
-        .typography-role-grid,
-        .typography-state-row {
+        .typography-role-grid {
           grid-template-columns: 1fr;
         }
 
@@ -4456,167 +4812,168 @@
               </section>
 
               <section class="doc-section">
-                <h2>基础用法</h2>
-                <div class="doc-grid">
-                  <div class="example-block full">
-                    <h3>文字层级</h3>
-                    <p>排版层级对齐后台任务阅读节奏：标题负责定位，正文负责解释，辅助文本负责补充约束。</p>
-                    <div class="typography-stack">
-                      <div class="typography-sample">
-                        <p class="typography-display">Agent 工作台洞察</p>
-                        <div class="typography-sample-meta">
-                          <span class="typography-pill">Display</span>
-                          <span>32px / 1.25 / 600</span>
-                        </div>
-                      </div>
-                      <div class="typography-sample">
-                        <p class="typography-title">任务执行报告</p>
-                        <div class="typography-sample-meta">
-                          <span class="typography-pill">Title</span>
-                          <span>24px / 1.32 / 600</span>
-                        </div>
-                      </div>
-                      <div class="typography-sample">
-                        <p class="typography-heading">基础配置</p>
-                        <div class="typography-sample-meta">
-                          <span class="typography-pill">Heading</span>
-                          <span>18px / 1.45 / 500</span>
-                        </div>
-                      </div>
-                      <div class="typography-sample">
-                        <p class="typography-body">用于解释当前模块的目标、输入要求和保存后的影响范围，长度建议控制在两行以内。</p>
-                        <div class="typography-sample-meta">
-                          <span class="typography-pill">Body</span>
-                          <span>14px / 1.75 / 400</span>
-                        </div>
-                      </div>
-                      <div class="typography-sample">
-                        <p class="typography-caption">最后同步于 2026-08-11 09:30</p>
-                        <div class="typography-sample-meta">
-                          <span class="typography-pill">Caption</span>
-                          <span>12px / 1.55 / 400</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="example-block">
-                    <h3>语义文本</h3>
-                    <p>不同文本角色使用独立 class，避免仅靠标签名决定视觉样式。</p>
-                    <div class="typography-role-grid">
-                      <div class="typography-role">
-                        <strong>Primary</strong>
-                        <span>关键字段、标题、已选值。使用 gray-900 或 gray-950。</span>
-                      </div>
-                      <div class="typography-role">
-                        <strong>Secondary</strong>
-                        <span>普通说明、列表摘要、表单帮助。使用 gray-600 至 gray-700。</span>
-                      </div>
-                      <div class="typography-role">
-                        <strong>Tertiary</strong>
-                        <span>时间、注释、占位提示。使用 gray-400 至 gray-500。</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="example-block">
-                    <h3>代码文本</h3>
-                    <p>用于属性名、变量名、命令和短代码片段，保持等宽但不抢正文层级。</p>
-                    <div class="typography-stack">
-                      <code class="typography-code">model_config.temperature</code>
-                      <code class="typography-code">workctl schema</code>
-                      <code class="typography-code">--typography-body-line-height: 1.75</code>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>组合场景</h2>
+                <h2>组合使用</h2>
                 <div class="doc-grid">
                   <div class="example-block full">
                     <h3>内容段落</h3>
-                    <p>正文区遵循标题、正文、链接、辅助信息的稳定层级，方便快速扫描。</p>
+                    <p>正文区通栏展示标题、正文、链接、引用、高亮和删除等常见文本样式，方便校验段落阅读节奏。</p>
                     <div class="typography-prose">
-                      <h4>智能体运行摘要</h4>
-                      <p class="typography-body">系统已完成 18 个商品标题优化任务，其中 15 个结果达到发布标准。继续发布前，请先查看低置信度样本并确认关键词覆盖。</p>
-                      <p class="typography-body">查看 <a href="index.html#overview">组件总览</a> 中的表单、按钮和表格规范，保证操作区与结果区的文本层级一致。</p>
-                      <p class="typography-caption">低置信度样本将在 24 小时后进入复核队列。</p>
-                    </div>
-                  </div>
-
-                  <div class="example-block">
-                    <h3>状态文本</h3>
-                    <p>状态本身先靠文案表达，再使用颜色辅助识别。</p>
-                    <div class="typography-state-row">
-                      <span class="typography-state-label">Success</span>
-                      <p class="typography-body" style="color: var(--brand-text)">已保存当前工作流配置。</p>
-                    </div>
-                    <div class="typography-state-row">
-                      <span class="typography-state-label">Warning</span>
-                      <p class="typography-body" style="color: #b54708">仍有 3 条规则未完成校验。</p>
-                    </div>
-                    <div class="typography-state-row">
-                      <span class="typography-state-label">Danger</span>
-                      <p class="typography-body" style="color: #d92d20">删除后将无法恢复历史版本。</p>
-                    </div>
-                  </div>
-
-                  <div class="example-block">
-                    <h3>省略与换行</h3>
-                    <p>单行标题可省略，正文优先自然换行；长 token 或命令需要允许断行。</p>
-                    <div class="typography-stack">
-                      <p class="typography-heading" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">这是一个较长的任务名称，用于展示单行标题在窄容器中的省略策略</p>
-                      <p class="typography-body">正文文字在卡片和表单说明中自然换行，不使用负字距或随视口缩放的字号。</p>
-                      <code class="typography-code">very-long-agent-runtime-variable-name-without-natural-breakpoints</code>
+                      <h4>Agent Run Summary</h4>
+                      <p class="typography-body">The system completed 18 product title optimization tasks, and <mark>15 results are ready to publish</mark>. Review low-confidence samples before release to confirm keyword coverage.</p>
+                      <p class="typography-body">Open the <a href="index.html#overview">component overview</a> to align form, button, and table typography across action and result areas. Replace <del>legacy keyword stuffing</del> with concise, searchable product language.</p>
+                      <blockquote>Use quotation blocks for model rationale, reviewer notes, or source excerpts that should remain visually distinct from editable body copy.</blockquote>
+                      <div class="typography-prose-section">
+                        <h5>Review Notes</h5>
+                        <p class="typography-body">Three samples still require manual validation. Keep the paragraph width flexible, but preserve the same body size, line height, and text color so long-form content stays predictable.</p>
+                      </div>
+                      <p class="typography-caption">Low-confidence samples will enter the review queue in 24 hours.</p>
                     </div>
                   </div>
                 </div>
               </section>
 
               <section class="doc-section">
-                <h2>尺寸</h2>
-                <div class="example-block full">
-                  <h3>Type Scale</h3>
-                  <p>尺寸阶梯服务后台界面密度，不随视口宽度缩放；移动端通过布局换行保证文本可读。</p>
-                  <div class="typography-stack">
-                    <div class="typography-sample">
-                      <p style="margin:0;color:var(--gray-950);font-size:32px;font-weight:600;line-height:1.25">32 Display / 页面关键洞察</p>
-                      <div class="typography-sample-meta"><span>主视觉标题、关键数据，不用于卡片内部小标题。</span></div>
-                    </div>
-                    <div class="typography-sample">
-                      <p style="margin:0;color:var(--gray-900);font-size:24px;font-weight:600;line-height:1.32">24 Title / 页面主标题</p>
-                      <div class="typography-sample-meta"><span>页面标题、弹窗大标题。</span></div>
-                    </div>
-                    <div class="typography-sample">
-                      <p style="margin:0;color:var(--gray-900);font-size:18px;font-weight:500;line-height:1.45">18 Heading / 分区标题</p>
-                      <div class="typography-sample-meta"><span>文档分区、卡片组标题、面板标题。</span></div>
-                    </div>
-                    <div class="typography-sample">
-                      <p style="margin:0;color:var(--gray-800);font-size:14px;font-weight:400;line-height:1.75">14 Body / 常规正文与表单说明</p>
-                      <div class="typography-sample-meta"><span>默认正文、表单说明、列表摘要。</span></div>
-                    </div>
-                    <div class="typography-sample">
-                      <p style="margin:0;color:var(--gray-500);font-size:12px;font-weight:400;line-height:1.55">12 Caption / 辅助信息与元数据</p>
-                      <div class="typography-sample-meta"><span>时间、注释、计数、低优先级提示。</span></div>
+                <h2>标题</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>标题层级</h3>
+                    <p>标题按 H1-H6 分级展示，示例文字以实际规范字号、行高和字重渲染。</p>
+                    <div class="typography-title-stack">
+                      <div class="typography-sample">
+                        <p class="typography-h1">H1 Workspace Insight</p>
+                        <div class="typography-sample-meta"><span class="typography-pill">H1</span><span>32px / 1.25 / 600</span></div>
+                      </div>
+                      <div class="typography-sample">
+                        <p class="typography-h2">H2 Execution Report</p>
+                        <div class="typography-sample-meta"><span class="typography-pill">H2</span><span>24px / 1.32 / 600</span></div>
+                      </div>
+                      <div class="typography-sample">
+                        <p class="typography-h3">H3 Basic Settings</p>
+                        <div class="typography-sample-meta"><span class="typography-pill">H3</span><span>20px / 1.4 / 600</span></div>
+                      </div>
+                      <div class="typography-sample">
+                        <p class="typography-h4">H4 Review Queue</p>
+                        <div class="typography-sample-meta"><span class="typography-pill">H4</span><span>18px / 1.45 / 500</span></div>
+                      </div>
+                      <div class="typography-sample">
+                        <p class="typography-h5">H5 Field Mapping</p>
+                        <div class="typography-sample-meta"><span class="typography-pill">H5</span><span>16px / 1.5 / 500</span></div>
+                      </div>
+                      <div class="typography-sample">
+                        <p class="typography-h6">H6 Inline Section</p>
+                        <div class="typography-sample-meta"><span class="typography-pill">H6</span><span>14px / 1.55 / 500</span></div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </section>
 
               <section class="doc-section">
-                <h2>结构规范</h2>
-                <div class="example-block full">
-                  <h3>DOM Anatomy</h3>
-                  <p>参考 Arco Rate 文档页的规范表达方式，Typography 也按容器、文本节点、语义变体和可选省略层组织。</p>
-                  <div class="typography-structure" aria-label="Typography 结构">
-                    <span>&lt;div class="arco-typography"&gt;</span>
-                    <span>&nbsp;&nbsp;&lt;h1 class="arco-typography-heading typography-title"&gt;title&lt;/h1&gt;</span>
-                    <span>&nbsp;&nbsp;&lt;p class="arco-typography-paragraph typography-body"&gt;paragraph&lt;/p&gt;</span>
-                    <span>&nbsp;&nbsp;&lt;span class="arco-typography-text typography-caption"&gt;secondary text&lt;/span&gt;</span>
-                    <span>&nbsp;&nbsp;&lt;code class="arco-typography-text typography-code"&gt;code&lt;/code&gt;</span>
-                    <span>&nbsp;&nbsp;&lt;a class="arco-typography-link" href="..."&gt;link&lt;/a&gt;</span>
-                    <span>&lt;/div&gt;</span>
+                <h2>文本</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>正文与辅助文本</h3>
+                    <p>正文承载主要信息，辅助文本用于时间、状态补充和低优先级说明。</p>
+                    <div class="typography-case-list">
+                      <div class="typography-sample">
+                        <p class="typography-body">The agent generated a publish-ready product summary with updated search terms.</p>
+                        <p class="typography-caption">Updated 12 minutes ago by Auto Review.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>语义色文本</h3>
+                    <p>状态色文本用于低频强调，文案本身仍需表达完整含义。</p>
+                    <div class="typography-case-list">
+                      <div class="typography-sample">
+                        <p class="typography-body typography-text-success">Workflow settings saved.</p>
+                        <p class="typography-body typography-text-warning">Three rules still need validation.</p>
+                        <p class="typography-body typography-text-danger">Deleted versions cannot be restored.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>内联样式</h3>
+                    <p>高亮、删除和代码文本用于局部语义，不改变段落整体层级。</p>
+                    <div class="typography-prose">
+                      <p class="typography-body">Replace <del>legacy keyword stuffing</del> with <mark>concise searchable language</mark> before publishing.</p>
+                      <p class="typography-body">Store the field mapping in <code class="typography-code">model_config.title_rules</code>.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>可交互</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>链接文本</h3>
+                    <p>链接用于页面跳转、详情查看和外部资源访问，统一使用全局蓝色链接规范，hover 时展示下划线。</p>
+                    <div class="typography-interactive-row">
+                      <a class="typography-link" href="index.html#overview">Open component overview</a>
+                      <a class="typography-link" href="button.html">View Button specs</a>
+                      <a class="typography-link disabled" aria-disabled="true">Archived report</a>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>结尾功能</h3>
+                    <p>文本末端可放置复制或编辑等低风险图标操作，每条文本只保留一个末端图标；复制后展示成功或失败气泡，编辑时原地唤起符合 Input 规范的输入框。</p>
+                    <div class="typography-end-action-list">
+                      <div class="typography-end-action-item" data-end-action-item>
+                        <p class="typography-body typography-end-action-text" data-end-action-text>Agent ID: agent_product_title_optimizer_2026</p>
+                        <div class="typography-end-actions" aria-label="Agent ID actions">
+                          <button class="typography-icon-action" type="button" aria-label="复制 Agent ID" data-end-copy>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                              <rect x="9" y="9" width="11" height="11" rx="2"></rect>
+                              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                      <div class="typography-end-action-item" data-end-action-item>
+                        <p class="typography-body typography-end-action-text" data-end-action-text>Review rule: Require keyword coverage before publish</p>
+                        <div class="typography-end-actions" aria-label="Review rule actions">
+                          <button class="typography-icon-action" type="button" aria-label="编辑规则" data-end-edit>
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                              <path d="M12 20h9"></path>
+                              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>文本省略</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>一般省略</h3>
+                    <p>用于表格单元格、卡片标题、摘要和历史记录；文本真实溢出时末尾打点，必要时通过系统原生 title 展示完整字段。</p>
+                    <div class="typography-ellipsis-demo">
+                      <div class="typography-ellipsis-box">
+                        <p class="typography-body typography-ellipsis-single" title="A long task name that demonstrates single-line truncation in a full-width container when the agent run title includes marketplace, channel, campaign, keyword, review state, owner, and scheduled publishing metadata">A long task name that demonstrates single-line truncation in a full-width container when the agent run title includes marketplace, channel, campaign, keyword, review state, owner, scheduled publishing metadata, product taxonomy, seasonal promotion labels, and several internal routing identifiers that should remain available in the title attribute.</p>
+                      </div>
+                      <div class="typography-ellipsis-box">
+                        <p class="typography-body typography-ellipsis-multiple" title="This review note explains why the generated title was held back for manual inspection, including missing product attributes, weak keyword coverage, inconsistent tone across marketplace channels, conflicting reviewer comments, outdated source category labels, and several campaign-specific constraints that should stay hidden until the user opens the complete record.">This review note explains why the generated title was held back for manual inspection, including missing product attributes, weak keyword coverage, inconsistent tone across marketplace channels, conflicting reviewer comments, outdated source category labels, and several campaign-specific constraints that should stay hidden until the user opens the complete record.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>操控按钮（展开收起）</h3>
+                    <p>长说明默认在同一行尽可能展示，放不下时在文字按钮前省略；展开或收起按钮跟随文本末尾，不另起一行。</p>
+                    <div class="typography-ellipsis-demo typography-ellipsis-control" data-ellipsis-control>
+                      <div class="typography-ellipsis-box">
+                        <p class="typography-body typography-ellipsis-inline" id="typography-ellipsis-controlled">
+                          <span data-ellipsis-control-text>This review note explains why the generated title was held back for manual inspection, including missing product attributes, weak keyword coverage, and inconsistent tone across marketplace channels. The reviewer should compare the source product attributes, marketplace naming rules, and final generated title before approving the task for publishing.</span>
+                          <button class="typography-ellipsis-toggle" type="button" aria-expanded="false" aria-controls="typography-ellipsis-controlled" data-ellipsis-toggle>
+                            <span data-ellipsis-toggle-label>展开</span>
+                          </button>
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </section>
@@ -4654,19 +5011,37 @@
                       </tr>
                       <tr>
                         <td><code>ellipsis</code></td>
-                        <td>单行或多行省略，适用于标题、表格单元格和卡片摘要。</td>
+                        <td>开启单行或多行省略，文本真实溢出时末尾打点。</td>
+                        <td><code>boolean | { rows?: number }</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>showTitle</code></td>
+                        <td>省略文本 hover 时使用系统原生 title 展示完整字段。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>expandable</code></td>
+                        <td>省略文本末尾展示内联文字按钮，支持展开和收起完整内容。</td>
                         <td><code>boolean</code></td>
                         <td><code>false</code></td>
                       </tr>
                       <tr>
                         <td><code>copyable</code></td>
-                        <td>是否允许复制文本，建议只用于命令、ID、变量名和代码片段。</td>
+                        <td>文本末端展示复制图标，点击后执行复制并用气泡反馈成功或失败。</td>
+                        <td><code>boolean | { tooltip?: boolean }</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>editable</code></td>
+                        <td>文本末端展示编辑图标，点击后原地唤起符合 Input 规范的输入框。</td>
                         <td><code>boolean</code></td>
                         <td><code>false</code></td>
                       </tr>
                       <tr>
                         <td><code>disabled</code></td>
-                        <td>禁用链接或可交互文本，降低透明度并移除点击反馈。</td>
+                        <td>禁用链接或可交互文本，使用全局禁用链接色并移除点击反馈。</td>
                         <td><code>boolean</code></td>
                         <td><code>false</code></td>
                       </tr>
@@ -4743,6 +5118,36 @@
                         <td>分区标题、面板标题。</td>
                       </tr>
                       <tr>
+                        <td><code>--typography-h1-size</code></td>
+                        <td><code>32px</code></td>
+                        <td>H1 标题字号，对应页面关键洞察。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-h2-size</code></td>
+                        <td><code>24px</code></td>
+                        <td>H2 标题字号，对应页面主标题。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-h3-size</code></td>
+                        <td><code>20px</code></td>
+                        <td>H3 标题字号，对应模块标题。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-h4-size</code></td>
+                        <td><code>18px</code></td>
+                        <td>H4 标题字号，对应分区标题。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-h5-size</code></td>
+                        <td><code>16px</code></td>
+                        <td>H5 标题字号，对应字段组标题。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-h6-size</code></td>
+                        <td><code>14px</code></td>
+                        <td>H6 标题字号，对应行内小节标题。</td>
+                      </tr>
+                      <tr>
                         <td><code>--typography-body-size</code></td>
                         <td><code>14px</code></td>
                         <td>默认正文、表单说明、列表摘要。</td>
@@ -4799,8 +5204,53 @@
                       </tr>
                       <tr>
                         <td><code>--typography-color-link</code></td>
+                        <td><code>#1570EF</code></td>
+                        <td>全局链接文本默认色，不随品牌主题切换。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-color-link-hover</code></td>
+                        <td><code>#175CD3</code></td>
+                        <td>全局链接文本 hover 色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-color-link-disabled</code></td>
+                        <td><code>#A5ADB6</code></td>
+                        <td>全局链接文本禁用色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-end-action-size</code></td>
+                        <td><code>28px</code></td>
+                        <td>文本末端复制、编辑图标按钮尺寸。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-copy-tooltip-bg</code></td>
+                        <td><code>#14171A</code></td>
+                        <td>复制成功气泡背景色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-copy-tooltip-error-bg</code></td>
+                        <td><code>#D92D20</code></td>
+                        <td>复制失败气泡背景色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-edit-input-height</code></td>
+                        <td><code>38px</code></td>
+                        <td>编辑态输入框高度，继承 Input 默认规格。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-edit-input-radius</code></td>
+                        <td><code>10px</code></td>
+                        <td>编辑态输入框圆角，继承 Input 默认规格。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-ellipsis-rows</code></td>
+                        <td><code>2</code></td>
+                        <td>多行省略默认展示行数。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--typography-ellipsis-toggle-color</code></td>
                         <td><code>#00B84B</code></td>
-                        <td>链接默认色，随主题品牌色切换。</td>
+                        <td>展开、收起文字按钮颜色，随品牌色体系变化。</td>
                       </tr>
                       <tr>
                         <td><code>--typography-code-bg</code></td>
@@ -6835,6 +7285,162 @@
           switchLoadingDemo.classList.remove("is-loading");
           if (label) label.textContent = nextChecked ? "已开启" : "已关闭";
         }, 900);
+      });
+
+      const copyTextToClipboard = async (text) => {
+        if (!text) return false;
+
+        if (navigator.clipboard?.writeText) {
+          try {
+            await navigator.clipboard.writeText(text);
+            return true;
+          } catch (error) {
+            // Fall through for local file previews or browsers without clipboard permission.
+          }
+        }
+
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.left = "-9999px";
+        textarea.style.top = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+
+        let copied = false;
+        const handleCopy = (event) => {
+          if (!event.clipboardData) return;
+          event.clipboardData.setData("text/plain", text);
+          event.preventDefault();
+          copied = true;
+        };
+
+        document.addEventListener("copy", handleCopy);
+        try {
+          copied = document.execCommand("copy") || copied;
+        } catch (error) {
+          copied = false;
+        }
+        document.removeEventListener("copy", handleCopy);
+        textarea.remove();
+        return copied;
+      };
+
+      document.querySelectorAll("[data-end-action-item]").forEach((item) => {
+        const copyButton = item.querySelector("[data-end-copy]");
+        const editButton = item.querySelector("[data-end-edit]");
+        const actions = item.querySelector(".typography-end-actions");
+
+        const showCopyTooltip = (message, state) => {
+          if (!actions) return;
+
+          let tooltip = actions.querySelector(".typography-copy-tooltip");
+          if (!tooltip) {
+            tooltip = document.createElement("span");
+            tooltip.className = "typography-copy-tooltip";
+            tooltip.setAttribute("role", "status");
+            tooltip.setAttribute("aria-live", "polite");
+            actions.appendChild(tooltip);
+          }
+
+          tooltip.textContent = message;
+          tooltip.classList.toggle("is-error", state === "error");
+          tooltip.classList.remove("is-visible");
+
+          window.clearTimeout(tooltip.showTimer);
+          window.clearTimeout(tooltip.hideTimer);
+          tooltip.showTimer = window.setTimeout(() => {
+            tooltip.classList.add("is-visible");
+          }, 0);
+          tooltip.hideTimer = window.setTimeout(() => {
+            tooltip.classList.remove("is-visible");
+          }, 1400);
+        };
+
+        copyButton?.addEventListener("click", async () => {
+          const text = item.querySelector("[data-end-action-text]")?.textContent.trim() || "";
+          const originalLabel = copyButton.dataset.originalLabel || copyButton.getAttribute("aria-label") || "复制";
+          copyButton.dataset.originalLabel = originalLabel;
+
+          const copied = await copyTextToClipboard(text);
+          copyButton.classList.toggle("is-copied", copied);
+          copyButton.setAttribute("aria-label", copied ? "已复制" : "复制失败");
+          showCopyTooltip(copied ? "复制成功" : "复制失败", copied ? "success" : "error");
+
+          window.clearTimeout(copyButton.copyFeedbackTimer);
+          copyButton.copyFeedbackTimer = window.setTimeout(() => {
+            copyButton.classList.remove("is-copied");
+            copyButton.setAttribute("aria-label", originalLabel);
+          }, 1200);
+        });
+
+        editButton?.addEventListener("click", () => {
+          const textElement = item.querySelector("[data-end-action-text]");
+          if (!textElement || item.querySelector(".typography-end-action-input")) return;
+
+          const originalText = textElement.textContent;
+          const input = document.createElement("input");
+          input.className = "typography-end-action-input";
+          input.type = "text";
+          input.value = originalText;
+          input.setAttribute("aria-label", editButton.getAttribute("aria-label") || "编辑文本");
+
+          let isClosed = false;
+          const handleOutsidePointerDown = (event) => {
+            if (event.target === input) return;
+            restoreText(input.value.trim() || originalText);
+          };
+
+          const restoreText = (value) => {
+            if (isClosed) return;
+            isClosed = true;
+
+            const nextText = document.createElement("p");
+            nextText.className = "typography-body typography-end-action-text";
+            nextText.dataset.endActionText = "";
+            nextText.textContent = value;
+
+            document.removeEventListener("pointerdown", handleOutsidePointerDown);
+            item.classList.remove("is-editing");
+            input.replaceWith(nextText);
+            if (actions) actions.hidden = false;
+          };
+
+          item.classList.add("is-editing");
+          if (actions) actions.hidden = true;
+          textElement.replaceWith(input);
+          input.focus();
+          input.select();
+          window.setTimeout(() => {
+            document.addEventListener("pointerdown", handleOutsidePointerDown);
+          }, 0);
+
+          input.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              restoreText(input.value.trim() || originalText);
+            }
+
+            if (event.key === "Escape") {
+              event.preventDefault();
+              restoreText(originalText);
+            }
+          });
+
+          input.addEventListener("blur", () => restoreText(input.value.trim() || originalText), { once: true });
+        });
+      });
+
+      document.querySelectorAll("[data-ellipsis-control]").forEach((control) => {
+        const toggle = control.querySelector("[data-ellipsis-toggle]");
+        const label = control.querySelector("[data-ellipsis-toggle-label]");
+
+        toggle?.addEventListener("click", () => {
+          const expanded = control.classList.toggle("is-expanded");
+          toggle.setAttribute("aria-expanded", String(expanded));
+          if (label) label.textContent = expanded ? "收起" : "展开";
+        });
       });
 
       const numberDemos = document.querySelectorAll("[data-number-demo]");

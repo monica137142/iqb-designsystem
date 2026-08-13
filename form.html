@@ -39,6 +39,7 @@
         --sidebar-width: 300px;
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --form-error-focus-shadow: 0 0 0 3px rgba(217, 45, 32, 0.12);
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -820,9 +821,16 @@
       }
 
       .form-item.error .spec-input:focus,
+      .form-item.error .spec-input.focus,
+      .form-item.error .spec-input.is-focus,
       .form-item.error .spec-select:focus,
-      .form-item.error .spec-textarea:focus {
-        box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.12);
+      .form-item.error .spec-select.focus,
+      .form-item.error .spec-select.is-focus,
+      .form-item.error .spec-textarea:focus,
+      .form-item.error .spec-textarea.focus,
+      .form-item.error .spec-textarea.is-focus {
+        border-color: var(--danger-500);
+        box-shadow: var(--form-error-focus-shadow);
       }
 
       .form-item.success .spec-input,
@@ -1359,6 +1367,19 @@
       :root[data-product-theme="iq-buddy-theme"] .table-spec-select.open,
       :root[data-product-theme="iq-buddy-theme"] .table-select-demo.open .table-spec-select {
         box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
+      }
+
+      :root[data-product-theme] .form-item.error .spec-input:focus,
+      :root[data-product-theme] .form-item.error .spec-input.focus,
+      :root[data-product-theme] .form-item.error .spec-input.is-focus,
+      :root[data-product-theme] .form-item.error .spec-select:focus,
+      :root[data-product-theme] .form-item.error .spec-select.focus,
+      :root[data-product-theme] .form-item.error .spec-select.is-focus,
+      :root[data-product-theme] .form-item.error .spec-textarea:focus,
+      :root[data-product-theme] .form-item.error .spec-textarea.focus,
+      :root[data-product-theme] .form-item.error .spec-textarea.is-focus {
+        border-color: var(--danger-500);
+        box-shadow: var(--form-error-focus-shadow);
       }
 
       /* test主题1 使用更克制的 2px 控件圆角。 */
