@@ -3950,6 +3950,26 @@
         box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
       }
 
+
+      :root[data-product-theme] .spec-field.error .spec-input:focus,
+      :root[data-product-theme] .spec-field.error .spec-input.focus,
+      :root[data-product-theme] .spec-field.error .spec-input.is-focus,
+      :root[data-product-theme] .spec-field.error .spec-textarea:focus,
+      :root[data-product-theme] .spec-field.error .spec-textarea.focus,
+      :root[data-product-theme] .spec-field.error .spec-textarea.is-focus,
+      :root[data-product-theme] .spec-field.over-limit .spec-input:focus,
+      :root[data-product-theme] .spec-field.over-limit .spec-input.focus,
+      :root[data-product-theme] .spec-field.over-limit .spec-input.is-focus,
+      :root[data-product-theme] .spec-field.over-limit .spec-textarea:focus,
+      :root[data-product-theme] .spec-field.over-limit .spec-textarea.focus,
+      :root[data-product-theme] .spec-field.over-limit .spec-textarea.is-focus,
+      :root[data-product-theme] .spec-input-wrap.error:focus-within,
+      :root[data-product-theme] .spec-input-wrap.error.focus,
+      :root[data-product-theme] .spec-input-wrap.error.is-focus {
+        border-color: var(--input-error-color);
+        box-shadow: var(--input-error-shadow);
+      }
+
       :root[data-product-theme="iq-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="iq-theme"] .time-range-inputs:has(.time-input-control.open) {
         border-color: var(--brand-500);
