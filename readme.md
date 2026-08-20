@@ -111,7 +111,7 @@ python3 -m http.server 8000
 
 GitHub Pages 启用后，站点访问地址为：
 
-https://example.github.io/design-system/
+https://monica137142.github.io/iqb-designsystem/
 
 如果该地址返回 404，请在 GitHub 仓库中进入 `Settings` -> `Pages`，将 Source 设置为 `Deploy from a branch`，Branch 选择 `main`，目录选择 `/root`，保存后等待部署完成。
 
