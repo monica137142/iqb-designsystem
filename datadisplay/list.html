@@ -1,0 +1,2183 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>List 列表 - Design System</title>
+    <style>
+      :root{--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--gray-900);background:var(--white)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--gray-200);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--gray-600);font-size:13px}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--white);border-right:1px solid var(--gray-200)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--gray-500);font-size:12px;line-height:1.4}.nav-category-count{color:var(--gray-400);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--gray-700);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--brand-500);background:var(--gray-100)}.nav-label{overflow:hidden;font-size:14px;line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--gray-500);border-top:1px solid var(--gray-200);font-size:12px;line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--brand-600);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--gray-900);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--gray-600);font-size:14px;line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:12px}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--gray-200)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:14px;font-weight:600}.doc-section p{margin:0;color:var(--gray-600);font-size:13px;line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px}.list{display:grid;margin:0;padding:0;list-style:none;border:1px solid var(--gray-200);border-radius:8px;overflow:hidden}.list-item{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:14px;min-height:72px;padding:14px 16px;background:var(--white);border-bottom:1px solid var(--gray-200)}.list-item:last-child{border-bottom:0}.list-item:hover{background:var(--gray-50)}.list-avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;color:#fff;background:#22262a;border-radius:50%;font-weight:700}.list-avatar.green{background:#078a4f}.list-avatar.blue{background:#175cd3}.list-main{min-width:0}.list-title{display:block;overflow:hidden;color:var(--gray-900);font-size:14px;font-weight:600;line-height:1.4;text-overflow:ellipsis;white-space:nowrap}.list-desc{margin-top:3px;overflow:hidden;color:var(--gray-500);font-size:12px;line-height:1.5;text-overflow:ellipsis;white-space:nowrap}.list-action{height:30px;padding:0 12px;color:var(--gray-700);background:var(--white);border:1px solid var(--gray-200);border-radius:6px;cursor:pointer}.list-action.primary{color:#fff;background:var(--brand-500);border-color:var(--brand-500)}.list-meta{display:inline-flex;align-items:center;gap:8px;color:var(--gray-500);font-size:12px}.list-card{display:grid;gap:12px}.list-card .list-item{border:1px solid var(--gray-200);border-radius:8px}.list-card .list-item:last-child{border-bottom:1px solid var(--gray-200)}.list-split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.list-split div{padding:16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px}.list-split strong{display:block;font-size:20px}.list-split span{color:var(--gray-500);font-size:12px}.spec-table-wrap{overflow:auto;border:1px solid var(--gray-200);border-radius:8px}.spec-table{width:100%;border-collapse:collapse;font-size:13px}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--gray-200);text-align:left;vertical-align:top}.spec-table th{color:var(--gray-700);background:var(--gray-50);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;background:var(--gray-100);border-radius:4px;font-family:"SFMono-Regular",Consolas,monospace;font-size:12px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--gray-200)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.list-split{grid-template-columns:1fr}.doc-title{font-size:28px}.list-item{grid-template-columns:36px minmax(0,1fr);align-items:start}.list-avatar{width:36px;height:36px}.list-item .list-action,.list-meta{grid-column:2}}
+      /* Header parity with index.html */
+      :root {
+        --brand-400: #35f47c;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      /* Layout and page rhythm aligned with Table page */
+      :root {
+        --list-row-height-small: 36px;
+        --list-row-height: 44px;
+        --list-row-height-large: 72px;
+        --list-card-radius: 8px;
+        --list-border-color: #e8ebee;
+        --list-divider-color: #eef1f3;
+        --list-hover-bg: #fff;
+        --list-example-padding: 36px;
+        --list-header-padding-x: 18px;
+        --list-header-padding-y: 10px;
+        --list-item-padding-x: 18px;
+        --list-item-padding-y: 2px;
+        --list-scroll-frame-height: 172px;
+        --list-load-indicator-size: 14px;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        height: auto;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      .sidebar {
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .sidebar::-webkit-scrollbar,
+      .spec-table-wrap::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track,
+      .spec-table-wrap::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb,
+      .spec-table-wrap::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
+      }
+
+      .canvas {
+        background: var(--white);
+      }
+
+      .canvas-inner {
+        display: grid;
+        width: auto;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--brand-500);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.4;
+        text-transform: none;
+      }
+
+      .doc-title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        line-height: 1.75;
+      }
+
+      .doc-meta-list {
+        margin: 18px 0 0;
+      }
+
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color: var(--gray-600);
+        background: var(--gray-100);
+        border: 0;
+        border-radius: 999px;
+        line-height: 1.4;
+      }
+
+      .doc-section {
+        margin-top: 0;
+        padding-top: 28px;
+        border-top: 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        color: var(--gray-900);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .doc-section h3 {
+        margin: 0 0 8px;
+        color: var(--gray-800);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section p {
+        line-height: 1.75;
+      }
+
+      .rule-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .rule-list li {
+        position: relative;
+        padding-left: 16px;
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .rule-list li::before {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        content: "";
+        background: var(--brand-500);
+        border-radius: 999px;
+      }
+
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .example-block {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .example-block.full {
+        grid-column: 1 / -1;
+      }
+
+      .list-example-block {
+        display: grid;
+        gap: 18px;
+        padding: var(--list-example-padding);
+      }
+
+      .list-example-block + .list-example-block {
+        margin-top: 18px;
+      }
+
+      .list-example-block > h3 {
+        margin: 0;
+      }
+
+      .list-spec-group {
+        min-width: 0;
+        margin-top: 0;
+      }
+
+      .list-spec-head {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        margin: 0 0 8px;
+        color: #8a9199;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      .list-spec-avatar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
+        color: #2f75d6;
+        background: #eef5ff;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 700;
+        line-height: 1;
+      }
+
+      .list-spec-badge {
+        padding: 2px 8px;
+        color: #969ba1;
+        background: #fff;
+        border: 1px solid var(--list-border-color);
+        border-radius: 999px;
+        font-size: 11px;
+        font-weight: 500;
+      }
+
+      .list-spec-card {
+        position: relative;
+        overflow: hidden;
+        background: #fff;
+        border: 1px solid var(--list-border-color);
+        border-radius: var(--list-card-radius);
+      }
+
+      .list-spec-card > .list {
+        border: 0;
+        border-radius: 0;
+      }
+
+      .list {
+        border-color: var(--list-border-color);
+        border-radius: var(--list-card-radius);
+        background: var(--white);
+      }
+
+      .list-item {
+        grid-template-columns: 44px minmax(0, 1fr) auto;
+        gap: 14px;
+        min-height: var(--list-row-height);
+        padding: var(--list-item-padding-y) 18px;
+        border-bottom-color: var(--list-divider-color);
+      }
+
+      .list-item:hover {
+        background: var(--list-hover-bg);
+      }
+
+      .list-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        background: #eef5ff;
+        color: #2f75d6;
+        font-size: 13px;
+        line-height: 1;
+      }
+
+      .list-avatar.green {
+        background: #ecfdf3;
+        color: #087443;
+      }
+
+      .list-avatar.blue {
+        background: #eff6ff;
+        color: #1d5fd7;
+      }
+
+      .list-title {
+        font-weight: 500;
+      }
+
+      .plain-text-list .list-item {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: var(--list-row-height);
+        padding: var(--list-item-padding-y) 18px;
+      }
+
+      .plain-text-list .list-main {
+        display: grid;
+        gap: 2px;
+      }
+
+      .plain-text-list .list-title {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .plain-text-list .list-desc {
+        margin-top: 0;
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.65;
+      }
+
+      .single-line-list .list-item {
+        grid-template-columns: minmax(0, 1fr);
+        min-height: var(--list-row-height);
+        padding: var(--list-item-padding-y) 18px;
+      }
+
+      .single-line-list .list-title {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.75;
+      }
+
+      .list-desc {
+        color: var(--gray-600);
+      }
+
+      .list-action {
+        height: 28px;
+        padding: 0 12px;
+        border-color: #dfe4e8;
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .list-action:hover {
+        color: var(--brand-500);
+        border-color: var(--brand-500);
+      }
+
+      .list-action.primary {
+        color: var(--brand-500);
+        background: transparent;
+        border-color: var(--brand-500);
+      }
+
+      .list-meta {
+        color: #8a9199;
+      }
+
+      .list-card {
+        gap: 10px;
+      }
+
+      .list-card .list-title {
+        font-size: 13.5px;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+
+      .list-card .list-desc {
+        margin-top: 2px;
+        font-size: 11.5px;
+        line-height: 1.35;
+      }
+
+      .list-card .list-item {
+        border-color: var(--list-border-color);
+        border-radius: var(--list-card-radius);
+      }
+
+      .spec-list-demo {
+        display: grid;
+        gap: 24px;
+      }
+
+      .spec-list-example {
+        display: grid;
+        gap: 18px;
+        min-width: 0;
+      }
+
+      .spec-list-example-head {
+        display: grid;
+        gap: 4px;
+      }
+
+      .spec-list-example-head h3 {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .spec-list-example-head p {
+        max-width: 760px;
+      }
+
+      .spec-list-frame {
+        overflow: hidden;
+        background: var(--white);
+        border: 1px solid var(--list-border-color);
+        border-radius: var(--list-card-radius);
+      }
+
+      .spec-list-header,
+      .spec-list-footer {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: var(--list-header-padding-y) var(--list-header-padding-x);
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .spec-list-header {
+        color: var(--gray-900);
+        font-weight: 500;
+        border-bottom: 1px solid var(--list-divider-color);
+      }
+
+      .spec-list-header span:last-child {
+        color: var(--gray-500);
+        font-size: 12px;
+        font-weight: 400;
+      }
+
+      .spec-list-footer {
+        color: var(--gray-500);
+        background: #fcfcfd;
+        font-size: 12px;
+        font-weight: 400;
+        border-top: 1px solid var(--list-divider-color);
+      }
+
+      .spec-list {
+        display: grid;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .spec-list-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: center;
+        min-height: var(--list-row-height);
+        padding: var(--list-item-padding-y) var(--list-item-padding-x);
+        color: var(--gray-700);
+        background: var(--white);
+        border-bottom: 1px solid var(--list-divider-color);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .spec-list-item:last-child {
+        border-bottom: 0;
+      }
+
+      .basic-list-demo .spec-list-item {
+        min-height: var(--list-row-height);
+        padding: var(--list-item-padding-y) var(--list-item-padding-x);
+        line-height: 1.5;
+      }
+
+      .basic-list-demo .spec-list-header,
+      .basic-list-demo .spec-list-footer {
+        min-height: 36px;
+        padding: 8px var(--list-header-padding-x);
+      }
+
+      .spec-list-hoverable .spec-list-item:hover {
+        background: var(--list-hover-bg);
+      }
+
+      .spec-list-splitless .spec-list-item {
+        border-bottom: 0;
+      }
+
+      .spec-list-meta-row {
+        display: grid;
+        grid-template-columns: 40px minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .spec-list-avatar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: #2f75d6;
+        background: #eef5ff;
+        border-radius: 50%;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1;
+      }
+
+      .spec-list-avatar.green {
+        color: #087443;
+        background: #ecfdf3;
+      }
+
+      .spec-list-meta {
+        min-width: 0;
+      }
+
+      .spec-list-title {
+        display: block;
+        overflow: hidden;
+        color: var(--gray-900);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.5;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .spec-list-desc {
+        display: block;
+        margin-top: 2px;
+        overflow: hidden;
+        color: var(--gray-600);
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 1.65;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .spec-list-actions {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        white-space: nowrap;
+      }
+
+      .spec-list-action {
+        height: 28px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: var(--white);
+        border: 1px solid #dfe4e8;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .spec-list-action:hover {
+        color: var(--brand-500);
+        border-color: var(--brand-500);
+      }
+
+      .meta-action-list-demo .spec-list-action {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 32px;
+        height: auto;
+        padding: 0 14px;
+        border-radius: 8px;
+        font-size: 13px;
+      }
+
+      .meta-action-list-demo .spec-list-action.icon-only {
+        width: 32px;
+        min-width: 32px;
+        padding: 0;
+      }
+
+      .spec-list-icon {
+        flex: 0 0 auto;
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: currentColor;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2;
+      }
+
+      .spec-list-card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .spec-list-card {
+        display: grid;
+        align-content: start;
+        gap: 10px;
+        min-width: 0;
+        padding: 16px;
+        background: var(--white);
+        border: 1px solid var(--list-border-color);
+        border-radius: var(--list-card-radius);
+      }
+
+      .grid-list-line-card {
+        gap: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .grid-summary-card {
+        grid-template-columns: 40px minmax(0, 1fr);
+        align-items: center;
+        gap: 12px;
+        min-height: 72px;
+      }
+
+      .grid-summary-card .spec-list-meta {
+        display: grid;
+        gap: 0;
+      }
+
+      .spec-list-card-list {
+        display: grid;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .spec-list-card-list li {
+        min-height: var(--list-row-height);
+        display: flex;
+        align-items: center;
+        padding: 10px 14px;
+        color: var(--gray-700);
+        border-bottom: 1px solid var(--list-divider-color);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .spec-list-card-list li:last-child {
+        border-bottom: 0;
+      }
+
+      .spec-list-card .spec-list-desc {
+        margin-top: 2px;
+        white-space: normal;
+      }
+
+      .scroll-load-frame {
+        height: var(--list-scroll-frame-height);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .scroll-load-frame::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .scroll-load-frame::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .scroll-load-frame::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
+      }
+
+      .scroll-load-more {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        color: var(--gray-500);
+        background: #fcfcfd;
+        border-top: 1px solid var(--list-divider-color);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .scroll-load-spinner {
+        width: var(--list-load-indicator-size);
+        height: var(--list-load-indicator-size);
+        border: 2px solid var(--gray-200);
+        border-top-color: var(--brand-500);
+        border-radius: 50%;
+        animation: list-spinner 0.72s linear infinite;
+      }
+
+      .scroll-load-more[hidden] {
+        display: none;
+      }
+
+      .scroll-load-new-item {
+        animation: scroll-load-item-in 0.32s ease both;
+      }
+
+      @keyframes list-spinner {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes scroll-load-item-in {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .spec-list-size-small .spec-list-item {
+        min-height: var(--list-row-height-small);
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .spec-list-size-large .spec-list-item {
+        min-height: var(--list-row-height-large);
+        padding-top: 14px;
+        padding-bottom: 14px;
+      }
+
+      .spec-list-borderless {
+        border: 0;
+        border-radius: 0;
+      }
+
+      .list-split {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .list-split div {
+        padding: 16px;
+        background: var(--white);
+        border-color: #e8ebee;
+        border-radius: var(--radius-sm);
+      }
+
+      .list-split strong {
+        margin-bottom: 6px;
+        color: var(--gray-900);
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .list-split span {
+        display: block;
+        color: var(--gray-600);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .structure-list {
+        display: grid;
+        gap: 12px;
+        margin: 14px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .structure-list li {
+        display: grid;
+        grid-template-columns: 138px minmax(0, 1fr);
+        gap: 14px;
+        padding: 12px 0;
+        border-top: 1px solid var(--gray-200);
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .structure-list strong {
+        color: var(--gray-900);
+        font-weight: 500;
+      }
+
+      .spec-table-wrap {
+        margin-top: 16px;
+        border-radius: var(--radius-sm);
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .spec-table {
+        min-width: 680px;
+      }
+
+      .spec-table code {
+        color: var(--gray-800);
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+      }
+
+      @media (max-width: 860px) {
+        .topbar {
+          position: sticky;
+          top: 0;
+        }
+
+        .sidebar {
+          position: sticky;
+          top: var(--topbar-height);
+          z-index: 2;
+          max-height: none;
+          padding: 12px 14px;
+        }
+
+        .nav-button {
+          min-height: 36px;
+        }
+
+        .canvas-inner {
+          min-height: 560px;
+          padding: 18px;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 22px 18px;
+        }
+
+        .doc-title {
+          font-size: 24px;
+        }
+
+        .doc-grid,
+        .list-split,
+        .spec-list-card-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .list-example-block {
+          padding: 18px;
+        }
+
+        .spec-list-meta-row {
+          grid-template-columns: 40px minmax(0, 1fr);
+          align-items: start;
+        }
+
+        .spec-list-actions {
+          grid-column: 2;
+          justify-self: start;
+        }
+
+        .spec-list-header,
+        .spec-list-footer {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .list-item {
+          grid-template-columns: 40px minmax(0, 1fr);
+          align-items: start;
+        }
+
+        .list-avatar {
+          width: 40px;
+          height: 40px;
+        }
+
+        .list-item .list-action,
+        .list-meta {
+          grid-column: 2;
+          justify-self: start;
+        }
+
+        .structure-list li {
+          grid-template-columns: 1fr;
+          gap: 4px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand-title {
+          display: none;
+        }
+
+        .product-select {
+          width: min(124px, calc(100vw - 92px));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 IQB DESIGN 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQB DESIGN</span>
+        </a>
+        <div class="topbar-actions" aria-label="组件完成状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 45/46</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html" aria-current="page">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/model.html">
+                      <span class="nav-label">Model 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+        <section class="canvas" aria-label="列表组件说明详情区">
+          <div class="canvas-inner">
+            <article class="doc-page">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Display / List</p>
+                <h1 class="doc-title">List 列表</h1>
+                <p class="doc-summary">
+                  List 用于承载连续对象、摘要信息、行内操作、网格列表和滚动加载场景。
+                  规范保留低噪声边框、8px 卡片圆角，并将 small / default / large 行高统一为 36 / 44 / 72px。
+                </p>
+                <ul class="doc-meta-list" aria-label="列表基础规格">
+                  <li>行高 36 / 44 / 72px</li>
+                  <li>支持 header</li>
+                  <li>支持 Meta / actions</li>
+                  <li>支持 grid / scroll loading</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>何时使用</h2>
+                <ul class="rule-list">
+                  <li>同类对象按纵向流排列，并以标题、描述、头像或行内操作为主要信息时使用 List。</li>
+                  <li>纯文本单行列表使用 default 44px；含头像或标题加描述的两行列表使用 large 72px。</li>
+                  <li>需要分组语义时使用 header；需要持续追加数据时使用滚动触底加载。</li>
+                  <li>需要多字段横向比较、批量选择、排序筛选时切换为 Table；少量对象摘要可使用 Grid Card。</li>
+                </ul>
+              </section>
+
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="example-block full list-example-block basic-list-demo">
+                  <div class="spec-list-example">
+                    <div class="spec-list-example-head">
+                      <h3>基础文本列表</h3>
+                      <p>基础列表只展示普通文本项，适合承载简洁、连续的说明文字。</p>
+                    </div>
+                    <div class="spec-list-frame">
+                      <ul class="spec-list spec-list-hoverable" aria-label="基础文本列表">
+                        <li class="spec-list-item">Text content describes the item and keeps the message concise.</li>
+                        <li class="spec-list-item">Text content describes the item and keeps the message concise.</li>
+                        <li class="spec-list-item">Text content describes the item and keeps the message concise.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="example-block full list-example-block basic-list-demo">
+                  <div class="spec-list-example">
+                    <div class="spec-list-example-head">
+                      <h3>含 Header 的列表</h3>
+                      <p>当列表需要展示上下文范围、集合名称或轻量统计时，可在 List frame 顶部使用 header 强化信息归属。</p>
+                    </div>
+                    <div class="spec-list-frame">
+                      <div class="spec-list-header">
+                        <span>Automation queue</span>
+                        <span>4 items</span>
+                      </div>
+                      <ul class="spec-list spec-list-hoverable" aria-label="含 Header 的列表">
+                        <li class="spec-list-item">Title generation workflow</li>
+                        <li class="spec-list-item">Image quality inspection</li>
+                        <li class="spec-list-item">Keyword growth digest</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>Meta 与操作</h2>
+                <div class="example-block full list-example-block">
+                  <div class="spec-list-example">
+                    <div class="spec-list-example-head">
+                      <h3>基础Meta列表</h3>
+                      <p>Meta 由 avatar、title、description 组成，适合任务、人员、资源等对象摘要。</p>
+                    </div>
+                    <div class="spec-list-frame spec-list-size-large">
+                      <ul class="spec-list spec-list-hoverable" aria-label="基础Meta列表">
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar">A</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Listing Optimization Agent</span>
+                              <span class="spec-list-desc">Generate marketplace-ready titles and listing summaries.</span>
+                            </span>
+                          </div>
+                        </li>
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar green">S</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Search Insight Agent</span>
+                              <span class="spec-list-desc">Find growth keywords and update content plans.</span>
+                            </span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="example-block full list-example-block meta-action-list-demo">
+                  <div class="spec-list-example">
+                    <div class="spec-list-example-head">
+                      <h3>含操作的Meta列表</h3>
+                      <p>在 Meta 信息右侧放置少量高频操作，适合需要直接处理或查看详情的对象列表。</p>
+                    </div>
+                    <div class="spec-list-frame spec-list-size-large">
+                      <ul class="spec-list spec-list-hoverable" aria-label="含操作的Meta列表">
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar">A</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Listing Optimization Agent</span>
+                              <span class="spec-list-desc">Generate marketplace-ready titles and listing summaries.</span>
+                            </span>
+                            <span class="spec-list-actions">
+                              <button class="spec-list-action" type="button">Edit</button>
+                              <button class="spec-list-action" type="button">Run</button>
+                            </span>
+                          </div>
+                        </li>
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar green">S</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Search Insight Agent</span>
+                              <span class="spec-list-desc">Find growth keywords and update content plans.</span>
+                            </span>
+                            <span class="spec-list-actions">
+                              <button class="spec-list-action" type="button">View</button>
+                            </span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="spec-list-frame spec-list-size-large">
+                      <ul class="spec-list spec-list-hoverable" aria-label="含图标操作的Meta列表">
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar blue">C</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Creative Quality Agent</span>
+                              <span class="spec-list-desc">Check image clarity and detect visual compliance risks.</span>
+                            </span>
+                            <span class="spec-list-actions">
+                              <button class="spec-list-action icon-only" type="button" aria-label="编辑">
+                                <svg class="spec-list-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                  <path d="M12 20h9"></path>
+                                  <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path>
+                                </svg>
+                              </button>
+                              <button class="spec-list-action icon-only" type="button" aria-label="执行记录">
+                                <svg class="spec-list-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                  <path d="M3 12a9 9 0 1 0 3-6.7"></path>
+                                  <path d="M3 4v5h5"></path>
+                                  <path d="M12 7v5l3 2"></path>
+                                </svg>
+                              </button>
+                            </span>
+                          </div>
+                        </li>
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar">P</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Price Strategy Agent</span>
+                              <span class="spec-list-desc">Review pricing suggestions and compare margin impact.</span>
+                            </span>
+                            <span class="spec-list-actions">
+                              <button class="spec-list-action icon-only" type="button" aria-label="查看">
+                                <svg class="spec-list-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                  <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"></path>
+                                  <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                              </button>
+                              <button class="spec-list-action icon-only" type="button" aria-label="刷新">
+                                <svg class="spec-list-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                  <path d="M3 12a9 9 0 0 1 15.2-6.5"></path>
+                                  <path d="M18 3v5h-5"></path>
+                                  <path d="M21 12a9 9 0 0 1-15.2 6.5"></path>
+                                  <path d="M6 21v-5h5"></path>
+                                </svg>
+                              </button>
+                            </span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>卡片与网格</h2>
+                <div class="example-block full list-example-block">
+                  <div class="spec-list-example">
+                    <div class="spec-list-example-head">
+                      <h3>Grid List</h3>
+                      <p>参考 通用的网格列表能力，多个对象可用卡片栅格承载，但仍保持 List 数据源与渲染模型。</p>
+                    </div>
+                    <div class="spec-list-card-grid" aria-label="网格卡片列表">
+                      <div class="spec-list-card grid-list-line-card">
+                        <ul class="spec-list-card-list" aria-label="价格策略列表">
+                          <li>Price strategy</li>
+                          <li>Margin review</li>
+                          <li>Competitor scan</li>
+                        </ul>
+                      </div>
+                      <div class="spec-list-card grid-list-line-card">
+                        <ul class="spec-list-card-list" aria-label="搜索词列表">
+                          <li>Search terms</li>
+                          <li>Keyword growth</li>
+                          <li>Content refresh</li>
+                        </ul>
+                      </div>
+                      <div class="spec-list-card grid-list-line-card">
+                        <ul class="spec-list-card-list" aria-label="日报列表">
+                          <li>Daily digest</li>
+                          <li>Task summary</li>
+                          <li>Risk reminder</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="example-block full list-example-block">
+                  <div class="spec-list-example">
+                    <div class="spec-list-example-head">
+                      <h3>Grid Card</h3>
+                      <p>对象较少且需要独立摘要时，可使用网格卡片展示 avatar、title 与 description。</p>
+                    </div>
+                    <div class="spec-list-card-grid" aria-label="网格卡片">
+                      <div class="spec-list-card grid-summary-card">
+                        <span class="spec-list-avatar">P</span>
+                        <span class="spec-list-meta">
+                          <span class="spec-list-title">Price strategy</span>
+                          <span class="spec-list-desc">6 suggestions are ready for operation review.</span>
+                        </span>
+                      </div>
+                      <div class="spec-list-card grid-summary-card">
+                        <span class="spec-list-avatar green">S</span>
+                        <span class="spec-list-meta">
+                          <span class="spec-list-title">Search terms</span>
+                          <span class="spec-list-desc">12 growth keywords can be added to next week plan.</span>
+                        </span>
+                      </div>
+                      <div class="spec-list-card grid-summary-card">
+                        <span class="spec-list-avatar blue">D</span>
+                        <span class="spec-list-meta">
+                          <span class="spec-list-title">Daily digest</span>
+                          <span class="spec-list-desc">Summarize completed tasks and pending exceptions.</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>列表加载</h2>
+                <div class="example-block full list-example-block">
+                  <div class="spec-list-example">
+                    <div class="spec-list-example-head">
+                      <h3>列表加载</h3>
+                      <p>当列表内容持续增长时，在固定高度的 List frame 内滚动浏览，滚动到底后触发加载并追加下一组内容。</p>
+                    </div>
+                    <div class="spec-list-frame scroll-load-frame spec-list-size-large" data-scroll-load-frame>
+                      <ul class="spec-list spec-list-hoverable" aria-label="列表加载" data-scroll-load-list>
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar">A</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Listing Optimization Agent</span>
+                              <span class="spec-list-desc">Generate marketplace-ready titles and listing summaries.</span>
+                            </span>
+                          </div>
+                        </li>
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar green">S</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Search Insight Agent</span>
+                              <span class="spec-list-desc">Find growth keywords and update content plans.</span>
+                            </span>
+                          </div>
+                        </li>
+                        <li class="spec-list-item">
+                          <div class="spec-list-meta-row">
+                            <span class="spec-list-avatar blue">C</span>
+                            <span class="spec-list-meta">
+                              <span class="spec-list-title">Creative Quality Agent</span>
+                              <span class="spec-list-desc">Check image clarity and detect visual compliance risks.</span>
+                            </span>
+                          </div>
+                        </li>
+                      </ul>
+                      <div class="scroll-load-more" role="status" aria-live="polite" data-scroll-load-status hidden>
+                        <span class="scroll-load-spinner" aria-hidden="true" data-scroll-load-indicator></span>
+                        <span>加载中</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>尺寸</h2>
+                <div class="example-block full list-example-block">
+                  <div class="spec-list-example">
+                    <div class="spec-list-example-head">
+                      <h3>Small / Default / Large</h3>
+                      <p>small / default / large 分别对应 36 / 44 / 72px；含头像或两行内容优先使用 large。</p>
+                    </div>
+                    <div class="spec-list-frame spec-list-size-small">
+                      <ul class="spec-list" aria-label="Small 尺寸列表">
+                        <li class="spec-list-item">Small list item</li>
+                        <li class="spec-list-item">Small list item</li>
+                      </ul>
+                    </div>
+                    <div class="spec-list-frame">
+                      <ul class="spec-list" aria-label="Default 尺寸列表">
+                        <li class="spec-list-item">Default list item</li>
+                        <li class="spec-list-item">Default list item</li>
+                      </ul>
+                    </div>
+                    <div class="spec-list-frame spec-list-size-large">
+                      <ul class="spec-list" aria-label="Large 尺寸列表">
+                        <li class="spec-list-item">Large list item with relaxed vertical rhythm</li>
+                        <li class="spec-list-item">Large list item with relaxed vertical rhythm</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>dataSource</code></td>
+                        <td>列表数据源。</td>
+                        <td><code>T[]</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>render</code></td>
+                        <td>自定义渲染每一项内容。</td>
+                        <td><code>(item, index) =&gt; ReactNode</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>header</code></td>
+                        <td>列表头部内容，用于集合名称、范围说明或轻量统计。</td>
+                        <td><code>ReactNode</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>size</code></td>
+                        <td>列表尺寸。</td>
+                        <td><code>"small" | "default" | "large"</code></td>
+                        <td><code>"default"</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>grid</code></td>
+                        <td>网格列表配置，可渲染三行列表卡片或头像摘要卡片。</td>
+                        <td><code>GridProps</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>actions</code></td>
+                        <td>List.Item 操作集合。</td>
+                        <td><code>ReactNode[]</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>scrollLoading</code></td>
+                        <td>滚动加载状态，触底加载时展示 loading 区域。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onReachBottom</code></td>
+                        <td>滚动到底部时触发，用于请求并追加下一组数据。</td>
+                        <td><code>() =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onListScroll</code></td>
+                        <td>自定义列表滚动监听；使用后可接管默认触底判断。</td>
+                        <td><code>(event) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>Design Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>--list-row-height-small</code></td>
+                        <td><code>36px</code></td>
+                        <td>small 列表项最小高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-row-height</code></td>
+                        <td><code>44px</code></td>
+                        <td>default 列表项最小高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-row-height-large</code></td>
+                        <td><code>72px</code></td>
+                        <td>large 列表项最小高度，用于含头像或两行内容的列表。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-card-radius</code></td>
+                        <td><code>8px</code></td>
+                        <td>列表 frame 与卡片项圆角。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-border-color</code></td>
+                        <td><code>#e8ebee</code></td>
+                        <td>列表外框颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-divider-color</code></td>
+                        <td><code>#eef1f3</code></td>
+                        <td>列表项、header 和加载区分割线。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-hover-bg</code></td>
+                        <td><code>#fff</code></td>
+                        <td>列表项 hover 背景；当前规范保持白底。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-header-padding-x</code></td>
+                        <td><code>18px</code></td>
+                        <td>header 水平内边距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-header-padding-y</code></td>
+                        <td><code>10px</code></td>
+                        <td>header 垂直内边距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-item-padding-x</code></td>
+                        <td><code>18px</code></td>
+                        <td>列表项水平内边距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-item-padding-y</code></td>
+                        <td><code>2px</code></td>
+                        <td>默认列表项垂直内边距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-scroll-frame-height</code></td>
+                        <td><code>172px</code></td>
+                        <td>滚动加载列表的可滚动容器高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--list-load-indicator-size</code></td>
+                        <td><code>14px</code></td>
+                        <td>滚动加载 loading 指示器尺寸。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector('[data-component-count-label]');
+        if (!label) return;
+        const pendingKeys = new Set(['card']);
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute('href') || '').split('#').pop().replace(/.html$/, '');
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
+      const initScrollLoadDemo = () => {
+        const frame = document.querySelector('[data-scroll-load-frame]');
+        const list = document.querySelector('[data-scroll-load-list]');
+        const status = document.querySelector('[data-scroll-load-status]');
+        if (!frame || !list || !status) return;
+
+        let hasLoaded = false;
+        let isLoading = false;
+
+        const nextItems = [
+          {
+            avatar: 'P',
+            tone: '',
+            title: 'Price Strategy Agent',
+            desc: 'Review pricing suggestions and compare margin impact.',
+          },
+          {
+            avatar: 'K',
+            tone: 'green',
+            title: 'Keyword Growth Agent',
+            desc: 'Append long-tail keywords from weekly search trends.',
+          },
+          {
+            avatar: 'D',
+            tone: 'blue',
+            title: 'Daily Digest Agent',
+            desc: 'Summarize completed tasks and pending exceptions.',
+          },
+        ];
+
+        const createScrollLoadItem = (item) => {
+          const row = document.createElement('li');
+          row.className = 'spec-list-item scroll-load-new-item';
+
+          const metaRow = document.createElement('div');
+          metaRow.className = 'spec-list-meta-row';
+
+          const avatar = document.createElement('span');
+          avatar.className = item.tone ? `spec-list-avatar ${item.tone}` : 'spec-list-avatar';
+          avatar.textContent = item.avatar;
+
+          const meta = document.createElement('span');
+          meta.className = 'spec-list-meta';
+
+          const title = document.createElement('span');
+          title.className = 'spec-list-title';
+          title.textContent = item.title;
+
+          const desc = document.createElement('span');
+          desc.className = 'spec-list-desc';
+          desc.textContent = item.desc;
+
+          meta.append(title, desc);
+          metaRow.append(avatar, meta);
+          row.append(metaRow);
+          return row;
+        };
+
+        const loadNextItems = () => {
+          if (hasLoaded || isLoading) return;
+          isLoading = true;
+          status.hidden = false;
+
+          window.setTimeout(() => {
+            const fragment = document.createDocumentFragment();
+            nextItems.forEach((item) => fragment.append(createScrollLoadItem(item)));
+            list.append(fragment);
+            hasLoaded = true;
+            isLoading = false;
+            status.hidden = true;
+          }, 1500);
+        };
+
+        frame.addEventListener('scroll', () => {
+          const reachedBottom = frame.scrollTop + frame.clientHeight >= frame.scrollHeight - 2;
+          if (reachedBottom) loadNextItems();
+        });
+      };
+
+      initScrollLoadDemo();
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', '#22b573');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const centerNavItem = (item, behavior = 'auto') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+        if (isHorizontal) {
+          sidebar.scrollTo({ left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2, behavior });
+          return;
+        }
+        sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
+      };
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+    </script>
+  </body>
+</html>

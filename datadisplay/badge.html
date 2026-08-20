@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Badge 徽标 - Design System</title>
+    <style>
+      :root{--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--gray-900);background:var(--white)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--gray-200);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--gray-600);font-size:13px}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--white);border-right:1px solid var(--gray-200)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--gray-500);font-size:12px;line-height:1.4}.nav-category-count{color:var(--gray-400);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--gray-700);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--brand-500);background:var(--gray-100)}.nav-label{overflow:hidden;font-size:14px;line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--gray-500);border-top:1px solid var(--gray-200);font-size:12px;line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--brand-600);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--gray-900);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--gray-600);font-size:14px;line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:12px}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--gray-200)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:14px;font-weight:600}.doc-section p{margin:0;color:var(--gray-600);font-size:13px;line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--gray-500);font-size:13px}.stat-value{color:var(--gray-900);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--gray-500);font-size:12px}.metric-row strong{font-size:24px}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--white);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--gray-500);font-size:13px}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--brand-600);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:#fff;background:var(--gray-900);border-radius:6px;font-size:12px;line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:#fff;background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--gray-700);background:var(--gray-100)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--gray-500);font-size:13px}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--brand-500);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:#2e90fa;box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--gray-500);font-size:12px}.timeline strong{font-size:14px}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--gray-900);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--brand-600);font-size:12px;font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--gray-700);background:#fff;border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--brand-500);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--gray-200)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--gray-400);border:1px dashed var(--gray-300);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--gray-500);font-size:12px}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:#fff;background:#f04438;border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:#f79009}.status-dot.danger{background:#f04438}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--gray-200);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--gray-300);border-radius:6px}.empty-state strong{font-size:16px}.empty-state button{height:34px;padding:0 14px;color:#fff;background:var(--brand-500);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--gray-200)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      :root {
+        --brand-400: #35f47c;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+    </style>
+    <style>
+      :root{--brand-50:#effff6;--brand-100:#d8ffe8;--brand-200:#b5ffd1;--brand-300:#7dffb0;--brand-400:#35f47c;--brand-700:#008f3f;--brand-800:#067037;--brand-900:#075a2f;--brand-text:#00b84b;--brand-text-hover:#008f3f;--brand-border-soft:#bfead2;--brand-border-hover:#8fd9b3;--badge-color:#f04438;--badge-text-color:var(--white);--badge-height:20px;--badge-height-small:16px;--badge-dot-size:6px;--badge-status-default:var(--gray-400);--badge-status-success:#12b76a;--badge-status-warning:#f79009;--badge-status-error:#f04438}
+      .canvas{background:var(--white)}.canvas-inner{display:grid;width:auto;min-height:calc(100vh - var(--topbar-height));padding:32px}.content-panel.doc-page,.doc-page{width:min(100%,1080px);color:var(--gray-800)}.doc-hero,.doc-section{padding:28px 32px}.doc-hero{border-bottom:1px solid var(--gray-200)}.doc-kicker{margin:0 0 10px;color:var(--brand-500);font-size:12px;font-weight:400;line-height:1.4;text-transform:none;letter-spacing:0}.doc-title{font-size:28px;font-weight:500;line-height:1.25}.doc-summary{max-width:720px;margin-top:12px;line-height:1.75}.doc-meta-list{margin-top:18px}.doc-meta-list li{padding:4px 8px;color:var(--gray-600);background:var(--gray-100);border:0;border-radius:999px;line-height:1.4}.doc-section{margin-top:0;padding-top:28px;border-top:0;border-bottom:1px solid var(--gray-200)}.doc-section:last-child{border-bottom:0}.doc-section h2{margin:0 0 14px;color:var(--gray-900);font-size:18px;font-weight:500;line-height:1.35}.doc-section h3{margin:0 0 8px;color:var(--gray-800);font-size:14px;font-weight:500;line-height:1.4}.doc-section p{line-height:1.75}.doc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.doc-grid .full,.example-block.full{grid-column:1/-1}.example-block{min-width:0;padding:16px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm)}.rule-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.rule-list li{position:relative;padding-left:16px;color:var(--gray-700);font-size:13px;line-height:1.75}.rule-list li:before{position:absolute;top:10px;left:0;width:5px;height:5px;content:"";background:var(--brand-500);border-radius:999px}.example-block>p{margin-bottom:18px}.demo-line{display:flex;flex-wrap:wrap;align-items:flex-end;gap:28px;margin-top:18px}.demo-item{display:inline-grid;min-width:80px;justify-items:center;gap:10px;color:var(--gray-500);font-size:12px;text-align:center}.demo-target{position:relative;display:inline-flex;align-items:center;justify-content:center}.target-circle,.target-square{width:44px;height:44px;color:var(--gray-700);background:var(--gray-100)}.target-circle{border-radius:50%}.target-square{border-radius:var(--radius-sm)}.target-button{width:44px;height:44px;padding:0;color:var(--gray-700);background:var(--white);border:1px solid var(--gray-300);border-radius:var(--radius-sm);cursor:pointer}.target-text{min-height:24px;color:var(--gray-800);font-size:14px}.badge-mark{position:absolute;top:0;right:0;z-index:1;display:inline-grid;min-width:var(--badge-height);height:var(--badge-height);padding:0 6px;place-items:center;color:var(--badge-text-color);background:var(--badge-color);border:2px solid var(--white);border-radius:999px;font-size:11px;font-weight:600;line-height:16px;transform:translate(50%,-50%);white-space:nowrap}.badge-mark.small{min-width:var(--badge-height-small);height:var(--badge-height-small);padding:0 4px;border-width:1px;font-size:10px;line-height:14px}.badge-mark.dot{width:var(--badge-dot-size);min-width:var(--badge-dot-size);height:var(--badge-dot-size);padding:0;border:0}.badge-inline{position:relative;display:inline-flex;margin:8px 12px 0 0}.badge-inline .badge-mark{position:static;transform:none}.custom-blue{--badge-color:#1570ef}.custom-green{--badge-color:var(--brand-500)}.custom-purple{--badge-color:#7a5af8}.status-list{display:flex;flex-wrap:wrap;gap:24px 32px;margin-top:18px}.status-badge{display:inline-flex;align-items:center;gap:8px;color:var(--gray-700);font-size:13px}.status-badge:before{width:var(--badge-dot-size);height:var(--badge-dot-size);content:"";background:var(--badge-status-default);border-radius:50%}.status-badge.success:before{background:var(--badge-status-success)}.status-badge.warning:before{background:var(--badge-status-warning)}.status-badge.error:before{background:var(--badge-status-error)}.status-badge.custom:before{background:#7a5af8}.spec-table-wrap{overflow-x:auto;border:1px solid var(--gray-200);border-radius:var(--radius-sm)}.spec-table{width:100%;min-width:680px;border-collapse:collapse;font-size:13px;text-align:left}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--gray-200);text-align:left;vertical-align:top;line-height:normal}.spec-table th{color:var(--gray-700);background:var(--gray-50);font-size:13px;font-weight:600}.spec-table td{color:inherit}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;color:var(--gray-800);background:var(--gray-100);border-radius:4px;font-family:"Roboto Mono","Cascadia Mono",Consolas,monospace;font-size:12px}.sidebar{scrollbar-color:var(--gray-300) transparent;scrollbar-width:thin}.sidebar::-webkit-scrollbar{width:6px;height:6px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:999px}
+      @media (min-width:761px) and (max-width:860px){body{overflow:hidden}.app-shell{height:100vh;min-height:0}.workspace{grid-template-columns:var(--sidebar-width) minmax(0,1fr)}.sidebar{flex-direction:column;align-items:stretch;gap:18px;min-height:0;padding:22px 18px;overflow-x:hidden;overflow-y:auto;border-right:1px solid var(--gray-200);border-bottom:0}.sidebar-footer{display:block}.nav-list,.nav-section,.nav-sublist{flex-direction:column;align-items:stretch}.nav-list{padding-bottom:calc((100vh - var(--topbar-height))/2)}.nav-category{padding:0 12px 4px}.nav-button{width:100%}.canvas-inner{padding:32px}.doc-title{font-size:28px}.doc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+      @media(max-width:760px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.canvas-inner{width:auto;min-height:560px;padding:18px}.doc-hero,.doc-section{padding:22px 18px}.doc-title{font-size:24px}.doc-grid{grid-template-columns:1fr}.demo-line{gap:24px 20px}}
+      .configuration-demo .demo-item{min-width:80px;align-items:center;justify-items:center}.position-demo{display:grid;gap:26px;margin-top:20px}.position-row{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:18px}.position-row .demo-item{min-width:160px;align-items:center;justify-items:center}.position-row-label{grid-column:1/-1;color:var(--gray-700);font-size:13px;font-weight:500}.target-default{width:36px;height:36px}.target-small{width:30px;height:30px}.spec-btn{min-height:32px;display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:0 14px;border:1px solid #dde1e5;border-radius:8px;background:#fff;color:#33383d;cursor:pointer;font-size:13px;font-weight:400;line-height:1.2;transition:background-color .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease}.spec-btn:hover{border-color:var(--brand-500);color:var(--brand-text)}.spec-btn:focus-visible{outline:none;box-shadow:var(--shadow-focus)}.spec-btn.primary{border-color:var(--brand-500);background:var(--brand-500);color:#fff}.spec-btn.primary:hover{border-color:var(--brand-text);background:var(--brand-text);color:#fff}.spec-btn.badge-button-default{width:64px;height:36px;min-height:36px;padding:0}.spec-btn.badge-button-small{width:56px;height:30px;min-height:30px;padding:0;font-size:12px}.dot-size-8{--badge-dot-size:8px}.dot-size-10{--badge-dot-size:10px}@media(max-width:900px){.position-row{grid-template-columns:repeat(2,minmax(160px,1fr))}}@media(max-width:520px){.position-row{grid-template-columns:1fr}.position-row .demo-item{min-width:0}}
+      .badge-inline { margin-right: 0; }
+      .basic-demo-button { width: auto; height: 36px; padding-right: 14px; padding-left: 14px; }
+      .basic-demo-circle { width: 36px; height: 36px; color: transparent; background: var(--gray-700); }
+      .position-row-label { font-weight: 400; }
+      .spec-btn.badge-button-default { width: auto; padding-right: 14px; padding-left: 14px; }
+      .spec-btn.badge-button-small { width: auto; padding-right: 12px; padding-left: 12px; }
+      .position-row { display: flex; flex-wrap: wrap; align-items: end; }
+      .position-row .position-row-label { flex: 0 0 100%; }
+      .position-demo .position-row .demo-item { flex: 0 0 120px; min-width: 120px; }
+      .basic-usage-demo .demo-item { min-width: 120px; }
+      .target-small { width: 36px; height: 36px; }
+      .spec-btn.solid { border-color: #dde1e5; background: #fff; color: #33383d; }
+      .spec-btn.solid:hover { border-color: var(--brand-500); background: #fff; color: var(--brand-text); }
+      .position-demo .spec-btn.solid.large { font-size: 0; }
+      .position-demo .spec-btn.solid.large::before { content: "消息"; font-size: 14px; }
+      .spec-btn.solid.large { gap: 0; }
+      .spec-btn.large,
+      .spec-btn.badge-button-default,
+      .spec-btn.badge-button-small { width: auto; min-height: 36px; height: 36px; padding-right: 16px; padding-left: 16px; border-radius: 8px; font-size: 14px; }
+      .position-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 18px; }
+      .position-row-label { flex: 0 0 100%; }
+      .position-row .demo-item { flex: 0 0 auto; width: auto; min-width: 80px; }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 Enterprise Design System 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">Enterprise Design System</span>
+        </a>
+        <div class="topbar-actions" aria-label="组件完成状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 45/46</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html" aria-current="page">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/model.html">
+                      <span class="nav-label">Model 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+        <section class="canvas" aria-label="徽标组件说明详情区">
+          <div class="canvas-inner">
+            <article class="content-panel doc-page" data-panel="badge">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Display / Badge</p>
+                <h1 class="doc-title">Badge 徽标</h1>
+                <p class="doc-summary">Badge 徽标用于在元素右上角或文本旁展示数量、提醒与状态，以轻量方式突出用户需要关注的信息。</p>
+                <ul class="doc-meta-list" aria-label="徽标基础规格">
+                  <li>数字 / 小红点 / 状态</li><li>默认高度 20px</li><li>小号高度 16px</li><li>数字默认封顶 99+</li><li>支持自定义颜色</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>何时使用</h2>
+                <ul class="rule-list"><li>在导航、按钮、头像或文本入口旁提示未读数量、待处理任务或新内容。</li><li>只需表达“有更新”而无需显示数量时，使用小红点徽标。</li><li>说明对象当前状态时，使用带名称的状态徽标，不要仅依赖颜色传达含义。</li><li>徽标应保持简短，避免承载复杂文案或替代重要的页面反馈。</li></ul>
+              </section>
+              <section class="doc-section">
+                <h2>基础用法</h2><div class="doc-grid"><div class="example-block full"><h3>数字提醒</h3><p>将徽标附着在需要提示的元素右上角。默认展示数字，并以醒目的红色强调待处理信息。</p><div class="demo-line basic-usage-demo"><span class="demo-item"><span class="demo-target target-circle target-default"><span class="badge-mark">3</span></span><span>圆形提醒</span></span><span class="demo-item"><button class="demo-target spec-btn solid large" type="button">消息<span class="badge-mark">8</span></button><span>8 条消息</span></span></div></div></div>
+              </section>
+              <section class="doc-section">
+                <h2>字符徽标</h2><div class="doc-grid">
+                  <div class="example-block full"><h3>字段配置</h3><p>字段支持数字和自定义字符两种类型，默认为数字。99 以内正常显示，超过 99 默认显示 99+，也可以自定义封顶数字；自定义字符适合 NEW、HOT 等短字段。</p><div class="demo-line configuration-demo"><span class="demo-item"><span class="badge-inline"><span class="badge-mark">8</span></span><span>数字</span></span><span class="demo-item"><span class="badge-inline"><span class="badge-mark">99</span></span><span>99 以内</span></span><span class="demo-item"><span class="badge-inline"><span class="badge-mark">99+</span></span><span>默认封顶 99</span></span><span class="demo-item"><span class="badge-inline"><span class="badge-mark">50+</span></span><span>自定义封顶 50</span></span><span class="demo-item"><span class="badge-inline"><span class="badge-mark">NEW</span></span><span>自定义字符 NEW</span></span><span class="demo-item"><span class="badge-inline"><span class="badge-mark">HOT</span></span><span>自定义字符 HOT</span></span></div></div>
+                  <div class="example-block full"><h3>颜色配置</h3><p>默认使用红色底和白色文字，也可按业务语义自定义背景色。</p><div class="demo-line configuration-demo"><span class="demo-item"><span class="badge-inline"><span class="badge-mark">8</span></span><span>默认红色徽标</span></span><span class="demo-item custom-blue"><span class="badge-inline"><span class="badge-mark">8</span></span><span>蓝色徽标</span></span><span class="demo-item custom-green"><span class="badge-inline"><span class="badge-mark">8</span></span><span>绿色徽标</span></span><span class="demo-item custom-purple"><span class="badge-inline"><span class="badge-mark">8</span></span><span>紫色徽标</span></span></div></div>
+                  <div class="example-block full"><h3>尺寸配置</h3><p>默认高度为 20px；信息密度较高的紧凑场景可使用 16px 小号徽标。</p><div class="demo-line configuration-demo"><span class="demo-item"><span class="badge-inline"><span class="badge-mark">8</span></span><span>默认 20px</span></span><span class="demo-item"><span class="badge-inline"><span class="badge-mark small">8</span></span><span>小号 16px</span></span></div></div>
+                  <div class="example-block full"><h3>位置</h3><p>默认位置在目标元素右上角，并支持自定义位置。以下展示两种徽标尺寸在圆形、圆角矩形、实线按钮和文本上的位置。</p><div class="position-demo"><div class="position-row"><span class="position-row-label">默认字符徽标位置演示</span><span class="demo-item"><span class="demo-target target-circle target-default"><span class="badge-mark">8</span></span><span>圆形</span></span><span class="demo-item"><span class="demo-target target-square target-default"><span class="badge-mark">8</span></span><span>矩形</span></span><span class="demo-item"><button class="demo-target spec-btn solid large" type="button">实线按钮<span class="badge-mark">8</span></button><span>按钮</span></span><span class="demo-item"><span class="demo-target target-text">消息<span class="badge-mark">8</span></span><span>文字</span></span></div><div class="position-row"><span class="position-row-label">小号字符徽标位置演示</span><span class="demo-item"><span class="demo-target target-circle target-default"><span class="badge-mark small">8</span></span><span>圆形</span></span><span class="demo-item"><span class="demo-target target-square target-default"><span class="badge-mark small">8</span></span><span>矩形</span></span><span class="demo-item"><button class="demo-target spec-btn solid large" type="button">实线按钮<span class="badge-mark small">8</span></button><span>按钮</span></span><span class="demo-item"><span class="demo-target target-text">消息<span class="badge-mark small">8</span></span><span>文字</span></span></div></div></div>
+                </div>
+              </section>
+              <section class="doc-section">
+                <h2>小红点徽标</h2><div class="doc-grid"><div class="example-block full"><h3>颜色与尺寸配置</h3><p>默认颜色为红色，支持自定义颜色。默认尺寸为 6px，支持在 6–10px 范围内自定义大小。</p><div class="demo-line configuration-demo"><span class="demo-item"><span class="badge-inline"><span class="badge-mark dot"></span></span><span>默认红色 · 6px</span></span><span class="demo-item custom-blue"><span class="badge-inline"><span class="badge-mark dot"></span></span><span>蓝色 · 6px</span></span><span class="demo-item custom-green"><span class="badge-inline"><span class="badge-mark dot"></span></span><span>绿色 · 6px</span></span><span class="demo-item custom-purple"><span class="badge-inline"><span class="badge-mark dot"></span></span><span>紫色 · 6px</span></span></div></div><div class="example-block full"><h3>位置</h3><p>默认位置在目标元素右上角，并支持自定义位置。以下展示小红点在圆形、圆角矩形、实线按钮和文本上的位置。</p><div class="position-demo"><div class="position-row"><span class="demo-item"><span class="demo-target target-circle target-default"><span class="badge-mark dot"></span></span><span>圆形</span></span><span class="demo-item"><span class="demo-target target-square target-default"><span class="badge-mark dot"></span></span><span>矩形</span></span><span class="demo-item"><button class="demo-target spec-btn solid large" type="button">实线按钮<span class="badge-mark dot"></span></button><span>按钮</span></span><span class="demo-item"><span class="demo-target target-text">消息<span class="badge-mark dot"></span></span><span>文字</span></span></div></div></div></div>
+              </section>
+              <section class="doc-section">
+                <h2>状态徽标</h2>
+                <div class="doc-grid"><div class="example-block full"><h3>用法描述</h3><p>设置 <code>status</code> 可得到 default、success、warning 和 error 状态；状态点默认尺寸为 6px，支持在 6–10px 范围内自定义大小，也支持自定义状态名称与颜色。</p><div class="status-list"><span class="status-badge">默认</span><span class="status-badge success">成功</span><span class="status-badge warning">提醒</span><span class="status-badge error">错误</span><span class="status-badge custom">自定义状态</span></div></div></div>
+              </section>
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody>
+                  <tr><td><code>count</code></td><td>展示的数字或自定义字段。</td><td><code>number | string</code></td><td><code>-</code></td></tr>
+                  <tr><td><code>max</code></td><td>数字徽标封顶值，超过后显示“max+”。</td><td><code>number</code></td><td><code>99</code></td></tr>
+                  <tr><td><code>dot</code></td><td>是否仅展示小红点。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                  <tr><td><code>dotSize</code></td><td>小红点直径，支持 6–10px 范围内的自定义尺寸。</td><td><code>number</code></td><td><code>6</code></td></tr>
+                  <tr><td><code>status</code></td><td>预设状态点类型。</td><td><code>default | success | warning | error</code></td><td><code>default</code></td></tr>
+                  <tr><td><code>statusSize</code></td><td>状态点直径，支持 6–10px 范围内的自定义尺寸。</td><td><code>number</code></td><td><code>6</code></td></tr>
+                  <tr><td><code>text</code></td><td>状态点右侧的状态名称。</td><td><code>string</code></td><td><code>-</code></td></tr>
+                  <tr><td><code>size</code></td><td>字符徽标尺寸。</td><td><code>default | small</code></td><td><code>default</code></td></tr>
+                  <tr><td><code>color</code></td><td>自定义字符、小红点或状态点颜色。</td><td><code>string</code></td><td><code>-</code></td></tr>
+                  <tr><td><code>showZero</code></td><td>数字为 0 时是否展示徽标。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                </tbody></table></div>
+              </section>
+              <section class="doc-section"><h2>设计 Token</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Token</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>--badge-color</code></td><td><code>#f04438</code></td><td>数字徽标与小红点默认背景色。</td></tr><tr><td><code>--badge-text-color</code></td><td><code>var(--white)</code></td><td>数字徽标文字颜色。</td></tr><tr><td><code>--badge-height</code></td><td><code>20px</code></td><td>默认数字徽标高度。</td></tr><tr><td><code>--badge-height-small</code></td><td><code>16px</code></td><td>小号数字徽标高度。</td></tr><tr><td><code>--badge-dot-size</code></td><td><code>6px</code></td><td>小红点和状态点默认尺寸。</td></tr><tr><td><code>--badge-status-default</code></td><td><code>var(--gray-400)</code></td><td>默认状态颜色。</td></tr><tr><td><code>--badge-status-success</code></td><td><code>#12b76a</code></td><td>成功状态颜色。</td></tr><tr><td><code>--badge-status-warning</code></td><td><code>#f79009</code></td><td>提醒状态颜色。</td></tr><tr><td><code>--badge-status-error</code></td><td><code>#f04438</code></td><td>错误状态颜色。</td></tr></tbody></table></div></section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector('[data-component-count-label]');
+        if (!label) return;
+        const pendingKeys = new Set(['card']);
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute('href') || '').split('#').pop().replace(/.html$/, '');
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', '#22b573');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const centerNavItem = (item, behavior = 'auto') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+        if (isHorizontal) {
+          sidebar.scrollTo({ left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2, behavior });
+          return;
+        }
+        sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
+      };
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+    </script>
+  </body>
+</html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Design System</title>
+    <title>Grid 栅格 - Design System</title>
     <style>
       :root {
         --brand-500: #00d157;
@@ -21,12 +21,6 @@
         --brand-text-hover: #008f3f;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
-        --link-color: #1570ef;
-        --link-hover-color: #175cd3;
-        --link-disabled-color: #a5adb6;
-        --typography-color-link: var(--link-color);
-        --typography-color-link-hover: var(--link-hover-color);
-        --typography-color-link-disabled: var(--link-disabled-color);
         --gray-950: #0b0d0f;
         --gray-900: #14171a;
         --gray-800: #22262a;
@@ -490,7 +484,7 @@
       }
 
       .doc-hero {
-        border-bottom: 0;
+        border-bottom: 1px solid var(--gray-200);
       }
 
       .doc-kicker {
@@ -660,36 +654,15 @@
       }
 
       .doc-section {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-section:last-child {
         border-bottom: 0;
       }
 
       .doc-section.no-divider {
         border-bottom: 0;
-      }
-
-      .style-module-start {
-        position: relative;
-        margin-top: 24px;
-        border-top: 10px solid var(--gray-100);
-      }
-
-      .style-module-first {
-        margin-top: 0;
-      }
-
-      .style-module-start h2 {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 20px;
-      }
-
-      .style-module-start h2::before {
-        width: 4px;
-        height: 20px;
-        content: "";
-        background: var(--brand-500);
-        border-radius: 999px;
       }
 
       .color-role-section {
@@ -776,6 +749,61 @@
         grid-column: 1 / -1;
       }
 
+      .grid-spec-demo {
+        display: grid;
+        gap: 0;
+        width: 100%;
+        margin-top: 14px;
+        overflow-x: auto;
+      }
+
+      .grid-spec-row {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(24, minmax(0, 1fr));
+        min-width: 760px;
+        min-height: 72px;
+        background:
+          repeating-linear-gradient(
+            90deg,
+            var(--gray-100) 0,
+            var(--gray-100) calc(100% / 24),
+            var(--white) calc(100% / 24),
+            var(--white) calc(100% / 12)
+          );
+      }
+
+      .grid-spec-cell {
+        --grid-spec-alpha: 0.72;
+        z-index: 1;
+        align-self: start;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+        height: 54px;
+        padding: 0 10px;
+        color: var(--white);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: center;
+        background: rgba(var(--brand-rgb), var(--grid-spec-alpha));
+        box-shadow: inset 0 0 0 1px rgba(var(--brand-rgb), 0.16);
+      }
+
+      .grid-spec-cell.tone-soft {
+        --grid-spec-alpha: 0.54;
+      }
+
+      .grid-spec-cell.tone-mid {
+        --grid-spec-alpha: 0.7;
+      }
+
+      .grid-spec-cell.tone-strong {
+        --grid-spec-alpha: 0.86;
+      }
+
       .color-system-group {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -791,143 +819,12 @@
         grid-column: auto;
       }
 
-      .mask-case-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 14px;
-      }
-
-      .mask-case {
-        min-width: 0;
-        padding: 16px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .mask-stage {
-        position: relative;
-        min-height: 150px;
-        overflow: hidden;
-        margin-bottom: 14px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .mask-stage::before {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        content: "";
-        background: var(--mask-bg);
-      }
-
-      .mask-stage-content {
-        display: grid;
-        gap: 8px;
-        padding: 16px;
-      }
-
-      .mask-line {
-        height: 10px;
-        background: var(--gray-100);
-        border-radius: 999px;
-      }
-
-      .mask-line.short {
-        width: 64%;
-      }
-
-      .mask-line.medium {
-        width: 78%;
-      }
-
-      .mask-dialog,
-      .mask-drawer,
-      .mask-loader {
-        position: absolute;
-        z-index: 2;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
-      }
-
-      .mask-dialog {
-        top: 50%;
-        left: 50%;
-        width: min(72%, 180px);
-        min-height: 72px;
-        transform: translate(-50%, -50%);
-      }
-
-      .mask-drawer {
-        top: 0;
-        right: 0;
-        width: 42%;
-        height: 100%;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      .mask-loader {
-        top: 50%;
-        left: 50%;
-        width: 44px;
-        height: 44px;
-        display: grid;
-        place-items: center;
-        border-radius: 999px;
-        transform: translate(-50%, -50%);
-      }
-
-      .mask-loader::before {
-        width: 18px;
-        height: 18px;
-        content: "";
-        border: 2px solid var(--gray-200);
-        border-top-color: var(--brand-500);
-        border-radius: 999px;
-      }
-
-      .mask-case h4 {
-        margin: 0 0 6px;
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .doc-section .mask-case p {
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      .mask-value {
-        display: inline-flex;
-        align-items: center;
-        min-height: 24px;
-        margin-top: 10px;
-        padding: 2px 7px;
-        color: var(--gray-700);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 999px;
-        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 11px;
-        line-height: 1.4;
-      }
-
       .color-section-heading {
         display: flex;
         align-items: center;
-        flex-wrap: wrap;
         justify-content: space-between;
-        gap: 12px;
+        gap: 16px;
         margin: 0 0 14px;
-        width: 100%;
       }
 
       .doc-section .color-section-heading h2 {
@@ -952,7 +849,7 @@
         gap: 10px;
         width: 100%;
         min-height: 32px;
-        padding: 0 36px 0 12px;
+        padding: 0 30px 0 12px;
         color: var(--gray-800);
         background: var(--white);
         border: 1px solid var(--gray-200);
@@ -961,26 +858,33 @@
         font-size: 13px;
         line-height: 1.2;
         text-align: left;
-        transition:
-          border-color 0.15s ease,
-          box-shadow 0.15s ease,
-          background-color 0.15s ease,
-          color 0.15s ease;
       }
 
-      .color-palette-trigger:hover {
+      .color-palette-trigger:hover,
+      .color-palette-trigger[aria-expanded="true"] {
         border-color: var(--brand-500);
       }
 
-      .color-palette-trigger[aria-expanded="true"],
       .color-palette-trigger:focus-visible {
         outline: none;
-        border-color: var(--brand-500);
         box-shadow: var(--shadow-focus);
       }
 
-      .color-palette-trigger[aria-expanded="true"] .select-chevron {
-        transform: translateY(-50%) rotate(180deg);
+      .color-palette-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 12px;
+        width: 7px;
+        height: 7px;
+        content: "";
+        border-right: 1.5px solid var(--gray-500);
+        border-bottom: 1.5px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .color-palette-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
       }
 
       .color-palette-menu {
@@ -1127,319 +1031,6 @@
       }
 
       .color-role span {
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      .style-token-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 14px;
-      }
-
-      .style-token-card {
-        min-width: 0;
-        padding: 14px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .style-token-card strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .style-token-card span,
-      .style-token-card p {
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      .typography-specimen {
-        display: grid;
-        gap: 14px;
-      }
-
-      .type-sample {
-        display: grid;
-        grid-template-columns: 160px minmax(0, 1fr);
-        align-items: baseline;
-        gap: 18px;
-        padding: 14px 0;
-        border-bottom: 1px solid var(--gray-200);
-      }
-
-      .type-sample:last-child {
-        border-bottom: 0;
-      }
-
-      .type-meta {
-        display: grid;
-        gap: 4px;
-        color: var(--gray-500);
-        font-size: 12px;
-        line-height: 1.4;
-      }
-
-      .type-meta strong {
-        color: var(--gray-800);
-        font-size: 13px;
-        font-weight: 500;
-      }
-
-      .doc-section .type-text {
-        margin: 0;
-        color: var(--gray-900);
-        font-size: var(--type-size);
-        font-weight: var(--type-weight, 400);
-        line-height: var(--type-line-height, 1.5);
-        letter-spacing: 0;
-      }
-
-      .doc-section .type-text.caption {
-        color: var(--gray-600);
-      }
-
-      .type-color-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 14px;
-      }
-
-      .type-color-card {
-        min-width: 0;
-        padding: 14px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .type-color-card.inverse {
-        background: var(--gray-900);
-        border-color: var(--gray-900);
-      }
-
-      .type-color-card strong {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--sample-color);
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 1.5;
-      }
-
-      .type-color-card p {
-        margin: 0;
-        color: var(--sample-color);
-        font-size: 13px;
-        line-height: 1.65;
-      }
-
-      .type-color-value {
-        display: inline-flex;
-        align-items: center;
-        min-height: 24px;
-        margin-top: 10px;
-        padding: 2px 7px;
-        color: var(--gray-600);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 999px;
-        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 11px;
-        line-height: 1.4;
-      }
-
-      .icon-spec-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-        margin-top: 14px;
-      }
-
-      .icon-spec-card {
-        min-width: 0;
-        display: grid;
-        grid-template-columns: minmax(180px, 0.72fr) minmax(0, 1.28fr);
-        gap: 18px;
-        padding: 16px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .icon-spec-copy {
-        min-width: 0;
-      }
-
-      .icon-demo-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-        min-width: 0;
-      }
-
-      .icon-spec-preview {
-        position: relative;
-        min-height: 86px;
-        display: grid;
-        place-items: center;
-        gap: 6px;
-        padding: 10px;
-        color: var(--gray-800);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-        font-size: 11px;
-        line-height: 1.4;
-      }
-
-      .icon-spec-preview.avoid {
-        color: var(--gray-800);
-        background: var(--white);
-        border-color: var(--gray-200);
-        box-shadow: none;
-      }
-
-      .icon-spec-preview.avoid::before {
-        position: absolute;
-        top: 6px;
-        right: 6px;
-        padding: 2px 6px;
-        content: "Avoid";
-        color: var(--gray-700);
-        background: var(--gray-100);
-        border: 1px solid var(--gray-200);
-        border-radius: 999px;
-        font-size: 10px;
-        line-height: 1.2;
-      }
-
-      .icon-spec-preview svg {
-        width: var(--icon-demo-size, 24px);
-        height: var(--icon-demo-size, 24px);
-        color: currentColor;
-      }
-
-      .icon-spec-preview.avoid svg {
-        filter: none;
-      }
-
-      .icon-spec-card strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .icon-spec-card p {
-        margin: 0;
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      .shadow-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 14px;
-      }
-
-      .shadow-sample {
-        min-width: 0;
-        padding: 18px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .shadow-preview {
-        height: 88px;
-        display: grid;
-        place-items: center;
-        margin-bottom: 14px;
-        color: var(--gray-700);
-        background: var(--white);
-        border: 1px solid var(--gray-100);
-        border-radius: var(--radius-sm);
-        font-size: 12px;
-      }
-
-      .shadow-preview.xs {
-        box-shadow: 0 2px 6px rgba(20, 28, 36, 0.06);
-      }
-
-      .shadow-preview.sm {
-        box-shadow: 0 4px 12px rgba(20, 28, 36, 0.08);
-      }
-
-      .shadow-preview.md {
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
-      }
-
-      .shadow-preview.focus {
-        border-color: var(--brand-500);
-        box-shadow: var(--shadow-focus);
-      }
-
-      .shadow-preview.selector-focus {
-        border-color: var(--brand-500);
-        background: var(--white);
-        box-shadow: rgba(0, 209, 87, 0.16) 0 0 0 3px;
-      }
-
-      .theme-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 14px;
-      }
-
-      .theme-card {
-        min-width: 0;
-        overflow: hidden;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .theme-strip {
-        height: 54px;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-      }
-
-      .theme-strip span {
-        min-width: 0;
-      }
-
-      .theme-body {
-        display: grid;
-        gap: 8px;
-        padding: 14px;
-      }
-
-      .theme-body strong {
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .theme-body p {
-        margin: 0;
         color: var(--gray-600);
         font-size: 12px;
         line-height: 1.65;
@@ -2350,20 +1941,22 @@
 
       .select-chevron {
         position: absolute;
-        right: 6px;
+        right: 12px;
         top: 50%;
-        width: 20px;
-        height: 20px;
-        background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 8.25L10 11.75L13.5 8.25' fill='none' stroke='%23969ba1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 20px 20px no-repeat;
+        width: 7px;
+        height: 7px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        color: #969ba1;
         pointer-events: none;
-        transform: translateY(-50%);
+        transform: translateY(-50%) rotate(45deg);
         transition:
           opacity 0.15s ease,
           transform 0.15s ease;
       }
 
       .spec-select.open .select-chevron {
-        transform: translateY(-50%) rotate(180deg);
+        transform: translateY(-50%) rotate(225deg);
       }
 
       .select-clear {
@@ -4178,6 +3771,190 @@
         }
       }
 
+      .typography-stack {
+        display: grid;
+        gap: 16px;
+        margin-top: 14px;
+      }
+
+      .typography-sample {
+        display: grid;
+        gap: 8px;
+        padding: 14px;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+      }
+
+      .typography-sample-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .typography-pill {
+        display: inline-flex;
+        align-items: center;
+        min-height: 22px;
+        padding: 0 7px;
+        border-radius: 999px;
+        background: var(--gray-100);
+        color: var(--gray-600);
+        font-size: 11px;
+        line-height: 1;
+      }
+
+      .typography-display {
+        margin: 0;
+        color: var(--gray-950);
+        font-size: 32px;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+
+      .typography-title {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.32;
+      }
+
+      .typography-heading {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      .typography-body {
+        margin: 0;
+        color: var(--gray-700);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.75;
+      }
+
+      .typography-caption {
+        margin: 0;
+        color: var(--gray-500);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.55;
+      }
+
+      .typography-code {
+        display: inline-flex;
+        align-items: center;
+        width: fit-content;
+        max-width: 100%;
+        min-height: 28px;
+        padding: 0 8px;
+        border-radius: 6px;
+        background: var(--gray-100);
+        color: var(--gray-800);
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size: 12px;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+
+      .typography-role-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .typography-role {
+        min-width: 0;
+        padding: 14px;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+      }
+
+      .typography-role strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--gray-900);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .typography-role span {
+        color: var(--gray-600);
+        font-size: 12px;
+        line-height: 1.65;
+      }
+
+      .typography-prose {
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+        padding: 18px;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        background: var(--white);
+      }
+
+      .typography-prose h4 {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      .typography-prose p {
+        max-width: 62ch;
+      }
+
+      .typography-prose a {
+        color: var(--brand-text);
+        text-decoration: none;
+      }
+
+      .typography-prose a:hover {
+        color: var(--brand-text-hover);
+        text-decoration: underline;
+      }
+
+      .typography-state-row {
+        display: grid;
+        grid-template-columns: 92px minmax(0, 1fr);
+        align-items: start;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .typography-state-label {
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .typography-structure {
+        display: grid;
+        gap: 6px;
+        margin-top: 14px;
+        padding: 14px;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        background: var(--gray-950);
+        color: #dce3ea;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size: 12px;
+        line-height: 1.7;
+        overflow-x: auto;
+      }
+
       .spec-table-wrap {
         overflow-x: auto;
         border: 1px solid var(--gray-200);
@@ -4315,42 +4092,26 @@
           grid-template-columns: 1fr;
         }
 
+        .typography-role-grid,
+        .typography-state-row {
+          grid-template-columns: 1fr;
+        }
+
         .color-system-group {
           grid-template-columns: 1fr;
         }
 
         .color-section-heading {
-          align-items: center;
+          align-items: stretch;
+          flex-direction: column;
         }
 
         .color-palette-select {
-          width: min(100%, 188px);
+          width: 100%;
         }
 
         .color-role-grid {
           grid-template-columns: 1fr;
-        }
-
-        .style-token-grid,
-        .mask-case-grid,
-        .type-color-grid,
-        .icon-spec-grid,
-        .shadow-grid,
-        .theme-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .type-sample {
-          grid-template-columns: 1fr;
-          gap: 8px;
-        }
-
-        .icon-spec-card {
-          grid-template-columns: 1fr;
-        }
-
-        .icon-demo-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
 
         .overview-grid,
@@ -4518,7 +4279,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 33/34</span>
+          <span data-component-count-label>Active components 45/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -4573,25 +4334,25 @@
           <nav>
             <ul class="nav-list">
               <li class="nav-section">
-                <button class="nav-button" type="button" data-page="color" data-nav-scope="global-style">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
                   <span class="nav-label">Styles 全局样式</span>
-                </button>
+                </a>
               </li>
               <li class="nav-section">
-                <button class="nav-button" type="button" aria-current="page" data-page="overview">
+                <a class="nav-button" href="../index.html#overview">
                   <span class="nav-label">Components 组件总览</span>
-                </button>
+                </a>
               </li>
               <li class="nav-section">
                 <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="general/button.html">
+                    <a class="nav-button" href="../general/button.html">
                       <span class="nav-label">Button 按钮</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="general/typography.html">
+                    <a class="nav-button" href="../general/typography.html">
                       <span class="nav-label">Typography 排版</span>
                     </a>
                   </li>
@@ -4601,27 +4362,27 @@
                 <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="layout/divider.html">
+                    <a class="nav-button" href="../layout/divider.html">
                       <span class="nav-label">Divider 分割线</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="layout/space.html">
+                    <a class="nav-button" href="../layout/space.html">
                       <span class="nav-label">Space 间距</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="layout/grid.html">
+                    <a class="nav-button" href="../layout/grid.html" aria-current="page">
                       <span class="nav-label">Grid 栅格</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="layout/layout.html">
+                    <a class="nav-button" href="../layout/layout.html">
                       <span class="nav-label">Layout 布局</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="layout/splitter.html">
+                    <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
                     </a>
                   </li>
@@ -4631,82 +4392,82 @@
                 <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="dataentry/input.html">
+                    <a class="nav-button" href="../dataentry/input.html">
                       <span class="nav-label">Input 输入框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/input-number.html">
+                    <a class="nav-button" href="../dataentry/input-number.html">
                       <span class="nav-label">InputNumber 数字输入框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/radio.html">
+                    <a class="nav-button" href="../dataentry/radio.html">
                       <span class="nav-label">Radio 单选框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/checkbox.html">
+                    <a class="nav-button" href="../dataentry/checkbox.html">
                       <span class="nav-label">Checkbox 复选框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/switch.html">
+                    <a class="nav-button" href="../dataentry/switch.html">
                       <span class="nav-label">Switch 开关</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/select.html">
+                    <a class="nav-button" href="../dataentry/select.html">
                       <span class="nav-label">Select 选择器</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/date-picker.html">
+                    <a class="nav-button" href="../dataentry/date-picker.html">
                       <span class="nav-label">DatePicker 日期选择器</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/time-picker.html">
+                    <a class="nav-button" href="../dataentry/time-picker.html">
                       <span class="nav-label">TimePicker 时间选择器</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/upload.html">
+                    <a class="nav-button" href="../dataentry/upload.html">
                       <span class="nav-label">Upload 上传</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/form.html">
+                    <a class="nav-button" href="../dataentry/form.html">
                       <span class="nav-label">Form 表单</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/autocomplete.html">
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
                       <span class="nav-label">AutoComplete 自动补全</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/cascader.html">
+                    <a class="nav-button" href="../dataentry/cascader.html">
                       <span class="nav-label">Cascader 联级选择</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/mentions.html">
+                    <a class="nav-button" href="../dataentry/mentions.html">
                       <span class="nav-label">Mentions 提及</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/verification-code.html">
+                    <a class="nav-button" href="../dataentry/verification-code.html">
                       <span class="nav-label">VerficationCode 验证码输入框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/rate.html">
+                    <a class="nav-button" href="../dataentry/rate.html">
                       <span class="nav-label">Rate 评分</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/slider.html">
+                    <a class="nav-button" href="../dataentry/slider.html">
                       <span class="nav-label">Slider 滑块</span>
                     </a>
                   </li>
@@ -4716,72 +4477,72 @@
                 <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="datadisplay/table.html">
+                    <a class="nav-button" href="../datadisplay/table.html">
                       <span class="nav-label">Table 表格</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/list.html">
+                    <a class="nav-button" href="../datadisplay/list.html">
                       <span class="nav-label">List 列表</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/statistic.html">
+                    <a class="nav-button" href="../datadisplay/statistic.html">
                       <span class="nav-label">Statistic 数值显示</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/chart.html">
+                    <a class="nav-button" href="../datadisplay/chart.html">
                       <span class="nav-label">Chart 图表</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/tag.html">
+                    <a class="nav-button" href="../datadisplay/tag.html">
                       <span class="nav-label">Tag 标签</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/tooltip.html">
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
                       <span class="nav-label">Tooltip 提示气泡</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/avatar.html">
+                    <a class="nav-button" href="../datadisplay/avatar.html">
                       <span class="nav-label">Avatar 头像</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/timeline.html">
+                    <a class="nav-button" href="../datadisplay/timeline.html">
                       <span class="nav-label">Timeline 时间轴</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/carousel.html">
+                    <a class="nav-button" href="../datadisplay/carousel.html">
                       <span class="nav-label">Carousel 轮播</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/collapse.html">
+                    <a class="nav-button" href="../datadisplay/collapse.html">
                       <span class="nav-label">Collapse 折叠面板</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/image.html">
+                    <a class="nav-button" href="../datadisplay/image.html">
                       <span class="nav-label">Image 图片</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/badge.html">
+                    <a class="nav-button" href="../datadisplay/badge.html">
                       <span class="nav-label">Badge 徽标</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/empty.html">
+                    <a class="nav-button" href="../datadisplay/empty.html">
                       <span class="nav-label">Empty 空状态</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="index.html#card">
+                    <a class="nav-button" href="../index.html#card">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -4791,47 +4552,47 @@
                 <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="feedback/alert.html">
+                    <a class="nav-button" href="../feedback/alert.html">
                       <span class="nav-label">Alert 警告提示</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/drawer.html">
+                    <a class="nav-button" href="../feedback/drawer.html">
                       <span class="nav-label">Drawer 抽屉</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/message.html">
+                    <a class="nav-button" href="../feedback/message.html">
                       <span class="nav-label">Message 全局提示</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/model.html">
+                    <a class="nav-button" href="../feedback/model.html">
                       <span class="nav-label">Model 模态弹窗</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/popconfirm.html">
+                    <a class="nav-button" href="../feedback/popconfirm.html">
                       <span class="nav-label">Popconfirm 气泡确认框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/notification.html">
+                    <a class="nav-button" href="../feedback/notification.html">
                       <span class="nav-label">Notification 通知提醒</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/progress.html">
+                    <a class="nav-button" href="../feedback/progress.html">
                       <span class="nav-label">Progress 进度条</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/spin.html">
+                    <a class="nav-button" href="../feedback/spin.html">
                       <span class="nav-label">Spin 加载中</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/skeleton.html">
+                    <a class="nav-button" href="../feedback/skeleton.html">
                       <span class="nav-label">Skeleton 骨架屏</span>
                     </a>
                   </li>
@@ -4845,1065 +4606,94 @@
 
         <section class="canvas" aria-label="组件说明详情区">
           <div class="canvas-inner">
-            <article class="content-panel overview-page" data-panel="overview">
+            <article class="content-panel doc-page" data-panel="grid">
               <header class="doc-hero">
-                <p class="doc-kicker">Components / Overview</p>
-                <h1 class="doc-title">组件总览</h1>
+                <p class="doc-kicker">Layout / Grid</p>
+                <h1 class="doc-title">Grid 栅格</h1>
                 <p class="doc-summary">
-                  按组件类型组织当前 Design System 的全部侧导航入口。索引遵循“类目分组 + 组件名称 + 使用线索”的结构，
-                  方便快速定位已完成规范与后续待补齐组件。
+                  Grid 用于建立页面和模块的列结构，帮助表单、卡片、数据摘要和筛选区在不同宽度下保持对齐。设计系统默认采用 24 栅格思想，并通过响应式断点控制列宽。
                 </p>
-                <ul class="doc-meta-list" aria-label="组件索引统计">
-                  <li>5 个组件类目</li>
-                  <li>34 个组件入口</li>
-                  <li>33 个已补齐规范</li>
-                  <li>1 个待补齐规范</li>
+                <ul class="doc-meta-list" aria-label="栅格基础规格">
+                  <li>24 列体系</li>
+                  <li>列间距 16px</li>
+                  <li>支持响应式 span</li>
+                  <li>内容优先换行</li>
                 </ul>
               </header>
 
               <section class="doc-section">
-                <div class="overview-grid">
-                  <div class="overview-group">
-                    <div class="overview-group-title">
-                      <h2>通用</h2>
-                      <span class="overview-count">2 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="general/button.html">
-                          <span class="component-index-name">
-                            <span>Button 按钮</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">触发操作、提交任务、切换关键状态。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="general/typography.html">
-                          <span class="component-index-name">
-                            <span>Typography 排版</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">建立标题、正文、辅助说明和代码文本层级。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="overview-group">
-                    <div class="overview-group-title">
-                      <h2>布局</h2>
-                      <span class="overview-count">5 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="layout/divider.html">
-                          <span class="component-index-name">
-                            <span>Divider 分割线</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">分隔内容段落、操作组和轻量信息层级。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="layout/space.html">
-                          <span class="component-index-name">
-                            <span>Space 间距</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">统一控制按钮、标签和内联控件之间的间距。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="layout/grid.html">
-                          <span class="component-index-name">
-                            <span>Grid 栅格</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">建立多列对齐、响应式换行和页面栅格秩序。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="layout/layout.html">
-                          <span class="component-index-name">
-                            <span>Layout 布局</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">搭建 Header、Sider、Content 和 Footer 页面骨架。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="layout/splitter.html">
-                          <span class="component-index-name">
-                            <span>Splitter 分隔面板</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在列表详情、编辑预览等工作区中调节面板占比。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="overview-group full">
-                    <div class="overview-group-title">
-                      <h2>数据录入</h2>
-                      <span class="overview-count">16 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="dataentry/input.html">
-                          <span class="component-index-name">
-                            <span>Input 输入框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">录入短文本、搜索内容和多行说明。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/input-number.html">
-                          <span class="component-index-name">
-                            <span>InputNumber 数字输入框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">录入数值、频率、范围和精度配置。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/radio.html">
-                          <span class="component-index-name">
-                            <span>Radio 单选框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在互斥选项中选择一个结果。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/checkbox.html">
-                          <span class="component-index-name">
-                            <span>Checkbox 复选框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在非互斥选项中选择一个或多个结果。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/switch.html">
-                          <span class="component-index-name">
-                            <span>Switch 开关</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">即时切换单个配置项的开启或关闭。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/select.html">
-                          <span class="component-index-name">
-                            <span>Select 选择器</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">从选项列表中选择目标值或筛选维度。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/date-picker.html">
-                          <span class="component-index-name">
-                            <span>DatePicker 日期选择器</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">选择日期、日期范围和任务日期条件。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/time-picker.html">
-                          <span class="component-index-name">
-                            <span>TimePicker 时间选择器</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">选择时间、执行时刻和定时触发条件。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/upload.html">
-                          <span class="component-index-name">
-                            <span>Upload 上传</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">上传文件、素材、配置包和执行附件。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/form.html">
-                          <span class="component-index-name">
-                            <span>Form 表单</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">组织录入控件、校验规则和提交流程。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/autocomplete.html">
-                          <span class="component-index-name">
-                            <span>自动补全 AutoComplete</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">输入关键词并从建议项中快速选择目标。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/cascader.html">
-                          <span class="component-index-name">
-                            <span>联级选择 Cascader</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">按层级逐步选择地域、类目或组织路径。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/mentions.html">
-                          <span class="component-index-name">
-                            <span>提及 Mentions</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在文本输入中唤起成员、Agent 或变量建议。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/verification-code.html">
-                          <span class="component-index-name">
-                            <span>验证码输入框 VerficationCode</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">录入短信、邮箱或二次验证的一次性验证码。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/rate.html">
-                          <span class="component-index-name">
-                            <span>评分 Rate</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">表达质量、满意度和优先级的等级评价。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/slider.html">
-                          <span class="component-index-name">
-                            <span>滑块 Slider</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在连续或分段范围内调整数值参数。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="overview-group">
-                    <div class="overview-group-title">
-                      <h2>数据展示</h2>
-                      <span class="overview-count">2 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="datadisplay/table.html">
-                          <span class="component-index-name">
-                            <span>表格 Table</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">组织结构化数据、批量操作和状态对比。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="index.html#card">
-                          <span class="component-index-name">
-                            <span>卡片 Card</span>
-                            <span class="component-status pending">待补齐</span>
-                          </span>
-                          <span class="component-index-desc">承载信息摘要、资源对象和轻量操作。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-
-                  <div class="overview-group full">
-                    <div class="overview-group-title">
-                      <h2>反馈</h2>
-                      <span class="overview-count">9 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="feedback/alert.html">
-                          <span class="component-index-name">
-                            <span>Alert 警告提示</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Alert 用于在页面区域内展示可被用户感知的成功、提示、警告和错误反馈，适合承载当前上下文中需要持续可见的信息。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/drawer.html">
-                          <span class="component-index-name">
-                            <span>Drawer 抽屉</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Drawer 用于从屏幕边缘滑出补充任务区域，在保留原页面上下文的同时完成查看、编辑或配置。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/message.html">
-                          <span class="component-index-name">
-                            <span>Message 全局提示</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Message 用于展示轻量、短时、全局性的操作反馈，通常自动消失，不打断用户当前流程。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/model.html">
-                          <span class="component-index-name">
-                            <span>Model 模态弹窗</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Model 用于承载需要用户确认、处理或集中阅读的高优先级任务，通过遮罩让用户聚焦于当前决策。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/popconfirm.html">
-                          <span class="component-index-name">
-                            <span>Popconfirm 气泡确认框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Popconfirm 用于在触发点附近进行轻量二次确认，适合删除、撤销、停止任务等需要防误触的操作。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/notification.html">
-                          <span class="component-index-name">
-                            <span>Notification 通知提醒</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Notification 用于展示较完整的异步结果、系统提醒或任务状态，通常出现在页面角落并可保留更长时间。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/progress.html">
-                          <span class="component-index-name">
-                            <span>Progress 进度条</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Progress 用于反馈任务完成比例、上传下载进度或分步流程状态，让用户判断等待时长和执行结果。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/spin.html">
-                          <span class="component-index-name">
-                            <span>Spin 加载中</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Spin 用于表示内容正在加载或任务正在处理中，适合无法准确预估进度但需要保持等待感知的场景。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/skeleton.html">
-                          <span class="component-index-name">
-                            <span>Skeleton 骨架屏</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Skeleton 用于在真实内容加载前提供结构占位，降低等待时的空白感，并帮助用户预判即将出现的内容布局。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-
-            </article>
-
-            <article class="content-panel doc-page" data-panel="color" hidden>
-              <header class="doc-hero">
-                <p class="doc-kicker">Styles</p>
-                <h1 class="doc-title">全局样式 Style</h1>
-                <p class="doc-summary">
-                  全局样式定义产品界面的基础视觉语言，覆盖颜色、遮罩、字体、投影和主题。
-                  这些规范共同约束组件状态、信息层级、遮挡关系、空间节奏和跨主题的一致体验。
-                </p>
-              </header>
-
-              <section class="doc-section style-module-start style-module-first">
-                <div class="color-section-heading">
-                  <h2>颜色</h2>
-                  <div class="color-palette-select" data-color-palette-select>
-                    <button
-                      class="color-palette-trigger"
-                      type="button"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
-                      data-color-palette-trigger
-                    >
-                      <span data-color-palette-value>iQIYI标准色</span>
-                      <span class="select-chevron" aria-hidden="true"></span>
-                    </button>
-                    <ul class="color-palette-menu" role="listbox" aria-label="切换色板" hidden data-color-palette-menu>
-                      <li>
-                        <button
-                          class="color-palette-option"
-                          type="button"
-                          role="option"
-                          aria-selected="true"
-                          data-color-palette-option="iQIYI标准色"
-                        >
-                          iQIYI标准色
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="color-palette-option"
-                          type="button"
-                          role="option"
-                          aria-selected="false"
-                          data-color-palette-option="业务主题色"
-                        >
-                          业务主题色
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="color-palette-option"
-                          type="button"
-                          role="option"
-                          aria-selected="false"
-                          data-color-palette-option="test主题色"
-                        >
-                          test主题色
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <p>
-                  以当前色板的品牌 500 色为主色基准，按品牌色、中性色、功能色与遮罩值组织颜色规范。
-                  色阶编号从 50 到 900，数值越大颜色越深，500 作为常规态或语义基准色。
-                </p>
-                <ul class="doc-meta-list" aria-label="颜色规范摘要">
-                  <li data-color-brand-meta>品牌色 #00D157</li>
-                  <li>10 阶梯度 50-900</li>
-                  <li data-functional-color-meta>功能色覆盖红 / 黄 / 蓝</li>
-                  <li>适用于组件、状态、遮罩与主题变量</li>
-                </ul>
-              </section>
-
-              <section class="doc-section no-divider color-role-section">
-                <h3>色彩角色</h3>
-                <div class="color-role-grid" aria-label="颜色角色">
-                  <div class="color-role">
-                    <strong>品牌色</strong>
-                    <span>用于主按钮、关键操作、选中态、聚焦态和高价值数据。</span>
-                  </div>
-                  <div class="color-role">
-                    <strong>中性色</strong>
-                    <span>用于文本、边框、分割线、背景和弱化信息层级。</span>
-                  </div>
-                  <div class="color-role">
-                    <strong>功能色</strong>
-                    <span>用于错误、警告、提示、链接、信息反馈和状态徽标。</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section color-palette-section">
-                <h3>色板</h3>
-                <div class="color-system-group">
-                  <div class="example-block full color-palette" data-color-palette="brand">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3 data-color-palette-title>Primary Green</h3>
-                        <p data-color-palette-desc>品牌主色，500 固定为 #00D157。</p>
-                      </div>
-                      <span class="color-palette-base" data-color-palette-base>primary-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="品牌色色板" data-color-palette-ramp>
-                      <li class="color-swatch" style="--swatch: #effff6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-50</span><span class="color-hex">#EFFFF6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d8ffe8; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-100</span><span class="color-hex">#D8FFE8</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b5ffd1; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-200</span><span class="color-hex">#B5FFD1</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7dffb0; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-300</span><span class="color-hex">#7DFFB0</span></div></li>
-                      <li class="color-swatch" style="--swatch: #35f47c; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-400</span><span class="color-hex">#35F47C</span></div></li>
-                      <li class="color-swatch" style="--swatch: #00d157; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-500</span><span class="color-hex">#00D157</span></div></li>
-                      <li class="color-swatch" style="--swatch: #00b84b; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-600</span><span class="color-hex">#00B84B</span></div></li>
-                      <li class="color-swatch" style="--swatch: #008f3f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-700</span><span class="color-hex">#008F3F</span></div></li>
-                      <li class="color-swatch" style="--swatch: #067037; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-800</span><span class="color-hex">#067037</span></div></li>
-                      <li class="color-swatch" style="--swatch: #075a2f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-900</span><span class="color-hex">#075A2F</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Neutral Gray</h3>
-                        <p>承载文本、边框、背景与分割线层级。</p>
-                      </div>
-                      <span class="color-palette-base">neutral-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="中性色色板">
-                      <li class="color-swatch" style="--swatch: #fafbfc; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-50</span><span class="color-hex">#FAFBFC</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f3f5f7; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-100</span><span class="color-hex">#F3F5F7</span></div></li>
-                      <li class="color-swatch" style="--swatch: #e7eaee; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-200</span><span class="color-hex">#E7EAEE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d4d9de; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-300</span><span class="color-hex">#D4D9DE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #a5adb6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-400</span><span class="color-hex">#A5ADB6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #78818c; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-500</span><span class="color-hex">#78818C</span></div></li>
-                      <li class="color-swatch" style="--swatch: #59616a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-600</span><span class="color-hex">#59616A</span></div></li>
-                      <li class="color-swatch" style="--swatch: #343a40; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-700</span><span class="color-hex">#343A40</span></div></li>
-                      <li class="color-swatch" style="--swatch: #22262a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-800</span><span class="color-hex">#22262A</span></div></li>
-                      <li class="color-swatch" style="--swatch: #14171a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-900</span><span class="color-hex">#14171A</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Red 红色</h3>
-                        <p>用于错误、失败、危险操作和阻断状态。</p>
-                      </div>
-                      <span class="color-palette-base">red-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="红色色板">
-                      <li class="color-swatch" style="--swatch: #fff1f0; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-50</span><span class="color-hex">#FFF1F0</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ffe0de; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-100</span><span class="color-hex">#FFE0DE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ffc2bd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-200</span><span class="color-hex">#FFC2BD</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ff9b94; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-300</span><span class="color-hex">#FF9B94</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ff6b61; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-400</span><span class="color-hex">#FF6B61</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f04438; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-500</span><span class="color-hex">#F04438</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d92d20; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-600</span><span class="color-hex">#D92D20</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b42318; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-700</span><span class="color-hex">#B42318</span></div></li>
-                      <li class="color-swatch" style="--swatch: #912018; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-800</span><span class="color-hex">#912018</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7a1b16; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-900</span><span class="color-hex">#7A1B16</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Yellow 黄色</h3>
-                        <p>用于警告、等待、注意和中风险提示。</p>
-                      </div>
-                      <span class="color-palette-base">yellow-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="黄色色板">
-                      <li class="color-swatch" style="--swatch: #fffaeb; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-50</span><span class="color-hex">#FFFAEB</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fef0c7; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-100</span><span class="color-hex">#FEF0C7</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fedf89; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-200</span><span class="color-hex">#FEDF89</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fec84b; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-300</span><span class="color-hex">#FEC84B</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fdb022; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-400</span><span class="color-hex">#FDB022</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f79009; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-500</span><span class="color-hex">#F79009</span></div></li>
-                      <li class="color-swatch" style="--swatch: #dc6803; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-600</span><span class="color-hex">#DC6803</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b54708; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-700</span><span class="color-hex">#B54708</span></div></li>
-                      <li class="color-swatch" style="--swatch: #93370d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-800</span><span class="color-hex">#93370D</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7a2e0e; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-900</span><span class="color-hex">#7A2E0E</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Blue 蓝色</h3>
-                        <p>用于信息提示、链接、进行中状态和可查看入口。</p>
-                      </div>
-                      <span class="color-palette-base">blue-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="蓝色色板">
-                      <li class="color-swatch" style="--swatch: #eff8ff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-50</span><span class="color-hex">#EFF8FF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d1e9ff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-100</span><span class="color-hex">#D1E9FF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b2ddff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-200</span><span class="color-hex">#B2DDFF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #84caff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-300</span><span class="color-hex">#84CAFF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #53b1fd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-400</span><span class="color-hex">#53B1FD</span></div></li>
-                      <li class="color-swatch" style="--swatch: #2e90fa; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-500</span><span class="color-hex">#2E90FA</span></div></li>
-                      <li class="color-swatch" style="--swatch: #1570ef; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-600</span><span class="color-hex">#1570EF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #175cd3; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-700</span><span class="color-hex">#175CD3</span></div></li>
-                      <li class="color-swatch" style="--swatch: #1849a9; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-800</span><span class="color-hex">#1849A9</span></div></li>
-                      <li class="color-swatch" style="--swatch: #194185; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-900</span><span class="color-hex">#194185</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette" hidden data-test-success-palette>
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Green 绿色</h3>
-                        <p>test 主题下用于成功、完成、通过和正向反馈状态。</p>
-                      </div>
-                      <span class="color-palette-base">success-green-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="成功绿色色板">
-                      <li class="color-swatch" style="--swatch: #f0fff6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-50</span><span class="color-hex">#F0FFF6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ddfbea; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-100</span><span class="color-hex">#DDFBEA</span></div></li>
-                      <li class="color-swatch" style="--swatch: #bef5d5; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-200</span><span class="color-hex">#BEF5D5</span></div></li>
-                      <li class="color-swatch" style="--swatch: #91e9b8; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-300</span><span class="color-hex">#91E9B8</span></div></li>
-                      <li class="color-swatch" style="--swatch: #5fd897; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-400</span><span class="color-hex">#5FD897</span></div></li>
-                      <li class="color-swatch" style="--swatch: #22b573; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-500</span><span class="color-hex">#22B573</span></div></li>
-                      <li class="color-swatch" style="--swatch: #1b9c61; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-600</span><span class="color-hex">#1B9C61</span></div></li>
-                      <li class="color-swatch" style="--swatch: #147c4d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-700</span><span class="color-hex">#147C4D</span></div></li>
-                      <li class="color-swatch" style="--swatch: #12633f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-800</span><span class="color-hex">#12633F</span></div></li>
-                      <li class="color-swatch" style="--swatch: #104f34; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-900</span><span class="color-hex">#104F34</span></div></li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section mask-section">
-                <h3>遮罩</h3>
-                <p>
-                  遮罩用于压低背景内容的视觉权重，让弹窗、抽屉、确认面板和局部加载状态成为当前操作焦点。
-                  黑色遮罩用于阻断式浮层，白色遮罩用于局部加载；透明度根据阻断程度选择。
-                </p>
-                <div class="mask-case-grid" aria-label="遮罩案例">
-                  <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(0, 0, 0, 0.45);" aria-hidden="true">
-                      <div class="mask-stage-content">
-                        <span class="mask-line"></span>
-                        <span class="mask-line medium"></span>
-                        <span class="mask-line short"></span>
-                      </div>
-                      <div class="mask-dialog"></div>
-                    </div>
-                    <h4>弹窗遮罩</h4>
-                    <p>用于 Modal、确认弹窗和高阻断任务，背景需要明显退后。</p>
-                    <span class="mask-value">rgba(0, 0, 0, 0.45)</span>
-                  </div>
-                  <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(0, 0, 0, 0.35);" aria-hidden="true">
-                      <div class="mask-stage-content">
-                        <span class="mask-line"></span>
-                        <span class="mask-line medium"></span>
-                        <span class="mask-line short"></span>
-                      </div>
-                      <div class="mask-drawer"></div>
-                    </div>
-                    <h4>抽屉遮罩</h4>
-                    <p>用于 Drawer、侧边配置和局部编辑任务，保留背景上下文。</p>
-                    <span class="mask-value">rgba(0, 0, 0, 0.35)</span>
-                  </div>
-                  <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(255, 255, 255, 0.72);" aria-hidden="true">
-                      <div class="mask-stage-content">
-                        <span class="mask-line"></span>
-                        <span class="mask-line medium"></span>
-                        <span class="mask-line short"></span>
-                      </div>
-                      <div class="mask-loader"></div>
-                    </div>
-                    <h4>局部加载遮罩</h4>
-                    <p>用于表格、卡片和表单局部加载，弱化内容但不制造强阻断。</p>
-                    <span class="mask-value">rgba(255, 255, 255, 0.72)</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section style-module-start">
-                <h2>字体 Typography</h2>
-                <p>
-                  默认使用 Inter 与系统中文字体组合，保证英文、数字和中文在工作台界面中拥有一致的节奏。
-                  字号层级覆盖 12px 到 36px，主题可替换字体栈，但同一层级的字号与行高应保持稳定。
-                </p>
-                <div class="style-token-grid" aria-label="字体基础 Token">
-                  <div class="style-token-card">
-                    <strong>Sans / UI</strong>
-                    <span>Inter, PingFang SC, Microsoft YaHei, Arial, sans-serif</span>
-                  </div>
-                  <div class="style-token-card">
-                    <strong>Mono / Code</strong>
-                    <span>Roboto Mono, Cascadia Mono, Consolas, monospace</span>
-                  </div>
-                  <div class="style-token-card">
-                    <strong>Weight</strong>
-                    <span>400 常规正文，500 标题与重点标签，600 表头和强强调</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>字号层级</h2>
-                <div class="example-block full typography-specimen">
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Display XL</strong>36px / 1.2 / 500</span>
-                    <p class="type-text" style="--type-size: 36px; --type-weight: 500; --type-line-height: 1.2;">全局样式定义产品视觉基准</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Display</strong>28px / 1.25 / 500</span>
-                    <p class="type-text" style="--type-size: 28px; --type-weight: 500; --type-line-height: 1.25;">组件规范与设计系统</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Headline</strong>24px / 1.3 / 500</span>
-                    <p class="type-text" style="--type-size: 24px; --type-weight: 500; --type-line-height: 1.3;">全局样式与主题配置</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Title</strong>20px / 1.35 / 500</span>
-                    <p class="type-text" style="--type-size: 20px; --type-weight: 500; --type-line-height: 1.35;">表单配置与任务编排</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Subtitle</strong>16px / 1.5 / 500</span>
-                    <p class="type-text" style="--type-size: 16px; --type-weight: 500; --type-line-height: 1.5;">模块标题、卡片标题和重点信息。</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Body</strong>14px / 1.75 / 400</span>
-                    <p class="type-text" style="--type-size: 14px; --type-line-height: 1.75;">用于主要说明、组件正文、配置项描述和需要连续阅读的内容。</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Compact</strong>13px / 1.65 / 400</span>
-                    <p class="type-text" style="--type-size: 13px; --type-line-height: 1.65;">用于表格内容、输入控件、菜单选项和紧凑信息区域。</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Caption</strong>12px / 1.55 / 400</span>
-                    <p class="type-text caption" style="--type-size: 12px; --type-line-height: 1.55;">用于辅助说明、状态标签、表格补充信息和弱提示。</p>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>字体颜色</h2>
-                <p>
-                  字体颜色用于控制文本信息层级。正文、辅助、弱提示、禁用、链接和反白文字需要各自稳定，
-                  避免仅依赖字号或字重区分重要程度。
-                </p>
-                <div class="type-color-grid" aria-label="字体颜色案例">
-                  <div class="type-color-card" style="--sample-color: var(--gray-900);">
-                    <strong>主要文字</strong>
-                    <p>用于页面标题、表单标签、表格主信息和关键数据。</p>
-                    <span class="type-color-value">#14171A</span>
-                  </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-700);">
-                    <strong>常规文字</strong>
-                    <p>用于正文说明、菜单项、输入内容和可阅读段落。</p>
-                    <span class="type-color-value">#343A40</span>
-                  </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-600);">
-                    <strong>辅助文字</strong>
-                    <p>用于说明文案、表格补充信息和次要状态描述。</p>
-                    <span class="type-color-value">#59616A</span>
-                  </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-500);">
-                    <strong>弱提示文字</strong>
-                    <p>用于占位、说明尾注、计数器和低优先级信息。</p>
-                    <span class="type-color-value">#78818C</span>
-                  </div>
-                  <div class="type-color-card" style="--sample-color: var(--typography-color-link);">
-                    <strong>链接文字</strong>
-                    <p>用于可点击文本、跳转入口和外部资源访问。</p>
-                    <span class="type-color-value">#1570EF</span>
-                  </div>
-                  <div class="type-color-card inverse" style="--sample-color: var(--white);">
-                    <strong>反白文字</strong>
-                    <p>用于深色底、主按钮、深色标签和深色浮层内容。</p>
-                    <span class="type-color-value">#FFFFFF</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>使用原则</h2>
+                <h2>何时使用</h2>
                 <ul class="rule-list">
-                  <li>页面标题与模块标题使用 500 字重，避免通过过粗字重制造层级。</li>
-                  <li>表格、表单和工具栏优先使用 12px-14px 区间，保证信息密度与可读性。</li>
-                  <li>英文、数字和代码值使用等宽字体时，仅限 Token、API、快捷值和可复制内容。</li>
+                  <li>用于页面级或区块级的多列布局，确保字段、卡片和统计项按列对齐。</li>
+                  <li>当同一组内容需要在桌面端并排、窄屏下堆叠时使用。</li>
+                  <li>不用于简单按钮组或标签间距；这些场景使用 Space 更轻量。</li>
                 </ul>
               </section>
 
-              <section class="doc-section style-module-start">
-                <h2>图标 ICON</h2>
-                <p>
-                  图标用于补充按钮、输入框、导航和状态表达。图标应保持统一线性风格，默认跟随文字颜色，
-                  通过大小、线宽、拐角和端点约束保证不同组件中的识别一致性。
-                </p>
-                <div class="icon-spec-grid" aria-label="图标规范">
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>线宽 Stroke</strong>
-                      <p>线性图标线宽分为 1.5px、2px、3px；超过 3px 不推荐。不同线宽不能混用于同一组图标。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        1.5px
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>24 等分栅格规范</h3>
+                    <p>以 24 等分作为页面横向布局基准，同一行中各列 span 之和不超过 24。</p>
+                    <div class="grid-spec-demo" aria-label="24 等分栅格占比示意">
+                      <div class="grid-spec-row">
+                        <div class="grid-spec-cell tone-mid" style="grid-column:span 24;">24 - 100%</div>
                       </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                        2px
+                      <div class="grid-spec-row">
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 12;">12 - 50%</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 12;">12 - 50%</div>
                       </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                        </svg>
-                        3px
+                      <div class="grid-spec-row">
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 8;">8 - 33.33%</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 8;">8 - 33.33%</div>
+                        <div class="grid-spec-cell tone-mid" style="grid-column:span 8;">8 - 33.33%</div>
                       </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-                        </svg>
-                        超过 3px
+                      <div class="grid-spec-row">
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 6;">6 - 25%</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 6;">6 - 25%</div>
+                        <div class="grid-spec-cell tone-mid" style="grid-column:span 6;">6 - 25%</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 6;">6 - 25%</div>
+                      </div>
+                      <div class="grid-spec-row">
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 4;">4 - 16.66%</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">4 - 16.66%</div>
+                        <div class="grid-spec-cell tone-mid" style="grid-column:span 4;">4 - 16.66%</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">4 - 16.66%</div>
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 4;">4 - 16.66%</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">4 - 16.66%</div>
                       </div>
                     </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>大小 Size</strong>
-                      <p>常用尺寸为 14、16、20、24px；按钮和表单内优先使用 16px，导航和空状态可使用 20px 或 24px。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview" style="--icon-demo-size: 14px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        14px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 16px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        16px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 20px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        20px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 24px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        24px
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>拐角 Join</strong>
-                      <p>折线和路径转角使用 round join，避免尖锐拐角干扰小尺寸识别；保持箭头、展开和跳转类图标的一致转折。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M6 18V9C6 7.34 7.34 6 9 6H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                          <path d="M14 10L18 6L14 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        round
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7H17V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                          <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        跳转
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        展开
-                      </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 18V7H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" />
-                          <path d="M7 7H13V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" />
-                        </svg>
-                        拐角生硬
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>端点 Cap</strong>
-                      <p>线段端点使用 round cap，关闭、加号、箭头等图标保持柔和收尾；避免 square 或 butt 端点造成生硬断口。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        关闭
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        加号
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        箭头
-                      </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" />
-                          <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" />
-                        </svg>
-                        端点生硬
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section style-module-start">
-                <h2>投影 Shadow</h2>
-                <p>
-                  基础页面结构主要依赖边框与留白，投影集中用于弱层级、悬停、浮层和焦点反馈。
-                  常规投影使用 XS、SM、MD 三档；焦点类样式需要结合绿色描边与浅绿色外发光。
-                </p>
-                <div class="shadow-grid" aria-label="投影层级">
-                  <div class="shadow-sample">
-                    <div class="shadow-preview xs">Shadow XS</div>
-                    <h3>弱投影</h3>
-                    <p>用于静态轻量容器、细微层级提示和低强调背景卡片。</p>
-                  </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview sm">Shadow SM</div>
-                    <h3>轻量悬停</h3>
-                    <p>用于卡片 hover、列表项强调和低层级浮起反馈。</p>
-                  </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview md">Shadow MD</div>
-                    <h3>浮层容器</h3>
-                    <p>用于 Select、DatePicker、菜单和临时面板。</p>
-                  </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview focus">Focus Ring</div>
-                    <h3>焦点环</h3>
-                    <p>用于键盘焦点、输入聚焦和需要明确可达性的控件。</p>
-                  </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview selector-focus">Selector Focus</div>
-                    <h3>选择器焦点卡片</h3>
-                    <p>同选择器 focus 态，使用绿色描边与 <code>rgba(0, 209, 87, 0.16) 0px 0px 0px 3px</code> 外发光。</p>
                   </div>
                 </div>
               </section>
 
               <section class="doc-section">
-                <h2>投影值</h2>
+                <h2>断点建议</h2>
                 <div class="spec-table-wrap">
                   <table class="spec-table">
-                    <thead>
-                      <tr>
-                        <th>名称</th>
-                        <th>值</th>
-                        <th>用途</th>
-                      </tr>
-                    </thead>
+                    <thead><tr><th>断点</th><th>宽度</th><th>建议</th></tr></thead>
                     <tbody>
-                      <tr>
-                        <td><code>shadow-xs</code></td>
-                        <td><code>0 2px 6px rgba(20, 28, 36, 0.06)</code></td>
-                        <td>静态轻量容器、低强调卡片、细微层级提示。</td>
-                      </tr>
-                      <tr>
-                        <td><code>shadow-sm</code></td>
-                        <td><code>0 4px 12px rgba(20, 28, 36, 0.08)</code></td>
-                        <td>hover、轻量卡片、可点击模块。</td>
-                      </tr>
-                      <tr>
-                        <td><code>shadow-md</code></td>
-                        <td><code>0 12px 28px rgba(20, 28, 36, 0.12)</code></td>
-                        <td>下拉菜单、弹出层、临时浮层。</td>
-                      </tr>
-                      <tr>
-                        <td><code>shadow-focus</code></td>
-                        <td><code>0 0 0 3px rgb(var(--brand-rgb) / 0.16)</code></td>
-                        <td>键盘焦点与输入聚焦，随主题主色变化。</td>
-                      </tr>
+                      <tr><td>xs</td><td><code>&lt; 576px</code></td><td>单列优先，保证表单可读。</td></tr>
+                      <tr><td>md</td><td><code>&gt;= 768px</code></td><td>常用两列或三列业务卡片。</td></tr>
+                      <tr><td>xl</td><td><code>&gt;= 1200px</code></td><td>复杂工作台可使用 4 列或主从结构。</td></tr>
                     </tbody>
                   </table>
                 </div>
               </section>
 
-              <section class="doc-section style-module-start">
-                <h2>主题 Theme</h2>
-                <p>
-                  当前站点提供 IQ 主题、IQ Buddy 主题和 test 主题 1。主题之间保持组件结构一致，
-                  仅替换品牌色阶、焦点态、局部圆角和字体栈等基础变量，遮罩与中性色保持统一。
-                </p>
-                <div class="theme-grid" aria-label="主题列表">
-                  <div class="theme-card">
-                    <div class="theme-strip" aria-hidden="true">
-                      <span style="background: #effff6"></span>
-                      <span style="background: #b5ffd1"></span>
-                      <span style="background: #00d157"></span>
-                      <span style="background: #008f3f"></span>
-                      <span style="background: #075a2f"></span>
-                    </div>
-                    <div class="theme-body">
-                      <strong>IQ 主题</strong>
-                      <p>以 iQIYI 标准绿色为品牌主色，适用于默认产品界面。</p>
-                    </div>
-                  </div>
-                  <div class="theme-card">
-                    <div class="theme-strip" aria-hidden="true">
-                      <span style="background: #f0fff6"></span>
-                      <span style="background: #bef5d5"></span>
-                      <span style="background: #22b573"></span>
-                      <span style="background: #147c4d"></span>
-                      <span style="background: #104f34"></span>
-                    </div>
-                    <div class="theme-body">
-                      <strong>IQ Buddy 主题</strong>
-                      <p>使用更沉稳的绿色色阶，适用于 Buddy 产品语境。</p>
-                    </div>
-                  </div>
-                  <div class="theme-card">
-                    <div class="theme-strip" aria-hidden="true">
-                      <span style="background: #eff6ff"></span>
-                      <span style="background: #bfdbfe"></span>
-                      <span style="background: #2672ff"></span>
-                      <span style="background: #1e4fb3"></span>
-                      <span style="background: #172f68"></span>
-                    </div>
-                    <div class="theme-body">
-                      <strong>test 主题 1</strong>
-                      <p>以蓝色为主色，并使用 2px 控件圆角验证主题差异。</p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
               <section class="doc-section">
-                <h2>变量范围</h2>
-                <div class="style-token-grid" aria-label="主题变量范围">
-                  <div class="style-token-card">
-                    <strong>Brand</strong>
-                    <span><code>--brand-50</code> 到 <code>--brand-900</code>、文本色、边框色和 RGB 值。</span>
-                  </div>
-                  <div class="style-token-card">
-                    <strong>Interaction</strong>
-                    <span>hover、focus、focus ring、输入框聚焦与数字输入框聚焦。</span>
-                  </div>
-                  <div class="style-token-card">
-                    <strong>Shape & Font</strong>
-                    <span>控件圆角、主题字体栈和组件内需要跟随品牌变化的基础样式。</span>
-                  </div>
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>
+                    <tbody>
+                      <tr><td>gutter</td><td>列间距或行列间距。</td><td><code>number | [number, number]</code></td><td><code>16</code></td></tr>
+                      <tr><td>span</td><td>栅格占位格数。</td><td><code>1-24</code></td><td><code>24</code></td></tr>
+                      <tr><td>offset</td><td>左侧间隔格数。</td><td><code>number</code></td><td><code>0</code></td></tr>
+                    </tbody>
+                  </table>
                 </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>维护原则</h2>
-                <ul class="rule-list">
-                  <li>新增主题时先补齐品牌色阶，再校验组件 hover、focus、disabled 和 error 状态。</li>
-                  <li>组件样式优先读取全局变量，避免在组件内部写死可主题化的品牌值。</li>
-                  <li>主题差异只能改变视觉语义，不改变组件结构、交互路径和可访问性表达。</li>
-                </ul>
               </section>
             </article>
 
@@ -5953,10 +4743,10 @@
       const productSelectTrigger = document.querySelector("[data-product-select-trigger]");
       const productSelectMenu = document.querySelector("[data-product-select-menu]");
       const productSelectValue = document.querySelector("[data-product-select-value]");
-      const productStorageKey = "iqb-design-active-product";
+      const productStorageKey = "design-system-active-product";
       const productLabels = {
-        "iq-buddy": "默认主题",
-        "iq-buddy-theme": "业务主题",
+        "default-theme": "默认主题",
+        "business-theme": "业务主题",
         decentralized: "实验主题",
       };
       const defaultProductThemeVars = [
@@ -5989,13 +4779,13 @@
         defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
         root.style.removeProperty("font-family");
         root.removeAttribute("data-product-theme");
-        if (activeProduct === "iq-buddy") {
-          root.dataset.productTheme = "iq-theme";
+        if (activeProduct === "default-theme") {
+          root.dataset.productTheme = "default-theme";
           return;
         }
 
-        if (activeProduct === "iq-buddy-theme") {
-          root.dataset.productTheme = "iq-buddy-theme";
+        if (activeProduct === "business-theme") {
+          root.dataset.productTheme = "business-theme";
           root.style.setProperty("--brand-50", "#f0fff6");
           root.style.setProperty("--brand-100", "#ddfbea");
           root.style.setProperty("--brand-200", "#bef5d5");
@@ -6051,7 +4841,7 @@
       };
       const syncProductSelect = (activeProduct) => {
         if (productSelectValue) {
-          productSelectValue.textContent = productLabels[activeProduct] || productLabels["iq-buddy"];
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels["default-theme"];
         }
         productOptions.forEach((option) => {
           option.setAttribute("aria-selected", String(option.dataset.productOption === activeProduct));
@@ -6081,7 +4871,7 @@
       const savedProduct = getSavedProduct();
       const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
         ? savedProduct
-        : "iq-buddy";
+        : "default-theme";
       syncProductSelect(initialProduct);
       productSelectTrigger?.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -6142,42 +4932,14 @@
 
       const navButtons = document.querySelectorAll(".nav-button");
       const pageTriggers = document.querySelectorAll("[data-page]");
-      const panels = document.querySelectorAll("[data-panel]");
 
-      const switchPage = (page, behavior = "smooth") => {
-        navButtons.forEach((item) => {
-          const isCurrent = item.dataset.page === page;
-          if (isCurrent) {
-            item.setAttribute("aria-current", "page");
-          } else {
-            item.removeAttribute("aria-current");
-          }
-        });
-        panels.forEach((panel) => {
-          panel.hidden = panel.dataset.panel !== page;
-        });
-        centerCurrentNavItem(behavior);
-      };
-
-      const getHashPage = () => {
-        const page = window.location.hash.slice(1);
-        return page && document.querySelector(`[data-panel="${page}"]`) ? page : "overview";
-      };
-
-      switchPage(getHashPage(), "auto");
+      centerCurrentNavItem("auto");
 
       pageTriggers.forEach((button) => {
         button.addEventListener("click", () => {
           const page = button.dataset.page;
-          switchPage(page);
-          if (window.location.hash.slice(1) !== page) {
-            history.replaceState(null, "", `#${page}`);
-          }
+          if (page) window.location.href = `index.html#${page}`;
         });
-      });
-
-      window.addEventListener("hashchange", () => {
-        switchPage(getHashPage());
       });
 
       const colorPaletteSelect = document.querySelector("[data-color-palette-select]");
@@ -6196,18 +4958,18 @@
       const colorPaletteBase = colorBrandPalette?.querySelector("[data-color-palette-base]");
       const colorPaletteLevels = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
       const colorPaletteSets = {
-        "iQIYI标准色": {
-          title: "iQIYI Green",
-          desc: "iQIYI 标准品牌色，500 固定为 #00D157。",
-          base: "iqiyi-500",
-          tokenPrefix: "iqiyi",
+        "默认主题色": {
+          title: "Default Green",
+          desc: "默认主题品牌色，500 固定为 #00D157。",
+          base: "default-green-500",
+          tokenPrefix: "default-green",
           colors: ["#EFFFF6", "#D8FFE8", "#B5FFD1", "#7DFFB0", "#35F47C", "#00D157", "#00B84B", "#008F3F", "#067037", "#075A2F"],
         },
         "业务主题色": {
-          title: "IQ Buddy Green",
-          desc: "IQ Buddy 主题品牌色，500 固定为 #22B573。",
-          base: "iq-buddy-500",
-          tokenPrefix: "iq-buddy",
+          title: "Business Green",
+          desc: "业务主题品牌色，500 固定为 #22B573。",
+          base: "default-theme-500",
+          tokenPrefix: "default-theme",
           colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
         },
         "test主题色": {
@@ -6295,7 +5057,7 @@
         });
       });
 
-      applyColorPalette("iQIYI标准色");
+      applyColorPalette("默认主题色");
 
       document.addEventListener("click", (event) => {
         if (!colorPaletteSelect?.contains(event.target)) {

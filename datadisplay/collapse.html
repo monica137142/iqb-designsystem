@@ -1,0 +1,1875 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collapse 折叠面板 - Design System</title>
+    <style>
+      :root{--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--gray-900);background:var(--white)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--gray-200);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--gray-600);font-size:13px}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--white);border-right:1px solid var(--gray-200)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--gray-500);font-size:12px;line-height:1.4}.nav-category-count{color:var(--gray-400);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--gray-700);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--brand-500);background:var(--gray-100)}.nav-label{overflow:hidden;font-size:14px;line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--gray-500);border-top:1px solid var(--gray-200);font-size:12px;line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--brand-600);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--gray-900);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--gray-600);font-size:14px;line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:12px}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--gray-200)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:14px;font-weight:600}.doc-section p{margin:0;color:var(--gray-600);font-size:13px;line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--gray-500);font-size:13px}.stat-value{color:var(--gray-900);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--gray-500);font-size:12px}.metric-row strong{font-size:24px}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--white);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--gray-500);font-size:13px}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--brand-600);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:#fff;background:var(--gray-900);border-radius:6px;font-size:12px;line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:#fff;background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--gray-700);background:var(--gray-100)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--gray-500);font-size:13px}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--brand-500);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:#2e90fa;box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--gray-500);font-size:12px}.timeline strong{font-size:14px}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--gray-900);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--brand-600);font-size:12px;font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--gray-700);background:#fff;border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--brand-500);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--gray-200)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--gray-400);border:1px dashed var(--gray-300);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--gray-500);font-size:12px}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:#fff;background:#f04438;border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:#f79009}.status-dot.danger{background:#f04438}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--gray-200);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--gray-300);border-radius:6px}.empty-state strong{font-size:16px}.empty-state button{height:34px;padding:0 14px;color:#fff;background:var(--brand-500);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--gray-200)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      :root {
+        --brand-400: #35f47c;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      /* Collapse page, aligned with List page */
+      :root {
+        --collapse-header-height: 44px;
+        --collapse-border-color: #e8ebee;
+        --collapse-divider-color: #eef1f3;
+        --collapse-bg: #ffffff;
+        --collapse-bg-hover: #ffffff;
+        --collapse-content-bg: var(--gray-50);
+        --collapse-header-color: #22262a;
+        --collapse-content-color: #59616a;
+        --collapse-disabled-color: #a5adb6;
+        --collapse-radius: 8px;
+        --collapse-padding-x: 18px;
+        --collapse-content-row-height: 44px;
+        --collapse-content-line-height: 36px;
+        --collapse-content-padding-top: 4px;
+        --collapse-content-padding-y: 4px;
+        --collapse-nested-content-padding-y: 8px;
+        --collapse-icon-size: 16px;
+        --collapse-motion-duration: 180ms;
+        --collapse-motion-open-easing: cubic-bezier(0.2, 0, 0, 1);
+        --collapse-motion-close-easing: cubic-bezier(0.4, 0, 1, 1);
+        --collapse-setting-button-size: 32px;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        height: auto;
+      }
+
+      .canvas {
+        background: var(--white);
+      }
+
+      .canvas-inner {
+        display: grid;
+        width: auto;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--brand-500);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.4;
+        text-transform: none;
+      }
+
+      .doc-title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        line-height: 1.75;
+      }
+
+      .doc-meta-list {
+        margin: 18px 0 0;
+      }
+
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color: var(--gray-600);
+        background: var(--gray-100);
+        border: 0;
+        border-radius: 999px;
+        line-height: 1.4;
+      }
+
+      .doc-section {
+        margin-top: 0;
+        padding-top: 28px;
+        border-top: 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        color: var(--gray-900);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .doc-section h3 {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section p {
+        line-height: 1.75;
+      }
+
+      .example-block {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .example-block.full {
+        grid-column: 1 / -1;
+      }
+
+      .collapse-example-block {
+        display: grid;
+        align-content: start;
+        gap: 18px;
+        padding: 36px;
+      }
+
+      .collapse-example-head {
+        display: grid;
+        gap: 4px;
+      }
+
+      .collapse-example-head p {
+        max-width: 760px;
+      }
+
+      .example-grid {
+        display: grid;
+        align-items: start;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .trigger-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .collapse-set {
+        overflow: hidden;
+        background: var(--collapse-bg);
+        border: 1px solid var(--collapse-border-color);
+        border-radius: var(--collapse-radius);
+      }
+
+      .collapse-panel {
+        border-bottom: 1px solid var(--collapse-divider-color);
+      }
+
+      .collapse-panel:last-child {
+        border-bottom: 0;
+      }
+
+      .collapse-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: var(--collapse-header-height);
+        gap: 12px;
+        padding: 0 var(--collapse-padding-x);
+        background: var(--collapse-bg);
+      }
+
+      .collapse-header-row:hover {
+        background: var(--collapse-bg-hover);
+      }
+
+      .collapse-header-row[data-collapse-row-trigger] {
+        cursor: pointer;
+      }
+
+      .collapse-header {
+        display: inline-flex;
+        align-items: center;
+        flex: 1 1 auto;
+        min-width: 0;
+        min-height: var(--collapse-header-height);
+        gap: 10px;
+        padding: 0;
+        color: var(--collapse-header-color);
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+        text-align: left;
+      }
+
+      .collapse-header:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .collapse-header.icon-only {
+        flex: 0 0 auto;
+        justify-content: center;
+        width: var(--collapse-icon-size);
+        min-height: var(--collapse-header-height);
+        border-radius: 0;
+      }
+
+      .collapse-header.icon-only:hover {
+        background: transparent;
+      }
+
+      .collapse-header-row.icon-trigger-row {
+        gap: 10px;
+      }
+
+      .collapse-header.trigger-inline {
+        flex: 0 1 auto;
+      }
+
+      .collapse-header.header-right {
+        width: 100%;
+      }
+
+      .collapse-header.header-right .collapse-arrow {
+        margin-left: 0;
+      }
+
+      .collapse-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .collapse-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 var(--collapse-icon-size);
+        width: var(--collapse-icon-size);
+        height: var(--collapse-icon-size);
+        color: var(--gray-500);
+        transition: transform 0.16s ease;
+      }
+
+      .collapse-arrow svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+      }
+
+      .collapse-panel.is-active > .collapse-header-row .collapse-arrow {
+        transform: rotate(90deg);
+      }
+
+      .collapse-content {
+        box-sizing: border-box;
+        min-height: var(--collapse-content-row-height);
+        padding: var(--collapse-content-padding-top) var(--collapse-padding-x) var(--collapse-content-padding-y) calc(var(--collapse-padding-x) + 26px);
+        color: var(--collapse-content-color);
+        background: var(--collapse-content-bg);
+        font-size: 13px;
+        line-height: var(--collapse-content-line-height);
+      }
+
+      .collapse-set .collapse-content {
+        contain: layout paint;
+        will-change: height;
+      }
+
+      .collapse-content[hidden] {
+        display: none;
+      }
+
+      .collapse-content p {
+        margin: 0;
+        line-height: var(--collapse-content-line-height);
+      }
+
+      .collapse-content:has(.nested-collapse) {
+        line-height: 1.75;
+      }
+
+      .collapse-content:has(.nested-collapse) > p {
+        line-height: 1.75;
+      }
+
+      #nested-content-1 {
+        padding-top: var(--collapse-nested-content-padding-y);
+        padding-bottom: var(--collapse-nested-content-padding-y);
+      }
+
+      .collapse-content-lines {
+        display: grid;
+        margin: 0;
+      }
+
+      .collapse-content-line {
+        display: flex;
+        align-items: center;
+        min-height: var(--collapse-content-row-height);
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      .collapse-content-line + .collapse-content-line {
+        border-top: 1px solid var(--collapse-divider-color);
+      }
+
+      .collapse-panel.is-disabled .collapse-header-row {
+        background: #f8f9fa;
+      }
+
+      .collapse-panel.is-disabled .collapse-header,
+      .collapse-panel.is-disabled .collapse-arrow,
+      .collapse-panel.is-disabled .collapse-title {
+        color: var(--collapse-disabled-color);
+        cursor: not-allowed;
+      }
+
+      .static-title,
+      .header-note,
+      .header-action,
+      .status-pill {
+        flex: 0 0 auto;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .static-title {
+        flex: 1 1 auto;
+        min-width: 0;
+        color: var(--gray-800);
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      .header-note {
+        color: var(--gray-500);
+      }
+
+      .header-action {
+        color: var(--brand-500);
+      }
+
+      .header-spacer {
+        flex: 1 1 auto;
+        min-width: 12px;
+      }
+
+      .settings-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 var(--collapse-setting-button-size);
+        width: var(--collapse-setting-button-size);
+        height: var(--collapse-setting-button-size);
+        color: var(--gray-500);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+      }
+
+      .settings-button:hover {
+        color: var(--gray-800);
+      }
+
+      .settings-button svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+
+      .status-pill {
+        padding: 2px 8px;
+        color: #087443;
+        background: #ecfdf3;
+        border: 1px solid #abefc6;
+        border-radius: 999px;
+      }
+
+      .status-pill.warning {
+        color: #b54708;
+        background: #fffaeb;
+        border-color: #fedf89;
+      }
+
+      .header-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 24px;
+        width: 24px;
+        height: 24px;
+        color: #2f75d6;
+        background: #eef5ff;
+        border-radius: 8px;
+      }
+
+      .header-icon svg {
+        width: 14px;
+        height: 14px;
+        fill: currentColor;
+      }
+
+      .trigger-caption {
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .custom-title-cases {
+        display: grid;
+        gap: 14px;
+      }
+
+      .nested-collapse {
+        margin-top: 10px;
+      }
+
+      .spec-table-wrap {
+        margin-top: 16px;
+        overflow: auto;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .spec-table {
+        width: 100%;
+        min-width: 720px;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .spec-table th,
+      .spec-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--gray-200);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .spec-table th {
+        color: var(--gray-700);
+        background: var(--gray-50);
+        font-weight: 600;
+      }
+
+      .spec-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .spec-table code {
+        padding: 2px 5px;
+        color: var(--gray-800);
+        background: var(--gray-100);
+        border-radius: 4px;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size: 12px;
+      }
+
+      @media (max-width: 860px) {
+        .topbar {
+          position: sticky;
+          top: 0;
+        }
+
+        .sidebar {
+          position: sticky;
+          top: var(--topbar-height);
+          z-index: 2;
+          max-height: none;
+          padding: 12px 14px;
+        }
+
+        .canvas-inner {
+          min-height: 560px;
+          padding: 18px;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 22px 18px;
+        }
+
+        .doc-title {
+          font-size: 24px;
+        }
+
+        .collapse-example-block {
+          padding: 18px;
+        }
+
+        .example-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand-title {
+          display: none;
+        }
+
+        .product-select {
+          width: min(124px, calc(100vw - 92px));
+        }
+
+        .collapse-header-row {
+          align-items: flex-start;
+          min-height: auto;
+          padding-top: 10px;
+          padding-bottom: 10px;
+        }
+
+        .collapse-header {
+          min-height: 28px;
+        }
+
+        .collapse-title {
+          white-space: normal;
+        }
+
+        .collapse-content {
+          padding-left: var(--collapse-padding-x);
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 IQB DESIGN 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQB DESIGN</span>
+        </a>
+        <div class="topbar-actions" aria-label="组件完成状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 45/46</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html" aria-current="page">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/model.html">
+                      <span class="nav-label">Model 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+        <section class="canvas" aria-label="折叠面板组件说明详情区">
+          <div class="canvas-inner">
+            <article class="doc-page">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Display / Collapse</p>
+                <h1 class="doc-title">Collapse 折叠面板</h1>
+                <p class="doc-summary">
+                  Collapse 用于把同一上下文下的长内容拆成可展开面板。当前规范采用 44px header、浅灰内容区和 44px 行内容节奏，所有面板展开 / 收起均带高度动效，并支持多面板展开、手风琴模式、默认展开、局部触发、禁用、嵌套与自定义标题。
+                </p>
+                <ul class="doc-meta-list" aria-label="折叠面板基础规格">
+                  <li>header / content / key</li>
+                  <li>Header 44px</li>
+                  <li>Content 44px 行</li>
+                  <li>多项展开</li>
+                  <li>展开收起动效</li>
+                  <li>defaultActiveKey</li>
+                  <li>局部触发</li>
+                  <li>整行自定义标题</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="example-block full collapse-example-block">
+                  <div class="collapse-example-head">
+                    <h3>基础 Collapse</h3>
+                    <p>每个 Collapse Item 都包含 header、content 与唯一 key。header 高度为 44px，content 以 44px 行高展示 2-3 行信息，点击标题区域可以展开或收起对应内容，并支持同时展开多个面板。</p>
+                  </div>
+                  <div class="collapse-set" data-collapse-set aria-label="基础折叠面板示例">
+                    <div class="collapse-panel is-active" data-collapse-panel data-key="1">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="basic-header-1" aria-expanded="true" aria-controls="basic-content-1" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">基础信息</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="basic-content-1" role="region" aria-labelledby="basic-header-1">
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">标题：商品优化任务</p>
+                          <p class="collapse-content-line">负责人：运营体验组</p>
+                          <p class="collapse-content-line">创建时间：2026-08-20 10:32</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="collapse-panel" data-collapse-panel data-key="2">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="basic-header-2" aria-expanded="false" aria-controls="basic-content-2" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">高级配置</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="basic-content-2" role="region" aria-labelledby="basic-header-2" hidden>
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">重试策略：失败后自动重试 2 次</p>
+                          <p class="collapse-content-line">超时限制：单次执行最长 30 分钟</p>
+                          <p class="collapse-content-line">通知方式：站内信与邮件同步提醒</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="collapse-panel" data-collapse-panel data-key="3">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="basic-header-3" aria-expanded="false" aria-controls="basic-content-3" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">执行记录</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="basic-content-3" role="region" aria-labelledby="basic-header-3" hidden>
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">2026-08-20 09:40：执行成功，用时 6 分钟</p>
+                          <p class="collapse-content-line">2026-08-19 18:12：执行成功，用时 8 分钟</p>
+                          <p class="collapse-content-line">2026-08-19 09:30：部分跳过，查看日志</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>手风琴模式</h2>
+                <div class="example-block full collapse-example-block">
+                  <div class="collapse-example-head">
+                    <h3>Accordion</h3>
+                    <p>开启 accordion 后，同一时间只能展开一个面板。展开新的面板时，原面板自动收起，并通过高度过渡呈现展开 / 收起动效。</p>
+                  </div>
+                  <div class="collapse-set" data-collapse-set data-accordion="true" aria-label="手风琴折叠面板示例">
+                    <div class="collapse-panel is-active" data-collapse-panel data-key="overview">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="accordion-header-1" aria-expanded="true" aria-controls="accordion-content-1" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">项目概览</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="accordion-content-1" role="region" aria-labelledby="accordion-header-1">
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">项目阶段：需求确认、内容生成、质检发布、数据回收</p>
+                          <p class="collapse-content-line">任务数量：12 个任务，其中 9 个已完成</p>
+                          <p class="collapse-content-line">外部依赖：素材库、商品库、投放配置</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="collapse-panel" data-collapse-panel data-key="risk">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="accordion-header-2" aria-expanded="false" aria-controls="accordion-content-2" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">风险项</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="accordion-content-2" role="region" aria-labelledby="accordion-header-2" hidden>
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">风险等级：中，涉及 2 个未确认字段</p>
+                          <p class="collapse-content-line">负责人：Lina，需要在今天 18:00 前确认</p>
+                          <p class="collapse-content-line">建议：先保留当前配置，发布前再次校验</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="collapse-panel" data-collapse-panel data-key="history">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="accordion-header-3" aria-expanded="false" aria-controls="accordion-content-3" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">变更历史</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="accordion-content-3" role="region" aria-labelledby="accordion-header-3" hidden>
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">10:32 更新标题模板</p>
+                          <p class="collapse-content-line">09:48 审批通过素材补充</p>
+                          <p class="collapse-content-line">09:10 创建优化任务</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>默认展开</h2>
+                <div class="example-block full collapse-example-block">
+                  <div class="collapse-example-head">
+                    <h3>defaultActiveKey = ['1']</h3>
+                    <p>支持指定默认展开的面板。页面初始化时，第一个 Collapse Item 默认展开。</p>
+                  </div>
+                  <div class="collapse-set" data-collapse-set aria-label="默认展开折叠面板示例">
+                    <div class="collapse-panel is-active" data-collapse-panel data-key="1">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="default-header-1" aria-expanded="true" aria-controls="default-content-1" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">默认展开项</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="default-content-1" role="region" aria-labelledby="default-header-1">
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">key：1</p>
+                          <p class="collapse-content-line">defaultActiveKey：['1']</p>
+                          <p class="collapse-content-line">初始化状态：默认展开</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="collapse-panel" data-collapse-panel data-key="2">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="default-header-2" aria-expanded="false" aria-controls="default-content-2" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">普通项</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="default-content-2" role="region" aria-labelledby="default-header-2" hidden>
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">key：2</p>
+                          <p class="collapse-content-line">初始化状态：默认收起</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>触发区域</h2>
+                <div class="example-grid trigger-layout">
+                  <div class="example-block collapse-example-block">
+                  <div class="collapse-example-head">
+                    <h3>部分区域（ICON + 文字）</h3>
+                      <p>点击区域仅包含展开 ICON 与 header 文字，右侧辅助信息不参与触发；该案例按上下 card 排布，避免大分辨率下组件被拉伸。</p>
+                    </div>
+                    <div class="collapse-set" data-collapse-set aria-label="ICON 加文字触发示例">
+                      <div class="collapse-panel" data-collapse-panel data-key="icon-text">
+                        <div class="collapse-header-row">
+                          <button class="collapse-header trigger-inline" type="button" id="trigger-text-header" aria-expanded="false" aria-controls="trigger-text-content" data-collapse-trigger>
+                            <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                            <span class="collapse-title">可点击区域</span>
+                          </button>
+                          <span class="header-note">只读状态</span>
+                        </div>
+                        <div class="collapse-content" id="trigger-text-content" role="region" aria-labelledby="trigger-text-header" hidden>
+                          <div class="collapse-content-lines">
+                            <p class="collapse-content-line">触发区域：左侧 ICON 与标题文字</p>
+                            <p class="collapse-content-line">非触发区域：右侧只读状态</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="trigger-caption">【案例】点击 ICON + 文字区域可正常触发。</span>
+                  </div>
+                  <div class="example-block collapse-example-block">
+                  <div class="collapse-example-head">
+                    <h3>部分区域（ICON）</h3>
+                      <p>仅 ICON 按钮负责触发，标题文字和右侧摘要保持静态，适合标题栏内还存在选择、链接或编辑入口的场景。</p>
+                    </div>
+                    <div class="collapse-set" data-collapse-set aria-label="ICON 触发示例">
+                      <div class="collapse-panel" data-collapse-panel data-key="icon">
+                        <div class="collapse-header-row icon-trigger-row">
+                          <button class="collapse-header icon-only" type="button" id="trigger-icon-header" aria-expanded="false" aria-controls="trigger-icon-content" aria-label="展开筛选条件" data-collapse-trigger>
+                            <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          </button>
+                          <span class="collapse-title static-title">筛选条件</span>
+                          <span class="header-note">3 项已启用</span>
+                        </div>
+                        <div class="collapse-content" id="trigger-icon-content" role="region" aria-labelledby="trigger-icon-header" hidden>
+                          <div class="collapse-content-lines">
+                            <p class="collapse-content-line">触发区域：仅左侧 ICON</p>
+                            <p class="collapse-content-line">标题文字：不响应展开收起</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="trigger-caption">【案例】点击 ICON 区域可正常触发。</span>
+                  </div>
+                  <div class="example-block full collapse-example-block">
+                    <div class="collapse-example-head">
+                      <h3>单个 Collapse Item 支持 disabled</h3>
+                      <p>禁用后当前面板不可展开或收起，其他面板仍然可以正常操作。</p>
+                    </div>
+                    <div class="collapse-set" data-collapse-set aria-label="禁用项折叠面板示例">
+                      <div class="collapse-panel" data-collapse-panel data-key="enabled">
+                        <div class="collapse-header-row">
+                          <button class="collapse-header" type="button" id="disabled-header-1" aria-expanded="false" aria-controls="disabled-content-1" data-collapse-trigger>
+                            <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                            <span class="collapse-title">可操作面板</span>
+                          </button>
+                        </div>
+                        <div class="collapse-content" id="disabled-content-1" role="region" aria-labelledby="disabled-header-1" hidden>
+                          <div class="collapse-content-lines">
+                            <p class="collapse-content-line">状态：可操作</p>
+                            <p class="collapse-content-line">交互：点击标题可展开或收起</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="collapse-panel is-disabled" data-collapse-panel data-key="disabled">
+                        <div class="collapse-header-row">
+                          <button class="collapse-header" type="button" id="disabled-header-2" aria-expanded="false" aria-controls="disabled-content-2" data-collapse-trigger disabled aria-disabled="true">
+                            <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                            <span class="collapse-title">禁用面板</span>
+                          </button>
+                          <span class="header-note">disabled</span>
+                        </div>
+                        <div class="collapse-content" id="disabled-content-2" role="region" aria-labelledby="disabled-header-2" hidden>
+                          <div class="collapse-content-lines">
+                            <p class="collapse-content-line">状态：disabled</p>
+                            <p class="collapse-content-line">交互：当前面板不可展开或收起</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="collapse-panel" data-collapse-panel data-key="another">
+                        <div class="collapse-header-row">
+                          <button class="collapse-header" type="button" id="disabled-header-3" aria-expanded="false" aria-controls="disabled-content-3" data-collapse-trigger>
+                            <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                            <span class="collapse-title">其他面板</span>
+                          </button>
+                        </div>
+                        <div class="collapse-content" id="disabled-content-3" role="region" aria-labelledby="disabled-header-3" hidden>
+                          <div class="collapse-content-lines">
+                            <p class="collapse-content-line">状态：可操作</p>
+                            <p class="collapse-content-line">说明：禁用项不会影响同组其他面板</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>嵌套折叠面板</h2>
+                <div class="example-block full collapse-example-block">
+                  <div class="collapse-example-head">
+                    <h3>多层级关系</h3>
+                    <p>Collapse 的内容区域中可以继续嵌套另一个 Collapse，用于展示具有多层级关系的内容。嵌套父级内容区上下 padding 加大到 8px，以容纳说明文字和子级面板。</p>
+                  </div>
+                  <div class="collapse-set" data-collapse-set aria-label="嵌套折叠面板示例">
+                    <div class="collapse-panel is-active" data-collapse-panel data-key="parent">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="nested-header-1" aria-expanded="true" aria-controls="nested-content-1" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">商品优化任务</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="nested-content-1" role="region" aria-labelledby="nested-header-1">
+                        <p>父级内容可以继续承载子级 Collapse，用于展示多层级关系。</p>
+                        <div class="collapse-set nested-collapse" data-collapse-set aria-label="子级折叠面板示例">
+                          <div class="collapse-panel" data-collapse-panel data-key="child-1">
+                            <div class="collapse-header-row">
+                              <button class="collapse-header" type="button" id="nested-child-header-1" aria-expanded="false" aria-controls="nested-child-content-1" data-collapse-trigger>
+                                <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                                <span class="collapse-title">标题质量检查</span>
+                              </button>
+                            </div>
+                            <div class="collapse-content" id="nested-child-content-1" role="region" aria-labelledby="nested-child-header-1" hidden>
+                              <div class="collapse-content-lines">
+                                <p class="collapse-content-line">关键词覆盖：核心词已覆盖 86%</p>
+                                <p class="collapse-content-line">标题长度：72 字符，处于建议范围</p>
+                                <p class="collapse-content-line">规则命中：未发现禁用词</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="collapse-panel" data-collapse-panel data-key="child-2">
+                            <div class="collapse-header-row">
+                              <button class="collapse-header" type="button" id="nested-child-header-2" aria-expanded="false" aria-controls="nested-child-content-2" data-collapse-trigger>
+                                <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                                <span class="collapse-title">图片素材建议</span>
+                              </button>
+                            </div>
+                            <div class="collapse-content" id="nested-child-content-2" role="region" aria-labelledby="nested-child-header-2" hidden>
+                              <div class="collapse-content-lines">
+                                <p class="collapse-content-line">主图：建议保留白底产品图</p>
+                                <p class="collapse-content-line">场景图：补充使用环境与尺寸参照</p>
+                                <p class="collapse-content-line">卖点图：突出材质、适配型号和包装清单</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="collapse-panel" data-collapse-panel data-key="sibling">
+                      <div class="collapse-header-row">
+                        <button class="collapse-header" type="button" id="nested-header-2" aria-expanded="false" aria-controls="nested-content-2" data-collapse-trigger>
+                          <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          <span class="collapse-title">投放诊断任务</span>
+                        </button>
+                      </div>
+                      <div class="collapse-content" id="nested-content-2" role="region" aria-labelledby="nested-header-2" hidden>
+                        <div class="collapse-content-lines">
+                          <p class="collapse-content-line">诊断对象：近 7 天投放计划</p>
+                          <p class="collapse-content-line">核心指标：点击率、转化率、花费占比</p>
+                          <p class="collapse-content-line">输出结果：预算调整与关键词建议</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>自定义标题内容</h2>
+                <div class="example-block full collapse-example-block">
+                  <div class="collapse-example-head">
+                    <h3>自定义标题</h3>
+                    <p>Collapse Item 的 header 可组合图标、辅助信息和右侧操作。本组案例点击整个 header bar 均可展开收起，独立设置按钮除外。</p>
+                  </div>
+                  <div class="custom-title-cases">
+                    <div class="collapse-set" data-collapse-set aria-label="无展开收起 ICON 的自定义标题示例">
+                      <div class="collapse-panel" data-collapse-panel data-key="icon-title">
+                        <div class="collapse-header-row" data-collapse-row-trigger>
+                          <button class="collapse-header trigger-inline" type="button" id="custom-header-1" aria-expanded="false" aria-controls="custom-content-1" data-collapse-trigger>
+                            <span class="header-icon" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M8 1.5 9.8 5l3.9.6-2.8 2.7.7 3.9L8 10.4l-3.6 1.9.7-3.9-2.8-2.7 3.9-.6L8 1.5Z" /></svg></span>
+                            <span class="collapse-title">无展开收起 ICON</span>
+                          </button>
+                        </div>
+                        <div class="collapse-content" id="custom-content-1" role="region" aria-labelledby="custom-header-1" hidden>
+                          <div class="collapse-content-lines">
+                            <p class="collapse-content-line">标题结构：图标 ICON + header 文字</p>
+                            <p class="collapse-content-line">展开图标：不展示</p>
+                            <p class="collapse-content-line">适合固定语义明确的轻量信息组</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="collapse-set" data-collapse-set aria-label="辅助文字和展开 ICON 居右示例">
+                      <div class="collapse-panel" data-collapse-panel data-key="right-meta">
+                        <div class="collapse-header-row" data-collapse-row-trigger>
+                          <button class="collapse-header header-right" type="button" id="custom-header-2" aria-expanded="false" aria-controls="custom-content-2" data-collapse-trigger>
+                            <span class="collapse-title">辅助文字居右</span>
+                            <span class="header-spacer" aria-hidden="true"></span>
+                            <span class="header-note">最近更新 10:32</span>
+                            <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                          </button>
+                        </div>
+                        <div class="collapse-content" id="custom-content-2" role="region" aria-labelledby="custom-header-2" hidden>
+                          <div class="collapse-content-lines">
+                            <p class="collapse-content-line">标题结构：左侧 header 文字</p>
+                            <p class="collapse-content-line">右侧区域：辅助文字 + 展开收起 ICON</p>
+                            <p class="collapse-content-line">适合展示更新时间、数量或状态摘要</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="collapse-set" data-collapse-set aria-label="右侧线性设置按钮示例">
+                      <div class="collapse-panel" data-collapse-panel data-key="setting">
+                        <div class="collapse-header-row" data-collapse-row-trigger>
+                          <button class="collapse-header trigger-inline" type="button" id="custom-header-3" aria-expanded="false" aria-controls="custom-content-3" data-collapse-trigger>
+                            <span class="collapse-arrow" aria-hidden="true"><svg viewBox="0 0 16 16"><path d="M5.6 3.2 10.4 8l-4.8 4.8V3.2Z" /></svg></span>
+                            <span class="collapse-title">右侧设置入口</span>
+                          </button>
+                          <button class="settings-button" type="button" aria-label="打开线性设置">
+                            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                              <path d="M7 1.5h2l.35 1.62c.34.12.67.26.98.43l1.39-.9 1.41 1.42-.9 1.38c.17.31.31.64.43.99L14.3 6.8v2l-1.64.36c-.11.35-.26.68-.43.99l.9 1.38-1.41 1.42-1.39-.9c-.31.17-.64.31-.98.43L9 14.1H7l-.35-1.62a5.2 5.2 0 0 1-.98-.43l-1.39.9-1.41-1.42.9-1.38a5.62 5.62 0 0 1-.43-.99L1.7 8.8v-2l1.64-.36c.11-.35.26-.68.43-.99l-.9-1.38 1.41-1.42 1.39.9c.31-.17.64-.31.98-.43L7 1.5Zm1 4A2.5 2.5 0 1 0 8 10.5 2.5 2.5 0 0 0 8 5.5Z" />
+                            </svg>
+                          </button>
+                        </div>
+                        <div class="collapse-content" id="custom-content-3" role="region" aria-labelledby="custom-header-3" hidden>
+                          <div class="collapse-content-lines">
+                            <p class="collapse-content-line">左侧区域：展开收起 ICON + header 文字</p>
+                            <p class="collapse-content-line">右侧区域：线性设置 ICON 按钮</p>
+                            <p class="collapse-content-line">设置按钮无边框，并独立于展开收起触发</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><code>activeKey</code></td><td>当前展开面板的 key，可受控。非 accordion 模式支持多个 key 同时展开。</td><td><code>string | string[]</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>defaultActiveKey</code></td><td>默认展开面板的 key，例如 <code>['1']</code>，用于初始化展开状态。</td><td><code>string | string[]</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>accordion</code></td><td>是否开启手风琴模式，开启后同一时间只展开一个面板。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>motion</code></td><td>展开 / 收起动效配置。当前所有 Collapse 示例均使用高度过渡。</td><td><code>boolean | { duration?: number }</code></td><td><code>true</code></td></tr>
+                      <tr><td><code>onChange</code></td><td>展开状态变化时触发，返回当前 activeKey。</td><td><code>(key: string | string[]) =&gt; void</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>triggerRegion</code></td><td>触发区域，可配置为标题整体、ICON + 文字、仅 ICON 或自定义标题整行 bar。</td><td><code>"header" | "icon-text" | "icon" | "bar"</code></td><td><code>"header"</code></td></tr>
+                      <tr><td><code>expandIcon</code></td><td>自定义展开图标；自定义标题中也可隐藏展开图标。</td><td><code>ReactNode | null</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>bordered</code></td><td>是否显示外边框与分隔线。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
+                      <tr><td><code>destroyOnHide</code></td><td>收起时是否销毁内容区域。当前静态示例使用 <code>hidden</code> 控制显示。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>contentLines</code></td><td>内容区行数据。每行按 44px 高度展示，适合 2-3 行摘要。</td><td><code>ReactNode[]</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>Collapse.Item.key</code></td><td>面板唯一标识，用于 activeKey 与 defaultActiveKey 匹配。</td><td><code>string</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>Collapse.Item.header</code></td><td>面板标题，支持文字、图标、辅助文字、右侧展开图标和操作入口。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>Collapse.Item.headerExtra</code></td><td>标题右侧辅助内容，如更新时间、数量、状态摘要等。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>Collapse.Item.headerAction</code></td><td>标题右侧独立操作按钮。按钮应阻止冒泡，避免触发展开收起。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>Collapse.Item.disabled</code></td><td>禁用当前面板。禁用后不可展开或收起，不影响其他面板。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>Collapse.Item.content</code></td><td>展开后的内容区域，可使用 44px 行摘要，也可继续嵌套 Collapse。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><code>--collapse-header-height</code></td><td><code>44px</code></td><td>面板标题区域最小高度。</td></tr>
+                      <tr><td><code>--collapse-border-color</code></td><td><code>#e8ebee</code></td><td>Collapse 外框颜色。</td></tr>
+                      <tr><td><code>--collapse-divider-color</code></td><td><code>#eef1f3</code></td><td>面板之间的分隔线颜色。</td></tr>
+                      <tr><td><code>--collapse-bg</code></td><td><code>#ffffff</code></td><td>面板标题背景色。</td></tr>
+                      <tr><td><code>--collapse-bg-hover</code></td><td><code>#ffffff</code></td><td>标题区域悬停背景色。</td></tr>
+                      <tr><td><code>--collapse-content-bg</code></td><td><code>var(--gray-50)</code></td><td>内容区域背景色。</td></tr>
+                      <tr><td><code>--collapse-header-color</code></td><td><code>#22262a</code></td><td>标题文字颜色。</td></tr>
+                      <tr><td><code>--collapse-content-color</code></td><td><code>#59616a</code></td><td>内容文字颜色。</td></tr>
+                      <tr><td><code>--collapse-disabled-color</code></td><td><code>#a5adb6</code></td><td>禁用标题和图标颜色。</td></tr>
+                      <tr><td><code>--collapse-radius</code></td><td><code>8px</code></td><td>Collapse 容器圆角。</td></tr>
+                      <tr><td><code>--collapse-padding-x</code></td><td><code>18px</code></td><td>标题与内容区域水平内边距。</td></tr>
+                      <tr><td><code>--collapse-content-row-height</code></td><td><code>44px</code></td><td>内容区单行摘要高度。</td></tr>
+                      <tr><td><code>--collapse-content-line-height</code></td><td><code>36px</code></td><td>单行内容文字行高，与上下 padding 共同组成 44px 行盒。</td></tr>
+                      <tr><td><code>--collapse-content-padding-top</code></td><td><code>4px</code></td><td>内容区域顶部内边距。</td></tr>
+                      <tr><td><code>--collapse-content-padding-y</code></td><td><code>4px</code></td><td>内容区域底部内边距。</td></tr>
+                      <tr><td><code>--collapse-nested-content-padding-y</code></td><td><code>8px</code></td><td>嵌套父级内容区域上下内边距，用于容纳说明文字和子级 Collapse。</td></tr>
+                      <tr><td><code>--collapse-icon-size</code></td><td><code>16px</code></td><td>展开 ICON 点击区域基准尺寸。</td></tr>
+                      <tr><td><code>--collapse-motion-duration</code></td><td><code>180ms</code></td><td>Collapse 展开 / 收起高度过渡时长。</td></tr>
+                      <tr><td><code>--collapse-motion-open-easing</code></td><td><code>cubic-bezier(0.2, 0, 0, 1)</code></td><td>Collapse 展开动效曲线。</td></tr>
+                      <tr><td><code>--collapse-motion-close-easing</code></td><td><code>cubic-bezier(0.4, 0, 1, 1)</code></td><td>Collapse 收起动效曲线，减少末段减速造成的停顿感。</td></tr>
+                      <tr><td><code>--collapse-setting-button-size</code></td><td><code>32px</code></td><td>自定义标题中右侧线性设置按钮尺寸。</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector('[data-component-count-label]');
+        if (!label) return;
+        const pendingKeys = new Set(['card']);
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute('href') || '').split('#').pop().replace(/.html$/, '');
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', '#22b573');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const clearCollapseAnimation = (content) => {
+        if (!content) return;
+        if (content._collapseFrame) {
+          cancelAnimationFrame(content._collapseFrame);
+          content._collapseFrame = null;
+        }
+        if (content._collapseFinish) {
+          content.removeEventListener('transitionend', content._collapseFinish);
+          content._collapseFinish = null;
+        }
+      };
+
+      const getCollapseParts = (panel) => {
+        const trigger = panel.querySelector('[data-collapse-trigger]');
+        const content = trigger?.getAttribute('aria-controls')
+          ? document.getElementById(trigger.getAttribute('aria-controls'))
+          : panel.querySelector('.collapse-content');
+        return { trigger, content };
+      };
+
+      const animateCollapsePanels = (changes, collapseSet) => {
+        const actionable = changes.filter(({ panel, isActive }) => panel.classList.contains('is-active') !== isActive);
+        if (!actionable.length) return;
+        const rootStyle = getComputedStyle(document.documentElement);
+        const duration = rootStyle.getPropertyValue('--collapse-motion-duration').trim() || '180ms';
+        const openEasing = rootStyle.getPropertyValue('--collapse-motion-open-easing').trim() || 'cubic-bezier(0.2, 0, 0, 1)';
+        const closeEasing = rootStyle.getPropertyValue('--collapse-motion-close-easing').trim() || 'cubic-bezier(0.4, 0, 1, 1)';
+        const prepared = actionable.map(({ panel, isActive }) => {
+          const { trigger, content } = getCollapseParts(panel);
+          if (!content) return null;
+          clearCollapseAnimation(content);
+          const startHeight = content.hidden ? 0 : content.getBoundingClientRect().height;
+          if (isActive) {
+            content.hidden = false;
+          }
+          const targetHeight = isActive ? content.scrollHeight : 0;
+          return { panel, trigger, content, isActive, startHeight, targetHeight };
+        }).filter(Boolean);
+        if (!prepared.length) return;
+        prepared.forEach(({ panel, trigger, content, isActive, startHeight }) => {
+          panel.classList.toggle('is-active', isActive);
+          trigger?.setAttribute('aria-expanded', String(isActive));
+          content.style.transition = 'none';
+          content.style.overflow = 'hidden';
+          content.style.minHeight = '0';
+          content.style.paddingTop = isActive ? '0px' : getComputedStyle(content).paddingTop;
+          content.style.paddingBottom = isActive ? '0px' : getComputedStyle(content).paddingBottom;
+          content.style.height = `${startHeight}px`;
+        });
+        collapseSet.offsetHeight;
+        const frame = requestAnimationFrame(() => {
+          prepared.forEach(({ content, isActive, targetHeight }) => {
+            const easing = isActive ? openEasing : closeEasing;
+            content.style.transition = `height ${duration} ${easing}, padding-top ${duration} ${easing}, padding-bottom ${duration} ${easing}`;
+            content.style.paddingTop = isActive ? '' : '0px';
+            content.style.paddingBottom = isActive ? '' : '0px';
+            content.style.height = `${targetHeight}px`;
+          });
+        });
+        prepared.forEach(({ content, isActive, startHeight, targetHeight }) => {
+          const finish = (event) => {
+            if (event && event.propertyName !== 'height') return;
+            content.style.transition = '';
+            content.style.height = '';
+            content.style.overflow = '';
+            content.style.minHeight = '';
+            content.style.paddingTop = '';
+            content.style.paddingBottom = '';
+            content._collapseFrame = null;
+            content._collapseFinish = null;
+            if (!isActive) {
+              content.hidden = true;
+            }
+            content.removeEventListener('transitionend', finish);
+          };
+          content._collapseFrame = frame;
+          content._collapseFinish = finish;
+          content.addEventListener('transitionend', finish);
+          if (startHeight === targetHeight) {
+            finish();
+          }
+        });
+      };
+
+      const setCollapsePanel = (panel, isActive, options = {}) => {
+        const { trigger, content } = getCollapseParts(panel);
+        if (options.animate) {
+          animateCollapsePanels([{ panel, isActive }], panel.parentElement);
+          return;
+        }
+        clearCollapseAnimation(content);
+        panel.classList.toggle('is-active', isActive);
+        trigger?.setAttribute('aria-expanded', String(isActive));
+        if (content) {
+          content.hidden = !isActive;
+        }
+      };
+
+      document.querySelectorAll('[data-collapse-set]').forEach((collapseSet) => {
+        const panels = Array.from(collapseSet.children).filter((child) => child.matches('[data-collapse-panel]'));
+        panels.forEach((panel) => setCollapsePanel(panel, panel.classList.contains('is-active')));
+        collapseSet.querySelectorAll('[data-collapse-trigger]').forEach((trigger) => {
+          trigger.addEventListener('click', () => {
+            const panel = trigger.closest('[data-collapse-panel]');
+            const ownerSet = panel?.parentElement;
+            if (!panel || ownerSet !== collapseSet || panel.classList.contains('is-disabled') || trigger.disabled) return;
+            const shouldOpen = !panel.classList.contains('is-active');
+            if (collapseSet.dataset.accordion === 'true') {
+              const changes = panels
+                .filter((item) => item === panel || item.classList.contains('is-active'))
+                .map((item) => ({ panel: item, isActive: item === panel ? shouldOpen : false }));
+              animateCollapsePanels(changes, collapseSet);
+              return;
+            }
+            animateCollapsePanels([{ panel, isActive: shouldOpen }], collapseSet);
+          });
+        });
+        collapseSet.querySelectorAll('[data-collapse-row-trigger]').forEach((row) => {
+          row.addEventListener('click', (event) => {
+            if (event.target.closest('[data-collapse-trigger], .settings-button')) return;
+            row.querySelector('[data-collapse-trigger]')?.click();
+          });
+        });
+      });
+
+      const centerNavItem = (item, behavior = 'auto') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+        if (isHorizontal) {
+          sidebar.scrollTo({ left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2, behavior });
+          return;
+        }
+        sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
+      };
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+    </script>
+  </body>
+</html>

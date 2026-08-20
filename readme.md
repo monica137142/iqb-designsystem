@@ -1,34 +1,46 @@
-# IQB Design System
+# Design System
 
-IQB Design System 是面向 IQB Agent 平台的静态设计规范站点，当前以 HTML 页面承载组件说明、交互示例、状态展示、API 表格和设计 Token。
+Design System 是面向企业应用平台的静态设计规范站点，当前以 HTML 页面承载组件说明、交互示例、状态展示、API 表格和设计 Token。
 
 ## 内容
 
 - `index.html`: 组件总览与全局样式入口。
-- `button.html`: Button 按钮独立规范页。
-- `typography.html`: Typography 排版独立规范页。
-- `divider.html`: Divider 分割线独立规范页。
-- `space.html`: Space 间距独立规范页。
-- `grid.html`: Grid 栅格独立规范页。
-- `layout.html`: Layout 布局独立规范页。
-- `splitter.html`: Splitter 分隔面板独立规范页。
-- `input.html`: Input 输入框独立规范页。
-- `input-number.html`: InputNumber 数字输入框独立规范页。
-- `radio.html`: Radio 单选框独立规范页。
-- `checkbox.html`: Checkbox 复选框独立规范页。
-- `switch.html`: Switch 开关独立规范页。
-- `select.html`: Select 选择器独立规范页。
-- `date-picker.html`: DatePicker 日期选择器独立规范页。
-- `time-picker.html`: TimePicker 时间选择器独立规范页。
-- `upload.html`: Upload 上传组件独立规范页。
-- `form.html`: Form 表单组件独立规范页。
-- `autocomplete.html`: AutoComplete 自动补全独立规范页。
-- `cascader.html`: Cascader 联级选择独立规范页。
-- `mentions.html`: Mentions 提及独立规范页。
-- `verification-code.html`: VerficationCode 验证码输入框独立规范页。
-- `rate.html`: Rate 评分独立规范页。
-- `slider.html`: Slider 滑块独立规范页。
-- `table.html`: Table 表格组件独立规范页。
+- `general/button.html`: Button 按钮独立规范页。
+- `general/typography.html`: Typography 排版独立规范页。
+- `layout/divider.html`: Divider 分割线独立规范页。
+- `layout/space.html`: Space 间距独立规范页。
+- `layout/grid.html`: Grid 栅格独立规范页。
+- `layout/layout.html`: Layout 布局独立规范页。
+- `layout/splitter.html`: Splitter 分隔面板独立规范页。
+- `dataentry/input.html`: Input 输入框独立规范页。
+- `dataentry/input-number.html`: InputNumber 数字输入框独立规范页。
+- `dataentry/radio.html`: Radio 单选框独立规范页。
+- `dataentry/checkbox.html`: Checkbox 复选框独立规范页。
+- `dataentry/switch.html`: Switch 开关独立规范页。
+- `dataentry/select.html`: Select 选择器独立规范页。
+- `dataentry/date-picker.html`: DatePicker 日期选择器独立规范页。
+- `dataentry/time-picker.html`: TimePicker 时间选择器独立规范页。
+- `dataentry/upload.html`: Upload 上传组件独立规范页。
+- `dataentry/form.html`: Form 表单组件独立规范页。
+- `dataentry/autocomplete.html`: AutoComplete 自动补全独立规范页。
+- `dataentry/cascader.html`: Cascader 联级选择独立规范页。
+- `dataentry/mentions.html`: Mentions 提及独立规范页。
+- `dataentry/verification-code.html`: VerficationCode 验证码输入框独立规范页。
+- `dataentry/rate.html`: Rate 评分独立规范页。
+- `dataentry/slider.html`: Slider 滑块独立规范页。
+- `datadisplay/table.html`: Table 表格组件独立规范页。
+- `datadisplay/list.html`: List 列表独立规范页。
+- `datadisplay/statistic.html`: Statistic 数值显示独立规范页。
+- `datadisplay/chart.html`: Chart 图表独立规范页。
+- `datadisplay/tag.html`: Tag 标签独立规范页。
+- `datadisplay/tooltip.html`: Tooltip 提示气泡独立规范页。
+- `datadisplay/avatar.html`: Avatar 头像独立规范页。
+- `datadisplay/timeline.html`: Timeline 时间轴独立规范页。
+- `datadisplay/carousel.html`: Carousel 轮播独立规范页。
+- `datadisplay/collapse.html`: Collapse 折叠面板独立规范页。
+- `datadisplay/image.html`: Image 图片独立规范页。
+- `datadisplay/badge.html`: Badge 徽标独立规范页。
+- `datadisplay/empty.html`: Empty 空状态独立规范页。
 - `logo-cropped.png`: 站点品牌标识资源。
 - `design.md`: 设计系统说明，包括设计原则、视觉 Token、组件结构和维护约定。
 
@@ -60,6 +72,18 @@ IQB Design System 是面向 IQB Agent 平台的静态设计规范站点，当前
 - Rate
 - Slider
 - Table
+- List
+- Statistic
+- Chart
+- Tag
+- Tooltip
+- Avatar
+- Timeline
+- Carousel
+- Collapse
+- Image
+- Badge
+- Empty
 
 组件使用约定：
 
@@ -87,7 +111,7 @@ python3 -m http.server 8000
 
 GitHub Pages 启用后，站点访问地址为：
 
-https://monica137142.github.io/iqb-designsystem/
+https://example.github.io/design-system/
 
 如果该地址返回 404，请在 GitHub 仓库中进入 `Settings` -> `Pages`，将 Source 设置为 `Deploy from a branch`，Branch 选择 `main`，目录选择 `/root`，保存后等待部署完成。
 
@@ -111,9 +135,9 @@ https://monica137142.github.io/iqb-designsystem/
 - 优先从 Components 清单中选择已有组件；确实不存在时，先提出新增建议。
 - 调整组件状态时，同步更新状态示例、API 和设计 Token。
 - 优先复用现有颜色、间距、圆角和阴影变量，不为同类状态重复定义新变量。
-- 示例文案应贴近 IQB Agent 平台的真实业务语境。
+- 示例文案应贴近 企业应用平台的真实业务语境。
 - 避免提交本机系统文件，`.DS_Store` 已加入 `.gitignore`。
 
 ## 仓库
 
-GitHub: https://github.com/monica137142/iqb-designsystem
+GitHub: https://github.com/example/design-system

@@ -1,0 +1,1609 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Statistic 数值显示 - Design System</title>
+    <style>
+      :root{--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--gray-900);background:var(--white)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--gray-200);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--gray-600);font-size:13px}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--white);border-right:1px solid var(--gray-200)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--gray-500);font-size:12px;line-height:1.4}.nav-category-count{color:var(--gray-400);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--gray-700);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--brand-500);background:var(--gray-100)}.nav-label{overflow:hidden;font-size:14px;line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--gray-500);border-top:1px solid var(--gray-200);font-size:12px;line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--brand-600);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--gray-900);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--gray-600);font-size:14px;line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:12px}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--gray-200)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:14px;font-weight:600}.doc-section p{margin:0;color:var(--gray-600);font-size:13px;line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--gray-500);font-size:13px}.stat-value{color:var(--gray-900);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--gray-500);font-size:12px}.metric-row strong{font-size:24px}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--white);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--gray-500);font-size:13px}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--brand-600);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:#fff;background:var(--gray-900);border-radius:6px;font-size:12px;line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:#fff;background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--gray-700);background:var(--gray-100)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--gray-500);font-size:13px}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--brand-500);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:#2e90fa;box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--gray-500);font-size:12px}.timeline strong{font-size:14px}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--gray-900);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--brand-600);font-size:12px;font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--gray-700);background:#fff;border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--brand-500);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--gray-200)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--gray-400);border:1px dashed var(--gray-300);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--gray-500);font-size:12px}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:#fff;background:#f04438;border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:#f79009}.status-dot.danger{background:#f04438}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--gray-200);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--gray-300);border-radius:6px}.empty-state strong{font-size:16px}.empty-state button{height:34px;padding:0 14px;color:#fff;background:var(--brand-500);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--gray-200)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      :root {
+        --brand-400: #35f47c;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      /* Layout and page rhythm aligned with List page */
+      :root {
+        --statistic-title-color: #8a9199;
+        --statistic-value-color: #14171a;
+        --statistic-value-font-size: 30px;
+        --statistic-value-font-weight: 500;
+        --statistic-prefix-color: #59616a;
+        --statistic-suffix-color: #59616a;
+        --statistic-border-color: #e8ebee;
+        --statistic-panel-bg: #fafbfc;
+        --statistic-card-radius: 8px;
+        --statistic-card-min-height: 118px;
+        --statistic-card-padding: 18px;
+        --statistic-card-align-content: center;
+        --statistic-gap: 8px;
+        --statistic-icon-prefix-color: #f79009;
+        --statistic-trend-up-color: #067647;
+        --statistic-trend-down-color: #b42318;
+        --statistic-trend-font-size: 13px;
+        --statistic-icon-size: 18px;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        height: auto;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      .sidebar {
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .sidebar::-webkit-scrollbar,
+      .spec-table-wrap::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track,
+      .spec-table-wrap::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb,
+      .spec-table-wrap::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
+      }
+
+      .canvas {
+        background: var(--white);
+      }
+
+      .canvas-inner {
+        display: grid;
+        width: auto;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--brand-500);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.4;
+        text-transform: none;
+      }
+
+      .doc-title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        line-height: 1.75;
+      }
+
+      .doc-meta-list {
+        margin: 18px 0 0;
+      }
+
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color: var(--gray-600);
+        background: var(--gray-100);
+        border: 0;
+        border-radius: 999px;
+        line-height: 1.4;
+      }
+
+      .doc-section {
+        margin-top: 0;
+        padding-top: 28px;
+        border-top: 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        color: var(--gray-900);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .doc-section h3 {
+        margin: 0 0 8px;
+        color: var(--gray-800);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section p {
+        line-height: 1.75;
+      }
+
+      .example-block {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .example-block.full {
+        grid-column: 1 / -1;
+      }
+
+      .statistic-example-block {
+        display: grid;
+        gap: 18px;
+        padding: 36px;
+      }
+
+      .statistic-example-head {
+        display: grid;
+        gap: 4px;
+      }
+
+      .statistic-example-head h3 {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .statistic-example-head p {
+        max-width: 760px;
+      }
+
+      .statistic-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .statistic-grid.two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .statistic-grid.four {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .statistic-item,
+      .statistic-animation-item {
+        display: grid;
+        gap: 12px;
+        justify-items: center;
+        min-width: 0;
+      }
+
+      .statistic-item .statistic-card,
+      .statistic-animation-item .statistic-card {
+        width: 100%;
+      }
+
+      .statistic-card {
+        display: grid;
+        align-content: var(--statistic-card-align-content);
+        gap: var(--statistic-gap);
+        min-width: 0;
+        min-height: var(--statistic-card-min-height);
+        padding: var(--statistic-card-padding);
+        background: var(--white);
+        border: 1px solid var(--statistic-border-color);
+        border-radius: var(--statistic-card-radius);
+      }
+
+      .statistic-card.subtle {
+        background: var(--statistic-panel-bg);
+      }
+
+      .statistic-title {
+        display: block;
+        color: var(--statistic-title-color);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .statistic-value {
+        display: flex;
+        align-items: baseline;
+        gap: 4px;
+        min-width: 0;
+        color: var(--statistic-value-color);
+        font-size: var(--statistic-value-font-size);
+        font-weight: var(--statistic-value-font-weight);
+        letter-spacing: 0;
+        line-height: 1.15;
+        white-space: nowrap;
+      }
+
+      .statistic-prefix,
+      .statistic-suffix {
+        color: var(--statistic-prefix-color);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1;
+      }
+
+      .statistic-suffix {
+        color: var(--statistic-suffix-color);
+        font-size: 15px;
+      }
+
+      .statistic-prefix.icon,
+      .statistic-suffix.trend {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .statistic-prefix.icon {
+        color: var(--statistic-icon-prefix-color);
+      }
+
+      .statistic-suffix.trend {
+        font-size: var(--statistic-trend-font-size);
+        font-weight: 600;
+      }
+
+      .statistic-suffix.trend.up {
+        color: var(--statistic-trend-up-color);
+      }
+
+      .statistic-suffix.trend.down {
+        color: var(--statistic-trend-down-color);
+      }
+
+      .statistic-icon {
+        width: var(--statistic-icon-size);
+        height: var(--statistic-icon-size);
+        fill: currentColor;
+      }
+
+      .statistic-action {
+        min-height: 32px;
+        padding: 0 14px;
+        color: var(--brand-500);
+        background: var(--white);
+        border: 1px solid var(--brand-500);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+      }
+
+      .statistic-action:hover {
+        color: var(--brand-600);
+        border-color: var(--brand-600);
+      }
+
+      .statistic-action:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .countdown-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .countdown-card {
+        min-height: 126px;
+      }
+
+      .countdown-card.done {
+        border-color: #fecdca;
+        background: #fffafa;
+      }
+
+      .countdown-value {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .spec-table-wrap {
+        margin-top: 16px;
+        overflow: auto;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .spec-table {
+        width: 100%;
+        min-width: 680px;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      .spec-table th,
+      .spec-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--gray-200);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .spec-table th {
+        color: var(--gray-700);
+        background: var(--gray-50);
+        font-weight: 600;
+      }
+
+      .spec-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .spec-table code {
+        padding: 2px 5px;
+        color: var(--gray-800);
+        background: var(--gray-100);
+        border-radius: 4px;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size: 12px;
+      }
+
+      @media (max-width: 860px) {
+        .topbar {
+          position: sticky;
+          top: 0;
+        }
+
+        .sidebar {
+          position: sticky;
+          top: var(--topbar-height);
+          z-index: 2;
+          max-height: none;
+          padding: 12px 14px;
+        }
+
+        .nav-button {
+          min-height: 36px;
+        }
+
+        .canvas-inner {
+          min-height: 560px;
+          padding: 18px;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 22px 18px;
+        }
+
+        .doc-title {
+          font-size: 24px;
+        }
+
+        .statistic-example-block {
+          padding: 18px;
+        }
+
+        .statistic-grid,
+        .statistic-grid.two,
+        .statistic-grid.four,
+        .countdown-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand-title {
+          display: none;
+        }
+
+        .product-select {
+          width: min(124px, calc(100vw - 92px));
+        }
+
+        .statistic-value {
+          font-size: 26px;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 IQB DESIGN 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQB DESIGN</span>
+        </a>
+        <div class="topbar-actions" aria-label="组件完成状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 45/46</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html" aria-current="page">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/model.html">
+                      <span class="nav-label">Model 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+        <section class="canvas" aria-label="数值显示组件说明详情区">
+          <div class="canvas-inner">
+            <article class="doc-page">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Display / Statistic</p>
+                <h1 class="doc-title">Statistic 数值显示</h1>
+                <p class="doc-summary">
+                  Statistic 用于展示一组清晰、可比较的数值信息。参考 Arco Statistic 的内容结构，组件由 title、value、prefix、suffix 和 Countdown 等能力组成，适合仪表盘指标、任务结果、余额用量和实时倒计时。
+                </p>
+                <ul class="doc-meta-list" aria-label="数值显示基础规格">
+                  <li>Title / Value</li>
+                  <li>Prefix / Suffix</li>
+                  <li>数值动画</li>
+                  <li>Countdown</li>
+                  <li>支持前后缀</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="example-block full statistic-example-block">
+                  <div class="statistic-example-head">
+                    <h3>基础 Statistic</h3>
+                    <p>基础用法由 Title 和 Value 组成，Title 表示统计指标名称，Value 表示统计数值。</p>
+                  </div>
+                  <div class="statistic-grid two" aria-label="基础 Statistic 示例">
+                    <div class="statistic-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">Title: 统计指标名称</span>
+                        <strong class="statistic-value">1,260</strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">Value: 统计数值</span>
+                        <strong class="statistic-value">12,486</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>前缀与后缀</h2>
+                <div class="example-block full statistic-example-block">
+                  <div class="statistic-example-head">
+                    <h3>Prefix / Suffix</h3>
+                    <p>支持在数值前后增加内容，Prefix 可展示货币符号、图标，Suffix 可展示百分比、单位或趋势状态。</p>
+                  </div>
+                  <div class="statistic-grid" aria-label="前缀与后缀示例">
+                    <div class="statistic-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">Prefix: 货币符号</span>
+                        <strong class="statistic-value">
+                          <span class="statistic-prefix">$</span>
+                          86,240
+                        </strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">Suffix: 百分比</span>
+                        <strong class="statistic-value">
+                          7.32
+                          <span class="statistic-suffix">%</span>
+                        </strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">Suffix: 单位</span>
+                        <strong class="statistic-value">
+                          128
+                          <span class="statistic-suffix">GB</span>
+                        </strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">Suffix: 上升趋势</span>
+                        <strong class="statistic-value">
+                          18.6
+                          <span class="statistic-suffix trend up">↑ 12.4%</span>
+                        </strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">Suffix: 下降趋势</span>
+                        <strong class="statistic-value">
+                          2.8
+                          <span class="statistic-suffix trend down">↓ 0.6%</span>
+                        </strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">Prefix: 收藏数图标</span>
+                        <strong class="statistic-value">
+                          <span class="statistic-prefix icon" aria-hidden="true">
+                            <svg class="statistic-icon" viewBox="0 0 24 24" focusable="false">
+                              <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3L5.8 21 7 14.2 2 9.3l6.9-1L12 2Z" />
+                            </svg>
+                          </span>
+                          9,840
+                        </strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>数值动画</h2>
+                <div class="example-block full statistic-example-block">
+                  <div class="statistic-example-head">
+                    <h3>动态变化到目标值</h3>
+                    <p>数值可从初始值平滑变化到目标值，用于首次展示或数据更新。点击每个指标下方按钮后分别重新播放动画。</p>
+                  </div>
+                  <div class="statistic-grid two" aria-label="数值动画示例">
+                    <div class="statistic-animation-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">从 0 动画到 348</span>
+                        <strong class="statistic-value">
+                          <span id="statistic-animate-tasks" data-animate-value data-start="0" data-end="348" data-duration="1200">0</span>
+                        </strong>
+                      </div>
+                      <button class="statistic-action" type="button" data-statistic-run="#statistic-animate-tasks">开始</button>
+                    </div>
+                    <div class="statistic-animation-item">
+                      <div class="statistic-card">
+                        <span class="statistic-title">从 0.0% 动画到 27.6%</span>
+                        <strong class="statistic-value">
+                          <span id="statistic-animate-growth" data-animate-value data-start="0" data-end="27.6" data-duration="1200" data-decimals="1">0.0</span>
+                          <span class="statistic-suffix">%</span>
+                        </strong>
+                      </div>
+                      <button class="statistic-action" type="button" data-statistic-run="#statistic-animate-growth">开始</button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>倒计时</h2>
+                <div class="example-block full statistic-example-block">
+                  <div class="statistic-example-head">
+                    <h3>Countdown</h3>
+                    <p>Countdown 用于展示剩余时间，常见格式包括时 / 分 / 秒、时 / 分 / 毫秒、天 / 时 / 分 / 秒，并支持倒计时结束事件。</p>
+                  </div>
+                  <div class="countdown-grid" aria-label="倒计时示例">
+                    <div class="statistic-item">
+                      <div class="statistic-card countdown-card">
+                        <span class="statistic-title">从 3 小时 30 分开始倒计时</span>
+                        <strong class="statistic-value countdown-value" data-countdown data-countdown-offset="12600000" data-format="hms">03:30:00</strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item">
+                      <div class="statistic-card countdown-card">
+                        <span class="statistic-title">HH:mm:ss.SSS</span>
+                        <strong class="statistic-value countdown-value" data-countdown data-countdown-offset="185000" data-format="hms-ms">00:03:05.000</strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item">
+                      <div class="statistic-card countdown-card">
+                        <span class="statistic-title">1 天 23 时 47 分 38 秒</span>
+                        <strong class="statistic-value countdown-value" data-countdown data-countdown-offset="172058000" data-format="dhms">1 天 23 时 47 分 38 秒</strong>
+                      </div>
+                    </div>
+                    <div class="statistic-item" data-countdown-event-card>
+                      <div class="statistic-card countdown-card">
+                        <span class="statistic-title" data-countdown-status>倒计时进行中</span>
+                        <strong class="statistic-value countdown-value" data-countdown data-countdown-offset="6000" data-format="hms" data-finish-message="已结束">00:00:06</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>title</code></td>
+                        <td>统计标题或说明文案，当前案例中承载原 title 与 help 信息。</td>
+                        <td><code>ReactNode</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>value</code></td>
+                        <td>统计数值。</td>
+                        <td><code>number | string</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>prefix</code></td>
+                        <td>数值前缀，例如货币符号或收藏图标。</td>
+                        <td><code>ReactNode</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>suffix</code></td>
+                        <td>数值后缀，例如百分比、单位或上升 / 下降趋势。</td>
+                        <td><code>ReactNode</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>trend</code></td>
+                        <td>趋势状态，用于区分上升、下降后缀的语义色。</td>
+                        <td><code>"up" | "down"</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>iconPrefix</code></td>
+                        <td>图标前缀，用于收藏数等需要符号强化的数值。</td>
+                        <td><code>ReactNode</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>precision</code></td>
+                        <td>数值精度，控制小数位展示。</td>
+                        <td><code>number</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>groupSeparator</code></td>
+                        <td>千分位分隔符。</td>
+                        <td><code>string</code></td>
+                        <td><code>,</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>animation</code></td>
+                        <td>是否开启数值动画，可由外部按钮触发播放。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>start</code></td>
+                        <td>动画初始值。</td>
+                        <td><code>number</code></td>
+                        <td><code>0</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>countdown</code></td>
+                        <td>启用倒计时类型展示，倒计时标题可承载格式或状态说明。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>format</code></td>
+                        <td>倒计时格式，如 <code>HH:mm:ss</code>、<code>HH:mm:ss.SSS</code>、<code>D 天 H 时 m 分 s 秒</code>。</td>
+                        <td><code>string</code></td>
+                        <td><code>HH:mm:ss</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onFinish</code></td>
+                        <td>倒计时结束时触发，可更新标题状态。</td>
+                        <td><code>() =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>默认值</th>
+                        <th>说明</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>--statistic-title-color</code></td>
+                        <td><code>#8a9199</code></td>
+                        <td>统计指标名称颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-value-color</code></td>
+                        <td><code>#14171a</code></td>
+                        <td>统计数值颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-value-font-size</code></td>
+                        <td><code>30px</code></td>
+                        <td>默认统计数值字号。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-value-font-weight</code></td>
+                        <td><code>500</code></td>
+                        <td>默认统计数值字重。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-prefix-color</code></td>
+                        <td><code>#59616a</code></td>
+                        <td>数值前缀颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-suffix-color</code></td>
+                        <td><code>#59616a</code></td>
+                        <td>数值后缀颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-border-color</code></td>
+                        <td><code>#e8ebee</code></td>
+                        <td>Statistic 示例卡片边框颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-panel-bg</code></td>
+                        <td><code>#fafbfc</code></td>
+                        <td>弱强调统计卡片背景色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-card-radius</code></td>
+                        <td><code>8px</code></td>
+                        <td>Statistic 容器和卡片圆角。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-card-min-height</code></td>
+                        <td><code>118px</code></td>
+                        <td>Statistic 卡片最小高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-card-padding</code></td>
+                        <td><code>18px</code></td>
+                        <td>Statistic 卡片内边距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-card-align-content</code></td>
+                        <td><code>center</code></td>
+                        <td>卡片内标题与数值整体的垂直对齐方式。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-gap</code></td>
+                        <td><code>8px</code></td>
+                        <td>Title 与 Value 之间的垂直间距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-icon-prefix-color</code></td>
+                        <td><code>#f79009</code></td>
+                        <td>图标前缀颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-trend-up-color</code></td>
+                        <td><code>#067647</code></td>
+                        <td>上升趋势后缀颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-trend-down-color</code></td>
+                        <td><code>#b42318</code></td>
+                        <td>下降趋势后缀颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-trend-font-size</code></td>
+                        <td><code>13px</code></td>
+                        <td>趋势后缀字号。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--statistic-icon-size</code></td>
+                        <td><code>18px</code></td>
+                        <td>图标前缀尺寸。</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector('[data-component-count-label]');
+        if (!label) return;
+        const pendingKeys = new Set(['card']);
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute('href') || '').split('#').pop().replace(/.html$/, '');
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', '#22b573');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const formatNumber = (value, decimals = 0) => {
+        const fixed = Number(value).toFixed(decimals);
+        const [integer, decimal] = fixed.split('.');
+        const grouped = integer.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return decimal ? `${grouped}.${decimal}` : grouped;
+      };
+
+      const animateStatisticValues = (values) => {
+        if (!values.length) return;
+        const startedAt = performance.now();
+        values.forEach((valueNode) => {
+          const start = Number(valueNode.dataset.start || 0);
+          const decimals = Number(valueNode.dataset.decimals || 0);
+          valueNode.textContent = formatNumber(start, decimals);
+        });
+        const tick = (now) => {
+          let shouldContinue = false;
+          values.forEach((valueNode) => {
+            const start = Number(valueNode.dataset.start || 0);
+            const end = Number(valueNode.dataset.end || 0);
+            const duration = Number(valueNode.dataset.duration || 1000);
+            const decimals = Number(valueNode.dataset.decimals || 0);
+            const progress = Math.min((now - startedAt) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            valueNode.textContent = formatNumber(start + (end - start) * eased, decimals);
+            shouldContinue = shouldContinue || progress < 1;
+          });
+          if (shouldContinue) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      };
+
+      document.querySelectorAll('[data-statistic-run]').forEach((button) => {
+        button.addEventListener('click', () => {
+          const target = button.dataset.statisticRun;
+          const values = target
+            ? Array.from(document.querySelectorAll(target))
+            : Array.from(document.querySelectorAll('[data-animate-value]'));
+          animateStatisticValues(values);
+        });
+      });
+
+      const pad = (value, size = 2) => String(Math.max(0, Math.floor(value))).padStart(size, '0');
+      const formatCountdown = (remaining, format) => {
+        const totalSeconds = Math.max(0, Math.floor(remaining / 1000));
+        const milliseconds = Math.max(0, Math.floor(remaining % 1000));
+        const days = Math.floor(totalSeconds / 86400);
+        const hoursTotal = Math.floor(totalSeconds / 3600);
+        const hoursOfDay = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        if (format === 'dhms') {
+          return `${days} 天 ${pad(hoursOfDay)} 时 ${pad(minutes)} 分 ${pad(seconds)} 秒`;
+        }
+        if (format === 'hms-ms') {
+          return `${pad(hoursTotal)}:${pad(minutes)}:${pad(seconds)}.${pad(milliseconds, 3)}`;
+        }
+        return `${pad(hoursTotal)}:${pad(minutes)}:${pad(seconds)}`;
+      };
+
+      const initializeCountdowns = () => {
+        const countdowns = Array.from(document.querySelectorAll('[data-countdown]'));
+        if (!countdowns.length) return;
+        const startedAt = Date.now();
+        const tick = () => {
+          countdowns.forEach((countdown) => {
+            const offset = Number(countdown.dataset.countdownOffset || 0);
+            const remaining = Math.max(0, offset - (Date.now() - startedAt));
+            const isDone = remaining <= 0;
+            countdown.textContent = countdown.dataset.finishMessage && isDone
+              ? countdown.dataset.finishMessage
+              : formatCountdown(remaining, countdown.dataset.format);
+            if (!isDone) return;
+            const card = countdown.closest('.countdown-card');
+            card?.classList.add('done');
+            const status = card?.querySelector('[data-countdown-status]');
+            if (status) {
+              status.textContent = '倒计时已结束';
+            }
+          });
+        };
+        tick();
+        window.setInterval(tick, 80);
+      };
+
+      initializeCountdowns();
+
+      const centerNavItem = (item, behavior = 'auto') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+        if (isHorizontal) {
+          sidebar.scrollTo({ left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2, behavior });
+          return;
+        }
+        sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
+      };
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+    </script>
+  </body>
+</html>

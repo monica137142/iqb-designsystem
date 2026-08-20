@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Design System</title>
+    <title>DatePicker 日期选择器 - Design System</title>
     <style>
       :root {
         --brand-500: #00d157;
@@ -21,12 +21,6 @@
         --brand-text-hover: #008f3f;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
-        --link-color: #1570ef;
-        --link-hover-color: #175cd3;
-        --link-disabled-color: #a5adb6;
-        --typography-color-link: var(--link-color);
-        --typography-color-link-hover: var(--link-hover-color);
-        --typography-color-link-disabled: var(--link-disabled-color);
         --gray-950: #0b0d0f;
         --gray-900: #14171a;
         --gray-800: #22262a;
@@ -43,25 +37,6 @@
         --sidebar-width: 300px;
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
-        --input-border-color: #dde1e5;
-        --input-hover-border-color: var(--brand-500);
-        --input-focus-color: var(--brand-500);
-        --input-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
-        --input-error-color: #f04438;
-        --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
-        --input-text-color: #1a1d1f;
-        --input-placeholder-color: #a5abb1;
-        --input-disabled-border-color: #dde1e5;
-        --input-disabled-bg: #f0f2f4;
-        --input-disabled-color: #969ba1;
-        --input-number-hover-border-color: var(--brand-500);
-        --input-number-focus-color: var(--brand-500);
-        --input-number-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
-        --input-number-error-color: #f04438;
-        --input-number-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
-        --input-number-disabled-border-color: #dde1e5;
-        --input-number-disabled-bg: #f0f2f4;
-        --input-number-disabled-color: #969ba1;
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -418,7 +393,6 @@
         border-radius: var(--radius-sm);
         cursor: pointer;
         text-align: left;
-        text-decoration: none;
       }
 
       .nav-button:hover {
@@ -490,7 +464,7 @@
       }
 
       .doc-hero {
-        border-bottom: 0;
+        border-bottom: 1px solid var(--gray-200);
       }
 
       .doc-kicker {
@@ -599,7 +573,6 @@
         color: inherit;
         cursor: pointer;
         text-align: left;
-        text-decoration: none;
         transition:
           border-color 0.16s ease,
           background-color 0.16s ease,
@@ -652,6 +625,7 @@
       .component-status.done {
         color: var(--brand-500);
         background: rgba(var(--brand-rgb), 0.14);
+        border-color: rgba(var(--brand-rgb), 0.22);
       }
 
       .component-status.pending {
@@ -660,52 +634,11 @@
       }
 
       .doc-section {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-section:last-child {
         border-bottom: 0;
-      }
-
-      .doc-section.no-divider {
-        border-bottom: 0;
-      }
-
-      .style-module-start {
-        position: relative;
-        margin-top: 24px;
-        border-top: 10px solid var(--gray-100);
-      }
-
-      .style-module-first {
-        margin-top: 0;
-      }
-
-      .style-module-start h2 {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        font-size: 20px;
-      }
-
-      .style-module-start h2::before {
-        width: 4px;
-        height: 20px;
-        content: "";
-        background: var(--brand-500);
-        border-radius: 999px;
-      }
-
-      .color-role-section {
-        padding-bottom: 14px;
-      }
-
-      .color-palette-section {
-        padding-top: 14px;
-      }
-
-      .color-palette-section [data-test-success-palette] {
-        display: none;
-      }
-
-      .color-palette-section[data-active-color-palette="test主题色"] [data-test-success-palette] {
-        display: block;
       }
 
       .doc-section h2 {
@@ -774,675 +707,6 @@
 
       .example-block.full {
         grid-column: 1 / -1;
-      }
-
-      .color-system-group {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-      }
-
-      .color-palette {
-        display: grid;
-        gap: 12px;
-      }
-
-      .color-system-group .color-palette {
-        grid-column: auto;
-      }
-
-      .mask-case-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 14px;
-      }
-
-      .mask-case {
-        min-width: 0;
-        padding: 16px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .mask-stage {
-        position: relative;
-        min-height: 150px;
-        overflow: hidden;
-        margin-bottom: 14px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .mask-stage::before {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        content: "";
-        background: var(--mask-bg);
-      }
-
-      .mask-stage-content {
-        display: grid;
-        gap: 8px;
-        padding: 16px;
-      }
-
-      .mask-line {
-        height: 10px;
-        background: var(--gray-100);
-        border-radius: 999px;
-      }
-
-      .mask-line.short {
-        width: 64%;
-      }
-
-      .mask-line.medium {
-        width: 78%;
-      }
-
-      .mask-dialog,
-      .mask-drawer,
-      .mask-loader {
-        position: absolute;
-        z-index: 2;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
-      }
-
-      .mask-dialog {
-        top: 50%;
-        left: 50%;
-        width: min(72%, 180px);
-        min-height: 72px;
-        transform: translate(-50%, -50%);
-      }
-
-      .mask-drawer {
-        top: 0;
-        right: 0;
-        width: 42%;
-        height: 100%;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      .mask-loader {
-        top: 50%;
-        left: 50%;
-        width: 44px;
-        height: 44px;
-        display: grid;
-        place-items: center;
-        border-radius: 999px;
-        transform: translate(-50%, -50%);
-      }
-
-      .mask-loader::before {
-        width: 18px;
-        height: 18px;
-        content: "";
-        border: 2px solid var(--gray-200);
-        border-top-color: var(--brand-500);
-        border-radius: 999px;
-      }
-
-      .mask-case h4 {
-        margin: 0 0 6px;
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .doc-section .mask-case p {
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      .mask-value {
-        display: inline-flex;
-        align-items: center;
-        min-height: 24px;
-        margin-top: 10px;
-        padding: 2px 7px;
-        color: var(--gray-700);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 999px;
-        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 11px;
-        line-height: 1.4;
-      }
-
-      .color-section-heading {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 12px;
-        margin: 0 0 14px;
-        width: 100%;
-      }
-
-      .doc-section .color-section-heading h2 {
-        margin: 0;
-      }
-
-      .doc-section .color-section-heading h3 {
-        margin: 0;
-      }
-
-      .color-palette-select {
-        position: relative;
-        flex: 0 0 auto;
-        min-width: 188px;
-      }
-
-      .color-palette-trigger {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        width: 100%;
-        min-height: 32px;
-        padding: 0 36px 0 12px;
-        color: var(--gray-800);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-        cursor: pointer;
-        font-size: 13px;
-        line-height: 1.2;
-        text-align: left;
-        transition:
-          border-color 0.15s ease,
-          box-shadow 0.15s ease,
-          background-color 0.15s ease,
-          color 0.15s ease;
-      }
-
-      .color-palette-trigger:hover {
-        border-color: var(--brand-500);
-      }
-
-      .color-palette-trigger[aria-expanded="true"],
-      .color-palette-trigger:focus-visible {
-        outline: none;
-        border-color: var(--brand-500);
-        box-shadow: var(--shadow-focus);
-      }
-
-      .color-palette-trigger[aria-expanded="true"] .select-chevron {
-        transform: translateY(-50%) rotate(180deg);
-      }
-
-      .color-palette-menu {
-        position: absolute;
-        top: calc(100% + 6px);
-        right: 0;
-        z-index: 5;
-        display: grid;
-        width: 100%;
-        min-width: 188px;
-        margin: 0;
-        padding: 6px;
-        list-style: none;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
-      }
-
-      .color-palette-menu[hidden] {
-        display: none;
-      }
-
-      .color-palette-option {
-        width: 100%;
-        min-height: 32px;
-        padding: 0 10px;
-        color: var(--gray-700);
-        background: transparent;
-        border: 0;
-        border-radius: var(--radius-sm);
-        cursor: pointer;
-        font-size: 13px;
-        line-height: 1.2;
-        text-align: left;
-      }
-
-      .color-palette-option:hover,
-      .color-palette-option[aria-selected="true"] {
-        color: var(--brand-500);
-        background: rgb(var(--brand-rgb) / 0.08);
-      }
-
-      .color-palette-header {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 18px;
-      }
-
-      .color-palette-header h3 {
-        margin-bottom: 4px;
-      }
-
-      .color-palette-base {
-        flex: 0 0 auto;
-        padding: 5px 8px;
-        color: var(--brand-500);
-        background: rgb(var(--brand-rgb) / 0.08);
-        border-radius: 999px;
-        font-size: 12px;
-        line-height: 1.4;
-        white-space: nowrap;
-      }
-
-      .color-ramp {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 0;
-        margin: 0;
-        padding: 0;
-        list-style: none;
-      }
-
-      .color-swatch {
-        display: block;
-        align-items: stretch;
-        min-width: 0;
-        overflow: hidden;
-        background: var(--swatch);
-      }
-
-      .color-swatch:first-child {
-        border-top-left-radius: var(--radius-sm);
-        border-top-right-radius: var(--radius-sm);
-      }
-
-      .color-swatch:last-child {
-        border-bottom-right-radius: var(--radius-sm);
-        border-bottom-left-radius: var(--radius-sm);
-      }
-
-      .color-meta {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-width: 0;
-        min-height: 42px;
-        gap: 10px;
-        padding: 0 14px;
-        color: var(--swatch-ink);
-      }
-
-      .color-token {
-        overflow: hidden;
-        color: inherit;
-        font-size: 12px;
-        line-height: 1.4;
-        opacity: 0.9;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-      }
-
-      .color-hex {
-        color: inherit;
-        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 12px;
-        line-height: 1.4;
-        opacity: 0.9;
-      }
-
-      .color-role-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px;
-        margin-top: 14px;
-      }
-
-      .color-role {
-        min-width: 0;
-        padding: 14px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .color-role strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .color-role span {
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      .style-token-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 14px;
-      }
-
-      .style-token-card {
-        min-width: 0;
-        padding: 14px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .style-token-card strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .style-token-card span,
-      .style-token-card p {
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      .typography-specimen {
-        display: grid;
-        gap: 14px;
-      }
-
-      .type-sample {
-        display: grid;
-        grid-template-columns: 160px minmax(0, 1fr);
-        align-items: baseline;
-        gap: 18px;
-        padding: 14px 0;
-        border-bottom: 1px solid var(--gray-200);
-      }
-
-      .type-sample:last-child {
-        border-bottom: 0;
-      }
-
-      .type-meta {
-        display: grid;
-        gap: 4px;
-        color: var(--gray-500);
-        font-size: 12px;
-        line-height: 1.4;
-      }
-
-      .type-meta strong {
-        color: var(--gray-800);
-        font-size: 13px;
-        font-weight: 500;
-      }
-
-      .doc-section .type-text {
-        margin: 0;
-        color: var(--gray-900);
-        font-size: var(--type-size);
-        font-weight: var(--type-weight, 400);
-        line-height: var(--type-line-height, 1.5);
-        letter-spacing: 0;
-      }
-
-      .doc-section .type-text.caption {
-        color: var(--gray-600);
-      }
-
-      .type-color-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 14px;
-      }
-
-      .type-color-card {
-        min-width: 0;
-        padding: 14px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .type-color-card.inverse {
-        background: var(--gray-900);
-        border-color: var(--gray-900);
-      }
-
-      .type-color-card strong {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--sample-color);
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 1.5;
-      }
-
-      .type-color-card p {
-        margin: 0;
-        color: var(--sample-color);
-        font-size: 13px;
-        line-height: 1.65;
-      }
-
-      .type-color-value {
-        display: inline-flex;
-        align-items: center;
-        min-height: 24px;
-        margin-top: 10px;
-        padding: 2px 7px;
-        color: var(--gray-600);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 999px;
-        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 11px;
-        line-height: 1.4;
-      }
-
-      .icon-spec-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-        margin-top: 14px;
-      }
-
-      .icon-spec-card {
-        min-width: 0;
-        display: grid;
-        grid-template-columns: minmax(180px, 0.72fr) minmax(0, 1.28fr);
-        gap: 18px;
-        padding: 16px;
-        background: var(--gray-50);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .icon-spec-copy {
-        min-width: 0;
-      }
-
-      .icon-demo-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 10px;
-        min-width: 0;
-      }
-
-      .icon-spec-preview {
-        position: relative;
-        min-height: 86px;
-        display: grid;
-        place-items: center;
-        gap: 6px;
-        padding: 10px;
-        color: var(--gray-800);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-        font-size: 11px;
-        line-height: 1.4;
-      }
-
-      .icon-spec-preview.avoid {
-        color: var(--gray-800);
-        background: var(--white);
-        border-color: var(--gray-200);
-        box-shadow: none;
-      }
-
-      .icon-spec-preview.avoid::before {
-        position: absolute;
-        top: 6px;
-        right: 6px;
-        padding: 2px 6px;
-        content: "Avoid";
-        color: var(--gray-700);
-        background: var(--gray-100);
-        border: 1px solid var(--gray-200);
-        border-radius: 999px;
-        font-size: 10px;
-        line-height: 1.2;
-      }
-
-      .icon-spec-preview svg {
-        width: var(--icon-demo-size, 24px);
-        height: var(--icon-demo-size, 24px);
-        color: currentColor;
-      }
-
-      .icon-spec-preview.avoid svg {
-        filter: none;
-      }
-
-      .icon-spec-card strong {
-        display: block;
-        margin-bottom: 6px;
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .icon-spec-card p {
-        margin: 0;
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
-      }
-
-      .shadow-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 14px;
-      }
-
-      .shadow-sample {
-        min-width: 0;
-        padding: 18px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .shadow-preview {
-        height: 88px;
-        display: grid;
-        place-items: center;
-        margin-bottom: 14px;
-        color: var(--gray-700);
-        background: var(--white);
-        border: 1px solid var(--gray-100);
-        border-radius: var(--radius-sm);
-        font-size: 12px;
-      }
-
-      .shadow-preview.xs {
-        box-shadow: 0 2px 6px rgba(20, 28, 36, 0.06);
-      }
-
-      .shadow-preview.sm {
-        box-shadow: 0 4px 12px rgba(20, 28, 36, 0.08);
-      }
-
-      .shadow-preview.md {
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
-      }
-
-      .shadow-preview.focus {
-        border-color: var(--brand-500);
-        box-shadow: var(--shadow-focus);
-      }
-
-      .shadow-preview.selector-focus {
-        border-color: var(--brand-500);
-        background: var(--white);
-        box-shadow: rgba(0, 209, 87, 0.16) 0 0 0 3px;
-      }
-
-      .theme-grid {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px;
-        margin-top: 14px;
-      }
-
-      .theme-card {
-        min-width: 0;
-        overflow: hidden;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: var(--radius-sm);
-      }
-
-      .theme-strip {
-        height: 54px;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-      }
-
-      .theme-strip span {
-        min-width: 0;
-      }
-
-      .theme-body {
-        display: grid;
-        gap: 8px;
-        padding: 14px;
-      }
-
-      .theme-body strong {
-        color: var(--gray-900);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.4;
-      }
-
-      .theme-body p {
-        margin: 0;
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
       }
 
       .example-row {
@@ -1941,10 +1205,10 @@
       .spec-input,
       .spec-textarea {
         width: 100%;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid #dde1e5;
         border-radius: 10px;
         background: #fff;
-        color: var(--input-text-color);
+        color: #1a1d1f;
         font-size: 13px;
         outline: 0;
         transition:
@@ -1968,7 +1232,7 @@
 
       .spec-input::placeholder,
       .spec-textarea::placeholder {
-        color: var(--input-placeholder-color);
+        color: #a5abb1;
       }
 
       .spec-input[type="search"]::-webkit-search-cancel-button {
@@ -1986,20 +1250,6 @@
         appearance: textfield;
       }
 
-      .spec-input:hover,
-      .spec-textarea:hover,
-      .spec-input.hover,
-      .spec-textarea.hover,
-      .spec-input.is-hover,
-      .spec-textarea.is-hover,
-      .spec-input-wrap:hover,
-      .spec-input-wrap.hover,
-      .spec-input-wrap.is-hover {
-        border-color: var(--input-hover-border-color);
-        background: #fff;
-        box-shadow: none;
-      }
-
       .spec-input:focus,
       .spec-input.focus,
       .spec-input.is-focus,
@@ -2009,22 +1259,15 @@
       .spec-input-wrap:focus-within,
       .spec-input-wrap.focus,
       .spec-input-wrap.is-focus {
-        border-color: var(--input-focus-color);
-        box-shadow: var(--input-focus-shadow);
+        border-color: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
       .spec-input:disabled,
       .spec-textarea:disabled {
-        border-color: var(--input-disabled-border-color);
-        background: var(--input-disabled-bg);
-        color: var(--input-disabled-color);
+        background: #f0f2f4;
+        color: #969ba1;
         cursor: not-allowed;
-      }
-
-      .spec-input-wrap:has(.spec-input:disabled):hover {
-        border-color: var(--input-disabled-border-color);
-        background: var(--input-disabled-bg);
-        box-shadow: none;
       }
 
       .spec-input-wrap {
@@ -2033,7 +1276,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid #dde1e5;
         border-radius: 10px;
         background: #fff;
         padding: 0 12px;
@@ -2164,7 +1407,7 @@
       .spec-field.over-limit .spec-input,
       .spec-field.over-limit .spec-textarea,
       .spec-input-wrap.error {
-        border-color: var(--input-error-color);
+        border-color: #f04438;
       }
 
       .spec-field.error .spec-input:focus,
@@ -2182,8 +1425,8 @@
       .spec-input-wrap.error:focus-within,
       .spec-input-wrap.error.focus,
       .spec-input-wrap.error.is-focus {
-        border-color: var(--input-error-color);
-        box-shadow: var(--input-error-shadow);
+        border-color: #f04438;
+        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
       }
 
       .spec-field.error .spec-field-help {
@@ -2350,20 +1593,22 @@
 
       .select-chevron {
         position: absolute;
-        right: 6px;
+        right: 12px;
         top: 50%;
-        width: 20px;
-        height: 20px;
-        background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 8.25L10 11.75L13.5 8.25' fill='none' stroke='%23969ba1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 20px 20px no-repeat;
+        width: 7px;
+        height: 7px;
+        border-right: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        color: #969ba1;
         pointer-events: none;
-        transform: translateY(-50%);
+        transform: translateY(-50%) rotate(45deg);
         transition:
           opacity 0.15s ease,
           transform 0.15s ease;
       }
 
       .spec-select.open .select-chevron {
-        transform: translateY(-50%) rotate(180deg);
+        transform: translateY(-50%) rotate(225deg);
       }
 
       .select-clear {
@@ -3047,26 +2292,11 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid transparent;
-        border-radius: 10px;
-        transition:
-          border-color 0.15s ease,
-          box-shadow 0.15s ease;
       }
 
       .time-range-inputs .time-input-control {
         flex: 1 1 0;
         min-width: 0;
-      }
-
-      .time-range-inputs:has(.time-input-control.open) {
-        border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
-      }
-
-      .time-range-inputs .time-input-control.open {
-        border-color: transparent;
-        box-shadow: none;
       }
 
       .time-range-separator {
@@ -3520,19 +2750,9 @@
           background-color 0.15s ease;
       }
 
-      .number-input:hover,
-      .number-input.hover,
-      .number-input.is-hover {
-        border-color: var(--input-number-hover-border-color);
-        background: #fff;
-        box-shadow: none;
-      }
-
-      .number-input:focus-within,
-      .number-input.focus,
-      .number-input.is-focus {
-        border-color: var(--input-number-focus-color);
-        box-shadow: var(--input-number-focus-shadow);
+      .number-input:focus-within {
+        border-color: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
       .number-input .spec-input {
@@ -3632,23 +2852,20 @@
       }
 
       .number-input.error {
-        border-color: var(--input-number-error-color);
+        border-color: #f04438;
       }
 
-      .number-input.error:focus-within,
-      .number-input.error.focus,
-      .number-input.error.is-focus {
-        border-color: var(--input-number-error-color);
-        box-shadow: var(--input-number-error-shadow);
+      .number-input.error:focus-within {
+        border-color: #f04438;
+        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
       }
 
       .number-input.disabled {
-        border-color: var(--input-number-disabled-border-color);
-        background: var(--input-number-disabled-bg);
+        background: #f0f2f4;
       }
 
       .number-input.disabled .spec-input {
-        color: var(--input-number-disabled-color);
+        color: #969ba1;
         cursor: not-allowed;
       }
 
@@ -4315,44 +3532,6 @@
           grid-template-columns: 1fr;
         }
 
-        .color-system-group {
-          grid-template-columns: 1fr;
-        }
-
-        .color-section-heading {
-          align-items: center;
-        }
-
-        .color-palette-select {
-          width: min(100%, 188px);
-        }
-
-        .color-role-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .style-token-grid,
-        .mask-case-grid,
-        .type-color-grid,
-        .icon-spec-grid,
-        .shadow-grid,
-        .theme-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .type-sample {
-          grid-template-columns: 1fr;
-          gap: 8px;
-        }
-
-        .icon-spec-card {
-          grid-template-columns: 1fr;
-        }
-
-        .icon-demo-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
         .overview-grid,
         .component-index,
         .overview-group.full .component-index {
@@ -4363,6 +3542,9 @@
           grid-template-columns: 1fr;
         }
       }
+    </style>
+    <style>
+      .standalone-shell .nav-button { text-decoration: none; }
 
       :root[data-product-theme="default-theme"] .spec-input:focus,
       :root[data-product-theme="default-theme"] .spec-input.focus,
@@ -4426,24 +3608,6 @@
         box-shadow: var(--input-error-shadow);
       }
 
-      :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-range-segment.open),
-      :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-input-control.open) {
-        border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
-      }
-
-      :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-range-segment.open),
-      :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-input-control.open) {
-        border-color: var(--brand-500);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
-      }
-
-      :root[data-product-theme="default-theme"] .time-range-inputs .time-input-control.open,
-      :root[data-product-theme="business-theme"] .time-range-inputs .time-input-control.open {
-        border-color: transparent;
-        box-shadow: none;
-      }
-
       /* 实验主题 使用更克制的 2px 控件圆角。 */
       :root[data-product-theme="test-theme-1"] .spec-btn,
       :root[data-product-theme="test-theme-1"] .spec-btn.small,
@@ -4491,10 +3655,10 @@
       }
 </style>
   </head>
-  <body>
+  <body class="standalone-shell">
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="#" aria-label="IQB DESIGN 首页">
+        <a class="brand" href="../index.html" aria-label="IQB DESIGN 首页">
           <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
@@ -4518,7 +3682,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 33/34</span>
+          <span data-component-count-label>Active components 45/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -4573,25 +3737,25 @@
           <nav>
             <ul class="nav-list">
               <li class="nav-section">
-                <button class="nav-button" type="button" data-page="color" data-nav-scope="global-style">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
                   <span class="nav-label">Styles 全局样式</span>
-                </button>
+                </a>
               </li>
               <li class="nav-section">
-                <button class="nav-button" type="button" aria-current="page" data-page="overview">
+                <a class="nav-button" href="../index.html#overview">
                   <span class="nav-label">Components 组件总览</span>
-                </button>
+                </a>
               </li>
               <li class="nav-section">
                 <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="general/button.html">
+                    <a class="nav-button" href="../general/button.html">
                       <span class="nav-label">Button 按钮</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="general/typography.html">
+                    <a class="nav-button" href="../general/typography.html">
                       <span class="nav-label">Typography 排版</span>
                     </a>
                   </li>
@@ -4601,27 +3765,27 @@
                 <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="layout/divider.html">
+                    <a class="nav-button" href="../layout/divider.html">
                       <span class="nav-label">Divider 分割线</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="layout/space.html">
+                    <a class="nav-button" href="../layout/space.html">
                       <span class="nav-label">Space 间距</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="layout/grid.html">
+                    <a class="nav-button" href="../layout/grid.html">
                       <span class="nav-label">Grid 栅格</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="layout/layout.html">
+                    <a class="nav-button" href="../layout/layout.html">
                       <span class="nav-label">Layout 布局</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="layout/splitter.html">
+                    <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
                     </a>
                   </li>
@@ -4631,82 +3795,82 @@
                 <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="dataentry/input.html">
+                    <a class="nav-button" href="../dataentry/input.html">
                       <span class="nav-label">Input 输入框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/input-number.html">
+                    <a class="nav-button" href="../dataentry/input-number.html">
                       <span class="nav-label">InputNumber 数字输入框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/radio.html">
+                    <a class="nav-button" href="../dataentry/radio.html">
                       <span class="nav-label">Radio 单选框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/checkbox.html">
+                    <a class="nav-button" href="../dataentry/checkbox.html">
                       <span class="nav-label">Checkbox 复选框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/switch.html">
+                    <a class="nav-button" href="../dataentry/switch.html">
                       <span class="nav-label">Switch 开关</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/select.html">
+                    <a class="nav-button" href="../dataentry/select.html">
                       <span class="nav-label">Select 选择器</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/date-picker.html">
+                    <a class="nav-button" href="../dataentry/date-picker.html" aria-current="page">
                       <span class="nav-label">DatePicker 日期选择器</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/time-picker.html">
+                    <a class="nav-button" href="../dataentry/time-picker.html">
                       <span class="nav-label">TimePicker 时间选择器</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/upload.html">
+                    <a class="nav-button" href="../dataentry/upload.html">
                       <span class="nav-label">Upload 上传</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/form.html">
+                    <a class="nav-button" href="../dataentry/form.html">
                       <span class="nav-label">Form 表单</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/autocomplete.html">
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
                       <span class="nav-label">AutoComplete 自动补全</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/cascader.html">
+                    <a class="nav-button" href="../dataentry/cascader.html">
                       <span class="nav-label">Cascader 联级选择</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/mentions.html">
+                    <a class="nav-button" href="../dataentry/mentions.html">
                       <span class="nav-label">Mentions 提及</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/verification-code.html">
+                    <a class="nav-button" href="../dataentry/verification-code.html">
                       <span class="nav-label">VerficationCode 验证码输入框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/rate.html">
+                    <a class="nav-button" href="../dataentry/rate.html">
                       <span class="nav-label">Rate 评分</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="dataentry/slider.html">
+                    <a class="nav-button" href="../dataentry/slider.html">
                       <span class="nav-label">Slider 滑块</span>
                     </a>
                   </li>
@@ -4716,72 +3880,72 @@
                 <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="datadisplay/table.html">
+                    <a class="nav-button" href="../datadisplay/table.html">
                       <span class="nav-label">Table 表格</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/list.html">
+                    <a class="nav-button" href="../datadisplay/list.html">
                       <span class="nav-label">List 列表</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/statistic.html">
+                    <a class="nav-button" href="../datadisplay/statistic.html">
                       <span class="nav-label">Statistic 数值显示</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/chart.html">
+                    <a class="nav-button" href="../datadisplay/chart.html">
                       <span class="nav-label">Chart 图表</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/tag.html">
+                    <a class="nav-button" href="../datadisplay/tag.html">
                       <span class="nav-label">Tag 标签</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/tooltip.html">
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
                       <span class="nav-label">Tooltip 提示气泡</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/avatar.html">
+                    <a class="nav-button" href="../datadisplay/avatar.html">
                       <span class="nav-label">Avatar 头像</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/timeline.html">
+                    <a class="nav-button" href="../datadisplay/timeline.html">
                       <span class="nav-label">Timeline 时间轴</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/carousel.html">
+                    <a class="nav-button" href="../datadisplay/carousel.html">
                       <span class="nav-label">Carousel 轮播</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/collapse.html">
+                    <a class="nav-button" href="../datadisplay/collapse.html">
                       <span class="nav-label">Collapse 折叠面板</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/image.html">
+                    <a class="nav-button" href="../datadisplay/image.html">
                       <span class="nav-label">Image 图片</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/badge.html">
+                    <a class="nav-button" href="../datadisplay/badge.html">
                       <span class="nav-label">Badge 徽标</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="datadisplay/empty.html">
+                    <a class="nav-button" href="../datadisplay/empty.html">
                       <span class="nav-label">Empty 空状态</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="index.html#card">
+                    <a class="nav-button" href="../index.html#card">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -4791,47 +3955,47 @@
                 <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
                 <ul class="nav-sublist">
                   <li>
-                    <a class="nav-button" href="feedback/alert.html">
+                    <a class="nav-button" href="../feedback/alert.html">
                       <span class="nav-label">Alert 警告提示</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/drawer.html">
+                    <a class="nav-button" href="../feedback/drawer.html">
                       <span class="nav-label">Drawer 抽屉</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/message.html">
+                    <a class="nav-button" href="../feedback/message.html">
                       <span class="nav-label">Message 全局提示</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/model.html">
+                    <a class="nav-button" href="../feedback/model.html">
                       <span class="nav-label">Model 模态弹窗</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/popconfirm.html">
+                    <a class="nav-button" href="../feedback/popconfirm.html">
                       <span class="nav-label">Popconfirm 气泡确认框</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/notification.html">
+                    <a class="nav-button" href="../feedback/notification.html">
                       <span class="nav-label">Notification 通知提醒</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/progress.html">
+                    <a class="nav-button" href="../feedback/progress.html">
                       <span class="nav-label">Progress 进度条</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/spin.html">
+                    <a class="nav-button" href="../feedback/spin.html">
                       <span class="nav-label">Spin 加载中</span>
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="feedback/skeleton.html">
+                    <a class="nav-button" href="../feedback/skeleton.html">
                       <span class="nav-label">Skeleton 骨架屏</span>
                     </a>
                   </li>
@@ -4843,1082 +4007,913 @@
           <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
         </aside>
 
-        <section class="canvas" aria-label="组件说明详情区">
+        <section class="canvas" aria-label="组件规范内容">
           <div class="canvas-inner">
-            <article class="content-panel overview-page" data-panel="overview">
+<article class="content-panel doc-page" data-panel="date-picker">
               <header class="doc-hero">
-                <p class="doc-kicker">Components / Overview</p>
-                <h1 class="doc-title">组件总览</h1>
+                <p class="doc-kicker">Data Entry / DatePicker</p>
+                <h1 class="doc-title">DatePicker 日期选择器</h1>
                 <p class="doc-summary">
-                  按组件类型组织当前 Design System 的全部侧导航入口。索引遵循“类目分组 + 组件名称 + 使用线索”的结构，
-                  方便快速定位已完成规范与后续待补齐组件。
+                  日期选择器用于选择日期、范围、周期与带时间的任务日期。企业应用平台中常用于任务排期、
+                  报表筛选、执行记录查询和自动化策略生效周期，并支持快捷时间点、快捷时间段和周期联动筛选。
                 </p>
-                <ul class="doc-meta-list" aria-label="组件索引统计">
-                  <li>5 个组件类目</li>
-                  <li>34 个组件入口</li>
-                  <li>33 个已补齐规范</li>
-                  <li>1 个待补齐规范</li>
+                <ul class="doc-meta-list" aria-label="日期选择器基础规格">
+                  <li>默认高度 38px</li>
+                  <li>圆角 10px</li>
+                  <li>默认宽度 260px</li>
+                  <li>支持日期、周期、时间与联动选择</li>
                 </ul>
               </header>
 
               <section class="doc-section">
-                <div class="overview-grid">
-                  <div class="overview-group">
-                    <div class="overview-group-title">
-                      <h2>通用</h2>
-                      <span class="overview-count">2 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="general/button.html">
-                          <span class="component-index-name">
-                            <span>Button 按钮</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">触发操作、提交任务、切换关键状态。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="general/typography.html">
-                          <span class="component-index-name">
-                            <span>Typography 排版</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">建立标题、正文、辅助说明和代码文本层级。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="overview-group">
-                    <div class="overview-group-title">
-                      <h2>布局</h2>
-                      <span class="overview-count">5 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="layout/divider.html">
-                          <span class="component-index-name">
-                            <span>Divider 分割线</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">分隔内容段落、操作组和轻量信息层级。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="layout/space.html">
-                          <span class="component-index-name">
-                            <span>Space 间距</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">统一控制按钮、标签和内联控件之间的间距。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="layout/grid.html">
-                          <span class="component-index-name">
-                            <span>Grid 栅格</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">建立多列对齐、响应式换行和页面栅格秩序。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="layout/layout.html">
-                          <span class="component-index-name">
-                            <span>Layout 布局</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">搭建 Header、Sider、Content 和 Footer 页面骨架。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="layout/splitter.html">
-                          <span class="component-index-name">
-                            <span>Splitter 分隔面板</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在列表详情、编辑预览等工作区中调节面板占比。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="overview-group full">
-                    <div class="overview-group-title">
-                      <h2>数据录入</h2>
-                      <span class="overview-count">16 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="dataentry/input.html">
-                          <span class="component-index-name">
-                            <span>Input 输入框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">录入短文本、搜索内容和多行说明。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/input-number.html">
-                          <span class="component-index-name">
-                            <span>InputNumber 数字输入框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">录入数值、频率、范围和精度配置。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/radio.html">
-                          <span class="component-index-name">
-                            <span>Radio 单选框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在互斥选项中选择一个结果。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/checkbox.html">
-                          <span class="component-index-name">
-                            <span>Checkbox 复选框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在非互斥选项中选择一个或多个结果。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/switch.html">
-                          <span class="component-index-name">
-                            <span>Switch 开关</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">即时切换单个配置项的开启或关闭。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/select.html">
-                          <span class="component-index-name">
-                            <span>Select 选择器</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">从选项列表中选择目标值或筛选维度。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/date-picker.html">
-                          <span class="component-index-name">
-                            <span>DatePicker 日期选择器</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">选择日期、日期范围和任务日期条件。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/time-picker.html">
-                          <span class="component-index-name">
-                            <span>TimePicker 时间选择器</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">选择时间、执行时刻和定时触发条件。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/upload.html">
-                          <span class="component-index-name">
-                            <span>Upload 上传</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">上传文件、素材、配置包和执行附件。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/form.html">
-                          <span class="component-index-name">
-                            <span>Form 表单</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">组织录入控件、校验规则和提交流程。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/autocomplete.html">
-                          <span class="component-index-name">
-                            <span>自动补全 AutoComplete</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">输入关键词并从建议项中快速选择目标。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/cascader.html">
-                          <span class="component-index-name">
-                            <span>联级选择 Cascader</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">按层级逐步选择地域、类目或组织路径。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/mentions.html">
-                          <span class="component-index-name">
-                            <span>提及 Mentions</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在文本输入中唤起成员、Agent 或变量建议。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/verification-code.html">
-                          <span class="component-index-name">
-                            <span>验证码输入框 VerficationCode</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">录入短信、邮箱或二次验证的一次性验证码。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/rate.html">
-                          <span class="component-index-name">
-                            <span>评分 Rate</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">表达质量、满意度和优先级的等级评价。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="dataentry/slider.html">
-                          <span class="component-index-name">
-                            <span>滑块 Slider</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">在连续或分段范围内调整数值参数。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="overview-group">
-                    <div class="overview-group-title">
-                      <h2>数据展示</h2>
-                      <span class="overview-count">2 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="datadisplay/table.html">
-                          <span class="component-index-name">
-                            <span>表格 Table</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">组织结构化数据、批量操作和状态对比。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="index.html#card">
-                          <span class="component-index-name">
-                            <span>卡片 Card</span>
-                            <span class="component-status pending">待补齐</span>
-                          </span>
-                          <span class="component-index-desc">承载信息摘要、资源对象和轻量操作。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-
-
-                  <div class="overview-group full">
-                    <div class="overview-group-title">
-                      <h2>反馈</h2>
-                      <span class="overview-count">9 components</span>
-                    </div>
-                    <ul class="component-index">
-                      <li>
-                        <a class="component-index-button" href="feedback/alert.html">
-                          <span class="component-index-name">
-                            <span>Alert 警告提示</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Alert 用于在页面区域内展示可被用户感知的成功、提示、警告和错误反馈，适合承载当前上下文中需要持续可见的信息。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/drawer.html">
-                          <span class="component-index-name">
-                            <span>Drawer 抽屉</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Drawer 用于从屏幕边缘滑出补充任务区域，在保留原页面上下文的同时完成查看、编辑或配置。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/message.html">
-                          <span class="component-index-name">
-                            <span>Message 全局提示</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Message 用于展示轻量、短时、全局性的操作反馈，通常自动消失，不打断用户当前流程。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/model.html">
-                          <span class="component-index-name">
-                            <span>Model 模态弹窗</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Model 用于承载需要用户确认、处理或集中阅读的高优先级任务，通过遮罩让用户聚焦于当前决策。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/popconfirm.html">
-                          <span class="component-index-name">
-                            <span>Popconfirm 气泡确认框</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Popconfirm 用于在触发点附近进行轻量二次确认，适合删除、撤销、停止任务等需要防误触的操作。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/notification.html">
-                          <span class="component-index-name">
-                            <span>Notification 通知提醒</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Notification 用于展示较完整的异步结果、系统提醒或任务状态，通常出现在页面角落并可保留更长时间。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/progress.html">
-                          <span class="component-index-name">
-                            <span>Progress 进度条</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Progress 用于反馈任务完成比例、上传下载进度或分步流程状态，让用户判断等待时长和执行结果。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/spin.html">
-                          <span class="component-index-name">
-                            <span>Spin 加载中</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Spin 用于表示内容正在加载或任务正在处理中，适合无法准确预估进度但需要保持等待感知的场景。</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a class="component-index-button" href="feedback/skeleton.html">
-                          <span class="component-index-name">
-                            <span>Skeleton 骨架屏</span>
-                            <span class="component-status done">已补齐</span>
-                          </span>
-                          <span class="component-index-desc">Skeleton 用于在真实内容加载前提供结构占位，降低等待时的空白感，并帮助用户预判即将出现的内容布局。</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-
-            </article>
-
-            <article class="content-panel doc-page" data-panel="color" hidden>
-              <header class="doc-hero">
-                <p class="doc-kicker">Styles</p>
-                <h1 class="doc-title">全局样式 Style</h1>
-                <p class="doc-summary">
-                  全局样式定义产品界面的基础视觉语言，覆盖颜色、遮罩、字体、投影和主题。
-                  这些规范共同约束组件状态、信息层级、遮挡关系、空间节奏和跨主题的一致体验。
-                </p>
-              </header>
-
-              <section class="doc-section style-module-start style-module-first">
-                <div class="color-section-heading">
-                  <h2>颜色</h2>
-                  <div class="color-palette-select" data-color-palette-select>
-                    <button
-                      class="color-palette-trigger"
-                      type="button"
-                      aria-haspopup="listbox"
-                      aria-expanded="false"
-                      data-color-palette-trigger
-                    >
-                      <span data-color-palette-value>iQIYI标准色</span>
-                      <span class="select-chevron" aria-hidden="true"></span>
-                    </button>
-                    <ul class="color-palette-menu" role="listbox" aria-label="切换色板" hidden data-color-palette-menu>
-                      <li>
-                        <button
-                          class="color-palette-option"
-                          type="button"
-                          role="option"
-                          aria-selected="true"
-                          data-color-palette-option="iQIYI标准色"
-                        >
-                          iQIYI标准色
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="color-palette-option"
-                          type="button"
-                          role="option"
-                          aria-selected="false"
-                          data-color-palette-option="业务主题色"
-                        >
-                          业务主题色
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          class="color-palette-option"
-                          type="button"
-                          role="option"
-                          aria-selected="false"
-                          data-color-palette-option="test主题色"
-                        >
-                          test主题色
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <p>
-                  以当前色板的品牌 500 色为主色基准，按品牌色、中性色、功能色与遮罩值组织颜色规范。
-                  色阶编号从 50 到 900，数值越大颜色越深，500 作为常规态或语义基准色。
-                </p>
-                <ul class="doc-meta-list" aria-label="颜色规范摘要">
-                  <li data-color-brand-meta>品牌色 #00D157</li>
-                  <li>10 阶梯度 50-900</li>
-                  <li data-functional-color-meta>功能色覆盖红 / 黄 / 蓝</li>
-                  <li>适用于组件、状态、遮罩与主题变量</li>
-                </ul>
-              </section>
-
-              <section class="doc-section no-divider color-role-section">
-                <h3>色彩角色</h3>
-                <div class="color-role-grid" aria-label="颜色角色">
-                  <div class="color-role">
-                    <strong>品牌色</strong>
-                    <span>用于主按钮、关键操作、选中态、聚焦态和高价值数据。</span>
-                  </div>
-                  <div class="color-role">
-                    <strong>中性色</strong>
-                    <span>用于文本、边框、分割线、背景和弱化信息层级。</span>
-                  </div>
-                  <div class="color-role">
-                    <strong>功能色</strong>
-                    <span>用于错误、警告、提示、链接、信息反馈和状态徽标。</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section color-palette-section">
-                <h3>色板</h3>
-                <div class="color-system-group">
-                  <div class="example-block full color-palette" data-color-palette="brand">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3 data-color-palette-title>Primary Green</h3>
-                        <p data-color-palette-desc>品牌主色，500 固定为 #00D157。</p>
-                      </div>
-                      <span class="color-palette-base" data-color-palette-base>primary-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="品牌色色板" data-color-palette-ramp>
-                      <li class="color-swatch" style="--swatch: #effff6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-50</span><span class="color-hex">#EFFFF6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d8ffe8; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-100</span><span class="color-hex">#D8FFE8</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b5ffd1; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-200</span><span class="color-hex">#B5FFD1</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7dffb0; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-300</span><span class="color-hex">#7DFFB0</span></div></li>
-                      <li class="color-swatch" style="--swatch: #35f47c; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-400</span><span class="color-hex">#35F47C</span></div></li>
-                      <li class="color-swatch" style="--swatch: #00d157; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-500</span><span class="color-hex">#00D157</span></div></li>
-                      <li class="color-swatch" style="--swatch: #00b84b; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-600</span><span class="color-hex">#00B84B</span></div></li>
-                      <li class="color-swatch" style="--swatch: #008f3f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-700</span><span class="color-hex">#008F3F</span></div></li>
-                      <li class="color-swatch" style="--swatch: #067037; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-800</span><span class="color-hex">#067037</span></div></li>
-                      <li class="color-swatch" style="--swatch: #075a2f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-900</span><span class="color-hex">#075A2F</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Neutral Gray</h3>
-                        <p>承载文本、边框、背景与分割线层级。</p>
-                      </div>
-                      <span class="color-palette-base">neutral-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="中性色色板">
-                      <li class="color-swatch" style="--swatch: #fafbfc; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-50</span><span class="color-hex">#FAFBFC</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f3f5f7; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-100</span><span class="color-hex">#F3F5F7</span></div></li>
-                      <li class="color-swatch" style="--swatch: #e7eaee; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-200</span><span class="color-hex">#E7EAEE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d4d9de; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-300</span><span class="color-hex">#D4D9DE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #a5adb6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-400</span><span class="color-hex">#A5ADB6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #78818c; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-500</span><span class="color-hex">#78818C</span></div></li>
-                      <li class="color-swatch" style="--swatch: #59616a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-600</span><span class="color-hex">#59616A</span></div></li>
-                      <li class="color-swatch" style="--swatch: #343a40; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-700</span><span class="color-hex">#343A40</span></div></li>
-                      <li class="color-swatch" style="--swatch: #22262a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-800</span><span class="color-hex">#22262A</span></div></li>
-                      <li class="color-swatch" style="--swatch: #14171a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-900</span><span class="color-hex">#14171A</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Red 红色</h3>
-                        <p>用于错误、失败、危险操作和阻断状态。</p>
-                      </div>
-                      <span class="color-palette-base">red-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="红色色板">
-                      <li class="color-swatch" style="--swatch: #fff1f0; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-50</span><span class="color-hex">#FFF1F0</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ffe0de; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-100</span><span class="color-hex">#FFE0DE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ffc2bd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-200</span><span class="color-hex">#FFC2BD</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ff9b94; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-300</span><span class="color-hex">#FF9B94</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ff6b61; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-400</span><span class="color-hex">#FF6B61</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f04438; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-500</span><span class="color-hex">#F04438</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d92d20; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-600</span><span class="color-hex">#D92D20</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b42318; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-700</span><span class="color-hex">#B42318</span></div></li>
-                      <li class="color-swatch" style="--swatch: #912018; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-800</span><span class="color-hex">#912018</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7a1b16; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-900</span><span class="color-hex">#7A1B16</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Yellow 黄色</h3>
-                        <p>用于警告、等待、注意和中风险提示。</p>
-                      </div>
-                      <span class="color-palette-base">yellow-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="黄色色板">
-                      <li class="color-swatch" style="--swatch: #fffaeb; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-50</span><span class="color-hex">#FFFAEB</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fef0c7; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-100</span><span class="color-hex">#FEF0C7</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fedf89; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-200</span><span class="color-hex">#FEDF89</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fec84b; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-300</span><span class="color-hex">#FEC84B</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fdb022; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-400</span><span class="color-hex">#FDB022</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f79009; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-500</span><span class="color-hex">#F79009</span></div></li>
-                      <li class="color-swatch" style="--swatch: #dc6803; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-600</span><span class="color-hex">#DC6803</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b54708; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-700</span><span class="color-hex">#B54708</span></div></li>
-                      <li class="color-swatch" style="--swatch: #93370d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-800</span><span class="color-hex">#93370D</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7a2e0e; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-900</span><span class="color-hex">#7A2E0E</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette">
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Blue 蓝色</h3>
-                        <p>用于信息提示、链接、进行中状态和可查看入口。</p>
-                      </div>
-                      <span class="color-palette-base">blue-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="蓝色色板">
-                      <li class="color-swatch" style="--swatch: #eff8ff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-50</span><span class="color-hex">#EFF8FF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d1e9ff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-100</span><span class="color-hex">#D1E9FF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b2ddff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-200</span><span class="color-hex">#B2DDFF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #84caff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-300</span><span class="color-hex">#84CAFF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #53b1fd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-400</span><span class="color-hex">#53B1FD</span></div></li>
-                      <li class="color-swatch" style="--swatch: #2e90fa; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-500</span><span class="color-hex">#2E90FA</span></div></li>
-                      <li class="color-swatch" style="--swatch: #1570ef; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-600</span><span class="color-hex">#1570EF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #175cd3; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-700</span><span class="color-hex">#175CD3</span></div></li>
-                      <li class="color-swatch" style="--swatch: #1849a9; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-800</span><span class="color-hex">#1849A9</span></div></li>
-                      <li class="color-swatch" style="--swatch: #194185; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-900</span><span class="color-hex">#194185</span></div></li>
-                    </ul>
-                  </div>
-
-                  <div class="example-block full color-palette" hidden data-test-success-palette>
-                    <div class="color-palette-header">
-                      <div>
-                        <h3>Green 绿色</h3>
-                        <p>test 主题下用于成功、完成、通过和正向反馈状态。</p>
-                      </div>
-                      <span class="color-palette-base">success-green-500</span>
-                    </div>
-                    <ul class="color-ramp" aria-label="成功绿色色板">
-                      <li class="color-swatch" style="--swatch: #f0fff6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-50</span><span class="color-hex">#F0FFF6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ddfbea; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-100</span><span class="color-hex">#DDFBEA</span></div></li>
-                      <li class="color-swatch" style="--swatch: #bef5d5; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-200</span><span class="color-hex">#BEF5D5</span></div></li>
-                      <li class="color-swatch" style="--swatch: #91e9b8; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-300</span><span class="color-hex">#91E9B8</span></div></li>
-                      <li class="color-swatch" style="--swatch: #5fd897; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-400</span><span class="color-hex">#5FD897</span></div></li>
-                      <li class="color-swatch" style="--swatch: #22b573; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-500</span><span class="color-hex">#22B573</span></div></li>
-                      <li class="color-swatch" style="--swatch: #1b9c61; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-600</span><span class="color-hex">#1B9C61</span></div></li>
-                      <li class="color-swatch" style="--swatch: #147c4d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-700</span><span class="color-hex">#147C4D</span></div></li>
-                      <li class="color-swatch" style="--swatch: #12633f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-800</span><span class="color-hex">#12633F</span></div></li>
-                      <li class="color-swatch" style="--swatch: #104f34; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-900</span><span class="color-hex">#104F34</span></div></li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section mask-section">
-                <h3>遮罩</h3>
-                <p>
-                  遮罩用于压低背景内容的视觉权重，让弹窗、抽屉、确认面板和局部加载状态成为当前操作焦点。
-                  黑色遮罩用于阻断式浮层，白色遮罩用于局部加载；透明度根据阻断程度选择。
-                </p>
-                <div class="mask-case-grid" aria-label="遮罩案例">
-                  <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(0, 0, 0, 0.45);" aria-hidden="true">
-                      <div class="mask-stage-content">
-                        <span class="mask-line"></span>
-                        <span class="mask-line medium"></span>
-                        <span class="mask-line short"></span>
-                      </div>
-                      <div class="mask-dialog"></div>
-                    </div>
-                    <h4>弹窗遮罩</h4>
-                    <p>用于 Modal、确认弹窗和高阻断任务，背景需要明显退后。</p>
-                    <span class="mask-value">rgba(0, 0, 0, 0.45)</span>
-                  </div>
-                  <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(0, 0, 0, 0.35);" aria-hidden="true">
-                      <div class="mask-stage-content">
-                        <span class="mask-line"></span>
-                        <span class="mask-line medium"></span>
-                        <span class="mask-line short"></span>
-                      </div>
-                      <div class="mask-drawer"></div>
-                    </div>
-                    <h4>抽屉遮罩</h4>
-                    <p>用于 Drawer、侧边配置和局部编辑任务，保留背景上下文。</p>
-                    <span class="mask-value">rgba(0, 0, 0, 0.35)</span>
-                  </div>
-                  <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(255, 255, 255, 0.72);" aria-hidden="true">
-                      <div class="mask-stage-content">
-                        <span class="mask-line"></span>
-                        <span class="mask-line medium"></span>
-                        <span class="mask-line short"></span>
-                      </div>
-                      <div class="mask-loader"></div>
-                    </div>
-                    <h4>局部加载遮罩</h4>
-                    <p>用于表格、卡片和表单局部加载，弱化内容但不制造强阻断。</p>
-                    <span class="mask-value">rgba(255, 255, 255, 0.72)</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section style-module-start">
-                <h2>字体 Typography</h2>
-                <p>
-                  默认使用 Inter 与系统中文字体组合，保证英文、数字和中文在工作台界面中拥有一致的节奏。
-                  字号层级覆盖 12px 到 36px，主题可替换字体栈，但同一层级的字号与行高应保持稳定。
-                </p>
-                <div class="style-token-grid" aria-label="字体基础 Token">
-                  <div class="style-token-card">
-                    <strong>Sans / UI</strong>
-                    <span>Inter, PingFang SC, Microsoft YaHei, Arial, sans-serif</span>
-                  </div>
-                  <div class="style-token-card">
-                    <strong>Mono / Code</strong>
-                    <span>Roboto Mono, Cascadia Mono, Consolas, monospace</span>
-                  </div>
-                  <div class="style-token-card">
-                    <strong>Weight</strong>
-                    <span>400 常规正文，500 标题与重点标签，600 表头和强强调</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>字号层级</h2>
-                <div class="example-block full typography-specimen">
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Display XL</strong>36px / 1.2 / 500</span>
-                    <p class="type-text" style="--type-size: 36px; --type-weight: 500; --type-line-height: 1.2;">全局样式定义产品视觉基准</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Display</strong>28px / 1.25 / 500</span>
-                    <p class="type-text" style="--type-size: 28px; --type-weight: 500; --type-line-height: 1.25;">组件规范与设计系统</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Headline</strong>24px / 1.3 / 500</span>
-                    <p class="type-text" style="--type-size: 24px; --type-weight: 500; --type-line-height: 1.3;">全局样式与主题配置</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Title</strong>20px / 1.35 / 500</span>
-                    <p class="type-text" style="--type-size: 20px; --type-weight: 500; --type-line-height: 1.35;">表单配置与任务编排</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Subtitle</strong>16px / 1.5 / 500</span>
-                    <p class="type-text" style="--type-size: 16px; --type-weight: 500; --type-line-height: 1.5;">模块标题、卡片标题和重点信息。</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Body</strong>14px / 1.75 / 400</span>
-                    <p class="type-text" style="--type-size: 14px; --type-line-height: 1.75;">用于主要说明、组件正文、配置项描述和需要连续阅读的内容。</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Compact</strong>13px / 1.65 / 400</span>
-                    <p class="type-text" style="--type-size: 13px; --type-line-height: 1.65;">用于表格内容、输入控件、菜单选项和紧凑信息区域。</p>
-                  </div>
-                  <div class="type-sample">
-                    <span class="type-meta"><strong>Caption</strong>12px / 1.55 / 400</span>
-                    <p class="type-text caption" style="--type-size: 12px; --type-line-height: 1.55;">用于辅助说明、状态标签、表格补充信息和弱提示。</p>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>字体颜色</h2>
-                <p>
-                  字体颜色用于控制文本信息层级。正文、辅助、弱提示、禁用、链接和反白文字需要各自稳定，
-                  避免仅依赖字号或字重区分重要程度。
-                </p>
-                <div class="type-color-grid" aria-label="字体颜色案例">
-                  <div class="type-color-card" style="--sample-color: var(--gray-900);">
-                    <strong>主要文字</strong>
-                    <p>用于页面标题、表单标签、表格主信息和关键数据。</p>
-                    <span class="type-color-value">#14171A</span>
-                  </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-700);">
-                    <strong>常规文字</strong>
-                    <p>用于正文说明、菜单项、输入内容和可阅读段落。</p>
-                    <span class="type-color-value">#343A40</span>
-                  </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-600);">
-                    <strong>辅助文字</strong>
-                    <p>用于说明文案、表格补充信息和次要状态描述。</p>
-                    <span class="type-color-value">#59616A</span>
-                  </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-500);">
-                    <strong>弱提示文字</strong>
-                    <p>用于占位、说明尾注、计数器和低优先级信息。</p>
-                    <span class="type-color-value">#78818C</span>
-                  </div>
-                  <div class="type-color-card" style="--sample-color: var(--typography-color-link);">
-                    <strong>链接文字</strong>
-                    <p>用于可点击文本、跳转入口和外部资源访问。</p>
-                    <span class="type-color-value">#1570EF</span>
-                  </div>
-                  <div class="type-color-card inverse" style="--sample-color: var(--white);">
-                    <strong>反白文字</strong>
-                    <p>用于深色底、主按钮、深色标签和深色浮层内容。</p>
-                    <span class="type-color-value">#FFFFFF</span>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>使用原则</h2>
+                <h2>何时使用</h2>
                 <ul class="rule-list">
-                  <li>页面标题与模块标题使用 500 字重，避免通过过粗字重制造层级。</li>
-                  <li>表格、表单和工具栏优先使用 12px-14px 区间，保证信息密度与可读性。</li>
-                  <li>英文、数字和代码值使用等宽字体时，仅限 Token、API、快捷值和可复制内容。</li>
+                  <li>用于需要明确日期边界的配置，例如任务开始日期、执行记录筛选、报表周期和授权有效期。</li>
+                  <li>只需要单个相对日期时使用快捷时间点，例如今天、7 天前、30 天前和 90 天前。</li>
+                  <li>需要批量查询时使用快捷时间段或范围选择，并用轻量背景表达起止日期之间的区间。</li>
+                  <li>任务定时规则应使用联动选择，在每小时、每日、每周之间切换对应的星期与时间条件。</li>
+                  <li>不可选日期应在面板内直接置灰，避免用户选中后再通过错误提示纠正。</li>
                 </ul>
               </section>
 
-              <section class="doc-section style-module-start">
-                <h2>图标 ICON</h2>
-                <p>
-                  图标用于补充按钮、输入框、导航和状态表达。图标应保持统一线性风格，默认跟随文字颜色，
-                  通过大小、线宽、拐角和端点约束保证不同组件中的识别一致性。
-                </p>
-                <div class="icon-spec-grid" aria-label="图标规范">
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>线宽 Stroke</strong>
-                      <p>线性图标线宽分为 1.5px、2px、3px；超过 3px 不推荐。不同线宽不能混用于同一组图标。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        1.5px
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                        </svg>
-                        2px
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                        </svg>
-                        3px
-                      </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-                        </svg>
-                        超过 3px
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>大小 Size</strong>
-                      <p>常用尺寸为 14、16、20、24px；按钮和表单内优先使用 16px，导航和空状态可使用 20px 或 24px。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview" style="--icon-demo-size: 14px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        14px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 16px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        16px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 20px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        20px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 24px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        24px
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>基础日期</h3>
+                    <p>用于选择单个日期，点击日期后写入输入区域并收起面板。</p>
+                    <div class="date-demo-stack" data-date-demo data-date-mode="single">
+                      <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-date-value>2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown" role="dialog" aria-label="选择日期" hidden>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                            <h4 class="date-panel-title">2026 年 7 月</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                          </div>
+                          <div class="date-weekdays" aria-hidden="true">
+                            <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                          </div>
+                          <div class="date-days">
+                            <button class="date-cell muted" type="button">28</button>
+                            <button class="date-cell muted" type="button">29</button>
+                            <button class="date-cell muted" type="button">30</button>
+                            <button class="date-cell" type="button" data-date-day="1">1</button>
+                            <button class="date-cell" type="button" data-date-day="2">2</button>
+                            <button class="date-cell" type="button" data-date-day="3">3</button>
+                            <button class="date-cell" type="button" data-date-day="4">4</button>
+                            <button class="date-cell" type="button" data-date-day="5">5</button>
+                            <button class="date-cell" type="button" data-date-day="6">6</button>
+                            <button class="date-cell" type="button" data-date-day="7">7</button>
+                            <button class="date-cell" type="button" data-date-day="8">8</button>
+                            <button class="date-cell" type="button" data-date-day="9">9</button>
+                            <button class="date-cell" type="button" data-date-day="10">10</button>
+                            <button class="date-cell" type="button" data-date-day="11">11</button>
+                            <button class="date-cell" type="button" data-date-day="12">12</button>
+                            <button class="date-cell" type="button" data-date-day="13">13</button>
+                            <button class="date-cell" type="button" data-date-day="14">14</button>
+                            <button class="date-cell" type="button" data-date-day="15">15</button>
+                            <button class="date-cell" type="button" data-date-day="16">16</button>
+                            <button class="date-cell" type="button" data-date-day="17">17</button>
+                            <button class="date-cell" type="button" data-date-day="18">18</button>
+                            <button class="date-cell" type="button" data-date-day="19">19</button>
+                            <button class="date-cell" type="button" data-date-day="20">20</button>
+                            <button class="date-cell" type="button" data-date-day="21">21</button>
+                            <button class="date-cell" type="button" data-date-day="22">22</button>
+                            <button class="date-cell" type="button" data-date-day="23">23</button>
+                            <button class="date-cell" type="button" data-date-day="24">24</button>
+                            <button class="date-cell" type="button" data-date-day="25">25</button>
+                            <button class="date-cell" type="button" data-date-day="26">26</button>
+                            <button class="date-cell" type="button" data-date-day="27">27</button>
+                            <button class="date-cell" type="button" data-date-day="28">28</button>
+                            <button class="date-cell active today" type="button" data-date-day="29">29</button>
+                            <button class="date-cell" type="button" data-date-day="30">30</button>
+                            <button class="date-cell" type="button" data-date-day="31">31</button>
+                            <button class="date-cell muted" type="button">1</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>拐角 Join</strong>
-                      <p>折线和路径转角使用 round join，避免尖锐拐角干扰小尺寸识别；保持箭头、展开和跳转类图标的一致转折。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M6 18V9C6 7.34 7.34 6 9 6H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                          <path d="M14 10L18 6L14 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        round
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7H17V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                          <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        跳转
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        展开
-                      </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 18V7H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" />
-                          <path d="M7 7H13V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" />
-                        </svg>
-                        拐角生硬
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>端点 Cap</strong>
-                      <p>线段端点使用 round cap，关闭、加号、箭头等图标保持柔和收尾；避免 square 或 butt 端点造成生硬断口。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        关闭
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        加号
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        箭头
-                      </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" />
-                          <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" />
-                        </svg>
-                        端点生硬
+                  <div class="example-block">
+                    <h3>范围选择</h3>
+                    <p>用于筛选执行记录、报表周期和任务有效期，起止日期必须保持顺序。</p>
+                    <div class="date-demo-stack" data-date-demo data-date-mode="range">
+                      <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-date-value>2026-07-12 ~ 2026-07-18</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown range-panel" role="dialog" aria-label="选择日期范围" hidden>
+                        <div class="date-range-calendars">
+                          <div class="date-calendar" data-date-panel-offset="0">
+                            <div class="date-calendar-row">
+                              <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                              <h4 class="date-panel-title">2026 年 7 月</h4>
+                              <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                            </div>
+                            <div class="date-weekdays" aria-hidden="true">
+                              <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                            </div>
+                            <div class="date-days"></div>
+                          </div>
+                          <div class="date-calendar" data-date-panel-offset="1">
+                            <div class="date-calendar-row">
+                              <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                              <h4 class="date-panel-title">2026 年 8 月</h4>
+                              <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                            </div>
+                            <div class="date-weekdays" aria-hidden="true">
+                              <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                            </div>
+                            <div class="date-days"></div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </section>
-
-              <section class="doc-section style-module-start">
-                <h2>投影 Shadow</h2>
-                <p>
-                  基础页面结构主要依赖边框与留白，投影集中用于弱层级、悬停、浮层和焦点反馈。
-                  常规投影使用 XS、SM、MD 三档；焦点类样式需要结合绿色描边与浅绿色外发光。
-                </p>
-                <div class="shadow-grid" aria-label="投影层级">
-                  <div class="shadow-sample">
-                    <div class="shadow-preview xs">Shadow XS</div>
-                    <h3>弱投影</h3>
-                    <p>用于静态轻量容器、细微层级提示和低强调背景卡片。</p>
+                  <div class="example-block">
+                    <h3>月份选择器</h3>
+                    <p>用于按月筛选报表、任务汇总和策略周期。</p>
+                    <div class="date-demo-stack" data-period-demo data-period-type="month" data-period-year="2026">
+                      <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-period-value>2026-07</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown" role="dialog" aria-label="选择月份" hidden>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上一年"></button>
+                            <h4 class="date-panel-title">2026 年</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下一年"></button>
+                          </div>
+                          <div class="date-period-grid">
+                            <button class="date-cell" type="button" data-period-option="2026-01">1 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-02">2 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-03">3 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-04">4 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-05">5 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-06">6 月</button>
+                            <button class="date-cell active" type="button" data-period-option="2026-07">7 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-08">8 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-09">9 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-10">10 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-11">11 月</button>
+                            <button class="date-cell" type="button" data-period-option="2026-12">12 月</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview sm">Shadow SM</div>
-                    <h3>轻量悬停</h3>
-                    <p>用于卡片 hover、列表项强调和低层级浮起反馈。</p>
+                  <div class="example-block">
+                    <h3>年份选择器</h3>
+                    <p>用于跨年数据归档、年度目标和长期计划筛选。</p>
+                    <div class="date-demo-stack" data-period-demo data-period-type="year" data-period-start="2021">
+                      <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-period-value>2026</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown" role="dialog" aria-label="选择年份" hidden>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上一组年份"></button>
+                            <h4 class="date-panel-title">2021 - 2032</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下一组年份"></button>
+                          </div>
+                          <div class="date-period-grid years">
+                            <button class="date-cell" type="button" data-period-option="2021">2021</button>
+                            <button class="date-cell" type="button" data-period-option="2022">2022</button>
+                            <button class="date-cell" type="button" data-period-option="2023">2023</button>
+                            <button class="date-cell" type="button" data-period-option="2024">2024</button>
+                            <button class="date-cell" type="button" data-period-option="2025">2025</button>
+                            <button class="date-cell active" type="button" data-period-option="2026">2026</button>
+                            <button class="date-cell" type="button" data-period-option="2027">2027</button>
+                            <button class="date-cell" type="button" data-period-option="2028">2028</button>
+                            <button class="date-cell" type="button" data-period-option="2029">2029</button>
+                            <button class="date-cell" type="button" data-period-option="2030">2030</button>
+                            <button class="date-cell" type="button" data-period-option="2031">2031</button>
+                            <button class="date-cell" type="button" data-period-option="2032">2032</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview md">Shadow MD</div>
-                    <h3>浮层容器</h3>
-                    <p>用于 Select、DatePicker、菜单和临时面板。</p>
+                  <div class="example-block">
+                    <h3>周选择器</h3>
+                    <p>用于按自然周查看执行趋势和任务完成情况。</p>
+                    <div class="date-demo-stack" data-period-demo data-period-type="week" data-period-year="2026" data-period-month="6">
+                      <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-period-value>2026-W31</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown" role="dialog" aria-label="选择周" hidden>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                            <h4 class="date-panel-title">2026 年 7 月</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                          </div>
+                          <div class="date-weekdays week-picker-head" aria-hidden="true">
+                            <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                          </div>
+                          <div class="date-days week-picker"></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview focus">Focus Ring</div>
-                    <h3>焦点环</h3>
-                    <p>用于键盘焦点、输入聚焦和需要明确可达性的控件。</p>
-                  </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview selector-focus">Selector Focus</div>
-                    <h3>选择器焦点卡片</h3>
-                    <p>同选择器 focus 态，使用绿色描边与 <code>rgba(0, 209, 87, 0.16) 0px 0px 0px 3px</code> 外发光。</p>
+                  <div class="example-block">
+                    <h3>季度选择器</h3>
+                    <p>用于季度复盘、经营目标和中长期任务策略。</p>
+                    <div class="date-demo-stack" data-period-demo data-period-type="quarter" data-period-year="2026">
+                      <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-period-value>2026-Q3</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown" role="dialog" aria-label="选择季度" hidden>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上一年"></button>
+                            <h4 class="date-panel-title">2026 年</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下一年"></button>
+                          </div>
+                          <div class="date-period-grid quarters">
+                            <button class="date-cell" type="button" data-period-option="2026-Q1">Q1</button>
+                            <button class="date-cell" type="button" data-period-option="2026-Q2">Q2</button>
+                            <button class="date-cell active" type="button" data-period-option="2026-Q3">Q3</button>
+                            <button class="date-cell" type="button" data-period-option="2026-Q4">Q4</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </section>
 
               <section class="doc-section">
-                <h2>投影值</h2>
+                <h2>组合类型</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>日期时间</h3>
+                    <p>用于定时执行、触发时间和需要精确到秒的任务配置。</p>
+                    <div class="date-demo-stack" data-date-demo data-date-mode="datetime">
+                      <button class="spec-date large" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-date-value>2026-07-29 14:30:00</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown datetime-panel" role="dialog" aria-label="选择日期时间" hidden>
+                        <div class="date-time-layout">
+                          <div class="date-calendar">
+                            <div class="date-calendar-row">
+                              <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                              <h4 class="date-panel-title">2026 年 7 月</h4>
+                              <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                            </div>
+                            <div class="date-weekdays" aria-hidden="true">
+                              <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                            </div>
+                            <div class="date-days"></div>
+                          </div>
+                          <div class="date-time-panel">
+                            <h4 class="date-time-title">时间</h4>
+                            <div class="date-time-columns">
+                              <div>
+                                <span class="date-time-label">小时</span>
+                                <div class="date-time-list" data-time-unit="hour"></div>
+                              </div>
+                              <div>
+                                <span class="date-time-label">分钟</span>
+                                <div class="date-time-list" data-time-unit="minute"></div>
+                              </div>
+                              <div>
+                                <span class="date-time-label">秒</span>
+                                <div class="date-time-list" data-time-unit="second"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="date-time-actions">
+                          <button class="spec-btn subtle small" type="button" data-datetime-cancel>取消</button>
+                          <button class="spec-btn primary small" type="button" data-datetime-confirm>确认</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>快捷时间</h3>
+                    <p>面向筛选类场景提供常用时间点，减少重复打开日历并逐日选择的操作成本。</p>
+                    <div class="date-dropdown static" role="dialog" aria-label="快捷时间点日期选择" data-date-shortcut-demo data-view-year="2026" data-view-month="6" data-shortcut-start="2026-07-29" data-shortcut-end="2026-07-29">
+                      <div class="date-panel-layout">
+                        <div class="date-shortcuts">
+                          <button class="date-shortcut active" type="button" data-shortcut-preset="today">今天</button>
+                          <button class="date-shortcut" type="button" data-shortcut-preset="ago7">7天前</button>
+                          <button class="date-shortcut" type="button" data-shortcut-preset="ago30">30天前</button>
+                          <button class="date-shortcut" type="button" data-shortcut-preset="ago90">90天前</button>
+                        </div>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                            <h4 class="date-panel-title">2026 年 7 月</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                          </div>
+                          <div class="date-weekdays" aria-hidden="true">
+                            <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                          </div>
+                          <div class="date-days"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>快捷时间段</h3>
+                    <p>用于报表筛选、执行记录和趋势分析中快速选择最近一段时间。</p>
+                    <div class="date-dropdown static shortcut-range-panel" role="dialog" aria-label="快捷时间段日期选择" data-date-shortcut-demo data-view-year="2026" data-view-month="6" data-shortcut-start="2026-07-23" data-shortcut-end="2026-07-29">
+                      <div class="date-panel-layout">
+                        <div class="date-shortcuts">
+                          <button class="date-shortcut active" type="button" data-shortcut-preset="recent7">最近7天</button>
+                          <button class="date-shortcut" type="button" data-shortcut-preset="recent14">最近14天</button>
+                          <button class="date-shortcut" type="button" data-shortcut-preset="recent30">最近30天</button>
+                          <button class="date-shortcut" type="button" data-shortcut-preset="recent90">最近90天</button>
+                        </div>
+                        <div class="date-range-calendars">
+                          <div class="date-calendar" data-date-panel-offset="0">
+                            <div class="date-calendar-row">
+                              <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                              <h4 class="date-panel-title">2026 年 7 月</h4>
+                              <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                            </div>
+                            <div class="date-weekdays" aria-hidden="true">
+                              <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                            </div>
+                            <div class="date-days"></div>
+                          </div>
+                          <div class="date-calendar" data-date-panel-offset="1">
+                            <div class="date-calendar-row">
+                              <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                              <h4 class="date-panel-title">2026 年 8 月</h4>
+                              <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                            </div>
+                            <div class="date-weekdays" aria-hidden="true">
+                              <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                            </div>
+                            <div class="date-days"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block full" data-range-scope-demo>
+                    <h3>联动选择</h3>
+                    <p>按执行周期切换筛选条件，让日期、星期与时间配置在同一任务规则中保持联动。</p>
+                    <div class="range-scope-tabs" role="tablist" aria-label="范围选择周期">
+                      <button class="range-scope-tab" type="button" role="tab" aria-selected="false" data-range-scope-tab="hourly">每小时</button>
+                      <button class="range-scope-tab active" type="button" role="tab" aria-selected="true" data-range-scope-tab="daily">每日</button>
+                      <button class="range-scope-tab" type="button" role="tab" aria-selected="false" data-range-scope-tab="weekly">每周</button>
+                    </div>
+                    <div class="range-scope-body">
+                      <div class="range-scope-panel" data-range-scope-panel="hourly" hidden>
+                        <p class="range-scope-hint">每小时的第 0 分钟执行<br />接下来执行：下一个整点，例如 11:00</p>
+                      </div>
+                      <div class="range-scope-panel" data-range-scope-panel="daily">
+                        <div class="range-filter-row">
+                          <div class="range-filter-field" data-time-filter-demo>
+                            <span class="range-filter-label">时间筛选器</span>
+                            <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-filter-trigger>
+                              <input class="time-input-field" type="text" value="14:30:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" readonly data-time-filter-value>
+                              <span class="time-icon" aria-hidden="true"></span>
+                              <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-filter-clear></button>
+                            </div>
+                            <div class="date-dropdown time-picker-dropdown time-filter-panel" role="dialog" aria-label="选择时间" hidden>
+                              <div class="date-time-columns">
+                                <div>
+                                  <span class="date-time-label">小时</span>
+                                  <div class="date-time-list" data-time-unit="hour"></div>
+                                </div>
+                                <div>
+                                  <span class="date-time-label">分钟</span>
+                                  <div class="date-time-list" data-time-unit="minute"></div>
+                                </div>
+                                <div>
+                                  <span class="date-time-label">秒</span>
+                                  <div class="date-time-list" data-time-unit="second"></div>
+                                </div>
+                              </div>
+                              <div class="date-time-actions">
+                                <button class="spec-btn subtle small" type="button" data-time-filter-cancel>取消</button>
+                                <button class="spec-btn primary small" type="button" data-time-filter-confirm>确认</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="range-scope-panel" data-range-scope-panel="weekly" hidden>
+                        <div class="range-filter-row">
+                          <div class="range-filter-field">
+                            <span class="range-filter-label">周筛选器</span>
+                            <div class="select-demo-stack" data-select-demo data-select-multiple data-select-collapse-fit data-select-placeholder="请选择星期">
+                              <button class="spec-select" type="button" aria-label="选择星期" aria-haspopup="listbox" aria-expanded="false">
+                                <span class="select-tags nowrap" data-select-tags>
+                                  <span class="select-tag" data-value="周一"><span>周一</span><span class="select-tag-remove">×</span></span>
+                                  <span class="select-tag" data-value="周三"><span>周三</span><span class="select-tag-remove">×</span></span>
+                                  <span class="select-tag" data-value="周五"><span>周五</span><span class="select-tag-remove">×</span></span>
+                                </span>
+                                <span class="select-chevron" aria-hidden="true"></span>
+                              </button>
+                              <div class="select-dropdown weekday-filter-panel" role="listbox" aria-label="选择周" hidden>
+                                <ul class="select-option-list weekday-filter-list">
+                                  <li class="select-option active" role="option" aria-selected="true" data-value="周一"><span>周一</span><span class="select-option-check" aria-hidden="true"></span></li>
+                                  <li class="select-option" role="option" aria-selected="false" data-value="周二"><span>周二</span></li>
+                                  <li class="select-option active" role="option" aria-selected="true" data-value="周三"><span>周三</span><span class="select-option-check" aria-hidden="true"></span></li>
+                                  <li class="select-option" role="option" aria-selected="false" data-value="周四"><span>周四</span></li>
+                                  <li class="select-option active" role="option" aria-selected="true" data-value="周五"><span>周五</span><span class="select-option-check" aria-hidden="true"></span></li>
+                                  <li class="select-option" role="option" aria-selected="false" data-value="周六"><span>周六</span></li>
+                                  <li class="select-option" role="option" aria-selected="false" data-value="周日"><span>周日</span></li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="range-filter-field" data-time-filter-demo>
+                            <span class="range-filter-label">时间筛选器</span>
+                            <div class="spec-date spec-time time-input-control" aria-haspopup="dialog" aria-expanded="false" data-time-filter-trigger>
+                              <input class="time-input-field" type="text" value="09:00:00" placeholder="请选择时间" inputmode="numeric" autocomplete="off" readonly data-time-filter-value>
+                              <span class="time-icon" aria-hidden="true"></span>
+                              <button class="time-clear-btn" type="button" aria-label="清空时间" data-time-filter-clear></button>
+                            </div>
+                            <div class="date-dropdown time-picker-dropdown time-filter-panel" role="dialog" aria-label="选择时间" hidden>
+                              <div class="date-time-columns">
+                                <div>
+                                  <span class="date-time-label">小时</span>
+                                  <div class="date-time-list" data-time-unit="hour"></div>
+                                </div>
+                                <div>
+                                  <span class="date-time-label">分钟</span>
+                                  <div class="date-time-list" data-time-unit="minute"></div>
+                                </div>
+                                <div>
+                                  <span class="date-time-label">秒</span>
+                                  <div class="date-time-list" data-time-unit="second"></div>
+                                </div>
+                              </div>
+                              <div class="date-time-actions">
+                                <button class="spec-btn subtle small" type="button" data-time-filter-cancel>取消</button>
+                                <button class="spec-btn primary small" type="button" data-time-filter-confirm>确认</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>状态</h2>
+                <div class="doc-grid">
+                  <div class="example-block">
+                    <h3>Default</h3>
+                    <p>默认状态使用白底、轻边框和中性图标。</p>
+                    <div class="date-demo-stack">
+                      <button class="spec-date" type="button">
+                        <span class="date-value">2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Hover</h3>
+                    <p>悬停时只将边框切换为品牌绿，不增加外扩散。</p>
+                    <div class="date-demo-stack">
+                      <button class="spec-date hover" type="button">
+                        <span class="date-value">2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Focus / Open</h3>
+                    <p>聚焦或展开时使用品牌绿边框与浅色外发光。</p>
+                    <div class="date-demo-stack">
+                      <button class="spec-date open" type="button">
+                        <span class="date-value">2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Error</h3>
+                    <p>日期不合法或超出可选范围时使用错误边框，不改变文本结构。</p>
+                    <div class="date-demo-stack">
+                      <button class="spec-date error focus" type="button">
+                        <span class="date-value">2026-07-01</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>Disabled</h3>
+                    <p>禁用态透明度保持 0.6，面板不可打开且日期不可选。</p>
+                    <div class="date-demo-stack">
+                      <button class="spec-date disabled" type="button" disabled>
+                        <span class="date-value">2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>尺寸</h2>
+                <div class="example-block full">
+                  <h3>Size</h3>
+                  <p>默认使用 38px，高密度表格筛选可使用 30px，关键表单区域可使用 44px。</p>
+                  <div class="example-row date-size-demo-row">
+                    <div class="date-demo-stack" data-date-demo data-date-mode="single">
+                      <button class="spec-date small" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-date-value>2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown" role="dialog" aria-label="选择小尺寸日期" hidden>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                            <h4 class="date-panel-title">2026 年 7 月</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                          </div>
+                          <div class="date-weekdays" aria-hidden="true">
+                            <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                          </div>
+                          <div class="date-days"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="date-demo-stack" data-date-demo data-date-mode="single">
+                      <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-date-value>2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown" role="dialog" aria-label="选择中尺寸日期" hidden>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                            <h4 class="date-panel-title">2026 年 7 月</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                          </div>
+                          <div class="date-weekdays" aria-hidden="true">
+                            <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                          </div>
+                          <div class="date-days"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="date-demo-stack" data-date-demo data-date-mode="single">
+                      <button class="spec-date large" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value" data-date-value>2026-07-29</span>
+                        <span class="date-icon" aria-hidden="true"></span>
+                      </button>
+                      <div class="date-dropdown" role="dialog" aria-label="选择大尺寸日期" hidden>
+                        <div class="date-calendar">
+                          <div class="date-calendar-row">
+                            <button class="date-nav-btn prev" type="button" aria-label="上个月"></button>
+                            <h4 class="date-panel-title">2026 年 7 月</h4>
+                            <button class="date-nav-btn next" type="button" aria-label="下个月"></button>
+                          </div>
+                          <div class="date-weekdays" aria-hidden="true">
+                            <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                          </div>
+                          <div class="date-days"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>API</h2>
                 <div class="spec-table-wrap">
                   <table class="spec-table">
                     <thead>
                       <tr>
-                        <th>名称</th>
-                        <th>值</th>
-                        <th>用途</th>
+                        <th>参数</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td><code>shadow-xs</code></td>
-                        <td><code>0 2px 6px rgba(20, 28, 36, 0.06)</code></td>
-                        <td>静态轻量容器、低强调卡片、细微层级提示。</td>
+                        <td><code>value</code></td>
+                        <td>当前受控值，可为单日期、日期范围、周期值或联动选择对象。</td>
+                        <td><code>Date | string | [Date, Date] | [string, string] | RangeScopeValue</code></td>
+                        <td><code>-</code></td>
                       </tr>
                       <tr>
-                        <td><code>shadow-sm</code></td>
-                        <td><code>0 4px 12px rgba(20, 28, 36, 0.08)</code></td>
-                        <td>hover、轻量卡片、可点击模块。</td>
+                        <td><code>defaultValue</code></td>
+                        <td>默认值，非受控场景初始化展示；联动选择可传入周期、星期和时间组合。</td>
+                        <td><code>Date | string | [Date, Date] | [string, string] | RangeScopeValue</code></td>
+                        <td><code>-</code></td>
                       </tr>
                       <tr>
-                        <td><code>shadow-md</code></td>
-                        <td><code>0 12px 28px rgba(20, 28, 36, 0.12)</code></td>
-                        <td>下拉菜单、弹出层、临时浮层。</td>
+                        <td><code>picker</code></td>
+                        <td>选择器类型，决定面板内容与选中粒度。</td>
+                        <td><code>date | week | month | quarter | year</code></td>
+                        <td><code>date</code></td>
                       </tr>
                       <tr>
-                        <td><code>shadow-focus</code></td>
-                        <td><code>0 0 0 3px rgb(var(--brand-rgb) / 0.16)</code></td>
-                        <td>键盘焦点与输入聚焦，随主题主色变化。</td>
+                        <td><code>range</code></td>
+                        <td>是否启用双日期范围选择；选择起止两个日期后自动确认并收起。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>rangeScope</code></td>
+                        <td>联动选择的周期类型，用于每小时、每日、每周筛选场景。</td>
+                        <td><code>hourly | daily | weekly</code></td>
+                        <td><code>daily</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>weekdays</code></td>
+                        <td>每周联动选择中选中的星期项，支持多选展示。</td>
+                        <td><code>Weekday[]</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>weekdayMultiple</code></td>
+                        <td>周筛选器是否启用多选下拉菜单。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>timeFilter</code></td>
+                        <td>每日、每周联动选择中的时间筛选器值或 TimePicker 配置。</td>
+                        <td><code>string | TimePickerProps</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>showTime</code></td>
+                        <td>是否展示时间面板；日期时间类型需点击确认后写入值。</td>
+                        <td><code>boolean | TimePickerProps</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>timePrecision</code></td>
+                        <td>时间选择精度；当前规范支持小时、分钟、秒三列。</td>
+                        <td><code>hour | minute | second</code></td>
+                        <td><code>second</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>shortcuts</code></td>
+                        <td>快捷时间点或快捷时间段选项，左侧列表与右侧日历联动。</td>
+                        <td><code>{ label, value: Date | string | [Date, Date] | [string, string] }[]</code></td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>shortcutMode</code></td>
+                        <td>快捷项选择模式；时间点只高亮单日，时间段高亮起止与中间区间。</td>
+                        <td><code>point | range</code></td>
+                        <td><code>point</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>disabledDate</code></td>
+                        <td>自定义不可选日期规则。</td>
+                        <td><code>(date) =&gt; boolean</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>placeholder</code></td>
+                        <td>未选择时的提示文案，范围选择可配置起止占位。</td>
+                        <td><code>string | [string, string]</code></td>
+                        <td><code>请选择日期</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>size</code></td>
+                        <td>日期选择器尺寸，切换尺寸仅改变高度与字号，触发器宽度保持一致。</td>
+                        <td><code>small | default | large</code></td>
+                        <td><code>default</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>open</code></td>
+                        <td>控制面板展开状态，展开面板为覆盖关系，不改变页面高度。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>status</code></td>
+                        <td>校验状态，用于错误或警告反馈。</td>
+                        <td><code>error | warning</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>disabled</code></td>
+                        <td>是否禁用日期选择器。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>confirmOnSelect</code></td>
+                        <td>是否选中后立即确认；单日期与范围选择默认自动确认，日期时间默认手动确认。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onChange</code></td>
+                        <td>日期、范围、周期、快捷项或联动选择值变化时触发。</td>
+                        <td><code>(value, dateString) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onOpenChange</code></td>
+                        <td>面板展开或收起时触发。</td>
+                        <td><code>(open) =&gt; void</code></td>
+                        <td><code>-</code></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </section>
 
-              <section class="doc-section style-module-start">
-                <h2>主题 Theme</h2>
-                <p>
-                  当前站点提供 IQ 主题、IQ Buddy 主题和 test 主题 1。主题之间保持组件结构一致，
-                  仅替换品牌色阶、焦点态、局部圆角和字体栈等基础变量，遮罩与中性色保持统一。
-                </p>
-                <div class="theme-grid" aria-label="主题列表">
-                  <div class="theme-card">
-                    <div class="theme-strip" aria-hidden="true">
-                      <span style="background: #effff6"></span>
-                      <span style="background: #b5ffd1"></span>
-                      <span style="background: #00d157"></span>
-                      <span style="background: #008f3f"></span>
-                      <span style="background: #075a2f"></span>
-                    </div>
-                    <div class="theme-body">
-                      <strong>IQ 主题</strong>
-                      <p>以 iQIYI 标准绿色为品牌主色，适用于默认产品界面。</p>
-                    </div>
-                  </div>
-                  <div class="theme-card">
-                    <div class="theme-strip" aria-hidden="true">
-                      <span style="background: #f0fff6"></span>
-                      <span style="background: #bef5d5"></span>
-                      <span style="background: #22b573"></span>
-                      <span style="background: #147c4d"></span>
-                      <span style="background: #104f34"></span>
-                    </div>
-                    <div class="theme-body">
-                      <strong>IQ Buddy 主题</strong>
-                      <p>使用更沉稳的绿色色阶，适用于 Buddy 产品语境。</p>
-                    </div>
-                  </div>
-                  <div class="theme-card">
-                    <div class="theme-strip" aria-hidden="true">
-                      <span style="background: #eff6ff"></span>
-                      <span style="background: #bfdbfe"></span>
-                      <span style="background: #2672ff"></span>
-                      <span style="background: #1e4fb3"></span>
-                      <span style="background: #172f68"></span>
-                    </div>
-                    <div class="theme-body">
-                      <strong>test 主题 1</strong>
-                      <p>以蓝色为主色，并使用 2px 控件圆角验证主题差异。</p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
               <section class="doc-section">
-                <h2>变量范围</h2>
-                <div class="style-token-grid" aria-label="主题变量范围">
-                  <div class="style-token-card">
-                    <strong>Brand</strong>
-                    <span><code>--brand-50</code> 到 <code>--brand-900</code>、文本色、边框色和 RGB 值。</span>
-                  </div>
-                  <div class="style-token-card">
-                    <strong>Interaction</strong>
-                    <span>hover、focus、focus ring、输入框聚焦与数字输入框聚焦。</span>
-                  </div>
-                  <div class="style-token-card">
-                    <strong>Shape & Font</strong>
-                    <span>控件圆角、主题字体栈和组件内需要跟随品牌变化的基础样式。</span>
-                  </div>
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>值</th>
+                        <th>用途</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>--date-picker-height</code></td>
+                        <td><code>38px</code></td>
+                        <td>默认输入高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-trigger-width</code></td>
+                        <td><code>260px</code></td>
+                        <td>基础、小、大尺寸触发器统一宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-height-small</code></td>
+                        <td><code>30px</code></td>
+                        <td>Small 尺寸高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-font-size-small</code></td>
+                        <td><code>12px</code></td>
+                        <td>Small 尺寸字号。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-height-large</code></td>
+                        <td><code>44px</code></td>
+                        <td>Large 尺寸高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-font-size</code></td>
+                        <td><code>13px</code></td>
+                        <td>默认输入、面板与选项字号。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-font-size-large</code></td>
+                        <td><code>14px</code></td>
+                        <td>Large 尺寸字号。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-radius</code></td>
+                        <td><code>10px</code></td>
+                        <td>输入圆角。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-radius-small</code></td>
+                        <td><code>8px</code></td>
+                        <td>Small 尺寸输入圆角。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-panel-radius</code></td>
+                        <td><code>12px</code></td>
+                        <td>下拉面板圆角。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-border-color</code></td>
+                        <td><code>#DDE1E5</code></td>
+                        <td>默认边框。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-hover-border-color</code></td>
+                        <td><code>#00D157</code></td>
+                        <td>触发器 hover 边框，无外发光。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-focus-color</code></td>
+                        <td><code>#00D157</code></td>
+                        <td>聚焦、选中与范围端点颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-focus-shadow</code></td>
+                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
+                        <td>聚焦外发光。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-panel-width</code></td>
+                        <td><code>284px</code></td>
+                        <td>基础日历面板宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-range-panel-width</code></td>
+                        <td><code>584px</code></td>
+                        <td>双列范围日历面板宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-datetime-panel-width</code></td>
+                        <td><code>524px</code></td>
+                        <td>日期时间面板宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-time-panel-width</code></td>
+                        <td><code>260px</code></td>
+                        <td>独立时间筛选面板宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-weekday-filter-width</code></td>
+                        <td><code>130px</code></td>
+                        <td>联动选择中周筛选器触发器与下拉菜单宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-linked-filter-gap</code></td>
+                        <td><code>16px</code></td>
+                        <td>联动选择中周筛选器与时间筛选器之间的横向间距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-shortcut-range-width</code></td>
+                        <td><code>716px</code></td>
+                        <td>快捷时间段双列面板宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-panel-gap</code></td>
+                        <td><code>14px</code></td>
+                        <td>双日历与日期时间面板内部间距。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-cell-size</code></td>
+                        <td><code>32px</code></td>
+                        <td>日期单元格尺寸。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-period-cell-height</code></td>
+                        <td><code>34px</code></td>
+                        <td>月份、年份、季度选项高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-cell-hover-bg</code></td>
+                        <td><code>#F5F6F7</code></td>
+                        <td>日期与周选择 hover 背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-range-bg</code></td>
+                        <td><code>#f3f5f7</code></td>
+                        <td>范围中间态背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-shortcut-width</code></td>
+                        <td><code>120px</code></td>
+                        <td>快捷时间点与快捷时间段左侧列表宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-scope-tab-height</code></td>
+                        <td><code>30px</code></td>
+                        <td>每小时、每日、每周切换标签高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-scope-tab-hover-border-color</code></td>
+                        <td><code>transparent</code></td>
+                        <td>一级切换标签 hover 无描边，仅使用浅灰底。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-time-list-height</code></td>
+                        <td><code>208px</code></td>
+                        <td>小时、分钟、秒滚动列表最大高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-scrollbar-width</code></td>
+                        <td><code>4px</code></td>
+                        <td>时间列表弱化滚动条宽度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--date-picker-disabled-opacity</code></td>
+                        <td><code>0.6</code></td>
+                        <td>禁用态透明度。</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>维护原则</h2>
-                <ul class="rule-list">
-                  <li>新增主题时先补齐品牌色阶，再校验组件 hover、focus、disabled 和 error 状态。</li>
-                  <li>组件样式优先读取全局变量，避免在组件内部写死可主题化的品牌值。</li>
-                  <li>主题差异只能改变视觉语义，不改变组件结构、交互路径和可访问性表达。</li>
-                </ul>
               </section>
             </article>
 
-
-
-
-
-
-
-
-
-
-
-
-
+            
           </div>
         </section>
       </main>
@@ -5953,10 +4948,10 @@
       const productSelectTrigger = document.querySelector("[data-product-select-trigger]");
       const productSelectMenu = document.querySelector("[data-product-select-menu]");
       const productSelectValue = document.querySelector("[data-product-select-value]");
-      const productStorageKey = "iqb-design-active-product";
+      const productStorageKey = "design-system-active-product";
       const productLabels = {
-        "iq-buddy": "默认主题",
-        "iq-buddy-theme": "业务主题",
+        "default-theme": "默认主题",
+        "business-theme": "业务主题",
         decentralized: "实验主题",
       };
       const defaultProductThemeVars = [
@@ -5989,13 +4984,13 @@
         defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
         root.style.removeProperty("font-family");
         root.removeAttribute("data-product-theme");
-        if (activeProduct === "iq-buddy") {
-          root.dataset.productTheme = "iq-theme";
+        if (activeProduct === "default-theme") {
+          root.dataset.productTheme = "default-theme";
           return;
         }
 
-        if (activeProduct === "iq-buddy-theme") {
-          root.dataset.productTheme = "iq-buddy-theme";
+        if (activeProduct === "business-theme") {
+          root.dataset.productTheme = "business-theme";
           root.style.setProperty("--brand-50", "#f0fff6");
           root.style.setProperty("--brand-100", "#ddfbea");
           root.style.setProperty("--brand-200", "#bef5d5");
@@ -6051,7 +5046,7 @@
       };
       const syncProductSelect = (activeProduct) => {
         if (productSelectValue) {
-          productSelectValue.textContent = productLabels[activeProduct] || productLabels["iq-buddy"];
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels["default-theme"];
         }
         productOptions.forEach((option) => {
           option.setAttribute("aria-selected", String(option.dataset.productOption === activeProduct));
@@ -6081,7 +5076,7 @@
       const savedProduct = getSavedProduct();
       const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
         ? savedProduct
-        : "iq-buddy";
+        : "default-theme";
       syncProductSelect(initialProduct);
       productSelectTrigger?.addEventListener("click", (event) => {
         event.stopPropagation();
@@ -6159,154 +5154,12 @@
         centerCurrentNavItem(behavior);
       };
 
-      const getHashPage = () => {
-        const page = window.location.hash.slice(1);
-        return page && document.querySelector(`[data-panel="${page}"]`) ? page : "overview";
-      };
-
-      switchPage(getHashPage(), "auto");
+      centerCurrentNavItem("auto");
 
       pageTriggers.forEach((button) => {
         button.addEventListener("click", () => {
-          const page = button.dataset.page;
-          switchPage(page);
-          if (window.location.hash.slice(1) !== page) {
-            history.replaceState(null, "", `#${page}`);
-          }
+          switchPage(button.dataset.page);
         });
-      });
-
-      window.addEventListener("hashchange", () => {
-        switchPage(getHashPage());
-      });
-
-      const colorPaletteSelect = document.querySelector("[data-color-palette-select]");
-      const colorPaletteTrigger = document.querySelector("[data-color-palette-trigger]");
-      const colorPaletteMenu = document.querySelector("[data-color-palette-menu]");
-      const colorPaletteValue = document.querySelector("[data-color-palette-value]");
-      const colorPaletteOptions = Array.from(document.querySelectorAll("[data-color-palette-option]"));
-      const colorPaletteSection = document.querySelector(".color-palette-section");
-      const colorBrandMeta = document.querySelector("[data-color-brand-meta]");
-      const functionalColorMeta = document.querySelector("[data-functional-color-meta]");
-      const colorBrandPalette = document.querySelector('[data-color-palette="brand"]');
-      const colorBrandRamp = colorBrandPalette?.querySelector("[data-color-palette-ramp]");
-      const testSuccessPalette = document.querySelector("[data-test-success-palette]");
-      const colorPaletteTitle = colorBrandPalette?.querySelector("[data-color-palette-title]");
-      const colorPaletteDesc = colorBrandPalette?.querySelector("[data-color-palette-desc]");
-      const colorPaletteBase = colorBrandPalette?.querySelector("[data-color-palette-base]");
-      const colorPaletteLevels = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
-      const colorPaletteSets = {
-        "iQIYI标准色": {
-          title: "iQIYI Green",
-          desc: "iQIYI 标准品牌色，500 固定为 #00D157。",
-          base: "iqiyi-500",
-          tokenPrefix: "iqiyi",
-          colors: ["#EFFFF6", "#D8FFE8", "#B5FFD1", "#7DFFB0", "#35F47C", "#00D157", "#00B84B", "#008F3F", "#067037", "#075A2F"],
-        },
-        "业务主题色": {
-          title: "IQ Buddy Green",
-          desc: "IQ Buddy 主题品牌色，500 固定为 #22B573。",
-          base: "iq-buddy-500",
-          tokenPrefix: "iq-buddy",
-          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
-        },
-        "test主题色": {
-          title: "Test Blue",
-          desc: "test 主题品牌色，500 固定为 #2672FF。",
-          base: "test-500",
-          tokenPrefix: "test",
-          colors: ["#EEF5FF", "#D9E8FF", "#B8D4FF", "#88B9FF", "#5796FF", "#2672FF", "#1358E6", "#0F45B8", "#12388F", "#142F73"],
-        },
-      };
-
-      const closeColorPaletteMenu = () => {
-        colorPaletteTrigger?.setAttribute("aria-expanded", "false");
-        if (colorPaletteMenu) {
-          colorPaletteMenu.hidden = true;
-        }
-      };
-
-      const applyColorPalette = (paletteName) => {
-        const activePaletteName = colorPaletteSets[paletteName] ? paletteName : "业务主题色";
-        const palette = colorPaletteSets[activePaletteName];
-        colorPaletteSection?.setAttribute("data-active-color-palette", activePaletteName);
-        if (colorPaletteValue) {
-          colorPaletteValue.textContent = activePaletteName;
-        }
-        if (colorPaletteTitle) {
-          colorPaletteTitle.textContent = palette.title;
-        }
-        if (colorPaletteDesc) {
-          colorPaletteDesc.textContent = palette.desc;
-        }
-        if (colorPaletteBase) {
-          colorPaletteBase.textContent = palette.base;
-        }
-        if (colorBrandMeta) {
-          colorBrandMeta.textContent = `品牌色 ${palette.colors[5]}`;
-        }
-        const shouldShowTestSuccess = activePaletteName === "test主题色";
-        if (functionalColorMeta) {
-          functionalColorMeta.textContent = shouldShowTestSuccess
-            ? "功能色覆盖红 / 黄 / 蓝 / 绿"
-            : "功能色覆盖红 / 黄 / 蓝";
-        }
-        if (testSuccessPalette) {
-          testSuccessPalette.hidden = !shouldShowTestSuccess;
-        }
-        colorBrandRamp?.setAttribute("aria-label", `${activePaletteName}品牌色色板`);
-        colorBrandRamp?.querySelectorAll(".color-swatch").forEach((swatch, index) => {
-          const hex = palette.colors[index];
-          const isDark = index >= 5;
-          swatch.style.setProperty("--swatch", hex.toLowerCase());
-          swatch.style.setProperty("--swatch-ink", isDark ? "#ffffff" : "#0b0d0f");
-          const token = swatch.querySelector(".color-token");
-          const value = swatch.querySelector(".color-hex");
-          if (token) {
-            token.textContent = `${palette.tokenPrefix}-${colorPaletteLevels[index]}`;
-          }
-          if (value) {
-            value.textContent = hex;
-          }
-        });
-        colorPaletteOptions.forEach((item) => {
-          item.setAttribute(
-            "aria-selected",
-            String((item.dataset.colorPaletteOption || item.textContent.trim()) === activePaletteName),
-          );
-        });
-      };
-
-      colorPaletteTrigger?.addEventListener("click", (event) => {
-        event.stopPropagation();
-        const isOpen = colorPaletteTrigger.getAttribute("aria-expanded") === "true";
-        colorPaletteTrigger.setAttribute("aria-expanded", String(!isOpen));
-        if (colorPaletteMenu) {
-          colorPaletteMenu.hidden = isOpen;
-        }
-      });
-
-      colorPaletteOptions.forEach((option) => {
-        option.addEventListener("click", (event) => {
-          event.stopPropagation();
-          const value = option.dataset.colorPaletteOption || option.textContent.trim();
-          applyColorPalette(value);
-          closeColorPaletteMenu();
-        });
-      });
-
-      applyColorPalette("iQIYI标准色");
-
-      document.addEventListener("click", (event) => {
-        if (!colorPaletteSelect?.contains(event.target)) {
-          closeColorPaletteMenu();
-        }
-      });
-
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-          closeColorPaletteMenu();
-        }
       });
 
       const loadingDemoBtn = document.getElementById("loadingDemoBtn");

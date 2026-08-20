@@ -1,0 +1,1227 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress 进度条 - Design System</title>
+    <style>
+      :root{--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--gray-900);background:var(--white)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--gray-200);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--gray-600);font-size:13px}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--white);border-right:1px solid var(--gray-200)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--gray-500);font-size:12px;line-height:1.4}.nav-category-count{color:var(--gray-400);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--gray-700);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--brand-500);background:var(--gray-100)}.nav-label{overflow:hidden;font-size:14px;line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--gray-500);border-top:1px solid var(--gray-200);font-size:12px;line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--brand-600);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--gray-900);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--gray-600);font-size:14px;line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:12px}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--gray-200)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:14px;font-weight:600}.doc-section p{margin:0;color:var(--gray-600);font-size:13px;line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--gray-500);font-size:13px}.stat-value{color:var(--gray-900);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--gray-500);font-size:12px}.metric-row strong{font-size:24px}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--white);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--gray-500);font-size:13px}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--brand-600);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:#fff;background:var(--gray-900);border-radius:6px;font-size:12px;line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:#fff;background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--gray-700);background:var(--gray-100)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--gray-500);font-size:13px}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--brand-500);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:#2e90fa;box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--gray-500);font-size:12px}.timeline strong{font-size:14px}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--gray-900);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--brand-600);font-size:12px;font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--gray-700);background:#fff;border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--brand-500);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--gray-200)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--gray-400);border:1px dashed var(--gray-300);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--gray-500);font-size:12px}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:#fff;background:#f04438;border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:#f79009}.status-dot.danger{background:#f04438}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--gray-200);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--gray-300);border-radius:6px}.empty-state strong{font-size:16px}.empty-state button{height:34px;padding:0 14px;color:#fff;background:var(--brand-500);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--gray-200)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      :root {
+        --brand-400: #35f47c;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+    
+      /* Feedback component examples */
+      .example-block.full {
+        grid-column: 1 / -1;
+      }
+
+      .feedback-stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .feedback-alert,
+      .feedback-message,
+      .feedback-notification,
+      .feedback-popconfirm,
+      .feedback-modal,
+      .feedback-drawer,
+      .feedback-progress,
+      .feedback-skeleton-card {
+        color: var(--gray-800);
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .feedback-alert {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 12px;
+        min-height: 44px;
+        padding: 12px 14px;
+        font-size: 13px;
+        line-height: 1.65;
+      }
+
+      .feedback-alert strong {
+        font-weight: 600;
+      }
+
+      .feedback-alert span,
+      .feedback-alert em,
+      .feedback-notification p,
+      .feedback-modal p,
+      .spin-stage p {
+        margin: 0;
+        color: var(--gray-600);
+        font-style: normal;
+      }
+
+      .feedback-alert.success { border-left: 3px solid #12b76a; }
+      .feedback-alert.info { border-left: 3px solid #2e90fa; }
+      .feedback-alert.warning { border-left: 3px solid #f79009; }
+      .feedback-alert.error { border-left: 3px solid #f04438; }
+
+      .feedback-alert.with-action {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+      }
+
+      .feedback-alert.with-action span {
+        display: grid;
+        gap: 2px;
+      }
+
+      .feedback-stage {
+        position: relative;
+        min-height: 260px;
+        overflow: hidden;
+        background: var(--gray-50);
+      }
+
+      .drawer-page-mock {
+        display: grid;
+        gap: 10px;
+        width: min(100%, 520px);
+        padding: 18px;
+      }
+
+      .drawer-page-mock span {
+        display: block;
+        height: 38px;
+        padding: 10px 12px;
+        color: var(--gray-500);
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+      }
+
+      .drawer-page-mock.muted {
+        opacity: 0.58;
+      }
+
+      .feedback-drawer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        width: min(380px, 72%);
+        height: 100%;
+        box-shadow: -12px 0 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .feedback-layer-head,
+      .feedback-layer-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .feedback-layer-foot {
+        justify-content: flex-end;
+        border-top: 1px solid var(--gray-200);
+        border-bottom: 0;
+      }
+
+      .feedback-layer-head button,
+      .feedback-layer-foot button,
+      .feedback-inline-actions button,
+      .feedback-alert button,
+      .feedback-notification button,
+      .feedback-trigger {
+        min-height: 30px;
+        padding: 0 12px;
+        color: var(--gray-700);
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 12px;
+      }
+
+      .feedback-layer-foot .primary,
+      .feedback-notification button,
+      .feedback-alert button {
+        color: var(--brand-500);
+        border-color: var(--brand-500);
+      }
+
+      .feedback-inline-actions .danger {
+        color: #d92d20;
+        border-color: #fecdca;
+      }
+
+      .feedback-form-line {
+        display: grid;
+        gap: 6px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--gray-100);
+        font-size: 13px;
+      }
+
+      .feedback-form-line span {
+        color: var(--gray-500);
+      }
+
+      .message-stage {
+        display: grid;
+        align-content: start;
+        justify-items: center;
+        gap: 10px;
+        padding-top: 26px;
+      }
+
+      .feedback-message {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 38px;
+        padding: 0 14px;
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+        font-size: 13px;
+      }
+
+      .feedback-dot {
+        width: 8px;
+        height: 8px;
+        background: #2e90fa;
+        border-radius: 50%;
+      }
+
+      .feedback-message.success .feedback-dot { background: #12b76a; }
+      .feedback-message.error .feedback-dot { background: #f04438; }
+
+      .modal-stage {
+        display: grid;
+        place-items: center;
+      }
+
+      .feedback-mask {
+        position: absolute;
+        inset: 0;
+        background: rgba(11, 13, 15, 0.38);
+      }
+
+      .feedback-modal {
+        position: relative;
+        z-index: 1;
+        width: min(420px, 92%);
+        box-shadow: 0 18px 42px rgba(20, 28, 36, 0.18);
+      }
+
+      .feedback-modal p {
+        padding: 16px;
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .popconfirm-stage {
+        position: relative;
+        min-height: 190px;
+        padding: 56px 48px;
+      }
+
+      .feedback-popconfirm {
+        position: absolute;
+        top: 34px;
+        left: 140px;
+        display: grid;
+        gap: 8px;
+        width: 244px;
+        padding: 12px;
+        box-shadow: 0 14px 32px rgba(20, 28, 36, 0.14);
+        font-size: 13px;
+      }
+
+      .feedback-popconfirm::before {
+        position: absolute;
+        top: 26px;
+        left: -6px;
+        width: 10px;
+        height: 10px;
+        content: "";
+        background: var(--white);
+        border-left: 1px solid var(--gray-200);
+        border-bottom: 1px solid var(--gray-200);
+        transform: rotate(45deg);
+      }
+
+      .feedback-popconfirm p {
+        margin: 0;
+        color: var(--gray-600);
+        line-height: 1.6;
+      }
+
+      .feedback-inline-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .notification-stage {
+        display: grid;
+        justify-content: end;
+        gap: 12px;
+        min-height: 240px;
+        background: var(--gray-50);
+      }
+
+      .feedback-notification {
+        display: grid;
+        gap: 8px;
+        width: min(100%, 340px);
+        padding: 14px;
+        box-shadow: 0 14px 32px rgba(20, 28, 36, 0.12);
+        font-size: 13px;
+        border-top: 3px solid #2e90fa;
+      }
+
+      .feedback-notification.success { border-top-color: #12b76a; }
+      .feedback-notification.warning { border-top-color: #f79009; }
+      .feedback-notification button {
+        justify-self: start;
+      }
+
+      .progress-demo {
+        max-width: 680px;
+      }
+
+      .feedback-progress {
+        display: grid;
+        gap: 9px;
+        padding: 14px;
+      }
+
+      .feedback-progress > span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .feedback-progress em {
+        color: var(--gray-500);
+        font-style: normal;
+      }
+
+      .progress-track {
+        height: 8px;
+        overflow: hidden;
+        background: var(--gray-100);
+        border-radius: 999px;
+      }
+
+      .progress-track i {
+        display: block;
+        height: 100%;
+        background: var(--brand-500);
+        border-radius: inherit;
+      }
+
+      .feedback-progress.success .progress-track i { background: #12b76a; }
+      .feedback-progress.warning .progress-track i { background: #f79009; }
+
+      .spin-stage {
+        display: grid;
+        justify-items: center;
+        gap: 10px;
+        padding: 38px;
+        text-align: center;
+      }
+
+      .feedback-spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid var(--gray-200);
+        border-top-color: var(--brand-500);
+        border-radius: 50%;
+        animation: feedback-spin 0.8s linear infinite;
+      }
+
+      .spin-container-stage {
+        display: grid;
+        place-items: center;
+      }
+
+      .feedback-loading-cover {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        align-content: center;
+        gap: 10px;
+        color: var(--gray-600);
+        background: rgba(255, 255, 255, 0.74);
+        font-size: 13px;
+      }
+
+      @keyframes feedback-spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .feedback-skeleton-row {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        align-items: center;
+        gap: 12px;
+        padding: 14px;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .skeleton-avatar,
+      .skeleton-lines i,
+      .feedback-skeleton-card i {
+        display: block;
+        background: linear-gradient(90deg, var(--gray-100), var(--gray-200), var(--gray-100));
+        background-size: 200% 100%;
+        animation: skeleton-shimmer 1.2s ease-in-out infinite;
+      }
+
+      .skeleton-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+      }
+
+      .skeleton-lines {
+        display: grid;
+        gap: 8px;
+      }
+
+      .skeleton-lines i,
+      .feedback-skeleton-card i {
+        height: 12px;
+        border-radius: 999px;
+      }
+
+      .skeleton-lines .short,
+      .feedback-skeleton-card .short {
+        width: 58%;
+      }
+
+      .skeleton-card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .feedback-skeleton-card {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+      }
+
+      @keyframes skeleton-shimmer {
+        to { background-position: -200% 0; }
+      }
+
+      @media (max-width: 860px) {
+        .feedback-alert,
+        .feedback-alert.with-action,
+        .feedback-skeleton-row {
+          grid-template-columns: 1fr;
+        }
+
+        .feedback-drawer {
+          width: min(340px, 82%);
+        }
+
+        .feedback-popconfirm {
+          left: 36px;
+          top: 96px;
+          width: calc(100% - 72px);
+        }
+
+        .skeleton-card-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 IQB DESIGN 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQB DESIGN</span>
+        </a>
+        <div class="topbar-actions" aria-label="组件完成状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 45/46</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/model.html">
+                      <span class="nav-label">Model 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html" aria-current="page">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+        <section class="canvas" aria-label="Progress 进度条组件说明详情区">
+          <div class="canvas-inner">
+            <article class="doc-page">
+              <header class="doc-hero">
+                <p class="doc-kicker">Feedback / Progress</p>
+                <h1 class="doc-title">Progress 进度条</h1>
+                <p class="doc-summary">Progress 用于反馈任务完成比例、上传下载进度或分步流程状态，让用户判断等待时长和执行结果。</p>
+                <ul class="doc-meta-list" aria-label="Progress 进度条 基础规格">
+                  <li>线性进度</li>
+                  <li>支持状态</li>
+                  <li>支持百分比</li>
+                  <li>可用于步骤任务</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>何时使用</h2>
+                <ul class="rule-list">
+                  <li>任务进度可量化时使用 Progress 展示百分比或阶段状态。</li>
+                  <li>无法估计完成比例时使用 Spin。</li>
+                  <li>进度条应与任务对象贴近，避免脱离上下文单独展示。</li>
+                </ul>
+              </section>
+
+              <section class="doc-section">
+                <h2>基础进度</h2>
+                <div class="example-block full feedback-stack progress-demo">
+                  <div class="feedback-progress"><span><strong>素材上传</strong><em>72%</em></span><div class="progress-track"><i style="width:72%"></i></div></div>
+                  <div class="feedback-progress success"><span><strong>内容生成</strong><em>100%</em></span><div class="progress-track"><i style="width:100%"></i></div></div>
+                  <div class="feedback-progress warning"><span><strong>风险扫描</strong><em>48%</em></span><div class="progress-track"><i style="width:48%"></i></div></div>
+                </div>
+              </section>
+              <section class="doc-section">
+                <h2>状态表达</h2>
+                <div class="example-block full"><ul class="rule-list"><li>进行中使用品牌色，完成使用成功色，异常或需关注状态使用警告色。</li><li>展示百分比时保持右侧对齐，减少加载过程中的布局跳动。</li></ul></div>
+              </section>
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>percent</code></td>
+                        <td>当前进度百分比。</td>
+                        <td><code>number</code></td>
+                        <td><code>0</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>status</code></td>
+                        <td>进度状态。</td>
+                        <td><code>"active" | "success" | "warning" | "error"</code></td>
+                        <td><code>"active"</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>showInfo</code></td>
+                        <td>是否展示百分比信息。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>strokeWidth</code></td>
+                        <td>进度条高度。</td>
+                        <td><code>number</code></td>
+                        <td><code>8</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector('[data-component-count-label]');
+        if (!label) return;
+        const pendingKeys = new Set(['card']);
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute('href') || '').split('#').pop().replace(/.html$/, '');
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', '#22b573');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const centerNavItem = (item, behavior = 'auto') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+        if (isHorizontal) {
+          sidebar.scrollTo({ left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2, behavior });
+          return;
+        }
+        sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
+      };
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+    </script>
+  </body>
+</html>

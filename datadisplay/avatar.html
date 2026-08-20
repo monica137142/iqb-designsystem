@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Avatar 头像 - Design System</title>
+    <style>
+      :root{--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--gray-900);background:var(--white)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--gray-200);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--gray-600);font-size:13px}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--white);border-right:1px solid var(--gray-200)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--gray-500);font-size:12px;line-height:1.4}.nav-category-count{color:var(--gray-400);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--gray-700);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--brand-500);background:var(--gray-100)}.nav-label{overflow:hidden;font-size:14px;line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--gray-500);border-top:1px solid var(--gray-200);font-size:12px;line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--brand-600);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--gray-900);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--gray-600);font-size:14px;line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-sm);font-size:12px}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--gray-200)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:14px;font-weight:600}.doc-section p{margin:0;color:var(--gray-600);font-size:13px;line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--white);border:1px solid var(--gray-200);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--gray-500);font-size:13px}.stat-value{color:var(--gray-900);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--gray-500);font-size:12px}.metric-row strong{font-size:24px}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--white);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--gray-500);font-size:13px}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200);border-radius:6px;font-size:12px;text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--brand-600);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--gray-700);background:var(--gray-50);border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:#fff;background:var(--gray-900);border-radius:6px;font-size:12px;line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:#fff;background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--gray-700);background:var(--gray-100)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--gray-700);background:var(--gray-100);border:1px solid var(--gray-200)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--gray-500);font-size:13px}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--brand-500);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:#2e90fa;box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--gray-500);font-size:12px}.timeline strong{font-size:14px}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--gray-900);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--brand-600);font-size:12px;font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--gray-700);background:#fff;border:1px solid var(--gray-200);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--brand-500);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--gray-200)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--gray-400);border:1px dashed var(--gray-300);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--gray-500);font-size:12px}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:#fff;background:#f04438;border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:#f79009}.status-dot.danger{background:#f04438}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--gray-200);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--gray-300);border-radius:6px}.empty-state strong{font-size:16px}.empty-state button{height:34px;padding:0 14px;color:#fff;background:var(--brand-500);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--gray-200)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      :root {
+        --brand-400: #35f47c;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      /* Keep the sidebar scrollbar identical to dataentry/input.html. */
+      .sidebar {
+        scrollbar-gutter: stable;
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+    </style>
+    <style>
+      :root {
+        --avatar-size-small: 30px;
+        --avatar-size-medium: 36px;
+        --avatar-size-large: 44px;
+        --avatar-bg: var(--gray-700);
+        --avatar-fallback-bg: var(--gray-100);
+        --avatar-text-color: var(--white);
+        --avatar-font-size: 14px;
+        --avatar-font-weight: 500;
+        --avatar-square-radius: var(--radius-sm);
+        --avatar-group-overlap: -10px;
+        --avatar-group-border-color: var(--white);
+        --avatar-badge-color: #f04438;
+        --input-number-hover-border-color: var(--brand-500);
+        --input-number-focus-color: var(--brand-500);
+        --input-number-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        --input-number-error-color: #f04438;
+        --input-number-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+      }
+
+      .content-panel.doc-page { width: 100%; }
+      .avatar-doc-stack { display: grid; gap: 14px; }
+      .avatar-demo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+      .avatar-demo-item { display: inline-grid; min-width: 120px; justify-items: center; gap: 8px; color: var(--gray-500); font-size: 12px; }
+      .avatar {
+        position: relative;
+        width: var(--avatar-size-medium);
+        height: var(--avatar-size-medium);
+        flex: 0 0 auto;
+        color: var(--avatar-text-color);
+        background: var(--avatar-bg);
+        border-radius: 50%;
+        font-size: var(--avatar-font-size);
+        font-weight: var(--avatar-font-weight);
+        line-height: 1;
+        white-space: nowrap;
+      }
+      .avatar.small { width: var(--avatar-size-small); height: var(--avatar-size-small); font-size: 12px; }
+      .avatar.large { width: var(--avatar-size-large); height: var(--avatar-size-large); font-size: 15px; }
+      .avatar.custom-size { width: 52px; height: 52px; font-size: 17px; }
+      .avatar.square { border-radius: var(--avatar-square-radius); }
+      .avatar.brand { color: var(--gray-900); background: rgb(var(--brand-rgb) / 0.16); }
+      .avatar.icon-avatar { color: var(--brand-600); background: rgb(var(--brand-rgb) / 0.12); }
+      .avatar.icon-default { color: var(--gray-900); background: var(--gray-100); }
+      .avatar.icon-brand { color: #008f3f; background: #effff6; }
+      .avatar.icon-info { color: #1570ef; background: #eff8ff; }
+      .avatar.character-default { color: var(--white); background: var(--brand-500); }
+      .avatar.character-green { color: var(--white); background: #008f3f; }
+      .avatar.character-blue { color: var(--white); background: #1570ef; }
+      .avatar.character-warning { color: var(--white); background: #fdb022; }
+      .avatar svg { width: 52%; height: 52%; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+      .avatar.auto-text { padding: 0 4px; overflow: hidden; }
+      .avatar.auto-text > span { display: block; transform-origin: center; }
+      .avatar-responsive { width: clamp(30px, 6vw, 56px); height: clamp(30px, 6vw, 56px); font-size: clamp(12px, 1.8vw, 18px); }
+      .avatar-badge-wrap { position: relative; display: inline-flex; }
+      .avatar-badge {
+        position: absolute;
+        top: -6px;
+        right: -8px;
+        z-index: 1;
+        display: grid;
+        min-width: 18px;
+        height: 18px;
+        padding: 0 4px;
+        place-items: center;
+        color: var(--white);
+        background: var(--avatar-badge-color);
+        border: 2px solid var(--white);
+        border-radius: 999px;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 14px;
+      }
+      .avatar-badge.dot { top: 0; right: 0; width: 10px; min-width: 10px; height: 10px; padding: 0; }
+      .avatar-group .avatar { margin-left: var(--avatar-group-overlap); border: 2px solid var(--avatar-group-border-color); }
+      .avatar-group .avatar:first-child { margin-left: 0; }
+      .avatar-group.large-group .avatar { width: var(--avatar-size-large); height: var(--avatar-size-large); }
+      .avatar-interactive { position: relative; display: inline-flex; border-radius: 50%; }
+      .avatar-mask {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        color: var(--white);
+        background: rgb(11 13 15 / 0.64);
+        border: 0;
+        border-radius: inherit;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.15s ease;
+      }
+      .avatar-interactive:hover .avatar-mask,
+      .avatar-mask:focus-visible { opacity: 1; }
+      .avatar-mask:focus-visible,
+      .avatar-trigger-button:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+      .avatar-trigger-button {
+        display: inline-grid;
+        width: 28px;
+        height: 28px;
+        margin-left: -9px;
+        place-items: center;
+        align-self: end;
+        color: var(--gray-700);
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: 50%;
+        cursor: pointer;
+      }
+      .avatar-trigger-button svg,
+      .avatar-mask svg { width: 14px; height: 14px; }
+      .avatar-action-note { min-height: 20px; color: var(--brand-600); font-size: 12px; }
+      .avatar-color-spec {
+        display: inline-grid;
+        min-width: 120px;
+        justify-items: center;
+        gap: 6px;
+        color: var(--gray-500);
+        font-size: 11px;
+        line-height: 1.35;
+      }
+      .avatar-demo-label { color: var(--gray-600); font-size: 12px; line-height: 1.5; }
+      .avatar.image-error {
+        color: var(--avatar-text-color);
+        background: var(--avatar-fallback-bg);
+      }
+      .avatar.image-error img { display: none; }
+      .avatar-fallback-grid { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 14px; }
+      .avatar-fallback-text { line-height: 1; }
+      .avatar-custom-demo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 18px;
+        margin-top: 14px;
+      }
+      .avatar-custom-preview {
+        display: inline-flex;
+        min-width: 120px;
+        align-self: center;
+        justify-content: center;
+      }
+      .avatar-size-control {
+        display: grid;
+        min-width: 160px;
+        align-self: center;
+        gap: 7px;
+        color: var(--gray-700);
+        font-size: 12px;
+      }
+      .number-input {
+        width: min(100%, 220px);
+        min-height: 38px;
+        display: inline-flex;
+        align-items: stretch;
+        overflow: hidden;
+        border: 1px solid #dde1e5;
+        border-radius: 10px;
+        background: var(--white);
+        transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      }
+      .number-input:hover {
+        border-color: var(--input-number-hover-border-color);
+        background: var(--white);
+        box-shadow: none;
+      }
+      .number-input:focus-within { border-color: var(--input-number-focus-color); box-shadow: var(--input-number-focus-shadow); }
+      .number-input.small { width: min(100%, 160px); min-height: 30px; border-radius: 8px; }
+      .number-input .spec-input {
+        height: 36px;
+        flex: 1;
+        min-width: 0;
+        padding: 0 10px 0 12px;
+        color: var(--gray-900);
+        background: transparent;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        outline: none;
+        font-size: 13px;
+      }
+      .number-input.small .spec-input { height: 28px; font-size: 12px; }
+      .number-input input[type="number"] { appearance: textfield; }
+      .number-input input[type="number"]::-webkit-inner-spin-button,
+      .number-input input[type="number"]::-webkit-outer-spin-button {
+        margin: 0;
+        appearance: none;
+      }
+      .number-stepper { width: 28px; display: grid; grid-template-rows: 1fr 1fr; flex: 0 0 auto; border-left: 1px solid #dde1e5; background: var(--gray-50); }
+      .number-step { display: grid; min-width: 0; min-height: 0; padding: 0; place-items: center; color: #6b7178; background: transparent; border: 0; cursor: pointer; }
+      .number-step + .number-step { border-top: 1px solid #dde1e5; }
+      .number-step:hover { color: #33383d; background: #f0f2f4; }
+      .number-step svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+      .number-input.error { border-color: var(--input-number-error-color); }
+      .number-input.error:focus-within { border-color: var(--input-number-error-color); box-shadow: var(--input-number-error-shadow); }
+      .avatar-size-error {
+        color: #d92d20;
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      .avatar-size-error:empty { display: none; }
+      .avatar-responsive-demo { display: grid; justify-items: start; gap: 10px; margin-top: 14px; }
+      .avatar-resize-stage {
+        display: grid;
+        width: 108px;
+        height: 108px;
+        min-width: 108px;
+        min-height: 108px;
+        max-width: 300px;
+        max-height: 300px;
+        padding: 36px;
+        place-items: center;
+        overflow: auto;
+        resize: both;
+        background: var(--white);
+        border: 1px dashed var(--gray-300);
+        border-radius: var(--radius-sm);
+      }
+      .avatar-fluid { width: 36px; height: 36px; }
+      .avatar-group-size-list { display: flex; flex-wrap: wrap; align-items: end; column-gap: 40px; row-gap: 28px; margin-top: 14px; }
+      .avatar-group-size-list > div { display: grid; justify-items: center; gap: 9px; text-align: center; }
+      .avatar-group.group-small .avatar { width: 30px; height: 30px; font-size: 11px; }
+      .avatar-group.group-medium .avatar { width: 36px; height: 36px; font-size: 12px; }
+      .avatar-group.group-large .avatar { width: 44px; height: 44px; font-size: 12px; }
+      .spec-table-wrap { overflow-x: auto; border: 1px solid var(--gray-200); border-radius: 8px; }
+      .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
+      .spec-table th,
+      .spec-table td { padding: 12px 14px; border-bottom: 1px solid var(--gray-200); vertical-align: top; }
+      .spec-table th { color: var(--gray-700); background: var(--gray-50); font-size: 12px; font-weight: 600; }
+      .spec-table tr:last-child td { border-bottom: 0; }
+      .spec-table td { color: var(--gray-600); line-height: 1.6; }
+      code { padding: 2px 5px; color: var(--gray-800); background: var(--gray-100); border-radius: 4px; font-size: 12px; }
+      @media (max-width: 560px) {
+        .avatar-responsive { width: 30px; height: 30px; font-size: 12px; }
+        .avatar-custom-demo { flex-wrap: wrap; }
+      }
+
+      /* Canonical documentation layout shared by Input, Button and DatePicker. */
+      .app-shell { background: var(--white); }
+      .canvas {
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+        background: var(--white);
+      }
+      .canvas-inner {
+        display: grid;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+      .content-panel[hidden] { display: none; }
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+      .doc-hero,
+      .doc-section { padding: 28px 32px; }
+      .doc-hero { border-bottom: 1px solid var(--gray-200); }
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--brand-500);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .doc-title {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        color: var(--gray-600);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+      .doc-meta-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color: var(--gray-600);
+        background: var(--gray-100);
+        border: 0;
+        border-radius: 999px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .doc-section {
+        margin: 0;
+        border-top: 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+      .doc-section:last-child { border-bottom: 0; }
+      .doc-section h2 {
+        margin: 0 0 14px;
+        color: var(--gray-900);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+      .doc-section h3 {
+        margin: 0 0 8px;
+        color: var(--gray-800);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .doc-section p {
+        margin: 0;
+        color: var(--gray-600);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+      .rule-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .rule-list li {
+        position: relative;
+        padding-left: 16px;
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+      .rule-list li::before {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        content: "";
+        background: var(--brand-500);
+        border-radius: 999px;
+      }
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .example-block {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+      .example-block.full { grid-column: 1 / -1; }
+      .avatar-demo-row,
+      .avatar-group-wrap { margin-top: 14px; }
+      .spec-table-wrap { border-radius: var(--radius-sm); }
+      .spec-table { min-width: 680px; }
+      .spec-table th { font-weight: 600; }
+      .spec-table th { font-size: 13px; }
+      .spec-table code,
+      code {
+        color: var(--gray-800);
+        background: var(--gray-100);
+        border-radius: 4px;
+        padding: 2px 5px;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size: 12px;
+      }
+
+      @media (max-width: 760px) {
+        body { overflow: auto; }
+        .app-shell { min-height: 100vh; height: auto; }
+        .topbar { position: sticky; top: 0; padding: 0 16px; }
+        .topbar-actions { display: none; }
+        .workspace { grid-template-columns: 1fr; }
+        .sidebar {
+          position: sticky;
+          top: var(--topbar-height);
+          z-index: 2;
+          flex-direction: row;
+          align-items: center;
+          gap: 12px;
+          width: 100%;
+          min-height: auto;
+          padding: 12px 14px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          border-right: 0;
+          border-bottom: 1px solid var(--gray-200);
+        }
+        .sidebar-footer { display: none; }
+        .nav-list,
+        .nav-section,
+        .nav-sublist { flex-direction: row; align-items: center; gap: 8px; }
+        .nav-list { padding: 0; }
+        .nav-category { padding: 0 2px; white-space: nowrap; }
+        .nav-button { width: auto; min-height: 36px; padding: 0 12px; }
+        .canvas-inner { min-height: 560px; padding: 18px; }
+        .doc-hero,
+        .doc-section { padding: 22px 18px; }
+        .doc-title { font-size: 24px; }
+        .doc-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 Enterprise Design System 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">Enterprise Design System</span>
+        </a>
+        <div class="topbar-actions" aria-label="组件完成状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 45/46</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html" aria-current="page">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/model.html">
+                      <span class="nav-label">Model 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+        <section class="canvas" aria-label="头像组件说明详情区">
+          <div class="canvas-inner">
+            <article class="content-panel doc-page" data-panel="avatar">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Display / Avatar</p>
+                <h1 class="doc-title">Avatar 头像</h1>
+                <p class="doc-summary">Avatar 用于代表用户、团队、Agent 或资源对象，支持图片、图标和字符展示，也可组合徽标、头像组与交互入口表达更完整的身份信息。</p>
+                <ul class="doc-meta-list" aria-label="头像基础规格">
+                  <li>默认尺寸 36px</li>
+                  <li>Small 30px / Large 44px</li>
+                  <li>Icon / 字符 / 图片</li>
+                  <li>支持头像组</li>
+                  <li>支持响应式尺寸</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>何时使用</h2>
+                <ul class="rule-list">
+                  <li>用于在列表、卡片、消息、评论和协作成员区域中展示用户、团队、Agent 或资源对象的身份。</li>
+                  <li>身份有稳定图片时优先使用图片头像；没有图片时，使用名称缩写或统一 Icon 作为回退。</li>
+                  <li>同一业务区域应保持头像类型和尺寸一致，避免图片、Icon 与字符头像无规则混排。</li>
+                  <li>需要同时展示多位成员时使用头像组，并通过“+N”收起超出数量，保持界面信息密度稳定。</li>
+                </ul>
+              </section>
+
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>基础头像</h3>
+                    <p>Avatar 用于展示对象身份，基础形态包括 Icon、字符和图片。默认使用 36px 圆形头像，可根据数据完整度选择合适的内容类型。</p>
+                    <div class="avatar-demo-row" aria-label="头像基础用法示例">
+                      <span class="avatar-demo-item"><span class="avatar icon-default" role="img" aria-label="Icon 头像"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20c.8-4.1 3.3-6.2 7.5-6.2s6.7 2.1 7.5 6.2"></path></svg></span><span class="avatar-demo-label">Icon 头像</span></span>
+                      <span class="avatar-demo-item"><span class="avatar character-default auto-text" data-auto-avatar><span>IQB</span></span><span class="avatar-demo-label">字符头像</span></span>
+                      <span class="avatar-demo-item"><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Felix" alt="图片头像示例" /></span><span class="avatar-demo-label">图片头像</span></span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>头像类型</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>Icon 头像</h3>
+                    <p>Icon 头像可以按身份或业务语义自定义 Icon 颜色和背景颜色。默认使用黑色 Icon 和浅灰背景；Icon 会随头像尺寸自动缩放，以适应头像大小。</p>
+                    <div class="avatar-demo-row" aria-label="Icon 头像颜色示例">
+                      <span class="avatar-color-spec"><span class="avatar icon-default" role="img" aria-label="默认 Icon 头像"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20c.8-4.1 3.3-6.2 7.5-6.2s6.7 2.1 7.5 6.2"></path></svg></span><span class="avatar-demo-label">默认 Icon 头像</span></span>
+                      <span class="avatar-color-spec"><span class="avatar icon-brand" role="img" aria-label="绿色 Icon 头像"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20c.8-4.1 3.3-6.2 7.5-6.2s6.7 2.1 7.5 6.2"></path></svg></span><span class="avatar-demo-label">绿色 Icon 头像</span></span>
+                      <span class="avatar-color-spec"><span class="avatar icon-info" role="img" aria-label="蓝色 Icon 头像"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"></circle><path d="M4.5 20c.8-4.1 3.3-6.2 7.5-6.2s6.7 2.1 7.5 6.2"></path></svg></span><span class="avatar-demo-label">蓝色 Icon 头像</span></span>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>字符头像</h3>
+                    <p>字符头像默认展示 1 个字符，支持自定义字符数，上限为 5；也支持自适应容纳字符数，字符会根据可用宽度自动调整字号，最多展示 5 个字符。</p>
+                    <div class="avatar-demo-row" aria-label="字符头像颜色示例">
+                      <span class="avatar-demo-item"><span class="avatar character-default auto-text" data-auto-avatar><span>A</span></span><span class="avatar-demo-label">默认字符像</span></span>
+                      <span class="avatar-demo-item"><span class="avatar character-blue auto-text" data-auto-avatar><span>IQB</span></span><span class="avatar-demo-label">蓝色字符头像</span></span>
+                      <span class="avatar-demo-item"><span class="avatar character-warning auto-text" data-auto-avatar><span>Agent</span></span><span class="avatar-demo-label">橙色字符头像</span></span>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>图片头像</h3>
+                    <p>图片使用填充裁切。所有用户头像示例统一使用 DiceBear API，仅作为 Demo 占位内容，不下载到本地；实际项目中可以自定义图片获取来源。</p>
+                    <div class="avatar-demo-row" aria-label="DiceBear 图片头像示例">
+                      <span class="avatar-demo-item"><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Avery" alt="用户 Avery" /></span><span class="avatar-demo-label">图片头像 A</span></span>
+                      <span class="avatar-demo-item"><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Bailey" alt="用户 Bailey" /></span><span class="avatar-demo-label">图片头像 B</span></span>
+                      <span class="avatar-demo-item"><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Casey" alt="用户 Casey" /></span><span class="avatar-demo-label">图片头像 C</span></span>
+                    </div>
+                    <h3 style="margin-top:20px">图片加载失败</h3>
+                    <p>默认显示 <code>var(--gray-100)</code> 纯色背景，也可以配置自定义色值、备用图片或字符头像。备用图片再次失败时回退到默认纯色。</p>
+                    <div class="avatar-fallback-grid" aria-label="图片加载失败回退示例">
+                      <span class="avatar-demo-item"><span class="avatar image" data-avatar-fallback><img src="../missing-avatar-default.png" alt="默认纯色回退示例" /></span><span class="avatar-demo-label">默认纯色</span></span>
+                      <span class="avatar-demo-item"><span class="avatar image" data-avatar-fallback data-fallback-type="color" data-fallback-color="#78818C"><img src="../missing-avatar-color.png" alt="自定义纯色回退示例" /></span><span class="avatar-demo-label">自定义纯色</span></span>
+                      <span class="avatar-demo-item"><span class="avatar image" data-avatar-fallback data-fallback-type="image" data-fallback-src="https://api.dicebear.com/9.x/avataaars/svg?seed=Fallback"><img src="../missing-avatar-image.png" alt="自定义备用图片示例" /></span><span class="avatar-demo-label">自定义图片</span></span>
+                      <span class="avatar-demo-item"><span class="avatar image" data-avatar-fallback data-fallback-type="text" data-fallback-text="A" data-fallback-color="#FFFFFF" data-fallback-background="var(--brand-500)"><img src="../missing-avatar-text.png" alt="自定义字符回退示例" /></span><span class="avatar-demo-label">自定义字符</span></span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>头像大小</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>小、中、大尺寸</h3>
+                    <p>通过 <code>size</code> 设置头像大小，支持小 30px、默认 36px、大 44px 三种预设尺寸。</p>
+                    <div class="avatar-demo-row avatar-size-row" aria-label="头像预设尺寸示例">
+                      <span class="avatar-demo-item"><span class="avatar image small"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Jordan" alt="30px 小头像" /></span><span class="avatar-demo-label">小 30px</span></span>
+                      <span class="avatar-demo-item"><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Jordan" alt="36px 默认头像" /></span><span class="avatar-demo-label">中 36px（默认）</span></span>
+                      <span class="avatar-demo-item"><span class="avatar image large"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Jordan" alt="44px 大头像" /></span><span class="avatar-demo-label">大 44px</span></span>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>自定义大小</h3>
+                    <p>输入数值可以实时调整头像大小。演示支持 16–300px，超出范围时保留上一次有效尺寸并展示提示。</p>
+                    <div class="avatar-custom-demo">
+                      <span class="avatar-custom-preview"><span class="avatar image" data-custom-avatar><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Riley" alt="自定义尺寸头像" /></span></span>
+                      <label class="avatar-size-control">头像尺寸
+                        <span class="number-input small" data-avatar-number-input>
+                          <input class="spec-input" type="number" min="16" max="300" value="36" data-avatar-size-input />
+                          <span class="number-stepper" aria-hidden="true">
+                            <button class="number-step" type="button" data-avatar-number-step="up" aria-label="增加头像尺寸"><svg viewBox="0 0 16 16"><path d="m4 10 4-4 4 4"></path></svg></button>
+                            <button class="number-step" type="button" data-avatar-number-step="down" aria-label="减少头像尺寸"><svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></button>
+                          </span>
+                        </span>
+                        <span class="avatar-size-error" data-avatar-size-error aria-live="polite"></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>响应式大小</h3>
+                    <p>头像大小根据容器宽高自动调整。拖动容器右下角改变大小，容器宽高范围为 108–300px；默认容器 108px，头像四周保持 36px 间距。</p>
+                    <div class="avatar-responsive-demo">
+                      <div class="avatar-resize-stage" data-avatar-resize-stage>
+                        <span class="avatar image avatar-fluid" data-avatar-fluid><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Taylor" alt="响应式尺寸头像" /></span>
+                      </div>
+                      <span class="group-note" data-avatar-container-size>容器 108 × 108px · 头像 36px</span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>头像组</h2>
+                <div class="doc-grid">
+                  <div class="example-block full">
+                    <h3>成员组合</h3>
+                    <p>使用 <code>Avatar.Group</code> 组合多个头像。成员超过自定义上限时使用“+N”收起剩余成员，N 最大显示为 99+。</p>
+                    <div class="avatar-group-size-list">
+                      <div><div class="avatar-group group-small" aria-label="小号头像组"><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Avery" alt="成员 Avery" /></span><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Bailey" alt="成员 Bailey" /></span><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Casey" alt="成员 Casey" /></span><span class="avatar more">+3</span></div><span class="group-note">小 · 30px</span></div>
+                      <div><div class="avatar-group group-medium" aria-label="默认头像组"><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Dakota" alt="成员 Dakota" /></span><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Emery" alt="成员 Emery" /></span><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Finley" alt="成员 Finley" /></span><span class="avatar more">+12</span></div><span class="group-note">中 · 36px（默认）</span></div>
+                      <div><div class="avatar-group group-large" aria-label="大号头像组"><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Harper" alt="成员 Harper" /></span><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Jules" alt="成员 Jules" /></span><span class="avatar image"><img src="https://api.dicebear.com/9.x/avataaars/svg?seed=Kai" alt="成员 Kai" /></span><span class="avatar more">99+</span></div><span class="group-note">大 · 44px</span></div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead><tr><th scope="col">属性</th><th scope="col">说明</th><th scope="col">类型</th><th scope="col">默认值</th></tr></thead>
+                    <tbody>
+                      <tr><td><code>alt</code></td><td>图片无法显示时的替代文本；图片头像必须提供可理解的名称。</td><td><code>string</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>gap</code></td><td>字符内容与头像左右边界的最小距离，参与字符字号自动缩放。</td><td><code>number</code></td><td><code>4</code></td></tr>
+                      <tr><td><code>characterCount</code></td><td>字符头像的字符数量规则；可固定展示 1–5 个字符，或使用 <code>auto</code> 根据内容自由适配，最多展示 5 个字符。</td><td><code>1 | 2 | 3 | 4 | 5 | auto</code></td><td><code>1</code></td></tr>
+                      <tr><td><code>icon</code></td><td>图标型头像使用的自定义图标。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>size</code></td><td>预设尺寸、自定义数值或响应式断点尺寸。</td><td><code>small | medium | large | number | ResponsiveSize</code></td><td><code>medium</code></td></tr>
+                      <tr><td><code>src</code></td><td>图片头像的资源地址或图片元素。</td><td><code>string | ReactNode</code></td><td><code>-</code></td></tr>
+                      <tr>
+                        <td><code>fallback</code></td>
+                        <td>图片加载失败时的视觉回退。支持纯色、自定义图片或字符头像；备用图片再次失败时回退为默认纯色。</td>
+                        <td><code>{ type: "color"; backgroundColor?: string } | { type: "image"; src: string; alt?: string } | { type: "text"; text: string; color?: string; backgroundColor?: string }</code></td>
+                        <td><code>{ type: "color", backgroundColor: "var(--gray-100)" }</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onError</code></td>
+                        <td>原始图片加载失败时触发；视觉回退仍由 <code>fallback</code> 控制。</td>
+                        <td><code>(event: Event) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>Avatar.Group API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead><tr><th scope="col">属性</th><th scope="col">说明</th><th scope="col">类型</th><th scope="col">默认值</th></tr></thead>
+                    <tbody>
+                      <tr><td><code>size</code></td><td>统一设置组内头像尺寸。</td><td><code>small | medium | large | number</code></td><td><code>medium</code></td></tr>
+                      <tr><td><code>max</code></td><td>最多展示数量及超出成员的浮层配置；超出数量显示为“+N”，N 最大显示 99+。</td><td><code>{ count?: number; popover?: object }</code></td><td><code>-</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead><tr><th scope="col">Token</th><th scope="col">默认值</th><th scope="col">说明</th></tr></thead>
+                    <tbody>
+                      <tr><td><code>--avatar-size-small</code></td><td><code>30px</code></td><td>小号头像尺寸。</td></tr>
+                      <tr><td><code>--avatar-size-medium</code></td><td><code>36px</code></td><td>中号及默认头像尺寸。</td></tr>
+                      <tr><td><code>--avatar-size-large</code></td><td><code>44px</code></td><td>大号头像尺寸。</td></tr>
+                      <tr><td><code>--avatar-bg</code></td><td><code>var(--gray-700)</code></td><td>无自定义颜色时的字符与图标头像背景。</td></tr>
+                      <tr><td><code>--avatar-fallback-bg</code></td><td><code>var(--gray-100)</code></td><td>图片加载失败且没有自定义回退配置时的纯色背景。</td></tr>
+                      <tr><td><code>--avatar-text-color</code></td><td><code>var(--white)</code></td><td>头像默认前景色。</td></tr>
+                      <tr><td><code>--avatar-font-size</code></td><td><code>14px</code></td><td>中号字符头像的基础字号。</td></tr>
+                      <tr><td><code>--avatar-square-radius</code></td><td><code>var(--radius-sm)</code></td><td>方形头像圆角，跟随主题形状规范。</td></tr>
+                      <tr><td><code>--avatar-group-overlap</code></td><td><code>-10px</code></td><td>头像组内相邻头像的重叠距离。</td></tr>
+                      <tr><td><code>--avatar-group-border-color</code></td><td><code>var(--white)</code></td><td>头像组重叠区域的分隔边框颜色。</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector('[data-component-count-label]');
+        if (!label) return;
+        const pendingKeys = new Set(['card']);
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute('href') || '').split('#').pop().replace(/.html$/, '');
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', '#22b573');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const centerNavItem = (item, behavior = 'auto') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+        if (isHorizontal) {
+          sidebar.scrollTo({ left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2, behavior });
+          return;
+        }
+        sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
+      };
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+
+      const applyAvatarImageFallback = (image) => {
+        const avatar = image.closest('.avatar.image');
+        if (!avatar) return;
+        const type = avatar.dataset.fallbackType || 'color';
+        if (type === 'image' && avatar.dataset.fallbackAttempted !== 'true' && avatar.dataset.fallbackSrc) {
+          avatar.dataset.fallbackAttempted = 'true';
+          image.src = avatar.dataset.fallbackSrc;
+          return;
+        }
+        avatar.classList.add('image-error');
+        avatar.style.background = 'var(--avatar-fallback-bg)';
+        if (type === 'color' && avatar.dataset.fallbackColor) {
+          avatar.style.background = avatar.dataset.fallbackColor;
+        }
+        if (type === 'text' && avatar.dataset.fallbackText) {
+          avatar.style.background = avatar.dataset.fallbackBackground || 'var(--avatar-fallback-bg)';
+          avatar.style.color = avatar.dataset.fallbackColor || 'var(--avatar-text-color)';
+          let text = avatar.querySelector('.avatar-fallback-text');
+          if (!text) {
+            text = document.createElement('span');
+            text.className = 'avatar-fallback-text';
+            avatar.append(text);
+          }
+          text.textContent = avatar.dataset.fallbackText.slice(0, 5);
+        }
+      };
+      document.querySelectorAll('.avatar.image img').forEach((image) => {
+        image.addEventListener('error', () => applyAvatarImageFallback(image));
+        if (image.complete && image.naturalWidth === 0) applyAvatarImageFallback(image);
+      });
+
+      const fitAvatarText = (avatar) => {
+        const text = avatar.querySelector('span');
+        if (!text) return;
+        text.style.transform = 'scale(1)';
+        const gap = 8;
+        const availableWidth = Math.max(0, avatar.clientWidth - gap);
+        const textWidth = text.scrollWidth;
+        const scale = textWidth > availableWidth && textWidth > 0 ? availableWidth / textWidth : 1;
+        text.style.transform = `scale(${scale})`;
+      };
+      const fitAllAvatarText = () => document.querySelectorAll('[data-auto-avatar]').forEach(fitAvatarText);
+      window.addEventListener('load', fitAllAvatarText);
+      window.addEventListener('resize', fitAllAvatarText);
+
+      const customAvatar = document.querySelector('[data-custom-avatar]');
+      const avatarSizeInput = document.querySelector('[data-avatar-size-input]');
+      const avatarSizeError = document.querySelector('[data-avatar-size-error]');
+      const avatarNumberInput = document.querySelector('[data-avatar-number-input]');
+      const updateCustomAvatarSize = () => {
+        const size = Number(avatarSizeInput.value);
+        const isValid = Number.isFinite(size) && size >= 16 && size <= 300;
+        avatarNumberInput?.classList.toggle('error', !isValid);
+        if (avatarSizeError) {
+          avatarSizeError.textContent = isValid ? '' : '演示使用时，只支持输入 16–300 之间的数字。';
+        }
+        if (!isValid || !customAvatar) return;
+        customAvatar.style.width = `${size}px`;
+        customAvatar.style.height = `${size}px`;
+      };
+      avatarSizeInput?.addEventListener('input', updateCustomAvatarSize);
+      document.querySelectorAll('[data-avatar-number-step]').forEach((button) => {
+        button.addEventListener('click', () => {
+          if (!avatarSizeInput) return;
+          const direction = button.dataset.avatarNumberStep === 'up' ? 1 : -1;
+          const current = Number(avatarSizeInput.value) || 36;
+          avatarSizeInput.value = String(current + direction);
+          updateCustomAvatarSize();
+          avatarSizeInput.focus();
+        });
+      });
+
+      const avatarResizeStage = document.querySelector('[data-avatar-resize-stage]');
+      const responsiveAvatar = document.querySelector('[data-avatar-fluid]');
+      const avatarContainerSize = document.querySelector('[data-avatar-container-size]');
+      const syncResponsiveAvatar = () => {
+        if (!avatarResizeStage || !responsiveAvatar) return;
+        const width = Math.round(avatarResizeStage.getBoundingClientRect().width);
+        const height = Math.round(avatarResizeStage.getBoundingClientRect().height);
+        const avatarSize = Math.max(16, Math.min(width, height) - 72);
+        responsiveAvatar.style.width = `${avatarSize}px`;
+        responsiveAvatar.style.height = `${avatarSize}px`;
+        if (avatarContainerSize) {
+          avatarContainerSize.textContent = `容器 ${width} × ${height}px · 头像 ${avatarSize}px`;
+        }
+      };
+      if (avatarResizeStage && 'ResizeObserver' in window) {
+        new ResizeObserver(syncResponsiveAvatar).observe(avatarResizeStage);
+      }
+      window.addEventListener('load', syncResponsiveAvatar);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,2499 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>联级选择 Cascader - Design System</title>
+    <style>
+      :root {
+        --brand-500: #00d157;
+        --brand-50: #effff6;
+        --brand-100: #d8ffe8;
+        --brand-200: #b5ffd1;
+        --brand-300: #7dffb0;
+        --brand-400: #35f47c;
+        --brand-600: #00b84b;
+        --brand-700: #008f3f;
+        --brand-800: #067037;
+        --brand-900: #075a2f;
+        --brand-rgb: 0, 209, 87;
+        --brand-text: #00b84b;
+        --brand-text-hover: #008f3f;
+        --brand-border-soft: #bfead2;
+        --brand-border-hover: #8fd9b3;
+        --gray-950: #0b0d0f;
+        --gray-900: #14171a;
+        --gray-800: #22262a;
+        --gray-700: #343a40;
+        --gray-600: #59616a;
+        --gray-500: #78818c;
+        --gray-400: #a5adb6;
+        --gray-300: #d4d9de;
+        --gray-200: #e7eaee;
+        --gray-100: #f3f5f7;
+        --gray-50: #fafbfc;
+        --white: #ffffff;
+        --topbar-height: 60px;
+        --sidebar-width: 300px;
+        --radius-sm: 6px;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --input-height-small: 30px;
+        --input-height-default: 38px;
+        --input-height-large: 44px;
+        --input-radius: 10px;
+        --input-border-color: #dde1e5;
+        --input-hover-border-color: var(--brand-500);
+        --input-focus-color: var(--brand-500);
+        --input-focus-shadow: rgba(0, 209, 87, 0.16) 0px 0px 0px 3px;
+        --input-error-color: #f04438;
+        --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        --input-text-color: #1a1d1f;
+        --input-placeholder-color: #a5abb1;
+        --input-disabled-border-color: #dde1e5;
+        --input-disabled-bg: #f0f2f4;
+        --input-disabled-color: #969ba1;
+        --cascader-active-bg: var(--gray-100);
+        --cascader-dropdown-shadow: 0 14px 32px rgba(20, 28, 36, 0.12);
+        --cascader-dropdown-offset: 8px;
+        --cascader-trigger-width: 320px;
+        --cascader-trigger-height: 38px;
+        --cascader-option-height: 34px;
+        --cascader-column-width: 155px;
+        --cascader-radius: 8px;
+        --cascader-icon-color: #969ba1;
+        --cascader-expand-icon-size: 20px;
+        --cascader-enter-icon-size: 5px;
+        --cascader-icon-stroke-width: 1.5px;
+        --cascader-loading-icon-size: 14px;
+        --cascader-loading-icon-stroke-width: 1.2;
+        --scrollbar-width-thin: 4px;
+        --scrollbar-track-color: transparent;
+        --scrollbar-thumb-color: var(--gray-300);
+        font-family:
+          Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
+          "Microsoft YaHei", Arial, sans-serif;
+      }
+      *{box-sizing:border-box} body{margin:0;color:var(--gray-900);background:var(--white)} .app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--gray-200)}.brand{color:var(--gray-900);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--gray-600);font-size:13px}.workspace{display:grid;grid-template-columns:300px 1fr;min-height:0}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--gray-200);background:var(--gray-50)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--gray-500);font-size:12px}.nav-category-count{margin-left:6px}.nav-button{width:100%;min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:6px;color:var(--gray-700);font-size:13px;text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--brand-500);background:rgb(var(--brand-rgb)/.08)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--brand-500);font-size:12px;font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px;line-height:1.25}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--gray-600);font-size:14px;line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--gray-200)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--gray-200);border-radius:8px;background:#fff}.example-block h3{margin:0 0 12px;font-size:14px;font-weight:500}.cascader{display:inline-flex;border:1px solid var(--gray-200);border-radius:8px;box-shadow:0 14px 32px rgba(20,28,36,.1);overflow:hidden}.cascader ul{width:155px;margin:0;padding:6px;list-style:none;border-right:1px solid var(--gray-200)}.cascader ul:last-child{border-right:0}.cascader li{min-height:34px;padding:8px 10px;border-radius:6px;color:var(--gray-700);font-size:13px}.cascader li.active{color:var(--brand-500);background:rgb(var(--brand-rgb)/.08)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--gray-200)}.content{padding:28px 20px 56px}.cascader{display:grid}.cascader ul{width:100%;border-right:0;border-bottom:1px solid var(--gray-200)}}
+      /* Shared side navigation */
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        overflow: hidden;
+      }
+      .app-shell {
+        height: 100vh;
+      }
+      .content {
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+      }
+      .workspace {
+        grid-template-columns: 300px minmax(0, 1fr);
+        min-height: 0;
+      }
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        min-width: 0;
+        min-height: 0;
+        padding: 22px 18px;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        scrollbar-gutter: stable;
+        scrollbar-color: var(--gray-300, #d4d9de) transparent;
+        scrollbar-width: thin;
+        background: var(--white, #ffffff);
+        border-right: 1px solid var(--gray-200);
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--gray-300, #d4d9de);
+        border-radius: 999px;
+      }
+      .nav-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin: 0;
+        padding: 0 0 calc((100vh - var(--topbar-height, 60px)) / 2);
+        list-style: none;
+      }
+      .nav-section {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+      .nav-list > .nav-section:nth-child(2) {
+        margin-top: -16px;
+      }
+      .nav-sublist {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .nav-category {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
+        padding: 0 12px 4px;
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+      .nav-category-count {
+        margin-left: 0;
+        color: var(--gray-400, #a5adb6);
+        font-weight: 400;
+      }
+      .nav-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        min-height: 40px;
+        padding: 0 12px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm, 6px);
+        cursor: pointer;
+        text-align: left;
+        text-decoration: none;
+      }
+      .nav-button:hover {
+        color: var(--gray-950, #0b0d0f);
+        background: var(--gray-50);
+      }
+      .nav-button[aria-current=page] {
+        color: var(--brand-500);
+        background: var(--gray-100);
+      }
+      .nav-label {
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .sidebar-footer {
+        margin-top: auto;
+        padding: 14px 6px 0;
+        color: var(--gray-500);
+        border-top: 1px solid var(--gray-200);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+      @media (max-width: 860px) {
+        .workspace {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          flex-direction: row;
+          align-items: center;
+          gap: 12px;
+          width: 100%;
+          min-height: auto;
+          max-height: none;
+          padding: 12px 14px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          border-right: 0;
+          border-bottom: 1px solid var(--gray-200);
+        }
+        .sidebar-footer {
+          display: none;
+        }
+        .nav-list,
+        .nav-section,
+        .nav-sublist {
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+        }
+        .nav-list > .nav-section:nth-child(2) {
+          margin-top: -16px;
+        }
+        .nav-category {
+          padding: 0 2px;
+          white-space: nowrap;
+        }
+        .nav-button {
+          width: auto;
+          min-height: 36px;
+          padding: 0 12px;
+        }
+
+        .nav-list {
+          padding: 0;
+        }
+      }
+      /* Shared top navigation */
+      :root {
+        --brand-50: #effff6;
+        --brand-100: #d8ffe8;
+        --brand-200: #b5ffd1;
+        --brand-300: #7dffb0;
+        --brand-400: #35f47c;
+        --brand-600: #00b84b;
+        --brand-700: #008f3f;
+        --brand-800: #067037;
+        --brand-900: #075a2f;
+        --brand-text: #00b84b;
+        --brand-text-hover: #008f3f;
+        --brand-border-soft: #bfead2;
+        --brand-border-hover: #8fd9b3;
+        --gray-800: #22262a;
+        --gray-400: #a5adb6;
+        --white: #ffffff;
+        --topbar-height: 60px;
+        --radius-sm: 6px;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        height: var(--topbar-height);
+        padding: 0 24px;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid var(--gray-200);
+        backdrop-filter: blur(12px);
+        z-index: 3;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        min-width: 0;
+        gap: 10px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color: var(--brand-500);
+        background: var(--white);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background: var(--white);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--gray-700);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color: var(--brand-500);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color: var(--gray-600);
+        font-size: 13px;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--brand-500);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .brand-title {
+          display: none;
+        }
+
+        .product-select {
+          width: min(124px, calc(100vw - 92px));
+        }
+      }
+      /* End shared top navigation */
+      .canvas {
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+        background: var(--white);
+      }
+
+      .canvas-inner {
+        display: grid;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--brand-500);
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+
+      .doc-title {
+        margin: 0;
+        color: var(--gray-900);
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        color: var(--gray-600);
+        font-size: 14px;
+        line-height: 1.75;
+      }
+
+      .doc-meta-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .doc-meta-list li,
+      .doc-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 8px;
+        color: var(--gray-600);
+        background: var(--gray-100);
+        border: 0;
+        border-radius: 999px;
+        font-size: 12px;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+
+      .doc-section {
+        margin-top: 0;
+        border-top: 0;
+        border-bottom: 1px solid var(--gray-200);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        margin: 0 0 14px;
+        color: var(--gray-900);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .example-block {
+        min-width: 0;
+        padding: 16px;
+        overflow: visible;
+        background: var(--gray-50);
+        border: 1px solid var(--gray-200);
+        border-radius: var(--radius-sm);
+      }
+
+      .example-block.full {
+        grid-column: 1 / -1;
+      }
+
+      .example-block h3 {
+        margin: 0 0 8px;
+        color: var(--gray-800);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .example-block p {
+        margin: 0 0 14px;
+        color: var(--gray-600);
+        font-size: 13px;
+        line-height: 1.7;
+      }
+
+      .rule-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .rule-list li {
+        position: relative;
+        padding-left: 16px;
+        color: var(--gray-700);
+        font-size: 13px;
+        line-height: 1.75;
+      }
+
+      .rule-list li::before {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        content: "";
+        background: var(--brand-500);
+        border-radius: 999px;
+      }
+
+      .spec-field {
+        display: grid;
+        gap: 8px;
+        width: min(100%, 340px);
+      }
+
+      .spec-label {
+        color: var(--gray-700);
+        font-size: 12px;
+        font-weight: 560;
+        line-height: 1.35;
+      }
+
+      .spec-field-help {
+        color: var(--gray-500);
+        font-size: 12px;
+        line-height: 1.5;
+      }
+
+      .spec-field.error .spec-field-help {
+        color: #f04438;
+      }
+
+      .spec-note {
+        margin-top: 14px;
+      }
+
+      .spec-cascader-trigger {
+        position: relative;
+        appearance: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        width: min(100%, var(--cascader-trigger-width));
+        height: var(--cascader-trigger-height);
+        min-height: var(--cascader-trigger-height);
+        padding: 0 36px 0 12px;
+        color: var(--gray-800);
+        background: var(--white);
+        border: 1px solid var(--input-border-color);
+        border-radius: var(--input-radius);
+        font-size: 13px;
+        line-height: 1.2;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      }
+
+      .spec-cascader-trigger[aria-expanded="true"] {
+        border-color: var(--input-focus-color);
+        box-shadow: var(--input-focus-shadow);
+      }
+
+      .spec-cascader-trigger::before {
+        content: "";
+        position: absolute;
+        right: 6px;
+        top: 50%;
+        width: var(--cascader-expand-icon-size);
+        height: var(--cascader-expand-icon-size);
+        border-radius: 4px;
+        pointer-events: none;
+        transform: translateY(-50%);
+        transition: opacity 0.15s ease;
+      }
+
+      .spec-cascader-trigger::after {
+        content: "";
+        position: absolute;
+        right: 6px;
+        top: 50%;
+        width: var(--cascader-expand-icon-size);
+        height: var(--cascader-expand-icon-size);
+        background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 8.25L10 11.75L13.5 8.25' fill='none' stroke='%23969ba1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 20px 20px no-repeat;
+        pointer-events: none;
+        transform: translateY(-50%);
+        transition:
+          opacity 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .spec-cascader-trigger[aria-expanded="true"]::after,
+      .spec-cascader-trigger.open::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .spec-cascader-trigger:hover,
+      .spec-cascader-trigger.hover {
+        border-color: var(--input-hover-border-color);
+      }
+
+      .spec-cascader-trigger.open,
+      .spec-cascader-trigger.focus {
+        border-color: var(--input-focus-color);
+        box-shadow: var(--input-focus-shadow);
+      }
+
+      .spec-cascader-trigger.error {
+        border-color: var(--input-error-color);
+        box-shadow: var(--input-error-shadow);
+      }
+
+      .spec-cascader-trigger.disabled {
+        color: var(--input-disabled-color);
+        background: var(--input-disabled-bg);
+        border-color: var(--input-disabled-border-color);
+      }
+
+      .spec-cascader-trigger.small {
+        height: var(--input-height-small);
+        min-height: var(--input-height-small);
+        font-size: 13px;
+      }
+
+      .spec-cascader-trigger.large {
+        height: var(--input-height-large);
+        min-height: var(--input-height-large);
+        font-size: 15px;
+      }
+
+      .trigger-placeholder {
+        color: #a5abb1;
+      }
+
+      .trigger-text {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cascader-tags {
+        display: flex;
+        flex: 1;
+        flex-wrap: wrap;
+        gap: 5px;
+        min-width: 0;
+      }
+
+      .cascader-tags.nowrap {
+        flex-wrap: nowrap;
+        overflow: hidden;
+      }
+
+      .cascader-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        max-width: 112px;
+        min-height: 24px;
+        padding: 2px 7px;
+        color: var(--gray-700);
+        background: var(--gray-100);
+        border-radius: 6px;
+        font-size: 12px;
+        line-height: 16px;
+      }
+
+      .cascader-tags.nowrap .cascader-tag {
+        flex: 0 0 auto;
+      }
+
+      .cascader-tag > span:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .cascader-tag-more {
+        color: #555b61;
+      }
+
+      .cascader-tag-remove {
+        flex: 0 0 auto;
+        color: #969ba1;
+        font-size: 14px;
+        line-height: 16px;
+      }
+
+      .trigger-clear {
+        position: absolute;
+        right: 7px;
+        top: 50%;
+        z-index: 1;
+        width: 18px;
+        height: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #969ba1;
+        border-radius: 6px;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-50%);
+        transition:
+          background-color 0.15s ease,
+          color 0.15s ease,
+          opacity 0.15s ease;
+      }
+
+      .trigger-clear[hidden] {
+        display: none;
+      }
+
+      .spec-cascader-trigger:hover .trigger-clear:not([hidden]) {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .spec-cascader-trigger:has(.trigger-clear:not([hidden])):hover::after {
+        opacity: 0;
+      }
+
+      .spec-cascader-trigger:has(.trigger-clear:not([hidden])):hover::before {
+        opacity: 0;
+      }
+
+      .trigger-clear::before,
+      .trigger-clear::after {
+        position: absolute;
+        width: 9px;
+        height: 1.4px;
+        content: "";
+        background: currentColor;
+        border-radius: 999px;
+      }
+
+      .trigger-clear::before {
+        transform: rotate(45deg);
+      }
+
+      .trigger-clear::after {
+        transform: rotate(-45deg);
+      }
+
+      .trigger-clear:hover {
+        color: var(--gray-700);
+        background: var(--gray-100);
+      }
+
+      .cascader-live {
+        position: relative;
+        display: grid;
+        gap: 14px;
+        min-height: 0;
+        margin-top: 14px;
+      }
+
+      .cascader-live .spec-field {
+        width: min(100%, var(--cascader-trigger-width));
+      }
+
+      .cascader-live .cascader-popover {
+        position: absolute;
+        left: 0;
+        top: calc(var(--cascader-trigger-height) + var(--cascader-dropdown-offset));
+        z-index: 10;
+        display: inline-flex;
+        width: fit-content;
+      }
+
+      .cascader-live .cascader-popover[hidden] {
+        display: none;
+      }
+
+      .cascader-popover {
+        display: inline-flex;
+        max-width: 100%;
+        border: 1px solid var(--gray-200);
+        border-radius: var(--cascader-radius);
+        background: var(--white);
+        box-shadow: var(--cascader-dropdown-shadow);
+        overflow: hidden;
+      }
+
+      .cascader-col {
+        width: var(--cascader-column-width);
+        max-height: 258px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        border-right: 1px solid var(--gray-200);
+        overflow-y: auto;
+        scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+        scrollbar-width: thin;
+      }
+
+      .cascader-col::-webkit-scrollbar {
+        width: var(--scrollbar-width-thin);
+        height: var(--scrollbar-width-thin);
+      }
+
+      .cascader-col::-webkit-scrollbar-track {
+        background: var(--scrollbar-track-color);
+      }
+
+      .cascader-col::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb-color);
+        border-radius: 999px;
+      }
+
+      .cascader-col:last-child {
+        border-right: 0;
+      }
+
+      .cascader-option {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        padding: 7px 26px 7px 10px;
+        border-radius: 6px;
+        color: var(--gray-700);
+        cursor: pointer;
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .cascader-option:hover,
+      .cascader-option.hover {
+        background: var(--gray-50);
+        color: var(--gray-900);
+      }
+
+      .cascader-option.active {
+        color: var(--gray-900);
+        background: var(--cascader-active-bg);
+        font-weight: 500;
+      }
+
+      .cascader-option.selected {
+        color: var(--gray-900);
+        font-weight: 500;
+      }
+
+      .cascader-option.disabled {
+        color: #b8c0c8;
+        cursor: not-allowed;
+      }
+
+      .cascader-option.has-child::after {
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        width: var(--cascader-enter-icon-size);
+        height: var(--cascader-enter-icon-size);
+        border-right: var(--cascader-icon-stroke-width) solid var(--cascader-icon-color);
+        border-bottom: var(--cascader-icon-stroke-width) solid var(--cascader-icon-color);
+        transform: translateY(-50%) rotate(-45deg);
+      }
+
+      .cascader-option.loading {
+        cursor: default;
+      }
+
+      .cascader-option.loading::after {
+        display: none;
+      }
+
+      .cascader-loading-icon {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        z-index: 1;
+        display: block;
+        width: var(--cascader-loading-icon-size);
+        height: var(--cascader-loading-icon-size);
+        color: var(--brand-500);
+        pointer-events: none;
+        transform: translateY(-50%);
+        animation: cascader-enter-spin 0.72s linear infinite;
+      }
+
+      .cascader-loading-icon circle {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: var(--cascader-loading-icon-stroke-width);
+        stroke-linecap: round;
+        stroke-dasharray: 24 36;
+      }
+
+      .cascader-checkbox-hit {
+        width: 22px;
+        height: 22px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        margin-left: -4px;
+        cursor: pointer;
+      }
+
+      .cascader-option input {
+        width: 14px;
+        height: 14px;
+        position: relative;
+        flex: 0 0 auto;
+        margin: 0;
+        border: 1.4px solid #cfd6dc;
+        border-radius: 4px;
+        appearance: none;
+        background: var(--white);
+        outline: 0;
+        pointer-events: none;
+        transition:
+          border-color 0.15s ease,
+          background-color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .cascader-option input::after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        content: "";
+        background: var(--white);
+        clip-path: polygon(14% 45%, 0 60%, 38% 96%, 100% 18%, 86% 4%, 36% 68%);
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.7);
+        transition:
+          opacity 0.15s ease,
+          transform 0.15s ease;
+      }
+
+      .cascader-option input:checked {
+        border-color: var(--brand-500);
+        background: var(--brand-500);
+      }
+
+      .cascader-option input:checked::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .cascader-option.disabled input {
+        border-color: var(--input-disabled-border-color);
+        background: var(--input-disabled-bg);
+      }
+
+      @keyframes cascader-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes cascader-enter-spin {
+        from {
+          transform: translateY(-50%) rotate(0deg);
+        }
+        to {
+          transform: translateY(-50%) rotate(360deg);
+        }
+      }
+
+      .size-stack {
+        display: grid;
+        gap: 12px;
+        width: min(100%, 360px);
+      }
+
+      .spec-table-wrap {
+        overflow-x: auto;
+        border: 1px solid var(--gray-200);
+        border-radius: 8px;
+      }
+
+      .spec-table {
+        width: 100%;
+        min-width: 720px;
+        border-collapse: collapse;
+        background: var(--white);
+        font-size: 13px;
+      }
+
+      .spec-table th,
+      .spec-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--gray-200);
+        line-height: 1.6;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .spec-table th {
+        color: var(--gray-700);
+        background: var(--gray-50);
+        font-weight: 560;
+      }
+
+      .spec-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .spec-table code {
+        color: var(--gray-900);
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+      }
+
+      @media (max-width: 860px) {
+        .doc-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .canvas-inner {
+          min-height: 560px;
+          padding: 18px;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 22px 18px;
+        }
+
+        .doc-title {
+          font-size: 24px;
+        }
+
+        .cascader-popover {
+          display: grid;
+          width: 100%;
+        }
+
+        .cascader-col {
+          width: 100%;
+          max-height: none;
+          border-right: 0;
+          border-bottom: 1px solid var(--gray-200);
+        }
+
+        .cascader-col:last-child {
+          border-bottom: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell"><header class="topbar">
+        <a class="brand" href="#" aria-label="IQB DESIGN 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQB DESIGN</span>
+        </a>
+        <div class="topbar-actions" aria-label="系统状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 45/46</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header><main class="workspace">
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html" aria-current="page">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../index.html#card">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/model.html">
+                      <span class="nav-label">Model 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+        <section class="canvas" aria-label="组件说明详情区">
+          <div class="canvas-inner">
+          <article class="doc-page">
+            <header class="doc-hero">
+              <p class="doc-kicker">Data Entry / Cascader</p>
+              <h1 class="doc-title">联级选择 Cascader</h1>
+              <p class="doc-summary">
+                联级选择用于从多层结构中逐级定位目标。本规范围绕 业务工作台 Agents 工作台建立，覆盖实习生范围、业务线、任务类型、会话路径和权限路径等选择场景；支持默认收起、单选、允许清除、多选标签省略和逐级动态加载。
+              </p>
+              <ul class="doc-meta-list" aria-label="联级选择基础规格">
+                <li>触发器默认宽高 320 × 38px</li>
+                <li>圆角 10px</li>
+                <li>浮层列宽 155px</li>
+                <li>选项最小高度 34px</li>
+                <li>细滚动条 4px</li>
+                <li>同页仅展开一个下拉菜单</li>
+              </ul>
+            </header>
+
+            <section class="doc-section">
+              <h2>何时使用</h2>
+              <ul class="rule-list">
+                <li>当选项存在稳定的父子层级，并且用户需要看清路径关系时使用，例如「全体实习生 / 种草业务线 / TikTok 上传」。</li>
+                <li>当需要跨层级批量授权或筛选时可启用多选；多选通过复选框命中区勾选，选项 tab 区域仅负责展开或收起子级。</li>
+                <li>当子级数据来自远程接口或体量较大时使用动态加载；每一级首次进入时展示加载环，数据返回后再展开下一级。</li>
+                <li>当用户只需要在扁平集合中选择一个值时，优先使用 Select；当需要在页面内持续切换分类时，优先使用 Tabs 或 Segmented。</li>
+              </ul>
+            </section>
+
+            <section class="doc-section">
+              <h2>基础用法</h2>
+              <div class="doc-grid">
+                <div class="example-block">
+                  <h3>点击展开</h3>
+                  <p>选择框默认展示占位文案，点击后展开分列菜单；选择末级后回填完整路径并自动收起。</p>
+                  <div class="cascader-live" data-cascader-demo data-expand-trigger="click">
+                    <div class="spec-field">
+                      <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
+                        <span class="trigger-text trigger-placeholder" data-cascader-value>请选择 Agent / 任务类型</span>
+                      </button>
+                    </div>
+                    <div class="cascader-popover" role="tree" aria-label="点击展开级联选择" data-cascader-panel hidden></div>
+                  </div>
+                </div>
+
+                <div class="example-block">
+                  <h3>hover 展开</h3>
+                  <p>选择框默认收起；展开后悬停父级切换下一级，点击末级后完成选择。</p>
+                  <div class="cascader-live" data-cascader-demo data-expand-trigger="hover">
+                    <div class="spec-field">
+                      <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
+                        <span class="trigger-text trigger-placeholder" data-cascader-value>请选择 Agent / 任务类型</span>
+                      </button>
+                    </div>
+                    <div class="cascader-popover" role="tree" aria-label="hover 展开级联选择" data-cascader-panel hidden></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="doc-section">
+              <h2>允许清除</h2>
+              <div class="doc-grid">
+                <div class="example-block full">
+                  <h3>清除已选路径</h3>
+                  <p>已选路径可快速清空，适合筛选条件和非必填配置项。</p>
+                  <div class="cascader-live" data-cascader-demo data-cascader-allow-clear data-selected-path="all,seeding,tiktok-upload" data-expand-trigger="click">
+                    <div class="spec-field">
+                      <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
+                        <span class="trigger-text" data-cascader-value>全体实习生 / 种草业务线 / TikTok 上传</span>
+                        <span class="trigger-clear" data-cascader-clear aria-label="清除已选路径"></span>
+                      </button>
+                    </div>
+                    <div class="cascader-popover" role="tree" aria-label="允许清除级联选择" data-cascader-panel hidden></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="doc-section">
+              <h2>多选</h2>
+              <div class="doc-grid">
+                <div class="example-block full">
+                  <h3>标签省略</h3>
+                  <p>多选标签超出选择框宽度时，尽可能展示完整标签，其余合并为不可删除的 +n 计数。</p>
+                  <div class="cascader-live" data-cascader-demo data-cascader-multiple data-cascader-collapse-fit data-expand-trigger="click">
+                    <div class="spec-field">
+                      <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
+                        <span class="cascader-tags nowrap" data-cascader-tags>
+                          <span class="trigger-text trigger-placeholder">请选择 Agent / 任务类型</span>
+                        </span>
+                      </button>
+                    </div>
+                    <div class="cascader-popover" role="tree" aria-label="标签省略级联选择" data-cascader-panel hidden></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="doc-section">
+              <h2>动态加载</h2>
+              <div class="doc-grid">
+                <div class="example-block full">
+                  <h3>按需加载子级</h3>
+                  <p>每一级首次进入时用加载环替换右侧进入图标，数据返回后再展开下一级选项。</p>
+                  <div class="cascader-live" data-cascader-demo data-cascader-dynamic-load data-expand-trigger="click">
+                    <div class="spec-field">
+                      <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
+                        <span class="trigger-text trigger-placeholder" data-cascader-value>请选择 Agent / 任务类型</span>
+                      </button>
+                    </div>
+                    <div class="cascader-popover" role="tree" aria-label="动态加载级联选择" data-cascader-panel hidden></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="doc-section">
+              <h2>状态</h2>
+              <div class="doc-grid">
+                <div class="example-block">
+                  <h3>Default</h3>
+                  <p>默认状态仅展示轻边框和占位文案，浮层在点击后出现。</p>
+                  <div class="spec-cascader-trigger"><span class="trigger-placeholder">请选择业务线 / Agent</span></div>
+                </div>
+                <div class="example-block">
+                  <h3>Hover</h3>
+                  <p>鼠标悬停时提升边框颜色，提示该选择框可展开操作。</p>
+                  <div class="spec-cascader-trigger hover"><span class="trigger-placeholder">请选择业务线 / Agent</span></div>
+                </div>
+                <div class="example-block">
+                  <h3>Focus</h3>
+                  <p>聚焦或展开时使用品牌色边框和浅绿色外描边。</p>
+                  <div class="spec-cascader-trigger focus">全体实习生 / 内容运营</div>
+                </div>
+                <div class="example-block">
+                  <h3>Error</h3>
+                  <p>配置提交场景必须选择叶子节点时，未完成路径进入错误态。</p>
+                  <div class="spec-cascader-trigger error">请选择叶子 Agent</div>
+                </div>
+                <div class="example-block">
+                  <h3>Disabled</h3>
+                  <p>权限路径被系统策略锁定时不响应展开和选择。</p>
+                  <div class="spec-cascader-trigger disabled">权限路径不可修改</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="doc-section">
+              <h2>尺寸</h2>
+              <div class="example-block full">
+                <h3>Size</h3>
+                <p>尺寸与 Input、Select 对齐：紧凑筛选使用 30px，标准表单使用 38px，关键配置入口使用 44px。</p>
+                <div class="size-stack">
+                  <div class="spec-cascader-trigger small">Small / 侧栏筛选</div>
+                  <div class="spec-cascader-trigger">Default / 表单字段</div>
+                  <div class="spec-cascader-trigger large">Large / 首屏配置入口</div>
+                </div>
+              </div>
+            </section>
+
+            <section class="doc-section">
+              <h2>交互规则</h2>
+              <ul class="rule-list">
+                <li>选择框和下拉菜单默认不选中、默认收起；展开后点击页面其他区域自动收起，页面内同时仅保留一个下拉菜单展开。</li>
+                <li>单选触发器展示完整路径；路径过长时保留末级名称可见，并通过 tooltip 或详情区补全路径。</li>
+                <li>多选下点击复选框区域执行勾选或取消勾选，点击选项 tab 区域执行展开或收起下一级菜单。</li>
+                <li>多选父子联动：勾选父级会勾选其全部子级，取消父级会取消其全部子级；下级全选时上级显示勾选，下级未全选时上级不显示勾选。</li>
+                <li>多选选择框标签优先展示上一层级勾选标签；父级已展示时不再展示其子级，标签超出宽度时合并为不可删除的 <code>+n</code>。</li>
+                <li>动态加载每一级首次进入时，用加载环替换右侧进入图标；加载完成后再展示下一列。</li>
+                <li>键盘操作使用方向键在当前列移动，右方向进入子级，左方向返回父级，Enter 选择，Escape 关闭浮层。</li>
+              </ul>
+            </section>
+
+            <section class="doc-section">
+              <h2>API</h2>
+              <div class="spec-table-wrap">
+                <table class="spec-table">
+                  <thead>
+                    <tr>
+                      <th>属性</th>
+                      <th>说明</th>
+                      <th>类型</th>
+                      <th>默认值</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>options</code></td>
+                      <td>层级选项数据，推荐包含业务范围、分类、Agent 或任务节点。</td>
+                      <td><code>CascaderOption[]</code></td>
+                      <td><code>[]</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>value</code></td>
+                      <td>当前选中路径；单选为路径数组，多选为路径数组集合。</td>
+                      <td><code>string[] | string[][]</code></td>
+                      <td><code>-</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>placeholder</code></td>
+                      <td>未选择时的占位文案。</td>
+                      <td><code>string</code></td>
+                      <td><code>请选择 Agent / 任务类型</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>expandTrigger</code></td>
+                      <td>子级展开方式。表单默认点击；hover 模式仅用于桌面端轻量导航。</td>
+                      <td><code>"click" | "hover"</code></td>
+                      <td><code>"click"</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>allowClear</code></td>
+                      <td>是否允许清除已选路径。清除入口仅在已有选中值时出现。</td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>multiple</code></td>
+                      <td>是否启用多选。多选下复选框负责勾选，选项 tab 负责展开或收起子级。</td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>collapseTags</code></td>
+                      <td>多选标签是否省略展示。超出选择框宽度时优先展示父级标签，其余合并为 <code>+n</code>。</td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>loadChildren</code></td>
+                      <td>逐级异步加载子节点。加载中用加载环替换当前项右侧进入图标，完成后展开下一级。</td>
+                      <td><code>(option, path) =&gt; Promise&lt;CascaderOption[]&gt;</code></td>
+                      <td><code>-</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>changeOnSelect</code></td>
+                      <td>是否允许选择非叶子节点。筛选场景可开启，配置提交场景默认关闭。</td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>status</code></td>
+                      <td>语义状态，用于默认、错误或禁用反馈；hover、focus 由交互状态自动触发。</td>
+                      <td><code>"default" | "error" | "disabled"</code></td>
+                      <td><code>"default"</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>onVisibleChange</code></td>
+                      <td>下拉菜单展开或收起时触发。同一页面仅允许一个级联下拉保持展开。</td>
+                      <td><code>(open) =&gt; void</code></td>
+                      <td><code>-</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>onChange</code></td>
+                      <td>选中路径变化时触发，单选返回路径数组，多选返回路径数组集合及完整节点信息。</td>
+                      <td><code>(value, options) =&gt; void</code></td>
+                      <td><code>-</code></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="doc-section">
+              <h2>设计 Token</h2>
+              <div class="spec-table-wrap">
+                <table class="spec-table">
+                  <thead>
+                    <tr>
+                      <th>Token</th>
+                      <th>默认值</th>
+                      <th>说明</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>--cascader-trigger-width</code></td>
+                      <td><code>320px</code></td>
+                      <td>默认触发器宽度，与 Select 选择框规范一致。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-trigger-height</code></td>
+                      <td><code>38px</code></td>
+                      <td>默认触发器高度，与 Select 默认尺寸一致。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-option-height</code></td>
+                      <td><code>34px</code></td>
+                      <td>浮层选项最小高度。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-column-width</code></td>
+                      <td><code>155px</code></td>
+                      <td>单列宽度，允许业务长词通过 tooltip 或完整路径展示补充。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-dropdown-offset</code></td>
+                      <td><code>8px</code></td>
+                      <td>浮层与选择框之间的垂直间距。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-active-bg</code></td>
+                      <td><code>var(--gray-100)</code></td>
+                      <td>当前展开路径或 active 项背景；多选已勾选项不使用灰底。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-icon-color</code></td>
+                      <td><code>#969ba1</code></td>
+                      <td>展开收起图标、下拉菜单进入图标的默认颜色。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-expand-icon-size</code></td>
+                      <td><code>20px</code></td>
+                      <td>选择框右侧展开收起图标 frame 尺寸，图标在 frame 内水平垂直居中。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-enter-icon-size</code></td>
+                      <td><code>5px</code></td>
+                      <td>下拉菜单选项右侧进入图标尺寸。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-icon-stroke-width</code></td>
+                      <td><code>1.5px</code></td>
+                      <td>展开收起图标与进入图标线宽。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-loading-icon-size</code></td>
+                      <td><code>14px</code></td>
+                      <td>动态加载时替换进入图标的加载环尺寸。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-loading-icon-stroke-width</code></td>
+                      <td><code>1.2</code></td>
+                      <td>动态加载环 SVG 描边粗细。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-dropdown-shadow</code></td>
+                      <td><code>0 14px 32px rgba(20, 28, 36, 0.12)</code></td>
+                      <td>浮层阴影，保持轻量悬浮感。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-radius</code></td>
+                      <td><code>8px</code></td>
+                      <td>浮层圆角；触发器圆角跟随基础控件 <code>--input-radius: 10px</code>。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--scrollbar-width-thin</code></td>
+                      <td><code>4px</code></td>
+                      <td>下拉菜单列内滚动条宽度，轨道保持透明。</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script data-cascader-demo-script>
+      const cascaderDemoOptions = [
+        {
+          label: '全体实习生',
+          value: 'all',
+          children: [
+            {
+              label: '种草业务线',
+              value: 'seeding',
+              children: [
+                { label: 'TikTok 上传', value: 'tiktok-upload' },
+                { label: 'Facebook 种草助手', value: 'facebook-seeding' },
+                { label: 'YT 版权消音助手', value: 'yt-copyright' },
+              ],
+            },
+            {
+              label: '内容运营',
+              value: 'content',
+              children: [
+                { label: '素材生成', value: 'asset-generate' },
+                { label: '标题优化', value: 'title-optimizer' },
+                { label: '图文改写', value: 'rewrite' },
+              ],
+            },
+            {
+              label: '数据分析',
+              value: 'data',
+              children: [
+                { label: '大盘数据分析助手', value: 'market-insight' },
+                { label: '用户数据看板', value: 'user-dashboard' },
+              ],
+            },
+          ],
+        },
+        {
+          label: '我的实习生',
+          value: 'mine',
+          children: [
+            {
+              label: '自动化任务',
+              value: 'automation',
+              children: [
+                { label: 'TikTok 素材发布任务', value: 'tiktok-task' },
+                { label: '每日数据复盘', value: 'daily-review' },
+              ],
+            },
+            {
+              label: '应用连接',
+              value: 'connection',
+              children: [
+                { label: 'TikTok 账号授权', value: 'tiktok-auth' },
+                { label: '店铺素材库', value: 'asset-library' },
+              ],
+            },
+          ],
+        },
+        {
+          label: '待授权实习生',
+          value: 'permission',
+          disabled: true,
+          children: [
+            { label: '权限申请中', value: 'requesting' },
+          ],
+        },
+      ];
+
+      const cloneCascaderOptions = (options) => options.map((option) => ({
+        ...option,
+        children: option.children ? cloneCascaderOptions(option.children) : undefined,
+        asyncChildren: option.asyncChildren ? cloneCascaderOptions(option.asyncChildren) : undefined,
+      }));
+
+      const createDynamicCascaderOptions = () => [
+        {
+          label: '全体实习生',
+          value: 'all',
+          asyncChildren: [
+            {
+              label: '种草业务线',
+              value: 'seeding',
+              asyncChildren: [
+                { label: 'TikTok 上传', value: 'tiktok-upload' },
+                { label: 'Facebook 种草助手', value: 'facebook-seeding' },
+              ],
+            },
+          ],
+        },
+        {
+          label: '我的实习生',
+          value: 'mine',
+          asyncChildren: [
+            {
+              label: '自动化任务',
+              value: 'automation',
+              asyncChildren: [
+                { label: 'TikTok 素材发布任务', value: 'tiktok-task' },
+                { label: '每日数据复盘', value: 'daily-review' },
+              ],
+            },
+            {
+              label: '应用连接',
+              value: 'connection',
+              asyncChildren: [
+                { label: 'TikTok 账号授权', value: 'tiktok-auth' },
+                { label: '店铺素材库', value: 'asset-library' },
+              ],
+            },
+          ],
+        },
+      ];
+
+      const pathKey = (path) => path.join('|');
+
+      const findCascaderNodes = (path, rootOptions) => {
+        let nodes = rootOptions;
+        const result = [];
+        for (const value of path) {
+          const node = nodes.find((item) => item.value === value);
+          if (!node) break;
+          result.push(node);
+          nodes = node.children || [];
+        }
+        return result;
+      };
+
+      const cascaderDemoControllers = [];
+      const closeAllCascaderDemos = (exceptDemo) => {
+        cascaderDemoControllers.forEach(({ demo, state, renderPanel }) => {
+          if (demo === exceptDemo || !state.open) return;
+          state.open = false;
+          renderPanel();
+        });
+      };
+
+      document.querySelectorAll('[data-cascader-demo]').forEach((demo) => {
+        const expandTrigger = demo.dataset.expandTrigger || 'click';
+        const allowClear = demo.hasAttribute('data-cascader-allow-clear');
+        const isMultiple = demo.hasAttribute('data-cascader-multiple');
+        const isDynamicLoad = demo.hasAttribute('data-cascader-dynamic-load');
+        const shouldCollapseTags = demo.hasAttribute('data-cascader-collapse-fit');
+        const optionsSource = isDynamicLoad ? createDynamicCascaderOptions() : cloneCascaderOptions(cascaderDemoOptions);
+        const trigger = demo.querySelector('[data-cascader-trigger]');
+        const valueNode = demo.querySelector('[data-cascader-value]');
+        const tagContainer = demo.querySelector('[data-cascader-tags]');
+        const clearNode = demo.querySelector('[data-cascader-clear]');
+        const panel = demo.querySelector('[data-cascader-panel]');
+        const selectedPath = (demo.dataset.selectedPath || '').split(',').filter(Boolean);
+        const selectedPaths = (demo.dataset.selectedPaths || '').split(';').map((path) => path.split(',').filter(Boolean)).filter((path) => path.length);
+        const initialPath = (demo.dataset.initialPath || demo.dataset.selectedPath || '').split(',').filter(Boolean);
+        const state = {
+          open: false,
+          activePath: initialPath,
+          selectedPath,
+          selectedPaths,
+          loadingKey: '',
+        };
+
+        const getPathLabel = (path) => findCascaderNodes(path, optionsSource).map((node) => node.label).join(' / ');
+        const getTagLabel = (path) => findCascaderNodes(path, optionsSource).at(-1)?.label || path.at(-1) || '';
+
+        const isMultiplePathFullySelected = (path, node) => {
+          const selectedKeys = new Set(state.selectedPaths.map(pathKey));
+          const children = node?.children || node?.asyncChildren || [];
+          if (!children.length) return selectedKeys.has(pathKey(path));
+          return children.every((child) => isMultiplePathFullySelected([...path, child.value], child));
+        };
+
+        const getVisibleMultipleTagPaths = (nodes = optionsSource, parentPath = []) => {
+          const paths = [];
+          nodes.forEach((node) => {
+            const nextPath = [...parentPath, node.value];
+            if (isMultiplePathFullySelected(nextPath, node)) {
+              paths.push(nextPath);
+              return;
+            }
+            const children = node.children || node.asyncChildren || [];
+            paths.push(...getVisibleMultipleTagPaths(children, nextPath));
+          });
+          return paths;
+        };
+
+        const renderCascaderTags = () => {
+          if (!tagContainer) return false;
+          if (!state.selectedPaths.length) {
+            tagContainer.innerHTML = '<span class="trigger-text trigger-placeholder">请选择 Agent / 任务类型</span>';
+            return true;
+          }
+
+          const selected = getVisibleMultipleTagPaths().map((path) => ({
+            key: pathKey(path),
+            label: getTagLabel(path),
+          }));
+
+          const renderTags = (visibleItems, hiddenCount = 0) => {
+            tagContainer.innerHTML = '';
+            visibleItems.forEach((item) => {
+              const tag = document.createElement('span');
+              tag.className = 'cascader-tag';
+              tag.dataset.path = item.key;
+              tag.innerHTML = `<span>${item.label}</span><span class="cascader-tag-remove">×</span>`;
+              tagContainer.appendChild(tag);
+            });
+
+            if (hiddenCount > 0) {
+              const moreTag = document.createElement('span');
+              moreTag.className = 'cascader-tag cascader-tag-more';
+              moreTag.setAttribute('aria-label', `另有 ${hiddenCount} 个已选项`);
+              moreTag.innerHTML = `<span>+${hiddenCount}</span>`;
+              tagContainer.appendChild(moreTag);
+            }
+          };
+
+          renderTags(selected);
+          if (!shouldCollapseTags) return true;
+
+          const availableWidth = tagContainer.clientWidth;
+          if (!availableWidth || tagContainer.scrollWidth <= availableWidth) return true;
+
+          for (let visibleCount = selected.length - 1; visibleCount >= 0; visibleCount -= 1) {
+            renderTags(selected.slice(0, visibleCount), selected.length - visibleCount);
+            if (tagContainer.scrollWidth <= availableWidth) return true;
+          }
+          return true;
+        };
+
+        const syncTrigger = () => {
+          trigger.setAttribute('aria-expanded', String(state.open));
+          if (isMultiple && renderCascaderTags()) return;
+          const label = isMultiple
+            ? (state.selectedPaths.length ? `已选 ${state.selectedPaths.length} 项` : '请选择 Agent / 任务类型')
+            : (state.selectedPath.length ? getPathLabel(state.selectedPath) : '请选择 Agent / 任务类型');
+          valueNode.textContent = label;
+          valueNode.classList.toggle('trigger-placeholder', isMultiple ? !state.selectedPaths.length : !state.selectedPath.length);
+          if (clearNode) clearNode.hidden = !allowClear || !state.selectedPath.length;
+        };
+
+        const collectSubtreePaths = (path, node) => {
+          const paths = [path];
+          const children = node?.children || node?.asyncChildren || [];
+          children.forEach((child) => {
+            paths.push(...collectSubtreePaths([...path, child.value], child));
+          });
+          return paths;
+        };
+
+        const toggleMultiplePath = (path, node) => {
+          const paths = collectSubtreePaths(path, node);
+          const keys = new Set(paths.map(pathKey));
+          const shouldRemove = isMultiplePathFullySelected(path, node);
+
+          if (shouldRemove) {
+            state.selectedPaths = state.selectedPaths.filter((selected) => !keys.has(pathKey(selected)));
+          } else {
+            const selectedKeys = new Set(state.selectedPaths.map(pathKey));
+            paths.forEach((item) => {
+              const key = pathKey(item);
+              if (!selectedKeys.has(key)) {
+                state.selectedPaths.push(item);
+                selectedKeys.add(key);
+              }
+            });
+          }
+        };
+
+        const removeSelectedPath = (key) => {
+          const path = key.split('|').filter(Boolean);
+          const node = findCascaderNodes(path, optionsSource).at(-1);
+          const keys = new Set(collectSubtreePaths(path, node).map(pathKey));
+          state.selectedPaths = state.selectedPaths.filter((selected) => !keys.has(pathKey(selected)));
+          renderPanel();
+        };
+
+        const columnsFromActivePath = () => {
+          const columns = [optionsSource];
+          let nodes = optionsSource;
+          state.activePath.forEach((value, index) => {
+            const node = nodes.find((item) => item.value === value);
+            if (node?.children?.length) {
+              columns.push(node.children);
+              nodes = node.children;
+              return;
+            }
+            if (node && state.loadingKey === pathKey(state.activePath.slice(0, index + 1))) {
+              nodes = [];
+            }
+          });
+          return columns;
+        };
+
+        const renderColumn = (nodes, level) => {
+          const items = nodes.map((node) => {
+            const path = state.activePath.slice(0, level);
+            path[level] = node.value;
+            const nextPath = path.slice(0, level + 1);
+            const isLoading = state.loadingKey === pathKey(nextPath);
+            const hasChild = !!(node.children?.length || node.asyncChildren?.length || isLoading);
+            const isActive = state.activePath[level] === node.value;
+            const isSelected = isMultiple
+              ? isMultiplePathFullySelected(nextPath, node)
+              : pathKey(state.selectedPath) === pathKey(nextPath);
+            const classes = [
+              'cascader-option',
+              hasChild ? 'has-child' : '',
+              isLoading ? 'loading' : '',
+              isActive ? 'active' : '',
+              isSelected ? 'selected' : '',
+              node.disabled ? 'disabled' : '',
+            ].filter(Boolean).join(' ');
+            const checkbox = isMultiple && !isLoading
+              ? `<span class="cascader-checkbox-hit" data-cascader-checkbox><input type="checkbox" ${isSelected ? 'checked' : ''} ${node.disabled ? 'disabled' : ''} aria-hidden="true" tabindex="-1" /></span>`
+              : '';
+            const loadingIcon = isLoading ? '<svg class="cascader-loading-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5"></circle></svg>' : '';
+            return `<li class="${classes}" role="treeitem" tabindex="${node.disabled ? '-1' : '0'}" aria-selected="${isSelected}" data-path="${nextPath.join('|')}">${checkbox}${node.label}${loadingIcon}</li>`;
+          }).join('');
+          return `<ul class="cascader-col" role="group" aria-label="第 ${level + 1} 级">${items}</ul>`;
+        };
+
+        const renderPanel = () => {
+          panel.hidden = !state.open;
+          syncTrigger();
+          if (!state.open) return;
+          panel.innerHTML = columnsFromActivePath().map(renderColumn).join('');
+        };
+
+        cascaderDemoControllers.push({ demo, state, renderPanel });
+
+        const setActivePath = (path) => {
+          state.activePath = path;
+          renderPanel();
+        };
+
+        const selectPath = (path, node) => {
+          if (isMultiple) {
+            toggleMultiplePath(path, node);
+            state.activePath = path;
+            renderPanel();
+            return;
+          }
+          state.selectedPath = path;
+          state.activePath = path;
+          state.open = false;
+          renderPanel();
+        };
+
+        const loadDynamicChildren = (path, node) => {
+          state.loadingKey = pathKey(path);
+          state.activePath = path;
+          renderPanel();
+          window.setTimeout(() => {
+            node.children = node.asyncChildren || [];
+            delete node.asyncChildren;
+            state.loadingKey = '';
+            state.activePath = path;
+            renderPanel();
+          }, 960);
+        };
+
+        const getOptionData = (option) => {
+          if (!option || option.classList.contains('disabled') || option.classList.contains('loading')) return null;
+          const path = (option.dataset.path || '').split('|').filter(Boolean);
+          if (!path.length) return null;
+          return { path, node: findCascaderNodes(path, optionsSource).at(-1) };
+        };
+
+        const isActiveBranch = (path) => (
+          state.activePath.length >= path.length
+          && path.every((value, index) => state.activePath[index] === value)
+        );
+
+        const toggleMultipleOption = (option) => {
+          const optionData = getOptionData(option);
+          if (!optionData) return;
+          toggleMultiplePath(optionData.path, optionData.node);
+          renderPanel();
+        };
+
+        const handleOption = (option, { toggle = true } = {}) => {
+          const optionData = getOptionData(option);
+          if (!optionData) return;
+          const { path, node } = optionData;
+          if (isMultiple) {
+            if (node?.asyncChildren?.length) {
+              loadDynamicChildren(path, node);
+              return;
+            }
+            if (node?.children?.length) {
+              setActivePath(toggle && isActiveBranch(path) ? path.slice(0, -1) : path);
+              return;
+            }
+            setActivePath(path);
+            return;
+          }
+          if (node?.asyncChildren?.length) {
+            loadDynamicChildren(path, node);
+            return;
+          }
+          if (node?.children?.length) {
+            setActivePath(path);
+            return;
+          }
+          selectPath(path);
+        };
+
+        demo.addEventListener('click', (event) => {
+          event.stopPropagation();
+        });
+
+        trigger.addEventListener('click', (event) => {
+          const tagRemove = event.target.closest('.cascader-tag-remove');
+          if (tagRemove) {
+            event.stopPropagation();
+            const tag = tagRemove.closest('.cascader-tag');
+            if (tag?.dataset.path) removeSelectedPath(tag.dataset.path);
+            return;
+          }
+
+          if (event.target.closest('[data-cascader-clear]')) {
+            event.stopPropagation();
+            state.selectedPath = [];
+            state.activePath = [];
+            state.open = false;
+            renderPanel();
+            return;
+          }
+          const nextOpen = !state.open;
+          if (nextOpen) closeAllCascaderDemos(demo);
+          state.open = nextOpen;
+          renderPanel();
+        });
+
+        panel.addEventListener('click', (event) => {
+          const option = event.target.closest('.cascader-option');
+          if (isMultiple && event.target.closest('[data-cascader-checkbox]')) {
+            toggleMultipleOption(option);
+            return;
+          }
+          handleOption(option);
+        });
+
+        panel.addEventListener('mouseover', (event) => {
+          if (expandTrigger !== 'hover') return;
+          const option = event.target.closest('.cascader-option.has-child');
+          if (option) handleOption(option, { toggle: false });
+        });
+
+        panel.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter') {
+            handleOption(event.target.closest('.cascader-option'));
+          }
+          if (event.key === 'Escape') {
+            state.open = false;
+            renderPanel();
+            trigger.focus();
+          }
+        });
+
+        renderPanel();
+      });
+
+      document.addEventListener('click', () => {
+        closeAllCascaderDemos();
+      });
+
+    </script>
+    <script data-product-theme-script>
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', '#22b573');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const centerNavItem = (item, behavior = 'smooth') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+
+        if (isHorizontal) {
+          sidebar.scrollTo({
+            left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2,
+            behavior,
+          });
+          return;
+        }
+
+        sidebar.scrollTo({
+          top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2,
+          behavior,
+        });
+      };
+
+      requestAnimationFrame(() => {
+        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]'), 'auto');
+      });
+    </script>
+  </body>
+</html>
