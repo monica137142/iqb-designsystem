@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Design System</title>
     <style>
-      :root {
+      :root {--text-data-line-height: 1.3;--text-data-weight: 500;--text-data-size: 24px;--text-caption-line-height: 1.55;--text-caption-weight: 400;--text-caption-size: 12px;--text-helper-line-height: 1.55;--text-helper-weight: 400;--text-helper-size: 12px;--text-secondary-line-height: 1.65;--text-secondary-weight: 400;--text-secondary-size: 13px;--text-control-line-height: 1.65;--text-control-weight: 400;--text-control-size: 13px;--text-label-line-height: 1.75;--text-label-weight: 500;--text-label-size: 14px;--text-body-strong-line-height: 1.75;--text-body-strong-weight: 500;--text-body-strong-size: 14px;--text-body-line-height: 1.75;--text-body-weight: 400;--text-body-size: 14px;--text-overlay-title-line-height: 1.5;--text-overlay-title-weight: 500;--text-overlay-title-size: 16px;--text-card-title-line-height: 1.5;--text-card-title-weight: 500;--text-card-title-size: 16px;--text-section-title-line-height: 1.5;--text-section-title-weight: 500;--text-section-title-size: 16px;--text-page-title-line-height: 1.35;--text-page-title-weight: 500;--text-page-title-size: 20px;--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;
         --brand-500: #00d157;
         --brand-50: #effff6;
         --brand-100: #d8ffe8;
@@ -24,9 +24,6 @@
         --link-color: #1570ef;
         --link-hover-color: #175cd3;
         --link-disabled-color: #a5adb6;
-        --typography-color-link: var(--link-color);
-        --typography-color-link-hover: var(--link-hover-color);
-        --typography-color-link-disabled: var(--link-disabled-color);
         --gray-950: #0b0d0f;
         --gray-900: #14171a;
         --gray-800: #22262a;
@@ -44,24 +41,54 @@
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
         --input-border-color: #dde1e5;
-        --input-hover-border-color: var(--brand-500);
-        --input-focus-color: var(--brand-500);
+        --input-hover-border-color:var(--color-action-primary);
+        --input-focus-color:var(--color-action-primary);
         --input-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
-        --input-error-color: #f04438;
+        --input-error-color: var(--color-status-error);
         --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
         --input-text-color: #1a1d1f;
         --input-placeholder-color: #a5abb1;
         --input-disabled-border-color: #dde1e5;
         --input-disabled-bg: #f0f2f4;
         --input-disabled-color: #969ba1;
-        --input-number-hover-border-color: var(--brand-500);
-        --input-number-focus-color: var(--brand-500);
+        --input-number-hover-border-color:var(--color-action-primary);
+        --input-number-focus-color:var(--color-action-primary);
         --input-number-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
-        --input-number-error-color: #f04438;
+        --input-number-error-color: var(--color-status-error);
         --input-number-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
         --input-number-disabled-border-color: #dde1e5;
         --input-number-disabled-bg: #f0f2f4;
         --input-number-disabled-color: #969ba1;
+        --color-text-primary: var(--gray-900);
+        --color-text-default: var(--gray-700);
+        --color-text-secondary: var(--gray-600);
+        --color-text-tertiary: var(--gray-500);
+        --color-text-disabled: var(--gray-400);
+        --color-text-inverse: var(--white);
+        --color-text-link: var(--blue-600);
+        --color-bg-page: var(--gray-50);
+        --color-bg-container: var(--white);
+        --color-bg-subtle: var(--gray-100);
+        --color-bg-hover: var(--gray-100);
+        --color-bg-selected: var(--brand-50);
+        --color-bg-disabled: var(--gray-100);
+        --color-border-default: var(--gray-300);
+        --color-border-subtle: var(--gray-200);
+        --color-border-strong: var(--gray-400);
+        --color-border-focus: var(--brand-500);
+        --color-border-disabled: var(--gray-200);
+        --color-action-primary: var(--brand-500);
+        --color-action-primary-hover: var(--brand-600);
+        --color-action-primary-active: var(--brand-700);
+        --color-action-primary-subtle: var(--brand-50);
+        --color-action-primary-disabled: var(--brand-200);
+        --color-status-success: var(--success-green-500);
+        --color-status-error: var(--red-500);
+        --color-status-warning: var(--yellow-500);
+        --color-status-info: var(--blue-500);
+        --color-overlay-modal: rgba(0, 0, 0, 0.45);
+        --color-overlay-drawer: rgba(0, 0, 0, 0.35);
+        --color-overlay-loading: rgba(255, 255, 255, 0.72);
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -77,8 +104,8 @@
         min-width: 320px;
         min-height: 100%;
         margin: 0;
-        color: var(--gray-900);
-        background: var(--white);
+        color:var(--color-text-primary);
+        background:var(--color-bg-container);
       }
 
       body {
@@ -130,7 +157,7 @@
         grid-template-rows: var(--topbar-height) 1fr;
         width: 100vw;
         height: 100vh;
-        background: var(--white);
+        background:var(--color-bg-container);
       }
 
       .topbar {
@@ -141,7 +168,7 @@
         height: var(--topbar-height);
         padding: 0 24px;
         background: rgba(255, 255, 255, 0.94);
-        border-bottom: 1px solid var(--gray-200);
+        border-bottom:1px solid var(--color-border-subtle);
         backdrop-filter: blur(12px);
         z-index: 3;
       }
@@ -203,10 +230,10 @@
         padding: 0 22px 0 10px;
         color: var(--gray-800);
         background: var(--gray-50);
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: 999px;
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         font-weight: 500;
         line-height: 1.2;
         text-align: left;
@@ -215,8 +242,8 @@
 
       .product-select-trigger:hover,
       .product-select-trigger[aria-expanded="true"] {
-        border-color: var(--brand-500);
-        background: var(--white);
+        border-color:var(--color-action-primary);
+        background:var(--color-bg-container);
       }
 
       .product-select-trigger:focus-visible {
@@ -252,8 +279,8 @@
         margin: 0;
         padding: 6px;
         list-style: none;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
         box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
       }
@@ -266,19 +293,19 @@
         width: 100%;
         min-height: 32px;
         padding: 0 10px;
-        color: var(--gray-700);
+        color:var(--color-text-default);
         background: transparent;
         border: 0;
         border-radius: var(--radius-sm);
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         line-height: 1.2;
         text-align: left;
       }
 
       .product-select-option:hover,
       .product-select-option[aria-selected="true"] {
-        color: var(--brand-500);
+        color:var(--color-action-primary);
         background: rgb(var(--brand-rgb) / 0.08);
       }
 
@@ -287,15 +314,15 @@
         align-items: center;
         margin-left: auto;
         gap: 8px;
-        color: var(--gray-600);
-        font-size: 13px;
+        color:var(--color-text-secondary);
+        font-size:var(--text-control-size);
       }
 
       .status-dot {
         width: 8px;
         height: 8px;
         border-radius: 999px;
-        background: var(--brand-500);
+        background:var(--color-action-primary);
         box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
       }
 
@@ -343,8 +370,8 @@
         scrollbar-gutter: stable;
         scrollbar-color: var(--gray-300) transparent;
         scrollbar-width: thin;
-        background: var(--white);
-        border-right: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border-right:1px solid var(--color-border-subtle);
       }
 
       .sidebar::-webkit-scrollbar {
@@ -386,13 +413,13 @@
         gap: 6px;
         width: fit-content;
         padding: 0 12px 4px;
-        color: var(--gray-500);
-        font-size: 12px;
+        color:var(--color-text-tertiary);
+        font-size:var(--text-caption-size);
         line-height: 1.4;
       }
 
       .nav-category-count {
-        color: var(--gray-400);
+        color:var(--color-text-disabled);
         font-weight: 400;
       }
 
@@ -412,7 +439,7 @@
         width: 100%;
         min-height: 40px;
         padding: 0 12px;
-        color: var(--gray-700);
+        color:var(--color-text-default);
         background: transparent;
         border: 0;
         border-radius: var(--radius-sm);
@@ -432,13 +459,13 @@
       }
 
       .nav-button[aria-current="page"] {
-        color: var(--brand-500);
-        background: var(--gray-100);
+        color:var(--color-action-primary);
+        background:var(--color-bg-subtle);
       }
 
       .nav-label {
         overflow: hidden;
-        font-size: 14px;
+        font-size:var(--text-body-size);
         line-height: 1.2;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -447,9 +474,9 @@
       .sidebar-footer {
         margin-top: auto;
         padding: 14px 6px 0;
-        color: var(--gray-500);
-        border-top: 1px solid var(--gray-200);
-        font-size: 12px;
+        color:var(--color-text-tertiary);
+        border-top:1px solid var(--color-border-subtle);
+        font-size:var(--text-caption-size);
         line-height: 1.5;
       }
 
@@ -457,7 +484,7 @@
         min-width: 0;
         min-height: 0;
         overflow: auto;
-        background: var(--white);
+        background:var(--color-bg-container);
       }
 
       .canvas-inner {
@@ -470,7 +497,7 @@
         align-self: start;
         width: min(100%, 960px);
         min-height: 440px;
-        border: 1px dashed var(--gray-300);
+        border:1px dashed var(--color-border-default);
         border-radius: var(--radius-sm);
         background: rgba(255, 255, 255, 0.76);
       }
@@ -495,15 +522,15 @@
 
       .doc-kicker {
         margin: 0 0 10px;
-        color: var(--brand-500);
-        font-size: 12px;
+        color:var(--color-action-primary);
+        font-size:var(--text-caption-size);
         font-weight: 400;
         line-height: 1.4;
       }
 
       .doc-title {
         margin: 0;
-        color: var(--gray-900);
+        color:var(--color-text-primary);
         font-size: 28px;
         font-weight: 500;
         line-height: 1.25;
@@ -512,9 +539,9 @@
       .doc-summary {
         max-width: 720px;
         margin: 12px 0 0;
-        color: var(--gray-600);
-        font-size: 14px;
-        line-height: 1.75;
+        color:var(--color-text-secondary);
+        font-size:var(--text-body-size);
+        line-height:var(--text-body-line-height);
       }
 
       .doc-meta-list {
@@ -528,10 +555,10 @@
 
       .doc-meta-list li {
         padding: 4px 8px;
-        color: var(--gray-600);
-        background: var(--gray-100);
+        color:var(--color-text-secondary);
+        background:var(--color-bg-subtle);
         border-radius: 999px;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.4;
       }
 
@@ -567,8 +594,8 @@
       }
 
       .overview-count {
-        color: var(--gray-500);
-        font-size: 12px;
+        color:var(--color-text-tertiary);
+        font-size:var(--text-caption-size);
         line-height: 1.4;
         white-space: nowrap;
       }
@@ -592,7 +619,7 @@
         display: grid;
         gap: 8px;
         padding: 14px;
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
         background:
           linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.64));
@@ -608,7 +635,7 @@
       }
 
       .component-index-button:hover {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         background: rgb(var(--brand-rgb) / 0.04);
         box-shadow: 0 10px 24px rgba(20, 28, 36, 0.06);
         transform: translateY(-1px);
@@ -624,15 +651,15 @@
         align-items: center;
         justify-content: space-between;
         gap: 8px;
-        color: var(--gray-900);
-        font-size: 14px;
+        color:var(--color-text-primary);
+        font-size:var(--text-body-size);
         font-weight: 500;
         line-height: 1.4;
       }
 
       .component-index-desc {
-        color: var(--gray-600);
-        font-size: 12px;
+        color:var(--color-text-secondary);
+        font-size:var(--text-caption-size);
         line-height: 1.6;
       }
 
@@ -650,13 +677,13 @@
       }
 
       .component-status.done {
-        color: var(--brand-500);
+        color:var(--color-action-primary);
         background: rgba(var(--brand-rgb), 0.14);
       }
 
       .component-status.pending {
-        color: var(--gray-500);
-        background: var(--gray-100);
+        color:var(--color-text-tertiary);
+        background:var(--color-bg-subtle);
       }
 
       .doc-section {
@@ -681,14 +708,14 @@
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        font-size: 20px;
+        font-size:var(--text-page-title-size);
       }
 
       .style-module-start h2::before {
         width: 4px;
         height: 20px;
         content: "";
-        background: var(--brand-500);
+        background:var(--color-action-primary);
         border-radius: 999px;
       }
 
@@ -710,7 +737,7 @@
 
       .doc-section h2 {
         margin: 0 0 14px;
-        color: var(--gray-900);
+        color:var(--color-text-primary);
         font-size: 18px;
         font-weight: 500;
         line-height: 1.35;
@@ -719,16 +746,16 @@
       .doc-section h3 {
         margin: 0 0 8px;
         color: var(--gray-800);
-        font-size: 14px;
+        font-size:var(--text-body-size);
         font-weight: 500;
         line-height: 1.4;
       }
 
       .doc-section p {
         margin: 0;
-        color: var(--gray-600);
-        font-size: 13px;
-        line-height: 1.75;
+        color:var(--color-text-secondary);
+        font-size:var(--text-control-size);
+        line-height:var(--text-body-line-height);
       }
 
       .rule-list {
@@ -742,9 +769,9 @@
       .rule-list li {
         position: relative;
         padding-left: 16px;
-        color: var(--gray-700);
-        font-size: 13px;
-        line-height: 1.75;
+        color:var(--color-text-default);
+        font-size:var(--text-control-size);
+        line-height:var(--text-body-line-height);
       }
 
       .rule-list li::before {
@@ -754,7 +781,7 @@
         width: 5px;
         height: 5px;
         content: "";
-        background: var(--brand-500);
+        background:var(--color-action-primary);
         border-radius: 999px;
       }
 
@@ -768,7 +795,7 @@
         min-width: 0;
         padding: 16px;
         background: var(--gray-50);
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
@@ -802,7 +829,7 @@
         min-width: 0;
         padding: 16px;
         background: var(--gray-50);
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
@@ -811,8 +838,8 @@
         min-height: 150px;
         overflow: hidden;
         margin-bottom: 14px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
@@ -832,7 +859,7 @@
 
       .mask-line {
         height: 10px;
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
         border-radius: 999px;
       }
 
@@ -849,8 +876,8 @@
       .mask-loader {
         position: absolute;
         z-index: 2;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
         box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
       }
@@ -887,22 +914,22 @@
         width: 18px;
         height: 18px;
         content: "";
-        border: 2px solid var(--gray-200);
-        border-top-color: var(--brand-500);
+        border:2px solid var(--color-border-subtle);
+        border-top-color:var(--color-action-primary);
         border-radius: 999px;
       }
 
       .mask-case h4 {
         margin: 0 0 6px;
-        color: var(--gray-900);
-        font-size: 13px;
+        color:var(--color-text-primary);
+        font-size:var(--text-control-size);
         font-weight: 500;
         line-height: 1.4;
       }
 
       .doc-section .mask-case p {
-        font-size: 12px;
-        line-height: 1.65;
+        font-size:var(--text-caption-size);
+        line-height:var(--text-control-line-height);
       }
 
       .mask-value {
@@ -911,9 +938,9 @@
         min-height: 24px;
         margin-top: 10px;
         padding: 2px 7px;
-        color: var(--gray-700);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        color:var(--color-text-default);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: 999px;
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
         font-size: 11px;
@@ -954,11 +981,11 @@
         min-height: 32px;
         padding: 0 36px 0 12px;
         color: var(--gray-800);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         line-height: 1.2;
         text-align: left;
         transition:
@@ -969,13 +996,13 @@
       }
 
       .color-palette-trigger:hover {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
       }
 
       .color-palette-trigger[aria-expanded="true"],
       .color-palette-trigger:focus-visible {
         outline: none;
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -994,8 +1021,8 @@
         margin: 0;
         padding: 6px;
         list-style: none;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
         box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
       }
@@ -1008,19 +1035,19 @@
         width: 100%;
         min-height: 32px;
         padding: 0 10px;
-        color: var(--gray-700);
+        color:var(--color-text-default);
         background: transparent;
         border: 0;
         border-radius: var(--radius-sm);
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         line-height: 1.2;
         text-align: left;
       }
 
       .color-palette-option:hover,
       .color-palette-option[aria-selected="true"] {
-        color: var(--brand-500);
+        color:var(--color-action-primary);
         background: rgb(var(--brand-rgb) / 0.08);
       }
 
@@ -1038,10 +1065,10 @@
       .color-palette-base {
         flex: 0 0 auto;
         padding: 5px 8px;
-        color: var(--brand-500);
+        color:var(--color-action-primary);
         background: rgb(var(--brand-rgb) / 0.08);
         border-radius: 999px;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.4;
         white-space: nowrap;
       }
@@ -1087,7 +1114,7 @@
       .color-token {
         overflow: hidden;
         color: inherit;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.4;
         opacity: 0.9;
         text-overflow: ellipsis;
@@ -1097,7 +1124,7 @@
       .color-hex {
         color: inherit;
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.4;
         opacity: 0.9;
       }
@@ -1113,23 +1140,216 @@
         min-width: 0;
         padding: 14px;
         background: var(--gray-50);
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
       .color-role strong {
         display: block;
         margin-bottom: 6px;
-        color: var(--gray-900);
-        font-size: 13px;
+        color:var(--color-text-primary);
+        font-size:var(--text-control-size);
         font-weight: 500;
         line-height: 1.4;
       }
 
       .color-role span {
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
+        color:var(--color-text-secondary);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-control-line-height);
+      }
+
+      .semantic-color-section {
+        padding-top: 18px;
+      }
+
+      .semantic-color-intro {
+        max-width: 840px;
+      }
+
+      .semantic-map {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 14px;
+        color:var(--color-text-default);
+        font-size:var(--text-caption-size);
+        line-height: 1.4;
+      }
+
+      .semantic-map span {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        padding: 3px 8px;
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .semantic-map strong {
+        color:var(--color-text-primary);
+        font-weight: 500;
+      }
+
+      .semantic-color-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .semantic-color-group {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .semantic-color-group.wide {
+        grid-column: 1 / -1;
+      }
+
+      .semantic-color-group h4 {
+        margin: 0 0 12px;
+        color:var(--color-text-primary);
+        font-size:var(--text-control-size);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .semantic-token-list {
+        display: grid;
+        gap: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        background:var(--color-bg-container);
+      }
+
+      .semantic-token-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1.1fr) minmax(76px, 0.58fr) minmax(96px, 0.62fr) minmax(0, 1fr);
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+        padding: 10px 12px;
+        border-top:1px solid var(--color-border-subtle);
+      }
+
+      .semantic-token-row:first-child {
+        border-top: 0;
+      }
+
+      .semantic-color-group.wide .semantic-token-row {
+        grid-template-columns: minmax(180px, 1.25fr) minmax(116px, 0.7fr) minmax(112px, 0.62fr) minmax(180px, 1.35fr);
+      }
+
+      .semantic-name,
+      .semantic-primitive,
+      .semantic-hex {
+        min-width: 0;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size:var(--text-caption-size);
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+
+      .semantic-name {
+        color:var(--color-text-primary);
+        font-weight: 500;
+      }
+
+      .semantic-primitive {
+        color:var(--color-text-secondary);
+      }
+
+      .semantic-token-source {
+        display: grid;
+        min-width: 0;
+        gap: 3px;
+      }
+
+      .semantic-color-label {
+        min-width: 0;
+        color:var(--color-text-primary);
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size:var(--text-caption-size);
+        font-weight: 500;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+
+      .semantic-token-source .semantic-primitive {
+        font-size: 11px;
+      }
+
+      .semantic-preview {
+        display: inline-flex;
+        align-items: center;
+        min-width: 0;
+        gap: 8px;
+      }
+
+      .semantic-swatch {
+        width: 28px;
+        height: 28px;
+        flex: 0 0 auto;
+        background: var(--semantic-swatch);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.36);
+      }
+
+      .semantic-hex {
+        color:var(--color-text-default);
+      }
+
+      .semantic-usage {
+        min-width: 0;
+        color:var(--color-text-secondary);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-caption-line-height);
+      }
+
+      .semantic-rule-box {
+        margin-top: 18px;
+        padding: 16px;
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .semantic-rule-box h4 {
+        margin: 0 0 10px;
+        color:var(--color-text-primary);
+        font-size:var(--text-control-size);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .semantic-rule-box .semantic-map + p {
+        margin-top: 10px;
+      }
+
+      .semantic-rule-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding: 0 0 0 18px;
+        color:var(--color-text-default);
+        font-size:var(--text-control-size);
+        line-height: 1.7;
+      }
+
+      .semantic-rule-list code,
+      .semantic-token-row code {
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
       }
 
       .style-token-grid {
@@ -1143,24 +1363,24 @@
         min-width: 0;
         padding: 14px;
         background: var(--gray-50);
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
       .style-token-card strong {
         display: block;
         margin-bottom: 6px;
-        color: var(--gray-900);
-        font-size: 13px;
+        color:var(--color-text-primary);
+        font-size:var(--text-control-size);
         font-weight: 500;
         line-height: 1.4;
       }
 
       .style-token-card span,
       .style-token-card p {
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
+        color:var(--color-text-secondary);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-control-line-height);
       }
 
       .typography-specimen {
@@ -1174,7 +1394,7 @@
         align-items: baseline;
         gap: 18px;
         padding: 14px 0;
-        border-bottom: 1px solid var(--gray-200);
+        border-bottom:1px solid var(--color-border-subtle);
       }
 
       .type-sample:last-child {
@@ -1184,20 +1404,20 @@
       .type-meta {
         display: grid;
         gap: 4px;
-        color: var(--gray-500);
-        font-size: 12px;
+        color:var(--color-text-tertiary);
+        font-size:var(--text-caption-size);
         line-height: 1.4;
       }
 
       .type-meta strong {
-        color: var(--gray-800);
-        font-size: 13px;
+        color: var(--color-text-default);
+        font-size:var(--text-control-size);
         font-weight: 500;
       }
 
       .doc-section .type-text {
         margin: 0;
-        color: var(--gray-900);
+        color: var(--color-text-primary);
         font-size: var(--type-size);
         font-weight: var(--type-weight, 400);
         line-height: var(--type-line-height, 1.5);
@@ -1205,58 +1425,83 @@
       }
 
       .doc-section .type-text.caption {
-        color: var(--gray-600);
+        color: var(--color-text-secondary);
       }
 
-      .type-color-grid {
+      .typography-semantic-intro {
+        max-width: 840px;
+      }
+
+      .typography-semantic-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 12px;
-        margin-top: 14px;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 18px;
       }
 
-      .type-color-card {
+      .typography-semantic-group {
         min-width: 0;
-        padding: 14px;
+        padding: 16px;
         background: var(--gray-50);
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
-      .type-color-card.inverse {
-        background: var(--gray-900);
-        border-color: var(--gray-900);
+      .typography-semantic-group h3 {
+        margin: 0 0 12px;
       }
 
-      .type-color-card strong {
-        display: block;
-        margin-bottom: 8px;
-        color: var(--sample-color);
-        font-size: 14px;
-        font-weight: 500;
-        line-height: 1.5;
-      }
-
-      .type-color-card p {
+      .typography-semantic-list {
+        display: grid;
+        gap: 0;
         margin: 0;
-        color: var(--sample-color);
-        font-size: 13px;
-        line-height: 1.65;
+        padding: 0;
+        list-style: none;
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+        overflow: hidden;
       }
 
-      .type-color-value {
-        display: inline-flex;
+      .typography-semantic-row {
+        display: grid;
+        grid-template-columns: minmax(160px, 1fr) minmax(124px, 0.7fr) minmax(150px, 0.9fr) minmax(220px, 1.35fr);
         align-items: center;
-        min-height: 24px;
-        margin-top: 10px;
-        padding: 2px 7px;
-        color: var(--gray-600);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
-        border-radius: 999px;
+        gap: 12px;
+        min-width: 0;
+        padding: 10px 12px;
+        border-top:1px solid var(--color-border-subtle);
+      }
+
+      .typography-semantic-row:first-child {
+        border-top: 0;
+      }
+
+      .typography-semantic-token,
+      .typography-semantic-scale,
+      .typography-semantic-spec {
+        min-width: 0;
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 11px;
+        font-size:var(--text-caption-size);
         line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+
+      .typography-semantic-token {
+        color: var(--color-text-primary);
+        font-weight: 500;
+      }
+
+      .typography-semantic-scale,
+      .typography-semantic-spec {
+        color: var(--color-text-secondary);
+      }
+
+      .typography-semantic-usage {
+        min-width: 0;
+        color: var(--color-text-secondary);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-caption-line-height);
       }
 
       .icon-spec-grid {
@@ -1269,16 +1514,43 @@
       .icon-spec-card {
         min-width: 0;
         display: grid;
-        grid-template-columns: minmax(180px, 0.72fr) minmax(0, 1.28fr);
+        grid-template-columns: minmax(220px, 0.6fr) minmax(0, 1.4fr);
         gap: 18px;
         padding: 16px;
         background: var(--gray-50);
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
       .icon-spec-copy {
         min-width: 0;
+      }
+
+      .icon-code-block {
+        margin: 0;
+        overflow: auto;
+        padding: 12px;
+        color: var(--color-text-default);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size:var(--text-caption-size);
+        line-height: 1.6;
+      }
+
+      .icon-rule-list {
+        display: grid;
+        gap: 8px;
+        margin: 0;
+        padding-left: 18px;
+        color: var(--color-text-secondary);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-control-line-height);
+      }
+
+      .icon-rule-list code {
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
       }
 
       .icon-demo-grid {
@@ -1296,8 +1568,8 @@
         gap: 6px;
         padding: 10px;
         color: var(--gray-800);
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
         font-size: 11px;
         line-height: 1.4;
@@ -1305,8 +1577,8 @@
 
       .icon-spec-preview.avoid {
         color: var(--gray-800);
-        background: var(--white);
-        border-color: var(--gray-200);
+        background:var(--color-bg-container);
+        border-color:var(--color-border-subtle);
         box-shadow: none;
       }
 
@@ -1316,9 +1588,9 @@
         right: 6px;
         padding: 2px 6px;
         content: "Avoid";
-        color: var(--gray-700);
-        background: var(--gray-100);
-        border: 1px solid var(--gray-200);
+        color:var(--color-text-default);
+        background:var(--color-bg-subtle);
+        border:1px solid var(--color-border-subtle);
         border-radius: 999px;
         font-size: 10px;
         line-height: 1.2;
@@ -1337,17 +1609,17 @@
       .icon-spec-card strong {
         display: block;
         margin-bottom: 6px;
-        color: var(--gray-900);
-        font-size: 13px;
+        color:var(--color-text-primary);
+        font-size:var(--text-control-size);
         font-weight: 500;
         line-height: 1.4;
       }
 
       .icon-spec-card p {
         margin: 0;
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
+        color:var(--color-text-secondary);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-control-line-height);
       }
 
       .shadow-grid {
@@ -1360,8 +1632,8 @@
       .shadow-sample {
         min-width: 0;
         padding: 18px;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
@@ -1370,11 +1642,11 @@
         display: grid;
         place-items: center;
         margin-bottom: 14px;
-        color: var(--gray-700);
-        background: var(--white);
+        color:var(--color-text-default);
+        background:var(--color-bg-container);
         border: 1px solid var(--gray-100);
         border-radius: var(--radius-sm);
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .shadow-preview.xs {
@@ -1390,13 +1662,13 @@
       }
 
       .shadow-preview.focus {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
       .shadow-preview.selector-focus {
-        border-color: var(--brand-500);
-        background: var(--white);
+        border-color:var(--color-action-primary);
+        background:var(--color-bg-container);
         box-shadow: rgba(0, 209, 87, 0.16) 0 0 0 3px;
       }
 
@@ -1410,8 +1682,8 @@
       .theme-card {
         min-width: 0;
         overflow: hidden;
-        background: var(--white);
-        border: 1px solid var(--gray-200);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
@@ -1432,17 +1704,17 @@
       }
 
       .theme-body strong {
-        color: var(--gray-900);
-        font-size: 13px;
+        color:var(--color-text-primary);
+        font-size:var(--text-control-size);
         font-weight: 500;
         line-height: 1.4;
       }
 
       .theme-body p {
         margin: 0;
-        color: var(--gray-600);
-        font-size: 12px;
-        line-height: 1.65;
+        color:var(--color-text-secondary);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-control-line-height);
       }
 
       .example-row {
@@ -1462,10 +1734,10 @@
         padding: 0 14px;
         border: 1px solid #dde1e5;
         border-radius: 8px;
-        background: #fff;
-        color: #33383d;
+        background:var(--color-bg-container);
+        color:var(--color-text-default);
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         font-weight: 400;
         line-height: 1.2;
         transition:
@@ -1476,7 +1748,7 @@
       }
 
       .spec-btn:hover {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         color: var(--brand-text);
       }
 
@@ -1486,15 +1758,15 @@
       }
 
       .spec-btn.primary {
-        border-color: var(--brand-500);
-        background: var(--brand-500);
-        color: #fff;
+        border-color:var(--color-action-primary);
+        background:var(--color-action-primary);
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.primary:hover {
         border-color: var(--brand-text);
         background: var(--brand-text);
-        color: #fff;
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.subtle {
@@ -1510,12 +1782,12 @@
 
       .spec-btn.dashed {
         border-style: dashed;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #33383d;
       }
 
       .spec-btn.ghost-primary {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         background: transparent;
         color: var(--brand-text);
       }
@@ -1527,24 +1799,24 @@
 
       .spec-btn.solid {
         border-color: #dde1e5;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #33383d;
       }
 
       .spec-btn.solid:hover {
-        border-color: var(--brand-500);
-        background: #fff;
+        border-color:var(--color-action-primary);
+        background:var(--color-bg-container);
         color: var(--brand-text);
       }
 
       .spec-btn.permission {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         background: transparent;
         color: var(--brand-text);
       }
 
       .spec-btn.permission:hover {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         background: rgb(var(--brand-rgb) / 0.06);
         color: var(--brand-text);
       }
@@ -1556,15 +1828,15 @@
       }
 
       .spec-btn.warning-primary {
-        border-color: #f79009;
-        background: #f79009;
-        color: #fff;
+        border-color: var(--color-status-warning);
+        background: var(--color-status-warning);
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-primary:hover {
         border-color: #dc6803;
         background: #dc6803;
-        color: #fff;
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary {
@@ -1574,7 +1846,7 @@
       }
 
       .spec-btn.warning-secondary:hover {
-        border-color: #f79009;
+        border-color: var(--color-status-warning);
         background: #fef0c7;
         color: #93370d;
       }
@@ -1602,19 +1874,19 @@
       }
 
       .spec-btn.info-primary {
-        border-color: #2e90fa;
-        background: #2e90fa;
-        color: #fff;
+        border-color: var(--color-status-info);
+        background: var(--color-status-info);
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.info-primary:hover {
         border-color: #1570ef;
         background: #1570ef;
-        color: #fff;
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary {
-        border-color: #2e90fa;
+        border-color: var(--color-status-info);
         background: transparent;
         color: #1570ef;
       }
@@ -1648,19 +1920,19 @@
       }
 
       .spec-btn.danger {
-        border-color: #f04438;
-        background: #f04438;
-        color: #fff;
+        border-color: var(--color-status-error);
+        background: var(--color-status-error);
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.danger:hover {
         border-color: #d92d20;
         background: #d92d20;
-        color: #fff;
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary {
-        border-color: #f04438;
+        border-color: var(--color-status-error);
         background: transparent;
         color: #d92d20;
       }
@@ -1698,12 +1970,12 @@
         padding: 0 8px;
         border-color: transparent;
         background: transparent;
-        color: var(--gray-600);
+        color:var(--color-text-secondary);
       }
 
       .spec-btn.text:hover {
-        background: var(--gray-100);
-        color: var(--gray-900);
+        background:var(--color-bg-subtle);
+        color:var(--color-text-primary);
       }
 
       .spec-btn.icon-only {
@@ -1715,12 +1987,12 @@
       .spec-btn.icon-plain {
         border-color: transparent;
         background: transparent;
-        color: var(--gray-600);
+        color:var(--color-text-secondary);
       }
 
       .spec-btn.icon-plain:hover {
-        background: var(--gray-100);
-        color: var(--gray-900);
+        background:var(--color-bg-subtle);
+        color:var(--color-text-primary);
       }
 
       .spec-icon {
@@ -1728,7 +2000,7 @@
         height: 14px;
         flex: 0 0 auto;
         stroke: currentColor;
-        stroke-width: 1.7;
+        stroke-width: 2;
         stroke-linecap: round;
         stroke-linejoin: round;
         fill: none;
@@ -1738,20 +2010,20 @@
         min-height: 28px;
         padding: 0 10px;
         border-radius: 7px;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .spec-btn.medium {
         min-height: 30px;
         padding: 0 12px;
         border-radius: 7px;
-        font-size: 13px;
+        font-size:var(--text-control-size);
       }
 
       .spec-btn.large {
         min-height: 36px;
         padding: 0 16px;
-        font-size: 14px;
+        font-size:var(--text-body-size);
       }
 
       .spec-btn[disabled] {
@@ -1761,18 +2033,18 @@
 
       .spec-btn[disabled]:hover {
         border-color: #dde1e5;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #33383d;
       }
 
       .spec-btn.primary[disabled]:hover {
-        border-color: var(--brand-500);
-        background: var(--brand-500);
-        color: #fff;
+        border-color:var(--color-action-primary);
+        background:var(--color-action-primary);
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.permission[disabled]:hover {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         background: transparent;
         color: var(--brand-text);
       }
@@ -1786,25 +2058,25 @@
       .spec-btn.text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: var(--gray-600);
+        color:var(--color-text-secondary);
       }
 
       .spec-btn.dashed[disabled]:hover {
         border-color: #dde1e5;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #33383d;
       }
 
       .spec-btn.solid[disabled]:hover {
         border-color: #dde1e5;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #33383d;
       }
 
       .spec-btn.warning-primary[disabled]:hover {
-        border-color: #f79009;
-        background: #f79009;
-        color: #fff;
+        border-color: var(--color-status-warning);
+        background: var(--color-status-warning);
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary[disabled]:hover {
@@ -1826,13 +2098,13 @@
       }
 
       .spec-btn.info-primary[disabled]:hover {
-        border-color: #2e90fa;
-        background: #2e90fa;
-        color: #fff;
+        border-color: var(--color-status-info);
+        background: var(--color-status-info);
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary[disabled]:hover {
-        border-color: #2e90fa;
+        border-color: var(--color-status-info);
         background: transparent;
         color: #1570ef;
       }
@@ -1850,13 +2122,13 @@
       }
 
       .spec-btn.danger[disabled]:hover {
-        border-color: #f04438;
-        background: #f04438;
-        color: #fff;
+        border-color: var(--color-status-error);
+        background: var(--color-status-error);
+        color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary[disabled]:hover {
-        border-color: #f04438;
+        border-color: var(--color-status-error);
         background: transparent;
         color: #d92d20;
       }
@@ -1888,7 +2160,7 @@
         height: 12px;
         flex: 0 0 auto;
         border: 1.5px solid rgba(255, 255, 255, 0.5);
-        border-top-color: #fff;
+        border-top-color:var(--color-text-inverse);
         border-radius: 999px;
         animation: button-spin 0.72s linear infinite;
       }
@@ -1943,9 +2215,9 @@
         width: 100%;
         border: 1px solid var(--input-border-color);
         border-radius: 10px;
-        background: #fff;
+        background:var(--color-bg-container);
         color: var(--input-text-color);
-        font-size: 13px;
+        font-size:var(--text-control-size);
         outline: 0;
         transition:
           border-color 0.15s ease,
@@ -1996,7 +2268,7 @@
       .spec-input-wrap.hover,
       .spec-input-wrap.is-hover {
         border-color: var(--input-hover-border-color);
-        background: #fff;
+        background:var(--color-bg-container);
         box-shadow: none;
       }
 
@@ -2035,7 +2307,7 @@
         gap: 8px;
         border: 1px solid var(--input-border-color);
         border-radius: 10px;
-        background: #fff;
+        background:var(--color-bg-container);
         padding: 0 12px;
         transition:
           border-color 0.15s ease,
@@ -2060,7 +2332,7 @@
         flex: 0 0 auto;
         color: #969ba1;
         stroke: currentColor;
-        stroke-width: 1.7;
+        stroke-width: 2;
         stroke-linecap: round;
         stroke-linejoin: round;
         fill: none;
@@ -2086,8 +2358,8 @@
       }
 
       .input-clear:hover {
-        background: var(--gray-100);
-        color: var(--gray-700);
+        background:var(--color-bg-subtle);
+        color:var(--color-text-default);
       }
 
       .input-clear .input-icon {
@@ -2099,14 +2371,14 @@
       .input-unit {
         flex: 0 0 auto;
         color: #969ba1;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1;
         white-space: nowrap;
       }
 
       .input-count {
         color: #969ba1;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.45;
         text-align: right;
       }
@@ -2155,7 +2427,7 @@
 
       .spec-field-help {
         color: #969ba1;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.45;
       }
 
@@ -2193,7 +2465,7 @@
       .spec-field.success .spec-input,
       .spec-field.success .spec-textarea,
       .spec-input-wrap.success {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
       }
 
       .spec-field.success .spec-field-help {
@@ -2213,21 +2485,21 @@
       .spec-input.small {
         height: 30px;
         border-radius: 8px;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .spec-input.large {
         height: 44px;
-        font-size: 14px;
+        font-size:var(--text-body-size);
       }
 
       .input-token {
-        color: var(--gray-700);
-        background: var(--gray-100);
+        color:var(--color-text-default);
+        background:var(--color-bg-subtle);
         border-radius: 4px;
         padding: 2px 5px;
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .select-demo-stack {
@@ -2247,10 +2519,10 @@
         padding: 0 36px 0 12px;
         border: 1px solid #dde1e5;
         border-radius: 10px;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #1a1d1f;
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         line-height: 1.4;
         text-align: left;
         transition:
@@ -2262,24 +2534,24 @@
 
       .spec-select:hover,
       .spec-select.hover {
-        border-color: var(--brand-500);
-        background: #fff;
+        border-color:var(--color-action-primary);
+        background:var(--color-bg-container);
         box-shadow: none;
       }
 
       .spec-select.open,
       .spec-select.focus {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
       .spec-select.error {
-        border-color: #f04438;
+        border-color: var(--color-status-error);
       }
 
       .spec-select.error.open,
       .spec-select.error.focus {
-        border-color: #f04438;
+        border-color: var(--color-status-error);
         box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
       }
 
@@ -2299,12 +2571,12 @@
       .spec-select.small {
         min-height: 30px;
         border-radius: 8px;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .spec-select.large {
         min-height: 44px;
-        font-size: 14px;
+        font-size:var(--text-body-size);
       }
 
       .select-value {
@@ -2354,12 +2626,25 @@
         top: 50%;
         width: 20px;
         height: 20px;
-        background: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.5 8.25L10 11.75L13.5 8.25' fill='none' stroke='%23969ba1' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 20px 20px no-repeat;
+        color: var(--color-text-tertiary);
+        background: none;
         pointer-events: none;
         transform: translateY(-50%);
         transition:
           opacity 0.15s ease,
           transform 0.15s ease;
+      }
+
+      .select-chevron::before {
+        position: absolute;
+        top: 5px;
+        left: 6px;
+        width: 7px;
+        height: 7px;
+        content: "";
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(45deg);
       }
 
       .spec-select.open .select-chevron {
@@ -2464,8 +2749,8 @@
       }
 
       .select-clear:hover {
-        background: var(--gray-100);
-        color: var(--gray-700);
+        background:var(--color-bg-subtle);
+        color:var(--color-text-default);
       }
 
       .select-tags {
@@ -2489,9 +2774,9 @@
         min-height: 24px;
         padding: 2px 7px;
         border-radius: 6px;
-        background: var(--gray-100);
-        color: var(--gray-700);
-        font-size: 12px;
+        background:var(--color-bg-subtle);
+        color:var(--color-text-default);
+        font-size:var(--text-caption-size);
         line-height: 16px;
       }
 
@@ -2514,7 +2799,7 @@
       .select-tag-remove {
         flex: 0 0 auto;
         color: #969ba1;
-        font-size: 14px;
+        font-size:var(--text-body-size);
         line-height: 16px;
       }
 
@@ -2526,7 +2811,7 @@
         z-index: 30;
         margin-top: 0;
         padding: 6px;
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.94);
         box-shadow: 0 18px 42px rgba(20, 28, 36, 0.12);
@@ -2570,7 +2855,7 @@
       .select-search .spec-input {
         height: 30px;
         border-radius: 8px;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .select-option-list {
@@ -2591,7 +2876,7 @@
         border-radius: 7px;
         color: #33383d;
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         line-height: 1.4;
       }
 
@@ -2625,7 +2910,7 @@
         align-items: center;
         padding: 0 9px;
         color: #969ba1;
-        font-size: 13px;
+        font-size:var(--text-control-size);
       }
 
       .select-option-check {
@@ -2673,10 +2958,10 @@
         padding: 0 36px 0 12px;
         border: 1px solid #dde1e5;
         border-radius: 10px;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #1a1d1f;
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         line-height: 1.4;
         text-align: left;
         transition:
@@ -2688,18 +2973,18 @@
 
       .spec-date:hover,
       .spec-date.hover {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         box-shadow: none;
       }
 
       .spec-date.open,
       .spec-date.focus {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
       .spec-date.error {
-        border-color: #f04438;
+        border-color: var(--color-status-error);
       }
 
       .spec-date.error.focus {
@@ -2721,12 +3006,12 @@
       .spec-date.small {
         min-height: 30px;
         border-radius: 8px;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .spec-date.large {
         min-height: 44px;
-        font-size: 14px;
+        font-size:var(--text-body-size);
       }
 
       .date-value {
@@ -2780,7 +3065,7 @@
         left: 0;
         z-index: 32;
         padding: 12px;
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: 12px;
         background: rgba(255, 255, 255, 0.94);
         box-shadow: 0 18px 42px rgba(20, 28, 36, 0.12);
@@ -2827,7 +3112,7 @@
 
       .date-range-calendars .date-calendar + .date-calendar {
         padding-left: 14px;
-        border-left: 1px solid var(--gray-200);
+        border-left:1px solid var(--color-border-subtle);
       }
 
       .date-range-calendars [data-date-panel-offset="0"] .date-nav-btn.next,
@@ -2845,13 +3130,13 @@
       .date-time-panel {
         min-width: 0;
         padding-left: 14px;
-        border-left: 1px solid var(--gray-200);
+        border-left:1px solid var(--color-border-subtle);
       }
 
       .date-time-title {
         margin: 0 0 10px;
         color: var(--gray-800);
-        font-size: 13px;
+        font-size:var(--text-control-size);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -2866,7 +3151,7 @@
         display: block;
         margin-bottom: 6px;
         color: #969ba1;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.4;
         text-align: center;
       }
@@ -2902,21 +3187,21 @@
         color: #33383d;
         cursor: pointer;
         font: inherit;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         text-align: center;
       }
 
       .date-time-option:hover {
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
       }
 
       .date-time-option.active {
-        background: var(--brand-500);
-        color: #fff;
+        background:var(--color-action-primary);
+        color:var(--color-text-inverse);
       }
 
       .date-time-option.active:hover {
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
         color: var(--brand-text);
       }
 
@@ -2926,7 +3211,7 @@
         gap: 8px;
         margin-top: 12px;
         padding-top: 10px;
-        border-top: 1px solid var(--gray-200);
+        border-top:1px solid var(--color-border-subtle);
       }
 
       .time-picker-stack {
@@ -2961,7 +3246,7 @@
 
       .time-picker-example-title {
         color: #737a82;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.4;
       }
 
@@ -3015,7 +3300,7 @@
       }
 
       .time-clear-btn:hover {
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
         color: #4f565d;
       }
 
@@ -3060,7 +3345,7 @@
       }
 
       .time-range-inputs:has(.time-input-control.open) {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
@@ -3071,7 +3356,7 @@
 
       .time-range-separator {
         color: #969ba1;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         line-height: 1;
       }
 
@@ -3128,9 +3413,9 @@
 
       .time-picker-dropdown .spec-btn.primary[disabled],
       .time-picker-dropdown .spec-btn.primary[disabled]:hover {
-        border-color: var(--brand-500);
-        background: var(--brand-500);
-        color: #fff;
+        border-color:var(--color-action-primary);
+        background:var(--color-action-primary);
+        color:var(--color-text-inverse);
         cursor: not-allowed;
         opacity: 0.6;
       }
@@ -3143,14 +3428,14 @@
 
       .time-picker-range-group + .time-picker-range-group {
         padding-left: 14px;
-        border-left: 1px solid var(--gray-200);
+        border-left:1px solid var(--color-border-subtle);
       }
 
       .time-picker-range-label {
         display: block;
         margin-bottom: 10px;
-        color: var(--gray-700);
-        font-size: 12px;
+        color:var(--color-text-default);
+        font-size:var(--text-caption-size);
         line-height: 1.4;
       }
 
@@ -3168,9 +3453,9 @@
         gap: 4px;
         margin-top: 16px;
         padding: 4px;
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: 10px;
-        background: #fff;
+        background:var(--color-bg-container);
       }
 
       .range-scope-tab {
@@ -3182,12 +3467,12 @@
         color: #4f565d;
         cursor: pointer;
         font: inherit;
-        font-size: 13px;
+        font-size:var(--text-control-size);
       }
 
       .range-scope-tab:hover {
         border-color: transparent;
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
         color: #33383d;
         box-shadow: none;
       }
@@ -3229,7 +3514,7 @@
 
       .range-filter-label {
         color: #737a82;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         line-height: 1.4;
       }
 
@@ -3261,14 +3546,14 @@
 
       .range-scope-body .select-option.active:hover,
       .range-scope-body .date-time-option.active:hover {
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
         color: var(--brand-text);
       }
 
       .range-scope-body .time-filter-panel .date-time-option.active,
       .range-scope-body .time-filter-panel .date-time-option.active:hover {
-        background: var(--brand-500);
-        color: #fff;
+        background:var(--color-action-primary);
+        color:var(--color-text-inverse);
       }
 
       .time-filter-panel {
@@ -3291,11 +3576,11 @@
         width: min(100%, 360px);
         margin: 0;
         padding: 12px 14px;
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: 10px;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #33383d;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         line-height: 1.7;
       }
 
@@ -3310,7 +3595,7 @@
         align-content: start;
         gap: 4px;
         padding-right: 10px;
-        border-right: 1px solid var(--gray-200);
+        border-right:1px solid var(--color-border-subtle);
       }
 
       .date-shortcut {
@@ -3321,7 +3606,7 @@
         background: transparent;
         color: #33383d;
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
         text-align: left;
       }
 
@@ -3346,7 +3631,7 @@
       .date-panel-title {
         margin: 0;
         color: var(--gray-800);
-        font-size: 13px;
+        font-size:var(--text-control-size);
         font-weight: 500;
         line-height: 1.4;
         text-align: center;
@@ -3366,8 +3651,8 @@
       }
 
       .date-nav-btn:hover {
-        background: var(--gray-100);
-        color: var(--gray-900);
+        background:var(--color-bg-subtle);
+        color:var(--color-text-primary);
       }
 
       .date-nav-btn::before {
@@ -3399,7 +3684,7 @@
         display: grid;
         place-items: center;
         color: #969ba1;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .date-cell {
@@ -3414,11 +3699,11 @@
         background: transparent;
         color: #33383d;
         cursor: pointer;
-        font-size: 13px;
+        font-size:var(--text-control-size);
       }
 
       .date-cell:hover {
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
       }
 
       .date-cell.muted {
@@ -3431,12 +3716,12 @@
 
       .date-cell.active,
       .date-cell.range-edge {
-        background: var(--brand-500);
-        color: #fff;
+        background:var(--color-action-primary);
+        color:var(--color-text-inverse);
       }
 
       .date-cell.in-range {
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
         color: var(--brand-text);
       }
 
@@ -3451,8 +3736,8 @@
       }
 
       .date-cell.range-edge.range-preview-edge {
-        background: var(--brand-500);
-        color: #fff;
+        background:var(--color-action-primary);
+        color:var(--color-text-inverse);
       }
 
       .date-cell.disabled {
@@ -3475,13 +3760,13 @@
       }
 
       .date-days.week-picker .date-cell.week-hover {
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
         color: #33383d;
       }
 
       .date-days.week-picker .date-cell.week-active {
-        background: var(--brand-500);
-        color: #fff;
+        background:var(--color-action-primary);
+        color:var(--color-text-inverse);
       }
 
       .date-period-grid {
@@ -3513,7 +3798,7 @@
         overflow: hidden;
         border: 1px solid #dde1e5;
         border-radius: 10px;
-        background: #fff;
+        background:var(--color-bg-container);
         transition:
           border-color 0.15s ease,
           box-shadow 0.15s ease,
@@ -3524,7 +3809,7 @@
       .number-input.hover,
       .number-input.is-hover {
         border-color: var(--input-number-hover-border-color);
-        background: #fff;
+        background:var(--color-bg-container);
         box-shadow: none;
       }
 
@@ -3555,7 +3840,7 @@
 
       .number-input.small .spec-input {
         height: 28px;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       .number-input.large {
@@ -3565,7 +3850,7 @@
 
       .number-input.large .spec-input {
         height: 42px;
-        font-size: 14px;
+        font-size:var(--text-body-size);
       }
 
       .number-stepper {
@@ -3607,7 +3892,7 @@
         width: 10px;
         height: 10px;
         stroke: currentColor;
-        stroke-width: 1.8;
+        stroke-width: 2;
         stroke-linecap: round;
         stroke-linejoin: round;
         fill: none;
@@ -3627,7 +3912,7 @@
         flex: 0 0 auto;
         padding-right: 12px;
         color: #969ba1;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
         white-space: nowrap;
       }
 
@@ -3712,7 +3997,7 @@
         border: 1.4px solid #cfd6dc;
         border-radius: 50%;
         appearance: none;
-        background: #fff;
+        background:var(--color-bg-container);
         cursor: pointer;
         outline: 0;
         transition:
@@ -3728,7 +4013,7 @@
         width: 6px;
         height: 6px;
         content: "";
-        background: #fff;
+        background:var(--color-bg-container);
         border-radius: 50%;
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.6);
@@ -3738,8 +4023,8 @@
       }
 
       .spec-radio input:checked {
-        border-color: var(--brand-500);
-        background: var(--brand-500);
+        border-color:var(--color-action-primary);
+        background:var(--color-action-primary);
         box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
       }
 
@@ -3789,7 +4074,7 @@
         padding: 5px 12px;
         border: 1px solid #dde1e5;
         border-radius: 999px;
-        background: #fff;
+        background:var(--color-bg-container);
         color: #4f565d;
         cursor: pointer;
         font-size: 12.5px;
@@ -3812,7 +4097,7 @@
       }
 
       .radio-card:has(input:checked) {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         background: rgb(var(--brand-rgb) / 0.08);
         color: var(--brand-text);
       }
@@ -3825,12 +4110,12 @@
 
       .radio-card.disabled:hover,
       .radio-card:has(input:disabled):hover {
-        background: #fff;
+        background:var(--color-bg-container);
         color: #4f565d;
       }
 
       .radio-card:has(input:checked:disabled):hover {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         background: rgb(var(--brand-rgb) / 0.08);
         color: var(--brand-text);
       }
@@ -3885,7 +4170,7 @@
         border: 1.4px solid #cfd6dc;
         border-radius: 4px;
         appearance: none;
-        background: #fff;
+        background:var(--color-bg-container);
         cursor: pointer;
         outline: 0;
         transition:
@@ -3901,7 +4186,7 @@
         width: 8px;
         height: 8px;
         content: "";
-        background: #fff;
+        background:var(--color-bg-container);
         clip-path: polygon(14% 45%, 0 60%, 38% 96%, 100% 18%, 86% 4%, 36% 68%);
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.7);
@@ -3912,8 +4197,8 @@
 
       .spec-checkbox input:checked,
       .spec-checkbox input[data-indeterminate="true"] {
-        border-color: var(--brand-500);
-        background: var(--brand-500);
+        border-color:var(--color-action-primary);
+        background:var(--color-action-primary);
       }
 
       .spec-checkbox input:checked::after {
@@ -4024,7 +4309,7 @@
         height: 16px;
         content: "";
         border-radius: 50%;
-        background: #fff;
+        background:var(--color-bg-container);
         box-shadow: 0 1px 3px rgba(20, 28, 36, 0.22);
         transition:
           transform 0.18s ease,
@@ -4051,7 +4336,7 @@
       }
 
       .spec-switch input:checked + .switch-track {
-        background: var(--brand-500);
+        background:var(--color-action-primary);
         box-shadow: none;
       }
 
@@ -4062,7 +4347,7 @@
       .spec-switch input:checked + .switch-track::after {
         left: 26px;
         border-color: rgba(79, 86, 93, 0.18);
-        border-top-color: var(--brand-500);
+        border-top-color:var(--color-action-primary);
       }
 
       .spec-switch input:focus-visible + .switch-track {
@@ -4140,7 +4425,7 @@
       .switch-text {
         position: absolute;
         top: 50%;
-        color: #fff;
+        color:var(--color-text-inverse);
         font-size: 10px;
         line-height: 1;
         transform: translateY(-50%);
@@ -4154,7 +4439,7 @@
 
       .switch-text-off {
         right: 7px;
-        color: #fff;
+        color:var(--color-text-inverse);
         opacity: 1;
       }
 
@@ -4180,7 +4465,7 @@
 
       .spec-table-wrap {
         overflow-x: auto;
-        border: 1px solid var(--gray-200);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
 
@@ -4188,19 +4473,19 @@
         width: 100%;
         min-width: 680px;
         border-collapse: collapse;
-        font-size: 13px;
+        font-size:var(--text-control-size);
       }
 
       .spec-table th,
       .spec-table td {
         padding: 12px 14px;
-        border-bottom: 1px solid var(--gray-200);
+        border-bottom:1px solid var(--color-border-subtle);
         text-align: left;
         vertical-align: top;
       }
 
       .spec-table th {
-        color: var(--gray-700);
+        color:var(--color-text-default);
         background: var(--gray-50);
         font-weight: 600;
       }
@@ -4211,11 +4496,11 @@
 
       .spec-table code {
         color: var(--gray-800);
-        background: var(--gray-100);
+        background:var(--color-bg-subtle);
         border-radius: 4px;
         padding: 2px 5px;
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size: 12px;
+        font-size:var(--text-caption-size);
       }
 
       @media (max-width: 760px) {
@@ -4255,7 +4540,7 @@
           overflow-x: auto;
           overflow-y: hidden;
           border-right: 0;
-          border-bottom: 1px solid var(--gray-200);
+          border-bottom:1px solid var(--color-border-subtle);
         }
 
         .sidebar-footer {
@@ -4308,7 +4593,7 @@
         }
 
         .doc-title {
-          font-size: 24px;
+          font-size:var(--text-data-size);
         }
 
         .doc-grid {
@@ -4331,9 +4616,21 @@
           grid-template-columns: 1fr;
         }
 
+        .semantic-color-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .semantic-token-row {
+          grid-template-columns: 1fr;
+          gap: 6px;
+        }
+
+        .semantic-preview {
+          align-items: center;
+        }
+
         .style-token-grid,
         .mask-case-grid,
-        .type-color-grid,
         .icon-spec-grid,
         .shadow-grid,
         .theme-grid {
@@ -4343,6 +4640,11 @@
         .type-sample {
           grid-template-columns: 1fr;
           gap: 8px;
+        }
+
+        .typography-semantic-row {
+          grid-template-columns: 1fr;
+          gap: 6px;
         }
 
         .icon-spec-card {
@@ -4428,13 +4730,13 @@
 
       :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-input-control.open) {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
       }
 
       :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-input-control.open) {
-        border-color: var(--brand-500);
+        border-color:var(--color-action-primary);
         box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
       }
 
@@ -5371,7 +5673,7 @@
                       <li class="color-swatch" style="--swatch: #ffc2bd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-200</span><span class="color-hex">#FFC2BD</span></div></li>
                       <li class="color-swatch" style="--swatch: #ff9b94; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-300</span><span class="color-hex">#FF9B94</span></div></li>
                       <li class="color-swatch" style="--swatch: #ff6b61; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-400</span><span class="color-hex">#FF6B61</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f04438; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-500</span><span class="color-hex">#F04438</span></div></li>
+                      <li class="color-swatch" style="--swatch: var(--color-status-error); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-500</span><span class="color-hex">#F04438</span></div></li>
                       <li class="color-swatch" style="--swatch: #d92d20; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-600</span><span class="color-hex">#D92D20</span></div></li>
                       <li class="color-swatch" style="--swatch: #b42318; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-700</span><span class="color-hex">#B42318</span></div></li>
                       <li class="color-swatch" style="--swatch: #912018; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-800</span><span class="color-hex">#912018</span></div></li>
@@ -5393,7 +5695,7 @@
                       <li class="color-swatch" style="--swatch: #fedf89; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-200</span><span class="color-hex">#FEDF89</span></div></li>
                       <li class="color-swatch" style="--swatch: #fec84b; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-300</span><span class="color-hex">#FEC84B</span></div></li>
                       <li class="color-swatch" style="--swatch: #fdb022; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-400</span><span class="color-hex">#FDB022</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f79009; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-500</span><span class="color-hex">#F79009</span></div></li>
+                      <li class="color-swatch" style="--swatch: var(--color-status-warning); --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-500</span><span class="color-hex">#F79009</span></div></li>
                       <li class="color-swatch" style="--swatch: #dc6803; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-600</span><span class="color-hex">#DC6803</span></div></li>
                       <li class="color-swatch" style="--swatch: #b54708; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-700</span><span class="color-hex">#B54708</span></div></li>
                       <li class="color-swatch" style="--swatch: #93370d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-800</span><span class="color-hex">#93370D</span></div></li>
@@ -5415,7 +5717,7 @@
                       <li class="color-swatch" style="--swatch: #b2ddff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-200</span><span class="color-hex">#B2DDFF</span></div></li>
                       <li class="color-swatch" style="--swatch: #84caff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-300</span><span class="color-hex">#84CAFF</span></div></li>
                       <li class="color-swatch" style="--swatch: #53b1fd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-400</span><span class="color-hex">#53B1FD</span></div></li>
-                      <li class="color-swatch" style="--swatch: #2e90fa; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-500</span><span class="color-hex">#2E90FA</span></div></li>
+                      <li class="color-swatch" style="--swatch: var(--color-status-info); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-500</span><span class="color-hex">#2E90FA</span></div></li>
                       <li class="color-swatch" style="--swatch: #1570ef; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-600</span><span class="color-hex">#1570EF</span></div></li>
                       <li class="color-swatch" style="--swatch: #175cd3; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-700</span><span class="color-hex">#175CD3</span></div></li>
                       <li class="color-swatch" style="--swatch: #1849a9; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-800</span><span class="color-hex">#1849A9</span></div></li>
@@ -5437,12 +5739,273 @@
                       <li class="color-swatch" style="--swatch: #bef5d5; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-200</span><span class="color-hex">#BEF5D5</span></div></li>
                       <li class="color-swatch" style="--swatch: #91e9b8; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-300</span><span class="color-hex">#91E9B8</span></div></li>
                       <li class="color-swatch" style="--swatch: #5fd897; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-400</span><span class="color-hex">#5FD897</span></div></li>
-                      <li class="color-swatch" style="--swatch: #22b573; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-500</span><span class="color-hex">#22B573</span></div></li>
+                      <li class="color-swatch" style="--swatch: var(--color-status-success); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-500</span><span class="color-hex">var(--color-status-success)</span></div></li>
                       <li class="color-swatch" style="--swatch: #1b9c61; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-600</span><span class="color-hex">#1B9C61</span></div></li>
                       <li class="color-swatch" style="--swatch: #147c4d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-700</span><span class="color-hex">#147C4D</span></div></li>
                       <li class="color-swatch" style="--swatch: #12633f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-800</span><span class="color-hex">#12633F</span></div></li>
                       <li class="color-swatch" style="--swatch: #104f34; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-900</span><span class="color-hex">#104F34</span></div></li>
                     </ul>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section semantic-color-section">
+                <h3>语义色 Semantic Color</h3>
+                <p class="semantic-color-intro">
+                  Semantic Color 建立在 Primitive Color 之上，用用途命名颜色。页面和组件开发应优先选择语义 Token，
+                  再由语义 Token 映射到当前主题或固定状态色，避免直接根据视觉相似度调用基础色阶。
+                </p>
+                <div class="semantic-map" aria-label="颜色 Token 分层">
+                  <span>Primitive Color</span>
+                  <strong>→</strong>
+                  <span>Semantic Color</span>
+                  <strong>→</strong>
+                  <span>Component Token</span>
+                </div>
+
+                <div class="semantic-color-grid" aria-label="语义色 Token 映射">
+                  <div class="semantic-color-group wide">
+                    <h4>Text</h4>
+                    <ul class="semantic-token-list">
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-primary);">
+                        <code class="semantic-name">color-text-primary</code>
+                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-primary</code><code class="semantic-primitive">neutral-900</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#14171A</code></span>
+                        <span class="semantic-usage">页面标题 / 重要信息 / 表单 Label / 关键数据</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-default);">
+                        <code class="semantic-name">color-text-default</code>
+                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-default</code><code class="semantic-primitive">neutral-700</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#343A40</code></span>
+                        <span class="semantic-usage">正文说明 / 菜单项 / 输入内容 / 可阅读段落</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-secondary);">
+                        <code class="semantic-name">color-text-secondary</code>
+                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-secondary</code><code class="semantic-primitive">neutral-600</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#59616A</code></span>
+                        <span class="semantic-usage">说明文案 / 表格补充信息 / 次要状态描述 / Helper Text</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-tertiary);">
+                        <code class="semantic-name">color-text-tertiary</code>
+                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-tertiary</code><code class="semantic-primitive">neutral-500</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#78818C</code></span>
+                        <span class="semantic-usage">Placeholder / 说明尾注 / 计数器 / 低优先级信息</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-disabled);">
+                        <code class="semantic-name">color-text-disabled</code>
+                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-disabled</code><code class="semantic-primitive">neutral-400</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#A5ADB6</code></span>
+                        <span class="semantic-usage">Disabled 文本 / 禁用输入 / 不可用操作</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-inverse);">
+                        <code class="semantic-name">color-text-inverse</code>
+                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-inverse</code><code class="semantic-primitive">white</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FFFFFF</code></span>
+                        <span class="semantic-usage">深色底 / Primary Button / 深色标签 / 深色浮层内容</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-link);">
+                        <code class="semantic-name">color-text-link</code>
+                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-link</code><code class="semantic-primitive">blue-600</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#1570EF</code></span>
+                        <span class="semantic-usage">可点击文本 / 跳转入口 / 外部资源访问</span>
+                      </li>
+                    </ul>
+                    <div class="semantic-map" aria-label="Text Semantic 调用关系示例">
+                      <span>neutral-900</span><strong>→</strong><span>color-text-primary</span><strong>→</strong><span>Page Title / Form Label</span>
+                      <span>neutral-600</span><strong>→</strong><span>color-text-secondary</span><strong>→</strong><span>Description / Helper Text</span>
+                    </div>
+                  </div>
+
+                  <div class="semantic-color-group wide">
+                    <h4>Background</h4>
+                    <ul class="semantic-token-list">
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--gray-50);">
+                        <code class="semantic-name">color-bg-page</code>
+                        <code class="semantic-primitive">neutral-50</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FAFBFC</code></span>
+                        <span class="semantic-usage">页面基础背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--white);">
+                        <code class="semantic-name">color-bg-container</code>
+                        <code class="semantic-primitive">white</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FFFFFF</code></span>
+                        <span class="semantic-usage">Card / Form / 主要内容容器</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--gray-100);">
+                        <code class="semantic-name">color-bg-subtle</code>
+                        <code class="semantic-primitive">neutral-100</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#F3F5F7</code></span>
+                        <span class="semantic-usage">次级区域 / 弱强调背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--gray-100);">
+                        <code class="semantic-name">color-bg-hover</code>
+                        <code class="semantic-primitive">neutral-100</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#F3F5F7</code></span>
+                        <span class="semantic-usage">中性组件 Hover</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-50);" data-semantic-brand-level="50">
+                        <code class="semantic-name">color-bg-selected</code>
+                        <code class="semantic-primitive">primary-50</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-brand-hex>#EFFFF6</code></span>
+                        <span class="semantic-usage">Selected / Active 区域</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--gray-100);">
+                        <code class="semantic-name">color-bg-disabled</code>
+                        <code class="semantic-primitive">neutral-100</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#F3F5F7</code></span>
+                        <span class="semantic-usage">Disabled 控件背景</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="semantic-color-group wide">
+                    <h4>Border</h4>
+                    <ul class="semantic-token-list">
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--gray-300);">
+                        <code class="semantic-name">color-border-default</code>
+                        <code class="semantic-primitive">neutral-300</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#D4D9DE</code></span>
+                        <span class="semantic-usage">Input / Select / Card 常规边框</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch:var(--color-border-subtle);">
+                        <code class="semantic-name">color-border-subtle</code>
+                        <code class="semantic-primitive">neutral-200</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#E7EAEE</code></span>
+                        <span class="semantic-usage">Divider / 弱边界</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch:var(--color-border-strong);">
+                        <code class="semantic-name">color-border-strong</code>
+                        <code class="semantic-primitive">neutral-400</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#A5ADB6</code></span>
+                        <span class="semantic-usage">强调边界</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-500);" data-semantic-brand-level="500">
+                        <code class="semantic-name">color-border-focus</code>
+                        <code class="semantic-primitive">primary-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-brand-hex>#00D157</code></span>
+                        <span class="semantic-usage">Focus 状态</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch:var(--color-border-subtle);">
+                        <code class="semantic-name">color-border-disabled</code>
+                        <code class="semantic-primitive">neutral-200</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#E7EAEE</code></span>
+                        <span class="semantic-usage">Disabled 控件边框</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="semantic-color-group wide">
+                    <h4>Action</h4>
+                    <ul class="semantic-token-list">
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-500);" data-semantic-action-level="500">
+                        <code class="semantic-name">color-action-primary</code>
+                        <code class="semantic-primitive">brand-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#00D157</code></span>
+                        <span class="semantic-usage">Primary Button / Checkbox / Radio / Switch / Slider</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-600);" data-semantic-action-level="600">
+                        <code class="semantic-name">color-action-primary-hover</code>
+                        <code class="semantic-primitive">brand-600</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#00B84B</code></span>
+                        <span class="semantic-usage">主要操作 Hover</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-700);" data-semantic-action-level="700">
+                        <code class="semantic-name">color-action-primary-active</code>
+                        <code class="semantic-primitive">brand-700</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#008F3F</code></span>
+                        <span class="semantic-usage">主要操作 Active / Pressed</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-50);" data-semantic-action-level="50">
+                        <code class="semantic-name">color-action-primary-subtle</code>
+                        <code class="semantic-primitive">brand-50</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#EFFFF6</code></span>
+                        <span class="semantic-usage">轻量选中态 / 品牌弱背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-200);" data-semantic-action-level="200">
+                        <code class="semantic-name">color-action-primary-disabled</code>
+                        <code class="semantic-primitive">brand-200</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#B5FFD1</code></span>
+                        <span class="semantic-usage">主要操作 Disabled</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="semantic-color-group wide">
+                    <h4>Status</h4>
+                    <ul class="semantic-token-list">
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-success);">
+                        <code class="semantic-name">color-status-success</code>
+                        <code class="semantic-primitive">success-green-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-status-success)</code></span>
+                        <span class="semantic-usage">Alert / Message / Badge / 任务成功</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-error);">
+                        <code class="semantic-name">color-status-error</code>
+                        <code class="semantic-primitive">red-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-status-error)</code></span>
+                        <span class="semantic-usage">Form Validation / Alert / Message 错误</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-warning);">
+                        <code class="semantic-name">color-status-warning</code>
+                        <code class="semantic-primitive">yellow-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-status-warning)</code></span>
+                        <span class="semantic-usage">警告 / 待处理 / 中风险提示</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-info);">
+                        <code class="semantic-name">color-status-info</code>
+                        <code class="semantic-primitive">blue-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-status-info)</code></span>
+                        <span class="semantic-usage">信息反馈 / 进行中 / Notification</span>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="semantic-color-group wide">
+                    <h4>Overlay</h4>
+                    <ul class="semantic-token-list">
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-modal);">
+                        <code class="semantic-name">color-overlay-modal</code>
+                        <code class="semantic-primitive">overlay-modal</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-overlay-modal)</code></span>
+                        <span class="semantic-usage">Modal / 确认弹窗</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-drawer);">
+                        <code class="semantic-name">color-overlay-drawer</code>
+                        <code class="semantic-primitive">overlay-drawer</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-overlay-drawer)</code></span>
+                        <span class="semantic-usage">Drawer / 侧边配置</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-loading);">
+                        <code class="semantic-name">color-overlay-loading</code>
+                        <code class="semantic-primitive">overlay-loading</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-overlay-loading)</code></span>
+                        <span class="semantic-usage">局部加载 / 表格遮罩</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="semantic-rule-box">
+                  <h4>使用原则</h4>
+                  <ol class="semantic-rule-list">
+                    <li>页面和组件优先使用 Semantic Token，不直接调用 Primitive Color。</li>
+                    <li>Primitive Color 仅作为基础色板和 Semantic Token 的取值来源。</li>
+                    <li>Component Token 应优先引用 Semantic Token。</li>
+                    <li>文字用途优先使用 <code>color-text-*</code> Semantic Token，不直接使用 <code>neutral-900</code>、<code>neutral-600</code> 等 Primitive Token。</li>
+                    <li>Brand / Action Semantic Token 随 Theme 改变。</li>
+                    <li>Text、Background、Border 等中性色语义默认跨 Theme 保持一致。</li>
+                    <li>Success / Warning / Error / Info 表达固定状态含义，不随 Brand Theme 改变。</li>
+                    <li>不要因为单个组件需求随意增加 Semantic Token；只有出现跨组件、重复使用的颜色语义时才新增。</li>
+                    <li>如果现有 Semantic Token 可以表达用途，不创建新的 Token。</li>
+                  </ol>
+                </div>
+
+                <div class="semantic-rule-box">
+                  <h4>Component Token 示例</h4>
+                  <div class="semantic-map" aria-label="Component Token 示例">
+                    <span>primary-500</span><strong>→</strong><span>color-action-primary</span><strong>→</strong><span>button-primary-background</span>
+                    <span>neutral-300</span><strong>→</strong><span>color-border-default</span><strong>→</strong><span>input-border / select-border / card-border</span>
+                    <span>red-500</span><strong>→</strong><span>color-status-error</span><strong>→</strong><span>form-error / alert-error / message-error</span>
                   </div>
                 </div>
               </section>
@@ -5455,7 +6018,7 @@
                 </p>
                 <div class="mask-case-grid" aria-label="遮罩案例">
                   <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(0, 0, 0, 0.45);" aria-hidden="true">
+                    <div class="mask-stage" style="--mask-bg: var(--color-overlay-modal);" aria-hidden="true">
                       <div class="mask-stage-content">
                         <span class="mask-line"></span>
                         <span class="mask-line medium"></span>
@@ -5465,10 +6028,10 @@
                     </div>
                     <h4>弹窗遮罩</h4>
                     <p>用于 Modal、确认弹窗和高阻断任务，背景需要明显退后。</p>
-                    <span class="mask-value">rgba(0, 0, 0, 0.45)</span>
+                    <span class="mask-value">var(--color-overlay-modal)</span>
                   </div>
                   <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(0, 0, 0, 0.35);" aria-hidden="true">
+                    <div class="mask-stage" style="--mask-bg: var(--color-overlay-drawer);" aria-hidden="true">
                       <div class="mask-stage-content">
                         <span class="mask-line"></span>
                         <span class="mask-line medium"></span>
@@ -5478,10 +6041,10 @@
                     </div>
                     <h4>抽屉遮罩</h4>
                     <p>用于 Drawer、侧边配置和局部编辑任务，保留背景上下文。</p>
-                    <span class="mask-value">rgba(0, 0, 0, 0.35)</span>
+                    <span class="mask-value">var(--color-overlay-drawer)</span>
                   </div>
                   <div class="mask-case">
-                    <div class="mask-stage" style="--mask-bg: rgba(255, 255, 255, 0.72);" aria-hidden="true">
+                    <div class="mask-stage" style="--mask-bg: var(--color-overlay-loading);" aria-hidden="true">
                       <div class="mask-stage-content">
                         <span class="mask-line"></span>
                         <span class="mask-line medium"></span>
@@ -5491,7 +6054,7 @@
                     </div>
                     <h4>局部加载遮罩</h4>
                     <p>用于表格、卡片和表单局部加载，弱化内容但不制造强阻断。</p>
-                    <span class="mask-value">rgba(255, 255, 255, 0.72)</span>
+                    <span class="mask-value">var(--color-overlay-loading)</span>
                   </div>
                 </div>
               </section>
@@ -5500,7 +6063,8 @@
                 <h2>字体 Typography</h2>
                 <p>
                   默认使用 Inter 与系统中文字体组合，保证英文、数字和中文在工作台界面中拥有一致的节奏。
-                  字号层级覆盖 12px 到 36px，主题可替换字体栈，但同一层级的字号与行高应保持稳定。
+                  字号层级按 Display、Heading、Body、Caption 组织，内部使用 lg / md / sm 区分尺寸。
+                  主题可替换字体栈，但同一层级的字号与行高应保持稳定。
                 </p>
                 <div class="style-token-grid" aria-label="字体基础 Token">
                   <div class="style-token-card">
@@ -5522,77 +6086,171 @@
                 <h2>字号层级</h2>
                 <div class="example-block full typography-specimen">
                   <div class="type-sample">
-                    <span class="type-meta"><strong>Display XL</strong>36px / 1.2 / 500</span>
+                    <span class="type-meta"><strong>Display lg</strong>36px / 1.2 / 500</span>
                     <p class="type-text" style="--type-size: 36px; --type-weight: 500; --type-line-height: 1.2;">全局样式定义产品视觉基准</p>
                   </div>
                   <div class="type-sample">
-                    <span class="type-meta"><strong>Display</strong>28px / 1.25 / 500</span>
+                    <span class="type-meta"><strong>Display md</strong>28px / 1.25 / 500</span>
                     <p class="type-text" style="--type-size: 28px; --type-weight: 500; --type-line-height: 1.25;">组件规范与设计系统</p>
                   </div>
                   <div class="type-sample">
-                    <span class="type-meta"><strong>Headline</strong>24px / 1.3 / 500</span>
+                    <span class="type-meta"><strong>Heading lg</strong>24px / 1.3 / 500</span>
                     <p class="type-text" style="--type-size: 24px; --type-weight: 500; --type-line-height: 1.3;">全局样式与主题配置</p>
                   </div>
                   <div class="type-sample">
-                    <span class="type-meta"><strong>Title</strong>20px / 1.35 / 500</span>
+                    <span class="type-meta"><strong>Heading md</strong>20px / 1.35 / 500</span>
                     <p class="type-text" style="--type-size: 20px; --type-weight: 500; --type-line-height: 1.35;">表单配置与任务编排</p>
                   </div>
                   <div class="type-sample">
-                    <span class="type-meta"><strong>Subtitle</strong>16px / 1.5 / 500</span>
+                    <span class="type-meta"><strong>Heading sm</strong>16px / 1.5 / 500</span>
                     <p class="type-text" style="--type-size: 16px; --type-weight: 500; --type-line-height: 1.5;">模块标题、卡片标题和重点信息。</p>
                   </div>
                   <div class="type-sample">
-                    <span class="type-meta"><strong>Body</strong>14px / 1.75 / 400</span>
-                    <p class="type-text" style="--type-size: 14px; --type-line-height: 1.75;">用于主要说明、组件正文、配置项描述和需要连续阅读的内容。</p>
+                    <span class="type-meta"><strong>Body md</strong>14px / 1.75 / 400</span>
+                    <p class="type-text" style="--type-size: 14px; --type-line-height:var(--text-body-line-height);">用于主要说明、组件正文、配置项描述和需要连续阅读的内容。</p>
                   </div>
                   <div class="type-sample">
-                    <span class="type-meta"><strong>Compact</strong>13px / 1.65 / 400</span>
-                    <p class="type-text" style="--type-size: 13px; --type-line-height: 1.65;">用于表格内容、输入控件、菜单选项和紧凑信息区域。</p>
+                    <span class="type-meta"><strong>Body sm</strong>13px / 1.65 / 400</span>
+                    <p class="type-text" style="--type-size: 13px; --type-line-height:var(--text-control-line-height);">用于表格内容、输入控件、菜单选项和紧凑信息区域。</p>
                   </div>
                   <div class="type-sample">
-                    <span class="type-meta"><strong>Caption</strong>12px / 1.55 / 400</span>
-                    <p class="type-text caption" style="--type-size: 12px; --type-line-height: 1.55;">用于辅助说明、状态标签、表格补充信息和弱提示。</p>
+                    <span class="type-meta"><strong>Caption sm</strong>12px / 1.55 / 400</span>
+                    <p class="type-text caption" style="--type-size: 12px; --type-line-height:var(--text-caption-line-height);">用于辅助说明、状态标签、表格补充信息和弱提示。</p>
                   </div>
                 </div>
               </section>
 
               <section class="doc-section">
-                <h2>字体颜色</h2>
-                <p>
-                  字体颜色用于控制文本信息层级。正文、辅助、弱提示、禁用、链接和反白文字需要各自稳定，
-                  避免仅依赖字号或字重区分重要程度。
+                <h2>Typography Semantic 字体语义</h2>
+                <p class="typography-semantic-intro">
+                  Typography Semantic 建立在现有 Typography Scale 之上，用文字角色和信息层级命名字体规格。
+                  页面和组件应先判断文字功能，再选择 Semantic Typography，最后由 Semantic 映射到既有字号、字重和行高。
                 </p>
-                <div class="type-color-grid" aria-label="字体颜色案例">
-                  <div class="type-color-card" style="--sample-color: var(--gray-900);">
-                    <strong>主要文字</strong>
-                    <p>用于页面标题、表单标签、表格主信息和关键数据。</p>
-                    <span class="type-color-value">#14171A</span>
+                <div class="semantic-map" aria-label="Typography Token 分层">
+                  <span>Typography Scale</span>
+                  <strong>→</strong>
+                  <span>Semantic Typography</span>
+                  <strong>→</strong>
+                  <span>Component</span>
+                </div>
+                <div class="typography-semantic-grid" aria-label="Typography Semantic 映射">
+                  <div class="typography-semantic-group">
+                    <h3>Title</h3>
+                    <ul class="typography-semantic-list">
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-page-title</code>
+                        <code class="typography-semantic-scale">heading-md</code>
+                        <code class="typography-semantic-spec">20px / Medium / 1.35</code>
+                        <span class="typography-semantic-usage">Page Header / Detail Page Title / 普通业务页面主标题</span>
+                      </li>
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-section-title</code>
+                        <code class="typography-semantic-scale">heading-sm</code>
+                        <code class="typography-semantic-spec">16px / Medium / 1.5</code>
+                        <span class="typography-semantic-usage">Section / 主要内容模块标题</span>
+                      </li>
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-card-title</code>
+                        <code class="typography-semantic-scale">heading-sm</code>
+                        <code class="typography-semantic-spec">16px / Medium / 1.5</code>
+                        <span class="typography-semantic-usage">Card / Panel / 容器标题</span>
+                      </li>
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-overlay-title</code>
+                        <code class="typography-semantic-scale">heading-sm</code>
+                        <code class="typography-semantic-spec">16px / Medium / 1.5</code>
+                        <span class="typography-semantic-usage">Modal / Drawer / 浮层主标题</span>
+                      </li>
+                    </ul>
                   </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-700);">
-                    <strong>常规文字</strong>
-                    <p>用于正文说明、菜单项、输入内容和可阅读段落。</p>
-                    <span class="type-color-value">#343A40</span>
+
+                  <div class="typography-semantic-group">
+                    <h3>Content</h3>
+                    <ul class="typography-semantic-list">
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-body</code>
+                        <code class="typography-semantic-scale">body-md</code>
+                        <code class="typography-semantic-spec">14px / Regular / 1.75</code>
+                        <span class="typography-semantic-usage">Description / Content / 常规内容与信息展示</span>
+                      </li>
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-body-strong</code>
+                        <code class="typography-semantic-scale">body-md</code>
+                        <code class="typography-semantic-spec">14px / Medium / 1.75</code>
+                        <span class="typography-semantic-usage">正文重点信息 / 强调内容</span>
+                      </li>
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-label</code>
+                        <code class="typography-semantic-scale">body-md</code>
+                        <code class="typography-semantic-spec">14px / Medium / 1.75</code>
+                        <span class="typography-semantic-usage">Form Label / Field Name / Property Label</span>
+                      </li>
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-control</code>
+                        <code class="typography-semantic-scale">body-sm</code>
+                        <code class="typography-semantic-spec">13px / Regular / 1.65</code>
+                        <span class="typography-semantic-usage">Button / Input / Select / Menu / Dropdown</span>
+                      </li>
+                    </ul>
                   </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-600);">
-                    <strong>辅助文字</strong>
-                    <p>用于说明文案、表格补充信息和次要状态描述。</p>
-                    <span class="type-color-value">#59616A</span>
+
+                  <div class="typography-semantic-group">
+                    <h3>Supporting</h3>
+                    <ul class="typography-semantic-list">
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-secondary</code>
+                        <code class="typography-semantic-scale">body-sm</code>
+                        <code class="typography-semantic-spec">13px / Regular / 1.65</code>
+                        <span class="typography-semantic-usage">次级描述 / 补充信息</span>
+                      </li>
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-helper</code>
+                        <code class="typography-semantic-scale">caption-sm</code>
+                        <code class="typography-semantic-spec">12px / Regular / 1.55</code>
+                        <span class="typography-semantic-usage">Helper Text / 表单提示 / 解释信息</span>
+                      </li>
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-caption</code>
+                        <code class="typography-semantic-scale">caption-sm</code>
+                        <code class="typography-semantic-spec">12px / Regular / 1.55</code>
+                        <span class="typography-semantic-usage">Time / Count / Metadata / 非常次要的信息</span>
+                      </li>
+                    </ul>
                   </div>
-                  <div class="type-color-card" style="--sample-color: var(--gray-500);">
-                    <strong>弱提示文字</strong>
-                    <p>用于占位、说明尾注、计数器和低优先级信息。</p>
-                    <span class="type-color-value">#78818C</span>
+
+                  <div class="typography-semantic-group">
+                    <h3>Data</h3>
+                    <ul class="typography-semantic-list">
+                      <li class="typography-semantic-row">
+                        <code class="typography-semantic-token">text-data</code>
+                        <code class="typography-semantic-scale">heading-lg</code>
+                        <code class="typography-semantic-spec">24px / Medium / 1.3</code>
+                        <span class="typography-semantic-usage">Important Number / Statistic / Key Result</span>
+                      </li>
+                    </ul>
                   </div>
-                  <div class="type-color-card" style="--sample-color: var(--typography-color-link);">
-                    <strong>链接文字</strong>
-                    <p>用于可点击文本、跳转入口和外部资源访问。</p>
-                    <span class="type-color-value">#1570EF</span>
+                </div>
+                <div class="semantic-rule-box">
+                  <h4>使用规则</h4>
+                  <ol class="semantic-rule-list">
+                    <li>页面和组件优先调用 Semantic Typography，不直接写 <code>font-size</code>。</li>
+                    <li>Semantic Typography 必须引用现有 Typography，不创建新的字体规格。</li>
+                    <li>相同字号可以对应不同语义，不要求一个字号只能对应一个 Semantic Token。</li>
+                    <li>Typography Semantic 负责字号、字重和行高，不负责文字颜色。</li>
+                    <li>文字颜色统一调用 <code>color-text-*</code> Semantic Color。</li>
+                    <li>Component 可以进一步覆盖 Semantic，但必须有明确的组件需求。</li>
+                    <li>不因为单个页面的特殊需求新增 Semantic Token。</li>
+                    <li>只有某种文字角色在多个页面或组件重复出现时，才允许增加新的 Semantic Typography。</li>
+                  </ol>
+                </div>
+                <div class="semantic-rule-box">
+                  <h4>AI Coding 选择原则</h4>
+                  <div class="semantic-map" aria-label="Typography Semantic AI Coding 选择顺序">
+                    <span>判断文字角色</span><strong>→</strong><span>Title / Content / Supporting / Data</span><strong>→</strong><span>Semantic Typography</span><strong>→</strong><span>Typography Scale</span><strong>→</strong><span>Component</span>
                   </div>
-                  <div class="type-color-card inverse" style="--sample-color: var(--white);">
-                    <strong>反白文字</strong>
-                    <p>用于深色底、主按钮、深色标签和深色浮层内容。</p>
-                    <span class="type-color-value">#FFFFFF</span>
-                  </div>
+                  <p>
+                    禁止因为“看起来重要”临时使用 18px；应先判断角色，例如这是 Section Title，所以使用 <code>text-section-title</code>。
+                  </p>
                 </div>
               </section>
 
@@ -5601,160 +6259,99 @@
                 <ul class="rule-list">
                   <li>页面标题与模块标题使用 500 字重，避免通过过粗字重制造层级。</li>
                   <li>表格、表单和工具栏优先使用 12px-14px 区间，保证信息密度与可读性。</li>
+                  <li>Typography 命名按 Display → Heading → Body → Caption 组织，各组内部使用 lg / md / sm 表达尺寸层级。</li>
+                  <li>页面和组件优先调用 Semantic Typography，不直接写 font-size。</li>
+                  <li>Semantic Typography 必须引用现有 Typography，不创建新的字体规格；相同字号可以对应不同语义。</li>
+                  <li>Component 可以进一步覆盖 Typography Semantic，但必须有明确的组件需求。</li>
+                  <li>不因为单个页面的特殊需求新增 Typography Semantic；只有跨页面或跨组件重复出现的文字角色才允许新增。</li>
                   <li>英文、数字和代码值使用等宽字体时，仅限 Token、API、快捷值和可复制内容。</li>
+                  <li>Typography 只负责 Font Family、Font Size、Font Weight、Line Height 等排版属性；文字颜色统一由 Text Semantic 管理。</li>
+                  <li>AI Coding 应先判断文字角色，再选择 Semantic Typography，避免因为“看起来重要”临时使用规范外字号。</li>
                 </ul>
               </section>
 
               <section class="doc-section style-module-start">
                 <h2>图标 ICON</h2>
                 <p>
-                  图标用于补充按钮、输入框、导航和状态表达。图标应保持统一线性风格，默认跟随文字颜色，
-                  通过大小、线宽、拐角和端点约束保证不同组件中的识别一致性。
+                  所有界面中的功能性 Icon 默认使用统一的线性图标风格。图标用于补充按钮、输入框、导航和状态表达，
+                  默认跟随父级文字颜色，并通过固定线宽、圆角端点、圆角连接和标准尺寸保持一致的视觉语言。
                 </p>
                 <div class="icon-spec-grid" aria-label="图标规范">
                   <div class="icon-spec-card">
                     <div class="icon-spec-copy">
-                      <strong>线宽 Stroke</strong>
-                      <p>线性图标线宽分为 1.5px、2px、3px；超过 3px 不推荐。不同线宽不能混用于同一组图标。</p>
+                      <strong>Default Style</strong>
+                      <p>使用 Outline / Linear Icon，不使用实心 Fill Icon。默认线宽为 2px，端点和连接均使用 round，同一页面内不得混用不同 Stroke Width 或不同视觉风格。</p>
                     </div>
                     <div class="icon-demo-grid" aria-hidden="true">
                       <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        1.5px
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M5 12H19" />
+                          <path d="M12 5V19" />
                         </svg>
                         2px
                       </div>
                       <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M7 7L17 17" />
+                          <path d="M17 7L7 17" />
                         </svg>
-                        3px
+                        round cap
                       </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="4" stroke-linecap="round" />
+                      <div class="icon-spec-preview">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M7 17L17 7" />
+                          <path d="M9 7H17V15" />
                         </svg>
-                        超过 3px
+                        round join
                       </div>
                     </div>
                   </div>
                   <div class="icon-spec-card">
                     <div class="icon-spec-copy">
-                      <strong>大小 Size</strong>
-                      <p>常用尺寸为 14、16、20、24px；按钮和表单内优先使用 16px，导航和空状态可使用 20px 或 24px。</p>
+                      <strong>SVG 基础属性</strong>
+                      <p>新绘制 SVG 默认使用 24×24 viewBox，颜色使用 currentColor，由父级 Semantic Color 控制，不在 SVG 内写死 HEX。</p>
                     </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview" style="--icon-demo-size: 14px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        14px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 16px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        16px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 20px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        20px
-                      </div>
-                      <div class="icon-spec-preview" style="--icon-demo-size: 24px;">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <circle cx="11" cy="11" r="5" stroke="currentColor" stroke-width="1.5" />
-                          <path d="M15 15L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        24px
-                      </div>
-                    </div>
+                    <pre class="icon-code-block"><code>&lt;svg
+  width="20"
+  height="20"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+&gt;</code></pre>
                   </div>
                   <div class="icon-spec-card">
                     <div class="icon-spec-copy">
-                      <strong>拐角 Join</strong>
-                      <p>折线和路径转角使用 round join，避免尖锐拐角干扰小尺寸识别；保持箭头、展开和跳转类图标的一致转折。</p>
+                      <strong>Usage Rules</strong>
+                      <p>当界面需要 Icon 时，优先使用现有 Design System / Icon Library 中语义匹配的线性 Icon；没有现成 Icon 时再绘制新的 SVG。</p>
                     </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M6 18V9C6 7.34 7.34 6 9 6H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                          <path d="M14 10L18 6L14 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        round
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7H17V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                          <path d="M7 17L17 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        跳转
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        展开
-                      </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 18V7H18" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" />
-                          <path d="M7 7H13V13" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="miter" />
-                        </svg>
-                        拐角生硬
-                      </div>
-                    </div>
+                    <ol class="icon-rule-list">
+                      <li>根据功能语义绘制新的 SVG Icon。</li>
+                      <li>默认使用 24×24 <code>viewBox</code>。</li>
+                      <li>Stroke Width 固定为 <code>2px</code>。</li>
+                      <li>使用 <code>round</code> linecap 和 <code>round</code> linejoin。</li>
+                      <li>保持图形结构简单，不增加装饰性细节。</li>
+                      <li>不使用渐变、阴影、复杂填充。</li>
+                      <li>Icon 颜色默认使用 <code>currentColor</code>，由父级 Semantic Color 控制。</li>
+                      <li>不在 SVG 内写死 HEX 色值。</li>
+                    </ol>
                   </div>
                   <div class="icon-spec-card">
                     <div class="icon-spec-copy">
-                      <strong>端点 Cap</strong>
-                      <p>线段端点使用 round cap，关闭、加号、箭头等图标保持柔和收尾；避免 square 或 butt 端点造成生硬断口。</p>
+                      <strong>State</strong>
+                      <p>Icon 的状态颜色跟随所在组件，而不是单独定义颜色。</p>
                     </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        关闭
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M12 5V19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                        </svg>
-                        加号
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                          <path d="M13 6L19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        箭头
-                      </div>
-                      <div class="icon-spec-preview avoid">
-                        <svg viewBox="0 0 24 24" fill="none">
-                          <path d="M7 7L17 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" />
-                          <path d="M17 7L7 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" />
-                        </svg>
-                        端点生硬
-                      </div>
-                    </div>
+                    <ul class="icon-rule-list">
+                      <li>Default：使用组件默认文字 / Icon Semantic Color。</li>
+                      <li>Hover：跟随组件 Hover Color。</li>
+                      <li>Active / Selected：跟随 Action / Selected Semantic Color。</li>
+                      <li>Disabled：使用 Disabled Semantic Color。</li>
+                      <li>Error / Warning / Success：使用对应 Status Semantic Color。</li>
+                    </ul>
                   </div>
+
                 </div>
               </section>
 
@@ -5854,7 +6451,7 @@
                     <div class="theme-strip" aria-hidden="true">
                       <span style="background: #f0fff6"></span>
                       <span style="background: #bef5d5"></span>
-                      <span style="background: #22b573"></span>
+                      <span style="background: var(--color-status-success)"></span>
                       <span style="background: #147c4d"></span>
                       <span style="background: #104f34"></span>
                     </div>
@@ -6001,7 +6598,7 @@
           root.style.setProperty("--brand-200", "#bef5d5");
           root.style.setProperty("--brand-300", "#91e9b8");
           root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "#22b573");
+          root.style.setProperty("--brand-500", "var(--color-status-success)");
           root.style.setProperty("--brand-600", "#1b9c61");
           root.style.setProperty("--brand-700", "#147c4d");
           root.style.setProperty("--brand-800", "#12633f");
@@ -6012,11 +6609,11 @@
           root.style.setProperty("--brand-border-soft", "#bef5d5");
           root.style.setProperty("--brand-border-hover", "#91e9b8");
           root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(34, 181, 115, 0.16)");
-          root.style.setProperty("--input-hover-border-color", "#22b573");
-          root.style.setProperty("--input-focus-color", "#22b573");
+          root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
+          root.style.setProperty("--input-focus-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
-          root.style.setProperty("--input-number-hover-border-color", "#22b573");
-          root.style.setProperty("--input-number-focus-color", "#22b573");
+          root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
+          root.style.setProperty("--input-number-focus-color", "var(--color-status-success)");
           root.style.setProperty("--input-number-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
           return;
         }
@@ -6195,6 +6792,8 @@
       const colorPaletteDesc = colorBrandPalette?.querySelector("[data-color-palette-desc]");
       const colorPaletteBase = colorBrandPalette?.querySelector("[data-color-palette-base]");
       const colorPaletteLevels = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+      const semanticBrandRows = Array.from(document.querySelectorAll("[data-semantic-brand-level]"));
+      const semanticActionRows = Array.from(document.querySelectorAll("[data-semantic-action-level]"));
       const colorPaletteSets = {
         "iQIYI标准色": {
           title: "iQIYI Green",
@@ -6205,10 +6804,10 @@
         },
         "业务主题色": {
           title: "IQ Buddy Green",
-          desc: "IQ Buddy 主题品牌色，500 固定为 #22B573。",
+          desc: "IQ Buddy 主题品牌色，500 固定为 var(--color-status-success)。",
           base: "iq-buddy-500",
           tokenPrefix: "iq-buddy",
-          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
+          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "var(--color-status-success)", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
         },
         "test主题色": {
           title: "Test Blue",
@@ -6265,6 +6864,28 @@
           if (token) {
             token.textContent = `${palette.tokenPrefix}-${colorPaletteLevels[index]}`;
           }
+          if (value) {
+            value.textContent = hex;
+          }
+        });
+        semanticBrandRows.forEach((row) => {
+          const level = row.dataset.semanticBrandLevel;
+          const colorIndex = colorPaletteLevels.indexOf(level);
+          const hex = colorIndex >= 0 ? palette.colors[colorIndex] : null;
+          if (!hex) return;
+          row.style.setProperty("--semantic-swatch", hex.toLowerCase());
+          const value = row.querySelector("[data-semantic-brand-hex]");
+          if (value) {
+            value.textContent = hex;
+          }
+        });
+        semanticActionRows.forEach((row) => {
+          const level = row.dataset.semanticActionLevel;
+          const colorIndex = colorPaletteLevels.indexOf(level);
+          const hex = colorIndex >= 0 ? palette.colors[colorIndex] : null;
+          if (!hex) return;
+          row.style.setProperty("--semantic-swatch", hex.toLowerCase());
+          const value = row.querySelector("[data-semantic-action-hex]");
           if (value) {
             value.textContent = hex;
           }
@@ -6423,7 +7044,7 @@
             const tag = document.createElement("span");
             tag.className = "select-tag";
             tag.dataset.value = value;
-            tag.innerHTML = `<span>${value}</span><span class="select-tag-remove">×</span>`;
+            tag.innerHTML = `<span>${value}</span><span class="select-tag-remove" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6L18 18"/></svg></span>`;
             tagContainer.appendChild(tag);
           });
 
