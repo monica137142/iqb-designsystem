@@ -21,6 +21,10 @@
         --brand-text-hover: #008f3f;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
+        --space-xsmall: 4px;
+        --space-small: 8px;
+        --space-medium: 16px;
+        --space-large: 24px;
         --gray-950: #0b0d0f;
         --gray-900: #14171a;
         --gray-800: #22262a;
@@ -830,13 +834,15 @@
       .space-gap-preview {
         display: flex;
         flex-wrap: wrap;
-        gap: var(--space-demo-gap, 8px);
+        align-items: center;
+        gap: var(--space-demo-gap, var(--space-small));
         transition: gap 0.16s ease;
       }
 
       .space-stack-preview {
         display: grid;
-        gap: var(--space-demo-gap, 8px);
+        justify-items: start;
+        gap: var(--space-demo-gap, var(--space-small));
         transition: gap 0.16s ease;
       }
 
@@ -844,32 +850,52 @@
         display: flex;
         flex-wrap: wrap;
         width: 100%;
-        gap: 8px 10px;
+        column-gap: var(--space-small);
+        row-gap: var(--space-medium);
       }
 
-      .space-align-preview {
+      .space-wrap-preview .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 24px;
+        padding: 0 9px;
+        color: var(--color-text-default);
+        background: var(--color-bg-subtle);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+        font-size: var(--text-caption-size);
+      }
+
+      .space-wrap-preview .tag.success { color: #067647; background: #ecfdf3; border-color: #abefc6; }
+      .space-wrap-preview .tag.processing { color: #175cd3; background: #eff8ff; border-color: #b2ddff; }
+      .space-wrap-preview .tag.warning { color: #b54708; background: #fffaeb; border-color: #fedf89; }
+      .space-wrap-preview .tag.danger { color: #b42318; background: #fef3f2; border-color: #fecdca; }
+      .space-wrap-preview .tag.selected {
+        color: var(--color-action-primary-hover);
+        background: rgb(var(--brand-rgb) / 0.1);
+        border-color: rgb(var(--brand-rgb) / 0.32);
+      }
+
+      .space-demo-card.space-align-card {
         display: flex;
         min-height: 112px;
         gap: 16px;
-        padding: 12px;
-        background: var(--gray-50);
-        border:1px dashed var(--color-border-subtle);
-        border-radius: var(--radius-sm);
+        background: var(--color-bg-container);
       }
 
-      .space-align-preview.start {
+      .space-align-card.start {
         align-items: flex-start;
       }
 
-      .space-align-preview.center {
+      .space-align-card.center {
         align-items: center;
       }
 
-      .space-align-preview.end {
+      .space-align-card.end {
         align-items: flex-end;
       }
 
-      .space-align-preview.baseline {
+      .space-align-card.baseline {
         align-items: baseline;
       }
 
@@ -879,9 +905,9 @@
         justify-content: center;
         min-width: 76px;
         padding: 0 12px;
-        color:var(--color-text-default);
-        background:var(--color-bg-container);
-        border:1px solid var(--color-border-subtle);
+        color: var(--color-text-default);
+        background: var(--color-bg-subtle);
+        border: 1px solid transparent;
         border-radius: var(--radius-sm);
         font-size:var(--text-control-size);
         line-height: 1.2;
@@ -899,7 +925,7 @@
         min-height: 68px;
       }
 
-      .space-align-preview.baseline .space-align-item {
+      .space-align-card.baseline .space-align-item {
         min-height: auto;
         padding-top: 7px;
         padding-bottom: 7px;
@@ -914,9 +940,79 @@
         font-size:var(--text-caption-size);
       }
 
-      .space-demo-card .range-scope-tabs {
-        justify-self: flex-start;
-        margin-top: 0;
+      .space-size-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-medium);
+        margin-top: 14px;
+      }
+
+      .space-size-radio {
+        min-height: 24px;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-small);
+        width: fit-content;
+        padding: 3px 8px 3px 4px;
+        border-radius: 999px;
+        color: #4f565d;
+        cursor: pointer;
+        font-size: 12.5px;
+        line-height: 1.5;
+        transition: background-color 0.15s ease, color 0.15s ease;
+      }
+
+      .space-size-radio:hover {
+        background: #f5f6f8;
+        color: #33383d;
+      }
+
+      .space-size-radio input {
+        width: 14px;
+        height: 14px;
+        position: relative;
+        flex: 0 0 auto;
+        margin: 0;
+        border: 1.4px solid #cfd6dc;
+        border-radius: 50%;
+        appearance: none;
+        background: var(--color-bg-container);
+        cursor: pointer;
+        outline: 0;
+        transition: border-color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      .space-size-radio input::after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 6px;
+        height: 6px;
+        content: "";
+        background: var(--color-bg-container);
+        border-radius: 50%;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.6);
+        transition: opacity 0.15s ease, transform 0.15s ease;
+      }
+
+      .space-size-radio input:checked {
+        border-color: var(--color-action-primary);
+        background: var(--color-action-primary);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+      }
+
+      .space-size-radio input:checked::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
+
+      .space-size-radio input:focus-visible {
+        box-shadow: var(--shadow-focus);
+      }
+
+      .space-size-radio:has(input:checked) {
+        color: #1a1d1f;
       }
 
       .color-system-group {
@@ -1205,8 +1301,8 @@
 
       .spec-btn.subtle {
         border-color: transparent;
-        background: #f5f6f8;
-        color: #4f565d;
+        background:var(--color-bg-subtle);
+        color: var(--color-text-default);
       }
 
       .spec-btn.subtle:hover {
@@ -4504,6 +4600,41 @@
                 </ul>
               </li>
               <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
                 <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
                 <ul class="nav-sublist">
                   <li>
@@ -4750,61 +4881,32 @@
                 <div class="doc-grid">
                   <div class="example-block full">
                     <h3>水平间距</h3>
-                    <p>操作组内按钮保持稳定节奏，避免单独给每个按钮写外边距。</p>
-                    <div class="space-demo-card" data-space-gap-demo style="--space-demo-gap: 8px;">
-                      <div class="range-scope-tabs" role="tablist" aria-label="水平间距尺寸">
-                        <button class="range-scope-tab" type="button" role="tab" aria-selected="false" aria-controls="space-horizontal-gap-preview" data-space-gap-tab data-space-gap="4">xsmall 4px</button>
-                        <button class="range-scope-tab active" type="button" role="tab" aria-selected="true" aria-controls="space-horizontal-gap-preview" data-space-gap-tab data-space-gap="8">small 8px</button>
-                        <button class="range-scope-tab" type="button" role="tab" aria-selected="false" aria-controls="space-horizontal-gap-preview" data-space-gap-tab data-space-gap="16">medium 16px</button>
-                        <button class="range-scope-tab" type="button" role="tab" aria-selected="false" aria-controls="space-horizontal-gap-preview" data-space-gap-tab data-space-gap="24">large 24px</button>
-                      </div>
-                      <div class="space-gap-preview" id="space-horizontal-gap-preview" role="tabpanel" aria-label="水平间距演示" data-space-gap-preview>
-                        <button class="spec-btn primary" type="button">保存配置</button>
-                        <button class="spec-btn" type="button">预览</button>
-                        <button class="spec-btn" type="button">取消</button>
+                    <p>相邻组件水平间距。</p>
+                    <div class="space-demo-card" style="--space-demo-gap: 8px;">
+                      <div class="space-gap-preview" aria-label="水平间距演示">
+                        <button class="spec-btn subtle" type="button">预览按钮</button>
+                        <button class="spec-btn subtle" type="button">预览按钮</button>
+                        <button class="spec-btn subtle" type="button">预览按钮</button>
                       </div>
                     </div>
                   </div>
                   <div class="example-block full">
                     <h3>垂直间距</h3>
-                    <p>用于堆叠说明或表单局部内容。</p>
-                    <div class="space-demo-card" data-space-gap-demo style="--space-demo-gap: 8px;">
-                      <div class="range-scope-tabs" role="tablist" aria-label="垂直间距尺寸">
-                        <button class="range-scope-tab" type="button" role="tab" aria-selected="false" aria-controls="space-vertical-gap-preview" data-space-gap-tab data-space-gap="4">xsmall 4px</button>
-                        <button class="range-scope-tab active" type="button" role="tab" aria-selected="true" aria-controls="space-vertical-gap-preview" data-space-gap-tab data-space-gap="8">small 8px</button>
-                        <button class="range-scope-tab" type="button" role="tab" aria-selected="false" aria-controls="space-vertical-gap-preview" data-space-gap-tab data-space-gap="16">medium 16px</button>
-                        <button class="range-scope-tab" type="button" role="tab" aria-selected="false" aria-controls="space-vertical-gap-preview" data-space-gap-tab data-space-gap="24">large 24px</button>
-                      </div>
-                      <div class="space-stack-preview" id="space-vertical-gap-preview" role="tabpanel" aria-label="垂直间距演示" data-space-gap-preview>
-                        <label class="spec-label">执行策略</label>
-                        <div class="spec-input-wrap"><input class="spec-input" value="每日 10:00 自动执行" /></div>
-                        <p style="margin:0;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.6;">保存后对下次任务生效。</p>
+                    <p>相邻组件垂直间距。</p>
+                    <div class="space-demo-card" style="--space-demo-gap: 8px;">
+                      <div class="space-stack-preview" aria-label="垂直间距演示">
+                        <button class="spec-btn subtle" type="button">预览按钮</button>
+                        <button class="spec-btn subtle" type="button">预览按钮</button>
+                        <button class="spec-btn subtle" type="button">预览按钮</button>
                       </div>
                     </div>
                   </div>
                   <div class="example-block full">
-                    <h3>换行间距</h3>
+                    <h3>自动换行</h3>
                     <p>标签数量不稳定时保持行列间距一致。</p>
                     <div class="space-demo-card">
                       <div class="space-wrap-preview">
-                        <span class="doc-chip">高优先级</span>
-                        <span class="doc-chip">已启用</span>
-                        <span class="doc-chip">自动重试</span>
-                        <span class="doc-chip">人工复核</span>
-                        <span class="doc-chip">商品审核</span>
-                        <span class="doc-chip">询盘跟进</span>
-                        <span class="doc-chip">价格异常</span>
-                        <span class="doc-chip">素材待补充</span>
-                        <span class="doc-chip">广告监控</span>
-                        <span class="doc-chip">库存预警</span>
-                        <span class="doc-chip">批量处理</span>
-                        <span class="doc-chip">跨店铺同步</span>
-                        <span class="doc-chip">新品发布</span>
-                        <span class="doc-chip">物流异常</span>
-                        <span class="doc-chip">客户分层</span>
-                        <span class="doc-chip">内容优化</span>
-                        <span class="doc-chip">报名活动</span>
-                        <span class="doc-chip">数据回流</span>
+                        <span class="tag">标签1</span><span class="tag success">标签2</span><span class="tag processing">标签3</span><span class="tag warning">标签4</span><span class="tag danger">标签5</span><span class="tag">标签6</span><span class="tag success">标签7</span><span class="tag processing">标签8</span><span class="tag warning">标签9</span><span class="tag danger">标签10</span><span class="tag">标签11</span><span class="tag success">标签12</span><span class="tag processing">标签13</span><span class="tag warning">标签14</span><span class="tag danger">标签15</span><span class="tag">标签16</span><span class="tag success">标签17</span><span class="tag processing">标签18</span><span class="tag warning">标签19</span><span class="tag danger">标签20</span>
                       </div>
                     </div>
                   </div>
@@ -4817,45 +4919,37 @@
                   <div class="example-block">
                     <h3>Start 对齐</h3>
                     <p>不同高度元素从交叉轴起点对齐。</p>
-                    <div class="space-demo-card">
-                      <div class="space-align-preview start" aria-label="start 对齐示意">
+                    <div class="space-demo-card space-align-card start" aria-label="start 对齐示意">
                         <span class="space-align-item short">筛选</span>
                         <span class="space-align-item tall">自动化任务</span>
                         <span class="space-align-item medium">状态</span>
-                      </div>
                     </div>
                   </div>
                   <div class="example-block">
                     <h3>Center 对齐</h3>
                     <p>常用于按钮、标签和内联控件的视觉居中。</p>
-                    <div class="space-demo-card">
-                      <div class="space-align-preview center" aria-label="center 对齐示意">
+                    <div class="space-demo-card space-align-card center" aria-label="center 对齐示意">
                         <span class="space-align-item short">筛选</span>
                         <span class="space-align-item tall">自动化任务</span>
                         <span class="space-align-item medium">状态</span>
-                      </div>
                     </div>
                   </div>
                   <div class="example-block">
                     <h3>End 对齐</h3>
                     <p>适合和底部操作线或说明信息保持一致。</p>
-                    <div class="space-demo-card">
-                      <div class="space-align-preview end" aria-label="end 对齐示意">
+                    <div class="space-demo-card space-align-card end" aria-label="end 对齐示意">
                         <span class="space-align-item short">筛选</span>
                         <span class="space-align-item tall">自动化任务</span>
                         <span class="space-align-item medium">状态</span>
-                      </div>
                     </div>
                   </div>
                   <div class="example-block">
                     <h3>Baseline 对齐</h3>
                     <p>文本字号不同时保持基线关系稳定。</p>
-                    <div class="space-demo-card">
-                      <div class="space-align-preview baseline" aria-label="baseline 对齐示意">
+                    <div class="space-demo-card space-align-card baseline" aria-label="baseline 对齐示意">
                         <span class="space-align-item text-large">32</span>
                         <span class="space-align-item">条待处理</span>
                         <span class="space-align-item text-small">今日更新</span>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -4863,16 +4957,22 @@
 
               <section class="doc-section">
                 <h2>尺寸</h2>
-                <div class="spec-table-wrap">
-                  <table class="spec-table">
-                    <thead><tr><th>尺寸</th><th>间距</th><th>使用场景</th></tr></thead>
-                    <tbody>
-                      <tr><td>xsmall</td><td><code>4px</code></td><td>紧凑标签、图标按钮。</td></tr>
-                      <tr><td>small</td><td><code>8px</code></td><td>默认按钮组、内联控件。</td></tr>
-                      <tr><td>medium</td><td><code>16px</code></td><td>表单段落、卡片内部模块。</td></tr>
-                      <tr><td>large</td><td><code>24px</code></td><td>跨模块操作组或需要更明显区隔的内容。</td></tr>
-                    </tbody>
-                  </table>
+                <div class="example-block full" data-space-gap-demo style="--space-demo-gap: 8px;">
+                  <h3>Size</h3>
+                  <p>内置 4 个尺寸，也支持传数字来自定义尺寸。</p>
+                  <div class="space-size-options" role="radiogroup" aria-label="Space 尺寸">
+                    <label class="space-size-radio"><input type="radio" name="spaceSize" data-space-gap-tab data-space-gap="4" /><span>xsmall 4px</span></label>
+                    <label class="space-size-radio"><input type="radio" name="spaceSize" data-space-gap-tab data-space-gap="8" checked /><span>small 8px</span></label>
+                    <label class="space-size-radio"><input type="radio" name="spaceSize" data-space-gap-tab data-space-gap="16" /><span>medium 16px</span></label>
+                    <label class="space-size-radio"><input type="radio" name="spaceSize" data-space-gap-tab data-space-gap="24" /><span>large 24px</span></label>
+                  </div>
+                  <div class="space-demo-card">
+                    <div class="space-gap-preview" aria-live="polite">
+                      <button class="spec-btn subtle" type="button">预览按钮</button>
+                      <button class="spec-btn subtle" type="button">预览按钮</button>
+                      <button class="spec-btn subtle" type="button">预览按钮</button>
+                    </div>
+                  </div>
                 </div>
               </section>
 
@@ -4882,10 +4982,29 @@
                   <table class="spec-table">
                     <thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>
                     <tbody>
-                      <tr><td>direction</td><td>排列方向。</td><td><code>horizontal | vertical</code></td><td><code>horizontal</code></td></tr>
-                      <tr><td>size</td><td>间距尺寸。</td><td><code>xsmall | small | medium | large | number</code></td><td><code>small</code></td></tr>
-                      <tr><td>align</td><td>交叉轴对齐方式。</td><td><code>start | center | end | baseline</code></td><td><code>start</code></td></tr>
-                      <tr><td>wrap</td><td>水平排列时是否自动换行。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>orientation</code></td><td>排列方向。</td><td><code>horizontal | vertical</code></td><td><code>horizontal</code></td></tr>
+                      <tr><td><code>size</code></td><td>间距尺寸；数组形式依次设置水平间距和垂直间距。</td><td><code>SpaceSize = xsmall | small | medium | large; SpaceSize | number | [SpaceSize | number, SpaceSize | number]</code></td><td><code>small</code></td></tr>
+                      <tr><td><code>align</code></td><td>交叉轴对齐方式；未设置时遵循组件内部布局的自然对齐。</td><td><code>start | center | end | baseline</code></td><td><code>—</code></td></tr>
+                      <tr><td><code>wrap</code></td><td>是否自动换行，仅在水平排列时生效。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>separator</code></td><td>插入到相邻子元素之间的分隔内容。</td><td><code>ReactNode</code></td><td><code>—</code></td></tr>
+                      <tr><td><code>children</code></td><td>需要统一排列和控制间距的子内容。</td><td><code>ReactNode</code></td><td><code>—</code></td></tr>
+                      <tr><td><code>direction</code></td><td>排列方向的旧属性名，仅用于兼容；新代码使用 <code>orientation</code>。</td><td><code>horizontal | vertical</code></td><td><code>—</code></td></tr>
+                      <tr><td><code>split</code></td><td>分隔内容的旧属性名，仅用于兼容；新代码使用 <code>separator</code>。</td><td><code>ReactNode</code></td><td><code>—</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead><tr><th>Token</th><th>值</th><th>说明</th></tr></thead>
+                    <tbody>
+                      <tr><td><code>--space-xsmall</code></td><td><code>4px</code></td><td>xsmall 间距档位，用于最紧凑的元素组合。</td></tr>
+                      <tr><td><code>--space-small</code></td><td><code>8px</code></td><td>small 间距档位，也是 Space 的默认间距。</td></tr>
+                      <tr><td><code>--space-medium</code></td><td><code>16px</code></td><td>medium 间距档位，用于需要清晰分组的相邻内容。</td></tr>
+                      <tr><td><code>--space-large</code></td><td><code>24px</code></td><td>large 间距档位，用于需要显著区隔的相邻内容。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -4941,16 +5060,20 @@
           demo.style.setProperty("--space-demo-gap", `${gap}px`);
           tabs.forEach((tab) => {
             const isActive = tab === activeTab;
-            tab.classList.toggle("active", isActive);
-            tab.setAttribute("aria-selected", String(isActive));
+            if (tab.matches('input[type="radio"]')) {
+              tab.checked = isActive;
+            } else {
+              tab.classList.toggle("active", isActive);
+              tab.setAttribute("aria-selected", String(isActive));
+            }
           });
         };
 
         tabs.forEach((tab) => {
-          tab.addEventListener("click", () => applySpaceGap(tab));
+          tab.addEventListener("change", () => applySpaceGap(tab));
         });
 
-        applySpaceGap(tabs.find((tab) => tab.getAttribute("aria-selected") === "true") || tabs[0]);
+        applySpaceGap(tabs.find((tab) => tab.checked || tab.getAttribute("aria-selected") === "true") || tabs[0]);
       });
 
       const productOptions = Array.from(document.querySelectorAll("[data-product-option]"));
@@ -5006,7 +5129,7 @@
           root.style.setProperty("--brand-200", "#bef5d5");
           root.style.setProperty("--brand-300", "#91e9b8");
           root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "var(--color-status-success)");
+          root.style.setProperty("--brand-500", "#22b573");
           root.style.setProperty("--brand-600", "#1b9c61");
           root.style.setProperty("--brand-700", "#147c4d");
           root.style.setProperty("--brand-800", "#12633f");
@@ -5185,7 +5308,7 @@
           desc: "业务主题品牌色，500 固定为 var(--color-status-success)。",
           base: "default-theme-500",
           tokenPrefix: "default-theme",
-          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "var(--color-status-success)", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
+          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
         },
         "test主题色": {
           title: "Test Blue",

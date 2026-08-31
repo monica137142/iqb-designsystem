@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chart 图表 - Design System</title>
     <style>
-      :root{--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;--brand-900: #075a2f;--brand-800: #067037;--brand-700: #008f3f;--brand-400: #35f47c;--brand-300: #7dffb0;--brand-200: #b5ffd1;--brand-100: #d8ffe8;--brand-50: #effff6;--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-50);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-50);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.metric-row strong{font-size:var(--text-data-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:6px;font-size:var(--text-caption-size);text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--color-action-primary-hover);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background:var(--gray-900);border-radius:6px;font-size:var(--text-caption-size);line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:var(--color-status-info);box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.timeline strong{font-size:var(--text-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--color-border-subtle);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:6px}.empty-state strong{font-size:var(--text-section-title-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      :root{--success-green-500: #1cc749;--yellow-500: #ff990a;--red-500: #fe3d33;--blue-500: #31a6ff;--blue-600: #1887f5;--brand-900: #125526;--brand-800: #13682a;--brand-700: #118430;--brand-400: #45e36e;--brand-300: #82f39f;--brand-200: #b9f9c9;--brand-100: #dbfde3;--brand-50: #f0fdf3;--brand-500:#1cc749;--brand-600:#00ae2e;--brand-rgb:28, 199, 73;--gray-950: #0b0d0f;--gray-900: #14171a;--gray-800: #22262a;--gray-700: #343a40;--gray-600: #59616a;--gray-500: #78818c;--gray-400: #a5adb6;--gray-300: #d4d9de;--gray-200: #e7eaee;--gray-100: #f3f5f7;--gray-50: #fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-100);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-100);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#82f39f);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.spec-table-wrap{overflow:auto;border:1px solid var(--color-border-subtle);border-radius:8px}.spec-table{width:100%;border-collapse:collapse;font-size:var(--text-control-size)}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top}.spec-table th{color:var(--color-text-default);background:var(--gray-50);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;background:var(--color-bg-subtle);border-radius:4px;font-family:"SFMono-Regular",Consolas,monospace;font-size:var(--text-caption-size)}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid{grid-template-columns:1fr}.doc-title{font-size:28px}}
       /* Header parity with index.html */
       :root {
-        --brand-400: #35f47c;
+        --brand-400: #45e36e;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
       }
 
@@ -180,6 +180,355 @@
         }
       }
 
+      /* Chart page rhythm follows List page */
+      html,
+      body {
+        min-height: 100%;
+        height: auto;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      .sidebar {
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .sidebar::-webkit-scrollbar,
+      .spec-table-wrap::-webkit-scrollbar,
+      .code-panel pre::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track,
+      .spec-table-wrap::-webkit-scrollbar-track,
+      .code-panel pre::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb,
+      .spec-table-wrap::-webkit-scrollbar-thumb,
+      .code-panel pre::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
+      }
+
+      .canvas {
+        background: var(--color-bg-container);
+      }
+
+      .canvas-inner {
+        display: grid;
+        width: auto;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom: 1px solid var(--color-border-subtle);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--color-action-primary);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.4;
+        text-transform: none;
+      }
+
+      .doc-title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        line-height: var(--text-body-line-height);
+      }
+
+      .doc-meta-list {
+        margin: 18px 0 0;
+      }
+
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color: var(--color-text-secondary);
+        background: var(--color-bg-subtle);
+        border: 0;
+        border-radius: 999px;
+        line-height: 1.4;
+      }
+
+      .doc-section {
+        margin-top: 0;
+        padding-top: 28px;
+        border-top: 0;
+        border-bottom: 1px solid var(--color-border-subtle);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        color: var(--color-text-primary);
+        font-size: var(--text-section-title-size);
+        font-weight: var(--text-section-title-weight);
+        line-height: var(--text-section-title-line-height);
+      }
+
+      .doc-section h3 {
+        margin: 0;
+        color: var(--color-text-primary);
+        font-size: var(--text-body-size);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section p {
+        line-height: var(--text-body-line-height);
+      }
+
+      .chart-demo-grid,
+      .chart-element-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .chart-demo-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .chart-element-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .chart-demo-card {
+        display: grid;
+        gap: 16px;
+        min-width: 0;
+        padding: 36px;
+        background: var(--gray-50);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .chart-demo-head {
+        display: grid;
+        gap: 4px;
+      }
+
+      .chart-frame {
+        width: 100%;
+        height: 260px;
+        min-width: 0;
+        padding: 12px;
+        overflow: hidden;
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .chart-frame.compact {
+        height: 236px;
+      }
+
+      .chart-placeholder {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        color: var(--color-text-tertiary);
+        font-size: var(--text-caption-size);
+      }
+
+      .code-panel {
+        overflow: hidden;
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .code-panel summary {
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        color: var(--color-text-default);
+        cursor: pointer;
+        font-size: var(--text-control-size);
+        font-weight: 500;
+        line-height: 1.2;
+      }
+
+      .code-panel summary::marker {
+        color: var(--color-text-tertiary);
+      }
+
+      .code-panel pre {
+        max-height: 220px;
+        margin: 0;
+        padding: 14px;
+        overflow: auto;
+        color: var(--color-text-default);
+        background: #fcfcfd;
+        border-top: 1px solid var(--color-border-subtle);
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: var(--text-caption-size);
+        line-height: 1.7;
+      }
+
+      .overview-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .overview-list li,
+      .chart-element-card {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .overview-list strong,
+      .chart-element-card strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--color-text-primary);
+        font-size: var(--text-body-size);
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .color-swatch-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+        margin-top: 12px;
+      }
+
+      .color-swatch {
+        display: inline-grid;
+        grid-template-columns: 20px max-content;
+        align-items: center;
+        gap: 10px;
+        color: var(--color-text-default);
+        font-size: var(--text-control-size);
+        line-height: 1.4;
+      }
+
+      .color-swatch::before {
+        width: 20px;
+        height: 20px;
+        content: "";
+        background: var(--swatch-color);
+        border: 1px solid rgb(20 23 26 / 0.08);
+        border-radius: 6px;
+      }
+
+      .element-preview {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .axis-preview-line,
+      .tooltip-preview,
+      .legend-preview {
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .axis-preview-line {
+        height: 42px;
+        background-image:
+          linear-gradient(to right, transparent 0, transparent calc(25% - 1px), var(--color-border-subtle) 25%, transparent calc(25% + 1px)),
+          linear-gradient(to bottom, transparent 0, transparent calc(50% - 1px), var(--color-border-subtle) 50%, transparent calc(50% + 1px));
+      }
+
+      .legend-preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 12px;
+        color: var(--color-text-secondary);
+        font-size: var(--text-caption-size);
+      }
+
+      .legend-preview span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .legend-preview span::before {
+        width: 8px;
+        height: 8px;
+        content: "";
+        background: var(--legend-color);
+        border-radius: 999px;
+      }
+
+      .tooltip-preview {
+        width: fit-content;
+        padding: 9px 10px;
+        color: var(--color-text-inverse);
+        background: var(--gray-900);
+        border: 0;
+        box-shadow: 0 10px 24px rgba(20, 28, 36, 0.18);
+        font-size: var(--text-caption-size);
+        line-height: 1.5;
+      }
+
+      @media (max-width: 980px) {
+        .chart-demo-grid,
+        .chart-element-grid,
+        .overview-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .canvas-inner {
+          padding: 24px 16px 56px;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 24px 4px;
+        }
+
+        .chart-frame {
+          height: 240px;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -209,7 +558,7 @@
         </a>
         <div class="topbar-actions" aria-label="组件完成状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 45/46</span>
+          <span data-component-count-label>Active components 46/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -314,6 +663,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -472,7 +856,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../index.html#card">
+                    <a class="nav-button" href="../datadisplay/card.html">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -538,41 +922,368 @@
               <header class="doc-hero">
                 <p class="doc-kicker">Data Display / Chart</p>
                 <h1 class="doc-title">Chart 图表</h1>
-                <p class="doc-summary">Chart 用于将趋势、对比、占比和分布转化为可快速扫描的视觉信息，适合看板、分析页和报告摘要。</p>
+                <p class="doc-summary">Chart 用于呈现趋势、对比和占比。页面底层统一使用 VChart 渲染，视觉样式继承当前 Design Token，便于设计验收和研发复用。</p>
                 <ul class="doc-meta-list" aria-label="图表基础规格">
-                  <li>支持折线、柱状、环形</li>
-                  <li>默认容器高度 260px</li>
-                  <li>图例 12px</li>
-                  <li>坐标轴低对比</li>
+                  <li>VChart renderer</li>
+                  <li>100% responsive</li>
+                  <li>Token based theme</li>
+                  <li>Unified tooltip</li>
                 </ul>
               </header>
 
-              <section class="doc-section">
-                <h2>基础图表</h2>
-                <div class="demo-grid">
-                  <div class="example-block chart-card">
-                    <h3>执行趋势</h3>
-                    <div class="line-chart" aria-label="执行趋势折线图">
-                      <svg viewBox="0 0 420 180" role="img">
-                        <path class="grid-line" d="M20 40H400M20 85H400M20 130H400" />
-                        <path class="chart-area" d="M28 126 C78 112 104 92 154 98 C204 104 218 54 268 62 C322 72 342 42 394 34 L394 160 L28 160 Z" />
-                        <path class="chart-line" d="M28 126 C78 112 104 92 154 98 C204 104 218 54 268 62 C322 72 342 42 394 34" />
-                      </svg>
+              <section class="doc-section" id="overview">
+                <h2>Overview</h2>
+                <ul class="overview-list">
+                  <li>
+                    <strong>Basic Charts</strong>
+                    <p>折线、柱状、面积、饼图和环图均为真实 VChart Demo。</p>
+                  </li>
+                  <li>
+                    <strong>Theme Mapping</strong>
+                    <p>品牌色、字体、边框、背景、圆角优先读取现有 CSS Variable。</p>
+                  </li>
+                  <li>
+                    <strong>Implementation</strong>
+                    <p>页面内仅保留简单公共配置、Demo 数据和 VChart 初始化逻辑。</p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="doc-section" id="basic-charts">
+                <h2>Basic Charts</h2>
+                <div class="chart-demo-grid">
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Line Chart / Single Line</h3>
+                      <p>用于展示连续时间维度下的单一指标变化趋势。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-line-single" role="img" aria-label="Single Line Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ ruler: true }),
+  type: 'line',
+  data: [{ id: 'lineSingle', values: lineSingleData }],
+  xField: 'date',
+  yField: 'value',
+  line: { style: { lineWidth: 2 } },
+  point: commonPointConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Line Chart / Multi Line</h3>
+                      <p>用于比较多个系列在同一时间维度下的变化。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-line-multi" role="img" aria-label="Multi Line Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ legend: true, ruler: true }),
+  type: 'line',
+  data: [{ id: 'lineMulti', values: lineMultiData }],
+  xField: 'date',
+  yField: 'value',
+  seriesField: 'series',
+  point: commonPointConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Area Chart</h3>
+                      <p>用于强调趋势走势，同时以低透明度区域辅助阅读。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-area" role="img" aria-label="Area Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ ruler: true }),
+  type: 'area',
+  data: [{ id: 'area', values: areaData }],
+  xField: 'date',
+  yField: 'value',
+  area: { style: { fillOpacity: 0.16 } },
+  point: commonPointConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Area Chart / Multi Line</h3>
+                      <p>用于比较多个趋势系列，并保留面积层次辅助判断波动。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-area-multi" role="img" aria-label="Area Chart Multi Line">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ legend: true, ruler: true }),
+  type: 'area',
+  data: [{ id: 'areaMulti', values: areaMultiData }],
+  xField: 'date',
+  yField: 'value',
+  seriesField: 'series',
+  stack: false,
+  area: { style: { fillOpacity: 0.12 } },
+  point: commonPointConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Bar Chart / Basic Bar</h3>
+                      <p>用于展示离散分类之间的数值对比。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-bar-basic" role="img" aria-label="Basic Bar Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig(),
+  type: 'bar',
+  data: [{ id: 'barBasic', values: barBasicData }],
+  xField: 'name',
+  yField: 'value',
+  bar: { style: { cornerRadius: 0 } },
+  label: commonLabelConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Bar Chart / Grouped Bar</h3>
+                      <p>用于比较多个系列在相同分类下的差异。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-bar-grouped" role="img" aria-label="Grouped Bar Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ legend: true }),
+  type: 'bar',
+  data: [{ id: 'barGrouped', values: barGroupedData }],
+  xField: ['name', 'series'],
+  yField: 'value',
+  seriesField: 'series',
+  bar: { style: { cornerRadius: 0 } }
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Stacked Bar Chart</h3>
+                      <p>用于展示总量结构，以及各组成部分的占比变化。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-bar-stacked" role="img" aria-label="Stacked Bar Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ legend: true }),
+  type: 'bar',
+  data: [{ id: 'barStacked', values: barStackedData }],
+  xField: 'name',
+  yField: 'value',
+  seriesField: 'series',
+  stack: true
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Pie Chart</h3>
+                      <p>用于展示 5 到 6 个以内分类的占比关系。</p>
+                    </div>
+                    <div class="chart-frame compact" id="chart-pie" role="img" aria-label="Pie Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonPolarChartConfig({ legend: true }),
+  type: 'pie',
+  data: [{ id: 'pie', values: pieData }],
+  categoryField: 'category',
+  valueField: 'value',
+  outerRadius: 0.82
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="chart-demo-card">
+                    <div class="chart-demo-head">
+                      <h3>Donut Chart</h3>
+                      <p>用于展示占比结构，中心保留总量或核心数值。</p>
+                    </div>
+                    <div class="chart-frame compact" id="chart-donut" role="img" aria-label="Donut Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonPolarChartConfig({ legend: true }),
+  type: 'pie',
+  data: [{ id: 'donut', values: donutData }],
+  categoryField: 'category',
+  valueField: 'value',
+  innerRadius: 0.62,
+  outerRadius: 0.86,
+  indicator: { visible: true, title: { text: 'Total' } }
+};</code></pre>
+                    </details>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section" id="chart-elements">
+                <h2>Chart Elements</h2>
+                <div class="chart-element-grid">
+                  <div class="chart-element-card">
+                    <strong>Color</strong>
+                    <p>Series 1 使用当前主题的 Primary，后续分类色选用易区分的蓝、紫、青、靛、玫红和棕灰，不默认占用 Success / Warning / Error。</p>
+                    <div class="color-swatch-list" data-chart-swatches aria-label="Chart color swatches"></div>
+                  </div>
+                  <div class="chart-element-card">
+                    <strong>Axis &amp; Grid</strong>
+                    <p>坐标轴文字使用 Secondary Text，轴线和网格线使用 Subtle Border，整体弱于数据图形。</p>
+                    <div class="element-preview">
+                      <div class="axis-preview-line" aria-hidden="true"></div>
                     </div>
                   </div>
-                  <div class="example-block chart-card">
-                    <h3>渠道分布</h3>
-                    <div class="bar-chart" aria-label="渠道分布柱状图">
-                      <span style="height: 54%"></span><span style="height: 78%"></span><span style="height: 42%"></span><span style="height: 88%"></span><span style="height: 64%"></span>
+                  <div class="chart-element-card">
+                    <strong>Legend</strong>
+                    <p>图例使用 Caption 字号和 Secondary Text，未选中态降低透明度，Marker 跟随系列色。</p>
+                    <div class="legend-preview" aria-hidden="true">
+                      <span style="--legend-color: var(--color-action-primary)">Revenue</span>
+                      <span style="--legend-color: #2f75d6">Cost</span>
+                      <span style="--legend-color: #7b61ff">Profit</span>
+                    </div>
+                  </div>
+                  <div class="chart-element-card">
+                    <strong>Tooltip</strong>
+                    <p>Tooltip 采用深色浮层、6px 圆角和轻量阴影，文本继承 Caption 规格。</p>
+                    <div class="element-preview">
+                      <div class="tooltip-preview" aria-hidden="true">2026 Q2<br />Revenue 126.4k</div>
                     </div>
                   </div>
                 </div>
               </section>
-              <section class="doc-section">
-                <h2>占比展示</h2>
-                <div class="example-block donut-wrap">
-                  <div class="donut" aria-label="完成率 72%"></div>
-                  <div><strong>72%</strong><span>本周任务完成率</span></div>
+
+              <section class="doc-section" id="api">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>配置</th>
+                        <th>说明</th>
+                        <th>默认</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>type</code></td>
+                        <td>VChart 图表类型，例如 <code>line</code>、<code>bar</code>、<code>area</code>、<code>pie</code>。</td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>data</code></td>
+                        <td>VChart 数据源配置，Demo 统一使用扁平数据对象。</td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>xField / yField</code></td>
+                        <td>笛卡尔坐标系的数据映射字段。</td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>categoryField / valueField</code></td>
+                        <td>饼图和环图的分类和值映射字段。</td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>seriesField</code></td>
+                        <td>多系列图表的颜色映射字段，并用于图例展示。</td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>commonChartConfig()</code></td>
+                        <td>页面级公共配置，统一字体、颜色、坐标轴、网格、图例和 Tooltip。</td>
+                        <td><code>Token based</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section" id="tokens">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>Chart 用途</th>
+                        <th>映射</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>--color-action-primary</code></td>
+                        <td>默认第一系列色、Hover 强调色。</td>
+                        <td><code>brand-500</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>--color-text-secondary</code></td>
+                        <td>坐标轴 Label、图例文字。</td>
+                        <td><code>gray-600</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>--color-text-tertiary</code></td>
+                        <td>辅助 Label、Tooltip 次级文字。</td>
+                        <td><code>gray-500</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>--color-border-subtle</code></td>
+                        <td>Grid Line、Axis Line、图表容器边界。</td>
+                        <td><code>gray-200</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>--color-bg-container</code></td>
+                        <td>图表背景、Demo 内部画布。</td>
+                        <td><code>white</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>--radius-sm</code></td>
+                        <td>柱体圆角、Tooltip 圆角、容器圆角。</td>
+                        <td><code>6px</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>--text-caption-size</code></td>
+                        <td>Legend、Tooltip、Axis Label 字号。</td>
+                        <td><code>12px</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </section>
             </article>
@@ -580,11 +1291,12 @@
         </section>
       </main>
     </div>
+    <script src="https://unpkg.com/@visactor/vchart/build/index.min.js"></script>
     <script>
       const syncComponentCountLabel = () => {
         const label = document.querySelector('[data-component-count-label]');
         if (!label) return;
-        const pendingKeys = new Set(['card']);
+        const pendingKeys = new Set([]);
         const navItems = Array.from(
           document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
         );
@@ -684,6 +1396,7 @@
           option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
         });
         applyProductTheme(activeProduct);
+        window.dispatchEvent(new CustomEvent('productthemechange'));
       };
       const getSavedProduct = () => {
         try {
@@ -737,6 +1450,520 @@
           closeProductSelectMenu();
         }
       });
+
+      const readCssValue = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      const readCssColor = (name) => {
+        const probe = document.createElement('span');
+        probe.style.color = `var(${name})`;
+        probe.style.position = 'absolute';
+        probe.style.pointerEvents = 'none';
+        probe.style.visibility = 'hidden';
+        document.body.appendChild(probe);
+        const value = getComputedStyle(probe).color;
+        probe.remove();
+        return value || readCssValue(name);
+      };
+      const toAlpha = (color, alpha) => {
+        const channels = color.match(/[\d.]+/g);
+        if (!channels || channels.length < 3) return color;
+        const [r, g, b] = channels.map((part) => Number.parseFloat(part));
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+      };
+      const getChartTheme = () => {
+        const primary = readCssColor('--color-action-primary');
+        const textPrimary = readCssColor('--color-text-primary');
+        const textSecondary = readCssColor('--color-text-secondary');
+        const textTertiary = readCssColor('--color-text-tertiary');
+        const textDisabled = readCssColor('--color-text-disabled');
+        const background = readCssColor('--color-bg-container');
+        const border = readCssColor('--color-border-subtle');
+        const radius = Number.parseInt(readCssValue('--radius-sm'), 10) || 6;
+        const captionSize = Number.parseInt(readCssValue('--text-caption-size'), 10) || 12;
+        const controlSize = Number.parseInt(readCssValue('--text-control-size'), 10) || 13;
+        return {
+          primary,
+          textPrimary,
+          textSecondary,
+          textTertiary,
+          textDisabled,
+          background,
+          border,
+          grid: toAlpha(border, 0.72),
+          radius,
+          captionSize,
+          controlSize,
+          fontFamily: readCssValue('font-family') || 'Inter, "Inter var", "PingFang SC", "Microsoft YaHei", Arial, sans-serif',
+          seriesColors: [primary, '#2f75d6', '#7b61ff', '#12a3a3', '#4f64d8', '#d14f8f', '#8a6f4d'],
+        };
+      };
+      const commonTooltipConfig = (theme) => ({
+        style: {
+          panel: {
+            padding: { top: 9, right: 10, bottom: 9, left: 10 },
+            backgroundColor: readCssColor('--gray-900'),
+            border: { color: readCssColor('--gray-900'), width: 0, radius: theme.radius },
+            shadow: { x: 0, y: 10, blur: 24, spread: 0, color: 'rgba(20, 28, 36, 0.18)' },
+          },
+          titleLabel: {
+            fontFamily: theme.fontFamily,
+            fontSize: theme.captionSize,
+            fill: readCssColor('--color-text-inverse'),
+            lineHeight: 18,
+          },
+          keyLabel: {
+            fontFamily: theme.fontFamily,
+            fontSize: theme.captionSize,
+            fill: readCssColor('--gray-300'),
+            lineHeight: 18,
+            spacing: 8,
+          },
+          valueLabel: {
+            fontFamily: theme.fontFamily,
+            fontSize: theme.captionSize,
+            fill: readCssColor('--color-text-inverse'),
+            lineHeight: 18,
+            spacing: 8,
+          },
+          shape: { size: 8, spacing: 8 },
+          spaceRow: 6,
+        },
+      });
+      const commonLegendConfig = (theme, visible) => ({
+        visible,
+        orient: 'bottom',
+        position: 'middle',
+        padding: { top: 12, bottom: 0 },
+        item: {
+          spaceCol: 14,
+          spaceRow: 8,
+          shape: {
+            space: 6,
+            style: { symbolType: 'circle', size: 8, lineWidth: 0 },
+            state: { unSelected: { fillOpacity: 0.28 } },
+          },
+          label: {
+            style: {
+              fill: theme.textSecondary,
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+              lineHeight: 16,
+            },
+            state: { unSelected: { fill: theme.textDisabled } },
+          },
+        },
+      });
+      const commonAxisConfig = (theme) => [
+        {
+          orient: 'left',
+          tick: { visible: false },
+          domainLine: { visible: false },
+          label: {
+            style: {
+              fill: theme.textSecondary,
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+            },
+          },
+          grid: {
+            visible: true,
+            style: { stroke: theme.grid, lineWidth: 1 },
+          },
+        },
+        {
+          orient: 'bottom',
+          tick: { visible: false },
+          domainLine: { visible: true, style: { stroke: theme.border, lineWidth: 1 } },
+          label: {
+            style: {
+              fill: theme.textSecondary,
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+            },
+          },
+          grid: { visible: false },
+        },
+      ];
+      const commonCrosshairConfig = (theme, ruler) => ({
+        xField: { visible: !ruler, line: { style: { stroke: theme.border, lineDash: [4, 4] } } },
+        yField: {
+          visible: ruler,
+          line: {
+            type: 'line',
+            style: {
+              stroke: theme.textTertiary,
+              lineWidth: 1,
+              lineDash: [4, 4],
+              opacity: 0.86,
+            },
+          },
+          label: {
+            visible: ruler,
+            formatMethod: (value) => {
+              const numeric = Number(Array.isArray(value) ? value[0] : value);
+              return Number.isFinite(numeric) ? numeric.toFixed(2) : String(value);
+            },
+            labelBackground: {
+              padding: { top: 3, right: 6, bottom: 3, left: 6 },
+              style: {
+                fill: readCssColor('--gray-900'),
+                stroke: readCssColor('--gray-900'),
+                cornerRadius: theme.radius,
+              },
+            },
+            style: {
+              fill: readCssColor('--color-text-inverse'),
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+            },
+          },
+        },
+      });
+      const commonChartConfig = ({ legend = false, ruler = false } = {}) => {
+        const theme = getChartTheme();
+        return {
+          animation: false,
+          color: theme.seriesColors,
+          background: theme.background,
+          padding: { top: 12, right: 16, bottom: legend ? 8 : 4, left: 4 },
+          axes: commonAxisConfig(theme),
+          legends: commonLegendConfig(theme, legend),
+          tooltip: commonTooltipConfig(theme),
+          crosshair: commonCrosshairConfig(theme, ruler),
+        };
+      };
+      const commonPolarChartConfig = ({ legend = false } = {}) => {
+        const theme = getChartTheme();
+        return {
+          animation: false,
+          color: theme.seriesColors,
+          background: theme.background,
+          padding: { top: 6, right: 6, bottom: legend ? 2 : 6, left: 6 },
+          legends: commonLegendConfig(theme, legend),
+          tooltip: commonTooltipConfig(theme),
+          label: {
+            visible: true,
+            style: {
+              fill: theme.textSecondary,
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+            },
+          },
+          pie: {
+            style: { stroke: theme.background, lineWidth: 2 },
+            state: { hover: { outerRadius: 0.88 } },
+          },
+        };
+      };
+      const commonLabelConfig = () => {
+        const theme = getChartTheme();
+        return {
+          visible: true,
+          position: 'top',
+          style: {
+            fill: theme.textTertiary,
+            fontFamily: theme.fontFamily,
+            fontSize: theme.captionSize,
+          },
+        };
+      };
+      const commonPointConfig = () => {
+        const theme = getChartTheme();
+        return {
+          visible: true,
+          style: {
+            size: 8,
+            lineWidth: 0,
+            outerBorder: {
+              distance: 0,
+              stroke: theme.background,
+              lineWidth: 2,
+            },
+          },
+          state: {
+            hover: {
+              size: 10,
+              lineWidth: 0,
+              outerBorder: { distance: 0, stroke: theme.background, lineWidth: 2 },
+            },
+            dimension_hover: {
+              size: 10,
+              lineWidth: 0,
+              outerBorder: { distance: 0, stroke: theme.background, lineWidth: 2 },
+            },
+          },
+        };
+      };
+
+      const lineSingleData = [
+        { date: 'Jan', value: 18 },
+        { date: 'Feb', value: 92 },
+        { date: 'Mar', value: 36 },
+        { date: 'Apr', value: 118 },
+        { date: 'May', value: 54 },
+        { date: 'Jun', value: 132 },
+      ];
+      const lineMultiData = ['Revenue', 'Cost', 'Profit'].flatMap((series, seriesIndex) =>
+        ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((date, index) => ({
+          date,
+          series,
+          value:
+            [
+              [30, 96, 44, 122, 68, 136],
+              [82, 28, 76, 34, 94, 52],
+              [12, 58, 24, 78, 36, 92],
+            ][seriesIndex][index],
+        })),
+      );
+      const barBasicData = [
+        { name: 'Agent', value: 86 },
+        { name: 'Store', value: 72 },
+        { name: 'Asset', value: 58 },
+        { name: 'Order', value: 94 },
+        { name: 'Report', value: 67 },
+        { name: 'Media', value: 81 },
+        { name: 'Campaign', value: 49 },
+        { name: 'Keyword', value: 76 },
+        { name: 'Lead', value: 62 },
+      ];
+      const barGroupedData = ['Agent', 'Store', 'Asset', 'Order'].flatMap((name, index) => [
+        { name, series: 'Current', value: [68, 76, 54, 88][index] },
+        { name, series: 'Previous', value: [52, 64, 49, 74][index] },
+      ]);
+      const barStackedData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].flatMap((name, index) => [
+        { name, series: 'Create', value: [24, 30, 28, 36, 32][index] },
+        { name, series: 'Review', value: [18, 22, 20, 24, 27][index] },
+        { name, series: 'Publish', value: [12, 16, 18, 21, 24][index] },
+      ]);
+      const areaData = [
+        { date: 'Jan', value: 22 },
+        { date: 'Feb', value: 74 },
+        { date: 'Mar', value: 46 },
+        { date: 'Apr', value: 108 },
+        { date: 'May', value: 64 },
+        { date: 'Jun', value: 126 },
+        { date: 'Jul', value: 88 },
+      ];
+      const areaMultiData = ['Active', 'Queued', 'Closed'].flatMap((series, seriesIndex) =>
+        ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'].map((date, index) => ({
+          date,
+          series,
+          value:
+            [
+              [28, 86, 42, 116, 70, 132, 96],
+              [58, 34, 82, 48, 100, 62, 118],
+              [16, 44, 22, 68, 36, 84, 52],
+            ][seriesIndex][index],
+        })),
+      );
+      const pieData = [
+        { category: 'Agent', value: 34 },
+        { category: 'Store', value: 24 },
+        { category: 'Asset', value: 18 },
+        { category: 'Order', value: 14 },
+        { category: 'Report', value: 10 },
+      ];
+      const donutData = [
+        { category: 'Created', value: 126 },
+        { category: 'Reviewed', value: 84 },
+        { category: 'Published', value: 66 },
+        { category: 'Queued', value: 38 },
+        { category: 'Paused', value: 18 },
+      ];
+      const getChartSpecs = () => {
+        const theme = getChartTheme();
+        return {
+          'chart-line-single': {
+            ...commonChartConfig({ ruler: true }),
+            type: 'line',
+            data: [{ id: 'lineSingle', values: lineSingleData }],
+            xField: 'date',
+            yField: 'value',
+            line: { style: { lineWidth: 2, lineCap: 'round', lineJoin: 'round' } },
+            point: commonPointConfig(),
+          },
+          'chart-line-multi': {
+            ...commonChartConfig({ legend: true, ruler: true }),
+            type: 'line',
+            data: [{ id: 'lineMulti', values: lineMultiData }],
+            xField: 'date',
+            yField: 'value',
+            seriesField: 'series',
+            line: { style: { lineWidth: 2, lineCap: 'round', lineJoin: 'round' } },
+            point: commonPointConfig(),
+          },
+          'chart-area': {
+            ...commonChartConfig({ ruler: true }),
+            type: 'area',
+            data: [{ id: 'area', values: areaData }],
+            xField: 'date',
+            yField: 'value',
+            line: { style: { lineWidth: 2, lineCap: 'round', lineJoin: 'round' } },
+            area: { style: { fillOpacity: 0.16 } },
+            point: commonPointConfig(),
+          },
+          'chart-area-multi': {
+            ...commonChartConfig({ legend: true, ruler: true }),
+            type: 'area',
+            data: [{ id: 'areaMulti', values: areaMultiData }],
+            xField: 'date',
+            yField: 'value',
+            seriesField: 'series',
+            stack: false,
+            line: { style: { lineWidth: 2, lineCap: 'round', lineJoin: 'round' } },
+            area: { style: { fillOpacity: 0.12 } },
+            point: commonPointConfig(),
+          },
+          'chart-bar-basic': {
+            ...commonChartConfig(),
+            type: 'bar',
+            data: [{ id: 'barBasic', values: barBasicData }],
+            xField: 'name',
+            yField: 'value',
+            bar: {
+              style: { cornerRadius: 0, fillOpacity: 0.94 },
+              state: { hover: { fillOpacity: 0.78 } },
+            },
+            label: commonLabelConfig(),
+          },
+          'chart-bar-grouped': {
+            ...commonChartConfig({ legend: true }),
+            type: 'bar',
+            data: [{ id: 'barGrouped', values: barGroupedData }],
+            xField: ['name', 'series'],
+            yField: 'value',
+            seriesField: 'series',
+            bar: {
+              style: { cornerRadius: 0, fillOpacity: 0.94 },
+              state: { hover: { fillOpacity: 0.78 } },
+            },
+          },
+          'chart-bar-stacked': {
+            ...commonChartConfig({ legend: true }),
+            type: 'bar',
+            data: [{ id: 'barStacked', values: barStackedData }],
+            xField: 'name',
+            yField: 'value',
+            seriesField: 'series',
+            stack: true,
+            bar: {
+              style: { cornerRadius: 0, fillOpacity: 0.94 },
+              state: { hover: { fillOpacity: 0.78 } },
+            },
+          },
+          'chart-pie': {
+            ...commonPolarChartConfig({ legend: true }),
+            type: 'pie',
+            data: [{ id: 'pie', values: pieData }],
+            categoryField: 'category',
+            valueField: 'value',
+            seriesField: 'category',
+            outerRadius: 0.82,
+            label: { visible: true, position: 'outside', style: { fill: theme.textSecondary, fontSize: theme.captionSize } },
+          },
+          'chart-donut': {
+            ...commonPolarChartConfig({ legend: true }),
+            type: 'pie',
+            data: [{ id: 'donut', values: donutData }],
+            categoryField: 'category',
+            valueField: 'value',
+            seriesField: 'category',
+            innerRadius: 0.62,
+            outerRadius: 0.86,
+            indicator: {
+              visible: true,
+              fixed: true,
+              trigger: 'none',
+              title: {
+                visible: true,
+                style: {
+                  text: '332',
+                  fill: theme.textPrimary,
+                  fontFamily: theme.fontFamily,
+                  fontSize: 24,
+                  fontWeight: 500,
+                  textAlign: 'center',
+                },
+              },
+              content: [
+                {
+                  visible: true,
+                  style: {
+                    text: 'Total',
+                    fill: theme.textTertiary,
+                    fontFamily: theme.fontFamily,
+                    fontSize: theme.captionSize,
+                    textAlign: 'center',
+                  },
+                },
+              ],
+            },
+          },
+        };
+      };
+      const chartInstances = new Map();
+      const getChartFrameSize = (dom) => {
+        const rect = dom.getBoundingClientRect();
+        const styles = getComputedStyle(dom);
+        const paddingX = Number.parseFloat(styles.paddingLeft) + Number.parseFloat(styles.paddingRight);
+        const paddingY = Number.parseFloat(styles.paddingTop) + Number.parseFloat(styles.paddingBottom);
+        const width = Math.round((rect.width || dom.clientWidth || Number.parseFloat(styles.width) || 320) - paddingX);
+        const height = Math.round((rect.height || dom.clientHeight || Number.parseFloat(styles.height) || 240) - paddingY);
+        return {
+          width: Math.max(width, 320),
+          height: Math.max(height, 200),
+        };
+      };
+      const renderChartSwatches = () => {
+        const container = document.querySelector('[data-chart-swatches]');
+        if (!container) return;
+        const colors = getChartTheme().seriesColors;
+        const labels = ['Primary', 'Blue', 'Violet', 'Teal', 'Indigo', 'Rose', 'Taupe'];
+        container.innerHTML = colors
+          .map((color, index) => `<span class="color-swatch" style="--swatch-color:${color}">${labels[index]}</span>`)
+          .join('');
+      };
+      const renderChartDemos = () => {
+        const VChartCtor = window.VChart?.default || window.VChart;
+        renderChartSwatches();
+        if (!VChartCtor) {
+          document.querySelectorAll('.chart-placeholder').forEach((placeholder) => {
+            placeholder.textContent = 'VChart failed to load';
+          });
+          return;
+        }
+        const specs = getChartSpecs();
+        Object.entries(specs).forEach(([id, spec]) => {
+          const dom = document.getElementById(id);
+          if (!dom) return;
+          const previous = chartInstances.get(id);
+          if (previous && typeof previous.release === 'function') {
+            previous.release();
+          }
+          const size = getChartFrameSize(dom);
+          dom.innerHTML = '';
+          const chart = new VChartCtor({ ...spec, ...size }, { dom, autoFit: false });
+          chart.renderSync();
+          chartInstances.set(id, chart);
+        });
+      };
+      let chartRenderFrame = 0;
+      let chartRenderTimer = 0;
+      const scheduleChartRender = () => {
+        cancelAnimationFrame(chartRenderFrame);
+        clearTimeout(chartRenderTimer);
+        chartRenderTimer = setTimeout(renderChartDemos, 0);
+        chartRenderFrame = requestAnimationFrame(() => {
+          chartRenderFrame = requestAnimationFrame(renderChartDemos);
+        });
+      };
+      scheduleChartRender();
+      window.addEventListener('load', scheduleChartRender);
+      window.addEventListener('productthemechange', scheduleChartRender);
+      window.addEventListener('resize', scheduleChartRender);
+      if ('ResizeObserver' in window) {
+        const chartResizeObserver = new ResizeObserver(scheduleChartRender);
+        document.querySelectorAll('.chart-frame').forEach((frame) => chartResizeObserver.observe(frame));
+      }
 
       const centerNavItem = (item, behavior = 'auto') => {
         if (!item) return;

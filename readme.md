@@ -12,6 +12,12 @@ Design System 是面向企业应用平台的静态设计规范站点，当前以
 - `layout/grid.html`: Grid 栅格独立规范页。
 - `layout/layout.html`: Layout 布局独立规范页。
 - `layout/splitter.html`: Splitter 分隔面板独立规范页。
+- `navigation/menu.html`: Menu 导航菜单独立规范页。
+- `navigation/tabs.html`: Tabs 标签页独立规范页。
+- `navigation/breadcrumb.html`: Breadcrumb 面包屑独立规范页。
+- `navigation/dropdown.html`: Dropdown 下拉菜单独立规范页。
+- `navigation/pagination.html`: Pagination 分页独立规范页。
+- `navigation/steps.html`: Steps 步骤条独立规范页。
 - `dataentry/input.html`: Input 输入框独立规范页。
 - `dataentry/input-number.html`: InputNumber 数字输入框独立规范页。
 - `dataentry/radio.html`: Radio 单选框独立规范页。
@@ -41,6 +47,7 @@ Design System 是面向企业应用平台的静态设计规范站点，当前以
 - `datadisplay/image.html`: Image 图片独立规范页。
 - `datadisplay/badge.html`: Badge 徽标独立规范页。
 - `datadisplay/empty.html`: Empty 空状态独立规范页。
+- `datadisplay/card.html`: Card 卡片独立规范页。
 - `logo-cropped.png`: 站点品牌标识资源。
 - `design.md`: 设计系统说明，包括设计原则、视觉 Token、组件结构和维护约定。
 
@@ -55,6 +62,12 @@ Design System 是面向企业应用平台的静态设计规范站点，当前以
 - Grid
 - Layout
 - Splitter
+- Menu
+- Tabs
+- Breadcrumb
+- Dropdown
+- Pagination
+- Steps
 - Input
 - InputNumber
 - Radio
@@ -84,6 +97,7 @@ Design System 是面向企业应用平台的静态设计规范站点，当前以
 - Image
 - Badge
 - Empty
+- Card
 
 组件使用约定：
 
@@ -140,4 +154,4 @@ https://monica137142.github.io/iqb-designsystem/
 
 ## 仓库
 
-GitHub: https://github.com/example/design-system
+GitHub: https://github.com/monica137142/iqb-designsystem

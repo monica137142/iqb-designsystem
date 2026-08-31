@@ -4261,6 +4261,36 @@
       :root[data-product-theme="test-theme-1"] .remove-dynamic-item {
         border-radius: 2px !important;
       }
+      /* Splitter component demos */
+      .splitter-demo { margin-top:16px; }
+      .splitter-toolbar { display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:8px 0 12px; }
+      .spec-btn.splitter-reset { min-height:30px;display:inline-flex;align-items:center;justify-content:center;padding:0 12px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid #dde1e5;border-radius:7px;cursor:pointer;font-size:var(--text-control-size);font-weight:400;line-height:1.2;transition:background-color .15s ease,border-color .15s ease,color .15s ease,box-shadow .15s ease; }
+      .spec-btn.splitter-reset:hover { color:var(--brand-text);border-color:var(--color-action-primary); }
+      .spec-btn.splitter-reset:focus-visible { outline:none;box-shadow:var(--shadow-focus); }
+      .splitter-field { display:inline-flex;align-items:center;gap:8px;color:var(--color-text-secondary);font-size:var(--text-caption-size); }
+      .splitter-field .number-input.small { width:160px; }
+      .splitter-validation { min-height:19px;margin:-4px 0 10px!important;color:var(--color-status-error)!important;font-size:var(--text-caption-size)!important; }
+      .splitter-validation:empty { display:none; }
+      .number-input.has-error { border-color:var(--color-status-error); }
+      .number-input.has-error:focus-within { border-color:var(--color-status-error);box-shadow:var(--input-number-error-shadow); }
+      :root{--splitter-handle-size:8px;--splitter-handle-bg:var(--color-bg-subtle);--splitter-indicator-size:2px;--splitter-indicator-length:24px;--splitter-indicator-color:var(--color-border-strong);--splitter-indicator-active-color:var(--color-action-primary);--splitter-panel-bg:var(--color-bg-container);--splitter-border-color:var(--color-border-subtle);--splitter-focus-ring:inset 0 0 0 2px rgb(var(--brand-rgb)/.2);--splitter-motion-duration:160ms}
+      .splitter { display:flex;width:max(66.6667%,480px);height:320px;overflow:hidden;background:var(--splitter-panel-bg);border:1px solid var(--splitter-border-color);border-radius:var(--radius-sm); }
+      .splitter.vertical { flex-direction:column; }
+      .splitter-panel { flex:1 1 0;display:flex;align-items:center;justify-content:center;min-width:0;min-height:0;padding:16px;background:var(--splitter-panel-bg);color:var(--color-text-secondary);font-size:var(--text-control-size);text-align:center; }
+      .splitter-handle { position:relative;z-index:1;flex:0 0 var(--splitter-handle-size);background:var(--splitter-handle-bg);cursor:col-resize;touch-action:none; }
+      .vertical>.splitter-handle { cursor:row-resize; }
+      .splitter-handle::after { position:absolute;top:50%;left:50%;width:var(--splitter-indicator-size);height:var(--splitter-indicator-length);content:"";background:var(--splitter-indicator-color);border-radius:999px;transform:translate(-50%,-50%);transition:background-color var(--splitter-motion-duration); }
+      .vertical>.splitter-handle::after { width:var(--splitter-indicator-length);height:var(--splitter-indicator-size); }
+      .splitter-handle:hover::after,.splitter-handle:focus-visible::after,.splitter-handle.is-dragging::after { background:var(--splitter-indicator-active-color); }
+      .splitter-handle:focus-visible { outline:none;box-shadow:var(--splitter-focus-ring); }
+      .splitter.compact,.splitter.composite { height:320px; }
+      .splitter.composite>.splitter-panel { padding:0; }
+      .splitter.composite>.splitter-panel:first-child { padding:16px; }
+      .splitter.composite .nested { width:100%;height:100%;border:0;border-radius:0; }
+      .splitter-section-grid { grid-template-columns:1fr; }
+      .section-lead { margin-bottom:16px!important; }
+      .table-gap { margin-top:18px; }
+      @media(max-width:760px){.splitter{height:320px}.splitter-toolbar{align-items:flex-start}.splitter-field{flex-wrap:wrap}.splitter-field .number-input.small{width:140px}}
 </style>
   </head>
   <body>
@@ -4395,6 +4425,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html" aria-current="page">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -4626,7 +4691,7 @@
                 </p>
                 <ul class="doc-meta-list" aria-label="分隔面板基础规格">
                   <li>支持水平 / 垂直</li>
-                  <li>支持最小宽度</li>
+                  <li>默认最小尺寸 40px</li>
                   <li>拖拽柄 8px 热区</li>
                   <li>面板尺寸可控</li>
                 </ul>
@@ -4635,44 +4700,78 @@
               <section class="doc-section">
                 <h2>何时使用</h2>
                 <ul class="rule-list">
-                  <li>用于两个或多个面板都需要持续可见，并且用户需要调节各自占比的工作区。</li>
-                  <li>适用于 Agent 调试、内容预览、数据列表详情和知识库对照阅读。</li>
-                  <li>不用于简单分组；静态分区优先使用 Grid、Layout 或 Divider。</li>
+                  <li>当两个或多个面板需要同时可见，且用户需要根据任务动态调整各区域占比时使用。</li>
+                  <li>适合列表与详情、编辑与预览、配置与结果、主工作区与辅助信息等连续工作流。</li>
+                  <li>面板内容应具有明确关联；仅用于视觉分组或内容无需调整时，优先使用 Grid、Layout 或 Divider。</li>
+                  <li>为面板设置合理的最小尺寸，避免拖拽后重要操作或信息不可用。</li>
                 </ul>
               </section>
 
               <section class="doc-section">
                 <h2>基础用法</h2>
-                <div class="doc-grid">
-                  <div class="example-block full">
+                <div class="doc-grid splitter-section-grid">
+                  <div class="example-block">
                     <h3>水平分隔</h3>
-                    <p>左侧列表、右侧详情是后台中最常见的分隔面板结构。</p>
-                    <div style="display:grid;grid-template-columns:minmax(160px,32%) 8px 1fr;height:220px;border:1px solid var(--color-border-subtle);border-radius:6px;overflow:hidden;background:var(--color-bg-container);">
-                      <div style="padding:14px;background:var(--gray-50);border-right:1px solid var(--color-border-subtle);font-size:var(--text-control-size);color:var(--color-text-secondary);">Agent 列表<br /><br />商品优化<br />素材生成<br />投放分析</div>
-                      <div style="display:flex;align-items:center;justify-content:center;background:var(--color-bg-subtle);cursor:col-resize;color:var(--color-text-disabled);">||</div>
-                      <div style="padding:16px;display:grid;gap:12px;align-content:start;">
-                        <strong>商品优化 Agent</strong>
-                        <p style="margin:0;color:var(--color-text-secondary);line-height:1.7;">右侧面板展示配置、运行记录和结果预览。拖拽分隔条时，左右面板保持最小宽度。</p>
-                        <div style="height:66px;background:var(--brand-50);border:1px solid var(--brand-border-soft);border-radius:6px;"></div>
-                      </div>
+                    <p>左右并列展示相关内容，默认最小宽度为 40px，支持自定义。设置值需满足容器总宽度、面板数及分隔条占用空间的约束，避免面板尺寸发生冲突。</p>
+                    <div class="splitter splitter-demo" data-splitter data-min="40">
+                      <div class="splitter-panel"></div>
+                      <div class="splitter-handle" tabindex="0" role="separator" aria-orientation="vertical" aria-label="调整左右面板宽度"></div>
+                      <div class="splitter-panel"></div>
                     </div>
                   </div>
                   <div class="example-block">
                     <h3>垂直分隔</h3>
-                    <p>用于上方编辑、下方日志或预览。</p>
-                    <div style="display:grid;grid-template-rows:96px 8px 96px;border:1px solid var(--color-border-subtle);border-radius:6px;overflow:hidden;">
-                      <div style="padding:12px;background:var(--color-bg-container);color:var(--color-text-default);font-size:var(--text-control-size);">Prompt 编辑区</div>
-                      <div style="background:var(--color-bg-subtle);cursor:row-resize;"></div>
-                      <div style="padding:12px;background:var(--gray-50);color:var(--color-text-tertiary);font-size:var(--text-control-size);">运行日志与预览</div>
+                    <p>上下堆叠展示相关内容，默认最小高度为 40px，支持自定义。设置值需满足容器总高度、面板数及分隔条占用空间的约束，避免面板尺寸发生冲突。</p>
+                    <div class="splitter vertical splitter-demo" data-splitter data-min="40">
+                      <div class="splitter-panel"></div>
+                      <div class="splitter-handle" tabindex="0" role="separator" aria-orientation="horizontal" aria-label="调整上下面板高度"></div>
+                      <div class="splitter-panel"></div>
                     </div>
                   </div>
-                  <div class="example-block">
-                    <h3>固定侧面板</h3>
-                    <p>可禁用某个面板伸缩，保留关键上下文宽度。</p>
-                    <div style="display:grid;grid-template-columns:1fr 8px 140px;height:200px;border:1px solid var(--color-border-subtle);border-radius:6px;overflow:hidden;">
-                      <div style="padding:12px;background:var(--gray-50);">主工作区</div>
-                      <div style="background:var(--color-bg-subtle);"></div>
-                      <div style="padding:12px;background:var(--brand-50);color:var(--brand-text);">固定预览</div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>方向控制</h2>
+                <div class="doc-grid splitter-section-grid">
+                  <div class="example-block" data-config-demo="horizontal">
+                    <h3>水平分隔</h3>
+                    <p>支持 2–4 个面板，可调整面板数量与最小宽度。</p>
+                    <div class="splitter-toolbar">
+                      <label class="splitter-field">面板数 <span class="number-input small" data-number-demo data-min="2" data-max="4" data-step="1"><input class="spec-input" type="number" min="2" max="4" value="2" data-panel-count /><span class="number-stepper"><button class="number-step" type="button" data-number-step="up" aria-label="增加"><svg viewBox="0 0 16 16"><path d="m4 10 4-4 4 4"></path></svg></button><button class="number-step" type="button" data-number-step="down" aria-label="减少"><svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></button></span></span></label>
+                      <label class="splitter-field">最小宽度 <span class="number-input small" data-number-demo data-min="8" data-max="236" data-step="8"><input class="spec-input" type="number" min="8" max="236" value="40" data-min-size /><span class="number-stepper"><button class="number-step" type="button" data-number-step="up" aria-label="增加"><svg viewBox="0 0 16 16"><path d="m4 10 4-4 4 4"></path></svg></button><button class="number-step" type="button" data-number-step="down" aria-label="减少"><svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></button></span></span> px</label>
+                      <button class="spec-btn medium splitter-reset" type="button" data-splitter-reset>重置</button>
+                    </div>
+                    <p class="splitter-validation" role="alert" aria-live="polite" data-splitter-validation></p>
+                    <div class="splitter compact" data-splitter data-min="40" data-config-target></div>
+                  </div>
+                  <div class="example-block" data-config-demo="vertical">
+                    <h3>垂直分隔</h3>
+                    <p>支持 2–4 个面板，可调整面板数量与最小高度。</p>
+                    <div class="splitter-toolbar">
+                      <label class="splitter-field">面板数 <span class="number-input small" data-number-demo data-min="2" data-max="4" data-step="1"><input class="spec-input" type="number" min="2" max="4" value="2" data-panel-count /><span class="number-stepper"><button class="number-step" type="button" data-number-step="up" aria-label="增加"><svg viewBox="0 0 16 16"><path d="m4 10 4-4 4 4"></path></svg></button><button class="number-step" type="button" data-number-step="down" aria-label="减少"><svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></button></span></span></label>
+                      <label class="splitter-field">最小高度 <span class="number-input small" data-number-demo data-min="8" data-max="156" data-step="8"><input class="spec-input" type="number" min="8" max="156" value="40" data-min-size /><span class="number-stepper"><button class="number-step" type="button" data-number-step="up" aria-label="增加"><svg viewBox="0 0 16 16"><path d="m4 10 4-4 4 4"></path></svg></button><button class="number-step" type="button" data-number-step="down" aria-label="减少"><svg viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"></path></svg></button></span></span> px</label>
+                      <button class="spec-btn medium splitter-reset" type="button" data-splitter-reset>重置</button>
+                    </div>
+                    <p class="splitter-validation" role="alert" aria-live="polite" data-splitter-validation></p>
+                    <div class="splitter vertical compact" data-splitter data-min="40" data-config-target></div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>组合使用</h2>
+                <div class="example-block">
+                  <p class="section-lead">Splitter 可以嵌套使用。以下结构将左侧作为主面板，右侧再垂直分为两个辅助面板。</p>
+                  <div class="splitter composite" data-splitter data-min="40">
+                    <div class="splitter-panel"></div>
+                    <div class="splitter-handle" tabindex="0" role="separator" aria-orientation="vertical" aria-label="调整主工作区宽度"></div>
+                    <div class="splitter-panel">
+                      <div class="splitter vertical nested" data-splitter data-min="40">
+                        <div class="splitter-panel"></div>
+                        <div class="splitter-handle" tabindex="0" role="separator" aria-orientation="horizontal" aria-label="调整辅助面板高度"></div>
+                        <div class="splitter-panel"></div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -4684,10 +4783,38 @@
                   <table class="spec-table">
                     <thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>
                     <tbody>
-                      <tr><td>direction</td><td>分隔方向。</td><td><code>horizontal | vertical</code></td><td><code>horizontal</code></td></tr>
-                      <tr><td>defaultSize</td><td>面板默认尺寸。</td><td><code>number | string</code></td><td><code>auto</code></td></tr>
-                      <tr><td>min</td><td>面板最小尺寸。</td><td><code>number | string</code></td><td><code>120</code></td></tr>
-                      <tr><td>collapsible</td><td>是否支持折叠。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>direction</code></td><td>面板排列与拖拽方向。</td><td><code>horizontal | vertical</code></td><td><code>horizontal</code></td></tr>
+                      <tr><td><code>panels</code></td><td>面板配置列表，数量限定为 2–4；少于 2 个面板无法构成分栏结构。</td><td><code>SplitterPanel[]</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>defaultSizes</code></td><td>各面板初始尺寸，可使用像素或百分比；尺寸总和应等于扣除分隔条后的容器可用尺寸。</td><td><code>(number | string)[]</code></td><td><code>equal</code></td></tr>
+                      <tr><td><code>sizes</code></td><td>受控面板尺寸；数组长度必须与 <code>panels</code> 一致。</td><td><code>(number | string)[]</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>minSize</code></td><td>面板最小尺寸；水平对应最小宽度，垂直对应最小高度。可配置范围为 8px 至 <code>(容器轴向尺寸 − (面板数 − 1) × 8px) ÷ 面板数</code>。</td><td><code>number | number[]</code></td><td><code>40</code></td></tr>
+                      <tr><td><code>disabled</code></td><td>是否禁用拖拽调整。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>keyboardStep</code></td><td>键盘方向键单次调整的像素值；Shift 可放大步长。</td><td><code>number</code></td><td><code>10</code></td></tr>
+                      <tr><td><code>collapsible</code></td><td>是否允许面板折叠到 0；与 <code>minSize</code> 分别表示折叠与拖拽下限。</td><td><code>boolean | boolean[]</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>onCollapse</code></td><td>面板折叠状态变化时触发。</td><td><code>(index: number, collapsed: boolean) =&gt; void</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>onResize</code></td><td>拖拽过程中尺寸变化的回调。</td><td><code>(sizes: number[]) =&gt; void</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>onResizeEnd</code></td><td>拖拽结束后的回调。</td><td><code>(sizes: number[]) =&gt; void</code></td><td><code>-</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead><tr><th>Token</th><th>说明</th><th>默认值</th></tr></thead>
+                    <tbody>
+                      <tr><td><code>--splitter-handle-size</code></td><td>分隔条可交互热区尺寸。</td><td><code>8px</code></td></tr>
+                      <tr><td><code>--splitter-handle-bg</code></td><td>分隔条默认背景色。</td><td><code>var(--color-bg-subtle)</code></td></tr>
+                      <tr><td><code>--splitter-indicator-size</code></td><td>拖拽指示线粗细。</td><td><code>2px</code></td></tr>
+                      <tr><td><code>--splitter-indicator-length</code></td><td>拖拽指示线长度。</td><td><code>24px</code></td></tr>
+                      <tr><td><code>--splitter-indicator-color</code></td><td>拖拽指示线默认颜色。</td><td><code>var(--color-border-strong)</code></td></tr>
+                      <tr><td><code>--splitter-indicator-active-color</code></td><td>悬停、聚焦与拖拽状态的指示色。</td><td><code>var(--color-action-primary)</code></td></tr>
+                      <tr><td><code>--splitter-panel-bg</code></td><td>面板背景色。</td><td><code>var(--color-bg-container)</code></td></tr>
+                      <tr><td><code>--splitter-border-color</code></td><td>容器边框颜色。</td><td><code>var(--color-border-subtle)</code></td></tr>
+                      <tr><td><code>--splitter-focus-ring</code></td><td>键盘聚焦环。</td><td><code>inset 0 0 0 2px rgb(var(--brand-rgb) / .2)</code></td></tr>
+                      <tr><td><code>--splitter-motion-duration</code></td><td>颜色与折叠过渡时长。</td><td><code>160ms</code></td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -4788,7 +4915,7 @@
           root.style.setProperty("--brand-200", "#bef5d5");
           root.style.setProperty("--brand-300", "#91e9b8");
           root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "var(--color-status-success)");
+          root.style.setProperty("--brand-500", "#22b573");
           root.style.setProperty("--brand-600", "#1b9c61");
           root.style.setProperty("--brand-700", "#147c4d");
           root.style.setProperty("--brand-800", "#12633f");
@@ -4967,7 +5094,7 @@
           desc: "业务主题品牌色，500 固定为 var(--color-status-success)。",
           base: "default-theme-500",
           tokenPrefix: "default-theme",
-          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "var(--color-status-success)", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
+          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
         },
         "test主题色": {
           title: "Test Blue",
@@ -6752,6 +6879,145 @@
         input?.addEventListener("input", syncButtons);
         syncButtons();
       });
+
+      const createSplitterPanels = (splitter, count) => {
+        splitter.replaceChildren();
+        for (let index = 0; index < count; index += 1) {
+          if (index > 0) {
+            const handle = document.createElement("div");
+            handle.className = "splitter-handle";
+            handle.tabIndex = 0;
+            handle.setAttribute("role", "separator");
+            handle.setAttribute("aria-orientation", splitter.classList.contains("vertical") ? "horizontal" : "vertical");
+            handle.setAttribute("aria-label", `调整面板 ${index} 与面板 ${index + 1} 的尺寸`);
+            splitter.append(handle);
+          }
+          const panel = document.createElement("div");
+          panel.className = "splitter-panel";
+          splitter.append(panel);
+        }
+      };
+
+      const initSplitter = (splitter) => {
+        if (splitter.dataset.splitterReady) return;
+        splitter.dataset.splitterReady = "true";
+        const isVertical = () => splitter.classList.contains("vertical");
+        const resizeBy = (handle, delta) => {
+          const previous = handle.previousElementSibling;
+          const next = handle.nextElementSibling;
+          if (!previous || !next) return;
+          const axis = isVertical() ? "height" : "width";
+          const configuredMin = Number(splitter.dataset.min);
+          const requestedMin = Number.isFinite(configuredMin) ? Math.max(0, configuredMin) : 40;
+          const min = requestedMin;
+          const previousSize = previous.getBoundingClientRect()[axis];
+          const nextSize = next.getBoundingClientRect()[axis];
+          const applied = Math.max(min - previousSize, Math.min(delta, nextSize - min));
+          previous.style.flex = `0 0 ${previousSize + applied}px`;
+          next.style.flex = `0 0 ${nextSize - applied}px`;
+          handle.setAttribute("aria-valuenow", String(Math.round(previousSize + applied)));
+        };
+        Array.from(splitter.children).filter((child) => child.classList.contains("splitter-handle")).forEach((handle) => {
+          handle.addEventListener("pointerdown", (event) => {
+            event.preventDefault();
+            handle.setPointerCapture(event.pointerId);
+            handle.classList.add("is-dragging");
+            let last = isVertical() ? event.clientY : event.clientX;
+            const move = (moveEvent) => {
+              if (moveEvent.pointerId !== event.pointerId || moveEvent.buttons === 0) {
+                end(moveEvent);
+                return;
+              }
+              const current = isVertical() ? moveEvent.clientY : moveEvent.clientX;
+              resizeBy(handle, current - last);
+              last = current;
+            };
+            const end = (endEvent) => {
+              if (endEvent?.pointerId !== undefined && endEvent.pointerId !== event.pointerId) return;
+              handle.classList.remove("is-dragging");
+              handle.removeEventListener("pointermove", move);
+              window.removeEventListener("pointerup", end);
+              window.removeEventListener("pointercancel", end);
+              handle.removeEventListener("lostpointercapture", end);
+              if (handle.hasPointerCapture?.(event.pointerId)) handle.releasePointerCapture(event.pointerId);
+            };
+            handle.addEventListener("pointermove", move);
+            window.addEventListener("pointerup", end);
+            window.addEventListener("pointercancel", end);
+            handle.addEventListener("lostpointercapture", end);
+          });
+          handle.addEventListener("keydown", (event) => {
+            const validKeys = isVertical() ? ["ArrowUp", "ArrowDown"] : ["ArrowLeft", "ArrowRight"];
+            if (!validKeys.includes(event.key)) return;
+            event.preventDefault();
+            resizeBy(handle, ["ArrowRight", "ArrowDown"].includes(event.key) ? 10 : -10);
+          });
+        });
+      };
+
+      document.querySelectorAll("[data-config-demo]").forEach((demo) => {
+        const target = demo.querySelector("[data-config-target]");
+        const count = demo.querySelector("[data-panel-count]");
+        const minSize = demo.querySelector("[data-min-size]");
+        const validation = demo.querySelector("[data-splitter-validation]");
+        const countControl = count.closest(".number-input");
+        const minControl = minSize.closest(".number-input");
+        const reset = demo.querySelector("[data-splitter-reset]");
+        const rebuild = () => {
+          const rawPanelCount = Number(count.value);
+          const countHasError = !Number.isInteger(rawPanelCount) || rawPanelCount < 2 || rawPanelCount > 4;
+          countControl?.classList.toggle("has-error", countHasError);
+          count.setAttribute("aria-invalid", String(countHasError));
+          if (countHasError) {
+            minControl?.classList.remove("has-error");
+            minSize.setAttribute("aria-invalid", "false");
+            validation.textContent = !Number.isInteger(rawPanelCount)
+              ? "面板数必须是 2–4 之间的整数。"
+              : rawPanelCount < 2
+                ? "面板数不能少于 2；单个面板无法构成分栏结构。"
+                : "面板数不能超过 4；过多面板会导致可用空间不足。";
+            return;
+          }
+          const panelCount = rawPanelCount;
+          const parsedMin = Number(minSize.value);
+          const axisSize = demo.dataset.configDemo === "vertical" ? target.clientHeight : target.clientWidth;
+          const maxMinSize = Math.max(8, Math.floor((axisSize - (panelCount - 1) * 8) / panelCount));
+          minSize.max = String(maxMinSize);
+          const numberDemo = minSize.closest("[data-number-demo]");
+          if (numberDemo) numberDemo.dataset.max = String(maxMinSize);
+          const nextMin = Number.isFinite(parsedMin) ? parsedMin : 40;
+          const hasError = nextMin < 8 || nextMin > maxMinSize;
+          minControl?.classList.toggle("has-error", hasError);
+          minSize.setAttribute("aria-invalid", String(hasError));
+          if (hasError) {
+            validation.textContent = nextMin < 8
+              ? "最小尺寸不能小于 8px。"
+              : `当前容器可用尺寸为 ${axisSize}px，${panelCount} 个面板及 ${panelCount - 1} 个分隔条下，每个面板的最小尺寸不能超过 ${maxMinSize}px。`;
+            return;
+          }
+          validation.textContent = "";
+          target.dataset.min = String(nextMin);
+          delete target.dataset.splitterReady;
+          createSplitterPanels(target, panelCount);
+          initSplitter(target);
+        };
+        count.addEventListener("change", rebuild);
+        count.addEventListener("input", rebuild);
+        minSize.addEventListener("change", rebuild);
+        minSize.addEventListener("input", rebuild);
+        demo.querySelectorAll(".number-input").forEach((control) => control.addEventListener("click", (event) => {
+          if (event.target.closest("[data-number-step]")) window.setTimeout(rebuild);
+        }));
+        reset.addEventListener("click", () => {
+          count.value = "2";
+          minSize.value = "40";
+          count.dispatchEvent(new Event("input", { bubbles: true }));
+          minSize.dispatchEvent(new Event("input", { bubbles: true }));
+        });
+        rebuild();
+      });
+
+      document.querySelectorAll("[data-splitter]").forEach(initSplitter);
     </script>
   </body>
 </html>

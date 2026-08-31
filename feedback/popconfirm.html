@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Popconfirm 气泡确认框 - Design System</title>
     <style>
-      :root{--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;--brand-900: #075a2f;--brand-800: #067037;--brand-700: #008f3f;--brand-400: #35f47c;--brand-300: #7dffb0;--brand-200: #b5ffd1;--brand-100: #d8ffe8;--brand-50: #effff6;--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-50);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-50);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.metric-row strong{font-size:var(--text-data-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:6px;font-size:var(--text-caption-size);text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--color-action-primary-hover);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background:var(--gray-900);border-radius:6px;font-size:var(--text-caption-size);line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:var(--color-status-info);box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.timeline strong{font-size:var(--text-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--color-border-subtle);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:6px}.empty-state strong{font-size:var(--text-section-title-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      :root{--success-green-500: #1cc749;--yellow-500: #ff990a;--red-500: #fe3d33;--blue-500: #31a6ff;--blue-600: #1887f5;--brand-900: #125526;--brand-800: #13682a;--brand-700: #118430;--brand-400: #45e36e;--brand-300: #82f39f;--brand-200: #b9f9c9;--brand-100: #dbfde3;--brand-50: #f0fdf3;--brand-500:#1cc749;--brand-600:#00ae2e;--brand-rgb:28, 199, 73;--gray-950: #0b0d0f;--gray-900: #14171a;--gray-800: #22262a;--gray-700: #343a40;--gray-600: #59616a;--gray-500: #78818c;--gray-400: #a5adb6;--gray-300: #d4d9de;--gray-200: #e7eaee;--gray-100: #f3f5f7;--gray-50: #fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-100);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-100);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#82f39f);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#cc6002}.danger{color:#ec2116}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.metric-row strong{font-size:var(--text-data-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(28, 199, 73,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:6px;font-size:var(--text-caption-size);text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#1370e2;background:#eef9ff;border-color:#bce6ff}.tag.warning{color:#cc6002;background:#fffaec;border-color:#ffe5a5}.tag.danger{color:#c7170e;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--color-action-primary-hover);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background:var(--gray-900);border-radius:6px;font-size:var(--text-caption-size);line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#1370e2}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:var(--color-status-info);box-shadow:0 0 0 4px #eef9ff}.timeline time{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.timeline strong{font-size:var(--text-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--color-border-subtle);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:6px}.empty-state strong{font-size:var(--text-section-title-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
       /* Header parity with index.html */
       :root {
-        --brand-400: #35f47c;
+        --brand-400: #45e36e;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
       }
 
@@ -324,7 +324,7 @@
       }
 
       .feedback-inline-actions .danger {
-        color: #d92d20;
+        color: #ec2116;
         border-color: #fecdca;
       }
 
@@ -392,47 +392,718 @@
         line-height:var(--text-body-line-height);
       }
 
-      .popconfirm-stage {
-        position: relative;
-        min-height: 190px;
-        padding: 56px 48px;
+      .rule-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
       }
 
-      .feedback-popconfirm {
+      .rule-list li {
+        position: relative;
+        padding-left: 16px;
+        color:var(--color-text-default);
+        font-size:var(--text-control-size);
+        line-height:var(--text-body-line-height);
+      }
+
+      .rule-list li::before {
         position: absolute;
-        top: 34px;
-        left: 140px;
-        display: grid;
-        gap: 8px;
-        width: 244px;
-        padding: 12px;
-        box-shadow: 0 14px 32px rgba(20, 28, 36, 0.14);
+        top: 10px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        content: "";
+        background:var(--color-action-primary);
+        border-radius: 999px;
+      }
+
+      .spec-table-wrap {
+        overflow: auto;
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: 8px;
+      }
+
+      .spec-table {
+        width: 100%;
+        min-width: 720px;
+        border-collapse: collapse;
         font-size:var(--text-control-size);
       }
 
-      .feedback-popconfirm::before {
+      .spec-table th,
+      .spec-table td {
+        padding: 12px 14px;
+        color:var(--color-text-default);
+        border-bottom:1px solid var(--color-border-subtle);
+        line-height: 1.65;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .spec-table th {
+        color:var(--color-text-secondary);
+        background: var(--gray-50);
+        font-weight: 500;
+      }
+
+      .spec-table tr:last-child td {
+        border-bottom: 0;
+      }
+
+      .spec-table code,
+      .popconfirm-example-head code {
+        padding: 2px 5px;
+        color: var(--gray-800);
+        background:var(--color-bg-subtle);
+        border-radius: 4px;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size:var(--text-caption-size);
+      }
+
+      :root {
+        --popconfirm-width: 260px;
+        --popconfirm-gap: 10px;
+        --popconfirm-radius: 8px;
+        --popconfirm-card-radius: 8px;
+        --popconfirm-example-padding: 36px;
+        --popconfirm-padding: 16px;
+        --popconfirm-shadow: 0 14px 32px rgba(20, 28, 36, 0.14);
+        --popconfirm-border-color: var(--color-border-subtle);
+        --popconfirm-divider-color: var(--color-border-subtle);
+        --popconfirm-title-color: var(--color-text-primary);
+        --popconfirm-content-color: var(--color-text-secondary);
+        --popconfirm-icon-warning-color: var(--color-status-warning);
+        --popconfirm-icon-danger-color: var(--color-status-error);
+        --popconfirm-icon-info-color: var(--color-status-info);
+        --popconfirm-icon-size: 20px;
+        --popconfirm-title-font-size: var(--text-body-size);
+        --popconfirm-confirm-bg: var(--color-action-primary);
+        --popconfirm-confirm-color: var(--color-text-inverse);
+        --popconfirm-action-height: 28px;
+        --popconfirm-action-padding-x: 10px;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+        height: auto;
+      }
+
+      .canvas {
+        background:var(--color-bg-container);
+      }
+
+      .canvas-inner {
+        display: grid;
+        width: auto;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom:1px solid var(--color-border-subtle);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color:var(--color-action-primary);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.4;
+        text-transform: none;
+      }
+
+      .doc-title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        line-height:var(--text-body-line-height);
+      }
+
+      .doc-meta-list {
+        margin: 18px 0 0;
+      }
+
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color:var(--color-text-secondary);
+        background:var(--color-bg-subtle);
+        border: 0;
+        border-radius: 999px;
+        line-height: 1.4;
+      }
+
+      .doc-section {
+        margin-top: 0;
+        padding-top: 28px;
+        border-top: 0;
+        border-bottom:1px solid var(--color-border-subtle);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        color:var(--color-text-primary);
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .doc-section h3 {
+        margin: 0 0 8px;
+        color: var(--gray-800);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section p {
+        line-height:var(--text-body-line-height);
+      }
+
+      .popconfirm-section-stack {
+        display: grid;
+        gap: 18px;
+      }
+
+      .popconfirm-example-block {
+        display: grid;
+        gap: 18px;
+        min-width: 0;
+        padding: var(--popconfirm-example-padding);
+        background: var(--gray-50);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--popconfirm-card-radius);
+      }
+
+      .popconfirm-example-block + .popconfirm-example-block {
+        margin-top: 18px;
+      }
+
+      .popconfirm-example-head {
+        display: grid;
+        gap: 4px;
+      }
+
+      .popconfirm-example-head h3 {
+        margin: 0;
+        color:var(--color-text-primary);
+        font-size:var(--text-body-size);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .popconfirm-example-head p {
+        max-width: 760px;
+      }
+
+      .popconfirm-example-stage {
+        position: relative;
+        display: grid;
+        gap: 14px;
+        min-height: 150px;
+        padding: 24px;
+        overflow: visible;
+        background:var(--color-bg-container);
+        border:1px solid var(--popconfirm-border-color);
+        border-radius: var(--popconfirm-card-radius);
+      }
+
+      .popconfirm-demo-row,
+      .popconfirm-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .popconfirm-toolbar {
+        column-gap: 24px;
+      }
+
+      .popconfirm-demo-row.center {
+        justify-content: center;
+        min-height: 108px;
+      }
+
+      .popconfirm-demo-row.start {
+        justify-content: flex-start;
+        min-height: 108px;
+      }
+
+      .popconfirm-demo-row.edge {
+        justify-content: flex-end;
+        align-content: flex-end;
+        min-height: 180px;
+      }
+
+      .popconfirm-auto-stage {
+        width: min(100%, 640px);
+        height: 230px;
+        padding: 0;
+        overflow: auto;
+        overscroll-behavior: contain;
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .popconfirm-auto-stage::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .popconfirm-auto-stage::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .popconfirm-auto-stage::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
+      }
+
+      .popconfirm-auto-canvas {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 1280px;
+        height: 460px;
+        padding: 24px;
+      }
+
+      .popconfirm-position-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(82px, max-content));
+        grid-template-areas:
+          ". topLeft top topRight ."
+          "leftTop . center . rightTop"
+          "left . center . right"
+          "leftBottom . center . rightBottom"
+          ". bottomLeft bottom bottomRight .";
+        justify-content: center;
+        align-items: center;
+        gap: 12px 18px;
+        min-height: 284px;
+        width: 100%;
+      }
+
+      .popconfirm-position-grid .popconfirm-instance {
+        justify-self: center;
+      }
+
+      .popconfirm-position-grid [data-layout-slot="topLeft"] { grid-area: topLeft; }
+      .popconfirm-position-grid [data-layout-slot="top"] { grid-area: top; }
+      .popconfirm-position-grid [data-layout-slot="topRight"] { grid-area: topRight; }
+      .popconfirm-position-grid [data-layout-slot="leftTop"] { grid-area: leftTop; }
+      .popconfirm-position-grid [data-layout-slot="left"] { grid-area: left; }
+      .popconfirm-position-grid [data-layout-slot="leftBottom"] { grid-area: leftBottom; }
+      .popconfirm-position-grid [data-layout-slot="rightTop"] { grid-area: rightTop; }
+      .popconfirm-position-grid [data-layout-slot="right"] { grid-area: right; }
+      .popconfirm-position-grid [data-layout-slot="rightBottom"] { grid-area: rightBottom; }
+      .popconfirm-position-grid [data-layout-slot="bottomLeft"] { grid-area: bottomLeft; }
+      .popconfirm-position-grid [data-layout-slot="bottom"] { grid-area: bottom; }
+      .popconfirm-position-grid [data-layout-slot="bottomRight"] { grid-area: bottomRight; }
+
+      .popconfirm-condition-panel {
+        display: grid;
+        gap: 12px;
+        width: min(100%, 520px);
+      }
+
+      .popconfirm-risk-toggle {
+        width: fit-content;
+      }
+
+      .spec-switch {
+        min-height: 24px;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        width: fit-content;
+        color: #4f565d;
+        cursor: pointer;
+        font-size: 12.5px;
+        line-height: 1.5;
+        transition:
+          color 0.15s ease,
+          opacity 0.15s ease;
+      }
+
+      .spec-switch input {
         position: absolute;
-        top: 26px;
-        left: -6px;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .switch-track {
+        width: 36px;
+        height: 20px;
+        position: relative;
+        flex: 0 0 auto;
+        background: #cfd6dc;
+        border-radius: 999px;
+        box-shadow: inset 0 0 0 1px rgba(16, 24, 40, 0.04);
+        transition:
+          background-color 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+
+      .switch-track::before {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 16px;
+        height: 16px;
+        content: "";
+        background:var(--color-bg-container);
+        border-radius: 50%;
+        box-shadow: 0 1px 3px rgba(20, 28, 36, 0.22);
+        transition:
+          transform 0.18s ease,
+          box-shadow 0.18s ease;
+      }
+
+      .spec-switch:hover .switch-track {
+        background: #b9c1c8;
+      }
+
+      .spec-switch input:checked + .switch-track {
+        background:var(--color-action-primary);
+        box-shadow: none;
+      }
+
+      .spec-switch input:checked + .switch-track::before {
+        transform: translateX(16px);
+      }
+
+      .spec-switch input:focus-visible + .switch-track {
+        box-shadow: var(--shadow-focus);
+      }
+
+      .spec-switch:has(input:checked) {
+        color: #1a1d1f;
+      }
+
+      .popconfirm-status {
+        display: block;
+        min-height: 24px;
+        color:var(--color-text-tertiary);
+        font-size:var(--text-caption-size);
+        line-height: 1.55;
+      }
+
+      .pc-btn {
+        min-height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 0 14px;
+        color:var(--color-text-default);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size:var(--text-control-size);
+        line-height: 1.2;
+        transition:
+          background-color 0.15s ease,
+          border-color 0.15s ease,
+          color 0.15s ease,
+          box-shadow 0.15s ease;
+      }
+
+      .pc-btn:hover {
+        color:var(--color-action-primary);
+        border-color:var(--color-action-primary);
+      }
+
+      .pc-btn:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .pc-btn.primary {
+        color:var(--popconfirm-confirm-color);
+        background:var(--popconfirm-confirm-bg);
+        border-color:var(--popconfirm-confirm-bg);
+      }
+
+      .pc-btn.primary:hover {
+        color:var(--popconfirm-confirm-color);
+        background:var(--color-action-primary-hover);
+        border-color:var(--color-action-primary-hover);
+      }
+
+      .pc-btn.danger {
+        color:var(--color-text-inverse);
+        background:var(--color-status-error);
+        border-color:var(--color-status-error);
+      }
+
+      .pc-btn.danger:hover {
+        color:var(--color-text-inverse);
+        background:#ec2116;
+        border-color:#ec2116;
+      }
+
+      .pc-btn.subtle {
+        background:var(--gray-50);
+      }
+
+      .pc-btn.loading {
+        cursor: progress;
+      }
+
+      .pc-btn:disabled {
+        opacity: 0.72;
+        cursor: not-allowed;
+      }
+
+      :root[data-product-theme="test-theme-1"] :where(
+        .popconfirm-example-block,
+        .popconfirm-example-stage,
+        .pc-btn,
+        .pc-popover,
+        .switch-track,
+        .spec-table-wrap
+      ) {
+        border-radius: var(--radius-sm);
+      }
+
+      .pc-spinner {
+        width: 12px;
+        height: 12px;
+        border:2px solid rgba(255, 255, 255, 0.5);
+        border-top-color:var(--color-text-inverse);
+        border-radius: 999px;
+        animation: feedback-spin 0.8s linear infinite;
+      }
+
+      .popconfirm-instance {
+        position: relative;
+        display: inline-flex;
+        width: fit-content;
+      }
+
+      .pc-popover {
+        position: absolute;
+        z-index: 5;
+        display: grid;
+        gap: 10px;
+        width: var(--popconfirm-width);
+        padding: var(--popconfirm-padding);
+        color:var(--popconfirm-title-color);
+        background:var(--color-bg-container);
+        border:1px solid var(--popconfirm-border-color);
+        border-radius: var(--popconfirm-radius);
+        box-shadow: var(--popconfirm-shadow);
+        font-size:var(--text-control-size);
+      }
+
+      .pc-popover[hidden] {
+        display: none;
+      }
+
+      .pc-popover::before {
+        position: absolute;
         width: 10px;
         height: 10px;
         content: "";
         background:var(--color-bg-container);
-        border-left:1px solid var(--color-border-subtle);
-        border-bottom:1px solid var(--color-border-subtle);
+        border:1px solid var(--popconfirm-border-color);
         transform: rotate(45deg);
       }
 
-      .feedback-popconfirm p {
-        margin: 0;
-        color:var(--color-text-secondary);
+      .pc-popover[data-placement^="top"] {
+        bottom: calc(100% + var(--popconfirm-gap));
+      }
+
+      .pc-popover[data-placement^="bottom"] {
+        top: calc(100% + var(--popconfirm-gap));
+      }
+
+      .pc-popover[data-placement^="left"] {
+        right: calc(100% + var(--popconfirm-gap));
+      }
+
+      .pc-popover[data-placement^="right"] {
+        left: calc(100% + var(--popconfirm-gap));
+      }
+
+      .pc-popover[data-placement="top"],
+      .pc-popover[data-placement="bottom"] {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .pc-popover[data-placement="topLeft"],
+      .pc-popover[data-placement="bottomLeft"] {
+        left: 0;
+      }
+
+      .pc-popover[data-placement="topRight"],
+      .pc-popover[data-placement="bottomRight"] {
+        right: 0;
+      }
+
+      .pc-popover[data-placement="left"],
+      .pc-popover[data-placement="right"] {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      .pc-popover[data-placement="leftTop"],
+      .pc-popover[data-placement="rightTop"] {
+        top: 0;
+      }
+
+      .pc-popover[data-placement="leftBottom"],
+      .pc-popover[data-placement="rightBottom"] {
+        bottom: 0;
+      }
+
+      .pc-popover[data-placement^="top"]::before {
+        bottom: -6px;
+        border-top: 0;
+        border-left: 0;
+      }
+
+      .pc-popover[data-placement^="bottom"]::before {
+        top: -6px;
+        border-right: 0;
+        border-bottom: 0;
+      }
+
+      .pc-popover[data-placement^="left"]::before {
+        right: -6px;
+        border-bottom: 0;
+        border-left: 0;
+      }
+
+      .pc-popover[data-placement^="right"]::before {
+        left: -6px;
+        border-top: 0;
+        border-right: 0;
+      }
+
+      .pc-popover[data-placement="top"]::before,
+      .pc-popover[data-placement="bottom"]::before {
+        left: calc(50% - 5px);
+      }
+
+      .pc-popover[data-placement="topLeft"]::before,
+      .pc-popover[data-placement="bottomLeft"]::before {
+        left: 22px;
+      }
+
+      .pc-popover[data-placement="topRight"]::before,
+      .pc-popover[data-placement="bottomRight"]::before {
+        right: 22px;
+      }
+
+      .pc-popover[data-placement="left"]::before,
+      .pc-popover[data-placement="right"]::before {
+        top: calc(50% - 5px);
+      }
+
+      .pc-popover[data-placement="leftTop"]::before,
+      .pc-popover[data-placement="rightTop"]::before {
+        top: 22px;
+      }
+
+      .pc-popover[data-placement="leftBottom"]::before,
+      .pc-popover[data-placement="rightBottom"]::before {
+        bottom: 22px;
+      }
+
+      .pc-popover-main {
+        display: grid;
+        grid-template-columns: 16px minmax(0, 1fr);
+        gap: 8px;
+      }
+
+      .pc-popover.no-icon .pc-popover-main {
+        grid-template-columns: 1fr;
+      }
+
+      .pc-icon {
+        display: block;
+        width: var(--popconfirm-icon-size);
+        height: var(--popconfirm-icon-size);
+        margin-top: 0;
+        color: var(--popconfirm-icon-warning-color);
+      }
+
+      .pc-icon svg {
+        display: block;
+        width: var(--popconfirm-icon-size);
+        height: var(--popconfirm-icon-size);
+      }
+
+      .pc-icon-bg {
+        fill: currentColor;
+        opacity: 0.14;
+      }
+
+      .pc-icon-line {
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .pc-popover[data-type="danger"] .pc-icon {
+        color: var(--popconfirm-icon-danger-color);
+      }
+
+      .pc-popover[data-type="info"] .pc-icon {
+        color: var(--popconfirm-icon-info-color);
+      }
+
+      .pc-title {
+        color:var(--popconfirm-title-color);
+        font-size:var(--popconfirm-title-font-size);
+        font-weight: 500;
+        line-height: 1.45;
+      }
+
+      .pc-content {
+        margin: 4px 0 0;
+        color:var(--popconfirm-content-color);
         line-height: 1.6;
       }
 
-      .feedback-inline-actions {
+      .pc-actions {
         display: flex;
         justify-content: flex-end;
         gap: 8px;
+      }
+
+      .pc-actions .pc-btn {
+        min-height: var(--popconfirm-action-height);
+        padding: 0 var(--popconfirm-action-padding-x);
+        border-radius: 7px;
+        font-size:var(--text-caption-size);
       }
 
       .notification-stage {
@@ -595,6 +1266,37 @@
       }
 
       @media (max-width: 860px) {
+        .topbar {
+          position: sticky;
+          top: 0;
+        }
+
+        .sidebar {
+          position: sticky;
+          top: var(--topbar-height);
+          z-index: 2;
+          max-height: none;
+          padding: 12px 14px;
+        }
+
+        .nav-button {
+          min-height: 36px;
+        }
+
+        .canvas-inner {
+          min-height: 560px;
+          padding: 18px;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 22px 18px;
+        }
+
+        .doc-title {
+          font-size:var(--text-data-size);
+        }
+
         .feedback-alert,
         .feedback-alert.with-action,
         .feedback-skeleton-row {
@@ -605,10 +1307,26 @@
           width: min(340px, 82%);
         }
 
-        .feedback-popconfirm {
-          left: 36px;
-          top: 96px;
-          width: calc(100% - 72px);
+        .popconfirm-example-block {
+          padding: 18px;
+        }
+
+        .popconfirm-example-stage {
+          padding: 18px;
+        }
+
+        .popconfirm-auto-stage {
+          padding: 0;
+        }
+
+        .popconfirm-position-grid {
+          grid-template-columns: repeat(5, minmax(48px, max-content));
+          gap: 10px 12px;
+          min-height: 260px;
+        }
+
+        .pc-popover {
+          width: min(var(--popconfirm-width), calc(100vw - 48px));
         }
 
         .skeleton-card-grid {
@@ -645,7 +1363,7 @@
         </a>
         <div class="topbar-actions" aria-label="组件完成状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 45/46</span>
+          <span data-component-count-label>Active components 46/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -750,6 +1468,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -908,7 +1661,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../index.html#card">
+                    <a class="nav-button" href="../datadisplay/card.html">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -986,27 +1739,211 @@
               <section class="doc-section">
                 <h2>何时使用</h2>
                 <ul class="rule-list">
-                  <li>操作风险明确但说明内容较短时使用 Popconfirm。</li>
-                  <li>需要展示较长风险说明或复杂表单时使用 Model。</li>
-                  <li>确认气泡应靠近触发按钮，并保证主次按钮顺序清晰。</li>
+                  <li>当目标元素的操作需要用户进一步确认时，在触发元素附近展示 Popconfirm。</li>
+                  <li>适合删除、撤销、停止任务、覆盖配置等风险明确且说明较短的操作。</li>
+                  <li>相比全屏居中的确认弹窗，Popconfirm 更轻量，适合保持用户在当前上下文内完成判断。</li>
+                  <li>若确认内容包含复杂表单、长说明或多步决策，应使用 Modal 承载。</li>
                 </ul>
               </section>
 
               <section class="doc-section">
-                <h2>基础确认</h2>
-                <div class="example-block full popconfirm-stage">
-                  <button class="feedback-trigger" type="button">删除任务</button>
-                  <div class="feedback-popconfirm" role="dialog" aria-label="气泡确认示例">
-                    <strong>确认删除该任务？</strong>
-                    <p>删除后将停止后续自动执行。</p>
-                    <div class="feedback-inline-actions"><button type="button">取消</button><button class="danger" type="button">删除</button></div>
-                  </div>
+                <h2>基础用法</h2>
+                <div class="example-block full popconfirm-example-block">
+                    <div class="popconfirm-example-head">
+                      <h3>基础 Popconfirm</h3>
+                      <p>点击触发元素后展示确认提示，确认后执行操作，取消后关闭确认框。</p>
+                    </div>
+                    <div class="popconfirm-example-stage">
+                      <div class="popconfirm-demo-row start">
+                        <span
+                          data-popconfirm
+                          data-demo="basic"
+                          data-title="确认提示"
+                          data-content="确定要删除这条内容吗？"
+                          data-confirm-text="确认操作"
+                          data-cancel-text="取消操作"
+                          data-position="top"
+                          data-type="danger"
+                        >
+                          <button class="pc-btn danger" type="button">删除内容</button>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="popconfirm-status" data-popconfirm-status="basic">等待操作</span>
                 </div>
               </section>
+
               <section class="doc-section">
-                <h2>使用原则</h2>
-                <div class="example-block full"><ul class="rule-list"><li>文案使用问题句，直接说明将要发生的结果。</li><li>危险操作按钮使用强调色，避免与取消按钮权重相同。</li></ul></div>
+                <h2>异步确认</h2>
+                <div class="example-block full popconfirm-example-block">
+                    <div class="popconfirm-example-head">
+                      <h3>onConfirm Promise</h3>
+                      <p>确认操作支持异步处理，请求处理中保持 loading，请求成功后关闭 Popconfirm。</p>
+                    </div>
+                    <div class="popconfirm-example-stage">
+                      <div class="popconfirm-demo-row start">
+                        <span
+                          data-popconfirm
+                          data-demo="async"
+                          data-title="确认发布配置？"
+                          data-content="点击 Confirm 后进入 loading，请求成功后自动关闭。"
+                          data-confirm-text="Confirm"
+                          data-cancel-text="Cancel"
+                          data-position="right"
+                          data-type="info"
+                          data-async="true"
+                        >
+                          <button class="pc-btn primary" type="button">发布配置</button>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="popconfirm-status" data-popconfirm-status="async">等待异步确认</span>
+                </div>
               </section>
+
+              <section class="doc-section">
+                <h2>自定义图标</h2>
+                <div class="example-block full popconfirm-example-block">
+                    <div class="popconfirm-example-head">
+                      <h3>icon</h3>
+                      <p>可使用默认提示图标、自定义线性图标，或在轻量确认场景中去掉图标。</p>
+                    </div>
+                    <div class="popconfirm-example-stage">
+                      <div class="popconfirm-toolbar">
+                        <span
+                          data-popconfirm
+                          data-demo="icon-warning"
+                          data-title="确认暂停任务？"
+                          data-content="暂停后可在任务列表中再次启动。"
+                          data-confirm-text="暂停"
+                          data-cancel-text="取消"
+                          data-position="topLeft"
+                          data-type="warning"
+                        >
+                          <button class="pc-btn subtle" type="button">警告</button>
+                        </span>
+                        <span
+                          data-popconfirm
+                          data-demo="icon-danger"
+                          data-title="确认清空日志？"
+                          data-content="清空后无法恢复，请谨慎操作。"
+                          data-confirm-text="清空"
+                          data-cancel-text="取消"
+                          data-position="top"
+                          data-type="danger"
+                          data-icon="linear"
+                        >
+                          <button class="pc-btn danger" type="button">线性 ICON</button>
+                        </span>
+                        <span
+                          data-popconfirm
+                          data-demo="icon-none"
+                          data-title="确认同步状态？"
+                          data-content="系统将拉取最新状态并覆盖本地缓存。"
+                          data-confirm-text="同步"
+                          data-cancel-text="取消"
+                          data-position="topRight"
+                          data-type="info"
+                          data-icon="none"
+                        >
+                          <button class="pc-btn" type="button">无 ICON</button>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="popconfirm-status" data-popconfirm-status="icons">选择一个图标示例</span>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>不同触发位置</h2>
+                <div class="example-block full popconfirm-example-block">
+                    <div class="popconfirm-example-head">
+                      <h3>position</h3>
+                      <p>通过 <code>position</code> 控制 Popconfirm 相对触发元素的位置，支持 12 个不同方位。</p>
+                    </div>
+                    <div class="popconfirm-example-stage">
+                      <div class="popconfirm-position-grid">
+                        <span data-popconfirm data-demo="position" data-title="上左" data-content="position: topLeft" data-position="topLeft" data-layout-slot="topLeft"><button class="pc-btn" type="button">上左</button></span>
+                        <span data-popconfirm data-demo="position" data-title="上" data-content="position: top" data-position="top" data-layout-slot="top"><button class="pc-btn" type="button">上</button></span>
+                        <span data-popconfirm data-demo="position" data-title="上右" data-content="position: topRight" data-position="topRight" data-layout-slot="topRight"><button class="pc-btn" type="button">上右</button></span>
+                        <span data-popconfirm data-demo="position" data-title="左上" data-content="position: leftTop" data-position="leftTop" data-layout-slot="leftTop"><button class="pc-btn" type="button">左上</button></span>
+                        <span data-popconfirm data-demo="position" data-title="右上" data-content="position: rightTop" data-position="rightTop" data-layout-slot="rightTop"><button class="pc-btn" type="button">右上</button></span>
+                        <span data-popconfirm data-demo="position" data-title="左" data-content="position: left" data-position="left" data-layout-slot="left"><button class="pc-btn" type="button">左</button></span>
+                        <span data-popconfirm data-demo="position" data-title="右" data-content="position: right" data-position="right" data-layout-slot="right"><button class="pc-btn" type="button">右</button></span>
+                        <span data-popconfirm data-demo="position" data-title="左下" data-content="position: leftBottom" data-position="leftBottom" data-layout-slot="leftBottom"><button class="pc-btn" type="button">左下</button></span>
+                        <span data-popconfirm data-demo="position" data-title="右下" data-content="position: rightBottom" data-position="rightBottom" data-layout-slot="rightBottom"><button class="pc-btn" type="button">右下</button></span>
+                        <span data-popconfirm data-demo="position" data-title="下左" data-content="position: bottomLeft" data-position="bottomLeft" data-layout-slot="bottomLeft"><button class="pc-btn" type="button">下左</button></span>
+                        <span data-popconfirm data-demo="position" data-title="下" data-content="position: bottom" data-position="bottom" data-layout-slot="bottom"><button class="pc-btn" type="button">下</button></span>
+                        <span data-popconfirm data-demo="position" data-title="下右" data-content="position: bottomRight" data-position="bottomRight" data-layout-slot="bottomRight"><button class="pc-btn" type="button">下右</button></span>
+                      </div>
+                    </div>
+                    <span class="popconfirm-status" data-popconfirm-status="position">点击任意按钮查看对应方位</span>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>适应触发位置</h2>
+                <div class="example-block full popconfirm-example-block">
+                    <div class="popconfirm-example-head">
+                      <h3>autoFitPosition</h3>
+                      <p>根据按钮在滚动画布中的位置自动判断触发位置，使 Popconfirm 位于画布可视范围内。</p>
+                    </div>
+                    <div class="popconfirm-example-stage popconfirm-auto-stage">
+                      <div class="popconfirm-auto-canvas">
+                        <span
+                          data-popconfirm
+                          data-demo="auto"
+                          data-title="自动适应位置"
+                          data-content="滚动画布后再次打开，Popconfirm 会根据当前可视区域选择更合适的方位。"
+                          data-confirm-text="知道了"
+                          data-cancel-text="关闭"
+                          data-position="right"
+                          data-auto-position="true"
+                          data-type="info"
+                        >
+                          <button class="pc-btn primary" type="button">画布中心按钮</button>
+                        </span>
+                      </div>
+                    </div>
+                    <span class="popconfirm-status" data-popconfirm-status="auto">打开后会自动适配可视范围</span>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>条件触发</h2>
+                <div class="example-block full popconfirm-example-block">
+                    <div class="popconfirm-example-head">
+                      <h3>trigger condition</h3>
+                      <p>可根据业务条件决定直接执行操作，或先展示 Popconfirm 再确认。</p>
+                    </div>
+                    <div class="popconfirm-example-stage">
+                      <div class="popconfirm-condition-panel">
+                        <label class="spec-switch popconfirm-risk-toggle">
+                          <input type="checkbox" data-risk-toggle checked />
+                          <span class="switch-track" aria-hidden="true"></span>
+                          <span>高风险操作</span>
+                        </label>
+                        <div class="popconfirm-demo-row">
+                          <span
+                            data-popconfirm
+                            data-demo="condition"
+                            data-title="确认执行高风险操作？"
+                            data-content="当前操作会影响线上数据，需要二次确认。"
+                            data-confirm-text="确认执行"
+                            data-cancel-text="取消"
+                            data-position="top"
+                            data-type="danger"
+                            data-condition-target="[data-risk-toggle]"
+                          >
+                            <button class="pc-btn danger" type="button">执行操作</button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <span class="popconfirm-status" data-popconfirm-status="condition">高风险操作将先展示确认框</span>
+                </div>
+              </section>
+
               <section class="doc-section">
                 <h2>API</h2>
                 <div class="spec-table-wrap">
@@ -1020,30 +1957,55 @@
                       </tr>
                     </thead>
                     <tbody>
+                      <tr><td><code>title</code></td><td>确认标题，展示在 icon 右侧第一行。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>content</code></td><td>确认提示正文，位于标题下方 4px。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>confirmText</code></td><td>确认按钮文案。</td><td><code>string</code></td><td><code>确定</code></td></tr>
+                      <tr><td><code>cancelText</code></td><td>取消按钮文案。</td><td><code>string</code></td><td><code>取消</code></td></tr>
+                      <tr><td><code>position</code></td><td>气泡确认框相对触发元素的位置，支持 12 个方位。</td><td><code>"topLeft" | "top" | "topRight" | "rightTop" | "right" | "rightBottom" | "bottomLeft" | "bottom" | "bottomRight" | "leftTop" | "left" | "leftBottom"</code></td><td><code>"top"</code></td></tr>
+                      <tr><td><code>autoFitPosition</code></td><td>根据当前可视区域在 12 个方位中自动选择溢出最少的位置。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>popupContainer</code></td><td>自适应位置时用于计算可视范围的滚动容器；未设置时使用浏览器窗口。</td><td><code>HTMLElement | (() =&gt; HTMLElement)</code></td><td><code>window</code></td></tr>
+                      <tr><td><code>icon</code></td><td>确认图标配置；可使用默认圆底图标、自定义线性图标或不展示图标。</td><td><code>"default" | "linear" | "none" | ReactNode</code></td><td><code>"default"</code></td></tr>
+                      <tr><td><code>iconType</code></td><td>图标语义，控制 warning、danger、info 三类状态颜色。</td><td><code>"warning" | "danger" | "info"</code></td><td><code>"warning"</code></td></tr>
+                      <tr><td><code>condition</code></td><td>条件触发逻辑；返回 <code>false</code> 时直接执行原操作，不展示 Popconfirm。</td><td><code>() =&gt; boolean</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>onConfirm</code></td><td>点击确认按钮时触发；返回 Promise 时确认按钮进入 loading，成功后关闭。</td><td><code>() =&gt; void | Promise&lt;void&gt;</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>onCancel</code></td><td>点击取消按钮或按 Escape 关闭时触发。</td><td><code>() =&gt; void</code></td><td><code>-</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
                       <tr>
-                        <td><code>title</code></td>
-                        <td>确认标题。</td>
-                        <td><code>ReactNode</code></td>
-                        <td><code>-</code></td>
+                        <th>Token</th>
+                        <th>默认值</th>
+                        <th>说明</th>
                       </tr>
-                      <tr>
-                        <td><code>description</code></td>
-                        <td>补充说明。</td>
-                        <td><code>ReactNode</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>okText</code></td>
-                        <td>确认按钮文案。</td>
-                        <td><code>string</code></td>
-                        <td><code>确定</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>cancelText</code></td>
-                        <td>取消按钮文案。</td>
-                        <td><code>string</code></td>
-                        <td><code>取消</code></td>
-                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><code>--popconfirm-width</code></td><td><code>260px</code></td><td>气泡确认框默认宽度。</td></tr>
+                      <tr><td><code>--popconfirm-gap</code></td><td><code>10px</code></td><td>气泡确认框与触发元素之间的距离。</td></tr>
+                      <tr><td><code>--popconfirm-radius</code></td><td><code>8px</code></td><td>气泡确认框圆角。</td></tr>
+                      <tr><td><code>--popconfirm-card-radius</code></td><td><code>8px</code></td><td>演示容器和展示 frame 圆角。</td></tr>
+                      <tr><td><code>--popconfirm-example-padding</code></td><td><code>36px</code></td><td>演示通栏卡片内边距。</td></tr>
+                      <tr><td><code>--popconfirm-padding</code></td><td><code>16px</code></td><td>气泡确认框内边距。</td></tr>
+                      <tr><td><code>--popconfirm-shadow</code></td><td><code>0 14px 32px rgba(20, 28, 36, 0.14)</code></td><td>气泡确认框投影。</td></tr>
+                      <tr><td><code>--popconfirm-border-color</code></td><td><code>var(--color-border-subtle)</code></td><td>气泡确认框、箭头和演示 frame 边框色。</td></tr>
+                      <tr><td><code>--popconfirm-divider-color</code></td><td><code>var(--color-border-subtle)</code></td><td>演示区域内部分隔线颜色。</td></tr>
+                      <tr><td><code>--popconfirm-title-color</code></td><td><code>var(--color-text-primary)</code></td><td>确认标题文字色。</td></tr>
+                      <tr><td><code>--popconfirm-content-color</code></td><td><code>var(--color-text-secondary)</code></td><td>确认正文文字色。</td></tr>
+                      <tr><td><code>--popconfirm-icon-warning-color</code></td><td><code>var(--color-status-warning)</code></td><td>警告确认图标颜色。</td></tr>
+                      <tr><td><code>--popconfirm-icon-danger-color</code></td><td><code>var(--color-status-error)</code></td><td>危险操作确认图标颜色。</td></tr>
+                      <tr><td><code>--popconfirm-icon-info-color</code></td><td><code>var(--color-status-info)</code></td><td>普通确认图标颜色。</td></tr>
+                      <tr><td><code>--popconfirm-icon-size</code></td><td><code>20px</code></td><td>确认图标尺寸。</td></tr>
+                      <tr><td><code>--popconfirm-title-font-size</code></td><td><code>var(--text-body-size)</code></td><td>确认标题字号，对应 14px。</td></tr>
+                      <tr><td><code>--popconfirm-confirm-bg</code></td><td><code>var(--color-action-primary)</code></td><td>默认确认按钮背景色。</td></tr>
+                      <tr><td><code>--popconfirm-confirm-color</code></td><td><code>var(--color-text-inverse)</code></td><td>默认确认按钮文字色。</td></tr>
+                      <tr><td><code>--popconfirm-action-height</code></td><td><code>28px</code></td><td>确认区按钮高度，沿用 Button small 尺寸。</td></tr>
+                      <tr><td><code>--popconfirm-action-padding-x</code></td><td><code>10px</code></td><td>确认区按钮水平内边距，沿用 Button small 尺寸。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1057,7 +2019,7 @@
       const syncComponentCountLabel = () => {
         const label = document.querySelector('[data-component-count-label]');
         if (!label) return;
-        const pendingKeys = new Set(['card']);
+        const pendingKeys = new Set([]);
         const navItems = Array.from(
           document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
         );
@@ -1208,6 +2170,377 @@
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape') {
           closeProductSelectMenu();
+        }
+      });
+
+      const popconfirmStatus = (demo) => {
+        const key = demo?.startsWith('icon-') ? 'icons' : demo;
+        return document.querySelector(`[data-popconfirm-status="${key}"]`);
+      };
+
+      const placementLabels = {
+        topLeft: '上左',
+        top: '上',
+        topRight: '上右',
+        bottomLeft: '下左',
+        bottom: '下',
+        bottomRight: '下右',
+        leftTop: '左上',
+        left: '左',
+        leftBottom: '左下',
+        rightTop: '右上',
+        right: '右',
+        rightBottom: '右下',
+      };
+
+      const createPopconfirmIcon = (type, iconMode = 'default') => {
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const svg = document.createElementNS(svgNS, 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '2');
+        svg.setAttribute('stroke-linecap', 'round');
+        svg.setAttribute('stroke-linejoin', 'round');
+        svg.setAttribute('aria-hidden', 'true');
+        svg.setAttribute('focusable', 'false');
+
+        if (iconMode !== 'linear') {
+          const bg = document.createElementNS(svgNS, 'circle');
+          bg.setAttribute('class', 'pc-icon-bg');
+          bg.setAttribute('cx', '12');
+          bg.setAttribute('cy', '12');
+          bg.setAttribute('r', '10');
+          svg.append(bg);
+        }
+
+        const line = document.createElementNS(svgNS, 'path');
+        line.setAttribute('class', 'pc-icon-line');
+        line.setAttribute('d', iconMode === 'linear' ? 'M4 12h12' : type === 'info' ? 'M12 11v5' : 'M12 7v7');
+
+        const mark = document.createElementNS(svgNS, 'path');
+        mark.setAttribute('class', 'pc-icon-line');
+        mark.setAttribute('d', iconMode === 'linear' ? 'M12 6l6 6-6 6' : type === 'info' ? 'M12 8h.01' : 'M12 17h.01');
+
+        svg.append(line, mark);
+        return svg;
+      };
+
+      class PopconfirmDemo {
+        static instances = [];
+
+        constructor(root) {
+          this.root = root;
+          this.trigger = root.querySelector('button');
+          this.options = { ...root.dataset };
+          this.open = false;
+          this.loading = false;
+          this.popover = this.createPopover();
+          this.root.classList.add('popconfirm-instance');
+          this.trigger?.setAttribute('aria-haspopup', 'dialog');
+          this.trigger?.setAttribute('aria-expanded', 'false');
+          this.trigger?.addEventListener('click', (event) => this.handleTrigger(event));
+          PopconfirmDemo.instances.push(this);
+        }
+
+        createPopover() {
+          const popover = document.createElement('div');
+          popover.className = 'pc-popover';
+          popover.dataset.type = this.options.type || 'warning';
+          popover.dataset.placement = this.options.position || 'top';
+          popover.setAttribute('role', 'dialog');
+          popover.setAttribute('aria-label', this.options.title || '确认提示');
+          popover.hidden = true;
+
+          const main = document.createElement('div');
+          main.className = 'pc-popover-main';
+
+          if (this.options.icon === 'none') {
+            popover.classList.add('no-icon');
+          } else {
+            const icon = document.createElement('span');
+            icon.className = 'pc-icon';
+            icon.setAttribute('aria-hidden', 'true');
+            icon.append(createPopconfirmIcon(this.options.type, this.options.icon));
+            main.append(icon);
+          }
+
+          const contentWrap = document.createElement('div');
+          const title = document.createElement('div');
+          title.className = 'pc-title';
+          title.textContent = this.options.title || '确认提示';
+
+          const content = document.createElement('p');
+          content.className = 'pc-content';
+          content.textContent = this.options.content || '确定要执行该操作吗？';
+
+          contentWrap.append(title, content);
+          main.append(contentWrap);
+
+          const actions = document.createElement('div');
+          actions.className = 'pc-actions';
+
+          this.cancelButton = document.createElement('button');
+          this.cancelButton.className = 'pc-btn';
+          this.cancelButton.type = 'button';
+          this.cancelButton.textContent = this.options.cancelText || '取消';
+          this.cancelButton.addEventListener('click', () => this.cancel());
+
+          this.confirmButton = document.createElement('button');
+          this.confirmButton.className = this.options.type === 'danger' ? 'pc-btn danger' : 'pc-btn primary';
+          this.confirmButton.type = 'button';
+          this.confirmButton.textContent = this.options.confirmText || '确定';
+          this.confirmButton.addEventListener('click', () => this.confirm());
+
+          actions.append(this.cancelButton, this.confirmButton);
+          popover.append(main, actions);
+          this.root.append(popover);
+          return popover;
+        }
+
+        handleTrigger(event) {
+          event.stopPropagation();
+          const conditionTarget = this.options.conditionTarget;
+          if (conditionTarget) {
+            const toggle = document.querySelector(conditionTarget);
+            if (toggle && !toggle.checked) {
+              this.close();
+              this.setStatus('无风险操作已直接执行');
+              return;
+            }
+          }
+          this.toggle();
+        }
+
+        toggle() {
+          this.open ? this.close() : this.show();
+        }
+
+        show() {
+          PopconfirmDemo.instances.forEach((instance) => {
+            if (instance !== this) instance.close();
+          });
+          this.open = true;
+          this.popover.hidden = false;
+          this.trigger?.setAttribute('aria-expanded', 'true');
+          this.setPlacement(this.options.position || 'top');
+          if (this.options.autoPosition === 'true') {
+            requestAnimationFrame(() => this.fitPlacement());
+          }
+          if (this.options.demo === 'position') {
+            const placement = this.popover.dataset.placement;
+            this.setStatus(`当前方位：${placementLabels[placement]} (${placement})`);
+          } else if (this.options.demo === 'auto') {
+            requestAnimationFrame(() => {
+              const placement = this.popover.dataset.placement;
+              this.setStatus(`已适配为：${placementLabels[placement]} (${placement})`);
+            });
+          } else if (this.options.demo === 'condition') {
+            this.setStatus('高风险操作等待确认');
+          } else {
+            this.setStatus('确认框已打开');
+          }
+        }
+
+        close() {
+          if (!this.open || this.loading) return;
+          this.open = false;
+          this.popover.hidden = true;
+          this.trigger?.setAttribute('aria-expanded', 'false');
+        }
+
+        cancel() {
+          if (this.loading) return;
+          this.close();
+          this.setStatus('已取消操作');
+        }
+
+        confirm() {
+          if (this.loading) return;
+          if (this.options.async === 'true') {
+            this.setLoading(true);
+            this.setStatus('请求处理中...');
+            window.setTimeout(() => {
+              this.setLoading(false);
+              this.close();
+              this.setStatus('请求成功，Popconfirm 已关闭');
+            }, 1000);
+            return;
+          }
+          this.close();
+          this.setStatus(this.options.demo === 'condition' ? '高风险操作已确认执行' : '已执行确认操作');
+        }
+
+        setLoading(isLoading) {
+          this.loading = isLoading;
+          this.cancelButton.disabled = isLoading;
+          this.confirmButton.disabled = isLoading;
+          this.confirmButton.classList.toggle('loading', isLoading);
+          this.confirmButton.textContent = '';
+          if (isLoading) {
+            const spinner = document.createElement('span');
+            spinner.className = 'pc-spinner';
+            spinner.setAttribute('aria-hidden', 'true');
+            this.confirmButton.append(spinner, document.createTextNode('处理中'));
+            return;
+          }
+          this.confirmButton.textContent = this.options.confirmText || '确定';
+        }
+
+        setPlacement(placement) {
+          this.popover.dataset.placement = placement;
+        }
+
+        fitPlacement() {
+          const viewportPadding = 12;
+          const gap = 10;
+          const stageRect = this.root.closest('.popconfirm-auto-stage')?.getBoundingClientRect();
+          const boundary = stageRect || {
+            top: 0,
+            right: window.innerWidth,
+            bottom: window.innerHeight,
+            left: 0,
+          };
+          this.popover.style.marginTop = '';
+          this.popover.style.marginLeft = '';
+          const triggerRect = this.root.getBoundingClientRect();
+          const popoverRect = this.popover.getBoundingClientRect();
+          const triggerCenterX = triggerRect.left + triggerRect.width / 2;
+          const triggerCenterY = triggerRect.top + triggerRect.height / 2;
+          const placementCandidates = [
+            'topLeft',
+            'top',
+            'topRight',
+            'rightTop',
+            'right',
+            'rightBottom',
+            'bottomLeft',
+            'bottom',
+            'bottomRight',
+            'leftTop',
+            'left',
+            'leftBottom',
+          ];
+          const getPlacementRect = (placement) => {
+            let left = triggerCenterX - popoverRect.width / 2;
+            let top = triggerCenterY - popoverRect.height / 2;
+            if (placement.startsWith('top')) {
+              top = triggerRect.top - gap - popoverRect.height;
+              if (placement === 'topLeft') left = triggerRect.left;
+              else if (placement === 'topRight') left = triggerRect.right - popoverRect.width;
+            } else if (placement.startsWith('bottom')) {
+              top = triggerRect.bottom + gap;
+              if (placement === 'bottomLeft') left = triggerRect.left;
+              else if (placement === 'bottomRight') left = triggerRect.right - popoverRect.width;
+            } else if (placement.startsWith('left')) {
+              left = triggerRect.left - gap - popoverRect.width;
+              if (placement === 'leftTop') top = triggerRect.top;
+              else if (placement === 'leftBottom') top = triggerRect.bottom - popoverRect.height;
+            } else if (placement.startsWith('right')) {
+              left = triggerRect.right + gap;
+              if (placement === 'rightTop') top = triggerRect.top;
+              else if (placement === 'rightBottom') top = triggerRect.bottom - popoverRect.height;
+            }
+            return {
+              left,
+              top,
+              right: left + popoverRect.width,
+              bottom: top + popoverRect.height,
+            };
+          };
+          const getOverflow = (rect) =>
+            Math.max(0, boundary.left + viewportPadding - rect.left) +
+            Math.max(0, rect.right - boundary.right + viewportPadding) +
+            Math.max(0, boundary.top + viewportPadding - rect.top) +
+            Math.max(0, rect.bottom - boundary.bottom + viewportPadding);
+          const getCrossAxisDelta = (placement, rect) => {
+            if (placement.startsWith('top') || placement.startsWith('bottom')) {
+              return Math.abs(rect.left + popoverRect.width / 2 - triggerCenterX);
+            }
+            return Math.abs(rect.top + popoverRect.height / 2 - triggerCenterY);
+          };
+          const preferredSideSpace = {
+            right: boundary.right - triggerRect.right,
+            left: triggerRect.left - boundary.left,
+            bottom: boundary.bottom - triggerRect.bottom,
+            top: triggerRect.top - boundary.top,
+          };
+          const getSide = (placement) => ['top', 'right', 'bottom', 'left'].find((side) => placement.startsWith(side));
+          const ranked = placementCandidates
+            .map((placement) => ({
+              placement,
+              rect: getPlacementRect(placement),
+            }))
+            .map((item) => ({
+              ...item,
+              overflow: getOverflow(item.rect),
+              crossAxisDelta: getCrossAxisDelta(item.placement, item.rect),
+              sideSpace: preferredSideSpace[getSide(item.placement)] || 0,
+            }))
+            .sort((a, b) => a.overflow - b.overflow || b.sideSpace - a.sideSpace || a.crossAxisDelta - b.crossAxisDelta);
+          const placement = ranked[0].placement;
+          this.setPlacement(placement);
+          const fittedRect = this.popover.getBoundingClientRect();
+          if (placement.startsWith('left') || placement.startsWith('right')) {
+            let offsetY = 0;
+            if (fittedRect.top < boundary.top + viewportPadding) {
+              offsetY = boundary.top + viewportPadding - fittedRect.top;
+            } else if (fittedRect.bottom > boundary.bottom - viewportPadding) {
+              offsetY = boundary.bottom - viewportPadding - fittedRect.bottom;
+            }
+            if (offsetY) {
+              this.popover.style.marginTop = `${offsetY}px`;
+            }
+          }
+          if (placement.startsWith('top') || placement.startsWith('bottom')) {
+            let offsetX = 0;
+            if (fittedRect.left < boundary.left + viewportPadding) {
+              offsetX = boundary.left + viewportPadding - fittedRect.left;
+            } else if (fittedRect.right > boundary.right - viewportPadding) {
+              offsetX = boundary.right - viewportPadding - fittedRect.right;
+            }
+            if (offsetX) {
+              this.popover.style.marginLeft = `${offsetX}px`;
+            }
+          }
+        }
+
+        setStatus(message) {
+          const status = popconfirmStatus(this.options.demo);
+          if (status) status.textContent = message;
+        }
+      }
+
+      const popconfirmInstances = Array.from(document.querySelectorAll('[data-popconfirm]')).map(
+        (root) => new PopconfirmDemo(root),
+      );
+
+      const autoStage = document.querySelector('.popconfirm-auto-stage');
+      if (autoStage) {
+        autoStage.scrollLeft = (autoStage.scrollWidth - autoStage.clientWidth) / 2;
+        autoStage.scrollTop = (autoStage.scrollHeight - autoStage.clientHeight) / 2;
+      }
+
+      document.querySelector('[data-risk-toggle]')?.addEventListener('change', (event) => {
+        const status = popconfirmStatus('condition');
+        if (status) {
+          status.textContent = event.target.checked ? '高风险操作将先展示确认框' : '无风险操作将直接执行';
+        }
+      });
+
+      document.addEventListener('click', (event) => {
+        popconfirmInstances.forEach((instance) => {
+          if (!instance.root.contains(event.target)) instance.close();
+        });
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          popconfirmInstances.forEach((instance) => {
+            if (instance.open) {
+              instance.cancel();
+            }
+          });
         }
       });
 

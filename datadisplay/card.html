@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Card 卡片 - Design System</title>
+    <style>
+      :root{--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;--brand-900: #075a2f;--brand-800: #067037;--brand-700: #008f3f;--brand-400: #35f47c;--brand-300: #7dffb0;--brand-200: #b5ffd1;--brand-100: #d8ffe8;--brand-50: #effff6;--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950: #0b0d0f;--gray-900: #14171a;--gray-800: #22262a;--gray-700: #343a40;--gray-600: #59616a;--gray-500: #78818c;--gray-400: #a5adb6;--gray-300: #d4d9de;--gray-200: #e7eaee;--gray-100: #f3f5f7;--gray-50: #fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-50);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-50);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#22b573}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.metric-row strong{font-size:var(--text-data-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#22b573,#7dffb0);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:6px;font-size:var(--text-caption-size);text-decoration:none}.tag.success{color:#067037;background:#effff6;border-color:#b5ffd1}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fff1f0;border-color:#ffc2bd}.tag.selected{color:var(--color-action-primary-hover);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background:var(--gray-900);border-radius:6px;font-size:var(--text-caption-size);line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:#008f3f}.avatar.blue{background:#1570ef}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:var(--color-status-info);box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.timeline strong{font-size:var(--text-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#effff6,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#22b573}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#fafbfc,#f3f5f7);border:1px solid var(--color-border-subtle);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:6px}.empty-state strong{font-size:var(--text-section-title-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      :root {
+        --brand-400: #35f47c;
+        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+      }
+
+      /* Keep the sidebar scrollbar identical to dataentry/input.html. */
+      .sidebar {
+        scrollbar-gutter: stable;
+        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-width: thin;
+      }
+
+      .sidebar::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb {
+        background: var(--gray-300);
+        border-radius: 999px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--gray-800);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .product-select {
+        position: relative;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--gray-800);
+        background: var(--gray-50);
+        border:1px solid var(--color-border-subtle);
+        border-radius: 999px;
+        cursor: pointer;
+        font-size:var(--text-control-size);
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color:var(--color-action-primary);
+        background:var(--color-bg-container);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 9px;
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-right: 1.25px solid var(--gray-500);
+        border-bottom: 1.25px solid var(--gray-500);
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.16s ease;
+      }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-35%) rotate(225deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color:var(--color-text-default);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        font-size:var(--text-control-size);
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color:var(--color-action-primary);
+        background: rgb(var(--brand-rgb) / 0.08);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color:var(--color-text-secondary);
+        font-size:var(--text-control-size);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background:var(--color-action-primary);
+        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+    </style>
+    <style>
+      :root {
+        --card-radius: var(--radius-sm);
+        --card-padding: 16px;
+        --card-header-height: 48px;
+        --card-border-color: var(--color-border-subtle);
+        --card-bg: var(--color-bg-container);
+        --card-shadow-hover: 0 8px 24px rgba(20, 28, 36, 0.10);
+        --card-grid-bg: var(--gray-50);
+        --card-cover-ratio: 16 / 9;
+        --card-action-color: var(--color-action-primary);
+        --card-arrow-color: var(--color-text-tertiary);
+        --card-header-bg: var(--color-bg-container);
+        --card-title-color: var(--color-text-primary);
+        --card-body-color: var(--color-text-secondary);
+        --card-skeleton-start: var(--gray-100);
+        --card-skeleton-middle: var(--gray-200);
+        --card-width-default: 400px;
+        --card-min-width: 300px;
+        --card-grid-gap: 12px;
+        --card-meta-gap: 10px;
+        --card-arrow-size: 28px;
+        --card-arrow-icon-size: 18px;
+        --card-tab-gap: 22px;
+        --card-tab-underline-height: 2px;
+        --card-tab-underline-gap: 8px;
+      }
+      .card-doc-stack { display: grid; gap: 14px; margin-top: 14px; }
+      .card-demo { width: min(100%, var(--card-width-default)); min-width: min(var(--card-min-width), 100%); overflow: hidden; background: var(--card-bg); border: 1px solid var(--card-border-color); border-radius: var(--card-radius); }
+      .card-demo.fluid-card { width: 100%; max-width: none; }
+      .card-demo.hoverable { transition: box-shadow .18s ease, transform .18s ease; }
+      .card-demo.hoverable:hover, .card-demo.hoverable:focus-within { box-shadow: var(--card-shadow-hover); transform: translateY(-1px); }
+      .card-demo.borderless { border-color: transparent; }
+      .card-header { display: flex; min-height: var(--card-header-height); align-items: center; justify-content: space-between; gap: 12px; padding: 11px var(--card-padding); background: var(--card-header-bg); border-bottom: 1px solid var(--card-border-color); }
+      .card-header strong { font-size: var(--text-body-size); font-weight: 500; }
+      .card-more,
+      .card-more:visited { color: var(--card-action-color); }
+      .card-more:hover,
+      .card-more:focus-visible { color: var(--color-action-primary-hover); }
+      .card-more { text-decoration: none; font-size: var(--text-control-size); }
+      .card-more:hover { text-decoration: underline; }
+      .card-arrow { display: grid; flex: 0 0 auto; width: var(--card-arrow-size); height: var(--card-arrow-size); margin-right: -5px; place-items: center; color: var(--card-arrow-color); border-radius: 50%; text-decoration: none; }
+      .card-arrow:hover, .card-arrow:focus-visible { color: var(--card-action-color); background: var(--color-bg-hover); outline: none; box-shadow: var(--shadow-focus); }
+      .card-arrow svg { width: var(--card-arrow-icon-size); height: var(--card-arrow-icon-size); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .card-body { padding: var(--card-padding); color: var(--card-body-color); font-size: var(--text-control-size); line-height: var(--text-body-line-height); }
+      .card-body p + p { margin-top: 8px; }
+      .muted-stage { padding: 24px; background: var(--card-grid-bg); border-radius: var(--radius-sm); }
+      .cover-card { width: min(100%, var(--card-width-default)); min-width: min(var(--card-min-width), 100%); max-width: var(--card-width-default); }
+      .card-cover { position: relative; aspect-ratio: var(--card-cover-ratio); overflow: hidden; background: linear-gradient(135deg, var(--brand-50), var(--gray-100)); }
+      .card-cover::before { position: absolute; inset: 20% 15%; content: ''; background: linear-gradient(135deg, rgb(var(--brand-rgb) / .44), rgb(var(--brand-rgb) / .08)); border-radius: calc(var(--radius-sm) * 2); transform: rotate(-5deg); }
+      .card-cover::after { position: absolute; right: 18%; bottom: 18%; width: 34%; aspect-ratio: 1; content: ''; background: rgb(var(--brand-rgb) / .32); border-radius: 50%; }
+      .card-content { padding: var(--card-padding); }
+      .card-title { margin: 0; color: var(--card-title-color); font-size: var(--text-card-title-size); font-weight: var(--text-card-title-weight); line-height: var(--text-card-title-line-height); }
+      .card-subtitle { margin-top: 4px !important; }
+      .card-meta { display: flex; align-items: center; justify-content: space-between; gap: var(--card-meta-gap); margin-top: 16px; }
+      .author { display: inline-flex; align-items: center; gap: 8px; min-width: 0; color: var(--color-text-default); border-radius: 999px; outline: none; }
+      .author:focus-visible, .icon-action:focus-visible, .config-part:focus-visible { box-shadow: var(--shadow-focus); }
+      .mini-avatar { display: grid; width: 30px; height: 30px; place-items: center; color: var(--color-text-inverse); background: var(--color-action-primary); border-radius: 50%; font-size: var(--text-caption-size); font-weight: 600; }
+      .card-actions { display: flex; align-items: center; gap: 2px; }
+      .icon-action { display: grid; width: 32px; height: 32px; padding: 0; place-items: center; color: var(--color-text-secondary); background: transparent; border: 0; border-radius: 50%; cursor: pointer; }
+      .icon-action:hover { color: var(--color-action-primary-hover); background: var(--color-bg-hover); }
+      .icon-action svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+      .config-card-wrap { display: grid; justify-items: start; gap: 12px; }
+      .config-part { position: relative; border-radius: 4px; outline: none; }
+      .config-part:hover::after, .config-part:focus-within::after { position: absolute; inset: -4px; z-index: 2; pointer-events: none; content: ''; border: 1px dashed var(--color-action-primary); border-radius: 5px; }
+      .part-control { position: absolute; top: 8px; right: 8px; z-index: 4; display: none; gap: 4px; padding: 4px; background: var(--color-bg-container); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); box-shadow: var(--card-shadow-hover); white-space: nowrap; }
+      .config-part:hover > .part-control, .config-part:focus-within > .part-control { display: flex; }
+      .part-control button, .reset-button { min-height: 28px; padding: 0 9px; color: var(--color-text-default); background: var(--color-bg-container); border: 1px solid var(--color-border-default); border-radius: var(--radius-sm); cursor: pointer; font-size: var(--text-caption-size); }
+      .part-control button:hover, .reset-button:hover { color: var(--color-action-primary-hover); border-color: var(--color-action-primary); }
+      [data-hidden-part='true'] { display: none !important; }
+      .standalone-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--card-grid-gap); }
+      .standalone-card-grid .card-demo { min-height: 156px; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+      .standalone-card-grid .card-demo:hover, .standalone-card-grid .card-demo:focus-visible { outline: none; box-shadow: var(--card-shadow-hover); transform: translateY(-1px); }
+      .grid-card { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .grid-cell { min-height: 96px; padding: 16px; color: var(--color-text-secondary); border-right: 1px solid var(--card-border-color); border-bottom: 1px solid var(--card-border-color); font-size: var(--text-control-size); }
+      .grid-cell:nth-child(3n) { border-right: 0; }
+      .grid-cell:nth-last-child(-n+3) { border-bottom: 0; }
+      .grid-cell strong { display: block; margin-top: 6px; color: var(--color-text-primary); font-size: 20px; font-weight: 500; }
+      .embedded-grid .grid-cell { min-height: 116px; padding: 0; }
+      .embedded-grid .grid-cell .card-header { min-height: 44px; padding: 9px 12px 0; border-bottom: 0; }
+      .embedded-grid .grid-cell .card-header strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .embedded-grid .grid-cell p { padding: 12px; }
+      .skeleton { display: grid; gap: 12px; }
+      .skeleton-cover { aspect-ratio: var(--card-cover-ratio); border-radius: 0; }
+      .skeleton-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 4px; }
+      .skeleton-author { display: flex; align-items: center; gap: 8px; }
+      .skeleton-actions { display: flex; gap: 8px; }
+      .skeleton-action { width: 24px; height: 24px; border-radius: 50%; }
+      .skeleton-line, .skeleton-avatar, .skeleton-cover, .skeleton-action { background: linear-gradient(90deg, var(--card-skeleton-start), var(--card-skeleton-middle), var(--card-skeleton-start)); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+      .skeleton-avatar { width: 36px; height: 36px; border-radius: 50%; }
+      .skeleton-line { height: 12px; border-radius: 999px; }
+      .skeleton-line.short { width: 46%; } .skeleton-line.medium { width: 72%; }
+      @keyframes shimmer { to { background-position: -200% 0; } }
+      @media (prefers-reduced-motion: reduce) { .skeleton-line, .skeleton-avatar, .skeleton-cover, .skeleton-action { animation: none; } }
+      .inner-card { margin-top: 14px; background: var(--color-bg-subtle); border-color: var(--color-border-subtle); }
+      .tabs { display: flex; gap: var(--card-tab-gap); padding: 0 var(--card-padding); border-bottom: 0; }
+      .tab { position: relative; min-height: 0; padding: 12px 0 var(--card-tab-underline-gap); color: var(--color-text-secondary); background: none; border: 0; cursor: pointer; font-size: var(--text-control-size); }
+      .tab[aria-selected='true'] { color: var(--color-action-primary-hover); }
+      .tab[aria-selected='true']::after { position: absolute; right: 0; bottom: -1px; left: 0; height: var(--card-tab-underline-height); content: ''; background: var(--color-action-primary); }
+      .tab-panel[hidden] { display: none; }
+      @media (max-width: 760px) {
+        .grid-card, .standalone-card-grid { grid-template-columns: 1fr; }
+        .grid-cell, .grid-cell:nth-child(3n), .grid-cell:nth-last-child(-n+3) { border-right: 0; border-bottom: 1px solid var(--card-border-color); }
+        .grid-cell:last-child { border-bottom: 0; }
+        .cover-card { min-width: 0; max-width: none; }
+      }
+      /* Canonical documentation layout shared by Input, Button and DatePicker. */
+      .app-shell { background:var(--color-bg-container); }
+      .canvas {
+        min-width: 0;
+        min-height: 0;
+        overflow: auto;
+        background:var(--color-bg-container);
+      }
+      .canvas-inner {
+        display: grid;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+      .content-panel[hidden] { display: none; }
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--gray-800);
+      }
+      .doc-hero,
+      .doc-section { padding: 28px 32px; }
+      .doc-hero { border-bottom:1px solid var(--color-border-subtle); }
+      .doc-kicker {
+        margin: 0 0 10px;
+        color:var(--color-action-primary);
+        font-size:var(--text-caption-size);
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: 0;
+        text-transform: none;
+      }
+      .doc-title {
+        margin: 0;
+        color:var(--color-text-primary);
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        color:var(--color-text-secondary);
+        font-size:var(--text-body-size);
+        line-height:var(--text-body-line-height);
+      }
+      .doc-meta-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin: 18px 0 0;
+        padding: 0;
+        list-style: none;
+      }
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color:var(--color-text-secondary);
+        background:var(--color-bg-subtle);
+        border: 0;
+        border-radius: 999px;
+        font-size:var(--text-caption-size);
+        line-height: 1.4;
+      }
+      .doc-section {
+        margin: 0;
+        border-top: 0;
+        border-bottom:1px solid var(--color-border-subtle);
+      }
+      .doc-section:last-child { border-bottom: 0; }
+      .doc-section h2 {
+        margin: 0 0 14px;
+        color:var(--color-text-primary);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+      .doc-section h3 {
+        margin: 0 0 8px;
+        color: var(--gray-800);
+        font-size:var(--text-body-size);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+      .doc-section p {
+        margin: 0;
+        color:var(--color-text-secondary);
+        font-size:var(--text-control-size);
+        line-height:var(--text-body-line-height);
+      }
+      .rule-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .rule-list li {
+        position: relative;
+        padding-left: 16px;
+        color:var(--color-text-default);
+        font-size:var(--text-control-size);
+        line-height:var(--text-body-line-height);
+      }
+      .rule-list li::before {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        content: "";
+        background:var(--color-action-primary);
+        border-radius: 999px;
+      }
+      .doc-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+      .example-block {
+        min-width: 0;
+        padding: 16px;
+        background: var(--gray-50);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+      .example-block.full { grid-column: 1 / -1; }
+      .avatar-demo-row,
+      .avatar-group-wrap { margin-top: 14px; }
+      .spec-table-wrap { overflow-x: auto; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); }
+      .spec-table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: var(--text-control-size); text-align: left; }
+      .spec-table th,
+      .spec-table td { padding: 12px 14px; border-bottom: 1px solid var(--color-border-subtle); vertical-align: top; }
+      .spec-table th { color: var(--color-text-default); background: var(--gray-50); font-size: var(--text-control-size); font-weight: 600; }
+      .spec-table td { color: var(--color-text-secondary); line-height: 1.6; }
+      .spec-table tr:last-child td { border-bottom: 0; }
+      .spec-table code,
+      code {
+        color: var(--gray-800);
+        background:var(--color-bg-subtle);
+        border-radius: 4px;
+        padding: 2px 5px;
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size:var(--text-caption-size);
+      }
+
+      @media (max-width: 760px) {
+        body { overflow: auto; }
+        .app-shell { min-height: 100vh; height: auto; }
+        .topbar { position: sticky; top: 0; padding: 0 16px; }
+        .topbar-actions { display: none; }
+        .workspace { grid-template-columns: 1fr; }
+        .sidebar {
+          position: sticky;
+          top: var(--topbar-height);
+          z-index: 2;
+          flex-direction: row;
+          align-items: center;
+          gap: 12px;
+          width: 100%;
+          min-height: auto;
+          padding: 12px 14px;
+          overflow-x: auto;
+          overflow-y: hidden;
+          border-right: 0;
+          border-bottom:1px solid var(--color-border-subtle);
+        }
+        .sidebar-footer { display: none; }
+        .nav-list,
+        .nav-section,
+        .nav-sublist { flex-direction: row; align-items: center; gap: 8px; }
+        .nav-list { padding: 0; }
+        .nav-category { padding: 0 2px; white-space: nowrap; }
+        .nav-button { width: auto; min-height: 36px; padding: 0 12px; }
+        .canvas-inner { min-height: 560px; padding: 18px; }
+        .doc-hero,
+        .doc-section { padding: 22px 18px; }
+        .doc-title { font-size:var(--text-data-size); }
+        .doc-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 Enterprise Design System 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-400)" />
+                <stop offset="1" stop-color="var(--brand-600)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">Enterprise Design System</span>
+        </a>
+        <div class="topbar-actions" aria-label="组件完成状态">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-component-count-label>Active components 46/46</span>
+        </div>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
+                  <span class="nav-label">Styles 全局样式</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/card.html" aria-current="page">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/model.html">
+                      <span class="nav-label">Model 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
+        </aside>
+        <section class="canvas" aria-label="卡片组件说明详情区">
+          <div class="canvas-inner">
+            <article class="content-panel doc-page" data-panel="card">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Display / Card</p>
+                <h1 class="doc-title">Card 卡片</h1>
+                <p class="doc-summary">卡片用于承载一组相关的信息与操作，通过清晰的内容层级帮助用户快速浏览、理解和进入详情。</p>
+                <ul class="doc-meta-list" aria-label="卡片组件特性"><li>内容容器</li><li>信息分组</li><li>支持交互</li><li>灵活组合</li></ul>
+              </header>
+
+              <section class="doc-section"><h2>1. 基础用法</h2><p>常规的内容容器，可承载文字、列表、图片和段落，常用于模块划分和内容概览。</p><div class="card-doc-stack"><div class="example-block"><article class="card-demo"><header class="card-header"><strong>卡片标题</strong><a class="card-more" href="#">More</a></header><div class="card-body"><p>这是卡片内容。可放置简短说明、列表或关键数据。</p><p>内容区域会根据实际信息自然撑开，并通过稳定的内边距保持舒适的阅读节奏。</p></div></article></div></div></section>
+
+              <section class="doc-section"><h2>2. 鼠标悬浮样式</h2><p>添加卡片鼠标悬浮样式，可加强用户对可交互内容的感知。</p><div class="card-doc-stack"><div class="example-block"><article class="card-demo hoverable" tabindex="0"><header class="card-header"><strong>可悬浮卡片</strong><a class="card-more" href="#">More</a></header><div class="card-body">将指针移入卡片，查看轻微投影与位移反馈。适用于需要进入详情或执行主要操作的内容入口。</div></article></div></div></section>
+
+              <section class="doc-section"><h2>3. 无边框卡片</h2><p>在灰色背景上使用无边框卡片，通过背景层级区隔内容。</p><div class="card-doc-stack"><div class="example-block"><div class="muted-stage"><article class="card-demo borderless"><header class="card-header"><strong>无边框卡片</strong><a class="card-more" href="#">More</a></header><div class="card-body">卡片与灰色画布形成清晰层级，不需要额外描边，适合用于分组明确的内容区域。</div></article></div></div></div></section>
+
+              <section class="doc-section"><h2>4. 简洁卡片</h2><p>卡片可以只有内容区域，适合不需要标题栏的轻量信息。</p><div class="card-doc-stack"><div class="example-block"><article class="card-demo"><div class="card-body"><h3>仅内容区域</h3><p>保持内容紧凑，让信息本身成为视觉焦点，同时保留足够留白以提升长文本的阅读舒适度。</p></div></article></div></div></section>
+
+              <section class="doc-section"><h2>5. 更灵活的内容展示</h2><p>支持按需组合封面、标题、副标题、作者和操作，并让卡片随元素显隐自适应。</p><div class="card-doc-stack"><div class="doc-grid"><div class="example-block"><h3>默认示例</h3><article class="card-demo cover-card hoverable" tabindex="0"><div class="card-cover" aria-label="抽象品牌封面"></div><div class="card-content"><h3 class="card-title">探索数据背后的增长机会</h3><p class="card-subtitle">用统一的分析视图连接团队判断与业务行动。</p><div class="card-meta"><span class="author" tabindex="0"><span class="mini-avatar">朴</span><span>朴时宇</span></span><span class="card-actions"><button class="icon-action" aria-label="点赞"><svg viewBox="0 0 24 24"><path d="M7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m0 11V10l4-8a3 3 0 0 1 3 3v3h5a3 3 0 0 1 3 3l-1 7a3 3 0 0 1-3 3H7Z"/></svg></button><button class="icon-action" aria-label="分享"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg></button><button class="icon-action" aria-label="更多"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></button></span></div></div></article></div><div class="example-block"><h3>可配置示例</h3><div class="config-card-wrap" data-config-card><article class="card-demo cover-card"><div class="card-cover config-part" tabindex="0" data-part="cover"><span class="part-control"><button onclick="this.closest('[data-part]').dataset.hiddenPart='false'" data-show="cover">展示</button><button onclick="this.closest('[data-part]').dataset.hiddenPart='true'" data-hide="cover">不展示</button></span></div><div class="card-content"><div class="config-part" tabindex="0" data-part="title"><span class="part-control"><button onclick="this.closest('[data-part]').dataset.hiddenPart='false'" data-show="title">展示</button><button onclick="this.closest('[data-part]').dataset.hiddenPart='true'" data-hide="title">不展示</button></span><h3 class="card-title">可配置内容卡片</h3></div><div class="config-part" tabindex="0" data-part="subtitle"><span class="part-control"><button onclick="this.closest('[data-part]').dataset.hiddenPart='false'" data-show="subtitle">展示</button><button onclick="this.closest('[data-part]').dataset.hiddenPart='true'" data-hide="subtitle">不展示</button></span><p class="card-subtitle">悬浮或聚焦元素可控制显隐。</p></div><div class="card-meta"><span class="author config-part" tabindex="0" data-part="author"><span class="part-control"><button onclick="this.closest('[data-part]').dataset.hiddenPart='false'" data-show="author">展示</button><button onclick="this.closest('[data-part]').dataset.hiddenPart='true'" data-hide="author">不展示</button></span><span class="mini-avatar">朴</span><span>朴时宇</span></span><span class="card-actions"><span class="config-part" tabindex="0" data-part="like"><span class="part-control"><button onclick="this.closest('[data-part]').dataset.hiddenPart='false'" data-show="like">展示</button><button onclick="this.closest('[data-part]').dataset.hiddenPart='true'" data-hide="like">不展示</button></span><button class="icon-action" aria-label="点赞"><svg viewBox="0 0 24 24"><path d="M7 21H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3m0 11V10l4-8a3 3 0 0 1 3 3v3h5a3 3 0 0 1 3 3l-1 7a3 3 0 0 1-3 3H7Z"/></svg></button></span><span class="config-part" tabindex="0" data-part="share"><span class="part-control"><button onclick="this.closest('[data-part]').dataset.hiddenPart='false'" data-show="share">展示</button><button onclick="this.closest('[data-part]').dataset.hiddenPart='true'" data-hide="share">不展示</button></span><button class="icon-action" aria-label="分享"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 10.5 6.8-4M8.6 13.5l6.8 4"/></svg></button></span><span class="config-part" tabindex="0" data-part="more"><span class="part-control"><button onclick="this.closest('[data-part]').dataset.hiddenPart='false'" data-show="more">展示</button><button onclick="this.closest('[data-part]').dataset.hiddenPart='true'" data-hide="more">不展示</button></span><button class="icon-action" aria-label="更多"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></svg></button></span></span></div></div></article><button class="reset-button" data-reset-card>重置</button></div></div></div></div></section>
+
+              <section class="doc-section"><h2>6. 栅格卡片</h2><p>在系统概览页面中，卡片常与栅格配合展示同类指标。</p><div class="card-doc-stack"><div class="example-block"><div class="standalone-card-grid"><article class="card-demo" tabindex="0" role="link" aria-label="进入新增客户"><header class="card-header"><strong>新增客户</strong><a class="card-arrow" href="#" aria-label="进入新增客户"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><div class="card-body"><strong>1,284</strong><p>较上月增长 12%</p></div></article><article class="card-demo" tabindex="0" role="link" aria-label="进入转化率"><header class="card-header"><strong>转化率</strong><a class="card-arrow" href="#" aria-label="进入转化率"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><div class="card-body"><strong>32.8%</strong><p>较上月提升 4.6%</p></div></article><article class="card-demo" tabindex="0" role="link" aria-label="进入活跃项目"><header class="card-header"><strong>活跃项目</strong><a class="card-arrow" href="#" aria-label="进入活跃项目"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><div class="card-body"><strong>48</strong><p>其中 12 项待评审</p></div></article><article class="card-demo" tabindex="0" role="link" aria-label="进入成交订单"><header class="card-header"><strong>成交订单</strong><a class="card-arrow" href="#" aria-label="进入成交订单"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><div class="card-body"><strong>326</strong><p>本月新增 38 单</p></div></article><article class="card-demo" tabindex="0" role="link" aria-label="进入平均周期"><header class="card-header"><strong>平均周期</strong><a class="card-arrow" href="#" aria-label="进入平均周期"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><div class="card-body"><strong>8.4 天</strong><p>效率提升 1.2 天</p></div></article><article class="card-demo" tabindex="0" role="link" aria-label="进入满意度"><header class="card-header"><strong>满意度</strong><a class="card-arrow" href="#" aria-label="进入满意度"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><div class="card-body"><strong>96%</strong><p>共收到 842 次评价</p></div></article></div></div></div></section>
+
+              <section class="doc-section"><h2>7. 预加载卡片</h2><p>在数据读入前显示文本骨架，稳定页面结构并传达加载状态。</p><div class="card-doc-stack"><div class="example-block"><article class="card-demo cover-card" aria-label="内容加载中"><div class="skeleton-cover"></div><div class="card-content skeleton"><span class="skeleton-line medium"></span><span class="skeleton-line"></span><div class="skeleton-meta"><span class="skeleton-author"><span class="skeleton-avatar"></span><span class="skeleton-line short" style="width:72px"></span></span><span class="skeleton-actions"><span class="skeleton-action"></span><span class="skeleton-action"></span><span class="skeleton-action"></span></span></div></div></article></div></div></section>
+
+              <section class="doc-section"><h2>8. 网络型内嵌卡片</h2><p>一种常见的卡片内容区隔模式。</p><div class="card-doc-stack"><div class="example-block"><article class="card-demo fluid-card"><div class="grid-card embedded-grid"><div class="grid-cell"><header class="card-header"><strong>客户管理</strong><a class="card-arrow" href="#" aria-label="进入详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><p>统一查看客户资料与跟进记录。</p></div><div class="grid-cell"><header class="card-header"><strong>数据报表</strong><a class="card-arrow" href="#" aria-label="进入详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><p>汇总关键指标与业务趋势。</p></div><div class="grid-cell"><header class="card-header"><strong>自动化</strong><a class="card-arrow" href="#" aria-label="进入详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><p>配置高频任务的执行流程。</p></div><div class="grid-cell"><header class="card-header"><strong>成员权限</strong><a class="card-arrow" href="#" aria-label="进入详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><p>管理团队角色与数据范围。</p></div><div class="grid-cell"><header class="card-header"><strong>消息中心</strong><a class="card-arrow" href="#" aria-label="进入详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><p>集中处理提醒与待办消息。</p></div><div class="grid-cell"><header class="card-header"><strong>系统设置</strong><a class="card-arrow" href="#" aria-label="进入详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><p>维护组织级别的基础配置。</p></div></div></article></div></div></section>
+
+              <section class="doc-section"><h2>9. 内部卡片</h2><p>卡片中可以嵌套其他卡片组件，用于表达主次清晰的关联信息。</p><div class="card-doc-stack"><div class="example-block"><article class="card-demo fluid-card"><header class="card-header"><strong>项目详情</strong><a class="card-more" href="#">More</a></header><div class="card-body">主卡片内容用于说明整体状态。<article class="card-demo fluid-card inner-card"><header class="card-header"><strong>子任务：组件验收</strong><a class="card-arrow" href="#" aria-label="进入子任务详情"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></a></header><div class="card-body">负责人：朴时宇 · 截止时间：周五</div></article></div></article></div></div></section>
+
+              <section class="doc-section"><h2>10. 带页签的卡片</h2><p>卡片里可使用页签承载更多内容，让同一上下文中的信息便捷切换。</p><div class="card-doc-stack"><div class="example-block"><article class="card-demo fluid-card" data-tabs><header class="card-header"><strong>业务数据</strong><a class="card-more" href="#">More</a></header><div class="tabs" role="tablist"><button class="tab" role="tab" aria-selected="true" data-tab="overview">概览</button><button class="tab" role="tab" aria-selected="false" data-tab="trend">趋势</button><button class="tab" role="tab" aria-selected="false" data-tab="detail">明细</button></div><div class="card-body tab-panel" data-panel-id="overview">本周新增线索 284 条，整体转化率为 32.8%。</div><div class="card-body tab-panel" data-panel-id="trend" hidden>近四周转化率持续增长，环比提升 4.6%。</div><div class="card-body tab-panel" data-panel-id="detail" hidden>高意向客户 68 位，待跟进任务 17 项。</div></article></div></div></section>
+
+              <section class="doc-section"><h2>API</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody>
+                <tr><td><code>title</code></td><td>卡片标题。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr><tr><td><code>extra</code></td><td>标题栏右侧附加内容。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr><tr><td><code>bordered</code></td><td>是否显示边框。</td><td><code>boolean</code></td><td><code>true</code></td></tr><tr><td><code>hoverable</code></td><td>是否启用悬浮反馈。</td><td><code>boolean</code></td><td><code>false</code></td></tr><tr><td><code>cover</code></td><td>卡片封面内容。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr><tr><td><code>actions</code></td><td>卡片底部操作组。</td><td><code>ReactNode[]</code></td><td><code>-</code></td></tr><tr><td><code>loading</code></td><td>是否显示预加载骨架。</td><td><code>boolean</code></td><td><code>false</code></td></tr><tr><td><code>size</code></td><td>卡片尺寸。</td><td><code>default | small</code></td><td><code>default</code></td></tr><tr><td><code>bodyStyle</code></td><td>内容区域的自定义样式。</td><td><code>CSSProperties</code></td><td><code>-</code></td></tr><tr><td><code>headerStyle</code></td><td>标题区域的自定义样式。</td><td><code>CSSProperties</code></td><td><code>-</code></td></tr><tr><td><code>className</code></td><td>卡片根节点类名。</td><td><code>string | string[]</code></td><td><code>-</code></td></tr><tr><td><code>style</code></td><td>卡片根节点的自定义样式。</td><td><code>CSSProperties</code></td><td><code>-</code></td></tr><tr><td><code>children</code></td><td>卡片内容区域。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr><tr><td><code>onClick</code></td><td>点击卡片时触发的回调。</td><td><code>(event) =&gt; void</code></td><td><code>-</code></td></tr><tr><td><code>Meta.avatar</code></td><td>元信息区域的头像。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr><tr><td><code>Meta.title</code></td><td>元信息标题。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr><tr><td><code>Meta.description</code></td><td>元信息描述。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr><tr><td><code>Grid.hoverable</code></td><td>网格单元是否显示悬浮反馈。</td><td><code>boolean</code></td><td><code>true</code></td></tr><tr><td><code>Grid.style</code></td><td>网格单元的自定义样式。</td><td><code>CSSProperties</code></td><td><code>-</code></td></tr><tr><td><code>id</code></td><td>卡片根节点标识。</td><td><code>string</code></td><td><code>-</code></td></tr><tr><td><code>role</code></td><td>卡片作为交互容器时使用的语义角色。</td><td><code>string</code></td><td><code>-</code></td></tr><tr><td><code>tabIndex</code></td><td>卡片参与键盘焦点顺序时的索引。</td><td><code>number</code></td><td><code>-</code></td></tr><tr><td><code>aria-*</code></td><td>透传至卡片根节点的无障碍属性。</td><td><code>AriaAttributes</code></td><td><code>-</code></td></tr><tr><td><code>Meta.className</code></td><td>元信息根节点类名。</td><td><code>string | string[]</code></td><td><code>-</code></td></tr><tr><td><code>Meta.style</code></td><td>元信息根节点自定义样式。</td><td><code>CSSProperties</code></td><td><code>-</code></td></tr><tr><td><code>Grid.children</code></td><td>网格单元内容。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr><tr><td><code>Grid.className</code></td><td>网格单元类名。</td><td><code>string | string[]</code></td><td><code>-</code></td></tr><tr><td><code>Grid.onClick</code></td><td>点击网格单元时触发的回调。</td><td><code>(event) =&gt; void</code></td><td><code>-</code></td></tr>
+              </tbody></table></div></section>
+              <section class="doc-section"><h2>设计 Token</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Token</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><code>--card-bg</code></td><td><code>var(--color-bg-container)</code></td><td>卡片背景色。</td></tr><tr><td><code>--card-header-bg</code></td><td><code>var(--color-bg-container)</code></td><td>标题区域背景色。</td></tr><tr><td><code>--card-border-color</code></td><td><code>var(--color-border-subtle)</code></td><td>卡片边框与内部区隔颜色。</td></tr><tr><td><code>--card-title-color</code></td><td><code>var(--color-text-primary)</code></td><td>卡片标题颜色。</td></tr><tr><td><code>--card-body-color</code></td><td><code>var(--color-text-secondary)</code></td><td>卡片正文颜色。</td></tr><tr><td><code>--card-action-color</code></td><td><code>var(--color-action-primary)</code></td><td>More 默认颜色及箭头交互颜色；More 悬浮和聚焦使用 <code>var(--color-action-primary-hover)</code>。</td></tr><tr><td><code>--card-arrow-color</code></td><td><code>var(--color-text-tertiary)</code></td><td>箭头入口默认颜色。</td></tr><tr><td><code>--card-radius</code></td><td><code>var(--radius-sm)</code></td><td>卡片圆角。</td></tr><tr><td><code>--card-padding</code></td><td><code>16px</code></td><td>内容区域默认内边距。</td></tr><tr><td><code>--card-header-height</code></td><td><code>48px</code></td><td>标题区域最小高度。</td></tr><tr><td><code>--card-shadow-hover</code></td><td><code>0 8px 24px rgba(20, 28, 36, 0.10)</code></td><td>可悬浮卡片投影。</td></tr><tr><td><code>--card-grid-bg</code></td><td><code>var(--gray-50)</code></td><td>无边框示例和网格背景。</td></tr><tr><td><code>--card-cover-ratio</code></td><td><code>16 / 9</code></td><td>默认封面宽高比。</td></tr><tr><td><code>--card-skeleton-start</code></td><td><code>var(--gray-100)</code></td><td>骨架渐变起止颜色。</td></tr><tr><td><code>--card-skeleton-middle</code></td><td><code>var(--gray-200)</code></td><td>骨架渐变中间颜色。</td></tr><tr><td><code>--card-width-default</code></td><td><code>400px</code></td><td>固定展示型卡片默认宽度。</td></tr><tr><td><code>--card-min-width</code></td><td><code>300px</code></td><td>卡片最小宽度；窄屏下不超过可用空间。</td></tr><tr><td><code>--card-grid-gap</code></td><td><code>12px</code></td><td>独立栅格卡片之间的间距。</td></tr><tr><td><code>--card-meta-gap</code></td><td><code>10px</code></td><td>作者信息与操作区之间的间距。</td></tr><tr><td><code>--card-arrow-size</code></td><td><code>28px</code></td><td>箭头入口点击区域尺寸。</td></tr><tr><td><code>--card-arrow-icon-size</code></td><td><code>18px</code></td><td>箭头图标尺寸。</td></tr><tr><td><code>--card-tab-gap</code></td><td><code>22px</code></td><td>卡片页签之间的水平间距。</td></tr><tr><td><code>--card-tab-underline-height</code></td><td><code>2px</code></td><td>激活页签下划线高度。</td></tr><tr><td><code>--card-tab-underline-gap</code></td><td><code>8px</code></td><td>页签文字与下划线间距。</td></tr><tr><td><code>--text-card-title-size</code></td><td><code>16px</code></td><td>卡片标题字号，继承全局文字 Token。</td></tr><tr><td><code>--text-card-title-weight</code></td><td><code>500</code></td><td>卡片标题字重。</td></tr><tr><td><code>--text-card-title-line-height</code></td><td><code>1.5</code></td><td>卡片标题行高。</td></tr></tbody></table></div></section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const syncComponentCountLabel = () => {
+        const label = document.querySelector('[data-component-count-label]');
+        if (!label) return;
+        const pendingKeys = new Set([]);
+        const navItems = Array.from(
+          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
+        );
+        const getComponentKey = (item) =>
+          item.dataset.page || (item.getAttribute('href') || '').split('#').pop().replace(/.html$/, '');
+        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
+        label.textContent = `Active components ${activeCount}/${navItems.length}`;
+      };
+
+      syncComponentCountLabel();
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-500',
+        '--brand-50',
+        '--brand-100',
+        '--brand-200',
+        '--brand-300',
+        '--brand-400',
+        '--brand-600',
+        '--brand-700',
+        '--brand-800',
+        '--brand-900',
+        '--brand-rgb',
+        '--brand-text',
+        '--brand-text-hover',
+        '--brand-border-soft',
+        '--brand-border-hover',
+        '--radius-sm',
+        '--shadow-focus',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-50', '#f0fff6');
+          root.style.setProperty('--brand-100', '#ddfbea');
+          root.style.setProperty('--brand-200', '#bef5d5');
+          root.style.setProperty('--brand-300', '#91e9b8');
+          root.style.setProperty('--brand-400', '#5fd897');
+          root.style.setProperty('--brand-500', 'var(--color-status-success)');
+          root.style.setProperty('--brand-600', '#1b9c61');
+          root.style.setProperty('--brand-700', '#147c4d');
+          root.style.setProperty('--brand-800', '#12633f');
+          root.style.setProperty('--brand-900', '#104f34');
+          root.style.setProperty('--brand-rgb', '34, 181, 115');
+          root.style.setProperty('--brand-text', '#1b9c61');
+          root.style.setProperty('--brand-text-hover', '#147c4d');
+          root.style.setProperty('--brand-border-soft', '#bef5d5');
+          root.style.setProperty('--brand-border-hover', '#91e9b8');
+          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-50', '#eff6ff');
+        root.style.setProperty('--brand-100', '#dbeafe');
+        root.style.setProperty('--brand-200', '#bfdbfe');
+        root.style.setProperty('--brand-300', '#93c5fd');
+        root.style.setProperty('--brand-400', '#60a5fa');
+        root.style.setProperty('--brand-500', '#2672ff');
+        root.style.setProperty('--brand-600', '#1d5fd7');
+        root.style.setProperty('--brand-700', '#1e4fb3');
+        root.style.setProperty('--brand-800', '#1e3f8a');
+        root.style.setProperty('--brand-900', '#172f68');
+        root.style.setProperty('--brand-rgb', '38, 114, 255');
+        root.style.setProperty('--brand-text', '#1d5fd7');
+        root.style.setProperty('--brand-text-hover', '#1e4fb3');
+        root.style.setProperty('--brand-border-soft', '#bfdbfe');
+        root.style.setProperty('--brand-border-hover', '#93c5fd');
+        root.style.setProperty('--radius-sm', '2px');
+        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const centerNavItem = (item, behavior = 'auto') => {
+        if (!item) return;
+        const sidebar = item.closest('.sidebar');
+        if (!sidebar) return;
+        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
+        const itemRect = item.getBoundingClientRect();
+        const sidebarRect = sidebar.getBoundingClientRect();
+        if (isHorizontal) {
+          sidebar.scrollTo({ left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2, behavior });
+          return;
+        }
+        sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
+      };
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+
+      document.querySelectorAll('[data-hide], [data-show]').forEach((button) => {
+        button.addEventListener('click', (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const key = button.hasAttribute('data-hide') ? button.dataset.hide : button.dataset.show;
+          const part = button.closest('[data-config-card]')?.querySelector(`[data-part="${key}"]`);
+          if (part) part.dataset.hiddenPart = button.hasAttribute('data-hide') ? 'true' : 'false';
+        });
+      });
+      document.querySelectorAll('[data-reset-card]').forEach((button) => {
+        button.addEventListener('click', () => {
+          button.closest('[data-config-card]')?.querySelectorAll('[data-part]').forEach((part) => part.dataset.hiddenPart = 'false');
+        });
+      });
+      document.querySelectorAll('[data-tabs]').forEach((tabs) => {
+        tabs.addEventListener('click', (event) => {
+          const tab = event.target.closest('[data-tab]');
+          if (!tab) return;
+          tabs.querySelectorAll('[data-tab]').forEach((item) => item.setAttribute('aria-selected', String(item === tab)));
+          tabs.querySelectorAll('[data-panel-id]').forEach((panel) => { panel.hidden = panel.dataset.panelId !== tab.dataset.tab; });
+        });
+      });
+    </script>
+  </body>
+</html>

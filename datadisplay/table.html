@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Table 表格 - Design System</title>
     <style>
-      :root {--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;
-        --brand-500: #00d157;
-        --brand-50: #effff6;
-        --brand-100: #d8ffe8;
-        --brand-200: #b5ffd1;
-        --brand-300: #7dffb0;
-        --brand-400: #35f47c;
-        --brand-600: #00b84b;
-        --brand-700: #008f3f;
-        --brand-800: #067037;
-        --brand-900: #075a2f;
-        --brand-rgb: 0, 209, 87;
-        --brand-text: #00b84b;
-        --brand-text-hover: #008f3f;
+      :root {--success-green-500: #1cc749;--yellow-500: #ff990a;--red-500: #fe3d33;--blue-500: #31a6ff;--blue-600: #1887f5;
+        --brand-500: #1cc749;
+        --brand-50: #f0fdf3;
+        --brand-100: #dbfde3;
+        --brand-200: #b9f9c9;
+        --brand-300: #82f39f;
+        --brand-400: #45e36e;
+        --brand-600: #00ae2e;
+        --brand-700: #118430;
+        --brand-800: #13682a;
+        --brand-900: #125526;
+        --brand-rgb: 28, 199, 73;
+        --brand-text: #00ae2e;
+        --brand-text-hover: #118430;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
         --gray-950: #0b0d0f;
@@ -44,7 +44,7 @@
         --color-bg-container: var(--white);
         --color-bg-subtle: var(--gray-100);
         --color-bg-hover: var(--gray-100);
-        --color-bg-selected: var(--brand-50);
+        --color-bg-selected: var(--brand-100);
         --color-bg-disabled: var(--gray-100);
         --color-border-default: var(--gray-300);
         --color-border-subtle: var(--gray-200);
@@ -54,12 +54,36 @@
         --color-action-primary: var(--brand-500);
         --color-action-primary-hover: var(--brand-600);
         --color-action-primary-active: var(--brand-700);
-        --color-action-primary-subtle: var(--brand-50);
+        --color-action-primary-subtle: var(--brand-100);
         --color-action-primary-disabled: var(--brand-200);
         --color-status-success: var(--success-green-500);
         --color-status-error: var(--red-500);
         --color-status-warning: var(--yellow-500);
         --color-status-info: var(--blue-500);
+        --danger-50: #fff2f1;
+        --danger-600: #ec2116;
+        --danger-700: #c7170e;
+        --warning-50: #fffaec;
+        --warning-400: #ffb232;
+        --warning-600: #ff8400;
+        --warning-700: #cc6002;
+        --info-50: #eef9ff;
+        --info-600: #1887f5;
+        --info-700: #1370e2;
+        --success-green-50: #f0fdf3;
+        --success-green-600: #00ae2e;
+        --color-bg-inverse: var(--gray-900);
+        --color-status-success-bg: var(--success-green-50);
+        --color-status-success-text: var(--success-green-600);
+        --color-status-error-bg: var(--danger-50);
+        --color-status-error-text: var(--danger-600);
+        --color-status-error-text-hover: var(--danger-700);
+        --color-status-warning-bg: var(--warning-50);
+        --color-status-warning-border: var(--warning-400);
+        --color-status-warning-text: var(--warning-700);
+        --color-status-info-bg: var(--info-50);
+        --color-status-info-text: var(--info-600);
+        --color-status-info-text-hover: var(--info-700);
         --color-overlay-modal: rgba(0, 0, 0, 0.45);
         --color-overlay-drawer: rgba(0, 0, 0, 0.35);
         --color-overlay-loading: rgba(255, 255, 255, 0.72);
@@ -101,27 +125,48 @@
         --text-data-line-height: 1.3;
         --topbar-height: 60px;
         --sidebar-width: 300px;
+        --radius-xs: 4px;
         --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --radius-md: 8px;
+        --radius-full: 999px;
+        --shadow-overlay: 0 12px 28px rgba(20, 28, 36, 0.12);
+        --shadow-focus: 0 0 0 3px rgba(var(--brand-rgb), 0.16);
+        --selector-focus-shadow: var(--shadow-focus);
         --table-header-height: var(--table-row-height-default);
         --table-row-height-compact: 36px;
         --table-row-height-default: 44px;
         --table-row-height-relaxed: 56px;
         --table-row-height: var(--table-row-height-default);
-        --table-border-color: #e8ebee;
-        --table-header-bg: #fafbfc;
-        --table-row-hover-bg: #fafbfc;
-        --table-row-selected-bg: #eefbf5;
-        --table-card-radius: 8px;
-        --table-card-border: #e8ebee;
+        --table-border-color: var(--color-border-subtle);
+        --table-header-bg: var(--color-bg-subtle);
+        --table-row-hover-bg: var(--color-bg-hover);
+        --table-row-selected-bg: var(--color-action-primary-subtle);
+        --table-row-selected-hover-bg: var(--color-bg-selected);
+        --table-card-radius: var(--radius-md);
+        --table-card-border: var(--color-border-subtle);
+        --table-text-color: var(--color-text-default);
+        --table-title-text: var(--color-text-primary);
+        --table-header-text: var(--color-text-tertiary);
+        --table-muted-text: var(--color-text-tertiary);
+        --table-disabled-text: var(--color-text-disabled);
+        --table-control-border: var(--color-border-default);
+        --table-control-bg: var(--color-bg-container);
+        --table-control-hover-bg: var(--color-bg-hover);
+        --table-control-active-bg: var(--color-action-primary-subtle);
+        --table-control-active-text: var(--color-action-primary-hover);
+        --table-overlay-bg: var(--color-bg-container);
+        --table-overlay-border: var(--color-border-subtle);
+        --table-tooltip-bg: var(--color-bg-inverse);
+        --table-scrollbar-thumb: var(--color-border-default);
+        --table-skeleton-bg: var(--color-border-subtle);
+        --table-skeleton-shimmer-bg: var(--color-bg-subtle);
+        --table-placeholder-text: var(--color-text-disabled);
         --table-example-padding: 36px;
         --table-action-height: 28px;
-        --table-primary-action-bg: var(--brand-500);
+        --table-primary-action-bg: var(--color-action-primary);
         --table-select-control-size: 14px;
         --table-filter-menu-width: 236px;
         --table-search-popover-width: 260px;
-        --table-pagination-size: 28px;
-        --table-pagination-active-bg: #e9f8f1;
         --table-empty-min-height: 128px;
         --table-skeleton-height: 10px;
         --table-drag-handle-size: 16px;
@@ -131,13 +176,13 @@
         --switch-width: 36px;
         --switch-height: 20px;
         --switch-thumb-size: 16px;
-        --switch-radius: 999px;
-        --switch-color-on: var(--brand-500);
-        --switch-color-off: #cfd6dc;
-        --switch-color-off-hover: #b9c1c8;
-        --switch-thumb-color: #ffffff;
+        --switch-radius: var(--radius-full);
+        --switch-color-on: var(--color-action-primary);
+        --switch-color-off: var(--color-border-default);
+        --switch-color-off-hover: var(--color-border-strong);
+        --switch-thumb-color: var(--color-bg-container);
         --switch-thumb-shadow: none;
-        --switch-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        --switch-focus-shadow: var(--shadow-focus);
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -227,7 +272,7 @@
 
       .brand-title {
         overflow: hidden;
-        color: var(--gray-800);
+        color: var(--color-text-primary);
         font-size: 17px;
         font-weight: 600;
         letter-spacing: 0;
@@ -251,8 +296,8 @@
         width: 100%;
         min-height: 36px;
         padding: 0 22px;
-        color: var(--gray-800);
-        background: var(--gray-50);
+        color: var(--color-text-primary);
+        background: var(--color-bg-subtle);
         border:1px solid var(--color-border-subtle);
         border-radius: 999px;
         cursor: pointer;
@@ -270,7 +315,7 @@
 
       .product-select-trigger:focus-visible {
         outline: none;
-        box-shadow: var(--shadow-focus);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .product-select-trigger::after {
@@ -280,8 +325,8 @@
         width: 5px;
         height: 5px;
         content: "";
-        border-right: 1.25px solid var(--gray-500);
-        border-bottom: 1.25px solid var(--gray-500);
+        border-right: 1.25px solid var(--color-text-tertiary);
+        border-bottom: 1.25px solid var(--color-text-tertiary);
         transform: translateY(-65%) rotate(45deg);
         transition: transform 0.16s ease;
       }
@@ -304,7 +349,7 @@
         background:var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+        box-shadow: var(--shadow-overlay);
       }
 
       .product-select-menu[hidden] {
@@ -327,7 +372,7 @@
       .product-select-option:hover,
       .product-select-option[aria-selected="true"] {
         color:var(--color-action-primary);
-        background: rgb(var(--brand-rgb) / 0.08);
+        background: var(--color-action-primary-subtle);
       }
 
       .topbar-actions {
@@ -389,7 +434,7 @@
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-gutter: stable;
-        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
         background:var(--color-bg-container);
         border-right:1px solid var(--color-border-subtle);
@@ -405,7 +450,7 @@
       }
 
       .sidebar::-webkit-scrollbar-thumb {
-        background: var(--gray-300);
+        background: var(--color-border-default);
         border-radius: 999px;
       }
 
@@ -470,8 +515,8 @@
       }
 
       .nav-button:hover {
-        color: var(--gray-950);
-        background: var(--gray-50);
+        color: var(--color-text-primary);
+        background: var(--color-bg-hover);
       }
 
       .nav-button:focus-visible {
@@ -516,7 +561,7 @@
 
       .doc-page {
         width: min(100%, 1080px);
-        color: var(--gray-800);
+        color: var(--color-text-default);
       }
 
       .doc-hero,
@@ -588,7 +633,7 @@
 
       .doc-section h3 {
         margin: 0 0 8px;
-        color: var(--gray-800);
+        color: var(--color-text-primary);
         font-size:var(--text-body-size);
         font-weight: 500;
         line-height: 1.4;
@@ -637,7 +682,7 @@
       .example-block {
         min-width: 0;
         padding: 16px;
-        background: var(--gray-50);
+        background: var(--color-bg-subtle);
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
       }
@@ -648,6 +693,7 @@
 
       .table-example-block {
         padding: var(--table-example-padding);
+        background: var(--color-bg-container);
       }
 
       .automation-spec-group {
@@ -661,7 +707,7 @@
         gap: 18px;
         min-width: 0;
         padding: 0 12px 12px;
-        color: #697482;
+        color: var(--table-muted-text);
         font-size:var(--text-control-size);
         line-height: 1.5;
       }
@@ -674,14 +720,14 @@
       }
 
       .automation-demo-stat .num {
-        color: #1a1d1f;
+        color: var(--table-title-text);
         font-size: 15px;
         font-weight: 700;
         line-height: 1;
       }
 
       .automation-demo-stat .lbl {
-        color: #697482;
+        color: var(--table-muted-text);
         font-size:var(--text-caption-size);
         line-height: 1.1;
       }
@@ -691,7 +737,7 @@
         align-items: center;
         gap: 9px;
         margin: 0 0 8px;
-        color: #8a9199;
+        color: var(--table-header-text);
         font-size:var(--text-control-size);
         font-weight: 600;
         line-height: 1.4;
@@ -715,7 +761,7 @@
       }
 
       .automation-selection-count {
-        color: #969ba1;
+        color: var(--table-muted-text);
         font-size: 11.5px;
         font-weight: 400;
         line-height: 1.4;
@@ -733,9 +779,9 @@
         align-items: center;
         justify-content: center;
         flex: 0 0 24px;
-        border-radius: 8px;
-        background: #eef5ff;
-        color: #2f75d6;
+        border-radius: var(--radius-md);
+        background: var(--color-status-info-bg);
+        color: var(--color-status-info-text);
         font-size: 11px;
         font-weight: 700;
         line-height: 1;
@@ -743,10 +789,10 @@
 
       .automation-spec-badge {
         padding: 2px 8px;
-        border: 1px solid #e8ebee;
-        border-radius: 999px;
+        border: 1px solid var(--table-border-color);
+        border-radius: var(--radius-full);
         background:var(--color-bg-container);
-        color: #969ba1;
+        color: var(--table-muted-text);
         font-size: 11px;
         font-weight: 500;
       }
@@ -790,7 +836,7 @@
       .data-table-wrap::-webkit-scrollbar-thumb,
       .spec-table-wrap::-webkit-scrollbar-thumb {
         border-radius: 999px;
-        background: #cfd5db;
+        background: var(--table-scrollbar-thumb);
       }
 
       .automation-spec-table {
@@ -805,9 +851,9 @@
         gap: 10px;
         min-height: var(--table-row-height-default);
         padding: 8px 16px;
-        border-bottom: 1px solid #eef1f3;
-        color: #4f565d;
-        font-size: 12.5px;
+        border-bottom: 1px solid var(--table-border-color);
+        color: var(--table-text-color);
+        font-size: var(--text-control-size);
         line-height: 1.45;
       }
 
@@ -888,12 +934,12 @@
 
       .automation-spec-row.is-highlight {
         background: var(--table-row-selected-bg);
-        border-left: 3px solid var(--brand-500);
+        border-left: 3px solid var(--color-action-primary);
         padding-left: 13px;
       }
 
       .automation-spec-row.is-highlight:hover {
-        background: #e6f8ef;
+        background: var(--table-row-selected-hover-bg);
       }
 
       .automation-spec-row.is-highlight.no-marker {
@@ -913,18 +959,18 @@
         justify-content: center;
         gap: 6px;
         padding: 28px 16px;
-        color: #969ba1;
+        color: var(--table-muted-text);
         text-align: center;
       }
 
       .status-empty-title {
-        color: #4f565d;
+        color: var(--table-text-color);
         font-size:var(--text-control-size);
         font-weight: 600;
       }
 
       .status-empty-desc {
-        color: #969ba1;
+        color: var(--table-muted-text);
         font-size:var(--text-caption-size);
       }
 
@@ -938,7 +984,7 @@
         max-width: 120px;
         height: var(--table-skeleton-height);
         border-radius: 999px;
-        background: linear-gradient(90deg, #eef1f3 0%, #f7f8fa 48%, #eef1f3 100%);
+        background: linear-gradient(90deg, var(--table-skeleton-bg) 0%, var(--table-skeleton-shimmer-bg) 48%, var(--table-skeleton-bg) 100%);
         background-size: 220% 100%;
         animation: table-skeleton-shimmer 1.2s ease-in-out infinite;
       }
@@ -982,7 +1028,7 @@
       .fixed-column-scroll {
         width: 100%;
         overflow-x: auto;
-        scrollbar-color: #cfd5db transparent;
+        scrollbar-color: var(--table-scrollbar-thumb) transparent;
         scrollbar-width: thin;
       }
 
@@ -996,7 +1042,7 @@
 
       .fixed-column-scroll::-webkit-scrollbar-thumb {
         border-radius: 999px;
-        background: #cfd5db;
+        background: var(--table-scrollbar-thumb);
       }
 
       .fixed-column-table {
@@ -1004,14 +1050,14 @@
         min-width: 1080px;
         border-collapse: separate;
         border-spacing: 0;
-        color: #4f565d;
-        font-size: 12.5px;
+        color: var(--table-text-color);
+        font-size: var(--text-control-size);
       }
 
       .fixed-column-table th,
       .fixed-column-table td {
         padding: 0 14px;
-        border-bottom: 1px solid #eef1f3;
+        border-bottom: 1px solid var(--table-border-color);
         background:var(--color-bg-container);
         text-align: left;
         vertical-align: middle;
@@ -1020,8 +1066,8 @@
 
       .fixed-column-table th {
         height: var(--table-header-height);
-        background: #fafbfc;
-        color: #8a9199;
+        background: var(--table-header-bg);
+        color: var(--table-header-text);
         font-size:var(--text-caption-size);
         font-weight: 600;
       }
@@ -1031,7 +1077,7 @@
       }
 
       .fixed-column-table tbody tr:hover td {
-        background: #fafbfc;
+        background: var(--table-row-hover-bg);
       }
 
       .fixed-column-table tbody tr:last-child td {
@@ -1073,8 +1119,8 @@
         position: relative;
         z-index: 2;
         min-height: var(--table-header-height);
-        background: #fafbfc;
-        color: #8a9199;
+        background: var(--table-header-bg);
+        color: var(--table-header-text);
         font-size:var(--text-caption-size);
         font-weight: 600;
       }
@@ -1086,13 +1132,13 @@
       .automation-spec-card.sort-filter-card .automation-spec-row-head:first-child,
       .automation-spec-card.search-filter-card .automation-spec-row-head:first-child,
       .automation-spec-card.editable-cell-card .automation-spec-row-head:first-child {
-        border-radius: 13px 13px 0 0;
+        border-radius: var(--table-card-radius) var(--table-card-radius) 0 0;
       }
 
       .automation-spec-card.sort-filter-card .automation-spec-row:last-child,
       .automation-spec-card.search-filter-card .automation-spec-row:last-child,
       .automation-spec-card.editable-cell-card .automation-spec-row:last-child {
-        border-radius: 0 0 13px 13px;
+        border-radius: 0 0 var(--table-card-radius) var(--table-card-radius);
       }
 
       .automation-spec-row-head > div {
@@ -1109,7 +1155,7 @@
         margin-left: -6px;
         padding: 0 6px;
         border: 0;
-        border-radius: 6px;
+        border-radius: var(--radius-sm);
         background: transparent;
         color: inherit;
         cursor: pointer;
@@ -1137,7 +1183,7 @@
         padding: 5px 8px;
         content: attr(data-tooltip);
         border-radius: 6px;
-        background: rgba(32, 37, 42, 0.92);
+        background: var(--table-tooltip-bg);
         color:var(--color-text-inverse);
         font-size: 11.5px;
         font-weight: 400;
@@ -1149,7 +1195,7 @@
       .table-head-action[data-tooltip]::after {
         bottom: calc(100% + 3px);
         content: "";
-        border-top: 5px solid rgba(32, 37, 42, 0.92);
+        border-top: 5px solid var(--table-tooltip-bg);
         border-right: 5px solid transparent;
         border-left: 5px solid transparent;
       }
@@ -1163,13 +1209,13 @@
       }
 
       .table-head-action:hover {
-        background: #eef1f3;
-        color: #33383d;
+        background: var(--table-control-hover-bg);
+        color: var(--table-title-text);
       }
 
       .table-head-action.active {
-        background: #e9f8f1;
-        color: var(--brand-text);
+        background: var(--table-control-active-bg);
+        color: var(--table-control-active-text);
       }
 
       .table-head-tools {
@@ -1213,20 +1259,20 @@
 
       .table-sort-mark::before {
         top: 1px;
-        border-bottom: 4px solid #c4cbd2;
+        border-bottom: 4px solid var(--color-border-strong);
       }
 
       .table-sort-mark::after {
         bottom: 1px;
-        border-top: 4px solid #c4cbd2;
+        border-top: 4px solid var(--color-border-strong);
       }
 
       .table-sort-mark.desc::after {
-        border-top-color: var(--brand-text);
+        border-top-color: var(--table-control-active-text);
       }
 
       .table-sort-mark.asc::before {
-        border-bottom-color: var(--brand-text);
+        border-bottom-color: var(--table-control-active-text);
       }
 
       .table-filter-mark {
@@ -1266,8 +1312,8 @@
         gap: 4px;
         padding: 0 7px;
         border-radius: 999px;
-        background: #e9f8f1;
-        color: var(--brand-text);
+        background: var(--table-control-active-bg);
+        color: var(--table-control-active-text);
         font-size: 11.5px;
         font-weight: 600;
         white-space: nowrap;
@@ -1286,9 +1332,10 @@
         z-index: 80;
         width: var(--table-filter-menu-width);
         padding: 8px;
-        border: 1px solid #e3e7eb;
-        border-radius: 10px;
-        background:var(--color-bg-container);
+        border: 1px solid var(--table-overlay-border);
+        border-radius: var(--radius-md);
+        background: var(--table-overlay-bg);
+        box-shadow: var(--shadow-overlay);
       }
 
       .table-filter-menu[hidden] {
@@ -1308,11 +1355,11 @@
         gap: 8px;
         padding: 0 8px;
         border: 0;
-        border-radius: 7px;
+        border-radius: var(--radius-sm);
         background: transparent;
-        color: #4f565d;
+        color: var(--table-text-color);
         cursor: pointer;
-        font-size: 12.5px;
+        font-size: var(--text-control-size);
         text-align: left;
       }
 
@@ -1324,7 +1371,7 @@
       }
 
       .table-filter-option:hover {
-        background: #fafbfc;
+        background: var(--table-row-hover-bg);
       }
 
       .table-filter-option input {
@@ -1332,7 +1379,7 @@
       }
 
       .table-filter-option.selected {
-        color: var(--brand-text);
+        color: var(--table-control-active-text);
         font-weight: 600;
       }
 
@@ -1341,7 +1388,7 @@
         justify-content: flex-end;
         gap: 6px;
         padding-top: 8px;
-        border-top: 1px solid #eef1f3;
+        border-top: 1px solid var(--table-border-color);
       }
 
       .table-filter-menu-btn {
@@ -1351,21 +1398,21 @@
         justify-content: center;
         padding: 0 10px;
         border: 0;
-        border-radius: 7px;
-        background: #f5f6f8;
-        color: #4f565d;
+        border-radius: var(--radius-sm);
+        background: var(--table-control-hover-bg);
+        color: var(--table-text-color);
         cursor: pointer;
         font-size:var(--text-caption-size);
         font-weight: 500;
       }
 
       .table-filter-menu-btn:hover {
-        background: #eef1f3;
+        background: var(--color-border-subtle);
       }
 
       .table-filter-menu-btn.primary {
-        background: var(--table-pagination-active-bg);
-        color: var(--brand-text);
+        background: var(--table-control-active-bg);
+        color: var(--table-control-active-text);
       }
 
       .table-search-control {
@@ -1376,10 +1423,10 @@
         align-items: center;
         gap: 6px;
         padding: 8px;
-        border: 1px solid #dde1e5;
-        border-radius: 8px;
-        background:var(--color-bg-container);
-        color: #4f565d;
+        border: 1px solid var(--table-control-border);
+        border-radius: var(--radius-md);
+        background: var(--table-control-bg);
+        color: var(--table-text-color);
       }
 
       .table-search-control::before {
@@ -1387,9 +1434,9 @@
         height: 12px;
         flex: 0 0 auto;
         content: "";
-        border: 1.5px solid #969ba1;
+        border: 1.5px solid var(--table-muted-text);
         border-radius: 50%;
-        box-shadow: 5px 5px 0 -4px #969ba1;
+        box-shadow: 5px 5px 0 -4px var(--table-muted-text);
         transform: rotate(-12deg);
       }
 
@@ -1409,19 +1456,19 @@
         border: 0;
         border-radius: 6px;
         background: transparent;
-        color: #8a9199;
+        color: var(--table-header-text);
         cursor: pointer;
       }
 
       .table-search-icon-btn:hover,
       .table-search-icon-btn.open {
-        background: #eef1f3;
-        color: #33383d;
+        background: var(--table-control-hover-bg);
+        color: var(--table-title-text);
       }
 
       .table-search-icon-btn.active {
-        background: #e9f8f1;
-        color: var(--brand-text);
+        background: var(--table-control-active-bg);
+        color: var(--table-control-active-text);
       }
 
       .table-search-icon-btn::before {
@@ -1453,8 +1500,8 @@
         top: calc(100% + 8px);
         left: 0;
         z-index: 12;
-        width: 260px;
-        max-width: 260px;
+        width: var(--table-search-popover-width);
+        max-width: var(--table-search-popover-width);
         overflow: hidden;
         pointer-events: none;
         opacity: 0;
@@ -1487,12 +1534,12 @@
         width: 100%;
         height: 30px;
         padding: 0 30px;
-        border: 1px solid #dde1e5;
-        border-radius: 7px;
+        border: 1px solid var(--table-control-border);
+        border-radius: var(--radius-sm);
         outline: 0;
-        background:var(--color-bg-container);
-        color: #33383d;
-        font-size: 12.5px;
+        background: var(--table-control-bg);
+        color: var(--table-title-text);
+        font-size: var(--text-control-size);
       }
 
       .table-search-input[type="search"]::-webkit-search-cancel-button {
@@ -1500,12 +1547,12 @@
       }
 
       .table-search-input:focus {
-        border-color: var(--brand-text);
+        border-color: var(--color-border-focus);
         box-shadow: var(--shadow-focus);
       }
 
       .table-search-input::placeholder {
-        color: #a5adb6;
+        color: var(--table-placeholder-text);
       }
 
       .input-clear-icon {
@@ -1521,7 +1568,7 @@
         border: 0;
         border-radius: 999px;
         background: transparent;
-        color: #969ba1;
+        color: var(--table-muted-text);
         cursor: pointer;
         transform: translateY(-50%);
       }
@@ -1531,8 +1578,8 @@
       }
 
       .input-clear-icon:hover {
-        background: #f5f6f8;
-        color: #4f565d;
+        background: var(--table-control-hover-bg);
+        color: var(--table-text-color);
       }
 
       .input-clear-icon::before,
@@ -1569,26 +1616,26 @@
         justify-content: center;
         padding: 0 10px;
         border: 0;
-        border-radius: 7px;
-        background: #f5f6f8;
-        color: #4f565d;
+        border-radius: var(--radius-sm);
+        background: var(--table-control-hover-bg);
+        color: var(--table-text-color);
         cursor: pointer;
         font-size:var(--text-caption-size);
         font-weight: 500;
       }
 
       .table-search-action:hover {
-        background: #eef1f3;
+        background: var(--color-border-subtle);
       }
 
       .table-search-action.primary {
-        background: #e9f8f1;
-        color: var(--brand-text);
+        background: var(--table-control-active-bg);
+        color: var(--table-control-active-text);
       }
 
       .table-search-empty {
         display: none;
-        border-bottom: 1px solid #eef1f3;
+        border-bottom: 1px solid var(--table-border-color);
       }
 
       .table-search-empty.visible {
@@ -1596,22 +1643,22 @@
       }
 
       .automation-task-title {
-        color: #1a1d1f;
-        font-size: 13.5px;
+        color: var(--table-title-text);
+        font-size: var(--text-control-size);
         font-weight: 600;
       }
 
       .automation-task-sub {
         margin-top: 3px;
         overflow: hidden;
-        color: #969ba1;
+        color: var(--table-muted-text);
         font-size: 11.5px;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
 
       .automation-spec-row.is-disabled {
-        color: #a5adb6;
+        color: var(--table-disabled-text);
       }
 
       .automation-spec-row.is-disabled .automation-task-title,
@@ -1624,14 +1671,14 @@
       .automation-spec-row.is-disabled .automation-spec-action {
         cursor: default;
         border-color:var(--color-border-default);
-        background:var(--color-bg-container);
+        background: var(--table-control-bg);
         opacity: 0.55;
       }
 
       .automation-spec-row.is-disabled .automation-spec-action:hover {
         border-color:var(--color-border-default);
         color:var(--color-text-disabled);
-        background:var(--color-bg-container);
+        background: var(--table-control-bg);
       }
 
       .table-expand-btn {
@@ -1643,15 +1690,15 @@
         justify-content: center;
         padding: 0;
         border: 0;
-        border-radius: 4px;
-        background: #f5f6f8;
-        color: #626a73;
+        border-radius: var(--radius-xs);
+        background: var(--table-control-hover-bg);
+        color: var(--table-text-color);
         cursor: pointer;
       }
 
       .table-expand-btn:hover {
-        background: #eef1f3;
-        color: #33383d;
+        background: var(--color-border-subtle);
+        color: var(--table-title-text);
       }
 
       .table-expand-btn::before,
@@ -1684,16 +1731,16 @@
         justify-content: center;
         padding: 0;
         border: 0;
-        border-radius: 5px;
+        border-radius: var(--radius-xs);
         background: transparent;
-        color: #969ba1;
+        color: var(--table-muted-text);
         cursor: grab;
       }
 
       .table-drag-handle:hover,
       .table-drag-handle:focus-visible {
-        background: #eef1f3;
-        color: #626a73;
+        background: var(--table-control-hover-bg);
+        color: var(--table-text-color);
       }
 
       .table-drag-handle:active {
@@ -1717,8 +1764,8 @@
 
       .automation-expand-panel {
         padding: 14px 16px 16px;
-        border-bottom: 1px solid #eef1f3;
-        background: #fafbfc;
+        border-bottom: 1px solid var(--table-border-color);
+        background: var(--table-header-bg);
       }
 
       .automation-expand-panel[hidden] {
@@ -1738,7 +1785,7 @@
       .automation-expand-label {
         display: block;
         margin-bottom: 3px;
-        color: #969ba1;
+        color: var(--table-muted-text);
         font-size: 11.5px;
         line-height: 1.4;
       }
@@ -1746,20 +1793,20 @@
       .automation-expand-value {
         display: block;
         overflow: hidden;
-        color: #4f565d;
-        font-size: 12.5px;
+        color: var(--table-text-color);
+        font-size: var(--text-control-size);
         line-height: 1.5;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
 
       .automation-result {
-        color: var(--brand-text);
+        color: var(--color-status-success-text);
         font-weight: 600;
       }
 
       .automation-result.failed {
-        color: #e55353;
+        color: var(--color-status-error-text);
       }
 
       .editable-cell-input {
@@ -1770,11 +1817,11 @@
         margin-left: -8px;
         padding: 0 7px;
         border: 1px solid transparent;
-        border-radius: 7px;
+        border-radius: var(--radius-sm);
         outline: 0;
         background: transparent;
-        color: #33383d;
-        font-size: 12.5px;
+        color: var(--table-title-text);
+        font-size: var(--text-control-size);
       }
 
       .editable-cell-input:hover {
@@ -1786,8 +1833,8 @@
         width: 100%;
         margin-left: 0;
         padding: 0 8px;
-        border-color: var(--brand-text);
-        background:var(--color-bg-container);
+        border-color: var(--color-border-focus);
+        background: var(--table-control-bg);
         box-shadow: var(--shadow-focus);
       }
 
@@ -1814,12 +1861,12 @@
         margin-left: -8px;
         padding: 0 30px;
         border: 1px solid transparent;
-        border-radius: 8px;
+        border-radius: var(--radius-md);
         outline: 0;
         background: transparent;
-        color: #33383d;
+        color: var(--table-title-text);
         cursor: pointer;
-        font-size: 12.5px;
+        font-size: var(--text-control-size);
         line-height: 1.4;
         transition:
           border-color 0.15s ease,
@@ -1829,14 +1876,15 @@
 
       .table-spec-select.open,
       .table-select-demo.open .table-spec-select {
-        border-color: var(--brand-text);
-        background:var(--color-bg-container);
+        border-color: var(--color-border-focus);
+        background: var(--table-control-bg);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .table-spec-select:focus-visible {
-        border-color: var(--brand-text);
-        background:var(--color-bg-container);
-        box-shadow: var(--shadow-focus);
+        border-color: var(--color-border-focus);
+        background: var(--table-control-bg);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .table-select-value {
@@ -1856,7 +1904,7 @@
         height: 7px;
         border-right: 1.3px solid currentColor;
         border-bottom: 1.3px solid currentColor;
-        color: #969ba1;
+        color: var(--table-muted-text);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%) rotate(45deg);
@@ -1882,9 +1930,10 @@
         z-index: 70;
         width: max(100%, 180px);
         padding: 6px;
-        border:1px solid var(--color-border-subtle);
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.96);
+        border:1px solid var(--table-overlay-border);
+        border-radius: var(--radius-md);
+        background: var(--table-overlay-bg);
+        box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
 
@@ -1907,25 +1956,25 @@
         justify-content: space-between;
         gap: 10px;
         padding: 0 8px;
-        border-radius: 7px;
-        color: #33383d;
+        border-radius: var(--radius-sm);
+        color: var(--table-title-text);
         cursor: pointer;
-        font-size: 12.5px;
+        font-size: var(--text-control-size);
         line-height: 1.4;
       }
 
       .table-select-option:hover {
-        background: #f5f6f8;
+        background: var(--table-control-hover-bg);
       }
 
       .table-select-option.active {
         background: transparent;
-        color: var(--brand-text);
+        color: var(--table-control-active-text);
       }
 
       .table-select-option.active:hover {
-        background: #f5f6f8;
-        color: var(--brand-text);
+        background: var(--table-control-hover-bg);
+        color: var(--table-control-active-text);
       }
 
       .table-select-option span:first-child {
@@ -1949,7 +1998,7 @@
         width: 4px;
         height: 7px;
         content: "";
-        border: solid var(--brand-text);
+        border: solid var(--table-control-active-text);
         border-width: 0 1.5px 1.5px 0;
         transform: translate(-50%, -50%) rotate(45deg);
       }
@@ -1961,8 +2010,8 @@
         max-width: 100%;
         padding: 0 8px;
         overflow: hidden;
-        color: #4f565d;
-        font-size: 12.5px;
+        color: var(--table-text-color);
+        font-size: var(--text-control-size);
         text-overflow: ellipsis;
         white-space: nowrap;
       }
@@ -1974,21 +2023,21 @@
         width: fit-content;
         padding: 3px 9px;
         border-radius: 999px;
-        background: #e9f8f1;
-        color: var(--brand-text);
+        background: var(--table-control-active-bg);
+        color: var(--table-control-active-text);
         font-size:var(--text-caption-size);
         font-weight: 600;
         white-space: nowrap;
       }
 
       .automation-inline-status.warning {
-        background: #fffaeb;
-        color: #b7791f;
+        background: var(--color-status-warning-bg);
+        color: var(--color-status-warning-text);
       }
 
       .automation-inline-status.paused {
-        background: #f5f6f8;
-        color: #8a9199;
+        background: var(--table-control-hover-bg);
+        color: var(--table-muted-text);
       }
 
       .automation-switch {
@@ -2007,7 +2056,7 @@
 
       .automation-switch[aria-checked="false"],
       .automation-switch.paused {
-        border: 1px solid rgba(16, 24, 40, 0.04);
+        border: 1px solid var(--color-border-subtle);
         background: var(--switch-color-off);
       }
 
@@ -2061,7 +2110,7 @@
         padding: 0 9px;
         border: 1px solid var(--color-border-default);
         border-radius: 8px;
-        background:var(--color-bg-container);
+        background: var(--table-control-bg);
         color:var(--color-text-default);
         cursor: pointer;
         font-size:var(--text-caption-size);
@@ -2075,12 +2124,12 @@
 
       .automation-spec-action:hover {
         border-color:var(--color-action-primary);
-        color: var(--brand-text);
+        color: var(--table-control-active-text);
       }
 
       .automation-spec-action:disabled {
         border-color:var(--color-border-default);
-        background:var(--color-bg-container);
+        background: var(--table-control-bg);
         color:var(--color-text-disabled);
         cursor: not-allowed;
         opacity: 0.55;
@@ -2088,74 +2137,74 @@
 
       .automation-spec-action:disabled:hover {
         border-color:var(--color-border-default);
-        background:var(--color-bg-container);
+        background: var(--table-control-bg);
         color:var(--color-text-disabled);
       }
 
       .automation-spec-action.primary {
         border-color:var(--color-action-primary);
-        background:var(--color-bg-container);
-        color: var(--brand-text);
+        background: var(--table-control-bg);
+        color: var(--table-control-active-text);
       }
 
       .automation-spec-action.primary:hover {
-        border-color: var(--brand-text);
-        background: var(--brand-50);
-        color: var(--brand-text-hover);
+        border-color: var(--color-action-primary-hover);
+        background: var(--table-control-active-bg);
+        color: var(--table-control-active-text);
       }
 
       .automation-spec-action.primary-solid {
         border-color:var(--color-action-primary);
-        background:var(--color-action-primary);
+        background: var(--table-primary-action-bg);
         color:var(--color-text-inverse);
       }
 
       .automation-spec-action.primary-solid:hover {
-        border-color: var(--brand-text);
-        background: var(--brand-text);
+        border-color: var(--color-action-primary-hover);
+        background: var(--color-action-primary-hover);
         color:var(--color-text-inverse);
       }
 
       .automation-spec-head-actions .automation-spec-action[data-bulk-action]:not(:disabled) {
         border-color: transparent;
-        background: #f5f6f8;
-        color: #4f565d;
+        background: var(--table-control-hover-bg);
+        color: var(--table-text-color);
       }
 
       .automation-spec-head-actions .automation-spec-action[data-bulk-action]:not(:disabled):hover {
         border-color: transparent;
-        background: #eef1f3;
-        color: #1a1d1f;
+        background: var(--color-border-subtle);
+        color: var(--table-title-text);
       }
 
       .automation-spec-head-actions .automation-spec-action.primary[data-bulk-action]:not(:disabled) {
         border-color:var(--color-action-primary);
-        background:var(--color-action-primary);
+        background: var(--table-primary-action-bg);
         color:var(--color-text-inverse);
       }
 
       .automation-spec-head-actions .automation-spec-action.primary[data-bulk-action]:not(:disabled):hover {
-        border-color: var(--brand-text);
-        background: var(--brand-text);
+        border-color: var(--color-action-primary-hover);
+        background: var(--color-action-primary-hover);
         color:var(--color-text-inverse);
       }
 
       .automation-spec-action.danger {
         border-color: var(--color-status-error);
-        background:var(--color-bg-container);
-        color: #d92d20;
+        background: var(--table-control-bg);
+        color: var(--color-status-error-text);
       }
 
       .automation-spec-action.danger:hover {
-        border-color: #d92d20;
-        background: #fff1f0;
-        color: #b42318;
+        border-color: var(--color-status-error-text);
+        background: var(--color-status-error-bg);
+        color: var(--color-status-error-text-hover);
       }
 
       .automation-spec-action.primary:disabled {
-        border-color: #dde1e5;
-        background:var(--color-bg-container);
-        color: #a5adb6;
+        border-color: var(--table-control-border);
+        background: var(--table-control-bg);
+        color: var(--table-disabled-text);
       }
 
       .table-select-control {
@@ -2164,9 +2213,9 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid #cfd6dc;
+        border: 1.4px solid var(--table-control-border);
         appearance: none;
-        background:var(--color-bg-container);
+        background: var(--table-control-bg);
         cursor: pointer;
         outline: 0;
         transition:
@@ -2180,7 +2229,7 @@
         left: 50%;
         top: 50%;
         content: "";
-        background:var(--color-bg-container);
+        background: var(--table-control-bg);
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.7);
         transition:
@@ -2199,7 +2248,7 @@
       }
 
       .table-select-control[type="checkbox"] {
-        border-radius: 4px;
+        border-radius: var(--radius-xs);
       }
 
       .table-select-control[type="checkbox"]::after {
@@ -2210,16 +2259,16 @@
 
       .table-select-control:checked {
         border-color:var(--color-action-primary);
-        background:var(--color-action-primary);
+        background: var(--table-primary-action-bg);
       }
 
       .table-select-control[type="checkbox"]:indeterminate {
         border-color:var(--color-action-primary);
-        background:var(--color-action-primary);
+        background: var(--table-primary-action-bg);
       }
 
       .table-select-control[type="radio"]:checked {
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        box-shadow: var(--shadow-focus);
       }
 
       .table-select-control:checked::after {
@@ -2231,7 +2280,7 @@
         width: 7px;
         height: 0;
         clip-path: none;
-        border: solid #fff;
+        border: solid var(--color-text-inverse);
         border-width: 0 0 1.6px;
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -2242,13 +2291,13 @@
       }
 
       .table-select-control:disabled {
-        border-color: #dfe3e7;
-        background: #f0f2f4;
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
         cursor: not-allowed;
       }
 
       .table-select-control:disabled::after {
-        background: #c1c7ce;
+        background: var(--color-text-disabled);
       }
 
       .selection-summary {
@@ -2281,10 +2330,10 @@
         justify-content: center;
         gap: 5px;
         padding: 0 14px;
-        border: 1px solid #dde1e5;
-        border-radius: 8px;
-        background:var(--color-bg-container);
-        color: #33383d;
+        border: 1px solid var(--table-control-border);
+        border-radius: var(--radius-md);
+        background: var(--table-control-bg);
+        color: var(--table-title-text);
         cursor: pointer;
         font-size:var(--text-control-size);
         font-weight: 400;
@@ -2293,7 +2342,7 @@
 
       .spec-btn:hover {
         border-color:var(--color-action-primary);
-        color: var(--brand-text);
+        color: var(--table-control-active-text);
       }
 
       .spec-btn:focus-visible,
@@ -2306,14 +2355,14 @@
 
       .spec-btn.primary {
         border-color:var(--color-action-primary);
-        background:var(--color-action-primary);
+        background: var(--table-primary-action-bg);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.subtle {
         border-color: transparent;
-        background: #f5f6f8;
-        color: #4f565d;
+        background: var(--table-control-hover-bg);
+        color: var(--table-text-color);
       }
 
       .segmented-tabs {
@@ -2325,9 +2374,9 @@
         height: 40px;
         padding: 3px;
         overflow-x: auto;
-        border: 1px solid #e6eaee;
-        border-radius: 10px;
-        background: #eef1f4;
+        border: 1px solid var(--table-border-color);
+        border-radius: var(--radius-md);
+        background: var(--table-control-hover-bg);
       }
 
       .segmented-tab {
@@ -2337,9 +2386,9 @@
         gap: 4px;
         padding: 0 10px;
         border: 0;
-        border-radius: 8px;
+        border-radius: var(--radius-md);
         background: transparent;
-        color: #6b7178;
+        color: var(--table-text-color);
         cursor: pointer;
         font-size:var(--text-control-size);
         font-weight: 500;
@@ -2347,16 +2396,16 @@
       }
 
       .segmented-tab:hover {
-        color: var(--brand-text-hover);
+        color: var(--table-control-active-text);
       }
 
       .segmented-tab.active {
-        background:var(--color-bg-container);
-        color: #1a1d1f;
+        background: var(--table-control-bg);
+        color: var(--table-title-text);
       }
 
       .segmented-tab-count {
-        color: #969ba1;
+        color: var(--table-muted-text);
         font-size: 11px;
         font-weight: 500;
       }
@@ -2365,7 +2414,7 @@
         margin-top: 14px;
         overflow: hidden;
         background:var(--color-bg-container);
-        border:1px solid var(--color-border-subtle);
+        border:1px solid var(--table-border-color);
         border-radius: var(--radius-sm);
       }
 
@@ -2375,7 +2424,7 @@
         justify-content: space-between;
         gap: 12px;
         padding: 12px;
-        border-bottom:1px solid var(--color-border-subtle);
+        border-bottom:1px solid var(--table-border-color);
       }
 
       .table-toolbar-left,
@@ -2390,9 +2439,9 @@
         width: 180px;
         height: 32px;
         padding: 0 10px;
-        color: var(--gray-800);
-        background:var(--color-bg-container);
-        border: 1px solid #dde1e5;
+        color: var(--table-title-text);
+        background: var(--table-control-bg);
+        border: 1px solid var(--table-control-border);
         border-radius: var(--radius-sm);
       }
 
@@ -2414,16 +2463,16 @@
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
-        border-radius: 8px;
-        background: #e6fff4;
-        color: var(--brand-text);
+        border-radius: var(--radius-md);
+        background: var(--color-status-success-bg);
+        color: var(--color-status-success-text);
         font-size:var(--text-control-size);
         font-weight: 700;
       }
 
       .agent-avatar.warning {
-        background: #fffaeb;
-        color: #c8842a;
+        background: var(--color-status-warning-bg);
+        color: var(--color-status-warning-text);
       }
 
       .agent-name-main,
@@ -2449,7 +2498,7 @@
 
       .data-table-wrap {
         overflow-x: auto;
-        scrollbar-color: #cfd5db transparent;
+        scrollbar-color: var(--table-scrollbar-thumb) transparent;
         scrollbar-width: thin;
       }
 
@@ -2458,7 +2507,7 @@
         min-width: 760px;
         border-collapse: separate;
         border-spacing: 0;
-        color: var(--gray-800);
+        color: var(--table-text-color);
         font-size:var(--text-control-size);
       }
 
@@ -2466,7 +2515,7 @@
       .data-table td {
         height: 44px;
         padding: 0 14px;
-        border-bottom:1px solid var(--color-border-subtle);
+        border-bottom:1px solid var(--table-border-color);
         text-align: left;
         vertical-align: middle;
         white-space: nowrap;
@@ -2474,18 +2523,18 @@
 
       .data-table th {
         height: 40px;
-        color:var(--color-text-secondary);
-        background: #f7f8fa;
+        color: var(--table-header-text);
+        background: var(--table-header-bg);
         font-size:var(--text-caption-size);
         font-weight: 500;
       }
 
       .data-table tbody tr:hover td {
-        background: #fbfcfd;
+        background: var(--table-row-hover-bg);
       }
 
       .data-table tr.selected td {
-        background: rgb(var(--brand-rgb) / 0.05);
+        background: var(--table-row-selected-bg);
       }
 
       .data-table tr:last-child td {
@@ -2505,19 +2554,19 @@
         align-items: center;
         min-height: 22px;
         padding: 0 8px;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         font-size:var(--text-caption-size);
         line-height: 1.2;
       }
 
       .status-pill.success {
-        color: #15734a;
-        background: rgb(var(--brand-rgb) / 0.1);
+        color: var(--color-status-success-text);
+        background: var(--color-status-success-bg);
       }
 
       .status-pill.warning {
-        color: #8a5a00;
-        background: #fff3cf;
+        color: var(--color-status-warning-text);
+        background: var(--color-status-warning-bg);
       }
 
       .status-pill.neutral {
@@ -2536,7 +2585,7 @@
         align-items: center;
         justify-content: center;
         padding: 0;
-        color: var(--brand-text);
+        color: var(--table-control-active-text);
         background: transparent;
         border: 0;
         cursor: pointer;
@@ -2548,144 +2597,7 @@
       }
 
       .table-action.danger {
-        color: #d73737;
-      }
-
-      .table-pagination {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 8px;
-        padding: 12px;
-        color:var(--color-text-secondary);
-        border-top:1px solid var(--color-border-subtle);
-        font-size:var(--text-caption-size);
-      }
-
-      .automation-spec-group > .table-pagination {
-        padding: 10px 0 0;
-        border-top: 0;
-      }
-
-      .pager-btn {
-        width: var(--table-pagination-size);
-        height: var(--table-pagination-size);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        border: 1px solid transparent;
-        border-radius: var(--radius-sm);
-        background: transparent;
-        color:var(--color-text-default);
-        cursor: pointer;
-      }
-
-      .pager-btn:not(.current):not(:disabled):hover {
-        background: #f5f6f8;
-        color: #4f565d;
-      }
-
-      .pager-btn.arrow {
-        border-color: transparent;
-        background: transparent;
-        color:var(--color-text-tertiary);
-      }
-
-      .pager-btn.arrow:not(:disabled):hover {
-        background: #f5f6f8;
-        color: #4f565d;
-      }
-
-      .pager-btn:disabled {
-        cursor: not-allowed;
-        opacity: 0.45;
-      }
-
-      .pager-btn.current {
-        border-color: transparent;
-        color: var(--brand-text);
-        background: var(--table-pagination-active-bg);
-      }
-
-      .page-size-select {
-        position: relative;
-        margin-left: 4px;
-      }
-
-      .page-size-trigger {
-        height: var(--table-pagination-size);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 6px;
-        padding: 0 8px 0 10px;
-        border: 1px solid #dde1e5;
-        border-radius: 8px;
-        background:var(--color-bg-container);
-        color: #4f565d;
-        cursor: pointer;
-        font-size:var(--text-caption-size);
-        white-space: nowrap;
-      }
-
-      .page-size-trigger:hover,
-      .page-size-select.open .page-size-trigger {
-        border-color: var(--brand-text);
-        color: var(--brand-text);
-      }
-
-      .page-size-trigger::after {
-        width: 6px;
-        height: 6px;
-        content: "";
-        border-right: 1.2px solid currentColor;
-        border-bottom: 1.2px solid currentColor;
-        transform: rotate(45deg) translateY(-1px);
-      }
-
-      .page-size-select.open .page-size-trigger::after {
-        transform: rotate(225deg) translate(-1px, -1px);
-      }
-
-      .page-size-menu {
-        position: absolute;
-        right: 0;
-        bottom: calc(100% + 6px);
-        z-index: 20;
-        width: 112px;
-        padding: 6px;
-        border: 1px solid #e3e7eb;
-        border-radius: 10px;
-        background:var(--color-bg-container);
-      }
-
-      .page-size-menu[hidden] {
-        display: none;
-      }
-
-      .page-size-option {
-        width: 100%;
-        min-height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 8px;
-        border: 0;
-        border-radius: 7px;
-        background: transparent;
-        color: #4f565d;
-        cursor: pointer;
-        font-size: 12.5px;
-      }
-
-      .page-size-option:hover {
-        background: #fafbfc;
-      }
-
-      .page-size-option.selected {
-        background: #e9f8f1;
-        color: var(--brand-text);
-        font-weight: 600;
+        color: var(--color-status-error-text);
       }
 
       .density-demo {
@@ -2694,7 +2606,7 @@
         border-collapse: separate;
         border-spacing: 0;
         background:var(--color-bg-container);
-        border:1px solid var(--color-border-subtle);
+        border:1px solid var(--table-border-color);
         border-radius: var(--radius-sm);
         overflow: hidden;
       }
@@ -2702,15 +2614,15 @@
       .density-demo th,
       .density-demo td {
         padding: 0 12px;
-        border-bottom:1px solid var(--color-border-subtle);
+        border-bottom:1px solid var(--table-border-color);
         text-align: left;
         font-size:var(--text-control-size);
       }
 
       .density-demo th {
         height: var(--table-row-height-default);
-        color:var(--color-text-secondary);
-        background: #f7f8fa;
+        color: var(--table-header-text);
+        background: var(--table-header-bg);
         font-size:var(--text-caption-size);
         font-weight: 500;
       }
@@ -2757,7 +2669,7 @@
         overflow-x: auto;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-sm);
-        scrollbar-color: #cfd5db transparent;
+        scrollbar-color: var(--table-scrollbar-thumb) transparent;
         scrollbar-width: thin;
       }
 
@@ -2777,8 +2689,8 @@
       }
 
       .spec-table th {
-        color:var(--color-text-default);
-        background: var(--gray-50);
+        color: var(--table-header-text);
+        background: var(--table-header-bg);
         font-weight: 600;
       }
 
@@ -2787,9 +2699,9 @@
       }
 
       .spec-table code {
-        color: var(--gray-800);
+        color: var(--table-title-text);
         background:var(--color-bg-subtle);
-        border-radius: 4px;
+        border-radius: var(--radius-xs);
         padding: 2px 5px;
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
         font-size:var(--text-caption-size);
@@ -2911,18 +2823,20 @@
       :root[data-product-theme="default-theme"] .spec-input-wrap.focus,
       :root[data-product-theme="default-theme"] .spec-input-wrap.is-focus,
       :root[data-product-theme="default-theme"] .spec-input-wrap:focus-within,
+      :root[data-product-theme="default-theme"] .number-input:focus-within {
+        box-shadow: var(--shadow-focus);
+      }
+
       :root[data-product-theme="default-theme"] .product-select-trigger[aria-expanded="true"],
       :root[data-product-theme="default-theme"] .palette-select-trigger[aria-expanded="true"],
-      :root[data-product-theme="default-theme"] .number-input:focus-within,
       :root[data-product-theme="default-theme"] .spec-select.open,
       :root[data-product-theme="default-theme"] .spec-date.open,
       :root[data-product-theme="default-theme"] .spec-time.open,
       :root[data-product-theme="default-theme"] .time-input-control.open,
       :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="default-theme"] .table-spec-select.open,
-      :root[data-product-theme="default-theme"] .page-size-select.open .page-size-trigger,
       :root[data-product-theme="default-theme"] .table-select-demo.open .table-spec-select {
-        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       :root[data-product-theme="default-theme"] .spec-input-wrap .spec-input:focus,
@@ -2941,7 +2855,7 @@
       :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="business-theme"] .table-spec-select.open,
       :root[data-product-theme="business-theme"] .table-select-demo.open .table-spec-select {
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       /* 实验主题 使用更克制的 2px 控件圆角。 */
@@ -3018,7 +2932,7 @@
         </a>
         <div class="topbar-actions" aria-label="组件完成状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 45/46</span>
+          <span data-component-count-label>Active components 46/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -3123,6 +3037,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -3281,7 +3230,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../index.html#card">
+                    <a class="nav-button" href="../datadisplay/card.html">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -3996,316 +3945,6 @@
               </section>
 
               <section class="doc-section">
-                <h2>分页器类型</h2>
-                <div class="doc-grid">
-                  <div class="example-block full table-example-block">
-                    <h3>分页数量</h3>
-                    <p>用于在分页器中调整每页展示条数。分页数量选择器位于分页器右侧，默认 5 条/页，并展示真实列表数量。</p>
-                    <div class="automation-spec-group" aria-label="分页数量案例示意" data-page-size-demo>
-                      <div class="automation-spec-card">
-                        <div class="automation-spec-table">
-                          <div class="automation-spec-row automation-spec-row-head sort-filter">
-                            <div>任务名称</div>
-                            <div>调度规则</div>
-                            <div>下次执行</div>
-                            <div>最近结果</div>
-                            <div>状态</div>
-                            <div>操作</div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 A</div></div>
-                            <div>每 2 小时执行一次</div>
-                            <div>今天 10:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions">
-                              <button class="automation-spec-action" type="button">执行记录</button>
-                            </div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 B</div></div>
-                            <div>每天 14:00 执行</div>
-                            <div>今天 14:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions">
-                              <button class="automation-spec-action" type="button">执行记录</button>
-                            </div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 C</div></div>
-                            <div>每天 09:30 执行</div>
-                            <div>明天 09:30</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions">
-                              <button class="automation-spec-action primary" type="button">重试</button>
-                            </div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 D</div></div>
-                            <div>每 4 小时执行一次</div>
-                            <div>明天 12:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions">
-                              <button class="automation-spec-action" type="button">执行记录</button>
-                            </div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 E</div></div>
-                            <div>每天 18:00 执行</div>
-                            <div>明天 18:00</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 F</div></div>
-                            <div>每 6 小时执行一次</div>
-                            <div>后天 08:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 G</div></div>
-                            <div>每天 21:00 执行</div>
-                            <div>后天 21:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 H</div></div>
-                            <div>每 8 小时执行一次</div>
-                            <div>周五 10:00</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 I</div></div>
-                            <div>每天 07:30 执行</div>
-                            <div>周五 07:30</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 J</div></div>
-                            <div>每 12 小时执行一次</div>
-                            <div>周五 18:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 K</div></div>
-                            <div>每天 11:00 执行</div>
-                            <div>周六 11:00</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 L</div></div>
-                            <div>每 3 小时执行一次</div>
-                            <div>周六 14:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 M</div></div>
-                            <div>每天 16:30 执行</div>
-                            <div>周六 16:30</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 N</div></div>
-                            <div>每 5 小时执行一次</div>
-                            <div>周六 20:00</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 O</div></div>
-                            <div>每天 08:45 执行</div>
-                            <div>周日 08:45</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 P</div></div>
-                            <div>每 10 小时执行一次</div>
-                            <div>周日 12:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 Q</div></div>
-                            <div>每天 13:30 执行</div>
-                            <div>周日 13:30</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 R</div></div>
-                            <div>每 2 小时执行一次</div>
-                            <div>周日 15:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 S</div></div>
-                            <div>每天 17:00 执行</div>
-                            <div>下周一 17:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 T</div></div>
-                            <div>每 7 小时执行一次</div>
-                            <div>下周一 19:00</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 U</div></div>
-                            <div>每天 06:00 执行</div>
-                            <div>下周二 06:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 V</div></div>
-                            <div>每 9 小时执行一次</div>
-                            <div>下周二 09:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 W</div></div>
-                            <div>每天 12:30 执行</div>
-                            <div>下周二 12:30</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 X</div></div>
-                            <div>每 11 小时执行一次</div>
-                            <div>下周二 22:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 Y</div></div>
-                            <div>每天 20:30 执行</div>
-                            <div>下周三 20:30</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 Z</div></div>
-                            <div>每 4 小时执行一次</div>
-                            <div>下周三 23:00</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 AA</div></div>
-                            <div>每天 05:30 执行</div>
-                            <div>下周四 05:30</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 AB</div></div>
-                            <div>每 6 小时执行一次</div>
-                            <div>下周四 09:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 AC</div></div>
-                            <div>每天 15:30 执行</div>
-                            <div>下周四 15:30</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="待执行"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 AD</div></div>
-                            <div>每 8 小时执行一次</div>
-                            <div>下周五 08:00</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 AE</div></div>
-                            <div>每天 19:30 执行</div>
-                            <div>下周五 19:30</div>
-                            <div><span class="automation-result">成功</span></div>
-                            <div><button class="automation-switch" type="button" role="switch" aria-checked="true" aria-label="运行中"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action" type="button">执行记录</button></div>
-                          </div>
-                          <div class="automation-spec-row sort-filter single-line" data-page-size-row>
-                            <div><div class="automation-task-title">示意任务 AF</div></div>
-                            <div>每 12 小时执行一次</div>
-                            <div>下周五 21:00</div>
-                            <div><span class="automation-result failed">失败</span></div>
-                            <div><button class="automation-switch paused" type="button" role="switch" aria-checked="false" aria-label="暂停"></button></div>
-                            <div class="automation-spec-actions"><button class="automation-spec-action primary" type="button">重试</button></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="table-pagination" aria-label="分页数量任务组分页">
-                        <span data-page-size-summary>共 32 条</span>
-                        <button class="pager-btn arrow" type="button" aria-label="上一页" disabled>‹</button>
-                        <button class="pager-btn current" type="button" aria-label="第 1 页">1</button>
-                        <button class="pager-btn" type="button" aria-label="第 2 页">2</button>
-                        <button class="pager-btn" type="button" aria-label="第 3 页">3</button>
-                        <button class="pager-btn" type="button" aria-label="第 4 页">4</button>
-                        <button class="pager-btn" type="button" aria-label="第 5 页">5</button>
-                        <button class="pager-btn" type="button" aria-label="第 6 页">6</button>
-                        <button class="pager-btn" type="button" aria-label="第 7 页">7</button>
-                        <button class="pager-btn arrow" type="button" aria-label="下一页">›</button>
-                        <span class="page-size-select" data-page-size-select>
-                          <button class="page-size-trigger" type="button" aria-label="选择每页条数" aria-expanded="false" data-page-size-trigger>5 条/页</button>
-                          <span class="page-size-menu" data-page-size-menu hidden>
-                            <button class="page-size-option selected" type="button" data-page-size-option="5">5 条/页</button>
-                            <button class="page-size-option" type="button" data-page-size-option="10">10 条/页</button>
-                            <button class="page-size-option" type="button" data-page-size-option="20">20 条/页</button>
-                            <button class="page-size-option" type="button" data-page-size-option="30">30 条/页</button>
-                            <button class="page-size-option" type="button" data-page-size-option="50">50 条/页</button>
-                          </span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
                 <h2>可编辑单元格</h2>
                 <div class="doc-grid">
                   <div class="example-block full table-example-block">
@@ -4479,7 +4118,7 @@
                 <div class="doc-grid">
                   <div class="example-block full table-example-block">
                     <h3>Hover</h3>
-                    <p>任务行 hover 只使用 #fafbfc 浅灰底色，不增加阴影，不改变行高和列宽。</p>
+                    <p>任务行 hover 只使用 <code>--table-row-hover-bg</code> 对应的浅灰背景，不增加阴影，不改变行高和列宽。</p>
                     <div class="automation-spec-group" aria-label="Hover 状态案例示意">
                       <div class="automation-spec-card">
                         <div class="automation-spec-table">
@@ -4808,33 +4447,88 @@
                       </tr>
                       <tr>
                         <td><code>--table-border-color</code></td>
-                        <td><code>#E8EBEE</code></td>
+                        <td><code>var(--color-border-subtle)</code></td>
                         <td>表格外框、表头和行分割线颜色。</td>
                       </tr>
                       <tr>
                         <td><code>--table-header-bg</code></td>
-                        <td><code>#fafbfc</code></td>
+                        <td><code>var(--color-bg-subtle)</code></td>
                         <td>表头背景色。</td>
                       </tr>
                       <tr>
                         <td><code>--table-row-hover-bg</code></td>
-                        <td><code>#fafbfc</code></td>
+                        <td><code>var(--color-bg-hover)</code></td>
                         <td>数据行 hover 背景色。</td>
                       </tr>
                       <tr>
                         <td><code>--table-row-selected-bg</code></td>
-                        <td><code>#EEFBF5</code></td>
+                        <td><code>var(--color-action-primary-subtle)</code></td>
                         <td>新建或详情联动行背景色；不附加左侧色条。</td>
                       </tr>
                       <tr>
+                        <td><code>--table-row-selected-hover-bg</code></td>
+                        <td><code>var(--color-bg-selected)</code></td>
+                        <td>选中行 hover 背景色。</td>
+                      </tr>
+                      <tr>
                         <td><code>--table-card-radius</code></td>
-                        <td><code>8px</code></td>
+                        <td><code>var(--radius-md)</code></td>
                         <td>自动化表格卡片圆角。</td>
                       </tr>
                       <tr>
                         <td><code>--table-card-border</code></td>
-                        <td><code>#E8EBEE</code></td>
+                        <td><code>var(--color-border-subtle)</code></td>
                         <td>表格卡片外描边；浮层场景使用覆盖层保持圆角描边可见。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-text-color</code></td>
+                        <td><code>var(--color-text-default)</code></td>
+                        <td>表格正文、单元格内容主色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-title-text</code></td>
+                        <td><code>var(--color-text-primary)</code></td>
+                        <td>任务名称、重要字段和输入值颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-header-text</code></td>
+                        <td><code>var(--color-text-tertiary)</code></td>
+                        <td>表头文字、列工具图标默认色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-muted-text</code></td>
+                        <td><code>var(--color-text-tertiary)</code></td>
+                        <td>辅助信息、统计标签和空状态说明色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-disabled-text</code></td>
+                        <td><code>var(--color-text-disabled)</code></td>
+                        <td>禁用行和禁用操作文字色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-control-border</code></td>
+                        <td><code>var(--color-border-default)</code></td>
+                        <td>表格内筛选、分页、勾选控件默认描边。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-control-bg</code></td>
+                        <td><code>var(--color-bg-container)</code></td>
+                        <td>表格内轻量控件默认背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-control-hover-bg</code></td>
+                        <td><code>var(--color-bg-hover)</code></td>
+                        <td>表头操作、分页、下拉选项 hover 背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-control-active-bg</code></td>
+                        <td><code>var(--color-action-primary-subtle)</code></td>
+                        <td>筛选标签、当前分页和轻量激活态背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-control-active-text</code></td>
+                        <td><code>var(--color-action-primary-hover)</code></td>
+                        <td>排序、筛选、行内主操作等激活态文字色。</td>
                       </tr>
                       <tr>
                         <td><code>--table-example-padding</code></td>
@@ -4848,7 +4542,7 @@
                       </tr>
                       <tr>
                         <td><code>--table-primary-action-bg</code></td>
-                        <td><code>#00D157</code></td>
+                        <td><code>var(--color-action-primary)</code></td>
                         <td>表格右上角 primary 添加按钮背景。</td>
                       </tr>
                       <tr>
@@ -4862,19 +4556,24 @@
                         <td>表头筛选下拉菜单宽度。</td>
                       </tr>
                       <tr>
+                        <td><code>--table-overlay-bg</code></td>
+                        <td><code>var(--color-bg-container)</code></td>
+                        <td>表头筛选、搜索、页数选择等浮层背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-overlay-border</code></td>
+                        <td><code>var(--color-border-subtle)</code></td>
+                        <td>表格浮层描边。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-tooltip-bg</code></td>
+                        <td><code>var(--color-bg-inverse)</code></td>
+                        <td>表头工具提示背景。</td>
+                      </tr>
+                      <tr>
                         <td><code>--table-search-popover-width</code></td>
                         <td><code>260px</code></td>
                         <td>表头搜索浮层宽度。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-pagination-size</code></td>
-                        <td><code>28px</code></td>
-                        <td>分页器页码和左右箭头按钮尺寸。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-pagination-active-bg</code></td>
-                        <td><code>#E9F8F1</code></td>
-                        <td>分页器当前页浅绿背景。</td>
                       </tr>
                       <tr>
                         <td><code>--table-empty-min-height</code></td>
@@ -4885,6 +4584,26 @@
                         <td><code>--table-skeleton-height</code></td>
                         <td><code>10px</code></td>
                         <td>Loading 骨架屏线条高度。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-skeleton-bg</code></td>
+                        <td><code>var(--color-border-subtle)</code></td>
+                        <td>Loading 骨架屏线条基础色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-skeleton-shimmer-bg</code></td>
+                        <td><code>var(--color-bg-subtle)</code></td>
+                        <td>Loading 骨架屏扫光色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-scrollbar-thumb</code></td>
+                        <td><code>var(--color-border-default)</code></td>
+                        <td>横向滚动表格的滚动条滑块色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--table-placeholder-text</code></td>
+                        <td><code>var(--color-text-disabled)</code></td>
+                        <td>搜索输入 placeholder 和空值提示色。</td>
                       </tr>
                       <tr>
                         <td><code>--table-drag-handle-size</code></td>
@@ -4923,13 +4642,18 @@
                       </tr>
                       <tr>
                         <td><code>--switch-color-on</code></td>
-                        <td><code>#00D157</code></td>
+                        <td><code>var(--color-action-primary)</code></td>
                         <td>Switch 开启态轨道背景。</td>
                       </tr>
                       <tr>
                         <td><code>--switch-color-off</code></td>
-                        <td><code>#CFD6DC</code></td>
+                        <td><code>var(--color-border-default)</code></td>
                         <td>Switch 关闭态轨道背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--switch-focus-shadow</code></td>
+                        <td><code>var(--shadow-focus)</code></td>
+                        <td>Switch 获焦投影，沿用选择器类控件固定焦点语义。</td>
                       </tr>
                     </tbody>
                   </table>
@@ -4946,7 +4670,7 @@
         const label = document.querySelector("[data-component-count-label]");
         if (!label) return;
 
-        const pendingKeys = new Set(["card"]);
+        const pendingKeys = new Set([]);
         const navItems = Array.from(
           document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
         );
@@ -4986,7 +4710,6 @@
         "--brand-border-soft",
         "--brand-border-hover",
         "--radius-sm",
-        "--shadow-focus",
         "--input-hover-border-color",
         "--input-focus-color",
         "--input-focus-shadow",
@@ -5011,7 +4734,7 @@
           root.style.setProperty("--brand-200", "#bef5d5");
           root.style.setProperty("--brand-300", "#91e9b8");
           root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "var(--color-status-success)");
+          root.style.setProperty("--brand-500", "#22b573");
           root.style.setProperty("--brand-600", "#1b9c61");
           root.style.setProperty("--brand-700", "#147c4d");
           root.style.setProperty("--brand-800", "#12633f");
@@ -5021,7 +4744,6 @@
           root.style.setProperty("--brand-text-hover", "#147c4d");
           root.style.setProperty("--brand-border-soft", "#bef5d5");
           root.style.setProperty("--brand-border-hover", "#91e9b8");
-          root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(34, 181, 115, 0.16)");
           root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
@@ -5050,7 +4772,6 @@
         root.style.setProperty("--brand-border-soft", "#bfdbfe");
         root.style.setProperty("--brand-border-hover", "#93c5fd");
         root.style.setProperty("--radius-sm", "2px");
-        root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(38, 114, 255, 0.16)");
         root.style.setProperty("--input-hover-border-color", "#2672ff");
         root.style.setProperty("--input-focus-color", "#2672ff");
         root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
@@ -5536,108 +5257,6 @@
       };
 
       setupSearchFilterDemoTables();
-
-      const setupPageSizeSelectors = () => {
-        document.querySelectorAll("[data-page-size-demo]").forEach((demo) => {
-          const rows = Array.from(demo.querySelectorAll("[data-page-size-row]"));
-          const total = rows.length;
-          const select = demo.querySelector("[data-page-size-select]");
-          const trigger = demo.querySelector("[data-page-size-trigger]");
-          const menu = demo.querySelector("[data-page-size-menu]");
-          const options = Array.from(demo.querySelectorAll("[data-page-size-option]"));
-          const summary = demo.querySelector("[data-page-size-summary]");
-          const badge = demo.querySelector("[data-page-size-badge]");
-          const pagination = demo.querySelector(".table-pagination");
-          const pageButtons = Array.from(pagination?.querySelectorAll(".pager-btn:not(.arrow)") || []);
-          const arrowButtons = Array.from(pagination?.querySelectorAll(".pager-btn.arrow") || []);
-          let currentPage = 1;
-          let currentPageSize = 5;
-          if (!select || !trigger || !menu) return;
-
-          const closeMenu = () => {
-            select.classList.remove("open");
-            trigger.setAttribute("aria-expanded", "false");
-            menu.hidden = true;
-          };
-
-          const openMenu = () => {
-            select.classList.add("open");
-            trigger.setAttribute("aria-expanded", "true");
-            menu.hidden = false;
-          };
-
-          const renderPages = (pageSize) => {
-            currentPageSize = pageSize;
-            const pageCount = Math.max(1, Math.ceil(total / pageSize));
-            currentPage = Math.min(currentPage, pageCount);
-            const start = (currentPage - 1) * pageSize;
-            const end = start + pageSize;
-            let lastVisibleRow = null;
-            rows.forEach((row, index) => {
-              const isVisible = index >= start && index < end;
-              row.hidden = !isVisible;
-              row.classList.remove("is-visible-tail");
-              if (isVisible) lastVisibleRow = row;
-            });
-            lastVisibleRow?.classList.add("is-visible-tail");
-            pageButtons.forEach((button, index) => {
-              const page = index + 1;
-              button.hidden = page > pageCount;
-              button.classList.toggle("current", page === currentPage);
-              button.setAttribute("aria-label", `第 ${page} 页`);
-              button.textContent = String(page);
-            });
-            if (arrowButtons[0]) arrowButtons[0].disabled = currentPage <= 1;
-            if (arrowButtons[1]) arrowButtons[1].disabled = currentPage >= pageCount;
-            if (summary) summary.textContent = `共 ${total} 条`;
-            if (badge) badge.textContent = String(total);
-          };
-
-          trigger.addEventListener("click", (event) => {
-            event.stopPropagation();
-            menu.hidden ? openMenu() : closeMenu();
-          });
-
-          options.forEach((option) => {
-            option.addEventListener("click", (event) => {
-              event.stopPropagation();
-              const pageSize = Number(option.dataset.pageSizeOption || 10);
-              currentPage = 1;
-              trigger.textContent = `${pageSize} 条/页`;
-              options.forEach((item) => item.classList.toggle("selected", item === option));
-              renderPages(pageSize);
-              closeMenu();
-            });
-          });
-
-          pageButtons.forEach((button, index) => {
-            button.addEventListener("click", () => {
-              currentPage = index + 1;
-              renderPages(currentPageSize);
-            });
-          });
-
-          arrowButtons[0]?.addEventListener("click", () => {
-            currentPage = Math.max(1, currentPage - 1);
-            renderPages(currentPageSize);
-          });
-
-          arrowButtons[1]?.addEventListener("click", () => {
-            const pageCount = Math.max(1, Math.ceil(total / currentPageSize));
-            currentPage = Math.min(pageCount, currentPage + 1);
-            renderPages(currentPageSize);
-          });
-
-          document.addEventListener("click", closeMenu);
-          document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") closeMenu();
-          });
-
-          renderPages(5);
-        });
-      };
-
-      setupPageSizeSelectors();
 
       const syncTableSelectOption = (option, selected) => {
         option.classList.toggle("active", selected);

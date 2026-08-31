@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>联级选择 Cascader - Design System</title>
     <style>
-      :root {--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;
-        --brand-500: #00d157;
-        --brand-50: #effff6;
-        --brand-100: #d8ffe8;
-        --brand-200: #b5ffd1;
-        --brand-300: #7dffb0;
-        --brand-400: #35f47c;
-        --brand-600: #00b84b;
-        --brand-700: #008f3f;
-        --brand-800: #067037;
-        --brand-900: #075a2f;
-        --brand-rgb: 0, 209, 87;
-        --brand-text: #00b84b;
-        --brand-text-hover: #008f3f;
+      :root {--success-green-500: #1cc749;--yellow-500: #ff990a;--yellow-400: #ffb232;--red-500: #fe3d33;--red-600: #ec2116;--blue-500: #31a6ff;--blue-600: #1887f5;--blue-700: #1370e2;
+        --brand-500: #1cc749;
+        --brand-50: #f0fdf3;
+        --brand-100: #dbfde3;
+        --brand-200: #b9f9c9;
+        --brand-300: #82f39f;
+        --brand-400: #45e36e;
+        --brand-600: #00ae2e;
+        --brand-700: #118430;
+        --brand-800: #13682a;
+        --brand-900: #125526;
+        --brand-rgb: 28, 199, 73;
+        --brand-text: #00ae2e;
+        --brand-text-hover: #118430;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
         --gray-950: #0b0d0f;
@@ -44,8 +44,8 @@
         --color-bg-container: var(--white);
         --color-bg-subtle: var(--gray-100);
         --color-bg-hover: var(--gray-100);
-        --color-bg-selected: var(--brand-50);
-        --color-bg-disabled: var(--gray-100);
+        --color-bg-selected: var(--brand-100);
+        --color-bg-disabled: var(--gray-100);--color-bg-inverse: var(--gray-900);
         --color-border-default: var(--gray-300);
         --color-border-subtle: var(--gray-200);
         --color-border-strong: var(--gray-400);
@@ -54,10 +54,10 @@
         --color-action-primary: var(--brand-500);
         --color-action-primary-hover: var(--brand-600);
         --color-action-primary-active: var(--brand-700);
-        --color-action-primary-subtle: var(--brand-50);
+        --color-action-primary-subtle: var(--brand-100);
         --color-action-primary-disabled: var(--brand-200);
         --color-status-success: var(--success-green-500);
-        --color-status-error: var(--red-500);
+        --color-status-error: var(--red-500);--color-status-error-text: var(--red-600);
         --color-status-warning: var(--yellow-500);
         --color-status-info: var(--blue-500);
         --color-overlay-modal: rgba(0, 0, 0, 0.45);
@@ -107,19 +107,19 @@
         --input-height-default: 38px;
         --input-height-large: 44px;
         --input-radius: 10px;
-        --input-border-color: #dde1e5;
+        --input-border-color: var(--color-border-default);
         --input-hover-border-color:var(--color-action-primary);
         --input-focus-color:var(--color-action-primary);
-        --input-focus-shadow: rgba(0, 209, 87, 0.16) 0px 0px 0px 3px;
+        --input-focus-shadow: 0 0 0 3px color-mix(in srgb, var(--color-action-primary) 10%, transparent);
         --input-error-color: var(--color-status-error);
-        --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
-        --input-text-color: #1a1d1f;
-        --input-placeholder-color: #a5abb1;
-        --input-disabled-border-color: #dde1e5;
-        --input-disabled-bg: #f0f2f4;
-        --input-disabled-color: #969ba1;
+        --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
+        --input-text-color: var(--color-text-primary);
+        --input-placeholder-color: var(--color-text-tertiary);
+        --input-disabled-border-color: var(--color-border-disabled);
+        --input-disabled-bg: var(--color-bg-disabled);
+        --input-disabled-color: var(--color-text-disabled);
         --cascader-active-bg: var(--gray-100);
-        --cascader-dropdown-shadow: 0 14px 32px rgba(20, 28, 36, 0.12);
+        --cascader-dropdown-shadow: 0 14px 32px color-mix(in srgb, var(--color-bg-inverse) 12%, transparent);
         --cascader-dropdown-offset: 8px;
         --cascader-trigger-width: 320px;
         --cascader-trigger-height: 38px;
@@ -170,9 +170,9 @@
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-gutter: stable;
-        scrollbar-color: var(--gray-300, #d4d9de) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
-        background: var(--white, #ffffff);
+        background: var(--color-bg-container);
         border-right:1px solid var(--color-border-subtle);
       }
 
@@ -186,7 +186,7 @@
       }
 
       .sidebar::-webkit-scrollbar-thumb {
-        background: var(--gray-300, #d4d9de);
+        background: var(--color-border-default);
         border-radius: 999px;
       }
       .nav-list {
@@ -225,7 +225,7 @@
       }
       .nav-category-count {
         margin-left: 0;
-        color: var(--gray-400, #a5adb6);
+        color: var(--color-text-disabled);
         font-weight: 400;
       }
       .nav-button {
@@ -244,7 +244,7 @@
         text-decoration: none;
       }
       .nav-button:hover {
-        color: var(--gray-950, #0b0d0f);
+        color: var(--color-text-primary);
         background: var(--gray-50);
       }
       .nav-button[aria-current=page] {
@@ -312,17 +312,17 @@
       }
       /* Shared top navigation */
       :root {
-        --brand-50: #effff6;
-        --brand-100: #d8ffe8;
-        --brand-200: #b5ffd1;
-        --brand-300: #7dffb0;
-        --brand-400: #35f47c;
-        --brand-600: #00b84b;
-        --brand-700: #008f3f;
-        --brand-800: #067037;
-        --brand-900: #075a2f;
-        --brand-text: #00b84b;
-        --brand-text-hover: #008f3f;
+        --brand-50: #f0fdf3;
+        --brand-100: #dbfde3;
+        --brand-200: #b9f9c9;
+        --brand-300: #82f39f;
+        --brand-400: #45e36e;
+        --brand-600: #00ae2e;
+        --brand-700: #118430;
+        --brand-800: #13682a;
+        --brand-900: #125526;
+        --brand-text: #00ae2e;
+        --brand-text-hover: #118430;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
         --gray-800: #22262a;
@@ -732,40 +732,34 @@
         box-shadow: var(--input-focus-shadow);
       }
 
-      .spec-cascader-trigger::before {
-        content: "";
+      .cascader-chevron {
         position: absolute;
         right: 6px;
         top: 50%;
         width: var(--cascader-expand-icon-size);
         height: var(--cascader-expand-icon-size);
-        border-radius: 4px;
-        pointer-events: none;
-        transform: translateY(-50%);
-        transition: opacity 0.15s ease;
-      }
-
-      .spec-cascader-trigger::after {
-        content: "";
-        position: absolute;
-        right: 6px;
-        top: 50%;
-        width: 7px;
-        height: 7px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         color: var(--cascader-icon-color);
         background: none;
-        border-right: var(--cascader-icon-stroke-width) solid currentColor;
-        border-bottom: var(--cascader-icon-stroke-width) solid currentColor;
         pointer-events: none;
-        transform: translateY(-65%) rotate(45deg);
+        transform: translateY(-50%);
+        transform-origin: center;
         transition:
           opacity 0.15s ease,
           transform 0.15s ease;
       }
 
-      .spec-cascader-trigger[aria-expanded="true"]::after,
-      .spec-cascader-trigger.open::after {
-        transform: translateY(-35%) rotate(225deg);
+      .cascader-chevron svg {
+        width: var(--cascader-expand-icon-size);
+        height: var(--cascader-expand-icon-size);
+        display: block;
+      }
+
+      .spec-cascader-trigger[aria-expanded="true"] .cascader-chevron,
+      .spec-cascader-trigger.open .cascader-chevron {
+        transform: translateY(-50%) rotate(180deg);
       }
 
       .spec-cascader-trigger:hover,
@@ -788,6 +782,10 @@
         color: var(--input-disabled-color);
         background: var(--input-disabled-bg);
         border-color: var(--input-disabled-border-color);
+      }
+
+      .spec-cascader-trigger.disabled .cascader-chevron {
+        color: var(--input-disabled-color);
       }
 
       .spec-cascader-trigger.small {
@@ -891,11 +889,7 @@
         pointer-events: auto;
       }
 
-      .spec-cascader-trigger:has(.trigger-clear:not([hidden])):hover::after {
-        opacity: 0;
-      }
-
-      .spec-cascader-trigger:has(.trigger-clear:not([hidden])):hover::before {
+      .spec-cascader-trigger:has(.trigger-clear:not([hidden])):hover .cascader-chevron {
         opacity: 0;
       }
 
@@ -1248,7 +1242,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 45/46</span>
+          <span data-component-count-label>Active components 46/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -1351,6 +1345,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -1509,7 +1538,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../index.html#card">
+                    <a class="nav-button" href="../datadisplay/card.html">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -1609,6 +1638,7 @@
                     <div class="spec-field">
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
                         <span class="trigger-text trigger-placeholder" data-cascader-value>请选择 Agent / 任务类型</span>
+                        <span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
                       </button>
                     </div>
                     <div class="cascader-popover" role="tree" aria-label="点击展开级联选择" data-cascader-panel hidden></div>
@@ -1622,6 +1652,7 @@
                     <div class="spec-field">
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
                         <span class="trigger-text trigger-placeholder" data-cascader-value>请选择 Agent / 任务类型</span>
+                        <span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
                       </button>
                     </div>
                     <div class="cascader-popover" role="tree" aria-label="hover 展开级联选择" data-cascader-panel hidden></div>
@@ -1641,6 +1672,7 @@
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
                         <span class="trigger-text" data-cascader-value>全体实习生 / 种草业务线 / TikTok 上传</span>
                         <span class="trigger-clear" data-cascader-clear aria-label="清除已选路径"></span>
+                        <span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
                       </button>
                     </div>
                     <div class="cascader-popover" role="tree" aria-label="允许清除级联选择" data-cascader-panel hidden></div>
@@ -1661,6 +1693,7 @@
                         <span class="cascader-tags nowrap" data-cascader-tags>
                           <span class="trigger-text trigger-placeholder">请选择 Agent / 任务类型</span>
                         </span>
+                        <span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
                       </button>
                     </div>
                     <div class="cascader-popover" role="tree" aria-label="标签省略级联选择" data-cascader-panel hidden></div>
@@ -1679,6 +1712,7 @@
                     <div class="spec-field">
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
                         <span class="trigger-text trigger-placeholder" data-cascader-value>请选择 Agent / 任务类型</span>
+                        <span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
                       </button>
                     </div>
                     <div class="cascader-popover" role="tree" aria-label="动态加载级联选择" data-cascader-panel hidden></div>
@@ -1693,27 +1727,27 @@
                 <div class="example-block">
                   <h3>Default</h3>
                   <p>默认状态仅展示轻边框和占位文案，浮层在点击后出现。</p>
-                  <div class="spec-cascader-trigger"><span class="trigger-placeholder">请选择业务线 / Agent</span></div>
+                  <div class="spec-cascader-trigger"><span class="trigger-placeholder">请选择业务线 / Agent</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
                 <div class="example-block">
                   <h3>Hover</h3>
                   <p>鼠标悬停时提升边框颜色，提示该选择框可展开操作。</p>
-                  <div class="spec-cascader-trigger hover"><span class="trigger-placeholder">请选择业务线 / Agent</span></div>
+                  <div class="spec-cascader-trigger hover"><span class="trigger-placeholder">请选择业务线 / Agent</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
                 <div class="example-block">
                   <h3>Focus</h3>
                   <p>聚焦或展开时使用品牌色边框和浅绿色外描边。</p>
-                  <div class="spec-cascader-trigger focus">全体实习生 / 内容运营</div>
+                  <div class="spec-cascader-trigger focus"><span class="trigger-text">全体实习生 / 内容运营</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
                 <div class="example-block">
                   <h3>Error</h3>
                   <p>配置提交场景必须选择叶子节点时，未完成路径进入错误态。</p>
-                  <div class="spec-cascader-trigger error">请选择叶子 Agent</div>
+                  <div class="spec-cascader-trigger error"><span class="trigger-text">请选择叶子 Agent</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
                 <div class="example-block">
                   <h3>Disabled</h3>
                   <p>权限路径被系统策略锁定时不响应展开和选择。</p>
-                  <div class="spec-cascader-trigger disabled">权限路径不可修改</div>
+                  <div class="spec-cascader-trigger disabled"><span class="trigger-text">权限路径不可修改</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
               </div>
             </section>
@@ -1724,9 +1758,9 @@
                 <h3>Size</h3>
                 <p>尺寸与 Input、Select 对齐：紧凑筛选使用 30px，标准表单使用 38px，关键配置入口使用 44px。</p>
                 <div class="size-stack">
-                  <div class="spec-cascader-trigger small">Small / 侧栏筛选</div>
-                  <div class="spec-cascader-trigger">Default / 表单字段</div>
-                  <div class="spec-cascader-trigger large">Large / 首屏配置入口</div>
+                  <div class="spec-cascader-trigger small"><span class="trigger-text">Small / 侧栏筛选</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
+                  <div class="spec-cascader-trigger"><span class="trigger-text">Default / 表单字段</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
+                  <div class="spec-cascader-trigger large"><span class="trigger-text">Large / 首屏配置入口</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
               </div>
             </section>
@@ -1878,7 +1912,7 @@
                     </tr>
                     <tr>
                       <td><code>--cascader-icon-color</code></td>
-                      <td><code>#969ba1</code></td>
+                      <td><code>var(--color-text-tertiary)</code></td>
                       <td>展开收起图标、下拉菜单进入图标的默认颜色。</td>
                     </tr>
                     <tr>
@@ -1908,7 +1942,7 @@
                     </tr>
                     <tr>
                       <td><code>--cascader-dropdown-shadow</code></td>
-                      <td><code>0 14px 32px rgba(20, 28, 36, 0.12)</code></td>
+                      <td><code>0 14px 32px color-mix(in srgb, var(--color-bg-inverse) 12%, transparent)</code></td>
                       <td>浮层阴影，保持轻量悬浮感。</td>
                     </tr>
                     <tr>

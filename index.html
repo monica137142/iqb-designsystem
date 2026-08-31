@@ -5,25 +5,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Design System</title>
     <style>
-      :root {--text-data-line-height: 1.3;--text-data-weight: 500;--text-data-size: 24px;--text-caption-line-height: 1.55;--text-caption-weight: 400;--text-caption-size: 12px;--text-helper-line-height: 1.55;--text-helper-weight: 400;--text-helper-size: 12px;--text-secondary-line-height: 1.65;--text-secondary-weight: 400;--text-secondary-size: 13px;--text-control-line-height: 1.65;--text-control-weight: 400;--text-control-size: 13px;--text-label-line-height: 1.75;--text-label-weight: 500;--text-label-size: 14px;--text-body-strong-line-height: 1.75;--text-body-strong-weight: 500;--text-body-strong-size: 14px;--text-body-line-height: 1.75;--text-body-weight: 400;--text-body-size: 14px;--text-overlay-title-line-height: 1.5;--text-overlay-title-weight: 500;--text-overlay-title-size: 16px;--text-card-title-line-height: 1.5;--text-card-title-weight: 500;--text-card-title-size: 16px;--text-section-title-line-height: 1.5;--text-section-title-weight: 500;--text-section-title-size: 16px;--text-page-title-line-height: 1.35;--text-page-title-weight: 500;--text-page-title-size: 20px;--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;
-        --brand-500: #00d157;
-        --brand-50: #effff6;
-        --brand-100: #d8ffe8;
-        --brand-200: #b5ffd1;
-        --brand-300: #7dffb0;
-        --brand-400: #35f47c;
-        --brand-600: #00b84b;
-        --brand-700: #008f3f;
-        --brand-800: #067037;
-        --brand-900: #075a2f;
-        --brand-rgb: 0, 209, 87;
-        --brand-text: #00b84b;
-        --brand-text-hover: #008f3f;
+      :root {--text-data-line-height: 1.3;--text-data-weight: 500;--text-data-size: 24px;--text-caption-line-height: 1.55;--text-caption-weight: 400;--text-caption-size: 12px;--text-helper-line-height: 1.55;--text-helper-weight: 400;--text-helper-size: 12px;--text-secondary-line-height: 1.65;--text-secondary-weight: 400;--text-secondary-size: 13px;--text-control-line-height: 1.65;--text-control-weight: 400;--text-control-size: 13px;--text-label-line-height: 1.75;--text-label-weight: 500;--text-label-size: 14px;--text-body-strong-line-height: 1.75;--text-body-strong-weight: 500;--text-body-strong-size: 14px;--text-body-line-height: 1.75;--text-body-weight: 400;--text-body-size: 14px;--text-overlay-title-line-height: 1.5;--text-overlay-title-weight: 500;--text-overlay-title-size: 16px;--text-card-title-line-height: 1.5;--text-card-title-weight: 500;--text-card-title-size: 16px;--text-section-title-line-height: 1.5;--text-section-title-weight: 500;--text-section-title-size: 16px;--text-page-title-line-height: 1.35;--text-page-title-weight: 500;--text-page-title-size: 20px;--success-green-500: #1cc749;--yellow-500: #ff990a;--red-500: #fe3d33;--blue-500: #31a6ff;--blue-600: #1887f5;
+        --brand-500: #1cc749;
+        --brand-50: #f0fdf3;
+        --brand-100: #dbfde3;
+        --brand-200: #b9f9c9;
+        --brand-300: #82f39f;
+        --brand-400: #45e36e;
+        --brand-600: #00ae2e;
+        --brand-700: #118430;
+        --brand-800: #13682a;
+        --brand-900: #125526;
+        --brand-950: #042f11;
+        --red-50: #fff2f1;
+        --red-100: #ffe2e0;
+        --red-200: #ffc8c5;
+        --red-300: #ffa29d;
+        --red-400: #ff6d65;
+        --red-600: #ec2116;
+        --red-700: #c7170e;
+        --red-800: #a41710;
+        --red-900: #881a14;
+        --red-950: #4a0805;
+        --yellow-50: #fffaec;
+        --yellow-100: #fff4d3;
+        --yellow-200: #ffe5a5;
+        --yellow-300: #ffd16d;
+        --yellow-400: #ffb232;
+        --yellow-600: #ff8400;
+        --yellow-700: #cc6002;
+        --yellow-800: #a14b0b;
+        --yellow-900: #823f0c;
+        --yellow-950: #461e04;
+        --blue-50: #eef9ff;
+        --blue-100: #d9f0ff;
+        --blue-200: #bce6ff;
+        --blue-300: #8ed9ff;
+        --blue-400: #58c2ff;
+        --blue-700: #1370e2;
+        --blue-800: #1370e2;
+        --blue-900: #184e90;
+        --blue-950: #143057;
+        --danger-50: var(--red-50);
+        --danger-100: var(--red-100);
+        --danger-200: var(--red-200);
+        --danger-300: var(--red-300);
+        --danger-400: var(--red-400);
+        --danger-500: var(--red-500);
+        --danger-600: var(--red-600);
+        --danger-700: var(--red-700);
+        --danger-800: var(--red-800);
+        --danger-900: var(--red-900);
+        --danger-950: var(--red-950);
+        --warning-50: var(--yellow-50);
+        --warning-100: var(--yellow-100);
+        --warning-200: var(--yellow-200);
+        --warning-300: var(--yellow-300);
+        --warning-400: var(--yellow-400);
+        --warning-500: var(--yellow-500);
+        --warning-600: var(--yellow-600);
+        --warning-700: var(--yellow-700);
+        --warning-800: var(--yellow-800);
+        --warning-900: var(--yellow-900);
+        --warning-950: var(--yellow-950);
+        --info-50: var(--blue-50);
+        --info-100: var(--blue-100);
+        --info-200: var(--blue-200);
+        --info-300: var(--blue-300);
+        --info-400: var(--blue-400);
+        --info-500: var(--blue-500);
+        --info-600: var(--blue-600);
+        --info-700: var(--blue-700);
+        --info-800: var(--blue-800);
+        --info-900: var(--blue-900);
+        --info-950: var(--blue-950);
+        --brand-rgb: 28, 199, 73;
+        --brand-text: #00ae2e;
+        --brand-text-hover: #118430;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
-        --link-color: #1570ef;
-        --link-hover-color: #175cd3;
-        --link-disabled-color: #a5adb6;
+        --link-color: #1887f5;
+        --link-hover-color: #1370e2;
+        --link-disabled-color: #e6e6e6;
         --gray-950: #0b0d0f;
         --gray-900: #14171a;
         --gray-800: #22262a;
@@ -38,14 +101,28 @@
         --white: #ffffff;
         --topbar-height: 60px;
         --sidebar-width: 300px;
+        --radius-none: 0;
+        --radius-compact: 2px;
+        --radius-xs: 4px;
         --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --radius-md: 8px;
+        --radius-lg: 10px;
+        --radius-xl: 12px;
+        --radius-full: 999px;
+        --icon-canvas-size: 24px;
+        --icon-safe-area: 2px;
+        --icon-stroke-width: 2px;
+        --shadow-surface: 0 2px 6px rgba(20, 28, 36, 0.06);
+        --shadow-hover: 0 4px 12px rgba(20, 28, 36, 0.08);
+        --shadow-overlay: 0 12px 28px rgba(20, 28, 36, 0.12);
+        --shadow-focus: 0 0 0 3px rgba(var(--brand-rgb), 0.16);
+        --selector-focus-shadow: var(--shadow-focus);
         --input-border-color: #dde1e5;
         --input-hover-border-color:var(--color-action-primary);
         --input-focus-color:var(--color-action-primary);
         --input-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
         --input-error-color: var(--color-status-error);
-        --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        --input-error-shadow: 0 0 0 3px rgba(254, 61, 51, 0.12);
         --input-text-color: #1a1d1f;
         --input-placeholder-color: #a5abb1;
         --input-disabled-border-color: #dde1e5;
@@ -55,7 +132,7 @@
         --input-number-focus-color:var(--color-action-primary);
         --input-number-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
         --input-number-error-color: var(--color-status-error);
-        --input-number-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        --input-number-error-shadow: 0 0 0 3px rgba(254, 61, 51, 0.12);
         --input-number-disabled-border-color: #dde1e5;
         --input-number-disabled-bg: #f0f2f4;
         --input-number-disabled-color: #969ba1;
@@ -65,13 +142,16 @@
         --color-text-tertiary: var(--gray-500);
         --color-text-disabled: var(--gray-400);
         --color-text-inverse: var(--white);
-        --color-text-link: var(--blue-600);
+        --color-text-link: var(--info-600);
+        --color-text-link-hover: var(--info-700);
+        --color-text-link-disabled: var(--gray-400);
         --color-bg-page: var(--gray-50);
         --color-bg-container: var(--white);
         --color-bg-subtle: var(--gray-100);
         --color-bg-hover: var(--gray-100);
-        --color-bg-selected: var(--brand-50);
+        --color-bg-selected: var(--brand-100);
         --color-bg-disabled: var(--gray-100);
+        --color-bg-inverse: var(--gray-900);
         --color-border-default: var(--gray-300);
         --color-border-subtle: var(--gray-200);
         --color-border-strong: var(--gray-400);
@@ -80,12 +160,28 @@
         --color-action-primary: var(--brand-500);
         --color-action-primary-hover: var(--brand-600);
         --color-action-primary-active: var(--brand-700);
-        --color-action-primary-subtle: var(--brand-50);
+        --color-action-primary-subtle: var(--brand-100);
         --color-action-primary-disabled: var(--brand-200);
         --color-status-success: var(--success-green-500);
-        --color-status-error: var(--red-500);
-        --color-status-warning: var(--yellow-500);
-        --color-status-info: var(--blue-500);
+        --color-status-error: var(--danger-500);
+        --color-status-error-hover: var(--danger-600);
+        --color-status-error-bg: var(--danger-50);
+        --color-status-error-bg-hover: var(--danger-100);
+        --color-status-error-text: var(--danger-600);
+        --color-status-error-text-hover: var(--danger-700);
+        --color-status-warning: var(--warning-500);
+        --color-status-warning-hover: var(--warning-600);
+        --color-status-warning-bg: var(--warning-50);
+        --color-status-warning-bg-hover: var(--warning-100);
+        --color-status-warning-border: var(--warning-400);
+        --color-status-warning-text: var(--warning-700);
+        --color-status-warning-text-hover: var(--warning-800);
+        --color-status-info: var(--info-500);
+        --color-status-info-hover: var(--info-600);
+        --color-status-info-bg: var(--info-50);
+        --color-status-info-bg-hover: var(--info-100);
+        --color-status-info-text: var(--info-600);
+        --color-status-info-text-hover: var(--info-700);
         --color-overlay-modal: rgba(0, 0, 0, 0.45);
         --color-overlay-drawer: rgba(0, 0, 0, 0.35);
         --color-overlay-loading: rgba(255, 255, 255, 0.72);
@@ -248,7 +344,7 @@
 
       .product-select-trigger:focus-visible {
         outline: none;
-        box-shadow: var(--shadow-focus);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .product-select-trigger::after {
@@ -833,6 +929,10 @@
         border-radius: var(--radius-sm);
       }
 
+      .mask-section .semantic-color-group {
+        margin-top: 18px;
+      }
+
       .mask-stage {
         position: relative;
         min-height: 150px;
@@ -1003,7 +1103,7 @@
       .color-palette-trigger:focus-visible {
         outline: none;
         border-color:var(--color-action-primary);
-        box-shadow: var(--shadow-focus);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .color-palette-trigger[aria-expanded="true"] .select-chevron {
@@ -1622,6 +1722,161 @@
         line-height:var(--text-control-line-height);
       }
 
+      .icon-spec-card.full {
+        grid-template-columns: 1fr;
+      }
+
+      .icon-contract {
+        display: grid;
+        gap: 8px;
+        padding: 12px;
+        color: var(--color-text-primary);
+        background: var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-control-line-height);
+      }
+
+      .icon-contract code {
+        width: fit-content;
+        padding: 2px 5px;
+        color: var(--color-action-primary);
+        background: var(--color-action-primary-subtle);
+        border-radius: var(--radius-xs);
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+      }
+
+      .icon-canvas-demo {
+        display: grid;
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 14px;
+        align-items: center;
+      }
+
+      .icon-canvas-box {
+        width: 104px;
+        height: 104px;
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(var(--color-border-subtle) 1px, transparent 1px),
+          linear-gradient(90deg, var(--color-border-subtle) 1px, transparent 1px),
+          var(--color-bg-container);
+        background-size: calc(100% / 6) calc(100% / 6);
+        border:1px solid var(--color-border-default);
+        border-radius: var(--radius-sm);
+      }
+
+      .icon-canvas-box svg {
+        width: 76px;
+        height: 76px;
+        color: var(--color-text-default);
+      }
+
+      .icon-state-demo {
+        display: grid;
+        gap: 8px;
+      }
+
+      .icon-state-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 32px;
+        padding: 0 10px;
+        color: var(--state-color, var(--color-text-default));
+        background: var(--state-bg, var(--color-bg-container));
+        border:1px solid var(--state-border, var(--color-border-subtle));
+        border-radius: var(--radius-sm);
+        font-size:var(--text-caption-size);
+      }
+
+      .icon-state-row svg {
+        width: 1em;
+        height: 1em;
+        stroke: currentColor;
+      }
+
+      .icon-state-row.selected {
+        --state-color: var(--color-action-primary);
+        --state-bg: var(--color-action-primary-subtle);
+        --state-border: var(--color-action-primary-subtle);
+      }
+
+      .icon-state-row.disabled {
+        --state-color: var(--color-text-disabled);
+        --state-bg: var(--color-bg-disabled);
+      }
+
+      .icon-state-row.error {
+        --state-color: var(--color-status-error);
+        --state-bg: var(--color-status-error-bg);
+        --state-border: var(--color-status-error-bg-hover);
+      }
+
+      .icon-compare-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .icon-compare-card {
+        min-width: 0;
+        padding: 12px;
+        background: var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .icon-compare-card strong {
+        margin-bottom: 8px;
+      }
+
+      .radius-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .radius-sample {
+        min-width: 0;
+        padding: 14px;
+        background: var(--gray-50);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-sm);
+      }
+
+      .radius-preview {
+        height: 76px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 12px;
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
+        border:1px solid var(--color-border-default);
+        border-radius: var(--radius-value);
+        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
+        font-size:var(--text-caption-size);
+      }
+
+      .radius-sample strong {
+        display: block;
+        margin-bottom: 4px;
+        color:var(--color-text-primary);
+        font-size:var(--text-control-size);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .radius-sample p {
+        margin: 0;
+        color:var(--color-text-secondary);
+        font-size:var(--text-caption-size);
+        line-height:var(--text-control-line-height);
+      }
+
       .shadow-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1641,7 +1896,7 @@
         height: 88px;
         display: grid;
         place-items: center;
-        margin-bottom: 14px;
+        margin: 4px 4px 14px;
         color:var(--color-text-default);
         background:var(--color-bg-container);
         border: 1px solid var(--gray-100);
@@ -1650,26 +1905,20 @@
       }
 
       .shadow-preview.xs {
-        box-shadow: 0 2px 6px rgba(20, 28, 36, 0.06);
+        box-shadow: var(--shadow-surface);
       }
 
       .shadow-preview.sm {
-        box-shadow: 0 4px 12px rgba(20, 28, 36, 0.08);
+        box-shadow: var(--shadow-hover);
       }
 
       .shadow-preview.md {
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+        box-shadow: var(--shadow-overlay);
       }
 
       .shadow-preview.focus {
         border-color:var(--color-action-primary);
-        box-shadow: var(--shadow-focus);
-      }
-
-      .shadow-preview.selector-focus {
-        border-color:var(--color-action-primary);
-        background:var(--color-bg-container);
-        box-shadow: rgba(0, 209, 87, 0.16) 0 0 0 3px;
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .theme-grid {
@@ -1817,14 +2066,14 @@
 
       .spec-btn.permission:hover {
         border-color:var(--color-action-primary);
-        background: rgb(var(--brand-rgb) / 0.06);
+        background: var(--color-action-primary-subtle);
         color: var(--brand-text);
       }
 
       .spec-btn.warning {
-        border-color: #fdb022;
-        background: #fffaeb;
-        color: #b54708;
+        border-color: #ffb232;
+        background: #fffaec;
+        color: #cc6002;
       }
 
       .spec-btn.warning-primary {
@@ -1834,43 +2083,43 @@
       }
 
       .spec-btn.warning-primary:hover {
-        border-color: #dc6803;
-        background: #dc6803;
+        border-color: #ff8400;
+        background: #ff8400;
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary {
-        border-color: #fdb022;
+        border-color: #ffb232;
         background: transparent;
-        color: #b54708;
+        color: #cc6002;
       }
 
       .spec-btn.warning-secondary:hover {
         border-color: var(--color-status-warning);
-        background: #fef0c7;
-        color: #93370d;
+        background: #fff4d3;
+        color: #a14b0b;
       }
 
       .spec-btn.warning-subtle {
         border-color: transparent;
-        background: #fffaeb;
-        color: #b54708;
+        background: #fffaec;
+        color: #cc6002;
       }
 
       .spec-btn.warning-subtle:hover {
-        background: #fef0c7;
-        color: #93370d;
+        background: #fff4d3;
+        color: #a14b0b;
       }
 
       .spec-btn.warning-text {
         border-color: transparent;
         background: transparent;
-        color: #b54708;
+        color: #cc6002;
       }
 
       .spec-btn.warning-text:hover {
-        background: #fffaeb;
-        color: #93370d;
+        background: #fffaec;
+        color: #a14b0b;
       }
 
       .spec-btn.info-primary {
@@ -1880,43 +2129,43 @@
       }
 
       .spec-btn.info-primary:hover {
-        border-color: #1570ef;
-        background: #1570ef;
+        border-color: #1887f5;
+        background: #1887f5;
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary {
         border-color: var(--color-status-info);
         background: transparent;
-        color: #1570ef;
+        color: #1887f5;
       }
 
       .spec-btn.info-secondary:hover {
-        border-color: #1570ef;
-        background: #eff8ff;
-        color: #175cd3;
+        border-color: #1887f5;
+        background: #eef9ff;
+        color: #1370e2;
       }
 
       .spec-btn.info-subtle {
         border-color: transparent;
-        background: #eff8ff;
-        color: #1570ef;
+        background: #eef9ff;
+        color: #1887f5;
       }
 
       .spec-btn.info-subtle:hover {
-        background: #d1e9ff;
-        color: #175cd3;
+        background: #d9f0ff;
+        color: #1370e2;
       }
 
       .spec-btn.info-text {
         border-color: transparent;
         background: transparent;
-        color: #1570ef;
+        color: #1887f5;
       }
 
       .spec-btn.info-text:hover {
-        background: #eff8ff;
-        color: #175cd3;
+        background: #eef9ff;
+        color: #1370e2;
       }
 
       .spec-btn.danger {
@@ -1926,43 +2175,43 @@
       }
 
       .spec-btn.danger:hover {
-        border-color: #d92d20;
-        background: #d92d20;
+        border-color: #ec2116;
+        background: #ec2116;
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary {
         border-color: var(--color-status-error);
         background: transparent;
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-btn.danger-secondary:hover {
-        border-color: #d92d20;
-        background: #fff1f0;
-        color: #b42318;
+        border-color: #ec2116;
+        background: #fff2f1;
+        color: #c7170e;
       }
 
       .spec-btn.danger-subtle {
         border-color: transparent;
-        background: #fff1f0;
-        color: #d92d20;
+        background: #fff2f1;
+        color: #ec2116;
       }
 
       .spec-btn.danger-subtle:hover {
-        background: #ffe0de;
-        color: #b42318;
+        background: #ffe2e0;
+        color: #c7170e;
       }
 
       .spec-btn.danger-text {
         border-color: transparent;
         background: transparent;
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-btn.danger-text:hover {
-        background: #fff1f0;
-        color: #b42318;
+        background: #fff2f1;
+        color: #c7170e;
       }
 
       .spec-btn.text {
@@ -2080,21 +2329,21 @@
       }
 
       .spec-btn.warning-secondary[disabled]:hover {
-        border-color: #fdb022;
+        border-color: #ffb232;
         background: transparent;
-        color: #b54708;
+        color: #cc6002;
       }
 
       .spec-btn.warning-subtle[disabled]:hover {
         border-color: transparent;
-        background: #fffaeb;
-        color: #b54708;
+        background: #fffaec;
+        color: #cc6002;
       }
 
       .spec-btn.warning-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: #b54708;
+        color: #cc6002;
       }
 
       .spec-btn.info-primary[disabled]:hover {
@@ -2106,19 +2355,19 @@
       .spec-btn.info-secondary[disabled]:hover {
         border-color: var(--color-status-info);
         background: transparent;
-        color: #1570ef;
+        color: #1887f5;
       }
 
       .spec-btn.info-subtle[disabled]:hover {
         border-color: transparent;
-        background: #eff8ff;
-        color: #1570ef;
+        background: #eef9ff;
+        color: #1887f5;
       }
 
       .spec-btn.info-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: #1570ef;
+        color: #1887f5;
       }
 
       .spec-btn.danger[disabled]:hover {
@@ -2130,19 +2379,19 @@
       .spec-btn.danger-secondary[disabled]:hover {
         border-color: var(--color-status-error);
         background: transparent;
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-btn.danger-subtle[disabled]:hover {
         border-color: transparent;
-        background: #fff1f0;
-        color: #d92d20;
+        background: #fff2f1;
+        color: #ec2116;
       }
 
       .spec-btn.danger-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .disabled-groups {
@@ -2384,7 +2633,7 @@
       }
 
       .input-count.over-limit {
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .count-input-wrap,
@@ -2422,7 +2671,7 @@
 
       .count-input-wrap .input-count.over-limit,
       .count-textarea-wrap .input-count.over-limit {
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-field-help {
@@ -2459,7 +2708,7 @@
       }
 
       .spec-field.error .spec-field-help {
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-field.success .spec-input,
@@ -2542,7 +2791,7 @@
       .spec-select.open,
       .spec-select.focus {
         border-color:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .spec-select.error {
@@ -2552,7 +2801,7 @@
       .spec-select.error.open,
       .spec-select.error.focus {
         border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        box-shadow: 0 0 0 3px rgba(254, 61, 51, 0.12);
       }
 
       .spec-select.disabled {
@@ -2980,7 +3229,7 @@
       .spec-date.open,
       .spec-date.focus {
         border-color:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .spec-date.error {
@@ -2988,7 +3237,7 @@
       }
 
       .spec-date.error.focus {
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        box-shadow: 0 0 0 3px rgba(254, 61, 51, 0.12);
       }
 
       .spec-date.disabled {
@@ -3346,7 +3595,7 @@
 
       .time-range-inputs:has(.time-input-control.open) {
         border-color:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       .time-range-inputs .time-input-control.open {
@@ -3859,7 +4108,7 @@
         grid-template-rows: 1fr 1fr;
         flex: 0 0 auto;
         border-left: 1px solid #dde1e5;
-        background: #fafbfc;
+        background: #f9f9f9;
       }
 
       .number-step {
@@ -4629,8 +4878,14 @@
           align-items: center;
         }
 
+        .icon-canvas-demo,
+        .icon-compare-grid {
+          grid-template-columns: 1fr;
+        }
+
         .style-token-grid,
         .mask-case-grid,
+        .radius-grid,
         .icon-spec-grid,
         .shadow-grid,
         .theme-grid {
@@ -4675,9 +4930,12 @@
       :root[data-product-theme="default-theme"] .spec-input-wrap.focus,
       :root[data-product-theme="default-theme"] .spec-input-wrap.is-focus,
       :root[data-product-theme="default-theme"] .spec-input-wrap:focus-within,
+      :root[data-product-theme="default-theme"] .number-input:focus-within {
+        box-shadow: var(--shadow-focus);
+      }
+
       :root[data-product-theme="default-theme"] .product-select-trigger[aria-expanded="true"],
       :root[data-product-theme="default-theme"] .palette-select-trigger[aria-expanded="true"],
-      :root[data-product-theme="default-theme"] .number-input:focus-within,
       :root[data-product-theme="default-theme"] .spec-select.open,
       :root[data-product-theme="default-theme"] .spec-date.open,
       :root[data-product-theme="default-theme"] .spec-time.open,
@@ -4686,7 +4944,7 @@
       :root[data-product-theme="default-theme"] .table-spec-select.open,
       :root[data-product-theme="default-theme"] .page-size-select.open .page-size-trigger,
       :root[data-product-theme="default-theme"] .table-select-demo.open .table-spec-select {
-        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       :root[data-product-theme="default-theme"] .spec-input-wrap .spec-input:focus,
@@ -4705,7 +4963,7 @@
       :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="business-theme"] .table-spec-select.open,
       :root[data-product-theme="business-theme"] .table-select-demo.open .table-spec-select {
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
+        box-shadow: var(--selector-focus-shadow);
       }
 
 
@@ -4731,13 +4989,13 @@
       :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-input-control.open) {
         border-color:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-input-control.open) {
         border-color:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
+        box-shadow: var(--selector-focus-shadow);
       }
 
       :root[data-product-theme="default-theme"] .time-range-inputs .time-input-control.open,
@@ -4820,7 +5078,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 33/34</span>
+          <span data-component-count-label>Active components 34/34</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -4925,6 +5183,41 @@
                   <li>
                     <a class="nav-button" href="layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -5083,7 +5376,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="index.html#card">
+                    <a class="nav-button" href="datadisplay/card.html">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -5153,13 +5446,13 @@
                 <h1 class="doc-title">组件总览</h1>
                 <p class="doc-summary">
                   按组件类型组织当前 Design System 的全部侧导航入口。索引遵循“类目分组 + 组件名称 + 使用线索”的结构，
-                  方便快速定位已完成规范与后续待补齐组件。
+                  方便快速定位已完成规范与组件说明。
                 </p>
                 <ul class="doc-meta-list" aria-label="组件索引统计">
                   <li>5 个组件类目</li>
                   <li>34 个组件入口</li>
-                  <li>33 个已补齐规范</li>
-                  <li>1 个待补齐规范</li>
+                  <li>34 个已补齐规范</li>
+                  <li>0 个待补齐规范</li>
                 </ul>
               </header>
 
@@ -5415,10 +5708,10 @@
                         </a>
                       </li>
                       <li>
-                        <a class="component-index-button" href="index.html#card">
+                        <a class="component-index-button" href="datadisplay/card.html">
                           <span class="component-index-name">
                             <span>卡片 Card</span>
-                            <span class="component-status pending">待补齐</span>
+                            <span class="component-status done">已补齐</span>
                           </span>
                           <span class="component-index-desc">承载信息摘要、资源对象和轻量操作。</span>
                         </a>
@@ -5587,9 +5880,9 @@
                   色阶编号从 50 到 900，数值越大颜色越深，500 作为常规态或语义基准色。
                 </p>
                 <ul class="doc-meta-list" aria-label="颜色规范摘要">
-                  <li data-color-brand-meta>品牌色 #00D157</li>
-                  <li>10 阶梯度 50-900</li>
-                  <li data-functional-color-meta>功能色覆盖红 / 黄 / 蓝</li>
+                  <li data-color-brand-meta>品牌色 #1CC749</li>
+                  <li>11 阶梯度 50-950</li>
+                  <li data-functional-color-meta>功能色覆盖 Danger / Warning / Info</li>
                   <li>适用于组件、状态、遮罩与主题变量</li>
                 </ul>
               </section>
@@ -5618,110 +5911,115 @@
                   <div class="example-block full color-palette" data-color-palette="brand">
                     <div class="color-palette-header">
                       <div>
-                        <h3 data-color-palette-title>Primary Green</h3>
-                        <p data-color-palette-desc>品牌主色，500 固定为 #00D157。</p>
+                        <h3 data-color-palette-title>Brand Color</h3>
+                        <p data-color-palette-desc>品牌主色，500 固定为 #1CC749。</p>
                       </div>
-                      <span class="color-palette-base" data-color-palette-base>primary-500</span>
+                      <span class="color-palette-base" data-color-palette-base>brand-500</span>
                     </div>
                     <ul class="color-ramp" aria-label="品牌色色板" data-color-palette-ramp>
-                      <li class="color-swatch" style="--swatch: #effff6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-50</span><span class="color-hex">#EFFFF6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d8ffe8; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-100</span><span class="color-hex">#D8FFE8</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b5ffd1; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-200</span><span class="color-hex">#B5FFD1</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7dffb0; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-300</span><span class="color-hex">#7DFFB0</span></div></li>
-                      <li class="color-swatch" style="--swatch: #35f47c; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">primary-400</span><span class="color-hex">#35F47C</span></div></li>
-                      <li class="color-swatch" style="--swatch: #00d157; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-500</span><span class="color-hex">#00D157</span></div></li>
-                      <li class="color-swatch" style="--swatch: #00b84b; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-600</span><span class="color-hex">#00B84B</span></div></li>
-                      <li class="color-swatch" style="--swatch: #008f3f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-700</span><span class="color-hex">#008F3F</span></div></li>
-                      <li class="color-swatch" style="--swatch: #067037; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-800</span><span class="color-hex">#067037</span></div></li>
-                      <li class="color-swatch" style="--swatch: #075a2f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">primary-900</span><span class="color-hex">#075A2F</span></div></li>
+                      <li class="color-swatch" style="--swatch: #f0fdf3; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">brand-50</span><span class="color-hex">#F0FDF3</span></div></li>
+                      <li class="color-swatch" style="--swatch: #dbfde3; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">brand-100</span><span class="color-hex">#DBFDE3</span></div></li>
+                      <li class="color-swatch" style="--swatch: #b9f9c9; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">brand-200</span><span class="color-hex">#B9F9C9</span></div></li>
+                      <li class="color-swatch" style="--swatch: #82f39f; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">brand-300</span><span class="color-hex">#82F39F</span></div></li>
+                      <li class="color-swatch" style="--swatch: #45e36e; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">brand-400</span><span class="color-hex">#45E36E</span></div></li>
+                      <li class="color-swatch" style="--swatch: #1cc749; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">brand-500</span><span class="color-hex">#1CC749</span></div></li>
+                      <li class="color-swatch" style="--swatch: #00ae2e; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">brand-600</span><span class="color-hex">#00AE2E</span></div></li>
+                      <li class="color-swatch" style="--swatch: #118430; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">brand-700</span><span class="color-hex">#118430</span></div></li>
+                      <li class="color-swatch" style="--swatch: #13682a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">brand-800</span><span class="color-hex">#13682A</span></div></li>
+                      <li class="color-swatch" style="--swatch: #125526; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">brand-900</span><span class="color-hex">#125526</span></div></li>
+                      <li class="color-swatch" style="--swatch: #042f11; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">brand-950</span><span class="color-hex">#042F11</span></div></li>
                     </ul>
                   </div>
 
                   <div class="example-block full color-palette">
                     <div class="color-palette-header">
                       <div>
-                        <h3>Neutral Gray</h3>
+                        <h3>Gray Neutral 自然色</h3>
                         <p>承载文本、边框、背景与分割线层级。</p>
                       </div>
-                      <span class="color-palette-base">neutral-500</span>
+                      <span class="color-palette-base">gray-neutral-500</span>
                     </div>
                     <ul class="color-ramp" aria-label="中性色色板">
-                      <li class="color-swatch" style="--swatch: #fafbfc; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-50</span><span class="color-hex">#FAFBFC</span></div></li>
-                      <li class="color-swatch" style="--swatch: #f3f5f7; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-100</span><span class="color-hex">#F3F5F7</span></div></li>
-                      <li class="color-swatch" style="--swatch: #e7eaee; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-200</span><span class="color-hex">#E7EAEE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d4d9de; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-300</span><span class="color-hex">#D4D9DE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #a5adb6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">neutral-400</span><span class="color-hex">#A5ADB6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #78818c; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-500</span><span class="color-hex">#78818C</span></div></li>
-                      <li class="color-swatch" style="--swatch: #59616a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-600</span><span class="color-hex">#59616A</span></div></li>
-                      <li class="color-swatch" style="--swatch: #343a40; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-700</span><span class="color-hex">#343A40</span></div></li>
-                      <li class="color-swatch" style="--swatch: #22262a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-800</span><span class="color-hex">#22262A</span></div></li>
-                      <li class="color-swatch" style="--swatch: #14171a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">neutral-900</span><span class="color-hex">#14171A</span></div></li>
+                      <li class="color-swatch" style="--swatch: #fafbfc; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">gray-neutral-50</span><span class="color-hex">#FAFBFC</span></div></li>
+                      <li class="color-swatch" style="--swatch: #f3f5f7; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">gray-neutral-100</span><span class="color-hex">#F3F5F7</span></div></li>
+                      <li class="color-swatch" style="--swatch: #e7eaee; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">gray-neutral-200</span><span class="color-hex">#E7EAEE</span></div></li>
+                      <li class="color-swatch" style="--swatch: #d4d9de; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">gray-neutral-300</span><span class="color-hex">#D4D9DE</span></div></li>
+                      <li class="color-swatch" style="--swatch: #a5adb6; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">gray-neutral-400</span><span class="color-hex">#A5ADB6</span></div></li>
+                      <li class="color-swatch" style="--swatch: #78818c; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">gray-neutral-500</span><span class="color-hex">#78818C</span></div></li>
+                      <li class="color-swatch" style="--swatch: #59616a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">gray-neutral-600</span><span class="color-hex">#59616A</span></div></li>
+                      <li class="color-swatch" style="--swatch: #343a40; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">gray-neutral-700</span><span class="color-hex">#343A40</span></div></li>
+                      <li class="color-swatch" style="--swatch: #22262A; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">gray-neutral-800</span><span class="color-hex">#22262A</span></div></li>
+                      <li class="color-swatch" style="--swatch: #14171a; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">gray-neutral-900</span><span class="color-hex">#14171A</span></div></li>
+                      <li class="color-swatch" style="--swatch: #0B0D0F; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">gray-neutral-950</span><span class="color-hex">#0B0D0F</span></div></li>
                     </ul>
                   </div>
 
                   <div class="example-block full color-palette">
                     <div class="color-palette-header">
                       <div>
-                        <h3>Red 红色</h3>
+                        <h3>Danger / Error</h3>
                         <p>用于错误、失败、危险操作和阻断状态。</p>
                       </div>
-                      <span class="color-palette-base">red-500 #F04438</span>
+                      <span class="color-palette-base">danger-500 #FE3D33</span>
                     </div>
                     <ul class="color-ramp" aria-label="红色色板">
-                      <li class="color-swatch" style="--swatch: #fff1f0; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-50</span><span class="color-hex">#FFF1F0</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ffe0de; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-100</span><span class="color-hex">#FFE0DE</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ffc2bd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-200</span><span class="color-hex">#FFC2BD</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ff9b94; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-300</span><span class="color-hex">#FF9B94</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ff6b61; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">red-400</span><span class="color-hex">#FF6B61</span></div></li>
-                      <li class="color-swatch" style="--swatch: var(--color-status-error); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-500</span><span class="color-hex">#F04438</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d92d20; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-600</span><span class="color-hex">#D92D20</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b42318; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-700</span><span class="color-hex">#B42318</span></div></li>
-                      <li class="color-swatch" style="--swatch: #912018; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-800</span><span class="color-hex">#912018</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7a1b16; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">red-900</span><span class="color-hex">#7A1B16</span></div></li>
+                      <li class="color-swatch" style="--swatch: #fff2f1; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">danger-50</span><span class="color-hex">#FFF2F1</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ffe2e0; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">danger-100</span><span class="color-hex">#FFE2E0</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ffc8c5; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">danger-200</span><span class="color-hex">#FFC8C5</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ffa29d; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">danger-300</span><span class="color-hex">#FFA29D</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ff6d65; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">danger-400</span><span class="color-hex">#FF6D65</span></div></li>
+                      <li class="color-swatch" style="--swatch: var(--color-status-error); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">danger-500</span><span class="color-hex">#FE3D33</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ec2116; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">danger-600</span><span class="color-hex">#EC2116</span></div></li>
+                      <li class="color-swatch" style="--swatch: #c7170e; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">danger-700</span><span class="color-hex">#C7170E</span></div></li>
+                      <li class="color-swatch" style="--swatch: #a41710; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">danger-800</span><span class="color-hex">#A41710</span></div></li>
+                      <li class="color-swatch" style="--swatch: #881a14; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">danger-900</span><span class="color-hex">#881A14</span></div></li>
+                      <li class="color-swatch" style="--swatch: #4a0805; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">danger-950</span><span class="color-hex">#4A0805</span></div></li>
                     </ul>
                   </div>
 
                   <div class="example-block full color-palette">
                     <div class="color-palette-header">
                       <div>
-                        <h3>Yellow 黄色</h3>
+                        <h3>Warning</h3>
                         <p>用于警告、等待、注意和中风险提示。</p>
                       </div>
-                      <span class="color-palette-base">yellow-500 #F79009</span>
+                      <span class="color-palette-base">warning-500 #FF990A</span>
                     </div>
                     <ul class="color-ramp" aria-label="黄色色板">
-                      <li class="color-swatch" style="--swatch: #fffaeb; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-50</span><span class="color-hex">#FFFAEB</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fef0c7; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-100</span><span class="color-hex">#FEF0C7</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fedf89; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-200</span><span class="color-hex">#FEDF89</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fec84b; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-300</span><span class="color-hex">#FEC84B</span></div></li>
-                      <li class="color-swatch" style="--swatch: #fdb022; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-400</span><span class="color-hex">#FDB022</span></div></li>
-                      <li class="color-swatch" style="--swatch: var(--color-status-warning); --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">yellow-500</span><span class="color-hex">#F79009</span></div></li>
-                      <li class="color-swatch" style="--swatch: #dc6803; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-600</span><span class="color-hex">#DC6803</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b54708; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-700</span><span class="color-hex">#B54708</span></div></li>
-                      <li class="color-swatch" style="--swatch: #93370d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-800</span><span class="color-hex">#93370D</span></div></li>
-                      <li class="color-swatch" style="--swatch: #7a2e0e; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">yellow-900</span><span class="color-hex">#7A2E0E</span></div></li>
+                      <li class="color-swatch" style="--swatch: #fffaec; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">warning-50</span><span class="color-hex">#FFFAEC</span></div></li>
+                      <li class="color-swatch" style="--swatch: #fff4d3; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">warning-100</span><span class="color-hex">#FFF4D3</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ffe5a5; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">warning-200</span><span class="color-hex">#FFE5A5</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ffd16d; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">warning-300</span><span class="color-hex">#FFD16D</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ffb232; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">warning-400</span><span class="color-hex">#FFB232</span></div></li>
+                      <li class="color-swatch" style="--swatch: var(--color-status-warning); --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">warning-500</span><span class="color-hex">#FF990A</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ff8400; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">warning-600</span><span class="color-hex">#FF8400</span></div></li>
+                      <li class="color-swatch" style="--swatch: #cc6002; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">warning-700</span><span class="color-hex">#CC6002</span></div></li>
+                      <li class="color-swatch" style="--swatch: #a14b0b; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">warning-800</span><span class="color-hex">#A14B0B</span></div></li>
+                      <li class="color-swatch" style="--swatch: #823f0c; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">warning-900</span><span class="color-hex">#823F0C</span></div></li>
+                      <li class="color-swatch" style="--swatch: #461e04; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">warning-950</span><span class="color-hex">#461E04</span></div></li>
                     </ul>
                   </div>
 
                   <div class="example-block full color-palette">
                     <div class="color-palette-header">
                       <div>
-                        <h3>Blue 蓝色</h3>
+                        <h3>Info</h3>
                         <p>用于信息提示、链接、进行中状态和可查看入口。</p>
                       </div>
-                      <span class="color-palette-base">blue-500 #2E90FA</span>
+                      <span class="color-palette-base">info-500 #31A6FF</span>
                     </div>
                     <ul class="color-ramp" aria-label="蓝色色板">
-                      <li class="color-swatch" style="--swatch: #eff8ff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-50</span><span class="color-hex">#EFF8FF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #d1e9ff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-100</span><span class="color-hex">#D1E9FF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #b2ddff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-200</span><span class="color-hex">#B2DDFF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #84caff; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-300</span><span class="color-hex">#84CAFF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #53b1fd; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">blue-400</span><span class="color-hex">#53B1FD</span></div></li>
-                      <li class="color-swatch" style="--swatch: var(--color-status-info); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-500</span><span class="color-hex">#2E90FA</span></div></li>
-                      <li class="color-swatch" style="--swatch: #1570ef; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-600</span><span class="color-hex">#1570EF</span></div></li>
-                      <li class="color-swatch" style="--swatch: #175cd3; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-700</span><span class="color-hex">#175CD3</span></div></li>
-                      <li class="color-swatch" style="--swatch: #1849a9; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-800</span><span class="color-hex">#1849A9</span></div></li>
-                      <li class="color-swatch" style="--swatch: #194185; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">blue-900</span><span class="color-hex">#194185</span></div></li>
+                      <li class="color-swatch" style="--swatch: #eef9ff; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">info-50</span><span class="color-hex">#EEF9FF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #d9f0ff; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">info-100</span><span class="color-hex">#D9F0FF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #bce6ff; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">info-200</span><span class="color-hex">#BCE6FF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #8ed9ff; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">info-300</span><span class="color-hex">#8ED9FF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #58c2ff; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">info-400</span><span class="color-hex">#58C2FF</span></div></li>
+                      <li class="color-swatch" style="--swatch: var(--color-status-info); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">info-500</span><span class="color-hex">#31A6FF</span></div></li>
+                      <li class="color-swatch" style="--swatch: #1887f5; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">info-600</span><span class="color-hex">#1887F5</span></div></li>
+                      <li class="color-swatch" style="--swatch: #1370e2; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">info-700</span><span class="color-hex">#1370E2</span></div></li>
+                      <li class="color-swatch" style="--swatch: #1370e2; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">info-800</span><span class="color-hex">#1370E2</span></div></li>
+                      <li class="color-swatch" style="--swatch: #184e90; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">info-900</span><span class="color-hex">#184E90</span></div></li>
+                      <li class="color-swatch" style="--swatch: #143057; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">info-950</span><span class="color-hex">#143057</span></div></li>
                     </ul>
                   </div>
 
@@ -5734,12 +6032,12 @@
                       <span class="color-palette-base">success-green-500</span>
                     </div>
                     <ul class="color-ramp" aria-label="成功绿色色板">
-                      <li class="color-swatch" style="--swatch: #f0fff6; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-50</span><span class="color-hex">#F0FFF6</span></div></li>
-                      <li class="color-swatch" style="--swatch: #ddfbea; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-100</span><span class="color-hex">#DDFBEA</span></div></li>
-                      <li class="color-swatch" style="--swatch: #bef5d5; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-200</span><span class="color-hex">#BEF5D5</span></div></li>
-                      <li class="color-swatch" style="--swatch: #91e9b8; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-300</span><span class="color-hex">#91E9B8</span></div></li>
-                      <li class="color-swatch" style="--swatch: #5fd897; --swatch-ink: #0b0d0f;"><div class="color-meta"><span class="color-token">success-green-400</span><span class="color-hex">#5FD897</span></div></li>
-                      <li class="color-swatch" style="--swatch: var(--color-status-success); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-500</span><span class="color-hex">var(--color-status-success)</span></div></li>
+                      <li class="color-swatch" style="--swatch: #f0fff6; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">success-green-50</span><span class="color-hex">#F0FFF6</span></div></li>
+                      <li class="color-swatch" style="--swatch: #ddfbea; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">success-green-100</span><span class="color-hex">#DDFBEA</span></div></li>
+                      <li class="color-swatch" style="--swatch: #bef5d5; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">success-green-200</span><span class="color-hex">#BEF5D5</span></div></li>
+                      <li class="color-swatch" style="--swatch: #91e9b8; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">success-green-300</span><span class="color-hex">#91E9B8</span></div></li>
+                      <li class="color-swatch" style="--swatch: #5fd897; --swatch-ink: #222222;"><div class="color-meta"><span class="color-token">success-green-400</span><span class="color-hex">#5FD897</span></div></li>
+                      <li class="color-swatch" style="--swatch: var(--color-status-success); --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-500</span><span class="color-hex">#1CC749</span></div></li>
                       <li class="color-swatch" style="--swatch: #1b9c61; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-600</span><span class="color-hex">#1B9C61</span></div></li>
                       <li class="color-swatch" style="--swatch: #147c4d; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-700</span><span class="color-hex">#147C4D</span></div></li>
                       <li class="color-swatch" style="--swatch: #12633f; --swatch-ink: #ffffff;"><div class="color-meta"><span class="color-token">success-green-800</span><span class="color-hex">#12633F</span></div></li>
@@ -5769,50 +6067,62 @@
                     <ul class="semantic-token-list">
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-primary);">
                         <code class="semantic-name">color-text-primary</code>
-                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-primary</code><code class="semantic-primitive">neutral-900</code></span>
+                        <code class="semantic-primitive">gray-neutral-900</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#14171A</code></span>
                         <span class="semantic-usage">页面标题 / 重要信息 / 表单 Label / 关键数据</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-default);">
                         <code class="semantic-name">color-text-default</code>
-                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-default</code><code class="semantic-primitive">neutral-700</code></span>
+                        <code class="semantic-primitive">gray-neutral-700</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#343A40</code></span>
                         <span class="semantic-usage">正文说明 / 菜单项 / 输入内容 / 可阅读段落</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-secondary);">
                         <code class="semantic-name">color-text-secondary</code>
-                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-secondary</code><code class="semantic-primitive">neutral-600</code></span>
+                        <code class="semantic-primitive">gray-neutral-600</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#59616A</code></span>
                         <span class="semantic-usage">说明文案 / 表格补充信息 / 次要状态描述 / Helper Text</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-tertiary);">
                         <code class="semantic-name">color-text-tertiary</code>
-                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-tertiary</code><code class="semantic-primitive">neutral-500</code></span>
+                        <code class="semantic-primitive">gray-neutral-500</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#78818C</code></span>
                         <span class="semantic-usage">Placeholder / 说明尾注 / 计数器 / 低优先级信息</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-disabled);">
                         <code class="semantic-name">color-text-disabled</code>
-                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-disabled</code><code class="semantic-primitive">neutral-400</code></span>
+                        <code class="semantic-primitive">gray-neutral-400</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#A5ADB6</code></span>
                         <span class="semantic-usage">Disabled 文本 / 禁用输入 / 不可用操作</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-inverse);">
                         <code class="semantic-name">color-text-inverse</code>
-                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-inverse</code><code class="semantic-primitive">white</code></span>
+                        <code class="semantic-primitive">white</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FFFFFF</code></span>
                         <span class="semantic-usage">深色底 / Primary Button / 深色标签 / 深色浮层内容</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-link);">
                         <code class="semantic-name">color-text-link</code>
-                        <span class="semantic-token-source"><code class="semantic-color-label">color-text-link</code><code class="semantic-primitive">blue-600</code></span>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#1570EF</code></span>
+                        <code class="semantic-primitive">info-600</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#1887F5</code></span>
                         <span class="semantic-usage">可点击文本 / 跳转入口 / 外部资源访问</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-link-hover);">
+                        <code class="semantic-name">color-text-link-hover</code>
+                        <code class="semantic-primitive">info-700</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#1370E2</code></span>
+                        <span class="semantic-usage">链接 Hover / 可点击文本强调</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-text-link-disabled);">
+                        <code class="semantic-name">color-text-link-disabled</code>
+                        <code class="semantic-primitive">gray-neutral-400</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#A5ADB6</code></span>
+                        <span class="semantic-usage">禁用链接 / 不可点击文本入口</span>
                       </li>
                     </ul>
                     <div class="semantic-map" aria-label="Text Semantic 调用关系示例">
-                      <span>neutral-900</span><strong>→</strong><span>color-text-primary</span><strong>→</strong><span>Page Title / Form Label</span>
-                      <span>neutral-600</span><strong>→</strong><span>color-text-secondary</span><strong>→</strong><span>Description / Helper Text</span>
+                      <span>gray-neutral-900</span><strong>→</strong><span>color-text-primary</span><strong>→</strong><span>Page Title / Form Label</span>
+                      <span>gray-neutral-600</span><strong>→</strong><span>color-text-secondary</span><strong>→</strong><span>Description / Helper Text</span>
                     </div>
                   </div>
 
@@ -5821,7 +6131,7 @@
                     <ul class="semantic-token-list">
                       <li class="semantic-token-row" style="--semantic-swatch: var(--gray-50);">
                         <code class="semantic-name">color-bg-page</code>
-                        <code class="semantic-primitive">neutral-50</code>
+                        <code class="semantic-primitive">gray-neutral-50</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FAFBFC</code></span>
                         <span class="semantic-usage">页面基础背景</span>
                       </li>
@@ -5833,27 +6143,33 @@
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--gray-100);">
                         <code class="semantic-name">color-bg-subtle</code>
-                        <code class="semantic-primitive">neutral-100</code>
+                        <code class="semantic-primitive">gray-neutral-100</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#F3F5F7</code></span>
                         <span class="semantic-usage">次级区域 / 弱强调背景</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--gray-100);">
                         <code class="semantic-name">color-bg-hover</code>
-                        <code class="semantic-primitive">neutral-100</code>
+                        <code class="semantic-primitive">gray-neutral-100</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#F3F5F7</code></span>
                         <span class="semantic-usage">中性组件 Hover</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--brand-50);" data-semantic-brand-level="50">
                         <code class="semantic-name">color-bg-selected</code>
-                        <code class="semantic-primitive">primary-50</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-brand-hex>#EFFFF6</code></span>
+                        <code class="semantic-primitive">brand-50</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-brand-hex>#F0FDF3</code></span>
                         <span class="semantic-usage">Selected / Active 区域</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--gray-100);">
                         <code class="semantic-name">color-bg-disabled</code>
-                        <code class="semantic-primitive">neutral-100</code>
+                        <code class="semantic-primitive">gray-neutral-100</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#F3F5F7</code></span>
                         <span class="semantic-usage">Disabled 控件背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-bg-inverse);">
+                        <code class="semantic-name">color-bg-inverse</code>
+                        <code class="semantic-primitive">gray-neutral-900</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#14171A</code></span>
+                        <span class="semantic-usage">Tooltip / 深色浮层背景</span>
                       </li>
                     </ul>
                   </div>
@@ -5863,31 +6179,31 @@
                     <ul class="semantic-token-list">
                       <li class="semantic-token-row" style="--semantic-swatch: var(--gray-300);">
                         <code class="semantic-name">color-border-default</code>
-                        <code class="semantic-primitive">neutral-300</code>
+                        <code class="semantic-primitive">gray-neutral-300</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#D4D9DE</code></span>
                         <span class="semantic-usage">Input / Select / Card 常规边框</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch:var(--color-border-subtle);">
                         <code class="semantic-name">color-border-subtle</code>
-                        <code class="semantic-primitive">neutral-200</code>
+                        <code class="semantic-primitive">gray-neutral-200</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#E7EAEE</code></span>
                         <span class="semantic-usage">Divider / 弱边界</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch:var(--color-border-strong);">
                         <code class="semantic-name">color-border-strong</code>
-                        <code class="semantic-primitive">neutral-400</code>
+                        <code class="semantic-primitive">gray-neutral-400</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#A5ADB6</code></span>
                         <span class="semantic-usage">强调边界</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--brand-500);" data-semantic-brand-level="500">
                         <code class="semantic-name">color-border-focus</code>
-                        <code class="semantic-primitive">primary-500</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-brand-hex>#00D157</code></span>
+                        <code class="semantic-primitive">brand-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-brand-hex>#1CC749</code></span>
                         <span class="semantic-usage">Focus 状态</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch:var(--color-border-subtle);">
                         <code class="semantic-name">color-border-disabled</code>
-                        <code class="semantic-primitive">neutral-200</code>
+                        <code class="semantic-primitive">gray-neutral-200</code>
                         <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#E7EAEE</code></span>
                         <span class="semantic-usage">Disabled 控件边框</span>
                       </li>
@@ -5900,31 +6216,31 @@
                       <li class="semantic-token-row" style="--semantic-swatch: var(--brand-500);" data-semantic-action-level="500">
                         <code class="semantic-name">color-action-primary</code>
                         <code class="semantic-primitive">brand-500</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#00D157</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#1CC749</code></span>
                         <span class="semantic-usage">Primary Button / Checkbox / Radio / Switch / Slider</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--brand-600);" data-semantic-action-level="600">
                         <code class="semantic-name">color-action-primary-hover</code>
                         <code class="semantic-primitive">brand-600</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#00B84B</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#00AE2E</code></span>
                         <span class="semantic-usage">主要操作 Hover</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--brand-700);" data-semantic-action-level="700">
                         <code class="semantic-name">color-action-primary-active</code>
                         <code class="semantic-primitive">brand-700</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#008F3F</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#118430</code></span>
                         <span class="semantic-usage">主要操作 Active / Pressed</span>
                       </li>
-                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-50);" data-semantic-action-level="50">
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--brand-100);" data-semantic-action-level="100">
                         <code class="semantic-name">color-action-primary-subtle</code>
-                        <code class="semantic-primitive">brand-50</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#EFFFF6</code></span>
+                        <code class="semantic-primitive">brand-100</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#DBFDE3</code></span>
                         <span class="semantic-usage">轻量选中态 / 品牌弱背景</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--brand-200);" data-semantic-action-level="200">
                         <code class="semantic-name">color-action-primary-disabled</code>
                         <code class="semantic-primitive">brand-200</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#B5FFD1</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex" data-semantic-action-hex>#B9F9C9</code></span>
                         <span class="semantic-usage">主要操作 Disabled</span>
                       </li>
                     </ul>
@@ -5936,78 +6252,128 @@
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-success);">
                         <code class="semantic-name">color-status-success</code>
                         <code class="semantic-primitive">success-green-500</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-status-success)</code></span>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#1CC749</code></span>
                         <span class="semantic-usage">Alert / Message / Badge / 任务成功</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-error);">
                         <code class="semantic-name">color-status-error</code>
-                        <code class="semantic-primitive">red-500</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-status-error)</code></span>
+                        <code class="semantic-primitive">danger-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FE3D33</code></span>
                         <span class="semantic-usage">Form Validation / Alert / Message 错误</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-error-hover);">
+                        <code class="semantic-name">color-status-error-hover</code>
+                        <code class="semantic-primitive">danger-600</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#EC2116</code></span>
+                        <span class="semantic-usage">错误状态 Hover / 强调错误背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-error-bg);">
+                        <code class="semantic-name">color-status-error-bg</code>
+                        <code class="semantic-primitive">danger-50</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FFF2F1</code></span>
+                        <span class="semantic-usage">错误弱背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-error-bg-hover);">
+                        <code class="semantic-name">color-status-error-bg-hover</code>
+                        <code class="semantic-primitive">danger-100</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FFE2E0</code></span>
+                        <span class="semantic-usage">错误弱背景 Hover</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-error-text);">
+                        <code class="semantic-name">color-status-error-text</code>
+                        <code class="semantic-primitive">danger-600</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#EC2116</code></span>
+                        <span class="semantic-usage">错误文本 / 危险文字按钮</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-error-text-hover);">
+                        <code class="semantic-name">color-status-error-text-hover</code>
+                        <code class="semantic-primitive">danger-700</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#C7170E</code></span>
+                        <span class="semantic-usage">错误文本 Hover</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-warning);">
                         <code class="semantic-name">color-status-warning</code>
-                        <code class="semantic-primitive">yellow-500</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-status-warning)</code></span>
+                        <code class="semantic-primitive">warning-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FF990A</code></span>
                         <span class="semantic-usage">警告 / 待处理 / 中风险提示</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-warning-hover);">
+                        <code class="semantic-name">color-status-warning-hover</code>
+                        <code class="semantic-primitive">warning-600</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FF8400</code></span>
+                        <span class="semantic-usage">警告状态 Hover / 强调警告背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-warning-bg);">
+                        <code class="semantic-name">color-status-warning-bg</code>
+                        <code class="semantic-primitive">warning-50</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FFFAEC</code></span>
+                        <span class="semantic-usage">警告弱背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-warning-bg-hover);">
+                        <code class="semantic-name">color-status-warning-bg-hover</code>
+                        <code class="semantic-primitive">warning-100</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FFF4D3</code></span>
+                        <span class="semantic-usage">警告弱背景 Hover</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-warning-border);">
+                        <code class="semantic-name">color-status-warning-border</code>
+                        <code class="semantic-primitive">warning-400</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#FFB232</code></span>
+                        <span class="semantic-usage">警告弱边框</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-warning-text);">
+                        <code class="semantic-name">color-status-warning-text</code>
+                        <code class="semantic-primitive">warning-700</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#CC6002</code></span>
+                        <span class="semantic-usage">警告文本 / Testing 文字按钮</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-warning-text-hover);">
+                        <code class="semantic-name">color-status-warning-text-hover</code>
+                        <code class="semantic-primitive">warning-800</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#A14B0B</code></span>
+                        <span class="semantic-usage">警告文本 Hover</span>
                       </li>
                       <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-info);">
                         <code class="semantic-name">color-status-info</code>
-                        <code class="semantic-primitive">blue-500</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-status-info)</code></span>
+                        <code class="semantic-primitive">info-500</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#31A6FF</code></span>
                         <span class="semantic-usage">信息反馈 / 进行中 / Notification</span>
                       </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-info-hover);">
+                        <code class="semantic-name">color-status-info-hover</code>
+                        <code class="semantic-primitive">info-600</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#1887F5</code></span>
+                        <span class="semantic-usage">信息状态 Hover / 强调信息背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-info-bg);">
+                        <code class="semantic-name">color-status-info-bg</code>
+                        <code class="semantic-primitive">info-50</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#EEF9FF</code></span>
+                        <span class="semantic-usage">信息弱背景</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-info-bg-hover);">
+                        <code class="semantic-name">color-status-info-bg-hover</code>
+                        <code class="semantic-primitive">info-100</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#D9F0FF</code></span>
+                        <span class="semantic-usage">信息弱背景 Hover</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-info-text);">
+                        <code class="semantic-name">color-status-info-text</code>
+                        <code class="semantic-primitive">info-600</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#1887F5</code></span>
+                        <span class="semantic-usage">信息文本 / Link 默认文本</span>
+                      </li>
+                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-status-info-text-hover);">
+                        <code class="semantic-name">color-status-info-text-hover</code>
+                        <code class="semantic-primitive">info-700</code>
+                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">#1370E2</code></span>
+                        <span class="semantic-usage">信息文本 Hover</span>
+                      </li>
                     </ul>
                   </div>
 
-                  <div class="semantic-color-group wide">
-                    <h4>Overlay</h4>
-                    <ul class="semantic-token-list">
-                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-modal);">
-                        <code class="semantic-name">color-overlay-modal</code>
-                        <code class="semantic-primitive">overlay-modal</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-overlay-modal)</code></span>
-                        <span class="semantic-usage">Modal / 确认弹窗</span>
-                      </li>
-                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-drawer);">
-                        <code class="semantic-name">color-overlay-drawer</code>
-                        <code class="semantic-primitive">overlay-drawer</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-overlay-drawer)</code></span>
-                        <span class="semantic-usage">Drawer / 侧边配置</span>
-                      </li>
-                      <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-loading);">
-                        <code class="semantic-name">color-overlay-loading</code>
-                        <code class="semantic-primitive">overlay-loading</code>
-                        <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">var(--color-overlay-loading)</code></span>
-                        <span class="semantic-usage">局部加载 / 表格遮罩</span>
-                      </li>
-                    </ul>
-                  </div>
                 </div>
 
-                <div class="semantic-rule-box">
-                  <h4>使用原则</h4>
-                  <ol class="semantic-rule-list">
-                    <li>页面和组件优先使用 Semantic Token，不直接调用 Primitive Color。</li>
-                    <li>Primitive Color 仅作为基础色板和 Semantic Token 的取值来源。</li>
-                    <li>Component Token 应优先引用 Semantic Token。</li>
-                    <li>文字用途优先使用 <code>color-text-*</code> Semantic Token，不直接使用 <code>neutral-900</code>、<code>neutral-600</code> 等 Primitive Token。</li>
-                    <li>Brand / Action Semantic Token 随 Theme 改变。</li>
-                    <li>Text、Background、Border 等中性色语义默认跨 Theme 保持一致。</li>
-                    <li>Success / Warning / Error / Info 表达固定状态含义，不随 Brand Theme 改变。</li>
-                    <li>不要因为单个组件需求随意增加 Semantic Token；只有出现跨组件、重复使用的颜色语义时才新增。</li>
-                    <li>如果现有 Semantic Token 可以表达用途，不创建新的 Token。</li>
-                  </ol>
-                </div>
-
-                <div class="semantic-rule-box">
-                  <h4>Component Token 示例</h4>
-                  <div class="semantic-map" aria-label="Component Token 示例">
-                    <span>primary-500</span><strong>→</strong><span>color-action-primary</span><strong>→</strong><span>button-primary-background</span>
-                    <span>neutral-300</span><strong>→</strong><span>color-border-default</span><strong>→</strong><span>input-border / select-border / card-border</span>
-                    <span>red-500</span><strong>→</strong><span>color-status-error</span><strong>→</strong><span>form-error / alert-error / message-error</span>
-                  </div>
-                </div>
               </section>
 
               <section class="doc-section mask-section">
@@ -6028,7 +6394,7 @@
                     </div>
                     <h4>弹窗遮罩</h4>
                     <p>用于 Modal、确认弹窗和高阻断任务，背景需要明显退后。</p>
-                    <span class="mask-value">var(--color-overlay-modal)</span>
+                    <span class="mask-value">rgba(0, 0, 0, 0.45)</span>
                   </div>
                   <div class="mask-case">
                     <div class="mask-stage" style="--mask-bg: var(--color-overlay-drawer);" aria-hidden="true">
@@ -6041,7 +6407,7 @@
                     </div>
                     <h4>抽屉遮罩</h4>
                     <p>用于 Drawer、侧边配置和局部编辑任务，保留背景上下文。</p>
-                    <span class="mask-value">var(--color-overlay-drawer)</span>
+                    <span class="mask-value">rgba(0, 0, 0, 0.35)</span>
                   </div>
                   <div class="mask-case">
                     <div class="mask-stage" style="--mask-bg: var(--color-overlay-loading);" aria-hidden="true">
@@ -6054,7 +6420,55 @@
                     </div>
                     <h4>局部加载遮罩</h4>
                     <p>用于表格、卡片和表单局部加载，弱化内容但不制造强阻断。</p>
-                    <span class="mask-value">var(--color-overlay-loading)</span>
+                    <span class="mask-value">rgba(255, 255, 255, 0.72)</span>
+                  </div>
+                </div>
+
+                <div class="semantic-color-group wide">
+                  <h4>Overlay</h4>
+                  <ul class="semantic-token-list">
+                    <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-modal);">
+                      <code class="semantic-name">color-overlay-modal</code>
+                      <code class="semantic-primitive">overlay-modal</code>
+                      <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">rgba(0, 0, 0, 0.45)</code></span>
+                      <span class="semantic-usage">Modal / 确认弹窗</span>
+                    </li>
+                    <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-drawer);">
+                      <code class="semantic-name">color-overlay-drawer</code>
+                      <code class="semantic-primitive">overlay-drawer</code>
+                      <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">rgba(0, 0, 0, 0.35)</code></span>
+                      <span class="semantic-usage">Drawer / 侧边配置</span>
+                    </li>
+                    <li class="semantic-token-row" style="--semantic-swatch: var(--color-overlay-loading);">
+                      <code class="semantic-name">color-overlay-loading</code>
+                      <code class="semantic-primitive">overlay-loading</code>
+                      <span class="semantic-preview"><span class="semantic-swatch" aria-hidden="true"></span><code class="semantic-hex">rgba(255, 255, 255, 0.72)</code></span>
+                      <span class="semantic-usage">局部加载 / 表格遮罩</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="semantic-rule-box">
+                  <h4>使用原则</h4>
+                  <ol class="semantic-rule-list">
+                    <li>页面和组件优先使用 Semantic Token，不直接调用 Primitive Color。</li>
+                    <li>Primitive Color 仅作为基础色板和 Semantic Token 的取值来源。</li>
+                    <li>Component Token 应优先引用 Semantic Token。</li>
+                    <li>文字用途优先使用 <code>color-text-*</code> Semantic Token，不直接使用 <code>gray-neutral-900</code>、<code>gray-neutral-600</code> 等 Primitive Token。</li>
+                    <li>Brand / Action Semantic Token 随 Theme 改变。</li>
+                    <li>Text、Background、Border 等中性色语义默认跨 Theme 保持一致。</li>
+                    <li>Success / Warning / Error / Info 表达固定状态含义，不随 Brand Theme 改变。</li>
+                    <li>不要因为单个组件需求随意增加 Semantic Token；只有出现跨组件、重复使用的颜色语义时才新增。</li>
+                    <li>如果现有 Semantic Token 可以表达用途，不创建新的 Token。</li>
+                  </ol>
+                </div>
+
+                <div class="semantic-rule-box">
+                  <h4>Component Token 示例</h4>
+                  <div class="semantic-map" aria-label="Component Token 示例">
+                    <span>brand-500</span><strong>→</strong><span>color-action-primary</span><strong>→</strong><span>button-primary-background</span>
+                    <span>gray-neutral-300</span><strong>→</strong><span>color-border-default</span><strong>→</strong><span>input-border / select-border / card-border</span>
+                    <span>danger-500</span><strong>→</strong><span>color-status-error</span><strong>→</strong><span>form-error / alert-error / message-error</span>
                   </div>
                 </div>
               </section>
@@ -6233,14 +6647,18 @@
                 <div class="semantic-rule-box">
                   <h4>使用规则</h4>
                   <ol class="semantic-rule-list">
+                    <li>页面标题与模块标题使用 500 字重，避免通过过粗字重制造层级。</li>
+                    <li>表格、表单和工具栏优先使用 12px-14px 区间，保证信息密度与可读性。</li>
+                    <li>Typography 命名按 Display → Heading → Body → Caption 组织，各组内部使用 lg / md / sm 表达尺寸层级。</li>
                     <li>页面和组件优先调用 Semantic Typography，不直接写 <code>font-size</code>。</li>
                     <li>Semantic Typography 必须引用现有 Typography，不创建新的字体规格。</li>
                     <li>相同字号可以对应不同语义，不要求一个字号只能对应一个 Semantic Token。</li>
-                    <li>Typography Semantic 负责字号、字重和行高，不负责文字颜色。</li>
+                    <li>Typography Semantic 负责字号、字重、行高和字体族，不负责文字颜色。</li>
                     <li>文字颜色统一调用 <code>color-text-*</code> Semantic Color。</li>
                     <li>Component 可以进一步覆盖 Semantic，但必须有明确的组件需求。</li>
                     <li>不因为单个页面的特殊需求新增 Semantic Token。</li>
                     <li>只有某种文字角色在多个页面或组件重复出现时，才允许增加新的 Semantic Typography。</li>
+                    <li>英文、数字和代码值使用等宽字体时，仅限 Token、API、快捷值和可复制内容。</li>
                   </ol>
                 </div>
                 <div class="semantic-rule-box">
@@ -6254,33 +6672,63 @@
                 </div>
               </section>
 
-              <section class="doc-section">
-                <h2>使用原则</h2>
-                <ul class="rule-list">
-                  <li>页面标题与模块标题使用 500 字重，避免通过过粗字重制造层级。</li>
-                  <li>表格、表单和工具栏优先使用 12px-14px 区间，保证信息密度与可读性。</li>
-                  <li>Typography 命名按 Display → Heading → Body → Caption 组织，各组内部使用 lg / md / sm 表达尺寸层级。</li>
-                  <li>页面和组件优先调用 Semantic Typography，不直接写 font-size。</li>
-                  <li>Semantic Typography 必须引用现有 Typography，不创建新的字体规格；相同字号可以对应不同语义。</li>
-                  <li>Component 可以进一步覆盖 Typography Semantic，但必须有明确的组件需求。</li>
-                  <li>不因为单个页面的特殊需求新增 Typography Semantic；只有跨页面或跨组件重复出现的文字角色才允许新增。</li>
-                  <li>英文、数字和代码值使用等宽字体时，仅限 Token、API、快捷值和可复制内容。</li>
-                  <li>Typography 只负责 Font Family、Font Size、Font Weight、Line Height 等排版属性；文字颜色统一由 Text Semantic 管理。</li>
-                  <li>AI Coding 应先判断文字角色，再选择 Semantic Typography，避免因为“看起来重要”临时使用规范外字号。</li>
-                </ul>
-              </section>
-
               <section class="doc-section style-module-start">
                 <h2>图标 ICON</h2>
                 <p>
-                  所有界面中的功能性 Icon 默认使用统一的线性图标风格。图标用于补充按钮、输入框、导航和状态表达，
-                  默认跟随父级文字颜色，并通过固定线宽、圆角端点、圆角连接和标准尺寸保持一致的视觉语言。
+                  Icon 是界面中的语义型 UI 元素，不作为装饰图形使用。优先复用现有 Design System 或 Icon Library 中同语义图标；
+                  仅当现有资源无法覆盖业务语义时，AI 才允许按本章节规则自动生成 SVG Icon。
                 </p>
                 <div class="icon-spec-grid" aria-label="图标规范">
                   <div class="icon-spec-card">
                     <div class="icon-spec-copy">
-                      <strong>Default Style</strong>
-                      <p>使用 Outline / Linear Icon，不使用实心 Fill Icon。默认线宽为 2px，端点和连接均使用 round，同一页面内不得混用不同 Stroke Width 或不同视觉风格。</p>
+                      <strong>Icon 基础原则</strong>
+                      <p>Reuse first. Generate only when necessary. 语义不明确时优先选择通用、易理解的表达，不为了视觉效果创造复杂图形。</p>
+                    </div>
+                    <ol class="icon-rule-list">
+                      <li>已有同语义 Icon 时，直接复用，不重新生成近似版本。</li>
+                      <li>缺少现成 Icon 时，允许 AI 自动生成符合本规范的 SVG。</li>
+                      <li>Icon 只表达功能语义，不作为装饰插画使用。</li>
+                      <li>同一语义在同一页面必须保持同一图形。</li>
+                      <li>语义清晰度优先于视觉新颖度。</li>
+                    </ol>
+                  </div>
+                  <div class="icon-spec-card">
+                    <div class="icon-spec-copy">
+                      <strong>Icon Canvas</strong>
+                      <p>统一使用 24×24 标准画布与 2px 安全边距；实际显示尺寸跟随相邻文字字号、组件高度和视觉平衡调整。</p>
+                    </div>
+                    <div class="icon-canvas-demo">
+                      <div class="icon-canvas-box" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="4" width="18" height="16" rx="3" />
+                          <path d="M8 9H16" />
+                          <path d="M8 13H14" />
+                        </svg>
+                      </div>
+                      <ul class="icon-rule-list">
+                        <li>Canvas：<code>24 × 24</code></li>
+                        <li>Safe area：<code>2px</code></li>
+                        <li>主要图形保持视觉居中，避免贴边。</li>
+                        <li>不要因为显示尺寸变化改变 <code>viewBox</code>。</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="icon-spec-card">
+                    <div class="icon-spec-copy">
+                      <strong>Icon Size</strong>
+                      <p>Icon 尺寸默认与相邻文字字号保持一致或接近，并根据组件高度和视觉平衡进行调整。</p>
+                    </div>
+                    <ul class="icon-rule-list">
+                      <li>Icon 尺寸不设置推荐的固定尺寸阶梯。</li>
+                      <li>图文组合中，Icon 与相邻文字字号保持一致或接近。</li>
+                      <li>Button、Menu、Navigation、Form、Toolbar 等组件内的 Icon，按组件高度、内边距和视觉重量进行微调。</li>
+                      <li>独立操作入口、空状态或功能入口中的 Icon，可根据版面层级放大，但仍以语义角色和视觉平衡为准。</li>
+                    </ul>
+                  </div>
+                  <div class="icon-spec-card">
+                    <div class="icon-spec-copy">
+                      <strong>Stroke Style</strong>
+                      <p>默认线性 Icon 固定使用 2px 描边、圆角线帽和圆角连接。Icon 尺寸变化时不改变描边粗细。</p>
                     </div>
                     <div class="icon-demo-grid" aria-hidden="true">
                       <div class="icon-spec-preview">
@@ -6288,7 +6736,7 @@
                           <path d="M5 12H19" />
                           <path d="M12 5V19" />
                         </svg>
-                        2px
+                        2px stroke
                       </div>
                       <div class="icon-spec-preview">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -6308,50 +6756,261 @@
                   </div>
                   <div class="icon-spec-card">
                     <div class="icon-spec-copy">
-                      <strong>SVG 基础属性</strong>
-                      <p>新绘制 SVG 默认使用 24×24 viewBox，颜色使用 currentColor，由父级 Semantic Color 控制，不在 SVG 内写死 HEX。</p>
+                      <strong>Geometry</strong>
+                      <p>AI 绘制 Icon 时优先使用 Line、Circle、Rounded Rect、Polyline 和简单 Path，保持几何、清晰、视觉重量一致。</p>
+                    </div>
+                    <div class="icon-demo-grid" aria-hidden="true">
+                      <div class="icon-spec-preview">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12H20" /></svg>
+                        Line
+                      </div>
+                      <div class="icon-spec-preview">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7" /></svg>
+                        Circle
+                      </div>
+                      <div class="icon-spec-preview">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="14" height="12" rx="3" /></svg>
+                        Rounded rect
+                      </div>
+                      <div class="icon-spec-preview">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 14L10 18L18 7" /></svg>
+                        Polyline
+                      </div>
+                    </div>
+                  </div>
+                  <div class="icon-spec-card">
+                    <div class="icon-spec-copy">
+                      <strong>Color & Semantic Color</strong>
+                      <p>Icon 禁止写死 HEX，默认使用 <code>currentColor</code>，由父组件或父级文字语义色控制。</p>
+                    </div>
+                    <pre class="icon-code-block"><code>.icon {
+  color: var(--color-text-primary);
+}
+
+.icon svg {
+  stroke: currentColor;
+}</code></pre>
+                  </div>
+                  <div class="icon-spec-card">
+                    <div class="icon-spec-copy">
+                      <strong>Interaction State</strong>
+                      <p>Icon 自身不独立维护 Hover、Active、Selected、Disabled。状态优先由父组件控制，SVG 只继承当前文字颜色。</p>
+                    </div>
+                    <div class="icon-state-demo">
+                      <div class="icon-state-row">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19" /><path d="M12 5V19" /></svg>
+                        Default inherits component color
+                      </div>
+                      <div class="icon-state-row selected">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19" /><path d="M12 5V19" /></svg>
+                        Selected inherits action color
+                      </div>
+                      <div class="icon-state-row disabled">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19" /><path d="M12 5V19" /></svg>
+                        Disabled inherits disabled color
+                      </div>
+                      <div class="icon-state-row error">
+                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V13" /><path d="M12 17H12.01" /><circle cx="12" cy="12" r="8" /></svg>
+                        Error inherits status color
+                      </div>
+                    </div>
+                  </div>
+                  <div class="icon-spec-card">
+                    <div class="icon-spec-copy">
+                      <strong>Outline / Filled 使用规则</strong>
+                      <p>当前 Design System 默认采用 Line / Outline Icon。Filled Icon 只在 Selected、Status、Badge 或已定义业务规范中使用。</p>
+                    </div>
+                    <div class="icon-demo-grid" aria-hidden="true">
+                      <div class="icon-spec-preview">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5L14.2 9.5L19 10.2L15.5 13.6L16.3 18.4L12 16.1L7.7 18.4L8.5 13.6L5 10.2L9.8 9.5L12 5Z" /></svg>
+                        Default outline
+                      </div>
+                      <div class="icon-spec-preview">
+                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5L14.2 9.5L19 10.2L15.5 13.6L16.3 18.4L12 16.1L7.7 18.4L8.5 13.6L5 10.2L9.8 9.5L12 5Z" /></svg>
+                        Selected filled
+                      </div>
+                    </div>
+                  </div>
+                  <div class="icon-spec-card full">
+                    <div class="icon-spec-copy">
+                      <strong>AI Generated Icon Rule</strong>
+                      <p>AI Coding 缺少现成 Icon 时，必须先判断是否存在同语义图标；不存在时才按 Icon Contract 生成 SVG。</p>
+                    </div>
+                    <div class="semantic-map" aria-label="AI 生成 Icon 顺序">
+                      <span>Existing Icon</span><strong>→</strong><span>判断同语义</span><strong>→</strong><span>Reuse first</span><strong>→</strong><span>Generate only when necessary</span>
+                      <span>24px canvas</span><strong>+</strong><span>2px rounded stroke</span><strong>+</strong><span>simple geometry</span><strong>+</strong><span>currentColor</span>
+                    </div>
+                    <div class="icon-contract">
+                      <code>ICON Contract</code>
+                      <span>Reuse first. Generate only when necessary.</span>
+                      <span>If an icon must be generated, use 24px canvas + 2px rounded stroke + simple geometric shape + currentColor + semantic size + consistent visual weight.</span>
+                    </div>
+                  </div>
+                  <div class="icon-spec-card full">
+                    <div class="icon-spec-copy">
+                      <strong>Do / Don't 示例</strong>
+                      <p>生成 Icon 时保持简单、几何、统一视觉重量，不用 Emoji、Unicode 符号、CSS 拼接或网络图片替代正式 Icon。</p>
+                    </div>
+                    <div class="icon-compare-grid">
+                      <div class="icon-compare-card">
+                        <strong>DO</strong>
+                        <ul class="icon-rule-list">
+                          <li>24×24 Canvas</li>
+                          <li>2px Stroke</li>
+                          <li>Round Linecap / Round Linejoin</li>
+                          <li><code>currentColor</code></li>
+                          <li>简洁几何结构与统一视觉重量</li>
+                          <li>优先复用现有 Icon</li>
+                        </ul>
+                      </div>
+                      <div class="icon-compare-card">
+                        <strong>DON'T</strong>
+                        <ul class="icon-rule-list">
+                          <li>混用 1px / 1.5px / 2.5px 描边</li>
+                          <li>用 Emoji 或 Unicode Symbol 代替 Icon</li>
+                          <li>随机使用 Filled Icon</li>
+                          <li>写死 HEX Color</li>
+                          <li>绘制复杂细碎 SVG</li>
+                          <li>为相同语义重复生成不同图形</li>
+                          <li>用 CSS Border 或大量 div 临时拼接 Icon</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="icon-spec-card">
+                    <div class="icon-spec-copy">
+                      <strong>SVG 示例代码</strong>
+                      <p>AI 自动生成 Icon 默认遵循此模板。多个 Path 必须保持相同描边、端点、连接和颜色规则。</p>
                     </div>
                     <pre class="icon-code-block"><code>&lt;svg
-  width="20"
-  height="20"
+  width="1em"
+  height="1em"
   viewBox="0 0 24 24"
   fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
-&gt;</code></pre>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>Usage Rules</strong>
-                      <p>当界面需要 Icon 时，优先使用现有 Design System / Icon Library 中语义匹配的线性 Icon；没有现成 Icon 时再绘制新的 SVG。</p>
-                    </div>
-                    <ol class="icon-rule-list">
-                      <li>根据功能语义绘制新的 SVG Icon。</li>
-                      <li>默认使用 24×24 <code>viewBox</code>。</li>
-                      <li>Stroke Width 固定为 <code>2px</code>。</li>
-                      <li>使用 <code>round</code> linecap 和 <code>round</code> linejoin。</li>
-                      <li>保持图形结构简单，不增加装饰性细节。</li>
-                      <li>不使用渐变、阴影、复杂填充。</li>
-                      <li>Icon 颜色默认使用 <code>currentColor</code>，由父级 Semantic Color 控制。</li>
-                      <li>不在 SVG 内写死 HEX 色值。</li>
-                    </ol>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <strong>State</strong>
-                      <p>Icon 的状态颜色跟随所在组件，而不是单独定义颜色。</p>
-                    </div>
-                    <ul class="icon-rule-list">
-                      <li>Default：使用组件默认文字 / Icon Semantic Color。</li>
-                      <li>Hover：跟随组件 Hover Color。</li>
-                      <li>Active / Selected：跟随 Action / Selected Semantic Color。</li>
-                      <li>Disabled：使用 Disabled Semantic Color。</li>
-                      <li>Error / Warning / Success：使用对应 Status Semantic Color。</li>
-                    </ul>
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden="true"
+&gt;
+  &lt;path
+    d="..."
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  /&gt;
+&lt;/svg&gt;</code></pre>
                   </div>
 
+                </div>
+              </section>
+
+              <section class="doc-section style-module-start">
+                <h2>圆角 RADIUS</h2>
+                <p>
+                  圆角用于表达组件边界的柔和程度和可点击形态。全局组件默认使用克制的小圆角，
+                  输入类控件使用更明显的圆角增强可识别性，胶囊与圆形元素使用完整圆角保持形态稳定。
+                </p>
+                <div class="radius-grid" aria-label="圆角尺寸示例">
+                  <div class="radius-sample" style="--radius-value: var(--radius-compact);">
+                    <div class="radius-preview">2px</div>
+                    <strong>Compact</strong>
+                    <p>实验主题、密集型业务控件和需要强边界感的场景。</p>
+                  </div>
+                  <div class="radius-sample" style="--radius-value: var(--radius-xs);">
+                    <div class="radius-preview">4px</div>
+                    <strong>XS</strong>
+                    <p>Checkbox 方框、代码片段、表格内小型标签和细粒度控件。</p>
+                  </div>
+                  <div class="radius-sample" style="--radius-value: var(--radius-sm);">
+                    <div class="radius-preview">6px</div>
+                    <strong>SM</strong>
+                    <p>导航项、弱容器、表格包裹、普通标签和全局基础卡片。</p>
+                  </div>
+                  <div class="radius-sample" style="--radius-value: var(--radius-md);">
+                    <div class="radius-preview">8px</div>
+                    <strong>MD</strong>
+                    <p>按钮、下拉面板、弹出层和常规内容容器。</p>
+                  </div>
+                  <div class="radius-sample" style="--radius-value: var(--radius-lg);">
+                    <div class="radius-preview">10px</div>
+                    <strong>LG</strong>
+                    <p>Input、Select、DatePicker、TimePicker 等输入触发器。</p>
+                  </div>
+                  <div class="radius-sample" style="--radius-value: var(--radius-xl);">
+                    <div class="radius-preview">12px</div>
+                    <strong>XL</strong>
+                    <p>空状态插图、媒体预览和需要更强包裹感的展示模块。</p>
+                  </div>
+                  <div class="radius-sample" style="--radius-value: var(--radius-full);">
+                    <div class="radius-preview">999px</div>
+                    <strong>Full</strong>
+                    <p>Badge、Switch、胶囊按钮、圆形头像和滚动条滑块。</p>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>圆角语义</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>值</th>
+                        <th>语义</th>
+                        <th>典型组件</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>--radius-none</code></td>
+                        <td><code>0</code></td>
+                        <td>无圆角，用于拼接边、分段控件内部边界或需要直角对齐的局部。</td>
+                        <td>Input addon 拼接边、表格内部连续边界。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--radius-compact</code></td>
+                        <td><code>2px</code></td>
+                        <td>极小圆角，用于密集主题或需要更克制形态的业务控件。</td>
+                        <td>Test theme 控件圆角覆盖。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--radius-xs</code></td>
+                        <td><code>4px</code></td>
+                        <td>小型边界圆角，用于面积很小的控件或内嵌状态块。</td>
+                        <td>Checkbox、代码 token、表格内小标签。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--radius-sm</code></td>
+                        <td><code>6px</code></td>
+                        <td>全局基础圆角，适合导航、轻量容器和多数弱边界元素。</td>
+                        <td>Side nav item、Tag、spec table wrap、基础示例卡片。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--radius-md</code></td>
+                        <td><code>8px</code></td>
+                        <td>常规组件圆角，用于按钮、浮层和承载型容器。</td>
+                        <td>Button、Dropdown panel、Card、Collapse。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--radius-lg</code></td>
+                        <td><code>10px</code></td>
+                        <td>输入类控件圆角，强化可编辑区域的完整边界。</td>
+                        <td>Input、Select、AutoComplete、Cascader、DatePicker、TimePicker。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--radius-xl</code></td>
+                        <td><code>12px</code></td>
+                        <td>展示容器圆角，用于更大面积的图形、插图或媒体承载。</td>
+                        <td>Empty illustration、Image fallback、媒体预览。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--radius-full</code></td>
+                        <td><code>999px</code></td>
+                        <td>完整圆角，元素应呈现胶囊或圆形。</td>
+                        <td>Badge、Switch、Avatar、Pill、Scrollbar thumb。</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </section>
 
@@ -6359,68 +7018,74 @@
                 <h2>投影 Shadow</h2>
                 <p>
                   基础页面结构主要依赖边框与留白，投影集中用于弱层级、悬停、浮层和焦点反馈。
-                  常规投影使用 XS、SM、MD 三档；焦点类样式需要结合绿色描边与浅绿色外发光。
+                  投影 token 按使用语义命名，组件应先判断层级关系和交互状态，再选择对应投影语义。
                 </p>
                 <div class="shadow-grid" aria-label="投影层级">
                   <div class="shadow-sample">
-                    <div class="shadow-preview xs">Shadow XS</div>
+                    <div class="shadow-preview xs">Surface</div>
                     <h3>弱投影</h3>
                     <p>用于静态轻量容器、细微层级提示和低强调背景卡片。</p>
                   </div>
                   <div class="shadow-sample">
-                    <div class="shadow-preview sm">Shadow SM</div>
+                    <div class="shadow-preview sm">Hover</div>
                     <h3>轻量悬停</h3>
                     <p>用于卡片 hover、列表项强调和低层级浮起反馈。</p>
                   </div>
                   <div class="shadow-sample">
-                    <div class="shadow-preview md">Shadow MD</div>
+                    <div class="shadow-preview md">Overlay</div>
                     <h3>浮层容器</h3>
                     <p>用于 Select、DatePicker、菜单和临时面板。</p>
                   </div>
                   <div class="shadow-sample">
                     <div class="shadow-preview focus">Focus Ring</div>
                     <h3>焦点环</h3>
-                    <p>用于键盘焦点、输入聚焦和需要明确可达性的控件。</p>
-                  </div>
-                  <div class="shadow-sample">
-                    <div class="shadow-preview selector-focus">Selector Focus</div>
-                    <h3>选择器焦点卡片</h3>
-                    <p>同选择器 focus 态，使用绿色描边与 <code>rgba(0, 209, 87, 0.16) 0px 0px 0px 3px</code> 外发光。</p>
+                    <p>用于键盘焦点、输入聚焦；选择器聚焦通过 <code>--selector-focus-shadow</code> 固定引用该投影。</p>
                   </div>
                 </div>
               </section>
 
               <section class="doc-section">
-                <h2>投影值</h2>
+                <h2>投影语义</h2>
                 <div class="spec-table-wrap">
                   <table class="spec-table">
                     <thead>
                       <tr>
-                        <th>名称</th>
+                        <th>Token</th>
                         <th>值</th>
-                        <th>用途</th>
+                        <th>语义</th>
+                        <th>典型组件</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td><code>shadow-xs</code></td>
+                        <td><code>--shadow-surface</code></td>
                         <td><code>0 2px 6px rgba(20, 28, 36, 0.06)</code></td>
-                        <td>静态轻量容器、低强调卡片、细微层级提示。</td>
+                        <td>弱层级投影，用于让静态轻量容器从背景中轻微浮起。</td>
+                        <td>低强调卡片、统计卡片、轻量预览容器。</td>
                       </tr>
                       <tr>
-                        <td><code>shadow-sm</code></td>
+                        <td><code>--shadow-hover</code></td>
                         <td><code>0 4px 12px rgba(20, 28, 36, 0.08)</code></td>
-                        <td>hover、轻量卡片、可点击模块。</td>
+                        <td>交互悬停投影，用于表达可点击模块被指向或轻微抬升。</td>
+                        <td>Card hover、列表项 hover、可点击模块。</td>
                       </tr>
                       <tr>
-                        <td><code>shadow-md</code></td>
+                        <td><code>--shadow-overlay</code></td>
                         <td><code>0 12px 28px rgba(20, 28, 36, 0.12)</code></td>
-                        <td>下拉菜单、弹出层、临时浮层。</td>
+                        <td>浮层投影，用于临时覆盖在页面之上的面板和菜单。</td>
+                        <td>Select Dropdown、DatePicker Panel、Popover、Menu。</td>
                       </tr>
                       <tr>
-                        <td><code>shadow-focus</code></td>
-                        <td><code>0 0 0 3px rgb(var(--brand-rgb) / 0.16)</code></td>
-                        <td>键盘焦点与输入聚焦，随主题主色变化。</td>
+                        <td><code>--shadow-focus</code></td>
+                        <td><code>0 0 0 3px rgba(var(--brand-rgb), 0.16)</code></td>
+                        <td>焦点环投影，用于键盘可达性、输入聚焦和需要明确定位当前操作对象的控件。</td>
+                        <td>Input、Select、Button、Slider、Segmented Control、主题选择卡。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--selector-focus-shadow</code></td>
+                        <td><code>var(--shadow-focus)</code></td>
+                        <td>选择器类组件获焦或展开时的固定投影参数，统一映射到 Focus Ring。</td>
+                        <td>Select、DatePicker、TimePicker、Pagination Size Select、主题/色板选择器。</td>
                       </tr>
                     </tbody>
                   </table>
@@ -6436,11 +7101,11 @@
                 <div class="theme-grid" aria-label="主题列表">
                   <div class="theme-card">
                     <div class="theme-strip" aria-hidden="true">
-                      <span style="background: #effff6"></span>
-                      <span style="background: #b5ffd1"></span>
-                      <span style="background: #00d157"></span>
-                      <span style="background: #008f3f"></span>
-                      <span style="background: #075a2f"></span>
+                      <span style="background: #f0fdf3"></span>
+                      <span style="background: #b9f9c9"></span>
+                      <span style="background: #1cc749"></span>
+                      <span style="background: #118430"></span>
+                      <span style="background: #125526"></span>
                     </div>
                     <div class="theme-body">
                       <strong>IQ 主题</strong>
@@ -6451,7 +7116,7 @@
                     <div class="theme-strip" aria-hidden="true">
                       <span style="background: #f0fff6"></span>
                       <span style="background: #bef5d5"></span>
-                      <span style="background: var(--color-status-success)"></span>
+                      <span style="background: #22b573"></span>
                       <span style="background: #147c4d"></span>
                       <span style="background: #104f34"></span>
                     </div>
@@ -6533,7 +7198,7 @@
           return;
         }
 
-        const pendingKeys = new Set(["card"]);
+        const pendingKeys = new Set([]);
         const navItems = Array.from(
           document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
         );
@@ -6573,7 +7238,6 @@
         "--brand-border-soft",
         "--brand-border-hover",
         "--radius-sm",
-        "--shadow-focus",
         "--input-hover-border-color",
         "--input-focus-color",
         "--input-focus-shadow",
@@ -6598,7 +7262,7 @@
           root.style.setProperty("--brand-200", "#bef5d5");
           root.style.setProperty("--brand-300", "#91e9b8");
           root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "var(--color-status-success)");
+          root.style.setProperty("--brand-500", "#22b573");
           root.style.setProperty("--brand-600", "#1b9c61");
           root.style.setProperty("--brand-700", "#147c4d");
           root.style.setProperty("--brand-800", "#12633f");
@@ -6608,7 +7272,6 @@
           root.style.setProperty("--brand-text-hover", "#147c4d");
           root.style.setProperty("--brand-border-soft", "#bef5d5");
           root.style.setProperty("--brand-border-hover", "#91e9b8");
-          root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(34, 181, 115, 0.16)");
           root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
@@ -6637,7 +7300,6 @@
         root.style.setProperty("--brand-border-soft", "#bfdbfe");
         root.style.setProperty("--brand-border-hover", "#93c5fd");
         root.style.setProperty("--radius-sm", "2px");
-        root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(38, 114, 255, 0.16)");
         root.style.setProperty("--input-hover-border-color", "#2672ff");
         root.style.setProperty("--input-focus-color", "#2672ff");
         root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
@@ -6791,30 +7453,30 @@
       const colorPaletteTitle = colorBrandPalette?.querySelector("[data-color-palette-title]");
       const colorPaletteDesc = colorBrandPalette?.querySelector("[data-color-palette-desc]");
       const colorPaletteBase = colorBrandPalette?.querySelector("[data-color-palette-base]");
-      const colorPaletteLevels = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+      const colorPaletteLevels = ["50", "100", "200", "300", "400", "500", "600", "700", "800", "900", "950"];
       const semanticBrandRows = Array.from(document.querySelectorAll("[data-semantic-brand-level]"));
       const semanticActionRows = Array.from(document.querySelectorAll("[data-semantic-action-level]"));
       const colorPaletteSets = {
         "iQIYI标准色": {
-          title: "iQIYI Green",
-          desc: "iQIYI 标准品牌色，500 固定为 #00D157。",
-          base: "iqiyi-500",
-          tokenPrefix: "iqiyi",
-          colors: ["#EFFFF6", "#D8FFE8", "#B5FFD1", "#7DFFB0", "#35F47C", "#00D157", "#00B84B", "#008F3F", "#067037", "#075A2F"],
+          title: "Brand Color",
+          desc: "iQIYI 标准品牌色，500 固定为 #1CC749。",
+          base: "brand-500",
+          tokenPrefix: "brand",
+          colors: ["#F0FDF3", "#DBFDE3", "#B9F9C9", "#82F39F", "#45E36E", "#1CC749", "#00AE2E", "#118430", "#13682A", "#125526", "#042F11"],
         },
         "业务主题色": {
           title: "IQ Buddy Green",
-          desc: "IQ Buddy 主题品牌色，500 固定为 var(--color-status-success)。",
+          desc: "IQ Buddy 主题品牌色，500 固定为 #22B573。",
           base: "iq-buddy-500",
           tokenPrefix: "iq-buddy",
-          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "var(--color-status-success)", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
+          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34", "#0B3D2A"],
         },
         "test主题色": {
           title: "Test Blue",
           desc: "test 主题品牌色，500 固定为 #2672FF。",
           base: "test-500",
           tokenPrefix: "test",
-          colors: ["#EEF5FF", "#D9E8FF", "#B8D4FF", "#88B9FF", "#5796FF", "#2672FF", "#1358E6", "#0F45B8", "#12388F", "#142F73"],
+          colors: ["#EEF5FF", "#D9E8FF", "#B8D4FF", "#88B9FF", "#5796FF", "#2672FF", "#1358E6", "#0F45B8", "#12388F", "#142F73", "#0B235C"],
         },
       };
 
@@ -6847,8 +7509,8 @@
         const shouldShowTestSuccess = activePaletteName === "test主题色";
         if (functionalColorMeta) {
           functionalColorMeta.textContent = shouldShowTestSuccess
-            ? "功能色覆盖红 / 黄 / 蓝 / 绿"
-            : "功能色覆盖红 / 黄 / 蓝";
+            ? "功能色覆盖 Danger / Warning / Info / Success"
+            : "功能色覆盖 Danger / Warning / Info";
         }
         if (testSuccessPalette) {
           testSuccessPalette.hidden = !shouldShowTestSuccess;
@@ -6858,7 +7520,7 @@
           const hex = palette.colors[index];
           const isDark = index >= 5;
           swatch.style.setProperty("--swatch", hex.toLowerCase());
-          swatch.style.setProperty("--swatch-ink", isDark ? "#ffffff" : "#0b0d0f");
+          swatch.style.setProperty("--swatch-ink", isDark ? "#ffffff" : "#222222");
           const token = swatch.querySelector(".color-token");
           const value = swatch.querySelector(".color-hex");
           if (token) {

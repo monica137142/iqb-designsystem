@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form 表单 - Design System</title>
     <style>
-      :root {--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;
-        --brand-500: #00d157;
-        --brand-50: #effff6;
-        --brand-100: #d8ffe8;
-        --brand-200: #b5ffd1;
-        --brand-300: #7dffb0;
-        --brand-400: #35f47c;
-        --brand-600: #00b84b;
-        --brand-700: #008f3f;
-        --brand-800: #067037;
-        --brand-900: #075a2f;
-        --brand-rgb: 0, 209, 87;
-        --brand-text: #00b84b;
-        --brand-text-hover: #008f3f;
+      :root {--success-green-500: #1cc749;--yellow-500: #ff990a;--yellow-400: #ffb232;--red-500: #fe3d33;--red-600: #ec2116;--blue-500: #31a6ff;--blue-600: #1887f5;--blue-700: #1370e2;
+        --brand-500: #1cc749;
+        --brand-50: #f0fdf3;
+        --brand-100: #dbfde3;
+        --brand-200: #b9f9c9;
+        --brand-300: #82f39f;
+        --brand-400: #45e36e;
+        --brand-600: #00ae2e;
+        --brand-700: #118430;
+        --brand-800: #13682a;
+        --brand-900: #125526;
+        --brand-rgb: 28, 199, 73;
+        --brand-text: #00ae2e;
+        --brand-text-hover: #118430;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
         --gray-950: #0b0d0f;
@@ -44,8 +44,8 @@
         --color-bg-container: var(--white);
         --color-bg-subtle: var(--gray-100);
         --color-bg-hover: var(--gray-100);
-        --color-bg-selected: var(--brand-50);
-        --color-bg-disabled: var(--gray-100);
+        --color-bg-selected: var(--brand-100);
+        --color-bg-disabled: var(--gray-100);--color-bg-inverse: var(--gray-900);
         --color-border-default: var(--gray-300);
         --color-border-subtle: var(--gray-200);
         --color-border-strong: var(--gray-400);
@@ -54,10 +54,10 @@
         --color-action-primary: var(--brand-500);
         --color-action-primary-hover: var(--brand-600);
         --color-action-primary-active: var(--brand-700);
-        --color-action-primary-subtle: var(--brand-50);
+        --color-action-primary-subtle: var(--brand-100);
         --color-action-primary-disabled: var(--brand-200);
         --color-status-success: var(--success-green-500);
-        --color-status-error: var(--red-500);
+        --color-status-error: var(--red-500);--color-status-error-text: var(--red-600);
         --color-status-warning: var(--yellow-500);
         --color-status-info: var(--blue-500);
         --color-overlay-modal: rgba(0, 0, 0, 0.45);
@@ -99,13 +99,13 @@
         --text-data-size: 24px;
         --text-data-weight: 500;
         --text-data-line-height: 1.3;
-        --danger-500: #d92d20;
-        --success-500: #00d157;
+        --danger-500: #ec2116;
+        --success-500: #1cc749;
         --topbar-height: 60px;
         --sidebar-width: 300px;
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
-        --form-error-focus-shadow: 0 0 0 3px rgba(217, 45, 32, 0.12);
+        --form-error-focus-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -1413,7 +1413,7 @@
       :root[data-product-theme="default-theme"] .table-spec-select.open,
       :root[data-product-theme="default-theme"] .page-size-select.open .page-size-trigger,
       :root[data-product-theme="default-theme"] .table-select-demo.open .table-spec-select {
-        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
+        box-shadow: 0 0 0 3px rgba(28, 199, 73, 0.16);
       }
 
       :root[data-product-theme="default-theme"] .spec-input-wrap .spec-input:focus,
@@ -1522,7 +1522,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 45/46</span>
+          <span data-component-count-label>Active components 46/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -1627,6 +1627,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -1785,7 +1820,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../index.html#card">
+                    <a class="nav-button" href="../datadisplay/card.html">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -2374,22 +2409,22 @@
                       </tr>
                       <tr>
                         <td><code>--form-control-hover-border-color</code></td>
-                        <td><code>#00D157</code></td>
+                        <td><code>var(--color-action-primary)</code></td>
                         <td>表单输入 tab、选择器和文本域 hover 边框，无外发光。</td>
                       </tr>
                       <tr>
                         <td><code>--form-required-color</code></td>
-                        <td><code>#d92d20</code></td>
+                        <td><code>var(--color-status-error-text)</code></td>
                         <td>必填星号与错误状态颜色。</td>
                       </tr>
                       <tr>
                         <td><code>--form-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.16)</code></td>
+                        <td><code>var(--shadow-focus)</code></td>
                         <td>聚焦态外发光。</td>
                       </tr>
                       <tr>
                         <td><code>--form-error-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(217, 45, 32, 0.12)</code></td>
+                        <td><code>0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent)</code></td>
                         <td>错误字段聚焦态外发光。</td>
                       </tr>
                       <tr>
@@ -2453,7 +2488,7 @@
           return;
         }
 
-        const pendingKeys = new Set(["card"]);
+        const pendingKeys = new Set([]);
         const navItems = Array.from(
           document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
         );
@@ -2518,7 +2553,7 @@
           root.style.setProperty("--brand-200", "#bef5d5");
           root.style.setProperty("--brand-300", "#91e9b8");
           root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "var(--color-status-success)");
+          root.style.setProperty("--brand-500", "#22b573");
           root.style.setProperty("--brand-600", "#1b9c61");
           root.style.setProperty("--brand-700", "#147c4d");
           root.style.setProperty("--brand-800", "#12633f");

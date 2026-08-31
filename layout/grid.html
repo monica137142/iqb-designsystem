@@ -103,25 +103,25 @@
         --sidebar-width: 300px;
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
-        --input-border-color: #dde1e5;
+        --input-border-color: #d4d9de;
         --input-hover-border-color:var(--color-action-primary);
         --input-focus-color:var(--color-action-primary);
         --input-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
         --input-error-color: var(--color-status-error);
         --input-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
-        --input-text-color: #1a1d1f;
-        --input-placeholder-color: #a5abb1;
-        --input-disabled-border-color: #dde1e5;
-        --input-disabled-bg: #f0f2f4;
-        --input-disabled-color: #969ba1;
+        --input-text-color: #343a40;
+        --input-placeholder-color: #a5adb6;
+        --input-disabled-border-color: #d4d9de;
+        --input-disabled-bg: #f3f5f7;
+        --input-disabled-color: #a5adb6;
         --input-number-hover-border-color:var(--color-action-primary);
         --input-number-focus-color:var(--color-action-primary);
         --input-number-focus-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
         --input-number-error-color: var(--color-status-error);
         --input-number-error-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
-        --input-number-disabled-border-color: #dde1e5;
-        --input-number-disabled-bg: #f0f2f4;
-        --input-number-disabled-color: #969ba1;
+        --input-number-disabled-border-color: #d4d9de;
+        --input-number-disabled-bg: #f3f5f7;
+        --input-number-disabled-color: #a5adb6;
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -544,6 +544,11 @@
         color: var(--gray-800);
       }
 
+      .doc-page[data-panel="grid"] {
+        width: 100%;
+        max-width: none;
+      }
+
       .doc-hero,
       .doc-section {
         padding: 28px 32px;
@@ -827,7 +832,7 @@
         position: relative;
         display: grid;
         grid-template-columns: repeat(24, minmax(0, 1fr));
-        min-width: 760px;
+        min-width: 0;
         min-height: 72px;
         background:
           repeating-linear-gradient(
@@ -868,6 +873,170 @@
 
       .grid-spec-cell.tone-strong {
         --grid-spec-alpha: 0.86;
+      }
+
+      /* Grid 文档专属演示；公共文档框架沿用全局规范。 */
+      .grid-demo-stack { display: grid; gap: 10px; margin-top: 14px; }
+      .grid-demo-row {
+        display: grid;
+        grid-template-columns: repeat(24, minmax(0, 1fr));
+        gap: var(--grid-demo-gutter, 0);
+        min-height: 38px;
+      }
+      .grid-demo-row.flex-row { display: flex; }
+      .grid-demo-col {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+        min-height: 38px;
+        padding: 6px 8px;
+        color: var(--color-text-inverse);
+        background: var(--color-action-primary);
+        border: 1px solid rgb(var(--brand-rgb) / 0.18);
+        border-radius: 0;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        font-size: var(--text-helper-size);
+        line-height: 1.4;
+        text-align: center;
+      }
+      .grid-demo-col:nth-child(even) { background: var(--color-action-primary-hover); }
+      .grid-demo-row.align-demo { align-items: start; min-height: 92px; background: var(--color-bg-subtle); }
+      .grid-demo-row.align-middle { align-items: center; }
+      .grid-demo-row.align-bottom { align-items: end; }
+      .grid-demo-row.justify-demo { display: flex; gap: 8px; }
+      .grid-demo-row.justify-start { justify-content: flex-start; }
+      .grid-demo-row.justify-center { justify-content: center; }
+      .grid-demo-row.justify-end { justify-content: flex-end; }
+      .grid-demo-row.justify-between { justify-content: space-between; }
+      .grid-demo-row.justify-around { justify-content: space-around; }
+      .grid-demo-row.justify-evenly { justify-content: space-evenly; }
+      .grid-demo-row.justify-demo .grid-demo-col { width: 22%; }
+      .grid-demo-label { color: var(--color-text-tertiary); font-size: var(--text-helper-size); }
+      .flex-responsive-cases { display: grid; gap: 20px; margin-top: 18px; }
+      .flex-responsive-case { display: grid; gap: 10px; padding-top: 18px; border-top: 1px solid var(--color-border-subtle); }
+      .flex-responsive-case:first-child { padding-top: 0; border-top: 0; }
+      .flex-responsive-case h4 { margin: 0; color: var(--color-text-primary); font-size: var(--text-body-size); font-weight: 500; }
+      .flex-responsive-case p { margin: 0; }
+      .flex-width-control { display: grid; grid-template-columns: minmax(0, 1fr) 92px; align-items: center; gap: 18px; width: min(100%, 760px); }
+      .flex-width-value { color: var(--color-text-default); font-size: var(--text-caption-size); line-height: 1.4; text-align: right; white-space: nowrap; }
+      .spec-slider {
+        --slider-min: 0%;
+        --slider-max: 62%;
+        --slider-rail-size: 4px;
+        --slider-thumb-size: 16px;
+        --slider-color-track: var(--color-action-primary);
+        --slider-color-rail: var(--color-bg-subtle);
+        --slider-color-thumb-bg: var(--color-bg-container);
+        --slider-thumb-hover-scale: 1.18;
+        --slider-thumb-focus-shadow: var(--shadow-focus);
+        position: relative;
+        width: 100%;
+        min-height: 40px;
+        padding: 18px 0;
+        cursor: grab;
+        outline: none;
+        touch-action: none;
+        user-select: none;
+      }
+      .spec-slider::before, .spec-slider::after { position: absolute; top: 50%; height: var(--slider-rail-size); content: ""; border-radius: 999px; transform: translateY(-50%); }
+      .spec-slider::before { right: 0; left: 0; background: var(--slider-color-rail); }
+      .spec-slider::after { left: var(--slider-min); width: calc(var(--slider-max) - var(--slider-min)); background: var(--slider-color-track); }
+      .slider-thumb { position: absolute; top: 50%; left: var(--slider-max); z-index: 1; width: var(--slider-thumb-size); height: var(--slider-thumb-size); background: var(--slider-color-thumb-bg); border: 2px solid var(--slider-color-track); border-radius: 999px; box-shadow: 0 0 0 4px rgb(var(--brand-rgb) / 0.12); transform: translate(-50%, -50%); transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background-color 0.15s ease; }
+      .spec-slider:hover .slider-thumb, .spec-slider:focus-visible .slider-thumb, .spec-slider.is-active .slider-thumb { box-shadow: var(--slider-thumb-focus-shadow); transform: translate(-50%, -50%) scale(var(--slider-thumb-hover-scale)); }
+      .spec-slider:active, .spec-slider.is-active { cursor: grabbing; }
+      .flex-resize-stage { box-sizing: border-box; width: min(100%, var(--flex-demo-width)); max-width: 100%; padding: 8px; overflow: hidden; background: var(--color-bg-subtle); border: 1px dashed var(--color-border-default); }
+      .flex-resize-row { display: flex; gap: 8px; width: 100%; min-height: 54px; }
+      .flex-resize-row .grid-demo-col { min-height: 54px; }
+      .flex-equal .grid-demo-col { flex: 1 1 0; }
+      .flex-wrap { flex-wrap: wrap; }
+      .flex-wrap .grid-demo-col { flex: 1 1 180px; min-width: 180px; }
+      .flex-fixed .flex-fixed-col { flex: 0 0 160px; }
+      .flex-fixed .flex-fluid-col { flex: 1 1 auto; }
+      .flex-min-wrap { flex-wrap: wrap; }
+      .flex-min-wrap .grid-demo-col { flex: 1 1 0; min-width: 160px; }
+      .grid-responsive-cases { display: grid; gap: 20px; margin-top: 18px; }
+      .grid-responsive-case { display: grid; gap: 10px; padding-top: 18px; border-top: 1px solid var(--color-border-subtle); }
+      .grid-responsive-case:first-child { padding-top: 0; border-top: 0; }
+      .grid-responsive-case h4 { margin: 0; color: var(--color-text-primary); font-size: var(--text-body-size); font-weight: 500; }
+      .grid-responsive-case p { margin: 0; }
+      .grid-resize-stage { box-sizing: border-box; width: min(100%, var(--grid-demo-width)); max-width: 100%; padding: 8px; overflow: hidden; background: var(--color-bg-subtle); border: 1px dashed var(--color-border-default); container-type: inline-size; }
+      .grid-responsive-row { display: grid; gap: 8px; width: 100%; }
+      .grid-responsive-row .grid-demo-col { min-height: 54px; }
+      .grid-auto-fit { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+      .grid-equal-columns { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .grid-column-span { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .grid-column-span .grid-main { grid-column: span 7; }
+      .grid-column-span .grid-side { grid-column: span 5; }
+      .grid-column-span .grid-wide { grid-column: span 8; }
+      .grid-column-span .grid-small { grid-column: span 4; }
+      .grid-breakpoint { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+      .grid-breakpoint .grid-hero { grid-column: span 8; }
+      .grid-breakpoint .grid-aside { grid-column: span 4; }
+      .grid-breakpoint .grid-card { grid-column: span 4; }
+      @container (max-width: 839px) {
+        .grid-breakpoint .grid-hero { grid-column: span 7; }
+        .grid-breakpoint .grid-aside { grid-column: span 5; }
+        .grid-breakpoint .grid-card { grid-column: span 6; }
+      }
+      @container (max-width: 599px) {
+        .grid-breakpoint .grid-hero, .grid-breakpoint .grid-aside, .grid-breakpoint .grid-card { grid-column: span 12; }
+      }
+      .breakpoint-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+      .breakpoint-list code { padding: 3px 7px; color: var(--color-text-secondary); background: var(--color-bg-subtle); border-radius: var(--radius-sm); font-size: var(--text-helper-size); }
+      .api-subtitle { margin-top: 20px !important; }
+
+      .grid-doc-flow {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+      }
+
+      .grid-doc-flow .example-block {
+        position: relative;
+        margin-top: 42px;
+        padding: 22px;
+      }
+
+      .grid-doc-flow .example-block h3 {
+        position: absolute;
+        bottom: calc(100% + 14px);
+        left: 0;
+        width: 100%;
+        margin: 0;
+        color: var(--color-text-primary);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .grid-overview-copy {
+        display: grid;
+        gap: 14px;
+      }
+
+      .grid-overview-copy .rule-list {
+        margin-top: 2px;
+      }
+
+      .grid-spec-cell {
+        --grid-spec-alpha: 1;
+        color: var(--color-text-inverse);
+        background: var(--color-action-primary);
+        font-size: var(--text-control-size);
+        font-weight: 500;
+      }
+
+      .grid-spec-cell:nth-child(even) {
+        background: var(--color-action-primary-hover);
+      }
+
+      @media (max-width: 480px) {
+        .grid-doc-flow .example-block { padding: 14px; }
+        .grid-demo-row { width: 100%; min-width: 0; }
+        .grid-demo-col,
+        .grid-spec-cell { min-width: 0; padding-inline: 3px; overflow: hidden; font-size: 11px; text-overflow: ellipsis; white-space: nowrap; }
+        .grid-spec-demo { width: 100%; overflow-x: hidden; }
       }
 
       .color-system-group {
@@ -1117,10 +1286,10 @@
         justify-content: center;
         gap: 5px;
         padding: 0 14px;
-        border: 1px solid #dde1e5;
+        border: 1px solid #d4d9de;
         border-radius: 8px;
         background:var(--color-bg-container);
-        color: #33383d;
+        color: #343a40;
         cursor: pointer;
         font-size:var(--text-control-size);
         font-weight: 400;
@@ -1156,19 +1325,19 @@
 
       .spec-btn.subtle {
         border-color: transparent;
-        background: #f5f6f8;
-        color: #4f565d;
+        background: #f3f5f7;
+        color: #59616a;
       }
 
       .spec-btn.subtle:hover {
-        background: #eef1f3;
-        color: #1a1d1f;
+        background: #f3f5f7;
+        color: #343a40;
       }
 
       .spec-btn.dashed {
         border-style: dashed;
         background:var(--color-bg-container);
-        color: #33383d;
+        color: #343a40;
       }
 
       .spec-btn.ghost-primary {
@@ -1183,9 +1352,9 @@
       }
 
       .spec-btn.solid {
-        border-color: #dde1e5;
+        border-color: #d4d9de;
         background:var(--color-bg-container);
-        color: #33383d;
+        color: #343a40;
       }
 
       .spec-btn.solid:hover {
@@ -1417,9 +1586,9 @@
       }
 
       .spec-btn[disabled]:hover {
-        border-color: #dde1e5;
+        border-color: #d4d9de;
         background:var(--color-bg-container);
-        color: #33383d;
+        color: #343a40;
       }
 
       .spec-btn.primary[disabled]:hover {
@@ -1436,8 +1605,8 @@
 
       .spec-btn.subtle[disabled]:hover {
         border-color: transparent;
-        background: #f5f6f8;
-        color: #4f565d;
+        background: #f3f5f7;
+        color: #59616a;
       }
 
       .spec-btn.text[disabled]:hover {
@@ -1447,15 +1616,15 @@
       }
 
       .spec-btn.dashed[disabled]:hover {
-        border-color: #dde1e5;
+        border-color: #d4d9de;
         background:var(--color-bg-container);
-        color: #33383d;
+        color: #343a40;
       }
 
       .spec-btn.solid[disabled]:hover {
-        border-color: #dde1e5;
+        border-color: #d4d9de;
         background:var(--color-bg-container);
-        color: #33383d;
+        color: #343a40;
       }
 
       .spec-btn.warning-primary[disabled]:hover {
@@ -1556,8 +1725,8 @@
       }
 
       .loading-dot.neutral {
-        border-color: #d0d5db;
-        border-top-color: #4f565d;
+        border-color: #d4d9de;
+        border-top-color: #59616a;
       }
 
       .loading-groups {
@@ -1583,7 +1752,7 @@
       }
 
       .spec-label {
-        color: #33383d;
+        color: #343a40;
         font-size: 12.5px;
         font-weight: 500;
         line-height: 1.35;
@@ -1592,7 +1761,7 @@
       .spec-label.required::before {
         content: "*";
         margin-right: 5px;
-        color: #ff4d4f;
+        color: #f04438;
       }
 
       .spec-input,
@@ -1715,7 +1884,7 @@
         width: 15px;
         height: 15px;
         flex: 0 0 auto;
-        color: #969ba1;
+        color: #a5adb6;
         stroke: currentColor;
         stroke-width: 2;
         stroke-linecap: round;
@@ -1734,7 +1903,7 @@
         border: 0;
         border-radius: 6px;
         background: transparent;
-        color: #969ba1;
+        color: #a5adb6;
         cursor: pointer;
       }
 
@@ -1755,14 +1924,14 @@
       .input-addon,
       .input-unit {
         flex: 0 0 auto;
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-caption-size);
         line-height: 1;
         white-space: nowrap;
       }
 
       .input-count {
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-caption-size);
         line-height: 1.45;
         text-align: right;
@@ -1791,7 +1960,7 @@
       .count-textarea-wrap .input-count {
         position: absolute;
         right: 12px;
-        color: #969ba1;
+        color: #a5adb6;
         pointer-events: none;
       }
 
@@ -1811,7 +1980,7 @@
       }
 
       .spec-field-help {
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-caption-size);
         line-height: 1.45;
       }
@@ -1902,10 +2071,10 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid #dde1e5;
+        border: 1px solid #d4d9de;
         border-radius: 10px;
         background:var(--color-bg-container);
-        color: #1a1d1f;
+        color: #343a40;
         cursor: pointer;
         font-size:var(--text-control-size);
         line-height: 1.4;
@@ -1941,15 +2110,15 @@
       }
 
       .spec-select.disabled {
-        background: #f0f2f4;
-        color: #969ba1;
+        background: #f3f5f7;
+        color: #a5adb6;
         cursor: not-allowed;
         opacity: 0.6;
       }
 
       .spec-select.disabled:hover {
-        border-color: #dde1e5;
-        background: #f0f2f4;
+        border-color: #d4d9de;
+        background: #f3f5f7;
         box-shadow: none;
       }
 
@@ -1980,17 +2149,17 @@
         padding: 0;
         border: 0;
         background: transparent;
-        color: #1a1d1f;
+        color: #343a40;
         font: inherit;
         outline: 0;
       }
 
       .select-trigger-search::placeholder {
-        color: #a5abb1;
+        color: #a5adb6;
       }
 
       [data-select-searchable] .spec-select.open .select-trigger-search::placeholder {
-        color: #a5abb1;
+        color: #a5adb6;
       }
 
       .spec-select.open .select-trigger-search {
@@ -2002,7 +2171,7 @@
       }
 
       .select-placeholder {
-        color: #a5abb1;
+        color: #a5adb6;
       }
 
       .select-chevron {
@@ -2013,7 +2182,7 @@
         height: 7px;
         border-right: 1.5px solid currentColor;
         border-bottom: 1.5px solid currentColor;
-        color: #969ba1;
+        color: #a5adb6;
         pointer-events: none;
         transform: translateY(-50%) rotate(45deg);
         transition:
@@ -2036,7 +2205,7 @@
         align-items: center;
         justify-content: center;
         border-radius: 6px;
-        color: #969ba1;
+        color: #a5adb6;
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%);
@@ -2065,7 +2234,7 @@
         top: 50%;
         width: 15px;
         height: 15px;
-        color: #969ba1;
+        color: #a5adb6;
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%);
@@ -2161,7 +2330,7 @@
 
       .select-tags.nowrap .select-tag-more {
         flex: 0 0 auto;
-        color: #555b61;
+        color: #59616a;
       }
 
       .select-tag > span:first-child {
@@ -2172,7 +2341,7 @@
 
       .select-tag-remove {
         flex: 0 0 auto;
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-body-size);
         line-height: 16px;
       }
@@ -2248,7 +2417,7 @@
         gap: 10px;
         padding: 0 9px;
         border-radius: 7px;
-        color: #33383d;
+        color: #343a40;
         cursor: pointer;
         font-size:var(--text-control-size);
         line-height: 1.4;
@@ -2259,7 +2428,7 @@
       }
 
       .select-option:hover {
-        background: #f5f6f8;
+        background: #f3f5f7;
       }
 
       .select-option.active {
@@ -2269,11 +2438,11 @@
 
       .select-option.active:hover {
         color: var(--brand-text);
-        background: #f5f6f8;
+        background: #f3f5f7;
       }
 
       .select-option.disabled {
-        color: #969ba1;
+        color: #a5adb6;
         cursor: not-allowed;
         opacity: 0.6;
       }
@@ -2283,7 +2452,7 @@
         display: flex;
         align-items: center;
         padding: 0 9px;
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-control-size);
       }
 
@@ -2330,10 +2499,10 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid #dde1e5;
+        border: 1px solid #d4d9de;
         border-radius: 10px;
         background:var(--color-bg-container);
-        color: #1a1d1f;
+        color: #343a40;
         cursor: pointer;
         font-size:var(--text-control-size);
         line-height: 1.4;
@@ -2366,14 +2535,14 @@
       }
 
       .spec-date.disabled {
-        background: #f0f2f4;
-        color: #969ba1;
+        background: #f3f5f7;
+        color: #a5adb6;
         cursor: not-allowed;
         opacity: 0.6;
       }
 
       .spec-date.disabled:hover {
-        border-color: #dde1e5;
+        border-color: #d4d9de;
         box-shadow: none;
       }
 
@@ -2397,7 +2566,7 @@
       }
 
       .date-placeholder {
-        color: #a5abb1;
+        color: #a5adb6;
       }
 
       .date-icon {
@@ -2406,7 +2575,7 @@
         top: 50%;
         width: 15px;
         height: 15px;
-        color: #969ba1;
+        color: #a5adb6;
         pointer-events: none;
         transform: translateY(-50%);
       }
@@ -2524,7 +2693,7 @@
       .date-time-label {
         display: block;
         margin-bottom: 6px;
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-caption-size);
         line-height: 1.4;
         text-align: center;
@@ -2558,7 +2727,7 @@
         border: 0;
         border-radius: 8px;
         background: transparent;
-        color: #33383d;
+        color: #343a40;
         cursor: pointer;
         font: inherit;
         font-size:var(--text-control-size);
@@ -2619,7 +2788,7 @@
       }
 
       .time-picker-example-title {
-        color: #737a82;
+        color: #78818c;
         font-size:var(--text-caption-size);
         line-height: 1.4;
       }
@@ -2645,7 +2814,7 @@
       }
 
       .time-input-field::placeholder {
-        color: #a5abb1;
+        color: #a5adb6;
       }
 
       .time-input-control.has-value:hover .time-icon,
@@ -2663,7 +2832,7 @@
         border: 0;
         border-radius: 999px;
         background: transparent;
-        color: #969ba1;
+        color: #a5adb6;
         cursor: pointer;
         transform: translateY(-50%);
       }
@@ -2675,7 +2844,7 @@
 
       .time-clear-btn:hover {
         background:var(--color-bg-subtle);
-        color: #4f565d;
+        color: #59616a;
       }
 
       .time-clear-btn::before,
@@ -2729,7 +2898,7 @@
       }
 
       .time-range-separator {
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-control-size);
         line-height: 1;
       }
@@ -2743,7 +2912,7 @@
         border: 1.5px solid currentColor;
         border-radius: 999px;
         box-sizing: border-box;
-        color: #969ba1;
+        color: #a5adb6;
         pointer-events: none;
         transform: translateY(-50%);
       }
@@ -2838,7 +3007,7 @@
         border: 1px solid transparent;
         border-radius: 7px;
         background: transparent;
-        color: #4f565d;
+        color: #59616a;
         cursor: pointer;
         font: inherit;
         font-size:var(--text-control-size);
@@ -2847,7 +3016,7 @@
       .range-scope-tab:hover {
         border-color: transparent;
         background:var(--color-bg-subtle);
-        color: #33383d;
+        color: #343a40;
         box-shadow: none;
       }
 
@@ -2887,7 +3056,7 @@
       }
 
       .range-filter-label {
-        color: #737a82;
+        color: #78818c;
         font-size:var(--text-caption-size);
         line-height: 1.4;
       }
@@ -2953,7 +3122,7 @@
         border:1px solid var(--color-border-subtle);
         border-radius: 10px;
         background:var(--color-bg-container);
-        color: #33383d;
+        color: #343a40;
         font-size:var(--text-control-size);
         line-height: 1.7;
       }
@@ -2978,7 +3147,7 @@
         border: 0;
         border-radius: 7px;
         background: transparent;
-        color: #33383d;
+        color: #343a40;
         cursor: pointer;
         font-size:var(--text-control-size);
         text-align: left;
@@ -3020,7 +3189,7 @@
         border: 0;
         border-radius: 7px;
         background: transparent;
-        color: #737a82;
+        color: #78818c;
         cursor: pointer;
       }
 
@@ -3057,7 +3226,7 @@
         height: 24px;
         display: grid;
         place-items: center;
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-caption-size);
       }
 
@@ -3071,7 +3240,7 @@
         border: 0;
         border-radius: 8px;
         background: transparent;
-        color: #33383d;
+        color: #343a40;
         cursor: pointer;
         font-size:var(--text-control-size);
       }
@@ -3081,7 +3250,7 @@
       }
 
       .date-cell.muted {
-        color: #c1c7cd;
+        color: #d4d9de;
       }
 
       .date-cell.today {
@@ -3115,7 +3284,7 @@
       }
 
       .date-cell.disabled {
-        color: #c1c7cd;
+        color: #d4d9de;
         cursor: not-allowed;
         opacity: 0.6;
       }
@@ -3135,7 +3304,7 @@
 
       .date-days.week-picker .date-cell.week-hover {
         background:var(--color-bg-subtle);
-        color: #33383d;
+        color: #343a40;
       }
 
       .date-days.week-picker .date-cell.week-active {
@@ -3170,7 +3339,7 @@
         display: inline-flex;
         align-items: stretch;
         overflow: hidden;
-        border: 1px solid #dde1e5;
+        border: 1px solid #d4d9de;
         border-radius: 10px;
         background:var(--color-bg-container);
         transition:
@@ -3232,7 +3401,7 @@
         display: grid;
         grid-template-rows: 1fr 1fr;
         flex: 0 0 auto;
-        border-left: 1px solid #dde1e5;
+        border-left: 1px solid #d4d9de;
         background: #fafbfc;
       }
 
@@ -3244,22 +3413,22 @@
         padding: 0;
         border: 0;
         background: transparent;
-        color: #6b7178;
+        color: #59616a;
         cursor: pointer;
       }
 
       .number-step + .number-step {
-        border-top: 1px solid #dde1e5;
+        border-top: 1px solid #d4d9de;
       }
 
       .number-step:hover {
-        background: #f0f2f4;
-        color: #33383d;
+        background: #f3f5f7;
+        color: #343a40;
       }
 
       .number-step:disabled {
         cursor: default;
-        color: #c0c6cc;
+        color: #d4d9de;
       }
 
       .number-step svg {
@@ -3285,7 +3454,7 @@
         align-items: center;
         flex: 0 0 auto;
         padding-right: 12px;
-        color: #969ba1;
+        color: #a5adb6;
         font-size:var(--text-caption-size);
         white-space: nowrap;
       }
@@ -3313,12 +3482,12 @@
 
       .number-input.disabled .number-stepper,
       .number-input.disabled .number-step {
-        background: #f0f2f4;
+        background: #f3f5f7;
         cursor: not-allowed;
       }
 
       .number-input.disabled .number-step {
-        color: #c0c6cc;
+        color: #d4d9de;
       }
 
       .radio-demo-stack {
@@ -3347,7 +3516,7 @@
         width: fit-content;
         padding: 3px 8px 3px 4px;
         border-radius: 999px;
-        color: #4f565d;
+        color: #59616a;
         cursor: pointer;
         font-size: 12.5px;
         line-height: 1.5;
@@ -3358,8 +3527,8 @@
       }
 
       .spec-radio:hover {
-        background: #f5f6f8;
-        color: #33383d;
+        background: #f3f5f7;
+        color: #343a40;
       }
 
       .spec-radio input {
@@ -3368,7 +3537,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid #cfd6dc;
+        border: 1.4px solid #d4d9de;
         border-radius: 50%;
         appearance: none;
         background:var(--color-bg-container);
@@ -3412,7 +3581,7 @@
       }
 
       .spec-radio:has(input:checked) {
-        color: #1a1d1f;
+        color: #343a40;
       }
 
       .spec-radio.disabled,
@@ -3446,10 +3615,10 @@
         align-items: center;
         justify-content: center;
         padding: 5px 12px;
-        border: 1px solid #dde1e5;
+        border: 1px solid #d4d9de;
         border-radius: 999px;
         background:var(--color-bg-container);
-        color: #4f565d;
+        color: #59616a;
         cursor: pointer;
         font-size: 12.5px;
         line-height: 1;
@@ -3460,8 +3629,8 @@
       }
 
       .radio-card:hover {
-        background: #f5f6f8;
-        color: #33383d;
+        background: #f3f5f7;
+        color: #343a40;
       }
 
       .radio-card input {
@@ -3485,7 +3654,7 @@
       .radio-card.disabled:hover,
       .radio-card:has(input:disabled):hover {
         background:var(--color-bg-container);
-        color: #4f565d;
+        color: #59616a;
       }
 
       .radio-card:has(input:checked:disabled):hover {
@@ -3520,7 +3689,7 @@
         width: fit-content;
         padding: 3px 8px 3px 4px;
         border-radius: 8px;
-        color: #4f565d;
+        color: #59616a;
         cursor: pointer;
         font-size: 12.5px;
         line-height: 1.5;
@@ -3531,8 +3700,8 @@
       }
 
       .spec-checkbox:hover {
-        background: #f5f6f8;
-        color: #33383d;
+        background: #f3f5f7;
+        color: #343a40;
       }
 
       .spec-checkbox input {
@@ -3541,7 +3710,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid #cfd6dc;
+        border: 1.4px solid #d4d9de;
         border-radius: 4px;
         appearance: none;
         background:var(--color-bg-container);
@@ -3598,7 +3767,7 @@
 
       .spec-checkbox:has(input:checked),
       .spec-checkbox:has(input[data-indeterminate="true"]) {
-        color: #1a1d1f;
+        color: #343a40;
       }
 
       .spec-checkbox.disabled,
@@ -3618,7 +3787,7 @@
       .checkbox-divider {
         width: 100%;
         height: 1px;
-        background: #eef0f2;
+        background: #f3f5f7;
       }
 
       .switch-demo-stack {
@@ -3647,7 +3816,7 @@
         align-items: center;
         gap: 8px;
         width: fit-content;
-        color: #4f565d;
+        color: #59616a;
         cursor: pointer;
         font-size: 12.5px;
         line-height: 1.5;
@@ -3668,7 +3837,7 @@
         position: relative;
         flex: 0 0 auto;
         border-radius: 999px;
-        background: #cfd6dc;
+        background: #d4d9de;
         box-shadow: inset 0 0 0 1px rgba(16, 24, 40, 0.04);
         transition:
           background-color 0.18s ease,
@@ -3698,7 +3867,7 @@
         height: 10px;
         content: "";
         border: 2px solid rgba(79, 86, 93, 0.18);
-        border-top-color: #4f565d;
+        border-top-color: #59616a;
         border-radius: 50%;
         opacity: 0;
         pointer-events: none;
@@ -3706,7 +3875,7 @@
       }
 
       .spec-switch:hover .switch-track {
-        background: #b9c1c8;
+        background: #a5adb6;
       }
 
       .spec-switch input:checked + .switch-track {
@@ -3729,7 +3898,7 @@
       }
 
       .spec-switch:has(input:checked) {
-        color: #1a1d1f;
+        color: #343a40;
       }
 
       .spec-switch.disabled,
@@ -4158,6 +4327,8 @@
           grid-template-columns: 1fr;
         }
 
+        .responsive-demo .grid-demo-col { grid-column: span 24 !important; }
+
         .typography-role-grid,
         .typography-state-row {
           grid-template-columns: 1fr;
@@ -4345,7 +4516,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 45/46</span>
+          <span data-component-count-label>Active components 46/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -4450,6 +4621,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -4608,7 +4814,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../index.html#card">
+                    <a class="nav-button" href="../datadisplay/card.html">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -4692,46 +4898,146 @@
                 <ul class="rule-list">
                   <li>用于页面级或区块级的多列布局，确保字段、卡片和统计项按列对齐。</li>
                   <li>当同一组内容需要在桌面端并排、窄屏下堆叠时使用。</li>
+                  <li><strong>响应式布局：</strong>当列在不同屏幕宽度下需要采用不同的整数栅格占位或由并排切换为堆叠时使用。</li>
+                  <li><strong>Flex 响应式布局：</strong>当列宽需要按任意比例伸缩，或需要组合固定宽度与自动填充区域时使用。</li>
                   <li>不用于简单按钮组或标签间距；这些场景使用 Space 更轻量。</li>
                 </ul>
               </section>
 
               <section class="doc-section">
-                <h2>基础用法</h2>
-                <div class="doc-grid">
+                <p>通过 Row 创建行、Col 创建列。所有列必须放在 Row 内；一行的 <code>span</code> 总和建议不超过 24，超出部分会换至下一行。</p>
+                <div class="grid-doc-flow" style="margin-top:18px">
                   <div class="example-block full">
-                    <h3>24 等分栅格规范</h3>
-                    <p>以 24 等分作为页面横向布局基准，同一行中各列 span 之和不超过 24。</p>
+                    <h3>基本栅格</h3>
+                    <p>从堆叠到水平排列，使用 24 等分建立稳定的内容比例。</p>
                     <div class="grid-spec-demo" aria-label="24 等分栅格占比示意">
                       <div class="grid-spec-row">
-                        <div class="grid-spec-cell tone-mid" style="grid-column:span 24;">24 - 100%</div>
+                        <div class="grid-spec-cell tone-mid" style="grid-column:span 24;">col-24 · 100%</div>
                       </div>
                       <div class="grid-spec-row">
-                        <div class="grid-spec-cell tone-soft" style="grid-column:span 12;">12 - 50%</div>
-                        <div class="grid-spec-cell tone-strong" style="grid-column:span 12;">12 - 50%</div>
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 12;">col-12 · 50%</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 12;">col-12 · 50%</div>
                       </div>
                       <div class="grid-spec-row">
-                        <div class="grid-spec-cell tone-soft" style="grid-column:span 8;">8 - 33.33%</div>
-                        <div class="grid-spec-cell tone-strong" style="grid-column:span 8;">8 - 33.33%</div>
-                        <div class="grid-spec-cell tone-mid" style="grid-column:span 8;">8 - 33.33%</div>
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 8;">col-8</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 8;">col-8</div>
+                        <div class="grid-spec-cell tone-mid" style="grid-column:span 8;">col-8</div>
                       </div>
                       <div class="grid-spec-row">
-                        <div class="grid-spec-cell tone-soft" style="grid-column:span 6;">6 - 25%</div>
-                        <div class="grid-spec-cell tone-strong" style="grid-column:span 6;">6 - 25%</div>
-                        <div class="grid-spec-cell tone-mid" style="grid-column:span 6;">6 - 25%</div>
-                        <div class="grid-spec-cell tone-strong" style="grid-column:span 6;">6 - 25%</div>
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 6;">col-6</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 6;">col-6</div>
+                        <div class="grid-spec-cell tone-mid" style="grid-column:span 6;">col-6</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 6;">col-6</div>
                       </div>
                       <div class="grid-spec-row">
-                        <div class="grid-spec-cell tone-soft" style="grid-column:span 4;">4 - 16.66%</div>
-                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">4 - 16.66%</div>
-                        <div class="grid-spec-cell tone-mid" style="grid-column:span 4;">4 - 16.66%</div>
-                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">4 - 16.66%</div>
-                        <div class="grid-spec-cell tone-soft" style="grid-column:span 4;">4 - 16.66%</div>
-                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">4 - 16.66%</div>
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 4;">col-4</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">col-4</div>
+                        <div class="grid-spec-cell tone-mid" style="grid-column:span 4;">col-4</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">col-4</div>
+                        <div class="grid-spec-cell tone-soft" style="grid-column:span 4;">col-4</div>
+                        <div class="grid-spec-cell tone-strong" style="grid-column:span 4;">col-4</div>
                       </div>
                     </div>
                   </div>
+                  <div class="example-block">
+                    <h3>区块间隔</h3>
+                    <p>使用 <code>gutter</code> 设置间隔，推荐采用 <code>16 + 8n</code> px；数组可同时设置水平和垂直间距。</p>
+                    <div class="grid-demo-stack"><div class="grid-demo-row" style="--grid-demo-gutter:16px"><div class="grid-demo-col" style="grid-column:span 6">6</div><div class="grid-demo-col" style="grid-column:span 6">6</div><div class="grid-demo-col" style="grid-column:span 6">6</div><div class="grid-demo-col" style="grid-column:span 6">6</div></div></div>
+                  </div>
+                  <div class="example-block">
+                    <h3>排版</h3>
+                    <p>通过 <code>justify</code> 控制主轴排列，支持 start、center、end 以及三种 space 分布。</p>
+                    <div class="grid-demo-stack">
+                      <span class="grid-demo-label">start</span><div class="grid-demo-row justify-demo justify-start"><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div></div>
+                      <span class="grid-demo-label">center</span><div class="grid-demo-row justify-demo justify-center"><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div></div>
+                      <span class="grid-demo-label">end</span><div class="grid-demo-row justify-demo justify-end"><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div></div>
+                      <span class="grid-demo-label">space-between</span><div class="grid-demo-row justify-demo justify-between"><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div></div>
+                      <span class="grid-demo-label">space-around</span><div class="grid-demo-row justify-demo justify-around"><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div></div>
+                      <span class="grid-demo-label">space-evenly</span><div class="grid-demo-row justify-demo justify-evenly"><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div><div class="grid-demo-col">col-4</div></div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <h3>对齐</h3>
+                    <p>通过 <code>align</code> 控制交叉轴对齐，适用于不同高度内容。</p>
+                    <div class="grid-demo-stack">
+                      <span class="grid-demo-label">top</span><div class="grid-demo-row align-demo"><div class="grid-demo-col" style="grid-column:span 8;min-height:38px">col-8</div><div class="grid-demo-col" style="grid-column:span 8;min-height:62px">col-8</div><div class="grid-demo-col" style="grid-column:span 8;min-height:78px">col-8</div></div>
+                      <span class="grid-demo-label">middle</span><div class="grid-demo-row align-demo align-middle"><div class="grid-demo-col" style="grid-column:span 8;min-height:38px">col-8</div><div class="grid-demo-col" style="grid-column:span 8;min-height:62px">col-8</div><div class="grid-demo-col" style="grid-column:span 8;min-height:78px">col-8</div></div>
+                      <span class="grid-demo-label">bottom</span><div class="grid-demo-row align-demo align-bottom"><div class="grid-demo-col" style="grid-column:span 8;min-height:38px">col-8</div><div class="grid-demo-col" style="grid-column:span 8;min-height:62px">col-8</div><div class="grid-demo-col" style="grid-column:span 8;min-height:78px">col-8</div></div>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>Flex 响应式布局</h3>
+                    <p>拖动每个案例的宽度滑块，观察布局如何根据可用空间连续适应，而不只依赖固定断点。</p>
+                    <div class="flex-responsive-cases">
+                      <section class="flex-responsive-case" data-flex-resize>
+                        <h4>1. 自动伸缩 Equal / Flexible</h4>
+                        <p>各子项按相同比例自动分配容器中的可用空间。</p>
+                        <div class="flex-width-control"><div class="spec-slider" data-flex-width-slider data-step="10" style="--slider-max:92%" role="slider" tabindex="0" aria-valuemin="260" aria-valuemax="760" aria-valuenow="720" aria-label="调整自动伸缩案例容器宽度"><span class="slider-thumb"></span></div><output class="flex-width-value">720px</output></div>
+                        <div class="flex-resize-stage" style="--flex-demo-width:720px"><div class="flex-resize-row flex-equal"><div class="grid-demo-col">flex 1</div><div class="grid-demo-col">flex 1</div><div class="grid-demo-col">flex 1</div></div></div>
+                      </section>
+                      <section class="flex-responsive-case" data-flex-resize>
+                        <h4>2. 自动换行 Wrap</h4>
+                        <p>当前行无法满足子项最小宽度时自动换行，无需指定 Breakpoint。</p>
+                        <div class="flex-width-control"><div class="spec-slider" data-flex-width-slider data-step="10" style="--slider-max:92%" role="slider" tabindex="0" aria-valuemin="260" aria-valuemax="760" aria-valuenow="720" aria-label="调整自动换行案例容器宽度"><span class="slider-thumb"></span></div><output class="flex-width-value">720px</output></div>
+                        <div class="flex-resize-stage" style="--flex-demo-width:720px"><div class="flex-resize-row flex-wrap"><div class="grid-demo-col">min 180</div><div class="grid-demo-col">min 180</div><div class="grid-demo-col">min 180</div></div></div>
+                      </section>
+                      <section class="flex-responsive-case" data-flex-resize>
+                        <h4>3. 固定 + 自适应 Fixed + Flexible</h4>
+                        <p>固定区域维持指定尺寸，其余区域自动占据剩余空间。</p>
+                        <div class="flex-width-control"><div class="spec-slider" data-flex-width-slider data-step="10" style="--slider-max:72%" role="slider" tabindex="0" aria-valuemin="260" aria-valuemax="760" aria-valuenow="620" aria-label="调整固定加自适应案例容器宽度"><span class="slider-thumb"></span></div><output class="flex-width-value">620px</output></div>
+                        <div class="flex-resize-stage" style="--flex-demo-width:620px"><div class="flex-resize-row flex-fixed"><div class="grid-demo-col flex-fixed-col">fixed 160px</div><div class="grid-demo-col flex-fluid-col">flex auto</div></div></div>
+                      </section>
+                      <section class="flex-responsive-case" data-flex-resize>
+                        <h4>4. 最小宽度 + 自动换行 Min-width + Wrap</h4>
+                        <p>子项先随容器收缩，达到最小宽度后自动换至下一行。</p>
+                        <div class="flex-width-control"><div class="spec-slider" data-flex-width-slider data-step="10" style="--slider-max:92%" role="slider" tabindex="0" aria-valuemin="260" aria-valuemax="760" aria-valuenow="720" aria-label="调整最小宽度加自动换行案例容器宽度"><span class="slider-thumb"></span></div><output class="flex-width-value">720px</output></div>
+                        <div class="flex-resize-stage" style="--flex-demo-width:720px"><div class="flex-resize-row flex-min-wrap"><div class="grid-demo-col">min 160</div><div class="grid-demo-col">min 160</div><div class="grid-demo-col">min 160</div></div></div>
+                      </section>
+                    </div>
+                  </div>
+                  <div class="example-block full">
+                    <h3>Grid 响应式布局</h3>
+                    <p>拖动每个案例的宽度滑块，观察列数、列宽、跨列关系与布局结构如何响应容器变化。</p>
+                    <div class="grid-responsive-cases">
+                      <section class="grid-responsive-case" data-grid-resize>
+                        <h4>1. 自动列数 Auto-fit</h4>
+                        <p>在满足子项 150px 最小宽度的前提下，根据可用空间尽可能排列更多列。</p>
+                        <div class="flex-width-control"><div class="spec-slider" data-flex-width-slider data-step="10" style="--slider-max:92%" role="slider" tabindex="0" aria-valuemin="260" aria-valuemax="760" aria-valuenow="720" aria-label="调整自动列数案例容器宽度"><span class="slider-thumb"></span></div><output class="flex-width-value">720px</output></div>
+                        <div class="grid-resize-stage" style="--grid-demo-width:720px"><div class="grid-responsive-row grid-auto-fit"><div class="grid-demo-col">Item 1</div><div class="grid-demo-col">Item 2</div><div class="grid-demo-col">Item 3</div><div class="grid-demo-col">Item 4</div></div></div>
+                      </section>
+                      <section class="grid-responsive-case" data-grid-resize>
+                        <h4>2. 等分列 Equal Columns</h4>
+                        <p>列数保持为 4，各列随容器宽度等比例伸缩。</p>
+                        <div class="flex-width-control"><div class="spec-slider" data-flex-width-slider data-step="10" style="--slider-max:92%" role="slider" tabindex="0" aria-valuemin="260" aria-valuemax="760" aria-valuenow="720" aria-label="调整等分列案例容器宽度"><span class="slider-thumb"></span></div><output class="flex-width-value">720px</output></div>
+                        <div class="grid-resize-stage" style="--grid-demo-width:720px"><div class="grid-responsive-row grid-equal-columns"><div class="grid-demo-col">1 / 4</div><div class="grid-demo-col">1 / 4</div><div class="grid-demo-col">1 / 4</div><div class="grid-demo-col">1 / 4</div></div></div>
+                      </section>
+                      <section class="grid-responsive-case" data-grid-resize>
+                        <h4>3. 不等分布局 Column Span</h4>
+                        <p>子项占据不同数量的栅格列，以建立主次关系和不同内容宽度。</p>
+                        <div class="flex-width-control"><div class="spec-slider" data-flex-width-slider data-step="10" style="--slider-max:82%" role="slider" tabindex="0" aria-valuemin="260" aria-valuemax="760" aria-valuenow="670" aria-label="调整不等分布局案例容器宽度"><span class="slider-thumb"></span></div><output class="flex-width-value">670px</output></div>
+                        <div class="grid-resize-stage" style="--grid-demo-width:670px"><div class="grid-responsive-row grid-column-span"><div class="grid-demo-col grid-main">span 7</div><div class="grid-demo-col grid-side">span 5</div><div class="grid-demo-col grid-small">span 4</div><div class="grid-demo-col grid-wide">span 8</div></div></div>
+                      </section>
+                      <section class="grid-responsive-case" data-grid-resize>
+                        <h4>4. Breakpoint + Grid 重组</h4>
+                        <p>按 Material Design 宽度分级重组：Compact 小于 600px，Medium 为 600–839px，Expanded 从 840px 开始。</p>
+                        <div class="flex-width-control"><div class="spec-slider" data-flex-width-slider data-step="10" style="--slider-max:85.3%" role="slider" tabindex="0" aria-valuemin="320" aria-valuemax="1000" aria-valuenow="900" aria-label="调整 Grid 重组案例容器宽度"><span class="slider-thumb"></span></div><output class="flex-width-value">900px</output></div>
+                        <div class="grid-resize-stage" style="--grid-demo-width:900px"><div class="grid-responsive-row grid-breakpoint"><div class="grid-demo-col grid-hero">Main · span 8</div><div class="grid-demo-col grid-aside">Aside · span 4</div><div class="grid-demo-col grid-card">Card 1</div><div class="grid-demo-col grid-card">Card 2</div><div class="grid-demo-col grid-card">Card 3</div></div></div>
+                      </section>
+                    </div>
+                  </div>
                 </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>响应式使用规范</h2>
+                <p>优先根据内容与容器使用 Fluid、Flex、Grid 完成自然适配；仅当当前布局模式无法继续满足信息展示与操作需求时，才通过 Breakpoint 切换 Responsive Mode。</p>
+                <ul class="rule-list">
+                  <li><strong>Fluid：</strong>优先使用相对宽度、最大宽度和最小宽度，让内容在可用空间内连续伸缩。</li>
+                  <li><strong>Flex：</strong>用于一维排列、剩余空间分配、固定与自适应组合，以及基于子项最小宽度的自动换行。</li>
+                  <li><strong>Grid：</strong>用于二维列结构、自动列数、等分列和跨列关系，让布局随容器宽度自然重排。</li>
+                  <li><strong>Breakpoint：</strong>仅在自然伸缩或换行仍会造成信息层级混乱、内容不可读、操作空间不足，或导航与交互模式必须改变时使用。</li>
+                  <li>Breakpoint 应切换明确的 Responsive Mode，而不是用于修补局部间距、字号或单个元素宽度。</li>
+                </ul>
               </section>
 
               <section class="doc-section">
@@ -4740,9 +5046,11 @@
                   <table class="spec-table">
                     <thead><tr><th>断点</th><th>宽度</th><th>建议</th></tr></thead>
                     <tbody>
-                      <tr><td>xs</td><td><code>&lt; 576px</code></td><td>单列优先，保证表单可读。</td></tr>
-                      <tr><td>md</td><td><code>&gt;= 768px</code></td><td>常用两列或三列业务卡片。</td></tr>
-                      <tr><td>xl</td><td><code>&gt;= 1200px</code></td><td>复杂工作台可使用 4 列或主从结构。</td></tr>
+                      <tr><td>Compact</td><td><code>&lt; 600dp</code></td><td>手机竖屏为主，优先采用单窗格与单列结构。</td></tr>
+                      <tr><td>Medium</td><td><code>600dp–839dp</code></td><td>平板竖屏及展开设备竖屏，可使用一至两个窗格。</td></tr>
+                      <tr><td>Expanded</td><td><code>840dp–1199dp</code></td><td>平板横屏及展开设备横屏，适合多窗格或主从布局。</td></tr>
+                      <tr><td>Large</td><td><code>1200dp–1599dp</code></td><td>大尺寸平板或较宽窗口，可提高内容密度并保留清晰层级。</td></tr>
+                      <tr><td>Extra-large</td><td><code>≥ 1600dp</code></td><td>桌面级宽窗口，适合扩展多窗格布局并限制内容最大宽度。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -4750,17 +5058,63 @@
 
               <section class="doc-section">
                 <h2>API</h2>
+                <h3>Row</h3>
                 <div class="spec-table-wrap">
                   <table class="spec-table">
                     <thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead>
                     <tbody>
-                      <tr><td>gutter</td><td>列间距或行列间距。</td><td><code>number | [number, number]</code></td><td><code>16</code></td></tr>
-                      <tr><td>span</td><td>栅格占位格数。</td><td><code>1-24</code></td><td><code>24</code></td></tr>
-                      <tr><td>offset</td><td>左侧间隔格数。</td><td><code>number</code></td><td><code>0</code></td></tr>
+                      <tr><td>align</td><td>垂直对齐方式，可按断点配置。</td><td><code>top | middle | bottom | stretch | object</code></td><td><code>top</code></td></tr>
+                      <tr><td>gutter</td><td>栅格间隔；数组依次为水平、垂直间距。数值、CSS 单位字符串和数组中的值均可使用响应式对象。</td><td><code>number | string | object | array</code></td><td><code>0</code></td></tr>
+                      <tr><td>justify</td><td>水平排列方式，可按断点配置。</td><td><code>start | end | center | space-around | space-between | space-evenly | object</code></td><td><code>start</code></td></tr>
+                      <tr><td>wrap</td><td>是否自动换行。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <h3 class="api-subtitle">Col</h3>
+                <div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody>
+                  <tr><td>flex</td><td>Flex 布局属性。数字对应 <code>flex: n n auto</code>；字符串直接透传，纯数字字符串对应 <code>flex: n 1 0</code>。</td><td><code>string | number</code></td><td><code>-</code></td></tr>
+                  <tr><td>span</td><td>占位格数；为 0 时相当于不显示。</td><td><code>number</code></td><td><code>-</code></td></tr>
+                  <tr><td>offset</td><td>栅格左侧的间隔格数。</td><td><code>number</code></td><td><code>0</code></td></tr>
+                  <tr><td>order</td><td>栅格的视觉顺序。</td><td><code>number</code></td><td><code>0</code></td></tr>
+                  <tr><td>push</td><td>栅格向右移动的格数。</td><td><code>number</code></td><td><code>0</code></td></tr>
+                  <tr><td>pull</td><td>栅格向左移动的格数。</td><td><code>number</code></td><td><code>0</code></td></tr>
+                  <tr><td>compact</td><td>窗口宽度 &lt; 600dp 的响应式配置；数值等价于设置 <code>span</code>。</td><td><code>number | object</code></td><td><code>-</code></td></tr>
+                  <tr><td>medium</td><td>窗口宽度 600dp–839dp 的响应式配置。</td><td><code>number | object</code></td><td><code>-</code></td></tr>
+                  <tr><td>expanded</td><td>窗口宽度 840dp–1199dp 的响应式配置。</td><td><code>number | object</code></td><td><code>-</code></td></tr>
+                  <tr><td>large</td><td>窗口宽度 1200dp–1599dp 的响应式配置。</td><td><code>number | object</code></td><td><code>-</code></td></tr>
+                  <tr><td>extraLarge</td><td>窗口宽度 ≥ 1600dp 的响应式配置。</td><td><code>number | object</code></td><td><code>-</code></td></tr>
+                </tbody></table></div>
+                <p style="margin-top:12px">响应式对象可内嵌 <code>span</code>、<code>offset</code>、<code>order</code>、<code>push</code> 和 <code>pull</code>。例如 <code>compact={6}</code> 等价于 <code>compact={{ span: 6 }}</code>。</p>
+                <h3 class="api-subtitle">useWindowSizeClass</h3>
+                <div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>API</th><th>说明</th><th>返回值</th></tr></thead><tbody>
+                  <tr><td><code>useWindowSizeClass()</code></td><td>按当前可用窗口宽度返回 Material Design 尺寸分级，用于组织自适应布局。</td><td><code>compact | medium | expanded | large | extraLarge</code></td></tr>
+                </tbody></table></div>
+              </section>
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <p style="margin-bottom:14px">Grid 没有组件专属设计 Token。栅格列数、占位和间距由 Row、Col 属性控制；下表仅列出当前文档示例实际复用的全局 Token。</p>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead><tr><th>Token</th><th>默认值</th><th>说明</th></tr></thead>
+                    <tbody>
+                      <tr><td><code>--color-action-primary</code></td><td><code>var(--brand-500)</code></td><td>主要栅格示例块背景。</td></tr>
+                      <tr><td><code>--color-action-primary-hover</code></td><td><code>var(--brand-600)</code></td><td>交替栅格示例块背景。</td></tr>
+                      <tr><td><code>--color-text-inverse</code></td><td><code>var(--white)</code></td><td>彩色示例块上的文字。</td></tr>
+                      <tr><td><code>--color-text-primary</code></td><td><code>var(--gray-900)</code></td><td>示例标题与主要文字。</td></tr>
+                      <tr><td><code>--color-bg-container</code></td><td><code>var(--white)</code></td><td>示例卡片与配置控件背景。</td></tr>
+                      <tr><td><code>--color-bg-subtle</code></td><td><code>var(--gray-100)</code></td><td>对齐和演示区域的辅助背景。</td></tr>
+                      <tr><td><code>--color-border-subtle</code></td><td><code>var(--gray-200)</code></td><td>示例卡片与表格的细边框。</td></tr>
+                      <tr><td><code>--color-border-default</code></td><td><code>var(--gray-300)</code></td><td>配置控件的默认边框。</td></tr>
+                      <tr><td><code>--color-text-secondary</code></td><td><code>var(--gray-600)</code></td><td>示例说明和辅助文字。</td></tr>
+                      <tr><td><code>--radius-sm</code></td><td><code>6px</code></td><td>示例卡片和配置控件圆角；栅格块本身保持直角。</td></tr>
+                      <tr><td><code>--text-control-size</code></td><td><code>13px</code></td><td>栅格块标签和 API 内容字号。</td></tr>
+                      <tr><td><code>--text-helper-size</code></td><td><code>12px</code></td><td>配置器和辅助标签字号。</td></tr>
                     </tbody>
                   </table>
                 </div>
               </section>
+
+
             </article>
 
 
@@ -4792,7 +5146,7 @@
           return;
         }
 
-        const pendingKeys = new Set(["card"]);
+        const pendingKeys = new Set([]);
         const navItems = Array.from(
           document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
         );
@@ -4857,7 +5211,7 @@
           root.style.setProperty("--brand-200", "#bef5d5");
           root.style.setProperty("--brand-300", "#91e9b8");
           root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "var(--color-status-success)");
+          root.style.setProperty("--brand-500", "#22b573");
           root.style.setProperty("--brand-600", "#1b9c61");
           root.style.setProperty("--brand-700", "#147c4d");
           root.style.setProperty("--brand-800", "#12633f");
@@ -5036,7 +5390,7 @@
           desc: "业务主题品牌色，500 固定为 var(--color-status-success)。",
           base: "default-theme-500",
           tokenPrefix: "default-theme",
-          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "var(--color-status-success)", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
+          colors: ["#F0FFF6", "#DDFBEA", "#BEF5D5", "#91E9B8", "#5FD897", "#22B573", "#1B9C61", "#147C4D", "#12633F", "#104F34"],
         },
         "test主题色": {
           title: "Test Blue",
@@ -6821,6 +7175,56 @@
         input?.addEventListener("input", syncButtons);
         syncButtons();
       });
+
+      document.querySelectorAll("[data-flex-resize], [data-grid-resize]").forEach((demo) => {
+        const slider = demo.querySelector("[data-flex-width-slider]");
+        const stage = demo.querySelector(".flex-resize-stage, .grid-resize-stage");
+        const output = demo.querySelector(".flex-width-value");
+        if (!slider || !stage || !output) return;
+        const min = Number(slider.getAttribute("aria-valuemin"));
+        const max = Number(slider.getAttribute("aria-valuemax"));
+        const step = Number(slider.dataset.step || 1);
+        const setFlexDemoWidth = (nextValue) => {
+          const value = Math.min(Math.max(min + Math.round((nextValue - min) / step) * step, min), max);
+          const percent = ((value - min) / (max - min || 1)) * 100;
+          slider.setAttribute("aria-valuenow", String(value));
+          slider.style.setProperty("--slider-max", `${percent}%`);
+          const widthProperty = demo.matches("[data-grid-resize]") ? "--grid-demo-width" : "--flex-demo-width";
+          stage.style.setProperty(widthProperty, `${value}px`);
+          output.value = `${value}px`;
+        };
+        const setWidthFromPointer = (event) => {
+          const rect = slider.getBoundingClientRect();
+          const ratio = Math.min(Math.max((event.clientX - rect.left) / rect.width, 0), 1);
+          setFlexDemoWidth(min + ratio * (max - min));
+        };
+        slider.addEventListener("pointerdown", (event) => {
+          slider.classList.add("is-active");
+          slider.setPointerCapture(event.pointerId);
+          setWidthFromPointer(event);
+        });
+        slider.addEventListener("pointermove", (event) => {
+          if (slider.hasPointerCapture(event.pointerId)) setWidthFromPointer(event);
+        });
+        slider.addEventListener("pointerup", (event) => {
+          slider.classList.remove("is-active");
+          slider.releasePointerCapture(event.pointerId);
+        });
+        slider.addEventListener("pointercancel", () => slider.classList.remove("is-active"));
+        slider.addEventListener("keydown", (event) => {
+          const current = Number(slider.getAttribute("aria-valuenow"));
+          let next = current;
+          if (["ArrowRight", "ArrowUp"].includes(event.key)) next += step;
+          if (["ArrowLeft", "ArrowDown"].includes(event.key)) next -= step;
+          if (event.key === "Home") next = min;
+          if (event.key === "End") next = max;
+          if (next === current && !["Home", "End"].includes(event.key)) return;
+          event.preventDefault();
+          setFlexDemoWidth(next);
+        });
+        setFlexDemoWidth(Number(slider.getAttribute("aria-valuenow")));
+      });
+
     </script>
   </body>
 </html>

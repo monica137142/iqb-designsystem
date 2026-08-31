@@ -5,11 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tag 标签 - Design System</title>
     <style>
-      :root{--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;--brand-900: #075a2f;--brand-800: #067037;--brand-700: #008f3f;--brand-400: #35f47c;--brand-300: #7dffb0;--brand-200: #b5ffd1;--brand-100: #d8ffe8;--brand-50: #effff6;--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-50);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-50);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.metric-row strong{font-size:var(--text-data-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:6px;font-size:var(--text-caption-size);text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--color-action-primary-hover);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background:var(--gray-900);border-radius:6px;font-size:var(--text-caption-size);line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:var(--color-status-info);box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.timeline strong{font-size:var(--text-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--color-border-subtle);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:6px}.empty-state strong{font-size:var(--text-section-title-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      :root{--success-green-500: #1cc749;--yellow-500: #ff990a;--red-500: #fe3d33;--blue-500: #31a6ff;--blue-600: #1887f5;--brand-900: #125526;--brand-800: #13682a;--brand-700: #118430;--brand-400: #45e36e;--brand-300: #82f39f;--brand-200: #b9f9c9;--brand-100: #dbfde3;--brand-50: #f0fdf3;--brand-500:#1cc749;--brand-600:#00ae2e;--brand-rgb:28, 199, 73;--gray-950: #0b0d0f;--gray-900: #14171a;--gray-800: #22262a;--gray-700: #343a40;--gray-600: #59616a;--gray-500: #78818c;--gray-400: #a5adb6;--gray-300: #d4d9de;--gray-200: #e7eaee;--gray-100: #f3f5f7;--gray-50: #fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-100);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-100);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#82f39f);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#cc6002}.danger{color:#ec2116}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.metric-row strong{font-size:var(--text-data-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(28, 199, 73,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:6px;font-size:var(--text-caption-size);text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#1370e2;background:#eef9ff;border-color:#bce6ff}.tag.warning{color:#cc6002;background:#fffaec;border-color:#ffe5a5}.tag.danger{color:#c7170e;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--color-action-primary-hover);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background:var(--gray-900);border-radius:6px;font-size:var(--text-caption-size);line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#1370e2}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:var(--color-status-info);box-shadow:0 0 0 4px #eef9ff}.timeline time{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.timeline strong{font-size:var(--text-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--color-border-subtle);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:6px}.empty-state strong{font-size:var(--text-section-title-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
       /* Header parity with index.html */
       :root {
-        --brand-400: #35f47c;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --brand-400: #45e36e;
+        --danger-50: #fff2f1;
+        --danger-500: #fe3d33;
+        --danger-600: #ec2116;
+        --danger-700: #c7170e;
+        --warning-50: #fffaec;
+        --warning-400: #ffb232;
+        --warning-500: #ff990a;
+        --warning-600: #ff8400;
+        --warning-700: #cc6002;
+        --info-50: #eef9ff;
+        --info-500: #31a6ff;
+        --info-600: #1887f5;
+        --info-700: #1370e2;
+        --success-green-50: #f0fdf3;
+        --success-green-200: #b9f9c9;
+        --success-green-600: #00ae2e;
+        --color-bg-inverse: var(--gray-900);
+        --color-status-success-bg: var(--success-green-50);
+        --color-status-success-border: var(--success-green-200);
+        --color-status-success-text: var(--success-green-600);
+        --color-status-error-bg: var(--danger-50);
+        --color-status-error-text: var(--danger-600);
+        --color-status-warning-bg: var(--warning-50);
+        --color-status-warning-border: var(--warning-400);
+        --color-status-warning-text: var(--warning-700);
+        --color-status-info-bg: var(--info-50);
+        --color-status-info-text: var(--info-600);
+        --radius-xs: 4px;
+        --radius-full: 999px;
+        --shadow-focus: 0 0 0 3px rgba(var(--brand-rgb), 0.16);
+        --tag-height: 24px;
+        --tag-height-small: 20px;
+        --tag-height-medium: 28px;
+        --tag-height-large: 32px;
+        --tag-padding-inline: 8px;
+        --tag-gap: 6px;
+        --tag-font-size-small: var(--text-caption-size);
+        --tag-font-size: var(--text-caption-size);
+        --tag-font-size-large: var(--text-control-size);
+        --tag-radius-small: var(--radius-full);
+        --tag-radius: var(--radius-full);
+        --tag-radius-large: var(--radius-full);
+        --tag-radius-rounded: var(--radius-full);
+        --tag-gray-border: var(--color-border-default);
+        --tag-gray-bg: var(--color-bg-subtle);
+        --tag-gray-text: var(--color-text-secondary);
+        --tag-gray-solid: var(--color-text-tertiary);
+        --tag-success-border: var(--color-status-success);
+        --tag-success-bg: var(--color-status-success-bg);
+        --tag-success-text: var(--color-status-success-text);
+        --tag-info-border: var(--color-status-info);
+        --tag-info-bg: var(--color-status-info-bg);
+        --tag-info-text: var(--color-status-info-text);
+        --tag-warning-border: var(--color-status-warning);
+        --tag-warning-bg: var(--color-status-warning-bg);
+        --tag-warning-text: var(--color-status-warning-text);
+        --tag-error-border: var(--color-status-error);
+        --tag-error-bg: var(--color-status-error-bg);
+        --tag-error-text: var(--color-status-error-text);
+        --tag-solid-text: var(--color-text-inverse);
+        --tag-borderless-border: transparent;
+        --tag-selected-border: var(--color-action-primary);
+        --tag-selected-bg: var(--color-action-primary-subtle);
+        --tag-selected-text: var(--color-action-primary-hover);
+        --tag-hover-bg: var(--color-bg-hover);
+        --tag-hover-border: var(--color-border-strong);
+        --tag-solid-hover-bg: var(--color-text-secondary);
+        --tag-close-size: 16px;
+        --tag-close-hover-bg: var(--color-bg-hover);
+        --tag-solid-close-hover-bg: rgba(255, 255, 255, 0.18);
+        --tag-overflow-max-width: 168px;
+        --tag-focus-shadow: var(--shadow-focus);
+        --tag-default-bg: #f2f3f5;
+        --tag-default-color: #4f5b67;
+        --tag-default-border: #e5e7eb;
+        --tag-icon-size: 14px;
       }
 
       .brand {
@@ -180,6 +255,123 @@
         }
       }
 
+      /* Canonical documentation layout aligned with List page. */
+      .sidebar { scrollbar-width: thin; scrollbar-color: var(--gray-300) transparent; }
+      .sidebar::-webkit-scrollbar, .spec-table-wrap::-webkit-scrollbar { width: 6px; height: 6px; }
+      .sidebar::-webkit-scrollbar-thumb, .spec-table-wrap::-webkit-scrollbar-thumb { background: var(--gray-300); border-radius: 999px; }
+      .sidebar::-webkit-scrollbar-track, .spec-table-wrap::-webkit-scrollbar-track { background: transparent; }
+      .canvas { min-width: 0; min-height: 0; overflow: auto; background: var(--color-bg-container); }
+      .canvas-inner { display: grid; width: auto; min-height: calc(100vh - var(--topbar-height)); padding: 32px; }
+      .doc-page { width: min(100%, 1080px); color: var(--gray-800); }
+      .doc-hero, .doc-section { padding: 28px 32px; }
+      .doc-hero { border-bottom: 1px solid var(--color-border-subtle); }
+      .doc-kicker { margin: 0 0 10px; color: var(--color-action-primary); font-size: var(--text-caption-size); font-weight: 400; line-height: 1.4; letter-spacing: 0; text-transform: none; }
+      .doc-title { margin: 0; color: var(--color-text-primary); font-size: 28px; font-weight: 500; line-height: 1.25; }
+      .doc-summary { max-width: 720px; margin: 12px 0 0; color: var(--color-text-secondary); font-size: var(--text-body-size); line-height: var(--text-body-line-height); }
+      .doc-meta-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 0; padding: 0; list-style: none; }
+      .doc-meta-list li { padding: 4px 8px; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 0; border-radius: 999px; font-size: var(--text-caption-size); line-height: 1.4; }
+      .doc-section { margin: 0; border-top: 0; border-bottom: 1px solid var(--color-border-subtle); }
+      .doc-section:last-child { border-bottom: 0; }
+      .doc-section h2 { margin: 0 0 14px; color: var(--color-text-primary); font-size: 18px; font-weight: 500; line-height: 1.35; }
+      .doc-section h3 { margin: 0 0 8px; color: var(--gray-800); font-size: var(--text-body-size); font-weight: 500; line-height: 1.4; }
+      .doc-section p { margin: 0; max-width: 760px; color: var(--color-text-secondary); font-size: var(--text-control-size); line-height: var(--text-body-line-height); }
+      .rule-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      .rule-list li { position: relative; padding-left: 16px; color: var(--color-text-default); font-size: var(--text-control-size); line-height: var(--text-body-line-height); }
+      .rule-list li::before { position: absolute; top: 10px; left: 0; width: 5px; height: 5px; content: ""; background: var(--color-action-primary); border-radius: 999px; }
+      .tag-demo-stack { display: grid; gap: 18px; margin-top: 18px; }
+      .tag-demo-card { display: grid; gap: 18px; min-width: 0; padding: 36px; background: var(--gray-50); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); }
+      .tag-demo-head { display: grid; gap: 4px; }
+      .tag-demo-head h3 { margin: 0; color: var(--color-text-primary); font-size: var(--text-body-size); font-weight: 500; line-height: 1.4; }
+      .tag-demo-surface { min-width: 0; padding: 20px; background: var(--color-bg-container); border: 1px solid #e8ebee; border-radius: var(--radius-sm); }
+      .tag-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; min-width: 0; }
+      .tag-row + .tag-row { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--color-border-subtle); }
+      .tag-group { display: flex; flex: 1 1 0; flex-wrap: wrap; gap: 8px; min-width: 220px; }
+      .tag-size-row { align-items: center; justify-content: flex-start; min-height: var(--tag-height-large); }
+      .tag-size-group { align-items: center; justify-content: flex-start; flex: 0 1 auto; min-height: var(--tag-height-large); }
+      .tag-size-group .iqb-tag { align-self: center; }
+      .tag-inline-input { width: 96px; height: var(--tag-height); padding: 0 8px; color: var(--color-text-primary); background: var(--color-bg-container); border: 1px solid var(--color-action-primary); border-radius: var(--radius-sm); font-size: var(--tag-font-size); line-height: 1.2; outline: none; box-shadow: var(--tag-focus-shadow); }
+      .iqb-tag { --tag-color: var(--tag-default-color); --tag-soft-bg: var(--tag-default-bg); --tag-border-color: var(--tag-default-border); display: inline-flex; align-items: center; justify-content: center; gap: var(--tag-gap); max-width: 100%; min-height: var(--tag-height); padding: 0 var(--tag-padding-inline); color: var(--tag-color); background: var(--tag-soft-bg); border: 1px solid transparent; border-radius: var(--tag-radius); font-size: var(--tag-font-size); font-weight: 400; line-height: 1.2; text-decoration: none; vertical-align: middle; white-space: nowrap; }
+      button.iqb-tag { cursor: pointer; font-family: inherit; }
+      .iqb-tag[hidden] { display: none; }
+      .iqb-tag[data-color="gray"] { --tag-color: #4f5b67; --tag-soft-bg: #f2f3f5; --tag-border-color: #e5e7eb; }
+      .iqb-tag[data-color="green"] { --tag-color: #087443; --tag-soft-bg: #ecfdf3; --tag-border-color: #abefc6; }
+      .iqb-tag[data-color="blue"] { --tag-color: #1d5fd7; --tag-soft-bg: #eff6ff; --tag-border-color: #bfdbfe; }
+      .iqb-tag[data-color="cyan"] { --tag-color: #087ea4; --tag-soft-bg: #ecfeff; --tag-border-color: #a5f3fc; }
+      .iqb-tag[data-color="teal"] { --tag-color: #0f766e; --tag-soft-bg: #f0fdfa; --tag-border-color: #99f6e4; }
+      .iqb-tag[data-color="lime"] { --tag-color: #4d7c0f; --tag-soft-bg: #f7fee7; --tag-border-color: #d9f99d; }
+      .iqb-tag[data-color="yellow"] { --tag-color: #a16207; --tag-soft-bg: #fefce8; --tag-border-color: #fde68a; }
+      .iqb-tag[data-color="orange"] { --tag-color: #c2410c; --tag-soft-bg: #fff7ed; --tag-border-color: #fed7aa; }
+      .iqb-tag[data-color="red"] { --tag-color: #c7170e; --tag-soft-bg: #fff2f1; --tag-border-color: #fecdca; }
+      .iqb-tag[data-color="magenta"] { --tag-color: #be185d; --tag-soft-bg: #fdf2f8; --tag-border-color: #fbcfe8; }
+      .iqb-tag[data-color="purple"] { --tag-color: #7e22ce; --tag-soft-bg: #faf5ff; --tag-border-color: #e9d5ff; }
+      .iqb-tag[data-variant="solid"] { color: var(--tag-solid-text); background: var(--tag-color); border-color: transparent; }
+      .iqb-tag[data-variant="outline"] { color: var(--tag-color); background: var(--tag-soft-bg); border-color: var(--tag-border-color); }
+      .iqb-tag.is-checkable:hover, .iqb-tag.is-closable:hover { border-color: transparent; }
+      .iqb-tag[data-variant="outline"].is-checkable:hover, .iqb-tag[data-variant="outline"].is-closable:hover { border-color: var(--tag-border-color); }
+      .iqb-tag.is-checkable { height: var(--tag-height); min-height: var(--tag-height); padding: 0 var(--tag-padding-inline); color: var(--color-text-default); background: transparent; border-color: transparent; font-size: var(--tag-font-size); line-height: 1.2; appearance: none; transition: color 0.16s ease, background-color 0.16s ease, border-color 0.16s ease; }
+      .iqb-tag.is-checkable:hover { color: var(--color-text-primary); background: var(--color-bg-hover); border-color: transparent; }
+      .iqb-tag.is-checked { --tag-color: var(--color-action-primary); --tag-soft-bg: var(--color-action-primary-subtle); --tag-border-color: rgb(var(--brand-rgb) / 0.36); color: var(--tag-solid-text); background: var(--color-action-primary); border-color: transparent; }
+      .iqb-tag.is-checkable.is-checked:hover { color: var(--tag-solid-text); background: var(--color-action-primary-hover); border-color: transparent; }
+      .iqb-tag.is-checked[data-variant="solid"] { color: var(--tag-solid-text); background: var(--color-action-primary); border-color: transparent; }
+      .iqb-tag.is-checked[data-variant="outline"] { color: var(--color-action-primary-hover); background: var(--color-bg-container); border-color: var(--color-action-primary); }
+      .iqb-tag:focus-visible, .tag-action:focus-visible, .tag-close:focus-visible { outline: none; box-shadow: var(--tag-focus-shadow); }
+      .iqb-tag.tag-size-small { height: var(--tag-height-small); min-height: var(--tag-height-small); padding-inline: 7px; font-size: var(--tag-font-size-small); }
+      .iqb-tag.tag-size-default { height: var(--tag-height); min-height: var(--tag-height); padding-inline: var(--tag-padding-inline); font-size: var(--tag-font-size); }
+      .iqb-tag.tag-size-medium { height: var(--tag-height-medium); min-height: var(--tag-height-medium); padding-inline: 10px; font-size: var(--tag-font-size-large); }
+      .iqb-tag.tag-size-large { height: var(--tag-height-large); min-height: var(--tag-height-large); padding-inline: 12px; font-size: var(--tag-font-size-large); }
+      .iqb-tag.tag-radius-compact { border-radius: var(--radius-sm); }
+      .iqb-tag.tag-add { color: var(--tag-default-color); background: var(--tag-default-bg); border-color: var(--tag-default-border); border-style: dashed; }
+      .iqb-tag.tag-add:hover { color: var(--color-text-primary); background: var(--color-bg-hover); border-color: var(--color-border-strong); }
+      .tag-icon { flex: 0 0 auto; width: var(--tag-icon-size); height: var(--tag-icon-size); fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+      .tag-close { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 var(--tag-close-size); width: var(--tag-close-size); height: var(--tag-close-size); margin-right: -4px; padding: 0; color: currentColor; background: transparent; border: 0; border-radius: 999px; cursor: pointer; opacity: 0.86; }
+      .tag-close:hover { background: rgba(20, 20, 20, 0.08); opacity: 1; }
+      .iqb-tag[data-variant="solid"] .tag-close:hover { background: rgba(255, 255, 255, 0.18); }
+      .tag-close svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+      .tag-add-icon { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2; }
+      .spec-table-wrap { margin-top: 16px; overflow-x: auto; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); }
+      .spec-table { width: 100%; min-width: 680px; border-collapse: collapse; font-size: var(--text-control-size); text-align: left; }
+      .spec-table th, .spec-table td { padding: 12px 14px; border-bottom: 1px solid var(--color-border-subtle); vertical-align: top; }
+      .spec-table th { color: var(--color-text-default); background: var(--gray-50); font-size: var(--text-control-size); font-weight: 600; }
+      .spec-table td { color: var(--color-text-secondary); line-height: 1.6; }
+      .spec-table tr:last-child td { border-bottom: 0; }
+      .spec-table code, code { padding: 2px 5px; color: var(--gray-800); background: var(--color-bg-subtle); border-radius: 4px; font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace; font-size: var(--text-caption-size); }
+
+      /* Neutralize the legacy 860px rules above so the shared layout changes only at 760px. */
+      @media (min-width: 761px) and (max-width: 860px) {
+        body { overflow: hidden; }
+        .app-shell { height: 100vh; min-height: 0; }
+        .workspace { grid-template-columns: var(--sidebar-width) minmax(0, 1fr); }
+        .sidebar { flex-direction: column; align-items: stretch; gap: 18px; width: auto; min-height: 0; max-height: none; padding: 22px 18px; overflow-x: hidden; overflow-y: auto; border-right: 1px solid var(--color-border-subtle); border-bottom: 0; }
+        .sidebar-footer { display: block; }
+        .nav-list, .nav-section, .nav-sublist { flex-direction: column; align-items: stretch; }
+        .nav-list { gap: 20px; padding-bottom: calc((100vh - var(--topbar-height)) / 2); }
+        .nav-section, .nav-sublist { gap: 4px; }
+        .nav-category { padding: 0 12px 4px; white-space: normal; }
+        .nav-button { width: 100%; white-space: normal; }
+        .canvas-inner { padding: 32px; }
+        .doc-title { font-size: 28px; }
+      }
+
+      @media (max-width: 760px) {
+        body { overflow: auto; }
+        .app-shell { min-height: 100vh; height: auto; }
+        .topbar { position: sticky; top: 0; padding: 0 16px; }
+        .topbar-actions { display: none; }
+        .workspace { grid-template-columns: 1fr; }
+        .sidebar { position: sticky; top: var(--topbar-height); z-index: 2; flex-direction: row; align-items: center; gap: 12px; width: 100%; min-height: auto; padding: 12px 14px; overflow-x: auto; overflow-y: hidden; border-right: 0; border-bottom: 1px solid var(--color-border-subtle); }
+        .sidebar-footer { display: none; }
+        .nav-list, .nav-section, .nav-sublist { flex-direction: row; align-items: center; gap: 8px; }
+        .nav-list { padding: 0; }
+        .nav-category { padding: 0 2px; white-space: nowrap; }
+        .nav-button { width: auto; min-height: 36px; padding: 0 12px; }
+        .canvas-inner { min-height: 560px; padding: 18px; }
+        .doc-hero, .doc-section { padding: 22px 18px; }
+        .doc-title { font-size: var(--text-data-size); }
+        .tag-demo-card { gap: 16px; padding: 20px; }
+        .tag-demo-surface { padding: 16px; }
+        .tag-group { min-width: 0; }
+      }
+
     </style>
   </head>
   <body>
@@ -314,6 +506,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -534,30 +761,382 @@
         </aside>
         <section class="canvas" aria-label="标签组件说明详情区">
           <div class="canvas-inner">
-            <article class="doc-page">
+            <article class="content-panel doc-page" data-panel="tag">
               <header class="doc-hero">
                 <p class="doc-kicker">Data Display / Tag</p>
                 <h1 class="doc-title">Tag 标签</h1>
-                <p class="doc-summary">Tag 用于标记状态、分类、属性和轻量筛选条件，帮助用户在密集信息中快速识别对象特征。</p>
+                <p class="doc-summary">Tag 用于标记状态、属性、分类和轻量筛选条件。组件保持信息展示优先，只有在开启 closable 或 checkable 后才承担删除或选择交互。</p>
                 <ul class="doc-meta-list" aria-label="标签基础规格">
-                  <li>默认高度 24px</li>
-                  <li>支持可关闭</li>
-                  <li>支持颜色语义</li>
-                  <li>支持选中状态</li>
+                  <li>默认灰色基底</li>
+                  <li>支持 soft / solid / outline</li>
+                  <li>支持 closable</li>
+                  <li>支持 checkable</li>
                 </ul>
               </header>
 
               <section class="doc-section">
-                <h2>语义标签</h2>
-                <div class="example-block tag-cloud">
-                  <span class="tag">默认</span><span class="tag success">已完成</span><span class="tag processing">运行中</span><span class="tag warning">待确认</span><span class="tag danger">失败</span>
+                <h2>合适使用</h2>
+                <ul class="rule-list">
+                  <li>用于标记对象的状态、分类、属性或轻量级业务语义，帮助用户在列表、表格和详情中快速扫描。</li>
+                  <li>默认 Tag 只做信息展示；需要删除已选项时使用 closable，需要切换筛选或兴趣项时使用 checkable。</li>
+                  <li>同一组标签保持稳定的颜色映射，避免在同一区域让同一颜色表达多种含义。</li>
+                  <li>标签文案应短而明确；需要承载主要操作、复杂选择或批量编辑时，应切换为 Button、Checkbox、Select 等组件。</li>
+                </ul>
+              </section>
+
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <p>展示基础 Tag，灰色基底。Tag 默认只用于信息展示，内容应保持简短。</p>
+                <div class="tag-demo-stack">
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>基础 Tag</h3>
+                      <p>默认样式用于普通状态、对象属性或无需强调的分类信息。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="基础标签示例">
+                          <span class="iqb-tag" data-color="gray">Default</span>
+                          <span class="iqb-tag" data-color="gray">Active</span>
+                          <span class="iqb-tag" data-color="gray">Draft</span>
+                          <span class="iqb-tag" data-color="gray">Published</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </section>
+
               <section class="doc-section">
-                <h2>可操作标签</h2>
-                <div class="example-block tag-cloud">
-                  <button class="tag selected" type="button">全部任务</button><button class="tag" type="button">自动化</button><button class="tag closable" type="button">高优先级 <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6L18 18"/></svg></button>
+                <h2>多色标签</h2>
+                <p>支持不同颜色的 Tag，用于区分不同信息语义。颜色只辅助识别，文案仍需表达完整含义。</p>
+                <div class="tag-demo-stack">
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>Soft</h3>
+                      <p>适合常规页面和表格中的状态标记，视觉权重轻。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="浅色多色标签示例">
+                          <span class="iqb-tag" data-color="gray">Default</span>
+                          <span class="iqb-tag" data-color="green">Success</span>
+                          <span class="iqb-tag" data-color="blue">Processing</span>
+                          <span class="iqb-tag" data-color="cyan">Info</span>
+                          <span class="iqb-tag" data-color="teal">Verified</span>
+                          <span class="iqb-tag" data-color="lime">Online</span>
+                          <span class="iqb-tag" data-color="yellow">Waiting</span>
+                          <span class="iqb-tag" data-color="orange">Warning</span>
+                          <span class="iqb-tag" data-color="red">Error</span>
+                          <span class="iqb-tag" data-color="magenta">Hot</span>
+                          <span class="iqb-tag" data-color="purple">Beta</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>Solid</h3>
+                      <p>适合需要更强识别度的场景，如关键状态、促销标签或高优先级筛选。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="实色多色标签示例">
+                          <span class="iqb-tag" data-color="gray" data-variant="solid">Default</span>
+                          <span class="iqb-tag" data-color="green" data-variant="solid">Success</span>
+                          <span class="iqb-tag" data-color="blue" data-variant="solid">Processing</span>
+                          <span class="iqb-tag" data-color="cyan" data-variant="solid">Info</span>
+                          <span class="iqb-tag" data-color="teal" data-variant="solid">Verified</span>
+                          <span class="iqb-tag" data-color="lime" data-variant="solid">Online</span>
+                          <span class="iqb-tag" data-color="yellow" data-variant="solid">Waiting</span>
+                          <span class="iqb-tag" data-color="orange" data-variant="solid">Warning</span>
+                          <span class="iqb-tag" data-color="red" data-variant="solid">Error</span>
+                          <span class="iqb-tag" data-color="magenta" data-variant="solid">Hot</span>
+                          <span class="iqb-tag" data-color="purple" data-variant="solid">Beta</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>Outline</h3>
+                      <p>适合白底区域和密集列表，让标签边界更清晰。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="描边多色标签示例">
+                          <span class="iqb-tag" data-color="gray" data-variant="outline">Default</span>
+                          <span class="iqb-tag" data-color="green" data-variant="outline">Success</span>
+                          <span class="iqb-tag" data-color="blue" data-variant="outline">Processing</span>
+                          <span class="iqb-tag" data-color="cyan" data-variant="outline">Info</span>
+                          <span class="iqb-tag" data-color="teal" data-variant="outline">Verified</span>
+                          <span class="iqb-tag" data-color="lime" data-variant="outline">Online</span>
+                          <span class="iqb-tag" data-color="yellow" data-variant="outline">Waiting</span>
+                          <span class="iqb-tag" data-color="orange" data-variant="outline">Warning</span>
+                          <span class="iqb-tag" data-color="red" data-variant="outline">Error</span>
+                          <span class="iqb-tag" data-color="magenta" data-variant="outline">Hot</span>
+                          <span class="iqb-tag" data-color="purple" data-variant="outline">Beta</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>可关闭标签</h2>
+                <p>开启 closable 后，Tag 可以被用户关闭，并通过 onClose 监听关闭事件。</p>
+                <div class="tag-demo-stack">
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>Closable Tag</h3>
+                      <p>适用于已选筛选条件、已添加分类、可删除关键词。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="可关闭标签示例" data-closable-tags>
+                          <span class="iqb-tag is-closable" data-color="blue">Region: US<button class="tag-close" type="button" aria-label="关闭 Region: US" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                          <span class="iqb-tag is-closable" data-color="green">Category: AI<button class="tag-close" type="button" aria-label="关闭 Category: AI" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                          <span class="iqb-tag is-closable" data-color="orange">Keyword: B2B<button class="tag-close" type="button" aria-label="关闭 Keyword: B2B" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>可选择标签</h2>
+                <p>可通过 CheckableTag 实现类似 Checkbox 的点击切换效果；CheckableTagGroup 可用于单选或多选标签组。</p>
+                <div class="tag-demo-stack">
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>Checkable</h3>
+                      <p>单个可选标签，点击后在选中与未选中之间切换。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group">
+                          <button class="iqb-tag is-checkable is-checked" type="button" aria-pressed="true" data-checkable-tag>Yes</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>Single</h3>
+                      <p>单选标签组，同一时间只保留一个选中项。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" role="radiogroup" aria-label="单选可选择标签" data-checkable-group="single">
+                          <button class="iqb-tag is-checkable is-checked" type="button" role="radio" aria-checked="true" aria-pressed="true">Movies</button>
+                          <button class="iqb-tag is-checkable" type="button" role="radio" aria-checked="false" aria-pressed="false">Books</button>
+                          <button class="iqb-tag is-checkable" type="button" role="radio" aria-checked="false" aria-pressed="false">Music</button>
+                          <button class="iqb-tag is-checkable" type="button" role="radio" aria-checked="false" aria-pressed="false">Sports</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>Multiple</h3>
+                      <p>多选标签组，可同时选中多个分类。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" role="group" aria-label="多选可选择标签" data-checkable-group="multiple">
+                          <button class="iqb-tag is-checkable is-checked" type="button" aria-pressed="true">Movies</button>
+                          <button class="iqb-tag is-checkable" type="button" aria-pressed="false">Books</button>
+                          <button class="iqb-tag is-checkable is-checked" type="button" aria-pressed="true">Music</button>
+                          <button class="iqb-tag is-checkable" type="button" aria-pressed="false">Sports</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>图标标签</h2>
+                <p>Tag 内容中支持加入 icon。结构为 Tag 内包含 icon 与 text，用于增强标签含义。ICON 使用统一 SVG 规范绘制。</p>
+                <div class="tag-demo-stack">
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>Icon + Text</h3>
+                      <p>图标尺寸、线宽、端点样式保持一致，颜色继承标签文本色。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="图标标签示例">
+                          <span class="iqb-tag" data-color="green"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.2 2.2 4.8-5.4"/></svg><span>Verified</span></span>
+                          <span class="iqb-tag" data-color="blue"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.4 6.4"/><path d="M3 12A9 9 0 0 1 18.4 5.6"/><path d="M18 2v4h-4"/><path d="M6 22v-4h4"/></svg><span>Processing</span></span>
+                          <span class="iqb-tag" data-color="orange"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6"/><path d="M12 16h.01"/></svg><span>Alert</span></span>
+                          <span class="iqb-tag" data-color="purple" data-variant="outline"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.6 0L12 6.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 22l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></svg><span>Heart</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>图标圆角</h2>
+                <p>提供 999px 与 6px 两种圆角尺寸。999px 用于常规标签；6px 用于输入框、选择器等配套样式。</p>
+                <div class="tag-demo-stack">
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>999px</h3>
+                      <p>用于常规标签，保持轻量、胶囊化的信息标记外观。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="999 圆角图标标签示例">
+                          <span class="iqb-tag" data-color="green"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8.5 12.5 2.2 2.2 4.8-5.4"/></svg><span>Default</span></span>
+                          <span class="iqb-tag" data-color="blue"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.4 6.4"/><path d="M3 12A9 9 0 0 1 18.4 5.6"/><path d="M18 2v4h-4"/><path d="M6 22v-4h4"/></svg><span>Processing</span></span>
+                          <span class="iqb-tag" data-color="magenta"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 5.6a5.4 5.4 0 0 0-7.6 0L12 6.8l-1.2-1.2a5.4 5.4 0 0 0-7.6 7.6L12 22l8.8-8.8a5.4 5.4 0 0 0 0-7.6Z"/></svg><span>Favorite</span></span>
+                          <span class="iqb-tag" data-color="orange"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6"/><path d="M12 16h.01"/></svg><span>Alert</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>6px</h3>
+                      <p>用于输入框、选择器等配套样式，让标签与表单控件视觉一致。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="6px 圆角可关闭标签示例">
+                          <span class="iqb-tag tag-radius-compact is-closable" data-color="blue">Selected<button class="tag-close" type="button" aria-label="删除 Selected" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                          <span class="iqb-tag tag-radius-compact is-closable" data-color="green">Category<button class="tag-close" type="button" aria-label="删除 Category" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                          <span class="iqb-tag tag-radius-compact is-closable" data-color="orange">Keyword<button class="tag-close" type="button" aria-label="删除 Keyword" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                        </div>
+                      </div>
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="6px 圆角无图标标签示例">
+                          <span class="iqb-tag tag-radius-compact" data-color="gray">Option</span>
+                          <span class="iqb-tag tag-radius-compact" data-color="blue">Selected</span>
+                          <span class="iqb-tag tag-radius-compact" data-color="teal">Added</span>
+                          <span class="iqb-tag tag-radius-compact" data-color="purple">Input Tag</span>
+                        </div>
+                      </div>
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="6px 圆角含图标标签示例">
+                          <span class="iqb-tag tag-radius-compact" data-color="gray"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16"/><path d="M7 12h10"/><path d="M9 17h6"/></svg><span>Option</span></span>
+                          <span class="iqb-tag tag-radius-compact" data-color="blue"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12"/><path d="M6 12h8"/><path d="M6 16h10"/></svg><span>Selected</span></span>
+                          <span class="iqb-tag tag-radius-compact" data-color="teal"><svg class="tag-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg><span>Added</span></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>标签尺寸</h2>
+                <p>提供 small、medium、default、large 四种尺寸，覆盖表格内紧凑信息、普通状态标记和更强调的业务标签。</p>
+                <div class="tag-demo-stack">
+                  <div class="tag-demo-card">
+                    <div class="tag-demo-head">
+                      <h3>尺寸</h3>
+                      <p>每种尺寸使用基础灰色标签展示，便于比较高度和内边距。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row tag-size-row">
+                        <div class="tag-group tag-size-group" aria-label="标签尺寸示例">
+                          <span class="iqb-tag tag-size-small" data-color="gray">small</span>
+                          <span class="iqb-tag tag-size-default" data-color="gray">default</span>
+                          <span class="iqb-tag tag-size-medium" data-color="gray">medium</span>
+                          <span class="iqb-tag tag-size-large" data-color="gray">large</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>动态添加标签</h2>
+                <p>支持动态新增 Tag。典型流程：点击“添加标签”，输入内容，创建新的 Tag；同时支持删除已有 Tag。</p>
+                <div class="tag-demo-stack">
+                  <div class="tag-demo-card" data-dynamic-tags>
+                    <div class="tag-demo-head">
+                      <h3>Dynamic Tag</h3>
+                      <p>适用于标签管理场景，新增标签会复用同一个可关闭 Tag 组件工厂。</p>
+                    </div>
+                    <div class="tag-demo-surface">
+                      <div class="tag-row">
+                        <div class="tag-group" aria-label="动态标签列表" data-tag-list>
+                          <span class="iqb-tag tag-radius-compact is-closable" data-color="gray">Lead<button class="tag-close" type="button" aria-label="删除 Lead" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                          <span class="iqb-tag tag-radius-compact is-closable" data-color="green">Growth<button class="tag-close" type="button" aria-label="删除 Growth" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                          <span class="iqb-tag tag-radius-compact is-closable" data-color="blue">Segment<button class="tag-close" type="button" aria-label="删除 Segment" data-tag-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button></span>
+                          <button class="iqb-tag tag-radius-compact tag-add" type="button" data-tag-add>
+                            <svg class="tag-add-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+                            添加标签
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap"><table class="spec-table">
+                  <thead><tr><th scope="col">属性</th><th scope="col">说明</th><th scope="col">类型</th><th scope="col">默认值</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>children</code></td><td>标签显示内容，建议使用简短文本。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                    <tr><td><code>color</code></td><td>标签颜色，可使用预设色或自定义色值。</td><td><code>gray | green | blue | cyan | teal | lime | yellow | orange | red | magenta | purple | string</code></td><td><code>gray</code></td></tr>
+                    <tr><td><code>variant</code></td><td>视觉样式，分别对应浅色底、深色底、描边。</td><td><code>soft | solid | outline</code></td><td><code>soft</code></td></tr>
+                    <tr><td><code>size</code></td><td>标签尺寸。</td><td><code>small | medium | default | large</code></td><td><code>default</code></td></tr>
+                    <tr><td><code>radius</code></td><td>标签圆角。常规标签使用 999px，输入框、选择器内标签使用 6px。</td><td><code>round | compact</code></td><td><code>round</code></td></tr>
+                    <tr><td><code>closable</code></td><td>是否显示关闭按钮。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                    <tr><td><code>checkable</code></td><td>是否为可选择标签。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                    <tr><td><code>checked</code></td><td>CheckableTag 的受控选中状态。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                    <tr><td><code>value</code></td><td>CheckableTagGroup 的受控选中值；单选为单值，多选为数组。</td><td><code>string | number | Array&lt;string | number&gt; | null</code></td><td><code>-</code></td></tr>
+                    <tr><td><code>defaultValue</code></td><td>CheckableTagGroup 的初始选中值。</td><td><code>string | number | Array&lt;string | number&gt; | null</code></td><td><code>-</code></td></tr>
+                    <tr><td><code>multiple</code></td><td>是否开启多选标签组。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                    <tr><td><code>options</code></td><td>标签组选项列表。</td><td><code>Array&lt;{ label: ReactNode; value: string | number } | string | number&gt;</code></td><td><code>-</code></td></tr>
+                    <tr><td><code>addable</code></td><td>是否显示动态添加入口，入口以灰色虚线 Tag 展示。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                    <tr><td><code>inputVisible</code></td><td>动态添加输入框是否显示；显示时添加入口隐藏。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                    <tr><td><code>icon</code></td><td>前置图标，推荐使用 24x24 viewBox、2px stroke 的 SVG。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                    <tr><td><code>onClose</code></td><td>关闭按钮点击时触发。</td><td><code>(event: MouseEvent) =&gt; void</code></td><td><code>-</code></td></tr>
+                    <tr><td><code>onChange</code></td><td>CheckableTag 或 CheckableTagGroup 选中状态变化时触发。</td><td><code>(checkedOrValue, event) =&gt; void</code></td><td><code>-</code></td></tr>
+                    <tr><td><code>onAdd</code></td><td>动态添加输入框按 Enter 创建标签时触发。</td><td><code>(value: string) =&gt; void</code></td><td><code>-</code></td></tr>
+                  </tbody>
+                </table></div>
+              </section>
+
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap"><table class="spec-table">
+                  <thead><tr><th scope="col">Token</th><th scope="col">默认值</th><th scope="col">说明</th></tr></thead>
+                  <tbody>
+                    <tr><td><code>--tag-height</code></td><td><code>24px</code></td><td>标签默认高度。</td></tr>
+                    <tr><td><code>--tag-height-small</code></td><td><code>20px</code></td><td>small 标签高度。</td></tr>
+                    <tr><td><code>--tag-height-medium</code></td><td><code>28px</code></td><td>medium 标签高度。</td></tr>
+                    <tr><td><code>--tag-height-large</code></td><td><code>32px</code></td><td>large 标签高度。</td></tr>
+                    <tr><td><code>--tag-padding-inline</code></td><td><code>8px</code></td><td>标签左右内边距。</td></tr>
+                    <tr><td><code>--tag-gap</code></td><td><code>6px</code></td><td>icon、text、close 之间的间距。</td></tr>
+                    <tr><td><code>--tag-radius</code></td><td><code>999px</code></td><td>标签默认胶囊圆角。</td></tr>
+                    <tr><td><code>--radius-sm</code></td><td><code>6px</code></td><td>compact 圆角标签、动态添加标签、输入框和选择器内标签圆角。</td></tr>
+                    <tr><td><code>--tag-font-size</code></td><td><code>12px</code></td><td>标签文字字号。</td></tr>
+                    <tr><td><code>--tag-font-size-large</code></td><td><code>13px</code></td><td>medium 和 large 标签文字字号。</td></tr>
+                    <tr><td><code>--tag-icon-size</code></td><td><code>14px</code></td><td>标签前置 SVG 图标尺寸。</td></tr>
+                    <tr><td><code>--tag-close-size</code></td><td><code>16px</code></td><td>关闭按钮点击区域。</td></tr>
+                    <tr><td><code>--tag-default-bg</code></td><td><code>#f2f3f5</code></td><td>默认灰色浅底背景。</td></tr>
+                    <tr><td><code>--tag-default-color</code></td><td><code>#4f5b67</code></td><td>默认灰色文字。</td></tr>
+                    <tr><td><code>--tag-default-border</code></td><td><code>#e5e7eb</code></td><td>描边标签的默认灰色边框。</td></tr>
+                    <tr><td><code>--tag-solid-text</code></td><td><code>#fff</code></td><td>深色底标签文字颜色。</td></tr>
+                    <tr><td><code>--color-bg-hover</code></td><td><code>#f5f5f5</code></td><td>未选中可选择标签和动态添加入口 hover 背景。</td></tr>
+                    <tr><td><code>--color-action-primary</code></td><td><code>#1cc749</code></td><td>可选择标签选中态、动态添加输入框 focus 边框。</td></tr>
+                    <tr><td><code>--color-action-primary-hover</code></td><td><code>#00ae2e</code></td><td>可选择标签选中 hover 背景。</td></tr>
+                    <tr><td><code>--color-border-strong</code></td><td><code>#bfbfbf</code></td><td>动态添加虚线 Tag hover 边框。</td></tr>
+                    <tr><td><code>--tag-focus-shadow</code></td><td><code>var(--shadow-focus)</code></td><td>可关闭和可选择标签的键盘焦点状态。</td></tr>
+                  </tbody>
+                </table></div>
               </section>
             </article>
           </div>
@@ -608,7 +1187,6 @@
         '--brand-border-soft',
         '--brand-border-hover',
         '--radius-sm',
-        '--shadow-focus',
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -636,7 +1214,6 @@
           root.style.setProperty('--brand-text-hover', '#147c4d');
           root.style.setProperty('--brand-border-soft', '#bef5d5');
           root.style.setProperty('--brand-border-hover', '#91e9b8');
-          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
           return;
         }
         if (activeProduct !== 'decentralized') return;
@@ -657,7 +1234,6 @@
         root.style.setProperty('--brand-border-soft', '#bfdbfe');
         root.style.setProperty('--brand-border-hover', '#93c5fd');
         root.style.setProperty('--radius-sm', '2px');
-        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
@@ -720,6 +1296,121 @@
         if (event.key === 'Escape') {
           closeProductSelectMenu();
         }
+      });
+
+      const closeIconMarkup = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
+
+      const createTag = ({ text, color = 'gray', variant = '', closable = false, checkable = false, checked = false, compact = false }) => {
+        const tag = document.createElement(checkable ? 'button' : 'span');
+        tag.className = 'iqb-tag';
+        tag.dataset.color = color;
+        if (variant) tag.dataset.variant = variant;
+        if (compact) tag.classList.add('tag-radius-compact');
+
+        if (checkable) {
+          tag.type = 'button';
+          tag.classList.add('is-checkable');
+          tag.dataset.checkableTag = '';
+          tag.setAttribute('aria-pressed', String(checked));
+          tag.classList.toggle('is-checked', checked);
+        }
+
+        tag.append(document.createTextNode(text));
+        if (closable) {
+          tag.classList.add('is-closable');
+          const closeButton = document.createElement('button');
+          closeButton.className = 'tag-close';
+          closeButton.type = 'button';
+          closeButton.dataset.tagClose = '';
+          closeButton.setAttribute('aria-label', `删除 ${text}`);
+          closeButton.innerHTML = closeIconMarkup;
+          tag.append(closeButton);
+        }
+        return tag;
+      };
+
+      document.addEventListener('click', (event) => {
+        const rawTarget = event.target;
+        const target = rawTarget instanceof Element ? rawTarget : rawTarget?.parentElement;
+        const closeButton = target?.closest('[data-tag-close]');
+        if (!closeButton) return;
+        const tag = closeButton.closest('.iqb-tag');
+        if (!tag) return;
+        tag.remove();
+      });
+
+      const setCheckableTag = (tag, checked) => {
+        tag.classList.toggle('is-checked', checked);
+        tag.setAttribute('aria-pressed', String(checked));
+        if (tag.getAttribute('role') === 'radio') {
+          tag.setAttribute('aria-checked', String(checked));
+        }
+      };
+
+      document.querySelectorAll('[data-checkable-tag]').forEach((tag) => {
+        tag.addEventListener('click', () => {
+          const checked = tag.getAttribute('aria-pressed') !== 'true';
+          setCheckableTag(tag, checked);
+        });
+      });
+
+      document.querySelectorAll('[data-checkable-group]').forEach((group) => {
+        group.querySelectorAll('.iqb-tag').forEach((tag) => {
+          tag.addEventListener('click', () => {
+            if (group.dataset.checkableGroup === 'single') {
+              group.querySelectorAll('.iqb-tag').forEach((item) => setCheckableTag(item, item === tag));
+              return;
+            }
+            setCheckableTag(tag, tag.getAttribute('aria-pressed') !== 'true');
+          });
+        });
+      });
+
+      document.querySelectorAll('[data-dynamic-tags]').forEach((demo) => {
+        const addButton = demo.querySelector('[data-tag-add]');
+        const list = demo.querySelector('[data-tag-list]');
+        const colors = ['gray', 'green', 'blue', 'cyan', 'orange', 'magenta'];
+
+        const commitTag = (input) => {
+          const value = input.value.trim();
+          if (!value || !list) return;
+          const tagCount = list.querySelectorAll('.iqb-tag:not(.tag-add)').length;
+          const nextColor = colors[tagCount % colors.length];
+          list.insertBefore(createTag({ text: value, color: nextColor, closable: true, compact: true }), input);
+          input.remove();
+          addButton.hidden = false;
+          addButton.focus();
+        };
+
+        addButton?.addEventListener('click', () => {
+          if (!list || list.querySelector('[data-tag-input]')) return;
+          const input = document.createElement('input');
+          input.className = 'tag-inline-input';
+          input.type = 'text';
+          input.dataset.tagInput = '';
+          input.setAttribute('aria-label', '新增标签内容');
+          list.insertBefore(input, addButton);
+          addButton.hidden = true;
+          input.focus();
+
+          input.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+              commitTag(input);
+              return;
+            }
+            if (event.key === 'Escape') {
+              input.remove();
+              addButton.hidden = false;
+              addButton.focus();
+            }
+          });
+
+          input.addEventListener('blur', () => {
+            if (!input.isConnected) return;
+            input.remove();
+            addButton.hidden = false;
+          });
+        });
       });
 
       const centerNavItem = (item, behavior = 'auto') => {

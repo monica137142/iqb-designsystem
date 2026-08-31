@@ -5,20 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TimePicker 时间选择器 - Design System</title>
     <style>
-      :root {--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;
-        --brand-500: #00d157;
-        --brand-50: #effff6;
-        --brand-100: #d8ffe8;
-        --brand-200: #b5ffd1;
-        --brand-300: #7dffb0;
-        --brand-400: #35f47c;
-        --brand-600: #00b84b;
-        --brand-700: #008f3f;
-        --brand-800: #067037;
-        --brand-900: #075a2f;
-        --brand-rgb: 0, 209, 87;
-        --brand-text: #00b84b;
-        --brand-text-hover: #008f3f;
+      :root {--success-green-500: #1cc749;--yellow-500: #ff990a;--yellow-400: #ffb232;--red-500: #fe3d33;--red-600: #ec2116;--blue-500: #31a6ff;--blue-600: #1887f5;--blue-700: #1370e2;
+        --brand-500: #1cc749;
+        --brand-50: #f0fdf3;
+        --brand-100: #dbfde3;
+        --brand-200: #b9f9c9;
+        --brand-300: #82f39f;
+        --brand-400: #45e36e;
+        --brand-600: #00ae2e;
+        --brand-700: #118430;
+        --brand-800: #13682a;
+        --brand-900: #125526;
+        --brand-rgb: 28, 199, 73;
+        --brand-text: #00ae2e;
+        --brand-text-hover: #118430;
         --brand-border-soft: #bfead2;
         --brand-border-hover: #8fd9b3;
         --gray-950: #0b0d0f;
@@ -44,8 +44,8 @@
         --color-bg-container: var(--white);
         --color-bg-subtle: var(--gray-100);
         --color-bg-hover: var(--gray-100);
-        --color-bg-selected: var(--brand-50);
-        --color-bg-disabled: var(--gray-100);
+        --color-bg-selected: var(--brand-100);
+        --color-bg-disabled: var(--gray-100);--color-bg-inverse: var(--gray-900);
         --color-border-default: var(--gray-300);
         --color-border-subtle: var(--gray-200);
         --color-border-strong: var(--gray-400);
@@ -54,10 +54,10 @@
         --color-action-primary: var(--brand-500);
         --color-action-primary-hover: var(--brand-600);
         --color-action-primary-active: var(--brand-700);
-        --color-action-primary-subtle: var(--brand-50);
+        --color-action-primary-subtle: var(--brand-100);
         --color-action-primary-disabled: var(--brand-200);
         --color-status-success: var(--success-green-500);
-        --color-status-error: var(--red-500);
+        --color-status-error: var(--red-500);--color-status-error-text: var(--red-600);
         --color-status-warning: var(--yellow-500);
         --color-status-info: var(--blue-500);
         --color-overlay-modal: rgba(0, 0, 0, 0.45);
@@ -103,6 +103,8 @@
         --sidebar-width: 300px;
         --radius-sm: 6px;
         --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --input-error-color: var(--color-status-error);
+        --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -880,9 +882,9 @@
       }
 
       .spec-btn.warning {
-        border-color: #fdb022;
-        background: #fffaeb;
-        color: #b54708;
+        border-color: #ffb232;
+        background: #fffaec;
+        color: #cc6002;
       }
 
       .spec-btn.warning-primary {
@@ -892,43 +894,43 @@
       }
 
       .spec-btn.warning-primary:hover {
-        border-color: #dc6803;
-        background: #dc6803;
+        border-color: #ff8400;
+        background: #ff8400;
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary {
-        border-color: #fdb022;
+        border-color: #ffb232;
         background: transparent;
-        color: #b54708;
+        color: #cc6002;
       }
 
       .spec-btn.warning-secondary:hover {
         border-color: var(--color-status-warning);
-        background: #fef0c7;
-        color: #93370d;
+        background: #fff4d3;
+        color: #a14b0b;
       }
 
       .spec-btn.warning-subtle {
         border-color: transparent;
-        background: #fffaeb;
-        color: #b54708;
+        background: #fffaec;
+        color: #cc6002;
       }
 
       .spec-btn.warning-subtle:hover {
-        background: #fef0c7;
-        color: #93370d;
+        background: #fff4d3;
+        color: #a14b0b;
       }
 
       .spec-btn.warning-text {
         border-color: transparent;
         background: transparent;
-        color: #b54708;
+        color: #cc6002;
       }
 
       .spec-btn.warning-text:hover {
-        background: #fffaeb;
-        color: #93370d;
+        background: #fffaec;
+        color: #a14b0b;
       }
 
       .spec-btn.info-primary {
@@ -938,43 +940,43 @@
       }
 
       .spec-btn.info-primary:hover {
-        border-color: #1570ef;
-        background: #1570ef;
+        border-color: #1887f5;
+        background: #1887f5;
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary {
         border-color: var(--color-status-info);
         background: transparent;
-        color: #1570ef;
+        color: #1887f5;
       }
 
       .spec-btn.info-secondary:hover {
-        border-color: #1570ef;
-        background: #eff8ff;
-        color: #175cd3;
+        border-color: #1887f5;
+        background: #eef9ff;
+        color: #1370e2;
       }
 
       .spec-btn.info-subtle {
         border-color: transparent;
-        background: #eff8ff;
-        color: #1570ef;
+        background: #eef9ff;
+        color: #1887f5;
       }
 
       .spec-btn.info-subtle:hover {
-        background: #d1e9ff;
-        color: #175cd3;
+        background: #d9f0ff;
+        color: #1370e2;
       }
 
       .spec-btn.info-text {
         border-color: transparent;
         background: transparent;
-        color: #1570ef;
+        color: #1887f5;
       }
 
       .spec-btn.info-text:hover {
-        background: #eff8ff;
-        color: #175cd3;
+        background: #eef9ff;
+        color: #1370e2;
       }
 
       .spec-btn.danger {
@@ -984,43 +986,43 @@
       }
 
       .spec-btn.danger:hover {
-        border-color: #d92d20;
-        background: #d92d20;
+        border-color: #ec2116;
+        background: #ec2116;
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary {
         border-color: var(--color-status-error);
         background: transparent;
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-btn.danger-secondary:hover {
-        border-color: #d92d20;
-        background: #fff1f0;
-        color: #b42318;
+        border-color: #ec2116;
+        background: #fff2f1;
+        color: #c7170e;
       }
 
       .spec-btn.danger-subtle {
         border-color: transparent;
-        background: #fff1f0;
-        color: #d92d20;
+        background: #fff2f1;
+        color: #ec2116;
       }
 
       .spec-btn.danger-subtle:hover {
-        background: #ffe0de;
-        color: #b42318;
+        background: #ffe2e0;
+        color: #c7170e;
       }
 
       .spec-btn.danger-text {
         border-color: transparent;
         background: transparent;
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-btn.danger-text:hover {
-        background: #fff1f0;
-        color: #b42318;
+        background: #fff2f1;
+        color: #c7170e;
       }
 
       .spec-btn.text {
@@ -1138,21 +1140,21 @@
       }
 
       .spec-btn.warning-secondary[disabled]:hover {
-        border-color: #fdb022;
+        border-color: #ffb232;
         background: transparent;
-        color: #b54708;
+        color: #cc6002;
       }
 
       .spec-btn.warning-subtle[disabled]:hover {
         border-color: transparent;
-        background: #fffaeb;
-        color: #b54708;
+        background: #fffaec;
+        color: #cc6002;
       }
 
       .spec-btn.warning-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: #b54708;
+        color: #cc6002;
       }
 
       .spec-btn.info-primary[disabled]:hover {
@@ -1164,19 +1166,19 @@
       .spec-btn.info-secondary[disabled]:hover {
         border-color: var(--color-status-info);
         background: transparent;
-        color: #1570ef;
+        color: #1887f5;
       }
 
       .spec-btn.info-subtle[disabled]:hover {
         border-color: transparent;
-        background: #eff8ff;
-        color: #1570ef;
+        background: #eef9ff;
+        color: #1887f5;
       }
 
       .spec-btn.info-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: #1570ef;
+        color: #1887f5;
       }
 
       .spec-btn.danger[disabled]:hover {
@@ -1188,19 +1190,19 @@
       .spec-btn.danger-secondary[disabled]:hover {
         border-color: var(--color-status-error);
         background: transparent;
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-btn.danger-subtle[disabled]:hover {
         border-color: transparent;
-        background: #fff1f0;
-        color: #d92d20;
+        background: #fff2f1;
+        color: #ec2116;
       }
 
       .spec-btn.danger-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .disabled-groups {
@@ -1421,7 +1423,7 @@
       }
 
       .input-count.over-limit {
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .count-input-wrap,
@@ -1459,7 +1461,7 @@
 
       .count-input-wrap .input-count.over-limit,
       .count-textarea-wrap .input-count.over-limit {
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-field-help {
@@ -1492,11 +1494,11 @@
       .spec-input-wrap.error.focus,
       .spec-input-wrap.error.is-focus {
         border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        box-shadow: 0 0 0 3px rgba(254, 61, 51, 0.12);
       }
 
       .spec-field.error .spec-field-help {
-        color: #d92d20;
+        color: #ec2116;
       }
 
       .spec-field.success .spec-input,
@@ -1589,7 +1591,7 @@
       .spec-select.error.open,
       .spec-select.error.focus {
         border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        box-shadow: 0 0 0 3px rgba(254, 61, 51, 0.12);
       }
 
       .spec-select.disabled {
@@ -2014,7 +2016,7 @@
       }
 
       .spec-date.error.focus {
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        box-shadow: 0 0 0 3px rgba(254, 61, 51, 0.12);
       }
 
       .spec-date.disabled {
@@ -2949,7 +2951,7 @@
         grid-template-rows: 1fr 1fr;
         flex: 0 0 auto;
         border-left: 1px solid #dde1e5;
-        background: #fafbfc;
+        background: #f9f9f9;
       }
 
       .number-step {
@@ -3012,7 +3014,7 @@
 
       .number-input.error:focus-within {
         border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px rgba(240, 68, 56, 0.12);
+        box-shadow: 0 0 0 3px rgba(254, 61, 51, 0.12);
       }
 
       .number-input.disabled {
@@ -3721,7 +3723,7 @@
       :root[data-product-theme="default-theme"] .table-spec-select.open,
       :root[data-product-theme="default-theme"] .page-size-select.open .page-size-trigger,
       :root[data-product-theme="default-theme"] .table-select-demo.open .table-spec-select {
-        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
+        box-shadow: 0 0 0 3px rgba(28, 199, 73, 0.16);
       }
 
       :root[data-product-theme="default-theme"] .spec-input-wrap .spec-input:focus,
@@ -3766,7 +3768,7 @@
       :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="default-theme"] .time-range-inputs:has(.time-input-control.open) {
         border-color:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgba(0, 209, 87, 0.16);
+        box-shadow: 0 0 0 3px rgba(28, 199, 73, 0.16);
       }
 
       :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-range-segment.open),
@@ -3855,7 +3857,7 @@
         </a>
         <div class="topbar-actions" aria-label="系统状态">
           <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 45/46</span>
+          <span data-component-count-label>Active components 46/46</span>
         </div>
         <div class="product-select" data-product-select>
           <button
@@ -3960,6 +3962,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -4118,7 +4155,7 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../index.html#card">
+                    <a class="nav-button" href="../datadisplay/card.html">
                       <span class="nav-label">Card 卡片</span>
                     </a>
                   </li>
@@ -4821,7 +4858,7 @@
                       </tr>
                       <tr>
                         <td><code>--time-picker-hover-border-color</code></td>
-                        <td><code>#00D157</code></td>
+                        <td><code>var(--color-action-primary)</code></td>
                         <td>触发器与 UTC 时区 tab hover 边框，无外发光。</td>
                       </tr>
                       <tr>
@@ -4881,17 +4918,17 @@
                       </tr>
                       <tr>
                         <td><code>--time-picker-active-color</code></td>
-                        <td><code>#00D157</code></td>
+                        <td><code>var(--color-action-primary)</code></td>
                         <td>聚焦、确认按钮与选中项颜色。</td>
                       </tr>
                       <tr>
                         <td><code>--time-picker-hover-bg</code></td>
-                        <td><code>#F5F6F7</code></td>
+                        <td><code>var(--color-bg-hover)</code></td>
                         <td>时间选项 hover 背景。</td>
                       </tr>
                       <tr>
                         <td><code>--time-picker-focus-shadow</code></td>
-                        <td><code>0 0 0 3px rgba(0, 209, 87, 0.1)</code></td>
+                        <td><code>0 0 0 3px color-mix(in srgb, var(--color-action-primary) 10%, transparent)</code></td>
                         <td>聚焦外发光。</td>
                       </tr>
                       <tr>
@@ -4953,7 +4990,7 @@
           return;
         }
 
-        const pendingKeys = new Set(["card"]);
+        const pendingKeys = new Set([]);
         const navItems = Array.from(
           document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
         );
@@ -5018,7 +5055,7 @@
           root.style.setProperty("--brand-200", "#bef5d5");
           root.style.setProperty("--brand-300", "#91e9b8");
           root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "var(--color-status-success)");
+          root.style.setProperty("--brand-500", "#22b573");
           root.style.setProperty("--brand-600", "#1b9c61");
           root.style.setProperty("--brand-700", "#147c4d");
           root.style.setProperty("--brand-800", "#12633f");

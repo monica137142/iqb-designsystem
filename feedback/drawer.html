@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drawer 抽屉 - Design System</title>
     <style>
-      :root{--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;--brand-900: #075a2f;--brand-800: #067037;--brand-700: #008f3f;--brand-400: #35f47c;--brand-300: #7dffb0;--brand-200: #b5ffd1;--brand-100: #d8ffe8;--brand-50: #effff6;--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950:#0b0d0f;--gray-900:#14171a;--gray-800:#22262a;--gray-700:#343a40;--gray-600:#59616a;--gray-500:#78818c;--gray-400:#a5adb6;--gray-300:#d4d9de;--gray-200:#e7eaee;--gray-100:#f3f5f7;--gray-50:#fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-50);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-50);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.metric-row strong{font-size:var(--text-data-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:6px;font-size:var(--text-caption-size);text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--color-action-primary-hover);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background:var(--gray-900);border-radius:6px;font-size:var(--text-caption-size);line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:var(--color-status-info);box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.timeline strong{font-size:var(--text-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--color-border-subtle);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:6px}.empty-state strong{font-size:var(--text-section-title-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      :root{--success-green-500: #22b573;--yellow-500: #f79009;--red-500: #f04438;--blue-500: #2e90fa;--blue-600: #1570ef;--brand-900: #075a2f;--brand-800: #067037;--brand-700: #008f3f;--brand-400: #35f47c;--brand-300: #7dffb0;--brand-200: #b5ffd1;--brand-100: #d8ffe8;--brand-50: #effff6;--brand-500:#00d157;--brand-600:#00b84b;--brand-rgb:0,209,87;--gray-950: #0b0d0f;--gray-900: #14171a;--gray-800: #22262a;--gray-700: #343a40;--gray-600: #59616a;--gray-500: #78818c;--gray-400: #a5adb6;--gray-300: #d4d9de;--gray-200: #e7eaee;--gray-100: #f3f5f7;--gray-50: #fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-50);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-50);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#7dffb0);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color:#069455}.warning{color:#b54708}.danger{color:#d92d20}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background:var(--gray-50);border-radius:6px}.metric-row span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.metric-row strong{font-size:var(--text-data-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke:var(--gray-200);stroke-width:1}.chart-area{fill:rgba(0,209,87,.12)}.chart-line{fill:none;stroke:var(--brand-500);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,#2ecb87,#9af0be);border-radius:6px 6px 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:50%;background:conic-gradient(var(--brand-500) 0 72%,var(--gray-200) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:50%}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:6px;font-size:var(--text-caption-size);text-decoration:none}.tag.success{color:#067647;background:#ecfdf3;border-color:#abefc6}.tag.processing{color:#175cd3;background:#eff8ff;border-color:#b2ddff}.tag.warning{color:#b54708;background:#fffaeb;border-color:#fedf89}.tag.danger{color:#b42318;background:#fef3f2;border-color:#fecdca}.tag.selected{color:var(--color-action-primary-hover);background:rgb(var(--brand-rgb)/.1);border-color:rgb(var(--brand-rgb)/.32)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background:var(--gray-900);border-radius:6px;font-size:var(--text-caption-size);line-height:1.4;box-shadow:0 10px 24px rgba(20,28,36,.18)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:#323a46;border-radius:50%;font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:8px;background:#175cd3}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:#078a4f}.avatar.blue{background:#2563eb}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid #fff}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--text-control-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background:var(--gray-200)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--gray-300);border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 1px var(--gray-300)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow:0 0 0 1px var(--brand-500)}.timeline-item.active .timeline-dot{background:var(--color-status-info);box-shadow:0 0 0 4px #eff8ff}.timeline time{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.timeline strong{font-size:var(--text-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,#eefcf5,#f8fbff)}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.9);border-radius:8px}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:50%;cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--gray-300);border-radius:50%}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:999px}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background:var(--gray-50);border-radius:6px;object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:6px}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid #fff;border-radius:999px;font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:var(--gray-300)}.status-dot.success{background:#12b76a}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,#f7f9fb,#eef2f6);border:1px solid var(--color-border-subtle);border-radius:12px}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:6px}.empty-state strong{font-size:var(--text-section-title-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:6px}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
       /* Header parity with index.html */
       :root {
         --brand-400: #35f47c;
@@ -616,6 +616,30 @@
         }
       }
 
+      /* Model documentation: page parity and component-only styles */
+      :root{--brand-text:#00b84b;--brand-text-hover:#008f3f;--brand-border-soft:#bfead2;--brand-border-hover:#8fd9b3;--shadow-focus:0 0 0 3px rgb(var(--brand-rgb)/.16);--modal-width-sm:360px;--modal-width-md:480px;--modal-width-lg:640px;--modal-max-height:90vh;--modal-radius:var(--radius-sm);--modal-shadow:0 20px 48px rgba(20,28,36,.2)}
+      .canvas{background:var(--color-bg-container)}.canvas-inner{display:grid;width:auto;min-height:calc(100vh - var(--topbar-height));padding:32px}.doc-page{width:min(100%,1080px);color:var(--gray-800)}.doc-hero,.doc-section{padding:28px 32px}.doc-hero{border-bottom:1px solid var(--color-border-subtle)}.doc-kicker{margin:0 0 10px;color:var(--color-action-primary);font-size:var(--text-caption-size);font-weight:400;line-height:1.4;letter-spacing:0;text-transform:none}.doc-title{font-size:28px;font-weight:500;line-height:1.25}.doc-summary{max-width:720px;margin-top:12px;line-height:var(--text-body-line-height)}.doc-meta-list{margin-top:18px}.doc-meta-list li{padding:4px 8px;color:var(--color-text-secondary);background:var(--color-bg-subtle);border:0;border-radius:999px;line-height:1.4}.doc-section{margin-top:0;padding-top:28px;border-top:0;border-bottom:1px solid var(--color-border-subtle)}.doc-section:last-child{border-bottom:0}.doc-section h2{margin:0 0 14px;color:var(--color-text-primary);font-size:18px;font-weight:500;line-height:1.35}.doc-section h3{margin:0 0 8px;color:var(--gray-800);font-size:var(--text-body-size);font-weight:500;line-height:1.4}.doc-section p{line-height:var(--text-body-line-height)}.doc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.doc-grid .full,.example-block.full{grid-column:1/-1}.example-block{min-width:0;padding:16px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm)}.example-block>p{margin-bottom:18px}.rule-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.rule-list li{position:relative;padding-left:16px;color:var(--color-text-default);font-size:var(--text-control-size);line-height:var(--text-body-line-height)}.rule-list li:before{position:absolute;top:10px;left:0;width:5px;height:5px;content:"";background:var(--color-action-primary);border-radius:999px}.demo-stage{display:flex;align-items:center;justify-content:center;min-height:150px;padding:24px;background:var(--color-bg-container);border:1px dashed var(--color-border-default);border-radius:var(--radius-sm)}.demo-actions,.modal-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px}.demo-actions.center{justify-content:center}.spec-btn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 16px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-default);border-radius:8px;cursor:pointer;font-size:var(--text-body-size);transition:.15s ease}.spec-btn:hover{color:var(--brand-text);border-color:var(--color-action-primary)}.spec-btn:focus-visible{outline:0;box-shadow:var(--shadow-focus)}.spec-btn.primary{color:var(--color-text-inverse);background:var(--color-action-primary);border-color:var(--color-action-primary)}.spec-btn.primary:hover{background:var(--color-action-primary-hover)}.spec-btn.danger{color:var(--color-text-inverse);background:var(--color-status-error);border-color:var(--color-status-error)}.control-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:18px}.control-label{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.content-outline{width:min(100%,520px);padding:18px;color:var(--color-text-secondary);background:var(--color-bg-container);border:1px dashed var(--color-border-strong);border-radius:var(--radius-sm);font-size:var(--text-control-size);line-height:var(--text-body-line-height)}.modal-preview{width:min(100%,480px);overflow:hidden;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--modal-radius);box-shadow:0 12px 28px rgba(20,28,36,.12)}.modal-preview.sm{max-width:360px}.modal-preview.lg{max-width:640px}.modal-header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px}.modal-title{color:var(--color-text-primary);font-size:var(--text-overlay-title-size);font-weight:var(--text-overlay-title-weight);line-height:var(--text-overlay-title-line-height)}.close-btn{display:grid;width:28px;height:28px;padding:0;place-items:center;color:var(--color-text-tertiary);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer}.close-btn:hover{color:var(--color-text-primary);background:var(--color-bg-hover)}.close-btn svg{width:16px;height:16px}.modal-body{padding:4px 20px 20px;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:var(--text-body-line-height)}.modal-footer{display:flex;justify-content:flex-end;gap:8px;padding:0 20px 20px}.scroll-demo .modal-body{max-height:132px;overflow:auto}.feedback-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.feedback-card{position:relative;display:grid;grid-template-columns:36px 1fr;gap:12px;min-width:0;padding:18px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm)}.feedback-card .close-btn{position:absolute;top:10px;right:10px}.feedback-icon{display:grid;width:36px;height:36px;place-items:center;color:var(--white);background:var(--color-status-success);border-radius:50%;font-size:18px;font-weight:600}.feedback-card.warning .feedback-icon{background:var(--color-status-warning)}.feedback-card.error .feedback-icon{background:var(--color-status-error)}.feedback-copy{min-width:0;padding-right:24px}.feedback-copy strong{display:block;margin-bottom:4px;font-size:var(--text-body-size);font-weight:500}.feedback-copy p{font-size:var(--text-caption-size)}.feedback-card .modal-actions{grid-column:1/-1;margin-top:4px}.spec-table-wrap{overflow-x:auto;border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm)}.spec-table{width:100%;min-width:680px;border-collapse:collapse;font-size:var(--text-control-size);text-align:left}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top;line-height:normal}.spec-table th{color:var(--color-text-default);background:var(--gray-50);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;color:var(--gray-800);background:var(--color-bg-subtle);border-radius:4px;font-family:"Roboto Mono","Cascadia Mono",Consolas,monospace;font-size:var(--text-caption-size)}.sidebar{scrollbar-color:var(--gray-300) transparent;scrollbar-width:thin}.sidebar::-webkit-scrollbar{width:6px;height:6px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--gray-300);border-radius:999px}
+      .example-block.full .demo-stage{min-height:0;padding:0;justify-content:flex-start;background:transparent;border:0}.demo-actions.center{justify-content:flex-start}.modal-header{padding-right:10px}.modal-body{min-height:0;padding:0 20px}.modal-footer{padding:20px}.close-btn{width:28px;height:28px;border-radius:var(--radius-sm)}.close-btn svg{width:16px;height:16px}.spec-btn{min-height:32px;padding:0 14px;color:var(--color-text-default);border-color:#dde1e5;font-size:var(--text-control-size);font-weight:400;line-height:1.2}.spec-btn.solid{color:var(--color-text-default);background:var(--color-bg-container);border-color:var(--color-border-default)}.spec-btn.solid:hover{color:var(--brand-text);background:var(--color-bg-container);border-color:var(--color-action-primary)}.spec-btn.primary:hover{color:var(--color-text-inverse);background:var(--brand-text);border-color:var(--brand-text)}.spec-btn.danger:hover{color:var(--color-text-inverse);background:#d92d20;border-color:#d92d20}.spec-btn.danger-secondary{color:#d92d20;background:transparent;border-color:var(--color-status-error)}.spec-btn.danger-secondary:hover{color:#b42318;background:#fff1f0;border-color:#d92d20}.custom-content-block{display:grid;height:200px;padding:16px;place-items:center;color:var(--color-text-secondary);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-control-size);line-height:var(--text-body-line-height);text-align:center}.feedback-modal-content{display:grid;grid-template-columns:32px minmax(0,1fr);gap:14px;padding:0 20px}.feedback-modal-content .feedback-icon{display:grid;width:32px;height:32px;place-items:center;line-height:0}.feedback-modal-content .feedback-icon svg{display:block;width:24px;height:24px;stroke-linecap:round;stroke-linejoin:round}.feedback-modal-copy strong{display:block;margin-bottom:4px;color:var(--color-text-primary);font-size:var(--text-overlay-title-size);font-weight:var(--text-overlay-title-weight)}.feedback-modal-copy p{margin:0;padding:0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:var(--text-body-line-height)}
+      .modal-overlay{position:fixed;inset:0;z-index:100;display:grid;padding:24px;place-items:center;background:var(--color-overlay-modal);opacity:0;visibility:hidden;transition:opacity .3s ease-out,visibility 0s linear .3s}.modal-overlay.is-open{opacity:1;visibility:visible;transition:opacity .3s ease-out}.live-modal{display:grid;grid-template-rows:auto minmax(0,1fr) auto;width:min(var(--live-modal-width,var(--modal-width-md)),calc(100vw - 48px));max-height:var(--live-modal-max-height,var(--modal-max-height));overflow:hidden;background:var(--color-bg-container);border-radius:var(--modal-radius);box-shadow:var(--modal-shadow);opacity:0;transform:scale(.9);transition:opacity .2s ease-out,transform .2s ease-out}.modal-overlay.is-open .live-modal{opacity:1;transform:scale(1)}.live-modal .modal-body{overflow:auto}.modal-overlay.is-closing .live-modal{opacity:0;transform:scale(.9)}
+      @media(min-width:761px) and (max-width:860px){body{overflow:hidden}.app-shell{height:100vh;min-height:0}.workspace{grid-template-columns:var(--sidebar-width) minmax(0,1fr)}.sidebar{flex-direction:column;align-items:stretch;gap:18px;min-height:0;padding:22px 18px;overflow-x:hidden;overflow-y:auto;border-right:1px solid var(--color-border-subtle);border-bottom:0}.sidebar-footer{display:block}.nav-list,.nav-section,.nav-sublist{flex-direction:column;align-items:stretch}.nav-list{padding-bottom:calc((100vh - var(--topbar-height))/2)}.nav-category{padding:0 12px 4px}.nav-button{width:100%}.canvas-inner{padding:32px}.doc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feedback-row{grid-template-columns:1fr}}
+      @media(max-width:760px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.canvas-inner{width:auto;min-height:560px;padding:18px}.doc-hero,.doc-section{padding:22px 18px}.doc-title{font-size:var(--text-data-size)}.doc-grid,.feedback-row{grid-template-columns:1fr}.modal-overlay{padding:20px}.live-modal{width:min(var(--live-modal-width,var(--modal-width-md)),calc(100vw - 40px))}}
+      /* Drawer component */
+      :root{--drawer-width-sm:360px;--drawer-width-md:480px;--drawer-width-lg:640px;--drawer-height-sm:280px;--drawer-height-md:360px;--drawer-height-lg:520px;--drawer-bg:var(--color-bg-container);--drawer-header-padding:18px 20px;--drawer-body-padding:4px 20px 20px;--drawer-footer-padding:14px 20px;--drawer-border-color:var(--color-border-subtle);--drawer-shadow:-20px 0 48px rgba(20,28,36,.2);--drawer-z-index:1000;--drawer-motion-duration:.2s;--drawer-motion-easing:ease-out}
+      .drawer-overlay{position:fixed;inset:0;z-index:20;visibility:hidden;background:transparent;transition:background var(--drawer-motion-duration) ease-out,visibility 0s linear var(--drawer-motion-duration)}
+      .drawer-overlay.is-open{visibility:visible;background:var(--color-overlay-drawer);transition:background var(--drawer-motion-duration) ease-out}
+      .live-drawer{position:absolute;display:grid;grid-template-rows:auto minmax(0,1fr) auto;overflow:hidden;background:var(--color-bg-container);box-shadow:var(--drawer-shadow);opacity:0;transition:transform var(--drawer-motion-duration) ease-out,opacity var(--drawer-motion-duration) ease-out}
+      .live-drawer.right{top:0;right:0;width:min(var(--live-drawer-width,var(--drawer-width-md)),100vw);height:100%;transform:translateX(100%)}
+      .live-drawer.bottom{right:0;bottom:0;width:100%;height:min(var(--live-drawer-height,var(--drawer-height-md)),calc(100vh - 20px));transform:translateY(100%);box-shadow:0 -20px 48px rgba(20,28,36,.2);border-radius:0}
+      .live-drawer.is-preparing{transition:none}
+      .drawer-overlay.is-open .live-drawer{opacity:1;transform:translate(0)}
+      .drawer-header{display:flex;align-items:flex-start;gap:16px;padding:18px 12px 18px 20px;border-bottom:1px solid var(--color-border-subtle)}
+      .drawer-header>.close-btn{flex:0 0 auto;margin-left:auto}
+      .drawer-heading{flex:1 1 auto;min-width:0}.drawer-title{display:block;color:var(--color-text-primary);font-size:var(--text-overlay-title-size);font-weight:var(--text-overlay-title-weight);line-height:28px}
+      .drawer-description{margin-top:2px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:var(--text-caption-line-height)}
+      .drawer-body{min-height:0;overflow:auto;padding:20px;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:var(--text-body-line-height)}
+      .drawer-body.custom-body{overflow:hidden}.drawer-body.custom-body .custom-content-block{height:100%}
+      .drawer-footer{display:flex;justify-content:flex-end;gap:8px;padding:20px;border-top:1px solid var(--color-border-subtle)}
+      @media(prefers-reduced-motion:reduce){.drawer-overlay,.live-drawer{transition-duration:0s}}
     </style>
   </head>
   <body>
@@ -750,6 +774,41 @@
                   <li>
                     <a class="nav-button" href="../layout/splitter.html">
                       <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
                     </a>
                   </li>
                 </ul>
@@ -974,41 +1033,34 @@
               <header class="doc-hero">
                 <p class="doc-kicker">Feedback / Drawer</p>
                 <h1 class="doc-title">Drawer 抽屉</h1>
-                <p class="doc-summary">Drawer 用于从屏幕边缘滑出补充任务区域，在保留原页面上下文的同时完成查看、编辑或配置。</p>
-                <ul class="doc-meta-list" aria-label="Drawer 抽屉 基础规格">
-                  <li>边缘浮层</li>
-                  <li>保留背景上下文</li>
-                  <li>支持表单</li>
-                  <li>支持底部操作</li>
+                <p class="doc-summary">抽屉从窗口边缘进入，在保留当前页面上下文的同时承载详情、编辑或补充操作。</p>
+                <ul class="doc-meta-list" aria-label="Drawer 抽屉基础规格">
+                  <li>右侧弹出（默认）</li><li>支持底部弹出</li><li>1–3 个操作按钮</li><li>0.2s ease-out</li>
                 </ul>
               </header>
 
               <section class="doc-section">
                 <h2>何时使用</h2>
                 <ul class="rule-list">
-                  <li>用户需要在当前页面旁边完成补充编辑或查看详情时使用 Drawer。</li>
-                  <li>任务需要更强阻断或必须完成后才能返回时，优先使用 Model。</li>
-                  <li>抽屉内操作应保持聚焦，避免承载多层复杂导航。</li>
+                  <li>用于不离开当前页面即可查看详情、补充信息或完成编辑的任务。</li>
+                  <li>底部抽屉适合移动端友好的轻量任务；右侧抽屉适合表单、列表和较长内容。</li>
+                  <li>需要强制用户先完成决策时使用 Modal；轻量确认使用 Popconfirm。</li>
+                  <li>避免在抽屉内继续叠加抽屉，复杂多步骤流程应使用独立页面。</li>
                 </ul>
               </section>
 
               <section class="doc-section">
-                <h2>基础抽屉</h2>
-                <div class="example-block full feedback-stage drawer-stage">
-                  <div class="drawer-page-mock"><span>任务列表</span><span>策略配置</span><span>执行记录</span></div>
-                  <aside class="feedback-drawer" aria-label="抽屉示例">
-                    <div class="feedback-layer-head"><strong>编辑任务</strong><button type="button" aria-label="关闭"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6L18 18"/></svg></button></div>
-                    <div class="feedback-form-line"><span>任务名称</span><strong>Listing Optimization</strong></div>
-                    <div class="feedback-form-line"><span>执行频率</span><strong>每天 09:00</strong></div>
-                    <div class="feedback-form-line"><span>同步范围</span><strong>已选择 12 个商品</strong></div>
-                    <div class="feedback-layer-foot"><button type="button">取消</button><button class="primary" type="button">保存</button></div>
-                  </aside>
+                <h2>基础用法</h2>
+                <div class="example-block full">
+                  <p>点击按钮唤起默认的右侧抽屉。出现时抽屉在 0.2s 内渐显并移入，遮罩同步渐显，缓动为 ease-out；关闭时执行反向动画。</p>
+                  <div class="demo-stage"><button class="spec-btn solid" type="button" data-open-drawer>打开抽屉</button></div>
                 </div>
               </section>
-              <section class="doc-section">
-                <h2>使用原则</h2>
-                <div class="example-block full"><ul class="rule-list"><li>默认宽度建议 360px 到 520px，宽表单可扩展到页面宽度的 40%。</li><li>右侧抽屉用于编辑与详情，底部操作区固定展示主次按钮。</li></ul></div>
-              </section>
+              <section class="doc-section"><h2>标题栏控制</h2><div class="example-block full"><p>Title 可选且默认展示；description 仅可在 Title 存在时使用；Close-btn 必选，始终提供明确退出入口。</p><div class="demo-stage"><div class="demo-actions center"><button class="spec-btn solid" data-open-drawer data-demo="title">仅标题</button><button class="spec-btn solid" data-open-drawer data-demo="description">标题 + 描述</button><button class="spec-btn solid" data-open-drawer data-demo="close-only">仅 Close-btn</button></div></div></div></section>
+              <section class="doc-section"><h2>按钮栏</h2><div class="example-block full"><p>按钮栏支持配置 1–3 个按钮；主要操作位于最右侧，危险操作使用明确的危险状态按钮。排列、层级与 Modal Footer 规则一致。</p><div class="demo-stage"><div class="demo-actions center"><button class="spec-btn solid" data-open-drawer data-demo="one-action">一个按钮</button><button class="spec-btn solid" data-open-drawer data-demo="three-actions">三个按钮</button><button class="spec-btn solid" data-open-drawer data-demo="danger-action">危险操作</button></div></div></div></section>
+              <section class="doc-section"><h2>内容区控制</h2><div class="example-block full"><p>内容区默认为正文文本，也可替换为完全定制化的表单、列表或其他业务内容。</p><div class="demo-stage"><div class="demo-actions center"><button class="spec-btn solid" data-open-drawer data-demo="text">文本示例</button><button class="spec-btn solid" data-open-drawer data-demo="custom">定制内容示例</button></div></div></div></section>
+              <section class="doc-section"><h2>方向控制</h2><div class="example-block full"><p>支持从右侧弹出（默认）和从底部弹出。每次打开均以当前配置重新确定方向，避免连续切换时沿用上一次状态。</p><div class="demo-stage"><div class="demo-actions center"><button class="spec-btn solid" data-open-drawer data-placement="right">右侧弹出</button><button class="spec-btn solid" data-open-drawer data-placement="bottom">底部弹出</button></div></div></div></section>
+              <section class="doc-section"><h2>尺寸控制</h2><div class="doc-grid"><div class="example-block full"><h3>宽度</h3><p>右侧弹出支持默认、大和自定义宽度；当设定宽度小于窗口宽度时使用设定值，否则自动收缩为窗口宽度。底部弹出时宽度始终等于窗口宽度。</p><div class="demo-stage"><div class="demo-actions"><button class="spec-btn solid" data-open-drawer data-placement="right" data-width="480px">默认 480</button><button class="spec-btn solid" data-open-drawer data-placement="right" data-width="640px">大 640</button><button class="spec-btn solid" data-open-drawer data-placement="right" data-width="720px">自定义 720</button></div></div></div><div class="example-block full"><h3>高度</h3><p>右侧弹出时高度等于窗口高度。底部弹出支持默认、大和自定义高度；高度不超过窗口高度减 20px。</p><div class="demo-stage"><div class="demo-actions"><button class="spec-btn solid" data-open-drawer data-placement="bottom" data-height="360px">默认 360</button><button class="spec-btn solid" data-open-drawer data-placement="bottom" data-height="520px">大 520</button><button class="spec-btn solid" data-open-drawer data-placement="bottom" data-height="70vh">自定义 70vh</button></div></div></div></div></section>
               <section class="doc-section">
                 <h2>API</h2>
                 <div class="spec-table-wrap">
@@ -1028,32 +1080,43 @@
                         <td><code>boolean</code></td>
                         <td><code>false</code></td>
                       </tr>
+                      <tr><td><code>placement</code></td><td>抽屉弹出方向。</td><td><code>'right' | 'bottom'</code></td><td><code>'right'</code></td></tr>
+                      <tr><td><code>title</code></td><td>可选标题；description 存在时必须提供。</td><td><code>ReactNode</code></td><td><code>抽屉标题</code></td></tr>
+                      <tr><td><code>description</code></td><td>标题下方的辅助描述，不可单独使用。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>closable</code></td><td>是否展示必需的关闭按钮，组件规范固定为 true。</td><td><code>true</code></td><td><code>true</code></td></tr>
+                      <tr><td><code>width</code></td><td>右侧抽屉宽度；底部方向忽略该属性。</td><td><code>'default' | 'large' | number | string</code></td><td><code>'default'</code></td></tr>
+                      <tr><td><code>height</code></td><td>底部抽屉高度；右侧方向忽略该属性。</td><td><code>'default' | 'large' | number | string</code></td><td><code>'default'</code></td></tr>
+                      <tr><td><code>footer</code></td><td>自定义按钮栏，支持 1–3 个按钮。</td><td><code>ReactNode | false</code></td><td><code>取消 / 确认</code></td></tr>
+                      <tr><td><code>mask</code></td><td>是否展示遮罩。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
+                      <tr><td><code>keyboard</code></td><td>按 Esc 是否关闭抽屉。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
+                      <tr><td><code>destroyOnHidden</code></td><td>关闭动画结束后是否销毁子内容。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td><code>getContainer</code></td><td>指定 Portal 挂载节点；<code>false</code> 表示就地渲染。</td><td><code>HTMLElement | (() =&gt; HTMLElement) | false</code></td><td><code>document.body</code></td></tr>
+                      <tr><td><code>zIndex</code></td><td>抽屉层级。</td><td><code>number</code></td><td><code>1000</code></td></tr>
                       <tr>
-                        <td><code>placement</code></td>
-                        <td>抽屉弹出位置。</td>
-                        <td><code>"left" | "right" | "top" | "bottom"</code></td>
-                        <td><code>"right"</code></td>
+                        <td><code>maskClosable</code></td>
+                        <td>点击遮罩是否关闭抽屉。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
                       </tr>
-                      <tr>
-                        <td><code>title</code></td>
-                        <td>头部标题。</td>
-                        <td><code>ReactNode</code></td>
-                        <td><code>-</code></td>
-                      </tr>
-                      <tr>
-                        <td><code>footer</code></td>
-                        <td>底部操作区。</td>
-                        <td><code>ReactNode</code></td>
-                        <td><code>-</code></td>
-                      </tr>
+                      <tr><td><code>onClose</code></td><td>关闭按钮、按钮栏或遮罩触发关闭时的回调。</td><td><code>() =&gt; void</code></td><td><code>-</code></td></tr>
+                      <tr><td><code>afterOpenChange</code></td><td>打开或关闭动画完成后触发。</td><td><code>(open: boolean) =&gt; void</code></td><td><code>-</code></td></tr>
                     </tbody>
                   </table>
                 </div>
               </section>
+              <section class="doc-section"><h2>设计 Token</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Token</th><th>说明</th><th>默认值</th></tr></thead><tbody><tr><td><code>--drawer-width-md</code></td><td>右侧默认宽度</td><td><code>480px</code></td></tr><tr><td><code>--drawer-width-lg</code></td><td>右侧大宽度</td><td><code>640px</code></td></tr><tr><td><code>--drawer-height-md</code></td><td>底部默认高度</td><td><code>360px</code></td></tr><tr><td><code>--drawer-height-lg</code></td><td>底部大高度</td><td><code>520px</code></td></tr><tr><td><code>--color-overlay-drawer</code></td><td>抽屉遮罩颜色</td><td><code>rgba(0, 0, 0, .35)</code></td></tr><tr><td><code>--drawer-motion-duration</code></td><td>面板与遮罩动效时长</td><td><code>.2s</code></td></tr><tr><td><code>--drawer-shadow</code></td><td>右侧面板阴影</td><td><code>-20px 0 48px rgba(20, 28, 36, .2)</code></td></tr><tr><td><code>--color-action-primary</code></td><td>主要按钮与主题状态色</td><td><code>var(--brand-500)</code></td></tr></tbody></table></div></section>
+              <section class="doc-section"><h2>设计 Token 补充</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Token</th><th>说明</th><th>默认值</th></tr></thead><tbody><tr><td><code>--drawer-width-sm</code></td><td>右侧小尺寸宽度。</td><td><code>360px</code></td></tr><tr><td><code>--drawer-height-sm</code></td><td>底部小尺寸高度。</td><td><code>280px</code></td></tr><tr><td><code>--drawer-bg</code></td><td>面板背景。</td><td><code>var(--color-bg-container)</code></td></tr><tr><td><code>--drawer-header-padding</code></td><td>标题区内边距。</td><td><code>18px 20px</code></td></tr><tr><td><code>--drawer-body-padding</code></td><td>内容区内边距。</td><td><code>4px 20px 20px</code></td></tr><tr><td><code>--drawer-footer-padding</code></td><td>操作区内边距。</td><td><code>14px 20px</code></td></tr><tr><td><code>--drawer-border-color</code></td><td>分隔线颜色。</td><td><code>var(--color-border-subtle)</code></td></tr><tr><td><code>--drawer-z-index</code></td><td>抽屉层级。</td><td><code>1000</code></td></tr><tr><td><code>--drawer-motion-easing</code></td><td>进出场缓动函数。</td><td><code>ease-out</code></td></tr></tbody></table></div></section>
             </article>
           </div>
         </section>
       </main>
+    </div>
+    <div class="drawer-overlay" data-drawer-overlay aria-hidden="true">
+      <section class="live-drawer right" role="dialog" aria-modal="true" aria-labelledby="live-drawer-title" tabindex="-1">
+        <div class="drawer-header" data-drawer-header></div>
+        <div class="drawer-body" data-drawer-body></div>
+        <div class="drawer-footer" data-drawer-footer></div>
+      </section>
     </div>
     <script>
       const syncComponentCountLabel = () => {
@@ -1227,6 +1290,168 @@
         sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
       };
       window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+
+      const modalOverlay = document.querySelector('[data-modal-overlay]');
+      const liveModal = modalOverlay?.querySelector('.live-modal');
+      const modalHeader = modalOverlay?.querySelector('[data-modal-header]');
+      const modalBody = modalOverlay?.querySelector('[data-modal-body]');
+      const modalFooter = modalOverlay?.querySelector('[data-modal-footer]');
+      let modalReturnFocus = null;
+      const closeIcon = '<button class="close-btn" type="button" aria-label="关闭弹窗" data-close-modal><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+      const footerTemplates = {
+        default: '<button class="spec-btn solid" type="button" data-close-modal>取消</button><button class="spec-btn primary" type="button" data-close-modal>确认</button>',
+        three: '<button class="spec-btn solid" type="button" data-close-modal>取消</button><button class="spec-btn solid" type="button" data-close-modal>暂存</button><button class="spec-btn primary" type="button" data-close-modal>提交</button>',
+        danger: '<button class="spec-btn danger-secondary" type="button" data-close-modal>取消</button><button class="spec-btn danger" type="button" data-close-modal>删除</button>',
+        single: '<button class="spec-btn primary" type="button" data-close-modal>知道了</button>',
+      };
+      const longText = '主体内容区域可独立滚动。标题栏与按钮栏始终保持可见，便于用户在阅读后快速完成任务。弹窗可以承载说明文本、操作提示、数据摘要与必要的上下文信息。内容较多时，用户可持续向下滚动查看全部信息。业务可根据实际场景配置面板的最大高度，但应避免让弹窗占满整个窗口。重要信息应放在内容区前部，操作结果和风险提示需要使用清晰直接的语言表达。此处继续补充文本以明确展示主体区域已经超过面板高度，并产生可见的滚动行为。对于包含多个信息分组的场景，应按照用户的阅读顺序组织内容，并使用简洁的标题或说明建立层级。需要用户确认的数据应尽量集中展示，避免在弹窗内加入与当前任务无关的操作。较长的说明文本可以分段表达，但不应通过额外空行模拟高度。用户滚动到内容末尾后，仍可直接使用固定在底部的操作按钮完成或取消当前任务。';
+      const statusIcons = {
+        success: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m5.5 10 3 3 6-6"/></svg>',
+        warning: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M10 5.5v5.5"/><path d="M10 14.5h.01"/></svg>',
+        error: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="m6.5 6.5 7 7M13.5 6.5l-7 7"/></svg>',
+      };
+      const configureModal = (trigger) => {
+        const demo = trigger.dataset.demo || 'default';
+        const isFeedback = ['success', 'warning', 'error'].includes(demo);
+        liveModal.style.setProperty('--live-modal-width', trigger.dataset.width || 'var(--modal-width-md)');
+        liveModal.style.setProperty('--live-modal-max-height', trigger.dataset.maxHeight || 'var(--modal-max-height)');
+        modalHeader.innerHTML = `<strong class="modal-title" id="live-modal-title">弹窗标题</strong>${demo === 'not-closable' ? '' : closeIcon}`;
+        modalBody.className = 'modal-body';
+        modalBody.innerHTML = '这是一段正文文本示例。内容区可根据实际业务场景填充说明、表单、列表或其他定制化内容。';
+        modalFooter.innerHTML = footerTemplates.default;
+        if (demo === 'scroll') modalBody.textContent = longText;
+        if (demo === 'custom') modalBody.innerHTML = '<div class="example-block custom-content-block">定制内容区域</div>';
+        if (demo === 'three-actions') modalFooter.innerHTML = footerTemplates.three;
+        if (demo === 'danger-action') { modalBody.textContent = '删除后数据将无法恢复，请确认是否继续。'; modalFooter.innerHTML = footerTemplates.danger; }
+        if (isFeedback) {
+          const feedback = {
+            success: ['操作成功', '数据已保存并同步到最新版本。', 'var(--color-status-success)'],
+            warning: ['请确认信息', '部分内容尚未填写，仍要继续吗？', 'var(--color-status-warning)'],
+            error: ['提交失败', '网络异常，请检查后重新提交。', 'var(--color-status-error)'],
+          }[demo];
+          modalHeader.innerHTML = `<span></span>${closeIcon}`;
+          modalBody.className = 'feedback-modal-content';
+          modalBody.innerHTML = `<span class="feedback-icon" style="background:${feedback[2]}">${statusIcons[demo]}</span><div class="feedback-modal-copy"><strong id="live-modal-title">${feedback[0]}</strong><p>${feedback[1]}</p></div>`;
+          modalFooter.innerHTML = demo === 'success' ? footerTemplates.single : demo === 'error' ? footerTemplates.danger.replace('删除', '重试') : footerTemplates.default.replace('取消', '返回').replace('确认', '继续');
+        }
+      };
+      const openModal = (trigger) => {
+        if (!modalOverlay || !liveModal) return;
+        modalReturnFocus = trigger;
+        configureModal(trigger);
+        modalOverlay.classList.remove('is-closing');
+        modalOverlay.classList.add('is-open');
+        modalOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        requestAnimationFrame(() => liveModal.focus());
+      };
+      const closeModal = () => {
+        if (!modalOverlay?.classList.contains('is-open')) return;
+        modalOverlay.classList.add('is-closing');
+        modalOverlay.classList.remove('is-open');
+        modalOverlay.setAttribute('aria-hidden', 'true');
+        window.setTimeout(() => {
+          modalOverlay.classList.remove('is-closing');
+          document.body.style.removeProperty('overflow');
+          modalReturnFocus?.focus();
+        }, 300);
+      };
+      document.querySelectorAll('[data-open-modal]').forEach((trigger) => trigger.addEventListener('click', () => openModal(trigger)));
+      modalOverlay?.addEventListener('click', (event) => { if (event.target === modalOverlay || event.target.closest('[data-close-modal]')) closeModal(); });
+      modalOverlay?.addEventListener('click', (event) => {
+        const selectTrigger = event.target.closest('[data-demo-select]');
+        const option = event.target.closest('[data-select-value]');
+        if (selectTrigger) {
+          const dropdown = selectTrigger.nextElementSibling;
+          const willOpen = dropdown.hidden;
+          dropdown.hidden = !willOpen;
+          selectTrigger.classList.toggle('open', willOpen);
+          selectTrigger.setAttribute('aria-expanded', String(willOpen));
+        }
+        if (option) {
+          const stack = option.closest('.select-demo-stack');
+          stack.querySelector('.select-value').textContent = option.dataset.selectValue;
+          stack.querySelectorAll('.select-option').forEach((item) => { const active = item === option; item.classList.toggle('active', active); item.setAttribute('aria-selected', String(active)); });
+          stack.querySelector('.select-dropdown').hidden = true;
+          stack.querySelector('.spec-select').classList.remove('open');
+          stack.querySelector('.spec-select').setAttribute('aria-expanded', 'false');
+        }
+      });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModal(); });
+
+      const drawerOverlay = document.querySelector('[data-drawer-overlay]');
+      const liveDrawer = drawerOverlay?.querySelector('.live-drawer');
+      const drawerHeader = drawerOverlay?.querySelector('[data-drawer-header]');
+      const drawerBody = drawerOverlay?.querySelector('[data-drawer-body]');
+      const drawerFooter = drawerOverlay?.querySelector('[data-drawer-footer]');
+      let drawerReturnFocus = null;
+      let drawerCloseTimer = null;
+      const drawerCloseIcon = '<button class="close-btn" type="button" aria-label="关闭抽屉" data-close-drawer><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button>';
+      const drawerFooters = {
+        default: '<button class="spec-btn solid" type="button" data-close-drawer>取消</button><button class="spec-btn primary" type="button" data-close-drawer>确认</button>',
+        one: '<button class="spec-btn primary" type="button" data-close-drawer>完成</button>',
+        three: '<button class="spec-btn solid" type="button" data-close-drawer>取消</button><button class="spec-btn solid" type="button" data-close-drawer>暂存</button><button class="spec-btn primary" type="button" data-close-drawer>提交</button>',
+        danger: '<button class="spec-btn danger-secondary" type="button" data-close-drawer>取消</button><button class="spec-btn danger" type="button" data-close-drawer>删除</button>',
+      };
+      const configureDrawer = (trigger) => {
+        const demo = trigger.dataset.demo || 'default';
+        const placement = trigger.dataset.placement || 'right';
+        liveDrawer.className = `live-drawer ${placement} is-preparing`;
+        if (demo === 'close-only') {
+          liveDrawer.removeAttribute('aria-labelledby');
+          liveDrawer.setAttribute('aria-label', '抽屉');
+        } else {
+          liveDrawer.removeAttribute('aria-label');
+          liveDrawer.setAttribute('aria-labelledby', 'live-drawer-title');
+        }
+        liveDrawer.style.setProperty('--live-drawer-width', trigger.dataset.width || 'var(--drawer-width-md)');
+        liveDrawer.style.setProperty('--live-drawer-height', trigger.dataset.height || 'var(--drawer-height-md)');
+        const heading = demo === 'close-only' ? '' : `<div class="drawer-heading"><strong class="drawer-title" id="live-drawer-title">抽屉标题</strong>${demo === 'description' ? '<div class="drawer-description">补充说明用于解释当前任务与操作范围。</div>' : ''}</div>`;
+        drawerHeader.innerHTML = `${heading}${drawerCloseIcon}`;
+        drawerBody.className = 'drawer-body';
+        drawerBody.textContent = '这是一段正文文本示例。内容区可根据实际业务场景填充说明、表单、列表或其他定制化内容。';
+        drawerFooter.innerHTML = drawerFooters.default;
+        if (demo === 'custom') {
+          drawerBody.classList.add('custom-body');
+          drawerBody.innerHTML = '<div class="custom-content-block">完全定制化的表单、列表或业务内容</div>';
+        }
+        if (demo === 'one-action') drawerFooter.innerHTML = drawerFooters.one;
+        if (demo === 'three-actions') drawerFooter.innerHTML = drawerFooters.three;
+        if (demo === 'danger-action') { drawerBody.textContent = '删除后数据将无法恢复，请确认是否继续。'; drawerFooter.innerHTML = drawerFooters.danger; }
+      };
+      const openDrawer = (trigger) => {
+        if (!drawerOverlay || !liveDrawer) return;
+        if (drawerCloseTimer) {
+          window.clearTimeout(drawerCloseTimer);
+          drawerCloseTimer = null;
+        }
+        drawerReturnFocus = trigger;
+        drawerOverlay.classList.remove('is-open');
+        configureDrawer(trigger);
+        drawerOverlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        void liveDrawer.offsetWidth;
+        liveDrawer.classList.remove('is-preparing');
+        requestAnimationFrame(() => {
+          drawerOverlay.classList.add('is-open');
+          liveDrawer.focus();
+        });
+      };
+      const closeDrawer = () => {
+        if (!drawerOverlay?.classList.contains('is-open')) return;
+        drawerOverlay.classList.remove('is-open');
+        drawerOverlay.setAttribute('aria-hidden', 'true');
+        const returnFocus = drawerReturnFocus;
+        drawerCloseTimer = window.setTimeout(() => {
+          drawerCloseTimer = null;
+          if (drawerOverlay.classList.contains('is-open')) return;
+          document.body.style.removeProperty('overflow');
+          returnFocus?.focus();
+        }, 200);
+      };
+      document.querySelectorAll('[data-open-drawer]').forEach((trigger) => trigger.addEventListener('click', () => openDrawer(trigger)));
+      drawerOverlay?.addEventListener('click', (event) => { if (event.target === drawerOverlay || event.target.closest('[data-close-drawer]')) closeDrawer(); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeDrawer(); });
     </script>
   </body>
 </html>
