@@ -1,132 +1,99 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-product-theme="default-theme">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>自动补全 AutoComplete - Design System</title>
+    <script src="../styles/color-mode-init.js"></script>
     <style>
-      :root {--success-green-500: #1cc749;--yellow-500: #ff990a;--yellow-400: #ffb232;--red-500: #fe3d33;--red-600: #ec2116;--blue-500: #31a6ff;--blue-600: #1887f5;--blue-700: #1370e2;
-        --brand-500: #1cc749;
-        --brand-50: #f0fdf3;
-        --brand-100: #dbfde3;
-        --brand-200: #b9f9c9;
-        --brand-300: #82f39f;
-        --brand-400: #45e36e;
-        --brand-600: #00ae2e;
-        --brand-700: #118430;
-        --brand-800: #13682a;
-        --brand-900: #125526;
-        --brand-rgb: 28, 199, 73;
-        --brand-text: #00ae2e;
-        --brand-text-hover: #118430;
-        --brand-border-soft: #bfead2;
-        --brand-border-hover: #8fd9b3;
-        --gray-950: #0b0d0f;
-        --gray-900: #14171a;
-        --gray-800: #22262a;
-        --gray-700: #343a40;
-        --gray-600: #59616a;
-        --gray-500: #78818c;
-        --gray-400: #a5adb6;
-        --gray-300: #d4d9de;
-        --gray-200: #e7eaee;
-        --gray-100: #f3f5f7;
-        --gray-50: #fafbfc;
-        --white: #ffffff;
-        --color-text-primary: var(--gray-900);
-        --color-text-default: var(--gray-700);
-        --color-text-secondary: var(--gray-600);
-        --color-text-tertiary: var(--gray-500);
-        --color-text-disabled: var(--gray-400);
-        --color-text-inverse: var(--white);
-        --color-text-link: var(--blue-600);
-        --color-bg-page: var(--gray-50);
-        --color-bg-container: var(--white);
-        --color-bg-subtle: var(--gray-100);
-        --color-bg-hover: var(--gray-100);
-        --color-bg-selected: var(--brand-100);
-        --color-bg-disabled: var(--gray-100);--color-bg-inverse: var(--gray-900);
-        --color-border-default: var(--gray-300);
-        --color-border-subtle: var(--gray-200);
-        --color-border-strong: var(--gray-400);
-        --color-border-focus: var(--brand-500);
-        --color-border-disabled: var(--gray-200);
-        --color-action-primary: var(--brand-500);
-        --color-action-primary-hover: var(--brand-600);
-        --color-action-primary-active: var(--brand-700);
-        --color-action-primary-subtle: var(--brand-100);
-        --color-action-primary-disabled: var(--brand-200);
-        --color-status-success: var(--success-green-500);
-        --color-status-error: var(--red-500);--color-status-error-text: var(--red-600);
-        --color-status-warning: var(--yellow-500);
-        --color-status-info: var(--blue-500);
-        --color-overlay-modal: rgba(0, 0, 0, 0.45);
-        --color-overlay-drawer: rgba(0, 0, 0, 0.35);
-        --color-overlay-loading: rgba(255, 255, 255, 0.72);
-        --text-page-title-size: 20px;
-        --text-page-title-weight: 500;
-        --text-page-title-line-height: 1.35;
-        --text-section-title-size: 16px;
-        --text-section-title-weight: 500;
-        --text-section-title-line-height: 1.5;
-        --text-card-title-size: 16px;
-        --text-card-title-weight: 500;
-        --text-card-title-line-height: 1.5;
-        --text-overlay-title-size: 16px;
-        --text-overlay-title-weight: 500;
-        --text-overlay-title-line-height: 1.5;
-        --text-body-size: 14px;
-        --text-body-weight: 400;
-        --text-body-line-height: 1.75;
-        --text-body-strong-size: 14px;
-        --text-body-strong-weight: 500;
-        --text-body-strong-line-height: 1.75;
-        --text-label-size: 14px;
-        --text-label-weight: 500;
-        --text-label-line-height: 1.75;
-        --text-control-size: 13px;
-        --text-control-weight: 400;
-        --text-control-line-height: 1.65;
-        --text-secondary-size: 13px;
-        --text-secondary-weight: 400;
-        --text-secondary-line-height: 1.65;
-        --text-helper-size: 12px;
-        --text-helper-weight: 400;
-        --text-helper-line-height: 1.55;
-        --text-caption-size: 12px;
-        --text-caption-weight: 400;
-        --text-caption-line-height: 1.55;
-        --text-data-size: 24px;
-        --text-data-weight: 500;
-        --text-data-line-height: 1.3;
+      :root {
+
+
+
+
+
+
+
+
+
+
+
+        --brand-text: var(--brand-6);
+        --brand-text-hover: var(--brand-7);
+        --brand-border-soft: var(--success-1);
+        --brand-border-hover: var(--success-2);
+
+
+
+
+
+
+
+
+
+
+
+
+        --color-text-primary: var(--neutral-10);
+        --color-text-default: var(--neutral-9);
+        --color-text-secondary: var(--neutral-6);
+        --color-text-tertiary: var(--neutral-5);
+        --color-text-disabled: var(--neutral-4);
+        --color-text-inverse: var(--neutral-0);
+        --color-text-link: var(--info-6);
+        --color-bg-page: var(--neutral-0);
+        --color-bg-container: var(--neutral-0);
+        --color-bg-subtle: var(--neutral-1);
+        --color-bg-hover: var(--neutral-1);
+        --color-bg-selected: var(--brand-1);
+        --color-bg-disabled: var(--neutral-1);--color-bg-inverse: var(--neutral-9);
+        --color-border-default: var(--neutral-3);
+        --color-border-subtle: var(--neutral-2);
+        --color-border-strong: var(--neutral-4);
+        --color-border-focus: var(--brand-5);
+        --color-border-disabled: var(--neutral-2);
+        --color-action-primary: var(--brand-5);
+        --color-action-primary-hover: var(--brand-6);
+        --color-action-primary-hover: var(--brand-7);
+        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-disabled: var(--brand-2);
+        --color-status-success: var(--success-5);
+        --color-status-error: var(--danger-5);
+        --color-status-warning: var(--warning-5);
+        --color-status-info: var(--info-5);
+        --color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);
+        --color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);
+        --color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);
         --topbar-height: 60px;
         --sidebar-width: 300px;
-        --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --radius-default: 6px;
+
         --input-height-small: 30px;
         --input-height-default: 38px;
         --input-height-large: 44px;
-        --input-radius: 10px;
+        --input-radius: var(--radius-large);
         --input-border-color: var(--color-border-default);
         --input-hover-border-color:var(--color-action-primary);
         --input-focus-color:var(--color-action-primary);
-        --input-focus-shadow: 0 0 0 3px color-mix(in srgb, var(--color-action-primary) 10%, transparent);
+
         --input-error-color: var(--color-status-error);
         --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
         --input-text-color: var(--color-text-primary);
         --input-placeholder-color: var(--color-text-tertiary);
-        --input-disabled-border-color: var(--color-border-disabled);
-        --input-disabled-bg: var(--color-bg-disabled);
+        --input-disabled-border-color: var(--color-border-default);
+        --input-disabled-bg: var(--color-bg-subtle);
         --input-disabled-color: var(--color-text-disabled);
-        --autocomplete-option-selected-bg: var(--gray-100);
-        --autocomplete-dropdown-shadow: 0 14px 32px color-mix(in srgb, var(--color-bg-inverse) 12%, transparent);
+        --input-disabled-opacity: 0.6;
+        --autocomplete-disabled-border-color: var(--color-border-default);
+        --autocomplete-option-selected-bg: var(--color-bg-hover);
+        --autocomplete-dropdown-shadow: var(--shadow-overlay);
         --autocomplete-dropdown-offset: 8px;
         --autocomplete-option-height: 34px;
         --autocomplete-agent-option-height: 64px;
         --autocomplete-group-label-padding: 6px 10px 4px;
         --scrollbar-width-thin: 4px;
         --scrollbar-track-color: transparent;
-        --scrollbar-thumb-color: var(--gray-300);
+        --scrollbar-thumb-color: var(--color-border-default);
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -170,7 +137,7 @@
         .autocomplete-agent,
         .spec-table-wrap
       ) {
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
       }
 
       .app-shell {
@@ -185,10 +152,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 36px;
         height: var(--topbar-height);
         padding: 0 24px;
-        background: rgba(255, 255, 255, 0.94);
+        background: var(--color-bg-container);
         border-bottom:1px solid var(--color-border-subtle);
         backdrop-filter: blur(12px);
         z-index: 3;
@@ -212,7 +179,7 @@
 
       .brand-mark-layer-top {
         fill: url(#brandMarkTop);
-        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+        filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent));
       }
 
       .brand-mark-layer-middle {
@@ -225,7 +192,7 @@
 
       .brand-title {
         overflow: hidden;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         font-size: 17px;
         font-weight: 600;
         letter-spacing: 0;
@@ -233,9 +200,129 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+.nav-section[hidden] { display: none !important; }
+.nav-list > .nav-section:nth-child(2) { margin-top: 0 !important; }
+.sidebar .nav-list { gap: 12px; padding-bottom: 0 !important; }
+.sidebar .nav-section { gap: 8px; }
+.nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+.nav-category {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 32px;
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-category-chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-text-tertiary);
+  transition: transform 0.16s ease;
+}
+.nav-category-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+.nav-category[aria-expanded="false"] + .nav-sublist { display: none !important; }
+.nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.nav-category { color: var(--color-text-tertiary) !important; }
+.nav-category:hover { background: var(--color-bg-container) !important; }
+.nav-category .nav-category-count,
+.nav-category .nav-category-chevron { color: inherit !important; }
 
-      .product-select {
+.topbar-nav {
+  --tabs-height-default: 40px;
+  --tabs-padding-x: 14px;
+  --tabs-gap: 8px;
+  --tabs-font-size: var(--font-style-body-size);
+  --tabs-font-weight-active: var(--font-style-body-medium-weight);
+  --tabs-color: var(--color-text-secondary);
+  --tabs-hover-color: var(--color-text-primary);
+  --tabs-active-color: var(--brand-text);
+  --tabs-indicator-color: var(--color-action-primary);
+  --tabs-indicator-size: 2px;
+  --tabs-bg-hover: var(--color-bg-hover);
+  --tabs-radius: var(--radius-default);
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: var(--tabs-gap);
+}
+
+.topbar-nav-tab {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabs-height-default);
+  padding: 0 var(--tabs-padding-x);
+  color: var(--tabs-color);
+  background: transparent;
+  border: 0;
+  border-radius: var(--tabs-radius);
+  cursor: pointer;
+  font-size: var(--tabs-font-size);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover {
+  color: var(--tabs-hover-color);
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover::before {
+  position: absolute;
+  z-index: -1;
+  inset: 4px;
+  content: "";
+  background: var(--tabs-bg-hover);
+  border-radius: var(--radius-small);
+}
+
+.topbar-nav-tab[aria-selected="true"] {
+  color: var(--tabs-active-color);
+  font-weight: var(--tabs-font-weight-active);
+}
+
+.topbar-nav-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: var(--tabs-indicator-size);
+  content: "";
+  background: var(--tabs-indicator-color);
+  border-radius: var(--radius-full);
+}
+
+.topbar-nav-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-select {
+
+
         position: relative;
+        margin-left: 0;
         flex: 0 0 auto;
         width: 124px;
       }
@@ -249,12 +336,12 @@
         width: 100%;
         min-height: 36px;
         padding: 0 22px 0 10px;
-        color: var(--gray-800);
-        background: var(--gray-50);
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.2;
         text-align: left;
@@ -275,18 +362,20 @@
       .product-select-trigger::after {
         position: absolute;
         top: 50%;
-        right: 9px;
-        width: 5px;
-        height: 5px;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
         content: "";
-        border-right: 1.25px solid var(--gray-500);
-        border-bottom: 1.25px solid var(--gray-500);
-        transform: translateY(-65%) rotate(45deg);
+        background-color: var(--color-text-disabled);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        transform: translateY(-50%);
         transition: transform 0.16s ease;
-      }
+        }
 
       .product-select-trigger[aria-expanded="true"]::after {
-        transform: translateY(-35%) rotate(225deg);
+        transform: translateY(-50%) rotate(180deg);
       }
 
       .product-select-menu {
@@ -302,8 +391,8 @@
         list-style: none;
         background:var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+        border-radius: var(--radius-default);
+        box-shadow: var(--shadow-overlay);
       }
 
       .product-select-menu[hidden] {
@@ -317,9 +406,9 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-align: left;
       }
@@ -327,7 +416,7 @@
       .product-select-option:hover,
       .product-select-option[aria-selected="true"] {
         color:var(--color-action-primary);
-        background: rgb(var(--brand-rgb) / 0.08);
+        background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
       .topbar-actions {
@@ -336,15 +425,15 @@
         margin-left: auto;
         gap: 8px;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .status-dot {
         width: 8px;
         height: 8px;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         background:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+        box-shadow: none;
       }
 
       .workspace {
@@ -363,7 +452,7 @@
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-gutter: stable;
-        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
         background:var(--color-bg-container);
         border-right:1px solid var(--color-border-subtle);
@@ -379,8 +468,8 @@
       }
 
       .sidebar::-webkit-scrollbar-thumb {
-        background: var(--gray-300);
-        border-radius: 999px;
+        background: var(--color-border-default);
+        border-radius: var(--radius-full);
       }
 
       .nav-list,
@@ -423,7 +512,7 @@
         width: fit-content;
         padding: 0 12px 4px;
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
       }
 
@@ -442,15 +531,15 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
         cursor: pointer;
         text-align: left;
         text-decoration: none;
       }
 
       .nav-button:hover {
-        color: var(--gray-950);
-        background: var(--gray-50);
+        color: var(--color-text-top);
+        background: var(--color-bg-container);
       }
 
       .nav-button:focus-visible {
@@ -458,26 +547,17 @@
         box-shadow: var(--shadow-focus);
       }
 
-      .nav-button[aria-current="page"] {
+      .nav-button[aria-current=page] {
         color:var(--color-action-primary);
         background:var(--color-bg-subtle);
       }
 
       .nav-label {
         overflow: hidden;
-        font-size:var(--text-body-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-overflow: ellipsis;
         white-space: nowrap;
-      }
-
-      .sidebar-footer {
-        margin-top: auto;
-        padding: 14px 6px 0;
-        color:var(--color-text-tertiary);
-        border-top:1px solid var(--color-border-subtle);
-        font-size:var(--text-caption-size);
-        line-height: 1.5;
       }
 
       .canvas {
@@ -495,7 +575,7 @@
 
       .doc-page {
         width: min(100%, 1080px);
-        color: var(--gray-800);
+        color: var(--color-text-default);
       }
 
       .doc-hero,
@@ -510,7 +590,7 @@
       .doc-kicker {
         margin: 0 0 10px;
         color:var(--color-action-primary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         font-weight: 400;
         line-height: 1.4;
       }
@@ -527,8 +607,8 @@
         max-width: 720px;
         margin: 12px 0 0;
         color:var(--color-text-secondary);
-        font-size:var(--text-body-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .doc-meta-list {
@@ -548,8 +628,8 @@
         color:var(--color-text-secondary);
         background:var(--color-bg-subtle);
         border: 0;
-        border-radius: 999px;
-        font-size:var(--text-caption-size);
+        border-radius: var(--radius-full);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
         white-space: nowrap;
       }
@@ -580,9 +660,9 @@
         min-width: 0;
         padding: 16px;
         overflow: visible;
-        background: var(--gray-50);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
       }
 
       .example-block.full {
@@ -591,8 +671,8 @@
 
       .example-block h3 {
         margin: 0 0 8px;
-        color: var(--gray-800);
-        font-size:var(--text-body-size);
+        color: var(--color-text-default);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -600,7 +680,7 @@
       .example-block p {
         margin: 0 0 14px;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.7;
       }
 
@@ -616,8 +696,8 @@
         position: relative;
         padding-left: 16px;
         color:var(--color-text-default);
-        font-size:var(--text-control-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .rule-list li::before {
@@ -628,7 +708,7 @@
         height: 5px;
         content: "";
         background:var(--color-action-primary);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
 
       .autocomplete-demo-stack {
@@ -648,7 +728,7 @@
 
       .spec-label {
         color:var(--color-text-default);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         font-weight: 560;
         line-height: 1.35;
       }
@@ -661,7 +741,7 @@
 
       .spec-field-help {
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.5;
       }
 
@@ -685,13 +765,13 @@
       .spec-input {
         height: var(--input-height-default);
         padding: 0 12px;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .spec-textarea {
         min-height: 104px;
         padding: 10px 12px;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.6;
         resize: vertical;
       }
@@ -722,7 +802,7 @@
       .spec-textarea:focus,
       .spec-textarea.focus {
         border-color: var(--input-focus-color);
-        box-shadow: var(--input-focus-shadow);
+        box-shadow: var(--shadow-focus);
       }
 
       .auto-complete:focus-within .spec-input-wrap,
@@ -730,7 +810,7 @@
       .auto-complete:focus-within .spec-textarea,
       .auto-complete.is-focus .spec-textarea {
         border-color: var(--input-focus-color);
-        box-shadow: var(--input-focus-shadow);
+        box-shadow: var(--shadow-focus);
       }
 
       .spec-input:disabled,
@@ -738,8 +818,9 @@
       .spec-input-wrap.disabled {
         color: var(--input-disabled-color);
         background: var(--input-disabled-bg);
-        border-color: var(--input-disabled-border-color);
+        border-color: var(--autocomplete-disabled-border-color);
         cursor: not-allowed;
+        opacity: var(--input-disabled-opacity);
         box-shadow: none;
       }
 
@@ -760,7 +841,7 @@
       .spec-input-wrap.small {
         min-height: var(--input-height-small);
         height: var(--input-height-small);
-        border-radius: 8px;
+        border-radius: var(--radius-large);
       }
 
       .spec-input.large,
@@ -798,7 +879,7 @@
         flex: 0 0 auto;
         width: 15px;
         height: 15px;
-        color: #969ba1;
+        color: var(--color-text-disabled);
         fill: none;
         stroke: currentColor;
         stroke-linecap: round;
@@ -817,20 +898,20 @@
         color:var(--color-text-disabled);
         background: transparent;
         border: 0;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         cursor: pointer;
       }
 
       .input-clear:hover {
         color:var(--color-text-default);
-        background:var(--color-bg-subtle);
+        background:var(--color-bg-hover);
       }
 
       .input-addon,
       .input-unit {
         flex: 0 0 auto;
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1;
         white-space: nowrap;
       }
@@ -882,7 +963,7 @@
 
       .autocomplete-dropdown::-webkit-scrollbar-thumb {
         background: var(--scrollbar-thumb-color);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
 
       .autocomplete-dropdown[hidden] {
@@ -897,9 +978,9 @@
         min-height: var(--autocomplete-option-height);
         padding: 8px 10px;
         color:var(--color-text-default);
-        border-radius: 8px;
+        border-radius: var(--radius-large);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.35;
       }
 
@@ -919,7 +1000,7 @@
 
       .auto-complete.simple-options .autocomplete-option:hover {
         color:var(--color-text-primary);
-        background:var(--color-bg-subtle);
+        background:var(--color-bg-overlay-hover);
       }
 
       .autocomplete-option strong {
@@ -938,7 +1019,7 @@
       .option-meta {
         flex: 0 0 auto;
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
       }
 
       .autocomplete-group-label {
@@ -954,7 +1035,7 @@
         place-items: center;
         padding: 18px;
         color:var(--color-text-tertiary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         text-align: center;
       }
 
@@ -973,7 +1054,7 @@
         color: inherit;
         background:var(--color-bg-container);
         border: 1px solid transparent;
-        border-radius: 10px;
+        border-radius: var(--radius-xlarge);
         cursor: pointer;
       }
 
@@ -996,9 +1077,9 @@
         width: 38px;
         height: 38px;
         overflow: hidden;
-        color: var(--brand-700);
-        background: var(--brand-50);
-        border-radius: 10px;
+        color: var(--brand-7);
+        background: var(--color-action-primary-bg-hover);
+        border-radius: var(--radius-xlarge);
         font-size: 15px;
         font-weight: 700;
       }
@@ -1028,7 +1109,7 @@
       .agent-desc {
         margin-top: 3px;
         color:var(--color-text-secondary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.45;
         white-space: nowrap;
         overflow: hidden;
@@ -1051,9 +1132,9 @@
         min-height: 20px;
         padding: 0 8px;
         overflow: hidden;
-        color: var(--brand-700);
-        background: var(--brand-50);
-        border-radius: 999px;
+        color: var(--brand-7);
+        background: var(--color-action-primary-bg-hover);
+        border-radius: var(--radius-full);
         font-size: 10.5px;
         font-weight: 600;
         text-overflow: ellipsis;
@@ -1061,13 +1142,13 @@
       }
 
       .tag.blue {
-        color: #4f72d8;
-        background: #eef2fb;
+        color: var(--info-4);
+        background: var(--color-status-info-bg);
       }
 
       .tag.orange {
-        color: #b66b18;
-        background: #fff7e8;
+        color: var(--color-status-warning);
+        background: var(--color-status-warning-bg);
       }
 
       .size-row {
@@ -1080,14 +1161,14 @@
         width: 100%;
         overflow: auto;
         border:1px solid var(--color-border-subtle);
-        border-radius: 8px;
+        border-radius: var(--radius-large);
       }
 
       .spec-table {
         width: 100%;
         min-width: 720px;
         border-collapse: collapse;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .spec-table th,
@@ -1100,7 +1181,7 @@
 
       .spec-table th {
         color:var(--color-text-default);
-        background: var(--gray-50);
+        background: var(--color-bg-container);
         font-weight: 560;
       }
 
@@ -1116,41 +1197,41 @@
       .spec-table code {
         color:var(--color-text-primary);
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
       }
 
       :root[data-product-theme="business-theme"] {
-        --brand-50: #f0fff6;
-        --brand-100: #ddfbea;
-        --brand-200: #bef5d5;
-        --brand-300: #91e9b8;
-        --brand-400: #5fd897;
-        --brand-500: var(--color-status-success);
-        --brand-600: #1b9c61;
-        --brand-700: #147c4d;
-        --brand-800: #12633f;
-        --brand-900: #104f34;
-        --brand-rgb: 34, 181, 115;
+
+
+
+
+
+
+
+
+
+
+
         --input-hover-border-color: var(--color-status-success);
         --input-focus-color: var(--color-status-success);
-        --input-focus-shadow: 0 0 0 3px color-mix(in srgb, var(--color-action-primary) 10%, transparent);
+
       }
 
       :root[data-product-theme="test-theme-1"] {
-        --brand-50: #eff6ff;
-        --brand-100: #dbeafe;
-        --brand-200: #bfdbfe;
-        --brand-300: #93c5fd;
-        --brand-400: #60a5fa;
-        --brand-500: #2672ff;
-        --brand-600: #1d5fd7;
-        --brand-700: #1e4fb3;
-        --brand-800: #1e3f8a;
-        --brand-900: #172f68;
-        --brand-rgb: 38, 114, 255;
+
+
+
+
+
+
+
+
+
+
+
         --input-hover-border-color: var(--color-action-primary);
         --input-focus-color: var(--color-action-primary);
-        --input-focus-shadow: 0 0 0 3px color-mix(in srgb, var(--color-action-primary) 10%, transparent);
+
       }
 
       @media (max-width: 880px) {
@@ -1172,10 +1253,6 @@
           overflow-y: hidden;
           border-right: 0;
           border-bottom:1px solid var(--color-border-subtle);
-        }
-
-        .sidebar-footer {
-          display: none;
         }
 
         .nav-list {
@@ -1220,7 +1297,7 @@
         }
 
         .doc-title {
-          font-size:var(--text-data-size);
+          font-size:var(--font-style-display-size);
         }
 
         .doc-grid {
@@ -1262,36 +1339,45 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="../styles/component-color-default.css" />
+    <style>
+      .example-block.full { background: var(--color-bg-container); }
+    </style>
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/control-radius.css" />
+    <link rel="stylesheet" href="../styles/topbar-shared.css" />
+    <link rel="stylesheet" href="../styles/typography-standard.css">
+      <link rel="stylesheet" href="../styles/radius-tokens.css" />
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="../index.html" aria-label="IQB DESIGN 首页">
+        <a class="brand" href="../index.html" aria-label="IQ Design System 首页">
           <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-400)" />
-                <stop offset="1" stop-color="var(--brand-600)" />
+                <stop offset="0" stop-color="var(--brand-4)" />
+                <stop offset="1" stop-color="var(--brand-6)" />
               </linearGradient>
               <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.24" />
               </linearGradient>
               <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.1" />
               </linearGradient>
             </defs>
             <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
           </svg>
-          <span class="brand-title">IQB DESIGN</span>
+          <span class="brand-title">IQ Design System</span>
         </a>
-        <div class="topbar-actions" aria-label="系统状态">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>Active components 46/46</span>
-        </div>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="design">设计</button>
+        </nav>
         <div class="product-select" data-product-select>
           <button
             class="product-select-trigger"
@@ -1315,9 +1401,14 @@
           <nav>
             <ul class="nav-list">
               <li class="nav-section">
-                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
-                  <span class="nav-label">Styles 全局样式</span>
-                </a>
+                <button class="nav-category" type="button" aria-expanded="true" data-nav-scope="global-style">Styles 全局样式<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="../styles/color.html" data-style-page="color"><span class="nav-label">Color 颜色</span></a></li>
+                  <li><a class="nav-button" href="../styles/text.html" data-style-page="text"><span class="nav-label">Text 字体</span></a></li>
+                  <li><a class="nav-button" href="../styles/icon.html" data-style-page="icon"><span class="nav-label">ICON 图标</span></a></li>
+                  <li><a class="nav-button" href="../styles/radius.html" data-style-page="radius"><span class="nav-label">Radius 圆角</span></a></li>
+                  <li><a class="nav-button" href="../styles/theme.html" data-style-page="theme"><span class="nav-label">Theme 主题</span></a></li>
+                </ul>
               </li>
               <li class="nav-section">
                 <a class="nav-button" href="../index.html#overview">
@@ -1325,7 +1416,7 @@
                 </a>
               </li>
               <li class="nav-section">
-                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">General 通用<span class="nav-category-count">2</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../general/button.html">
@@ -1340,7 +1431,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Layout 布局<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../layout/divider.html">
@@ -1370,7 +1461,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Navigation 导航<span class="nav-category-count">6</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../navigation/menu.html">
@@ -1405,7 +1496,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Entry 数据录入<span class="nav-category-count">16</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../dataentry/input.html">
@@ -1490,7 +1581,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Display 数据展示<span class="nav-category-count">14</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../datadisplay/table.html">
@@ -1565,7 +1656,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Feedback 反馈<span class="nav-category-count">9</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../feedback/alert.html">
@@ -1616,8 +1707,6 @@
               </li>
             </ul>
           </nav>
-
-          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
         </aside>
 
         <section class="canvas" aria-label="组件说明详情区">
@@ -1631,7 +1720,7 @@
               </p>
               <ul class="doc-meta-list" aria-label="自动补全基础规格">
                 <li>输入框默认高度 38px</li>
-                <li>圆角 10px</li>
+                <li>圆角 8px</li>
                 <li>浮层间距 8px</li>
                 <li>选项最小高度 34px</li>
                 <li>细滚动条 4px</li>
@@ -1652,8 +1741,8 @@
               <h2>基础用法</h2>
               <div class="doc-grid">
                 <div class="example-block">
-                  <h3>输入显示</h3>
-                  <p>输入后根据当前内容生成 3-5 条联想字段，未输入时保持菜单收起。</p>
+                  <div class="example-head"><h3>输入显示</h3>
+                  <p>输入后根据当前内容生成 3-5 条联想字段，未输入时保持菜单收起。</p></div>
                   <div class="auto-complete simple-options" data-autocomplete-demo="basic">
                     <label class="spec-input-wrap" aria-label="搜索 Agent">
                       <input class="spec-input" type="text" placeholder="请输入 Agent 名称" autocomplete="off" data-autocomplete-input />
@@ -1673,8 +1762,8 @@
                 </div>
 
                 <div class="example-block">
-                  <h3>获焦显示</h3>
-                  <p>聚焦即展示最近或推荐候选；输入后只保留匹配项，无匹配时展示空状态。</p>
+                  <div class="example-head"><h3>获焦显示</h3>
+                  <p>聚焦即展示最近或推荐候选；输入后只保留匹配项，无匹配时展示空状态。</p></div>
                   <div class="auto-complete simple-options" data-autocomplete-demo="free">
                     <label class="spec-input-wrap" aria-label="输入关键词">
                       <input class="spec-input" type="text" placeholder="请输入关键词" autocomplete="off" data-autocomplete-input />
@@ -1696,8 +1785,8 @@
             <section class="doc-section">
               <h2>自定义输入框</h2>
               <div class="example-block full">
-                <h3>多行输入框</h3>
-                <p>适合在任务指令、创意 brief 和长文本配置中插入模板片段，默认两行高度，样式与 Input 多行输入保持一致。</p>
+                <div class="example-head"><h3>多行输入框</h3>
+                <p>适合在任务指令、创意 brief 和长文本配置中插入模板片段，默认两行高度，样式与 Input 多行输入保持一致。</p></div>
                 <div class="auto-complete" data-autocomplete-demo="custom-input">
                   <textarea class="spec-textarea two-line" placeholder="输入任务指令，系统会根据内容推荐可插入的模板片段" data-autocomplete-input autocomplete="off"></textarea>
                   <ul class="autocomplete-dropdown" role="listbox" aria-label="自定义输入框建议" data-autocomplete-dropdown>
@@ -1718,8 +1807,8 @@
               <h2>自定义选项</h2>
               <div class="doc-grid">
                 <div class="example-block">
-                  <h3>邮箱选项</h3>
-                  <p>输入邮箱前缀后按 gmail、hotmail、outlook 等域名生成候选，选择后回填完整邮箱地址。</p>
+                  <div class="example-head"><h3>邮箱选项</h3>
+                  <p>输入邮箱前缀后按 gmail、hotmail、outlook 等域名生成候选，选择后回填完整邮箱地址。</p></div>
                   <div class="auto-complete" data-autocomplete-demo="email">
                     <label class="spec-input-wrap" aria-label="选择邮箱">
                       <input class="spec-input" type="text" placeholder="请选择邮箱" autocomplete="off" data-autocomplete-input />
@@ -1735,8 +1824,8 @@
                   </div>
                 </div>
                 <div class="example-block">
-                  <h3>复杂选项</h3>
-                  <p>候选项可承载头像、主标题、辅助描述和业务标签，选中或悬停时仅使用灰底状态。</p>
+                  <div class="example-head"><h3>复杂选项</h3>
+                  <p>候选项可承载头像、主标题、辅助描述和业务标签，选中或悬停时仅使用灰底状态。</p></div>
                   <div class="auto-complete" data-autocomplete-demo="complex">
                     <label class="spec-input-wrap" aria-label="选择复杂选项">
                       <input class="spec-input" type="text" placeholder="请选择对象" autocomplete="off" data-autocomplete-input />
@@ -1768,8 +1857,8 @@
               <h2>查询模式</h2>
               <div class="doc-grid">
                 <div class="example-block">
-                  <h3>不确定类目</h3>
-                  <p>用户只知道关键词时跨类目检索，右侧实时展示每类联想的 results 数量。</p>
+                  <div class="example-head"><h3>不确定类目</h3>
+                  <p>用户只知道关键词时跨类目检索，右侧实时展示每类联想的 results 数量。</p></div>
                   <div class="auto-complete" data-autocomplete-demo="query-open">
                     <label class="spec-input-wrap" aria-label="跨类目查询">
                       <input class="spec-input" type="text" placeholder="搜索名称、ID 或描述" autocomplete="off" data-autocomplete-input />
@@ -1791,8 +1880,8 @@
                   </div>
                 </div>
                 <div class="example-block">
-                  <h3>确定类目</h3>
-                  <p>查询范围已明确时，在下拉菜单中按一级类目分组展示；类目标题仅说明范围，不可点击。</p>
+                  <div class="example-head"><h3>确定类目</h3>
+                  <p>查询范围已明确时，在下拉菜单中按一级类目分组展示；类目标题仅说明范围，不可点击。</p></div>
                   <div class="auto-complete" data-autocomplete-demo="query-fixed">
                     <label class="spec-input-wrap" aria-label="类目内查询">
                       <input class="spec-input" type="text" placeholder="搜索名称、任务或报告" autocomplete="off" data-autocomplete-input />
@@ -1835,22 +1924,22 @@
               <h2>状态</h2>
               <div class="doc-grid">
                 <div class="example-block">
-                  <h3>Default</h3>
-                  <p>默认状态仅展示轻边框；浮层在有候选项或输入激活时出现。</p>
+                  <div class="example-head"><h3>Default</h3>
+                  <p>默认状态仅展示轻边框；浮层在有候选项或输入激活时出现。</p></div>
                   <div class="spec-field">
                     <input class="spec-input" type="text" placeholder="搜索任务模板" />
                   </div>
                 </div>
                 <div class="example-block">
-                  <h3>Hover</h3>
-                  <p>悬停只改变输入框边框颜色，不打开浮层。</p>
+                  <div class="example-head"><h3>Hover</h3>
+                  <p>悬停只改变输入框边框颜色，不打开浮层。</p></div>
                   <div class="spec-field">
                     <input class="spec-input hover" type="text" value="短视频生成" />
                   </div>
                 </div>
                 <div class="example-block">
-                  <h3>Focus</h3>
-                  <p>聚焦时使用品牌色边框，并增加与输入框一致的浅绿色外描边。</p>
+                  <div class="example-head"><h3>Focus</h3>
+                  <p>聚焦时使用品牌色边框，并增加与输入框一致的浅绿色外描边。</p></div>
                   <div class="auto-complete is-focus" data-autocomplete-demo="focus">
                     <div class="spec-field">
                       <span class="spec-input-wrap focus">
@@ -1864,23 +1953,23 @@
                   </div>
                 </div>
                 <div class="example-block">
-                  <h3>Error</h3>
-                  <p>必选对象没有匹配项时进入错误态，说明应告诉用户如何修正。</p>
+                  <div class="example-head"><h3>Error</h3>
+                  <p>必选对象没有匹配项时进入错误态，说明应告诉用户如何修正。</p></div>
                   <div class="spec-field error">
                     <input class="spec-input focus" type="text" value="unknown-agent" />
                     <span class="spec-field-help">未找到匹配 Agent，请检查名称或切换业务分类</span>
                   </div>
                 </div>
                 <div class="example-block">
-                  <h3>Disabled</h3>
-                  <p>禁用态不响应输入、清除和候选项选择。</p>
+                  <div class="example-head"><h3>Disabled</h3>
+                  <p>禁用态不响应输入、清除和候选项选择。</p></div>
                   <div class="spec-field">
                     <input class="spec-input" type="text" value="Tiktok上传" disabled />
                   </div>
                 </div>
                 <div class="example-block">
-                  <h3>Empty</h3>
-                  <p>无结果时保持浮层宽度和位置稳定，不用 Toast 替代空状态。</p>
+                  <div class="example-head"><h3>Empty</h3>
+                  <p>无结果时保持浮层宽度和位置稳定，不用 Toast 替代空状态。</p></div>
                   <div class="auto-complete" data-autocomplete-demo="empty">
                     <label class="spec-input-wrap focus">
                       <input class="spec-input" type="text" value="zzzz" data-autocomplete-input autocomplete="off" />
@@ -1894,8 +1983,8 @@
             <section class="doc-section">
               <h2>尺寸</h2>
               <div class="example-block full">
-                <h3>Size</h3>
-                <p>尺寸继承 Input：紧凑筛选使用 30px，标准表单使用 38px，关键检索入口使用 44px。</p>
+                <div class="example-head"><h3>Size</h3>
+                <p>尺寸继承 Input：紧凑筛选使用 30px，标准表单使用 38px，关键检索入口使用 44px。</p></div>
                 <div class="size-row">
                   <input class="spec-input small" type="text" value="Small 30" />
                   <input class="spec-input" type="text" value="Default 38" />
@@ -1985,9 +2074,15 @@
                     </tr>
                     <tr>
                       <td><code>status</code></td>
-                      <td>语义状态，用于校验反馈和禁用展示。</td>
-                      <td><code>default | error | disabled</code></td>
+                      <td>语义状态，用于校验反馈；禁用能力由 <code>disabled</code> 单独控制。</td>
+                      <td><code>default | error</code></td>
                       <td><code>default</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>disabled</code></td>
+                      <td>是否禁用输入、清除与候选菜单交互；视觉状态与 Select disabled 一致。</td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
                     </tr>
                     <tr>
                       <td><code>allowClear</code></td>
@@ -2038,9 +2133,21 @@
                       <td><code>-</code></td>
                     </tr>
                     <tr>
+                      <td><code>onChange</code></td>
+                      <td>输入值或候选选中值变化时触发，用于同步受控 <code>value</code>。</td>
+                      <td><code>(value) =&gt; void</code></td>
+                      <td><code>-</code></td>
+                    </tr>
+                    <tr>
                       <td><code>onSelect</code></td>
                       <td>选择候选项时触发。</td>
                       <td><code>(value, option) =&gt; void</code></td>
+                      <td><code>-</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>onOpenChange</code></td>
+                      <td>候选浮层展开状态变化时触发。</td>
+                      <td><code>(open) =&gt; void</code></td>
                       <td><code>-</code></td>
                     </tr>
                   </tbody>
@@ -2048,7 +2155,7 @@
               </div>
             </section>
 
-            <section class="doc-section">
+<section class="doc-section">
               <h2>设计 Token</h2>
               <div class="spec-table-wrap">
                 <table class="spec-table">
@@ -2067,7 +2174,7 @@
                     </tr>
                     <tr>
                       <td><code>--input-radius</code></td>
-                      <td><code>10px</code></td>
+                      <td><code>var(--radius-large)</code></td>
                       <td>输入框与浮层圆角。</td>
                     </tr>
                     <tr>
@@ -2076,18 +2183,38 @@
                       <td>默认边框。</td>
                     </tr>
                     <tr>
+                      <td><code>--input-disabled-bg</code></td>
+                      <td><code>var(--color-bg-subtle)</code></td>
+                      <td>禁用态背景，与 Select disabled 一致。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--input-disabled-color</code></td>
+                      <td><code>var(--color-text-disabled)</code></td>
+                      <td>禁用态文字与图标颜色。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--autocomplete-disabled-border-color</code></td>
+                      <td><code>var(--color-border-default)</code></td>
+                      <td>禁用态边框颜色。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--input-disabled-opacity</code></td>
+                      <td><code>0.6</code></td>
+                      <td>禁用态整体透明度，与 Select disabled 一致。</td>
+                    </tr>
+                    <tr>
                       <td><code>--input-focus-shadow</code></td>
                       <td><code>0 0 0 3px color-mix(in srgb, var(--color-action-primary) 10%, transparent)</code></td>
                       <td>聚焦态外层浅品牌色描边。</td>
                     </tr>
                     <tr>
                       <td><code>--autocomplete-option-selected-bg</code></td>
-                      <td><code>var(--gray-100)</code></td>
+                      <td><code>var(--color-bg-hover)</code></td>
                       <td>候选项选中后的灰底高亮。</td>
                     </tr>
                     <tr>
                       <td><code>--autocomplete-dropdown-shadow</code></td>
-                      <td><code>0 14px 32px color-mix(in srgb, var(--color-bg-inverse) 12%, transparent)</code></td>
+                      <td><code>var(--shadow-overlay)</code></td>
                       <td>浮层阴影。</td>
                     </tr>
                     <tr>
@@ -2122,7 +2249,7 @@
                     </tr>
                     <tr>
                       <td><code>--scrollbar-thumb-color</code></td>
-                      <td><code>var(--gray-300)</code></td>
+                      <td><code>var(--color-border-default)</code></td>
                       <td>滚动条滑块颜色。</td>
                     </tr>
                   </tbody>
@@ -2136,7 +2263,123 @@
     </div>
 
     <script>
-      const productOptions = Array.from(document.querySelectorAll("[data-product-option]"));
+const topbarComponentTab = document.querySelector("[data-topbar-nav=components]");
+const topbarDesignTab = document.querySelector("[data-topbar-nav=design]");
+const topbarTabs = [topbarComponentTab, topbarDesignTab].filter(Boolean);
+const sidebarSections = Array.from(document.querySelectorAll(".sidebar > nav > .nav-list > .nav-section"));
+const navMenuStorageKey = "iqb-design-active-nav-menu";
+const componentCategories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+const navCategoryStorageKey = "iqb-design-nav-category-state";
+const getSavedNavCategoryState = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(navCategoryStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+};
+const saveNavCategoryState = (state) => {
+  try {
+    sessionStorage.setItem(navCategoryStorageKey, JSON.stringify(state));
+  } catch {
+    // Local previews may disable storage; toggling still works in the current page.
+  }
+};
+const navCategoryState = getSavedNavCategoryState();
+const navCategoryButtons = Array.from(document.querySelectorAll(".sidebar .nav-category"));
+navCategoryButtons.forEach((button, index) => {
+  const sublist = button.nextElementSibling;
+  if (!sublist?.classList.contains("nav-sublist")) return;
+  const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+  sublist.id ||= `sidebar-category-${index + 1}`;
+  button.setAttribute("aria-controls", sublist.id);
+  button.setAttribute("aria-expanded", String(navCategoryState[categoryKey] !== false));
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const nextExpanded = !isExpanded;
+    button.setAttribute("aria-expanded", String(nextExpanded));
+    navCategoryState[categoryKey] = nextExpanded;
+    saveNavCategoryState(navCategoryState);
+  });
+});
+
+const getSectionCategory = (section) =>
+  section.querySelector(":scope > .nav-category")?.textContent.trim() || "";
+const isComponentSection = (section) =>
+  Boolean(section.querySelector(":scope > .nav-button .nav-label")?.textContent.includes("Components")) ||
+  componentCategories.some((category) => getSectionCategory(section).startsWith(category));
+const isDesignSection = (section) =>
+  Boolean(section.querySelector("[data-nav-scope=global-style]")) ||
+  getSectionCategory(section).startsWith("Layout");
+const getSavedNavMenu = () => {
+  try {
+    return sessionStorage.getItem(navMenuStorageKey);
+  } catch {
+    return null;
+  }
+};
+const saveNavMenu = (menu) => {
+  try {
+    sessionStorage.setItem(navMenuStorageKey, menu);
+  } catch {
+    // Local previews may disable storage; in-page switching still works.
+  }
+};
+const selectDefaultNavItem = (menu) => {
+  const defaultItem = menu === "design"
+    ? document.querySelector(".sidebar [data-style-page=color]")
+    : sidebarSections
+        .map((section) => section.querySelector(":scope > .nav-button"))
+        .find((item) => item?.querySelector(".nav-label")?.textContent.includes("Components"));
+  if (!defaultItem) return;
+  document.querySelectorAll(".sidebar .nav-button[aria-current=page]").forEach((item) =>
+    item.removeAttribute("aria-current"),
+  );
+  defaultItem.setAttribute("aria-current", "page");
+  defaultItem.click();
+};
+
+const applyNavMenu = (menu) => {
+  const activeMenu = menu === "design" ? "design" : "components";
+  topbarTabs.forEach((tab) => {
+    const isSelected = tab.dataset.topbarNav === activeMenu;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+  sidebarSections.forEach((section) => {
+    const shouldShow = activeMenu === "design" ? isDesignSection(section) : isComponentSection(section);
+    section.hidden = !shouldShow;
+    section.style.display = shouldShow ? "" : "none";
+  });
+};
+
+applyNavMenu(getSavedNavMenu() || "components");
+topbarComponentTab?.addEventListener("click", () => {
+  applyNavMenu("components");
+  saveNavMenu("components");
+  selectDefaultNavItem("components");
+});
+topbarDesignTab?.addEventListener("click", () => {
+  applyNavMenu("design");
+  saveNavMenu("design");
+  selectDefaultNavItem("design");
+});
+const topbarNav = document.querySelector(".topbar-nav");
+topbarNav?.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = Math.max(0, topbarTabs.indexOf(document.activeElement));
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? topbarTabs.length - 1
+      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+  topbarTabs[nextIndex]?.click();
+  topbarTabs[nextIndex]?.focus();
+});
+
+
+
+const productOptions = Array.from(document.querySelectorAll("[data-product-option]"));
       const productSelect = document.querySelector("[data-product-select]");
       const productSelectTrigger = document.querySelector("[data-product-select-trigger]");
       const productSelectMenu = document.querySelector("[data-product-select-menu]");
@@ -2148,26 +2391,23 @@
         decentralized: "实验主题",
       };
       const defaultProductThemeVars = [
-        "--brand-500",
-        "--brand-50",
-        "--brand-100",
-        "--brand-200",
-        "--brand-300",
-        "--brand-400",
-        "--brand-600",
-        "--brand-700",
-        "--brand-800",
-        "--brand-900",
-        "--brand-rgb",
+        "--brand-5",
+        "--brand-0",
+        "--brand-1",
+        "--brand-2",
+        "--brand-3",
+        "--brand-4",
+        "--brand-6",
+        "--brand-7",
+        "--brand-8",
+        "--brand-9",
         "--brand-text",
         "--brand-text-hover",
         "--brand-border-soft",
         "--brand-border-hover",
-        "--radius-sm",
-        "--shadow-focus",
+        "--radius-default",
         "--input-hover-border-color",
         "--input-focus-color",
-        "--input-focus-shadow",
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -2180,49 +2420,43 @@
         }
         if (activeProduct === "business-theme") {
           root.dataset.productTheme = "business-theme";
-          root.style.setProperty("--brand-50", "#f0fff6");
-          root.style.setProperty("--brand-100", "#ddfbea");
-          root.style.setProperty("--brand-200", "#bef5d5");
-          root.style.setProperty("--brand-300", "#91e9b8");
-          root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "#22b573");
-          root.style.setProperty("--brand-600", "#1b9c61");
-          root.style.setProperty("--brand-700", "#147c4d");
-          root.style.setProperty("--brand-800", "#12633f");
-          root.style.setProperty("--brand-900", "#104f34");
-          root.style.setProperty("--brand-rgb", "34, 181, 115");
-          root.style.setProperty("--brand-text", "#1b9c61");
-          root.style.setProperty("--brand-text-hover", "#147c4d");
-          root.style.setProperty("--brand-border-soft", "#bef5d5");
-          root.style.setProperty("--brand-border-hover", "#91e9b8");
-          root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(34, 181, 115, 0.16)");
+          root.style.setProperty("--brand-0", iqbPaletteValue("--brand-0"));
+          root.style.setProperty("--brand-1", iqbPaletteValue("--brand-1"));
+          root.style.setProperty("--brand-2", iqbPaletteValue("--success-1"));
+          root.style.setProperty("--brand-3", iqbPaletteValue("--success-2"));
+          root.style.setProperty("--brand-4", iqbPaletteValue("--success-3"));
+          root.style.setProperty("--brand-5", iqbPaletteValue("--success-4"));
+          root.style.setProperty("--brand-6", iqbPaletteValue("--success-6"));
+          root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
+          root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
+          root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
+          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
+          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
+          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
+          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
           root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-color", "var(--color-status-success)");
-          root.style.setProperty("--input-focus-shadow", "rgba(28, 199, 73, 0.16) 0px 0px 0px 3px");
           return;
         }
         if (activeProduct !== "decentralized") return;
         root.dataset.productTheme = "test-theme-1";
-        root.style.setProperty("--brand-50", "#eff6ff");
-        root.style.setProperty("--brand-100", "#dbeafe");
-        root.style.setProperty("--brand-200", "#bfdbfe");
-        root.style.setProperty("--brand-300", "#93c5fd");
-        root.style.setProperty("--brand-400", "#60a5fa");
-        root.style.setProperty("--brand-500", "#2672ff");
-        root.style.setProperty("--brand-600", "#1d5fd7");
-        root.style.setProperty("--brand-700", "#1e4fb3");
-        root.style.setProperty("--brand-800", "#1e3f8a");
-        root.style.setProperty("--brand-900", "#172f68");
-        root.style.setProperty("--brand-rgb", "38, 114, 255");
-        root.style.setProperty("--brand-text", "#1d5fd7");
-        root.style.setProperty("--brand-text-hover", "#1e4fb3");
-        root.style.setProperty("--brand-border-soft", "#bfdbfe");
-        root.style.setProperty("--brand-border-hover", "#93c5fd");
-        root.style.setProperty("--radius-sm", "2px");
-        root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(38, 114, 255, 0.16)");
-        root.style.setProperty("--input-hover-border-color", "#2672ff");
-        root.style.setProperty("--input-focus-color", "#2672ff");
-        root.style.setProperty("--input-focus-shadow", "rgba(28, 199, 73, 0.16) 0px 0px 0px 3px");
+        root.style.setProperty("--brand-0", iqbPaletteValue("--info-0"));
+        root.style.setProperty("--brand-1", iqbPaletteValue("--info-0"));
+        root.style.setProperty("--brand-2", iqbPaletteValue("--info-1"));
+        root.style.setProperty("--brand-3", iqbPaletteValue("--info-2"));
+        root.style.setProperty("--brand-4", iqbPaletteValue("--info-3"));
+        root.style.setProperty("--brand-5", iqbPaletteValue("--info-5"));
+        root.style.setProperty("--brand-6", iqbPaletteValue("--info-6"));
+        root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
+        root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
+        root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
+        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
+        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
+        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
+        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
+        root.style.setProperty("--radius-default", "6px");
+        root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
+        root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
@@ -2293,7 +2527,7 @@
           .replaceAll("<", "&lt;")
           .replaceAll(">", "&gt;")
           .replaceAll('"', "&quot;")
-          .replaceAll("'", "&#039;");
+          .replaceAll("'", "&var(--info-8);");
 
       const highlightText = (text, query) => {
         const rawText = String(text);
@@ -2489,6 +2723,14 @@
         return node;
       };
 
+      const isAutocompleteOptionSelected = (demo, optionValue, inputValue) => {
+        const normalize = (value) => String(value || "").trim().toLowerCase();
+        const currentValue = normalize(demo.dataset.selectedValue || inputValue);
+        if (!currentValue) return false;
+
+        return normalize(optionValue) === currentValue || normalize(demo.dataset.selectedParentValue) === normalize(optionValue);
+      };
+
       const filterTextOptions = (items, query) => {
         const normalized = query.trim().toLowerCase();
         if (!normalized) return items;
@@ -2555,6 +2797,8 @@
           input.value = value;
         }
         demo.dataset.selectedValue = value;
+        if (option.dataset.parentValue) demo.dataset.selectedParentValue = option.dataset.parentValue;
+        else delete demo.dataset.selectedParentValue;
         if (demo.dataset.autocompleteDemo === "basic" || demo.dataset.autocompleteDemo === "query-open") {
           demo.dataset.suggestionSource = option.dataset.source || input.value;
         }
@@ -2638,7 +2882,8 @@
               item.dataset.autocompleteOption = "";
               item.dataset.label = option.label;
               item.dataset.value = option.value || option.label;
-              const isSelected = demo.dataset.selectedValue === item.dataset.value;
+              if (option.parent) item.dataset.parentValue = option.parent;
+              const isSelected = isAutocompleteOptionSelected(demo, item.dataset.value, query);
               item.classList.toggle("is-selected", isSelected);
               item.setAttribute("aria-selected", String(isSelected));
               item.innerHTML = `<span>${escapeHtml(option.label)}</span>`;
@@ -2669,10 +2914,11 @@
           item.dataset.autocompleteOption = "";
           item.dataset.label = isComplexDemo ? option.name : option.label;
           item.dataset.value = option.value || option.label || option.name;
+          if (option.parent) item.dataset.parentValue = option.parent;
           if (type === "basic" || type === "query-open") {
             item.dataset.source = suggestionQuery.trim();
           }
-          const isSelected = demo.dataset.selectedValue === item.dataset.value;
+          const isSelected = isAutocompleteOptionSelected(demo, item.dataset.value, query);
           item.classList.toggle("is-selected", isSelected);
           item.setAttribute("aria-selected", String(isSelected));
 
@@ -2721,9 +2967,10 @@
 
         input.addEventListener("focus", () => renderAutocomplete(demo));
         input.addEventListener("input", () => {
+          delete demo.dataset.selectedValue;
+          delete demo.dataset.selectedParentValue;
           if (demo.dataset.autocompleteDemo === "basic" || demo.dataset.autocompleteDemo === "query-open") {
             delete demo.dataset.suggestionSource;
-            delete demo.dataset.selectedValue;
           }
           renderAutocomplete(demo);
         });
@@ -2770,33 +3017,34 @@
           if (!demo.contains(event.target)) closeAutocomplete(demo);
         });
       });
+const centerNavItem = (item, behavior = "smooth") => {
+  if (!item) return;
+  const sidebar = item.closest(".sidebar");
+  if (!sidebar) return;
 
-      const centerNavItem = (item, behavior = "smooth") => {
-        if (!item) return;
-        const sidebar = item.closest(".sidebar");
-        if (!sidebar) return;
+  const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+  const itemRect = item.getBoundingClientRect();
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const clamp = (value, max) => Math.min(Math.max(value, 0), Math.max(max, 0));
 
-        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
-        const itemRect = item.getBoundingClientRect();
-        const sidebarRect = sidebar.getBoundingClientRect();
+  if (isHorizontal) {
+    const centeredLeft =
+      sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2;
+    const maxScrollLeft = sidebar.scrollWidth - sidebar.clientWidth;
+    sidebar.scrollTo({ left: clamp(centeredLeft, maxScrollLeft), behavior });
+    return;
+  }
 
-        if (isHorizontal) {
-          sidebar.scrollTo({
-            left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2,
-            behavior,
-          });
-          return;
-        }
-
-        sidebar.scrollTo({
-          top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2,
-          behavior,
-        });
-      };
+  const centeredTop =
+    sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2;
+  const maxScrollTop = sidebar.scrollHeight - sidebar.clientHeight;
+  sidebar.scrollTo({ top: clamp(centeredTop, maxScrollTop), behavior });
+};
 
       requestAnimationFrame(() => {
-        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]'), "auto");
+        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current=page]'), "auto");
       });
     </script>
+    <script src="../styles/topbar-shared.js"></script>
   </body>
 </html>

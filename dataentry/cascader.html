@@ -1,145 +1,112 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-product-theme="default-theme">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>联级选择 Cascader - Design System</title>
+    <script src="../styles/color-mode-init.js"></script>
     <style>
-      :root {--success-green-500: #1cc749;--yellow-500: #ff990a;--yellow-400: #ffb232;--red-500: #fe3d33;--red-600: #ec2116;--blue-500: #31a6ff;--blue-600: #1887f5;--blue-700: #1370e2;
-        --brand-500: #1cc749;
-        --brand-50: #f0fdf3;
-        --brand-100: #dbfde3;
-        --brand-200: #b9f9c9;
-        --brand-300: #82f39f;
-        --brand-400: #45e36e;
-        --brand-600: #00ae2e;
-        --brand-700: #118430;
-        --brand-800: #13682a;
-        --brand-900: #125526;
-        --brand-rgb: 28, 199, 73;
-        --brand-text: #00ae2e;
-        --brand-text-hover: #118430;
-        --brand-border-soft: #bfead2;
-        --brand-border-hover: #8fd9b3;
-        --gray-950: #0b0d0f;
-        --gray-900: #14171a;
-        --gray-800: #22262a;
-        --gray-700: #343a40;
-        --gray-600: #59616a;
-        --gray-500: #78818c;
-        --gray-400: #a5adb6;
-        --gray-300: #d4d9de;
-        --gray-200: #e7eaee;
-        --gray-100: #f3f5f7;
-        --gray-50: #fafbfc;
-        --white: #ffffff;
-        --color-text-primary: var(--gray-900);
-        --color-text-default: var(--gray-700);
-        --color-text-secondary: var(--gray-600);
-        --color-text-tertiary: var(--gray-500);
-        --color-text-disabled: var(--gray-400);
-        --color-text-inverse: var(--white);
-        --color-text-link: var(--blue-600);
-        --color-bg-page: var(--gray-50);
-        --color-bg-container: var(--white);
-        --color-bg-subtle: var(--gray-100);
-        --color-bg-hover: var(--gray-100);
-        --color-bg-selected: var(--brand-100);
-        --color-bg-disabled: var(--gray-100);--color-bg-inverse: var(--gray-900);
-        --color-border-default: var(--gray-300);
-        --color-border-subtle: var(--gray-200);
-        --color-border-strong: var(--gray-400);
-        --color-border-focus: var(--brand-500);
-        --color-border-disabled: var(--gray-200);
-        --color-action-primary: var(--brand-500);
-        --color-action-primary-hover: var(--brand-600);
-        --color-action-primary-active: var(--brand-700);
-        --color-action-primary-subtle: var(--brand-100);
-        --color-action-primary-disabled: var(--brand-200);
-        --color-status-success: var(--success-green-500);
-        --color-status-error: var(--red-500);--color-status-error-text: var(--red-600);
-        --color-status-warning: var(--yellow-500);
-        --color-status-info: var(--blue-500);
-        --color-overlay-modal: rgba(0, 0, 0, 0.45);
-        --color-overlay-drawer: rgba(0, 0, 0, 0.35);
-        --color-overlay-loading: rgba(255, 255, 255, 0.72);
-        --text-page-title-size: 20px;
-        --text-page-title-weight: 500;
-        --text-page-title-line-height: 1.35;
-        --text-section-title-size: 16px;
-        --text-section-title-weight: 500;
-        --text-section-title-line-height: 1.5;
-        --text-card-title-size: 16px;
-        --text-card-title-weight: 500;
-        --text-card-title-line-height: 1.5;
-        --text-overlay-title-size: 16px;
-        --text-overlay-title-weight: 500;
-        --text-overlay-title-line-height: 1.5;
-        --text-body-size: 14px;
-        --text-body-weight: 400;
-        --text-body-line-height: 1.75;
-        --text-body-strong-size: 14px;
-        --text-body-strong-weight: 500;
-        --text-body-strong-line-height: 1.75;
-        --text-label-size: 14px;
-        --text-label-weight: 500;
-        --text-label-line-height: 1.75;
-        --text-control-size: 13px;
-        --text-control-weight: 400;
-        --text-control-line-height: 1.65;
-        --text-secondary-size: 13px;
-        --text-secondary-weight: 400;
-        --text-secondary-line-height: 1.65;
-        --text-helper-size: 12px;
-        --text-helper-weight: 400;
-        --text-helper-line-height: 1.55;
-        --text-caption-size: 12px;
-        --text-caption-weight: 400;
-        --text-caption-line-height: 1.55;
-        --text-data-size: 24px;
-        --text-data-weight: 500;
-        --text-data-line-height: 1.3;
+      :root {
+
+
+
+
+
+
+
+
+
+
+
+        --brand-text: var(--brand-6);
+        --brand-text-hover: var(--brand-7);
+        --brand-border-soft: var(--success-1);
+        --brand-border-hover: var(--success-2);
+
+
+
+
+
+
+
+
+
+
+
+
+        --color-text-primary: var(--neutral-10);
+        --color-text-default: var(--neutral-9);
+        --color-text-secondary: var(--neutral-6);
+        --color-text-tertiary: var(--neutral-5);
+        --color-text-disabled: var(--neutral-4);
+        --color-text-inverse: var(--neutral-0);
+        --color-text-link: var(--info-6);
+        --color-bg-page: var(--neutral-0);
+        --color-bg-container: var(--neutral-0);
+        --color-bg-subtle: var(--neutral-1);
+        --color-bg-hover: var(--neutral-1);
+        --color-bg-selected: var(--brand-1);
+        --color-bg-disabled: var(--neutral-1);--color-bg-inverse: var(--neutral-9);
+        --color-border-default: var(--neutral-3);
+        --color-border-subtle: var(--neutral-2);
+        --color-border-strong: var(--neutral-4);
+        --color-border-focus: var(--brand-5);
+        --color-border-disabled: var(--neutral-2);
+        --color-action-primary: var(--brand-5);
+        --color-action-primary-hover: var(--brand-6);
+        --color-action-primary-hover: var(--brand-7);
+        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-disabled: var(--brand-2);
+        --color-status-success: var(--success-5);
+        --color-status-error: var(--danger-5);
+        --color-status-warning: var(--warning-5);
+        --color-status-info: var(--info-5);
+        --color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);
+        --color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);
+        --color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);
         --topbar-height: 60px;
         --sidebar-width: 300px;
-        --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --radius-default: 6px;
+
         --input-height-small: 30px;
         --input-height-default: 38px;
         --input-height-large: 44px;
-        --input-radius: 10px;
+        --input-radius: var(--radius-large);
         --input-border-color: var(--color-border-default);
         --input-hover-border-color:var(--color-action-primary);
         --input-focus-color:var(--color-action-primary);
-        --input-focus-shadow: 0 0 0 3px color-mix(in srgb, var(--color-action-primary) 10%, transparent);
+
         --input-error-color: var(--color-status-error);
         --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
         --input-text-color: var(--color-text-primary);
         --input-placeholder-color: var(--color-text-tertiary);
-        --input-disabled-border-color: var(--color-border-disabled);
-        --input-disabled-bg: var(--color-bg-disabled);
+        --input-disabled-border-color: var(--color-border-default);
+        --input-disabled-bg: var(--color-bg-subtle);
         --input-disabled-color: var(--color-text-disabled);
-        --cascader-active-bg: var(--gray-100);
-        --cascader-dropdown-shadow: 0 14px 32px color-mix(in srgb, var(--color-bg-inverse) 12%, transparent);
+        --input-disabled-opacity: 0.6;
+        --cascader-disabled-border-color: var(--color-border-default);
+        --cascader-active-bg: var(--color-bg-hover);
+        --cascader-dropdown-shadow: var(--shadow-overlay);
         --cascader-dropdown-offset: 8px;
         --cascader-trigger-width: 320px;
         --cascader-trigger-height: 38px;
         --cascader-option-height: 34px;
         --cascader-column-width: 155px;
-        --cascader-radius: 8px;
-        --cascader-icon-color: var(--color-text-tertiary);
-        --cascader-expand-icon-size: 20px;
-        --cascader-enter-icon-size: 5px;
+        --cascader-radius: var(--radius-large);
+        --cascader-icon-color: var(--color-text-disabled);
+        --cascader-expand-icon-size: 16px;
+        --cascader-enter-icon-size: 16px;
         --cascader-icon-stroke-width: 2px;
         --cascader-loading-icon-size: 16px;
         --cascader-loading-icon-stroke-width: 2;
         --scrollbar-width-thin: 4px;
         --scrollbar-track-color: transparent;
-        --scrollbar-thumb-color: var(--gray-300);
+        --scrollbar-thumb-color: var(--color-border-default);
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
       }
-      *{box-sizing:border-box} body{margin:0;color:var(--color-text-primary);background:var(--color-bg-container)} .app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--color-border-subtle)}.brand{color:var(--color-text-primary);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:300px 1fr;min-height:0}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--color-border-subtle);background:var(--gray-50)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.nav-category-count{margin-left:6px}.nav-button{width:100%;min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:6px;color:var(--color-text-default);font-size:var(--text-control-size);text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--color-action-primary);background:rgb(var(--brand-rgb)/.08)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary);font-size:var(--text-caption-size);font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px;line-height:1.25}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--color-border-subtle);border-radius:8px;background:var(--color-bg-container)}.example-block h3{margin:0 0 12px;font-size:var(--text-body-size);font-weight:500}.cascader{display:inline-flex;border:1px solid var(--color-border-subtle);border-radius:8px;box-shadow:0 14px 32px rgba(20,28,36,.1);overflow:hidden}.cascader ul{width:155px;margin:0;padding:6px;list-style:none;border-right:1px solid var(--color-border-subtle)}.cascader ul:last-child{border-right:0}.cascader li{min-height:34px;padding:8px 10px;border-radius:6px;color:var(--color-text-default);font-size:var(--text-control-size)}.cascader li.active{color:var(--color-action-primary);background:rgb(var(--brand-rgb)/.08)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.content{padding:28px 20px 56px}.cascader{display:grid}.cascader ul{width:100%;border-right:0;border-bottom:1px solid var(--color-border-subtle)}}
+      *{box-sizing:border-box} body{margin:0;color:var(--color-text-primary);background:var(--color-bg-container)} .app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--color-border-subtle)}.brand{color:var(--color-text-primary);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:300px 1fr;min-height:0}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--color-border-subtle);background: var(--color-bg-container)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.nav-category-count{margin-left:6px}.nav-button{width:100%;min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:var(--radius-default);color:var(--color-text-default);font-size:var(--font-style-body-size);text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--color-action-primary);background:color-mix(in srgb, var(--color-action-primary) 8%, transparent)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary);font-size:var(--font-style-caption-size);font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px;line-height:1.25}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large);background:var(--color-bg-container)}.example-block h3{margin:0 0 12px;font-size:var(--font-style-body-size);font-weight:500}.cascader{display:inline-flex;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large);box-shadow: var(--shadow-overlay);overflow:hidden}.cascader ul{width:155px;margin:0;padding:6px;list-style:none;border-right:1px solid var(--color-border-subtle)}.cascader ul:last-child{border-right:0}.cascader li{min-height:34px;padding:8px 10px;border-radius:var(--radius-default);color:var(--color-text-default);font-size:var(--font-style-body-size)}.cascader li.active{color:var(--color-action-primary);background:color-mix(in srgb, var(--color-action-primary) 8%, transparent)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.content{padding:28px 20px 56px}.cascader{display:grid}.cascader ul{width:100%;border-right:0;border-bottom:1px solid var(--color-border-subtle)}}
       /* Shared side navigation */
       html,
       body {
@@ -187,7 +154,7 @@
 
       .sidebar::-webkit-scrollbar-thumb {
         background: var(--color-border-default);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
       .nav-list {
         display: flex;
@@ -220,7 +187,7 @@
         width: fit-content;
         padding: 0 12px 4px;
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
       }
       .nav-category-count {
@@ -238,14 +205,14 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm, 6px);
+        border-radius: var(--radius-default);
         cursor: pointer;
         text-align: left;
         text-decoration: none;
       }
       .nav-button:hover {
         color: var(--color-text-primary);
-        background: var(--gray-50);
+        background: var(--color-bg-container);
       }
       .nav-button[aria-current=page] {
         color:var(--color-action-primary);
@@ -253,18 +220,10 @@
       }
       .nav-label {
         overflow: hidden;
-        font-size:var(--text-body-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-overflow: ellipsis;
         white-space: nowrap;
-      }
-      .sidebar-footer {
-        margin-top: auto;
-        padding: 14px 6px 0;
-        color:var(--color-text-tertiary);
-        border-top:1px solid var(--color-border-subtle);
-        font-size:var(--text-caption-size);
-        line-height: 1.5;
       }
       @media (max-width: 860px) {
         .workspace {
@@ -282,9 +241,6 @@
           overflow-y: hidden;
           border-right: 0;
           border-bottom:1px solid var(--color-border-subtle);
-        }
-        .sidebar-footer {
-          display: none;
         }
         .nav-list,
         .nav-section,
@@ -312,35 +268,35 @@
       }
       /* Shared top navigation */
       :root {
-        --brand-50: #f0fdf3;
-        --brand-100: #dbfde3;
-        --brand-200: #b9f9c9;
-        --brand-300: #82f39f;
-        --brand-400: #45e36e;
-        --brand-600: #00ae2e;
-        --brand-700: #118430;
-        --brand-800: #13682a;
-        --brand-900: #125526;
-        --brand-text: #00ae2e;
-        --brand-text-hover: #118430;
-        --brand-border-soft: #bfead2;
-        --brand-border-hover: #8fd9b3;
-        --gray-800: #22262a;
-        --gray-400: #a5adb6;
-        --white: #ffffff;
+
+
+
+
+
+
+
+
+
+        --brand-text: var(--brand-6);
+        --brand-text-hover: var(--brand-7);
+        --brand-border-soft: var(--success-1);
+        --brand-border-hover: var(--success-2);
+
+
+
         --topbar-height: 60px;
-        --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --radius-default: 6px;
+
       }
 
       .topbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 36px;
         height: var(--topbar-height);
         padding: 0 24px;
-        background: rgba(255, 255, 255, 0.94);
+        background: var(--color-bg-container);
         border-bottom:1px solid var(--color-border-subtle);
         backdrop-filter: blur(12px);
         z-index: 3;
@@ -364,7 +320,7 @@
 
       .brand-mark-layer-top {
         fill: url(#brandMarkTop);
-        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+        filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent));
       }
 
       .brand-mark-layer-middle {
@@ -377,7 +333,7 @@
 
       .brand-title {
         overflow: hidden;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         font-size: 17px;
         font-weight: 600;
         letter-spacing: 0;
@@ -385,9 +341,128 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+.nav-section[hidden] { display: none !important; }
+.nav-list > .nav-section:nth-child(2) { margin-top: 0 !important; }
+.sidebar .nav-list { gap: 12px; padding-bottom: 0 !important; }
+.sidebar .nav-section { gap: 8px; }
+.nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+.nav-category {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 32px;
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-category-chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-text-tertiary);
+  transition: transform 0.16s ease;
+}
+.nav-category-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+.nav-category[aria-expanded="false"] + .nav-sublist { display: none !important; }
+.nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.nav-category { color: var(--color-text-tertiary) !important; }
+.nav-category:hover { background: var(--color-bg-container) !important; }
+.nav-category .nav-category-count,
+.nav-category .nav-category-chevron { color: inherit !important; }
 
-      .product-select {
+.topbar-nav {
+  --tabs-height-default: 40px;
+  --tabs-padding-x: 14px;
+  --tabs-gap: 8px;
+  --tabs-font-size: var(--font-style-body-size);
+  --tabs-font-weight-active: var(--font-style-body-medium-weight);
+  --tabs-color: var(--color-text-secondary);
+  --tabs-hover-color: var(--color-text-primary);
+  --tabs-active-color: var(--brand-text);
+  --tabs-indicator-color: var(--color-action-primary);
+  --tabs-indicator-size: 2px;
+  --tabs-bg-hover: var(--color-bg-hover);
+  --tabs-radius: var(--radius-default);
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: var(--tabs-gap);
+}
+
+.topbar-nav-tab {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabs-height-default);
+  padding: 0 var(--tabs-padding-x);
+  color: var(--tabs-color);
+  background: transparent;
+  border: 0;
+  border-radius: var(--tabs-radius);
+  cursor: pointer;
+  font-size: var(--tabs-font-size);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover {
+  color: var(--tabs-hover-color);
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover::before {
+  position: absolute;
+  z-index: -1;
+  inset: 4px;
+  content: "";
+  background: var(--tabs-bg-hover);
+  border-radius: var(--radius-small);
+}
+
+.topbar-nav-tab[aria-selected="true"] {
+  color: var(--tabs-active-color);
+  font-weight: var(--tabs-font-weight-active);
+}
+
+.topbar-nav-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: var(--tabs-indicator-size);
+  content: "";
+  background: var(--tabs-indicator-color);
+  border-radius: var(--radius-full);
+}
+
+.topbar-nav-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-select {
+
         position: relative;
+        margin-left: 0;
         flex: 0 0 auto;
         width: 124px;
       }
@@ -401,12 +476,12 @@
         width: 100%;
         min-height: 36px;
         padding: 0 22px 0 10px;
-        color: var(--gray-800);
-        background: var(--gray-50);
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.2;
         text-align: left;
@@ -427,18 +502,20 @@
       .product-select-trigger::after {
         position: absolute;
         top: 50%;
-        right: 9px;
-        width: 5px;
-        height: 5px;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
         content: "";
-        border-right: 1.25px solid var(--gray-500);
-        border-bottom: 1.25px solid var(--gray-500);
-        transform: translateY(-65%) rotate(45deg);
+        background-color: var(--color-text-disabled);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        transform: translateY(-50%);
         transition: transform 0.16s ease;
-      }
+        }
 
       .product-select-trigger[aria-expanded="true"]::after {
-        transform: translateY(-35%) rotate(225deg);
+        transform: translateY(-50%) rotate(180deg);
       }
 
       .product-select-menu {
@@ -454,8 +531,8 @@
         list-style: none;
         background:var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+        border-radius: var(--radius-default);
+        box-shadow: var(--shadow-overlay);
       }
 
       .product-select-menu[hidden] {
@@ -469,9 +546,9 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-align: left;
       }
@@ -479,7 +556,7 @@
       .product-select-option:hover,
       .product-select-option[aria-selected="true"] {
         color:var(--color-action-primary);
-        background: rgb(var(--brand-rgb) / 0.08);
+        background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
       .topbar-actions {
@@ -488,15 +565,15 @@
         margin-left: auto;
         gap: 8px;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .status-dot {
         width: 8px;
         height: 8px;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         background:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+        box-shadow: none;
       }
 
       @media (max-width: 680px) {
@@ -540,7 +617,7 @@
 
       .doc-page {
         width: min(100%, 1080px);
-        color: var(--gray-800);
+        color: var(--color-text-default);
       }
 
       .doc-hero,
@@ -555,7 +632,7 @@
       .doc-kicker {
         margin: 0 0 10px;
         color:var(--color-action-primary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         font-weight: 400;
         line-height: 1.4;
       }
@@ -572,8 +649,8 @@
         max-width: 720px;
         margin: 12px 0 0;
         color:var(--color-text-secondary);
-        font-size:var(--text-body-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .doc-meta-list {
@@ -593,8 +670,8 @@
         color:var(--color-text-secondary);
         background:var(--color-bg-subtle);
         border: 0;
-        border-radius: 999px;
-        font-size:var(--text-caption-size);
+        border-radius: var(--radius-full);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
         white-space: nowrap;
       }
@@ -627,9 +704,9 @@
         min-width: 0;
         padding: 16px;
         overflow: visible;
-        background: var(--gray-50);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
       }
 
       .example-block.full {
@@ -638,8 +715,8 @@
 
       .example-block h3 {
         margin: 0 0 8px;
-        color: var(--gray-800);
-        font-size:var(--text-body-size);
+        color: var(--color-text-default);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -647,7 +724,7 @@
       .example-block p {
         margin: 0 0 14px;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.7;
       }
 
@@ -663,8 +740,8 @@
         position: relative;
         padding-left: 16px;
         color:var(--color-text-default);
-        font-size:var(--text-control-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .rule-list li::before {
@@ -675,7 +752,7 @@
         height: 5px;
         content: "";
         background:var(--color-action-primary);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
 
       .spec-field {
@@ -686,14 +763,14 @@
 
       .spec-label {
         color:var(--color-text-default);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         font-weight: 560;
         line-height: 1.35;
       }
 
       .spec-field-help {
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.5;
       }
 
@@ -716,11 +793,11 @@
         height: var(--cascader-trigger-height);
         min-height: var(--cascader-trigger-height);
         padding: 0 36px 0 12px;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         background:var(--color-bg-container);
         border: 1px solid var(--input-border-color);
         border-radius: var(--input-radius);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-align: left;
         cursor: pointer;
@@ -729,15 +806,16 @@
 
       .spec-cascader-trigger[aria-expanded="true"] {
         border-color: var(--input-focus-color);
-        box-shadow: var(--input-focus-shadow);
+        box-shadow: var(--shadow-focus);
       }
 
       .cascader-chevron {
         position: absolute;
-        right: 6px;
+        right: 8px;
         top: 50%;
-        width: var(--cascader-expand-icon-size);
-        height: var(--cascader-expand-icon-size);
+        width: 24px;
+        height: 24px;
+        padding: 4px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -770,7 +848,7 @@
       .spec-cascader-trigger.open,
       .spec-cascader-trigger.focus {
         border-color: var(--input-focus-color);
-        box-shadow: var(--input-focus-shadow);
+        box-shadow: var(--shadow-focus);
       }
 
       .spec-cascader-trigger.error {
@@ -781,7 +859,10 @@
       .spec-cascader-trigger.disabled {
         color: var(--input-disabled-color);
         background: var(--input-disabled-bg);
-        border-color: var(--input-disabled-border-color);
+        border-color: var(--cascader-disabled-border-color);
+        cursor: not-allowed;
+        opacity: var(--input-disabled-opacity);
+        box-shadow: none;
       }
 
       .spec-cascader-trigger.disabled .cascader-chevron {
@@ -791,7 +872,7 @@
       .spec-cascader-trigger.small {
         height: var(--input-height-small);
         min-height: var(--input-height-small);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .spec-cascader-trigger.large {
@@ -801,7 +882,7 @@
       }
 
       .trigger-placeholder {
-        color: #a5abb1;
+        color: var(--color-text-disabled);
       }
 
       .trigger-text {
@@ -833,8 +914,8 @@
         padding: 2px 7px;
         color:var(--color-text-default);
         background:var(--color-bg-subtle);
-        border-radius: 6px;
-        font-size:var(--text-caption-size);
+        border-radius: var(--radius-default);
+        font-size:var(--font-style-caption-size);
         line-height: 16px;
       }
 
@@ -849,28 +930,30 @@
       }
 
       .cascader-tag-more {
-        color: #555b61;
+        color: var(--color-text-tertiary);
       }
 
       .cascader-tag-remove {
         flex: 0 0 auto;
-        color: #969ba1;
-        font-size:var(--text-body-size);
+        color: var(--color-text-disabled);
+        font-size:var(--font-style-body-size);
         line-height: 16px;
       }
 
       .trigger-clear {
         position: absolute;
-        right: 7px;
+        right: 8px;
         top: 50%;
         z-index: 1;
-        width: 18px;
-        height: 18px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        color: #969ba1;
-        border-radius: 6px;
+        color: var(--color-text-disabled);
+        border-radius: var(--radius-default);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%);
@@ -878,6 +961,16 @@
           background-color 0.15s ease,
           color 0.15s ease,
           opacity 0.15s ease;
+      }
+
+      .trigger-clear svg {
+        width: 16px;
+        height: 16px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
       }
 
       .trigger-clear[hidden] {
@@ -891,24 +984,6 @@
 
       .spec-cascader-trigger:has(.trigger-clear:not([hidden])):hover .cascader-chevron {
         opacity: 0;
-      }
-
-      .trigger-clear::before,
-      .trigger-clear::after {
-        position: absolute;
-        width: 9px;
-        height: 1.4px;
-        content: "";
-        background: currentColor;
-        border-radius: 999px;
-      }
-
-      .trigger-clear::before {
-        transform: rotate(45deg);
-      }
-
-      .trigger-clear::after {
-        transform: rotate(-45deg);
       }
 
       .trigger-clear:hover {
@@ -974,7 +1049,7 @@
 
       .cascader-col::-webkit-scrollbar-thumb {
         background: var(--scrollbar-thumb-color);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
 
       .cascader-col:last-child {
@@ -988,54 +1063,65 @@
         gap: 8px;
         min-height: 34px;
         padding: 7px 26px 7px 10px;
-        border-radius: 6px;
+        border-radius: var(--radius-default);
         color:var(--color-text-default);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.35;
       }
 
       .cascader-option:hover,
       .cascader-option.hover {
-        background: var(--gray-50);
+        background: var(--color-bg-overlay-hover);
         color:var(--color-text-primary);
       }
 
       .cascader-option.active {
-        color:var(--color-text-primary);
-        background: var(--cascader-active-bg);
+        color:var(--color-action-primary);
+        background: transparent;
         font-weight: 500;
       }
 
       .cascader-option.selected {
-        color:var(--color-text-primary);
+        color:var(--color-action-primary);
+        background: transparent;
         font-weight: 500;
       }
 
-      .cascader-option.disabled {
-        color: #b8c0c8;
-        cursor: not-allowed;
+      .cascader-option.active:hover,
+      .cascader-option.selected:hover {
+        background: var(--color-bg-overlay-hover);
       }
 
-      .cascader-option.has-child::after {
-        content: "";
+      .cascader-option.disabled {
+        color: var(--color-text-disabled);
+        background: transparent;
+        cursor: not-allowed;
+        opacity: 0.72;
+      }
+
+      .cascader-option.disabled:hover { background: transparent; color: var(--color-text-disabled); }
+
+      .cascader-enter-icon {
         position: absolute;
         right: 10px;
         top: 50%;
         width: var(--cascader-enter-icon-size);
         height: var(--cascader-enter-icon-size);
-        border-right: var(--cascader-icon-stroke-width) solid var(--cascader-icon-color);
-        border-bottom: var(--cascader-icon-stroke-width) solid var(--cascader-icon-color);
-        transform: translateY(-50%) rotate(-45deg);
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        color: var(--cascader-icon-color);
+        transform: translateY(-50%);
       }
 
       .cascader-option.loading {
         cursor: default;
       }
 
-      .cascader-option.loading::after {
-        display: none;
-      }
+      .cascader-option.loading .cascader-enter-icon { display: none; }
 
       .cascader-loading-icon {
         position: absolute;
@@ -1076,8 +1162,8 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid #cfd6dc;
-        border-radius: 4px;
+        border: 1.4px solid var(--neutral-3);
+        border-radius: var(--radius-small);
         appearance: none;
         background:var(--color-bg-container);
         outline: 0;
@@ -1107,6 +1193,21 @@
       .cascader-option input:checked {
         border-color:var(--color-action-primary);
         background:var(--color-action-primary);
+      }
+
+      .cascader-option input[data-indeterminate="true"] {
+        border-color:var(--color-action-primary);
+        background:var(--color-action-primary);
+      }
+
+      .cascader-option input[data-indeterminate="true"]::after {
+        width: 7px;
+        height: 0;
+        background: transparent;
+        clip-path: none;
+        border-bottom: 1.6px solid var(--color-bg-container);
+        opacity: 1;
+        transform: translate(-50%, -50%);
       }
 
       .cascader-option input:checked::after {
@@ -1143,7 +1244,7 @@
       .spec-table-wrap {
         overflow-x: auto;
         border:1px solid var(--color-border-subtle);
-        border-radius: 8px;
+        border-radius: var(--radius-large);
       }
 
       .spec-table {
@@ -1151,7 +1252,7 @@
         min-width: 720px;
         border-collapse: collapse;
         background:var(--color-bg-container);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .spec-table th,
@@ -1165,7 +1266,7 @@
 
       .spec-table th {
         color:var(--color-text-default);
-        background: var(--gray-50);
+        background: var(--color-bg-container);
         font-weight: 560;
       }
 
@@ -1176,7 +1277,7 @@
       .spec-table code {
         color:var(--color-text-primary);
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
       }
 
       @media (max-width: 860px) {
@@ -1195,7 +1296,7 @@
         }
 
         .doc-title {
-          font-size:var(--text-data-size);
+          font-size:var(--font-style-display-size);
         }
 
         .cascader-popover {
@@ -1215,35 +1316,44 @@
         }
       }
     </style>
+    <link rel="stylesheet" href="../styles/component-color-default.css" />
+    <style>
+      .example-block.full { background: var(--color-bg-container); }
+    </style>
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/control-radius.css" />
+    <link rel="stylesheet" href="../styles/topbar-shared.css" />
+    <link rel="stylesheet" href="../styles/typography-standard.css">
+      <link rel="stylesheet" href="../styles/radius-tokens.css" />
   </head>
   <body>
     <div class="app-shell"><header class="topbar">
-        <a class="brand" href="#" aria-label="IQB DESIGN 首页">
+        <a class="brand" href="#" aria-label="IQ Design System 首页">
           <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-400)" />
-                <stop offset="1" stop-color="var(--brand-600)" />
+                <stop offset="0" stop-color="var(--brand-4)" />
+                <stop offset="1" stop-color="var(--brand-6)" />
               </linearGradient>
               <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.24" />
               </linearGradient>
               <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.1" />
               </linearGradient>
             </defs>
             <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
           </svg>
-          <span class="brand-title">IQB DESIGN</span>
+          <span class="brand-title">IQ Design System</span>
         </a>
-        <div class="topbar-actions" aria-label="系统状态">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 46/46</span>
-        </div>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="design">设计</button>
+        </nav>
         <div class="product-select" data-product-select>
           <button
             class="product-select-trigger"
@@ -1295,9 +1405,14 @@
           <nav>
             <ul class="nav-list">
               <li class="nav-section">
-                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
-                  <span class="nav-label">Styles 全局样式</span>
-                </a>
+                <button class="nav-category" type="button" aria-expanded="true" data-nav-scope="global-style">Styles 全局样式<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="../styles/color.html" data-style-page="color"><span class="nav-label">Color 颜色</span></a></li>
+                  <li><a class="nav-button" href="../styles/text.html" data-style-page="text"><span class="nav-label">Text 字体</span></a></li>
+                  <li><a class="nav-button" href="../styles/icon.html" data-style-page="icon"><span class="nav-label">ICON 图标</span></a></li>
+                  <li><a class="nav-button" href="../styles/radius.html" data-style-page="radius"><span class="nav-label">Radius 圆角</span></a></li>
+                  <li><a class="nav-button" href="../styles/theme.html" data-style-page="theme"><span class="nav-label">Theme 主题</span></a></li>
+                </ul>
               </li>
               <li class="nav-section">
                 <a class="nav-button" href="../index.html#overview">
@@ -1305,7 +1420,7 @@
                 </a>
               </li>
               <li class="nav-section">
-                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">General 通用<span class="nav-category-count">2</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../general/button.html">
@@ -1320,7 +1435,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Layout 布局<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../layout/divider.html">
@@ -1350,7 +1465,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Navigation 导航<span class="nav-category-count">6</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../navigation/menu.html">
@@ -1385,7 +1500,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Entry 数据录入<span class="nav-category-count">16</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../dataentry/input.html">
@@ -1470,7 +1585,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Display 数据展示<span class="nav-category-count">14</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../datadisplay/table.html">
@@ -1545,7 +1660,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Feedback 反馈<span class="nav-category-count">9</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../feedback/alert.html">
@@ -1596,8 +1711,6 @@
               </li>
             </ul>
           </nav>
-
-          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
         </aside>
         <section class="canvas" aria-label="组件说明详情区">
           <div class="canvas-inner">
@@ -1610,7 +1723,7 @@
               </p>
               <ul class="doc-meta-list" aria-label="联级选择基础规格">
                 <li>触发器默认宽高 320 × 38px</li>
-                <li>圆角 10px</li>
+                <li>圆角 8px</li>
                 <li>浮层列宽 155px</li>
                 <li>选项最小高度 34px</li>
                 <li>细滚动条 4px</li>
@@ -1632,8 +1745,8 @@
               <h2>基础用法</h2>
               <div class="doc-grid">
                 <div class="example-block">
-                  <h3>点击展开</h3>
-                  <p>选择框默认展示占位文案，点击后展开分列菜单；选择末级后回填完整路径并自动收起。</p>
+                  <div class="example-head"><h3>点击展开</h3>
+                  <p>选择框默认展示占位文案，点击后展开分列菜单；选择末级后回填完整路径并自动收起。</p></div>
                   <div class="cascader-live" data-cascader-demo data-expand-trigger="click">
                     <div class="spec-field">
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
@@ -1646,8 +1759,8 @@
                 </div>
 
                 <div class="example-block">
-                  <h3>hover 展开</h3>
-                  <p>选择框默认收起；展开后悬停父级切换下一级，点击末级后完成选择。</p>
+                  <div class="example-head"><h3>hover 展开</h3>
+                  <p>选择框默认收起；展开后悬停父级切换下一级，点击末级后完成选择。</p></div>
                   <div class="cascader-live" data-cascader-demo data-expand-trigger="hover">
                     <div class="spec-field">
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
@@ -1665,13 +1778,13 @@
               <h2>允许清除</h2>
               <div class="doc-grid">
                 <div class="example-block full">
-                  <h3>清除已选路径</h3>
-                  <p>已选路径可快速清空，适合筛选条件和非必填配置项。</p>
+                  <div class="example-head"><h3>清除已选路径</h3>
+                  <p>已选路径可快速清空，适合筛选条件和非必填配置项。</p></div>
                   <div class="cascader-live" data-cascader-demo data-cascader-allow-clear data-selected-path="all,seeding,tiktok-upload" data-expand-trigger="click">
                     <div class="spec-field">
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
                         <span class="trigger-text" data-cascader-value>全体实习生 / 种草业务线 / TikTok 上传</span>
-                        <span class="trigger-clear" data-cascader-clear aria-label="清除已选路径"></span>
+                        <span class="trigger-clear" data-cascader-clear role="button" aria-label="清除已选路径"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" /></svg></span>
                         <span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
                       </button>
                     </div>
@@ -1685,8 +1798,8 @@
               <h2>多选</h2>
               <div class="doc-grid">
                 <div class="example-block full">
-                  <h3>标签省略</h3>
-                  <p>多选标签超出选择框宽度时，尽可能展示完整标签，其余合并为不可删除的 +n 计数。</p>
+                  <div class="example-head"><h3>标签省略</h3>
+                  <p>多选标签超出选择框宽度时，尽可能展示完整标签，其余合并为不可删除的 +n 计数。</p></div>
                   <div class="cascader-live" data-cascader-demo data-cascader-multiple data-cascader-collapse-fit data-expand-trigger="click">
                     <div class="spec-field">
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
@@ -1706,8 +1819,8 @@
               <h2>动态加载</h2>
               <div class="doc-grid">
                 <div class="example-block full">
-                  <h3>按需加载子级</h3>
-                  <p>每一级首次进入时用加载环替换右侧进入图标，数据返回后再展开下一级选项。</p>
+                  <div class="example-head"><h3>按需加载子级</h3>
+                  <p>每一级首次进入时用加载环替换右侧进入图标，数据返回后再展开下一级选项。</p></div>
                   <div class="cascader-live" data-cascader-demo data-cascader-dynamic-load data-expand-trigger="click">
                     <div class="spec-field">
                       <button class="spec-cascader-trigger" type="button" data-cascader-trigger aria-haspopup="tree" aria-expanded="false">
@@ -1725,28 +1838,28 @@
               <h2>状态</h2>
               <div class="doc-grid">
                 <div class="example-block">
-                  <h3>Default</h3>
-                  <p>默认状态仅展示轻边框和占位文案，浮层在点击后出现。</p>
+                  <div class="example-head"><h3>Default</h3>
+                  <p>默认状态仅展示轻边框和占位文案，浮层在点击后出现。</p></div>
                   <div class="spec-cascader-trigger"><span class="trigger-placeholder">请选择业务线 / Agent</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
                 <div class="example-block">
-                  <h3>Hover</h3>
-                  <p>鼠标悬停时提升边框颜色，提示该选择框可展开操作。</p>
+                  <div class="example-head"><h3>Hover</h3>
+                  <p>鼠标悬停时提升边框颜色，提示该选择框可展开操作。</p></div>
                   <div class="spec-cascader-trigger hover"><span class="trigger-placeholder">请选择业务线 / Agent</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
                 <div class="example-block">
-                  <h3>Focus</h3>
-                  <p>聚焦或展开时使用品牌色边框和浅绿色外描边。</p>
+                  <div class="example-head"><h3>Focus</h3>
+                  <p>聚焦或展开时使用品牌色边框和浅绿色外描边。</p></div>
                   <div class="spec-cascader-trigger focus"><span class="trigger-text">全体实习生 / 内容运营</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
                 <div class="example-block">
-                  <h3>Error</h3>
-                  <p>配置提交场景必须选择叶子节点时，未完成路径进入错误态。</p>
+                  <div class="example-head"><h3>Error</h3>
+                  <p>配置提交场景必须选择叶子节点时，未完成路径进入错误态。</p></div>
                   <div class="spec-cascader-trigger error"><span class="trigger-text">请选择叶子 Agent</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
                 <div class="example-block">
-                  <h3>Disabled</h3>
-                  <p>权限路径被系统策略锁定时不响应展开和选择。</p>
+                  <div class="example-head"><h3>Disabled</h3>
+                  <p>权限路径被系统策略锁定时不响应展开和选择。</p></div>
                   <div class="spec-cascader-trigger disabled"><span class="trigger-text">权限路径不可修改</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                 </div>
               </div>
@@ -1755,8 +1868,8 @@
             <section class="doc-section">
               <h2>尺寸</h2>
               <div class="example-block full">
-                <h3>Size</h3>
-                <p>尺寸与 Input、Select 对齐：紧凑筛选使用 30px，标准表单使用 38px，关键配置入口使用 44px。</p>
+                <div class="example-head"><h3>Size</h3>
+                <p>尺寸与 Input、Select 对齐：紧凑筛选使用 30px，标准表单使用 38px，关键配置入口使用 44px。</p></div>
                 <div class="size-stack">
                   <div class="spec-cascader-trigger small"><span class="trigger-text">Small / 侧栏筛选</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
                   <div class="spec-cascader-trigger"><span class="trigger-text">Default / 表单字段</span><span class="cascader-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></div>
@@ -1810,6 +1923,12 @@
                       <td><code>请选择 Agent / 任务类型</code></td>
                     </tr>
                     <tr>
+                      <td><code>size</code></td>
+                      <td>触发器尺寸，与 Input、Select 的三档高度保持一致。</td>
+                      <td><code>"small" | "default" | "large"</code></td>
+                      <td><code>"default"</code></td>
+                    </tr>
+                    <tr>
                       <td><code>expandTrigger</code></td>
                       <td>子级展开方式。表单默认点击；hover 模式仅用于桌面端轻量导航。</td>
                       <td><code>"click" | "hover"</code></td>
@@ -1847,12 +1966,18 @@
                     </tr>
                     <tr>
                       <td><code>status</code></td>
-                      <td>语义状态，用于默认、错误或禁用反馈；hover、focus 由交互状态自动触发。</td>
-                      <td><code>"default" | "error" | "disabled"</code></td>
+                      <td>语义状态，用于默认或错误反馈；hover、focus 由交互状态自动触发。</td>
+                      <td><code>"default" | "error"</code></td>
                       <td><code>"default"</code></td>
                     </tr>
                     <tr>
-                      <td><code>onVisibleChange</code></td>
+                      <td><code>disabled</code></td>
+                      <td>是否禁用触发器、清除和路径选择交互；视觉状态与 Select disabled 一致。</td>
+                      <td><code>boolean</code></td>
+                      <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                      <td><code>onOpenChange</code></td>
                       <td>下拉菜单展开或收起时触发。同一页面仅允许一个级联下拉保持展开。</td>
                       <td><code>(open) =&gt; void</code></td>
                       <td><code>-</code></td>
@@ -1891,6 +2016,26 @@
                       <td>默认触发器高度，与 Select 默认尺寸一致。</td>
                     </tr>
                     <tr>
+                      <td><code>--input-disabled-bg</code></td>
+                      <td><code>var(--color-bg-subtle)</code></td>
+                      <td>触发器禁用态背景，与 Select disabled 一致。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--input-disabled-color</code></td>
+                      <td><code>var(--color-text-disabled)</code></td>
+                      <td>触发器禁用态文字与图标颜色。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--cascader-disabled-border-color</code></td>
+                      <td><code>var(--color-border-default)</code></td>
+                      <td>触发器禁用态边框颜色。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--input-disabled-opacity</code></td>
+                      <td><code>0.6</code></td>
+                      <td>触发器禁用态整体透明度，与 Select disabled 一致。</td>
+                    </tr>
+                    <tr>
                       <td><code>--cascader-option-height</code></td>
                       <td><code>34px</code></td>
                       <td>浮层选项最小高度。</td>
@@ -1907,53 +2052,63 @@
                     </tr>
                     <tr>
                       <td><code>--cascader-active-bg</code></td>
-                      <td><code>var(--gray-100)</code></td>
+                      <td><code>var(--color-bg-hover)</code></td>
                       <td>当前展开路径或 active 项背景；多选已勾选项不使用灰底。</td>
                     </tr>
                     <tr>
                       <td><code>--cascader-icon-color</code></td>
-                      <td><code>var(--color-text-tertiary)</code></td>
+                      <td><code>var(--color-text-disabled)</code></td>
                       <td>展开收起图标、下拉菜单进入图标的默认颜色。</td>
                     </tr>
                     <tr>
                       <td><code>--cascader-expand-icon-size</code></td>
-                      <td><code>20px</code></td>
+                      <td><code>16px</code></td>
                       <td>选择框右侧展开收起图标 frame 尺寸，图标在 frame 内水平垂直居中。</td>
                     </tr>
                     <tr>
                       <td><code>--cascader-enter-icon-size</code></td>
-                      <td><code>5px</code></td>
+                      <td><code>16px</code></td>
                       <td>下拉菜单选项右侧进入图标尺寸。</td>
                     </tr>
                     <tr>
                       <td><code>--cascader-icon-stroke-width</code></td>
-                      <td><code>1.5px</code></td>
+                      <td><code>2px</code></td>
                       <td>展开收起图标与进入图标线宽。</td>
                     </tr>
                     <tr>
                       <td><code>--cascader-loading-icon-size</code></td>
-                      <td><code>14px</code></td>
+                      <td><code>16px</code></td>
                       <td>动态加载时替换进入图标的加载环尺寸。</td>
                     </tr>
                     <tr>
                       <td><code>--cascader-loading-icon-stroke-width</code></td>
-                      <td><code>1.2</code></td>
+                      <td><code>2</code></td>
                       <td>动态加载环 SVG 描边粗细。</td>
                     </tr>
                     <tr>
                       <td><code>--cascader-dropdown-shadow</code></td>
-                      <td><code>0 14px 32px color-mix(in srgb, var(--color-bg-inverse) 12%, transparent)</code></td>
+                      <td><code>var(--shadow-overlay)</code></td>
                       <td>浮层阴影，保持轻量悬浮感。</td>
                     </tr>
                     <tr>
                       <td><code>--cascader-radius</code></td>
-                      <td><code>8px</code></td>
-                      <td>浮层圆角；触发器圆角跟随基础控件 <code>--input-radius: 10px</code>。</td>
+                      <td><code>var(--radius-large)</code></td>
+                      <td>浮层圆角；触发器圆角跟随基础控件 <code>--input-radius: var(--radius-large)</code>。</td>
                     </tr>
                     <tr>
                       <td><code>--scrollbar-width-thin</code></td>
                       <td><code>4px</code></td>
                       <td>下拉菜单列内滚动条宽度，轨道保持透明。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--scrollbar-track-color</code></td>
+                      <td><code>transparent</code></td>
+                      <td>列内滚动条轨道颜色。</td>
+                    </tr>
+                    <tr>
+                      <td><code>--scrollbar-thumb-color</code></td>
+                      <td><code>var(--color-border-default)</code></td>
+                      <td>列内滚动条滑块颜色。</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1965,470 +2120,330 @@
       </main>
     </div>
     <script data-cascader-demo-script>
-      const cascaderDemoOptions = [
-        {
-          label: '全体实习生',
-          value: 'all',
-          children: [
-            {
-              label: '种草业务线',
-              value: 'seeding',
-              children: [
-                { label: 'TikTok 上传', value: 'tiktok-upload' },
-                { label: 'Facebook 种草助手', value: 'facebook-seeding' },
-                { label: 'YT 版权消音助手', value: 'yt-copyright' },
-              ],
-            },
-            {
-              label: '内容运营',
-              value: 'content',
-              children: [
-                { label: '素材生成', value: 'asset-generate' },
-                { label: '标题优化', value: 'title-optimizer' },
-                { label: '图文改写', value: 'rewrite' },
-              ],
-            },
-            {
-              label: '数据分析',
-              value: 'data',
-              children: [
-                { label: '大盘数据分析助手', value: 'market-insight' },
-                { label: '用户数据看板', value: 'user-dashboard' },
-              ],
-            },
-          ],
-        },
-        {
-          label: '我的实习生',
-          value: 'mine',
-          children: [
-            {
-              label: '自动化任务',
-              value: 'automation',
-              children: [
-                { label: 'TikTok 素材发布任务', value: 'tiktok-task' },
-                { label: '每日数据复盘', value: 'daily-review' },
-              ],
-            },
-            {
-              label: '应用连接',
-              value: 'connection',
-              children: [
-                { label: 'TikTok 账号授权', value: 'tiktok-auth' },
-                { label: '店铺素材库', value: 'asset-library' },
-              ],
-            },
-          ],
-        },
-        {
-          label: '待授权实习生',
-          value: 'permission',
-          disabled: true,
-          children: [
-            { label: '权限申请中', value: 'requesting' },
-          ],
-        },
-      ];
+const cascaderOptions = [
+  { label: '全体实习生', value: 'all', children: [
+    { label: '种草业务线', value: 'seeding', children: [
+      { label: 'TikTok 上传', value: 'tiktok-upload' },
+      { label: 'Facebook 种草助手', value: 'facebook-seeding' },
+      { label: 'YT 版权消音助手', value: 'yt-copyright' },
+    ] },
+    { label: '内容运营', value: 'content', children: [
+      { label: '素材生成', value: 'asset-generate' },
+      { label: '标题优化', value: 'title-optimizer' },
+      { label: '图文改写', value: 'rewrite' },
+    ] },
+    { label: '数据分析', value: 'data', children: [
+      { label: '大盘数据分析助手', value: 'market-insight' },
+      { label: '用户数据看板', value: 'user-dashboard' },
+    ] },
+  ] },
+  { label: '我的实习生', value: 'mine', children: [
+    { label: '自动化任务', value: 'automation', children: [
+      { label: 'TikTok 素材发布任务', value: 'tiktok-task' },
+      { label: '每日数据复盘', value: 'daily-review' },
+    ] },
+    { label: '应用连接', value: 'connection', children: [
+      { label: 'TikTok 账号授权', value: 'tiktok-auth' },
+      { label: '店铺素材库', value: 'asset-library' },
+    ] },
+  ] },
+  { label: '待授权实习生', value: 'permission', disabled: true },
+];
 
-      const cloneCascaderOptions = (options) => options.map((option) => ({
-        ...option,
-        children: option.children ? cloneCascaderOptions(option.children) : undefined,
-        asyncChildren: option.asyncChildren ? cloneCascaderOptions(option.asyncChildren) : undefined,
-      }));
+const findCascaderPath = (path, options) => {
+  let nodes = options;
+  const result = [];
+  path.forEach((value) => {
+    const node = nodes.find((item) => item.value === value);
+    if (!node) return;
+    result.push(node);
+    nodes = node.children || [];
+  });
+  return result;
+};
 
-      const createDynamicCascaderOptions = () => [
-        {
-          label: '全体实习生',
-          value: 'all',
-          asyncChildren: [
-            {
-              label: '种草业务线',
-              value: 'seeding',
-              asyncChildren: [
-                { label: 'TikTok 上传', value: 'tiktok-upload' },
-                { label: 'Facebook 种草助手', value: 'facebook-seeding' },
-              ],
-            },
-          ],
-        },
-        {
-          label: '我的实习生',
-          value: 'mine',
-          asyncChildren: [
-            {
-              label: '自动化任务',
-              value: 'automation',
-              asyncChildren: [
-                { label: 'TikTok 素材发布任务', value: 'tiktok-task' },
-                { label: '每日数据复盘', value: 'daily-review' },
-              ],
-            },
-            {
-              label: '应用连接',
-              value: 'connection',
-              asyncChildren: [
-                { label: 'TikTok 账号授权', value: 'tiktok-auth' },
-                { label: '店铺素材库', value: 'asset-library' },
-              ],
-            },
-          ],
-        },
-      ];
+const cascaderControllers = [];
+const closeCascaders = (except) => cascaderControllers.forEach((controller) => {
+  if (controller.demo !== except) controller.close();
+});
 
-      const pathKey = (path) => path.join('|');
+document.querySelectorAll('[data-cascader-demo]').forEach((demo) => {
+  const trigger = demo.querySelector('[data-cascader-trigger]');
+  const panel = demo.querySelector('[data-cascader-panel]');
+  const valueNode = demo.querySelector('[data-cascader-value]');
+  const clearNode = demo.querySelector('[data-cascader-clear]');
+  const tagContainer = demo.querySelector('[data-cascader-tags]');
+  const isMultiple = demo.hasAttribute('data-cascader-multiple');
+  const isDynamic = demo.hasAttribute('data-cascader-dynamic-load');
+  const expandOnHover = demo.dataset.expandTrigger === 'hover';
+  const state = {
+    open: false,
+    activePath: (demo.dataset.selectedPath || '').split(',').filter(Boolean),
+    selectedPath: (demo.dataset.selectedPath || '').split(',').filter(Boolean),
+    selectedPaths: [],
+    loadingPath: '',
+    loadedPaths: new Set(),
+  };
 
-      const findCascaderNodes = (path, rootOptions) => {
-        let nodes = rootOptions;
-        const result = [];
-        for (const value of path) {
-          const node = nodes.find((item) => item.value === value);
-          if (!node) break;
-          result.push(node);
-          nodes = node.children || [];
-        }
-        return result;
-      };
+  const pathLabel = (path) => findCascaderPath(path, cascaderOptions).map((node) => node.label).join(' / ');
+  const leafPaths = (node, path) => node.children?.length
+    ? node.children.flatMap((child) => leafPaths(child, [...path, child.value]))
+    : [path];
+  const selectionState = (node, path) => {
+    const descendants = leafPaths(node, path);
+    const selectedCount = descendants.filter((leaf) => state.selectedPaths.some((item) => item.join('|') === leaf.join('|'))).length;
+    return { checked: selectedCount > 0 && selectedCount === descendants.length, indeterminate: selectedCount > 0 && selectedCount < descendants.length, descendants };
+  };
+  const columns = () => {
+    const result = [cascaderOptions];
+    let nodes = cascaderOptions;
+    state.activePath.some((value, level) => {
+      const node = nodes.find((item) => item.value === value);
+      if (node?.children?.length) {
+        const key = state.activePath.slice(0, level + 1).join('|');
+        if (isDynamic && !state.loadedPaths.has(key)) return true;
+        result.push(node.children);
+        nodes = node.children;
+      }
+      return false;
+    });
+    return result;
+  };
 
-      const cascaderDemoControllers = [];
-      const closeAllCascaderDemos = (exceptDemo) => {
-        cascaderDemoControllers.forEach(({ demo, state, renderPanel }) => {
-          if (demo === exceptDemo || !state.open) return;
-          state.open = false;
-          renderPanel();
-        });
-      };
+  const syncValue = () => {
+    trigger.setAttribute('aria-expanded', String(state.open));
+    trigger.classList.toggle('open', state.open);
+    if (tagContainer) {
+      tagContainer.innerHTML = state.selectedPaths.length
+        ? state.selectedPaths.map((path) => `<span class="cascader-tag"><span>${pathLabel(path)}</span></span>`).join('')
+        : '<span class="trigger-text trigger-placeholder">请选择 Agent / 任务类型</span>';
+    } else if (valueNode) {
+      valueNode.textContent = state.selectedPath.length ? pathLabel(state.selectedPath) : '请选择 Agent / 任务类型';
+      valueNode.classList.toggle('trigger-placeholder', !state.selectedPath.length);
+    }
+    if (clearNode) clearNode.hidden = !state.selectedPath.length;
+  };
 
-      document.querySelectorAll('[data-cascader-demo]').forEach((demo) => {
-        const expandTrigger = demo.dataset.expandTrigger || 'click';
-        const allowClear = demo.hasAttribute('data-cascader-allow-clear');
-        const isMultiple = demo.hasAttribute('data-cascader-multiple');
-        const isDynamicLoad = demo.hasAttribute('data-cascader-dynamic-load');
-        const shouldCollapseTags = demo.hasAttribute('data-cascader-collapse-fit');
-        const optionsSource = isDynamicLoad ? createDynamicCascaderOptions() : cloneCascaderOptions(cascaderDemoOptions);
-        const trigger = demo.querySelector('[data-cascader-trigger]');
-        const valueNode = demo.querySelector('[data-cascader-value]');
-        const tagContainer = demo.querySelector('[data-cascader-tags]');
-        const clearNode = demo.querySelector('[data-cascader-clear]');
-        const panel = demo.querySelector('[data-cascader-panel]');
-        const selectedPath = (demo.dataset.selectedPath || '').split(',').filter(Boolean);
-        const selectedPaths = (demo.dataset.selectedPaths || '').split(';').map((path) => path.split(',').filter(Boolean)).filter((path) => path.length);
-        const initialPath = (demo.dataset.initialPath || demo.dataset.selectedPath || '').split(',').filter(Boolean);
-        const state = {
-          open: false,
-          activePath: initialPath,
-          selectedPath,
-          selectedPaths,
-          loadingKey: '',
-        };
+  const render = () => {
+    panel.hidden = !state.open;
+    syncValue();
+    if (!state.open) return;
+    panel.innerHTML = columns().map((nodes, level) => `<ul class="cascader-col" role="group">${nodes.map((node) => {
+      const path = [...state.activePath.slice(0, level), node.value];
+      const key = path.join('|');
+      const active = state.activePath[level] === node.value;
+      const multiState = isMultiple ? selectionState(node, path) : null;
+      const selected = isMultiple
+        ? multiState.checked
+        : state.selectedPath.join('|') === key;
+      const loading = state.loadingPath === key;
+      const hasChild = Boolean(node.children?.length || (isDynamic && level < 2));
+      const checkbox = isMultiple ? `<span class="cascader-checkbox-hit"><input type="checkbox" tabindex="-1" aria-label="选择 ${node.label}" ${multiState.checked ? 'checked' : ''} ${multiState.indeterminate ? 'data-indeterminate="true"' : ''} ${node.disabled ? 'disabled' : ''}></span>` : '';
+      const enterIcon = hasChild ? '<svg class="cascader-enter-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m9 6 6 6-6 6" /></svg>' : '';
+      const loadingIcon = loading ? '<svg class="cascader-loading-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><circle cx="8" cy="8" r="5"></circle></svg>' : '';
+      return `<li class="cascader-option${hasChild ? ' has-child' : ''}${active ? ' active' : ''}${selected ? ' selected' : ''}${node.disabled ? ' disabled' : ''}${loading ? ' loading' : ''}" role="treeitem" aria-disabled="${Boolean(node.disabled)}" aria-selected="${selected}" tabindex="${node.disabled ? -1 : 0}" data-path="${key}">${checkbox}<span>${node.label}</span>${enterIcon}${loadingIcon}</li>`;
+    }).join('')}</ul>`).join('');
+  };
 
-        const getPathLabel = (path) => findCascaderNodes(path, optionsSource).map((node) => node.label).join(' / ');
-        const getTagLabel = (path) => findCascaderNodes(path, optionsSource).at(-1)?.label || path.at(-1) || '';
+  const close = () => {
+    if (!state.open) return;
+    state.open = false;
+    render();
+  };
+  cascaderControllers.push({ demo, close });
 
-        const isMultiplePathFullySelected = (path, node) => {
-          const selectedKeys = new Set(state.selectedPaths.map(pathKey));
-          const children = node?.children || node?.asyncChildren || [];
-          if (!children.length) return selectedKeys.has(pathKey(path));
-          return children.every((child) => isMultiplePathFullySelected([...path, child.value], child));
-        };
+  trigger.addEventListener('click', (event) => {
+    event.stopPropagation();
+    if (event.target.closest('[data-cascader-clear]')) {
+      state.selectedPath = [];
+      state.activePath = [];
+      state.open = false;
+      render();
+      return;
+    }
+    closeCascaders(demo);
+    state.open = !state.open;
+    render();
+  });
 
-        const getVisibleMultipleTagPaths = (nodes = optionsSource, parentPath = []) => {
-          const paths = [];
-          nodes.forEach((node) => {
-            const nextPath = [...parentPath, node.value];
-            if (isMultiplePathFullySelected(nextPath, node)) {
-              paths.push(nextPath);
-              return;
-            }
-            const children = node.children || node.asyncChildren || [];
-            paths.push(...getVisibleMultipleTagPaths(children, nextPath));
-          });
-          return paths;
-        };
+  const activateOption = (option, checkboxIntent = false) => {
+    if (!option || option.classList.contains('disabled') || option.classList.contains('loading')) return;
+    const path = option.dataset.path.split('|');
+    const node = findCascaderPath(path, cascaderOptions).at(-1);
+    const key = path.join('|');
+    if (isMultiple && checkboxIntent) {
+      const { checked, descendants } = selectionState(node, path);
+      const descendantKeys = new Set(descendants.map((item) => item.join('|')));
+      state.selectedPaths = state.selectedPaths.filter((item) => !descendantKeys.has(item.join('|')));
+      if (!checked) state.selectedPaths.push(...descendants);
+      state.activePath = path;
+      render();
+      return;
+    }
+    if (isDynamic && node?.children?.length && !state.loadedPaths.has(key)) {
+      state.activePath = path;
+      state.loadingPath = key;
+      render();
+      window.setTimeout(() => {
+        state.loadedPaths.add(key);
+        state.loadingPath = '';
+        render();
+      }, 700);
+      return;
+    }
+    if (node?.children?.length) {
+      state.activePath = path;
+      render();
+      return;
+    }
+    if (isMultiple) {
+      const index = state.selectedPaths.findIndex((item) => item.join('|') === key);
+      index >= 0 ? state.selectedPaths.splice(index, 1) : state.selectedPaths.push(path);
+      state.activePath = path;
+      render();
+      return;
+    }
+    state.selectedPath = path;
+    state.activePath = path;
+    state.open = false;
+    render();
+  };
 
-        const renderCascaderTags = () => {
-          if (!tagContainer) return false;
-          if (!state.selectedPaths.length) {
-            tagContainer.innerHTML = '<span class="trigger-text trigger-placeholder">请选择 Agent / 任务类型</span>';
-            return true;
-          }
+  panel.addEventListener('click', (event) => {
+    event.stopPropagation();
+    activateOption(event.target.closest('.cascader-option'), Boolean(event.target.closest('.cascader-checkbox-hit')));
+  });
+  panel.addEventListener('mouseover', (event) => {
+    if (expandOnHover) activateOption(event.target.closest('.cascader-option.has-child'));
+  });
+  panel.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') activateOption(event.target.closest('.cascader-option'));
+    if (event.key === 'Escape') {
+      close();
+      trigger.focus();
+    }
+  });
+  demo.addEventListener('click', (event) => event.stopPropagation());
+  render();
+});
 
-          const selected = getVisibleMultipleTagPaths().map((path) => ({
-            key: pathKey(path),
-            label: getTagLabel(path),
-          }));
+document.addEventListener('click', () => closeCascaders());
 
-          const renderTags = (visibleItems, hiddenCount = 0) => {
-            tagContainer.innerHTML = '';
-            visibleItems.forEach((item) => {
-              const tag = document.createElement('span');
-              tag.className = 'cascader-tag';
-              tag.dataset.path = item.key;
-              tag.innerHTML = `<span>${item.label}</span><span class="cascader-tag-remove" aria-hidden="true"><svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18"/><path d="M6 6L18 18"/></svg></span>`;
-              tagContainer.appendChild(tag);
-            });
+const topbarComponentTab = document.querySelector("[data-topbar-nav=components]");
+const topbarDesignTab = document.querySelector("[data-topbar-nav=design]");
+const topbarTabs = [topbarComponentTab, topbarDesignTab].filter(Boolean);
+const sidebarSections = Array.from(document.querySelectorAll(".sidebar > nav > .nav-list > .nav-section"));
+const navMenuStorageKey = "iqb-design-active-nav-menu";
+const componentCategories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+const navCategoryStorageKey = "iqb-design-nav-category-state";
+const getSavedNavCategoryState = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(navCategoryStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+};
+const saveNavCategoryState = (state) => {
+  try {
+    sessionStorage.setItem(navCategoryStorageKey, JSON.stringify(state));
+  } catch {
+    // Local previews may disable storage; toggling still works in the current page.
+  }
+};
+const navCategoryState = getSavedNavCategoryState();
+const navCategoryButtons = Array.from(document.querySelectorAll(".sidebar .nav-category"));
+navCategoryButtons.forEach((button, index) => {
+  const sublist = button.nextElementSibling;
+  if (!sublist?.classList.contains("nav-sublist")) return;
+  const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+  sublist.id ||= `sidebar-category-${index + 1}`;
+  button.setAttribute("aria-controls", sublist.id);
+  button.setAttribute("aria-expanded", String(navCategoryState[categoryKey] !== false));
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const nextExpanded = !isExpanded;
+    button.setAttribute("aria-expanded", String(nextExpanded));
+    navCategoryState[categoryKey] = nextExpanded;
+    saveNavCategoryState(navCategoryState);
+  });
+});
 
-            if (hiddenCount > 0) {
-              const moreTag = document.createElement('span');
-              moreTag.className = 'cascader-tag cascader-tag-more';
-              moreTag.setAttribute('aria-label', `另有 ${hiddenCount} 个已选项`);
-              moreTag.innerHTML = `<span>+${hiddenCount}</span>`;
-              tagContainer.appendChild(moreTag);
-            }
-          };
+const getSectionCategory = (section) =>
+  section.querySelector(":scope > .nav-category")?.textContent.trim() || "";
+const isComponentSection = (section) =>
+  Boolean(section.querySelector(":scope > .nav-button .nav-label")?.textContent.includes("Components")) ||
+  componentCategories.some((category) => getSectionCategory(section).startsWith(category));
+const isDesignSection = (section) =>
+  Boolean(section.querySelector("[data-nav-scope=global-style]")) ||
+  getSectionCategory(section).startsWith("Layout");
+const getSavedNavMenu = () => {
+  try {
+    return sessionStorage.getItem(navMenuStorageKey);
+  } catch {
+    return null;
+  }
+};
+const saveNavMenu = (menu) => {
+  try {
+    sessionStorage.setItem(navMenuStorageKey, menu);
+  } catch {
+    // Local previews may disable storage; in-page switching still works.
+  }
+};
+const selectDefaultNavItem = (menu) => {
+  const defaultItem = menu === "design"
+    ? document.querySelector(".sidebar [data-style-page=color]")
+    : sidebarSections
+        .map((section) => section.querySelector(":scope > .nav-button"))
+        .find((item) => item?.querySelector(".nav-label")?.textContent.includes("Components"));
+  if (!defaultItem) return;
+  document.querySelectorAll(".sidebar .nav-button[aria-current=page]").forEach((item) =>
+    item.removeAttribute("aria-current"),
+  );
+  defaultItem.setAttribute("aria-current", "page");
+  defaultItem.click();
+};
 
-          renderTags(selected);
-          if (!shouldCollapseTags) return true;
+const applyNavMenu = (menu) => {
+  const activeMenu = menu === "design" ? "design" : "components";
+  topbarTabs.forEach((tab) => {
+    const isSelected = tab.dataset.topbarNav === activeMenu;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+  sidebarSections.forEach((section) => {
+    const shouldShow = activeMenu === "design" ? isDesignSection(section) : isComponentSection(section);
+    section.hidden = !shouldShow;
+    section.style.display = shouldShow ? "" : "none";
+  });
+};
 
-          const availableWidth = tagContainer.clientWidth;
-          if (!availableWidth || tagContainer.scrollWidth <= availableWidth) return true;
+applyNavMenu(getSavedNavMenu() || "components");
+topbarComponentTab?.addEventListener("click", () => {
+  applyNavMenu("components");
+  saveNavMenu("components");
+  selectDefaultNavItem("components");
+});
+topbarDesignTab?.addEventListener("click", () => {
+  applyNavMenu("design");
+  saveNavMenu("design");
+  selectDefaultNavItem("design");
+});
+const topbarNav = document.querySelector(".topbar-nav");
+topbarNav?.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = Math.max(0, topbarTabs.indexOf(document.activeElement));
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? topbarTabs.length - 1
+      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+  topbarTabs[nextIndex]?.click();
+  topbarTabs[nextIndex]?.focus();
+});
 
-          for (let visibleCount = selected.length - 1; visibleCount >= 0; visibleCount -= 1) {
-            renderTags(selected.slice(0, visibleCount), selected.length - visibleCount);
-            if (tagContainer.scrollWidth <= availableWidth) return true;
-          }
-          return true;
-        };
 
-        const syncTrigger = () => {
-          trigger.setAttribute('aria-expanded', String(state.open));
-          if (isMultiple && renderCascaderTags()) return;
-          const label = isMultiple
-            ? (state.selectedPaths.length ? `已选 ${state.selectedPaths.length} 项` : '请选择 Agent / 任务类型')
-            : (state.selectedPath.length ? getPathLabel(state.selectedPath) : '请选择 Agent / 任务类型');
-          valueNode.textContent = label;
-          valueNode.classList.toggle('trigger-placeholder', isMultiple ? !state.selectedPaths.length : !state.selectedPath.length);
-          if (clearNode) clearNode.hidden = !allowClear || !state.selectedPath.length;
-        };
-
-        const collectSubtreePaths = (path, node) => {
-          const paths = [path];
-          const children = node?.children || node?.asyncChildren || [];
-          children.forEach((child) => {
-            paths.push(...collectSubtreePaths([...path, child.value], child));
-          });
-          return paths;
-        };
-
-        const toggleMultiplePath = (path, node) => {
-          const paths = collectSubtreePaths(path, node);
-          const keys = new Set(paths.map(pathKey));
-          const shouldRemove = isMultiplePathFullySelected(path, node);
-
-          if (shouldRemove) {
-            state.selectedPaths = state.selectedPaths.filter((selected) => !keys.has(pathKey(selected)));
-          } else {
-            const selectedKeys = new Set(state.selectedPaths.map(pathKey));
-            paths.forEach((item) => {
-              const key = pathKey(item);
-              if (!selectedKeys.has(key)) {
-                state.selectedPaths.push(item);
-                selectedKeys.add(key);
-              }
-            });
-          }
-        };
-
-        const removeSelectedPath = (key) => {
-          const path = key.split('|').filter(Boolean);
-          const node = findCascaderNodes(path, optionsSource).at(-1);
-          const keys = new Set(collectSubtreePaths(path, node).map(pathKey));
-          state.selectedPaths = state.selectedPaths.filter((selected) => !keys.has(pathKey(selected)));
-          renderPanel();
-        };
-
-        const columnsFromActivePath = () => {
-          const columns = [optionsSource];
-          let nodes = optionsSource;
-          state.activePath.forEach((value, index) => {
-            const node = nodes.find((item) => item.value === value);
-            if (node?.children?.length) {
-              columns.push(node.children);
-              nodes = node.children;
-              return;
-            }
-            if (node && state.loadingKey === pathKey(state.activePath.slice(0, index + 1))) {
-              nodes = [];
-            }
-          });
-          return columns;
-        };
-
-        const renderColumn = (nodes, level) => {
-          const items = nodes.map((node) => {
-            const path = state.activePath.slice(0, level);
-            path[level] = node.value;
-            const nextPath = path.slice(0, level + 1);
-            const isLoading = state.loadingKey === pathKey(nextPath);
-            const hasChild = !!(node.children?.length || node.asyncChildren?.length || isLoading);
-            const isActive = state.activePath[level] === node.value;
-            const isSelected = isMultiple
-              ? isMultiplePathFullySelected(nextPath, node)
-              : pathKey(state.selectedPath) === pathKey(nextPath);
-            const classes = [
-              'cascader-option',
-              hasChild ? 'has-child' : '',
-              isLoading ? 'loading' : '',
-              isActive ? 'active' : '',
-              isSelected ? 'selected' : '',
-              node.disabled ? 'disabled' : '',
-            ].filter(Boolean).join(' ');
-            const checkbox = isMultiple && !isLoading
-              ? `<span class="cascader-checkbox-hit" data-cascader-checkbox><input type="checkbox" ${isSelected ? 'checked' : ''} ${node.disabled ? 'disabled' : ''} aria-hidden="true" tabindex="-1" /></span>`
-              : '';
-            const loadingIcon = isLoading ? '<svg class="cascader-loading-icon" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="5"></circle></svg>' : '';
-            return `<li class="${classes}" role="treeitem" tabindex="${node.disabled ? '-1' : '0'}" aria-selected="${isSelected}" data-path="${nextPath.join('|')}">${checkbox}${node.label}${loadingIcon}</li>`;
-          }).join('');
-          return `<ul class="cascader-col" role="group" aria-label="第 ${level + 1} 级">${items}</ul>`;
-        };
-
-        const renderPanel = () => {
-          panel.hidden = !state.open;
-          syncTrigger();
-          if (!state.open) return;
-          panel.innerHTML = columnsFromActivePath().map(renderColumn).join('');
-        };
-
-        cascaderDemoControllers.push({ demo, state, renderPanel });
-
-        const setActivePath = (path) => {
-          state.activePath = path;
-          renderPanel();
-        };
-
-        const selectPath = (path, node) => {
-          if (isMultiple) {
-            toggleMultiplePath(path, node);
-            state.activePath = path;
-            renderPanel();
-            return;
-          }
-          state.selectedPath = path;
-          state.activePath = path;
-          state.open = false;
-          renderPanel();
-        };
-
-        const loadDynamicChildren = (path, node) => {
-          state.loadingKey = pathKey(path);
-          state.activePath = path;
-          renderPanel();
-          window.setTimeout(() => {
-            node.children = node.asyncChildren || [];
-            delete node.asyncChildren;
-            state.loadingKey = '';
-            state.activePath = path;
-            renderPanel();
-          }, 960);
-        };
-
-        const getOptionData = (option) => {
-          if (!option || option.classList.contains('disabled') || option.classList.contains('loading')) return null;
-          const path = (option.dataset.path || '').split('|').filter(Boolean);
-          if (!path.length) return null;
-          return { path, node: findCascaderNodes(path, optionsSource).at(-1) };
-        };
-
-        const isActiveBranch = (path) => (
-          state.activePath.length >= path.length
-          && path.every((value, index) => state.activePath[index] === value)
-        );
-
-        const toggleMultipleOption = (option) => {
-          const optionData = getOptionData(option);
-          if (!optionData) return;
-          toggleMultiplePath(optionData.path, optionData.node);
-          renderPanel();
-        };
-
-        const handleOption = (option, { toggle = true } = {}) => {
-          const optionData = getOptionData(option);
-          if (!optionData) return;
-          const { path, node } = optionData;
-          if (isMultiple) {
-            if (node?.asyncChildren?.length) {
-              loadDynamicChildren(path, node);
-              return;
-            }
-            if (node?.children?.length) {
-              setActivePath(toggle && isActiveBranch(path) ? path.slice(0, -1) : path);
-              return;
-            }
-            setActivePath(path);
-            return;
-          }
-          if (node?.asyncChildren?.length) {
-            loadDynamicChildren(path, node);
-            return;
-          }
-          if (node?.children?.length) {
-            setActivePath(path);
-            return;
-          }
-          selectPath(path);
-        };
-
-        demo.addEventListener('click', (event) => {
-          event.stopPropagation();
-        });
-
-        trigger.addEventListener('click', (event) => {
-          const tagRemove = event.target.closest('.cascader-tag-remove');
-          if (tagRemove) {
-            event.stopPropagation();
-            const tag = tagRemove.closest('.cascader-tag');
-            if (tag?.dataset.path) removeSelectedPath(tag.dataset.path);
-            return;
-          }
-
-          if (event.target.closest('[data-cascader-clear]')) {
-            event.stopPropagation();
-            state.selectedPath = [];
-            state.activePath = [];
-            state.open = false;
-            renderPanel();
-            return;
-          }
-          const nextOpen = !state.open;
-          if (nextOpen) closeAllCascaderDemos(demo);
-          state.open = nextOpen;
-          renderPanel();
-        });
-
-        panel.addEventListener('click', (event) => {
-          const option = event.target.closest('.cascader-option');
-          if (isMultiple && event.target.closest('[data-cascader-checkbox]')) {
-            toggleMultipleOption(option);
-            return;
-          }
-          handleOption(option);
-        });
-
-        panel.addEventListener('mouseover', (event) => {
-          if (expandTrigger !== 'hover') return;
-          const option = event.target.closest('.cascader-option.has-child');
-          if (option) handleOption(option, { toggle: false });
-        });
-
-        panel.addEventListener('keydown', (event) => {
-          if (event.key === 'Enter') {
-            handleOption(event.target.closest('.cascader-option'));
-          }
-          if (event.key === 'Escape') {
-            state.open = false;
-            renderPanel();
-            trigger.focus();
-          }
-        });
-
-        renderPanel();
-      });
-
-      document.addEventListener('click', () => {
-        closeAllCascaderDemos();
-      });
-
-    </script>
-    <script data-product-theme-script>
       const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
       const productSelect = document.querySelector('[data-product-select]');
       const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
@@ -2441,23 +2456,21 @@
         decentralized: '实验主题',
       };
       const defaultProductThemeVars = [
-        '--brand-500',
-        '--brand-50',
-        '--brand-100',
-        '--brand-200',
-        '--brand-300',
-        '--brand-400',
-        '--brand-600',
-        '--brand-700',
-        '--brand-800',
-        '--brand-900',
-        '--brand-rgb',
+        '--brand-5',
+        '--brand-0',
+        '--brand-1',
+        '--brand-2',
+        '--brand-3',
+        '--brand-4',
+        '--brand-6',
+        '--brand-7',
+        '--brand-8',
+        '--brand-9',
         '--brand-text',
         '--brand-text-hover',
         '--brand-border-soft',
         '--brand-border-hover',
-        '--radius-sm',
-        '--shadow-focus',
+        '--radius-default',
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -2470,43 +2483,39 @@
         }
         if (activeProduct === 'business-theme') {
           root.dataset.productTheme = 'business-theme';
-          root.style.setProperty('--brand-50', '#f0fff6');
-          root.style.setProperty('--brand-100', '#ddfbea');
-          root.style.setProperty('--brand-200', '#bef5d5');
-          root.style.setProperty('--brand-300', '#91e9b8');
-          root.style.setProperty('--brand-400', '#5fd897');
-          root.style.setProperty('--brand-500', 'var(--color-status-success)');
-          root.style.setProperty('--brand-600', '#1b9c61');
-          root.style.setProperty('--brand-700', '#147c4d');
-          root.style.setProperty('--brand-800', '#12633f');
-          root.style.setProperty('--brand-900', '#104f34');
-          root.style.setProperty('--brand-rgb', '34, 181, 115');
-          root.style.setProperty('--brand-text', '#1b9c61');
-          root.style.setProperty('--brand-text-hover', '#147c4d');
-          root.style.setProperty('--brand-border-soft', '#bef5d5');
-          root.style.setProperty('--brand-border-hover', '#91e9b8');
-          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          root.style.setProperty('--brand-0', iqbPaletteValue("--brand-0"));
+          root.style.setProperty('--brand-1', iqbPaletteValue("--brand-1"));
+          root.style.setProperty('--brand-2', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-3', iqbPaletteValue("--success-2"));
+          root.style.setProperty('--brand-4', iqbPaletteValue("--success-3"));
+          root.style.setProperty('--brand-5', 'var(--color-status-success)');
+          root.style.setProperty('--brand-6', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
+          root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
+          root.style.setProperty('--brand-text', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-text-hover', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-border-soft', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-border-hover', iqbPaletteValue("--success-2"));
           return;
         }
         if (activeProduct !== 'decentralized') return;
         root.dataset.productTheme = 'test-theme-1';
-        root.style.setProperty('--brand-50', '#eff6ff');
-        root.style.setProperty('--brand-100', '#dbeafe');
-        root.style.setProperty('--brand-200', '#bfdbfe');
-        root.style.setProperty('--brand-300', '#93c5fd');
-        root.style.setProperty('--brand-400', '#60a5fa');
-        root.style.setProperty('--brand-500', '#2672ff');
-        root.style.setProperty('--brand-600', '#1d5fd7');
-        root.style.setProperty('--brand-700', '#1e4fb3');
-        root.style.setProperty('--brand-800', '#1e3f8a');
-        root.style.setProperty('--brand-900', '#172f68');
-        root.style.setProperty('--brand-rgb', '38, 114, 255');
-        root.style.setProperty('--brand-text', '#1d5fd7');
-        root.style.setProperty('--brand-text-hover', '#1e4fb3');
-        root.style.setProperty('--brand-border-soft', '#bfdbfe');
-        root.style.setProperty('--brand-border-hover', '#93c5fd');
-        root.style.setProperty('--radius-sm', '2px');
-        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.setProperty('--brand-0', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-1', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-2', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-3', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--brand-4', iqbPaletteValue("--info-3"));
+        root.style.setProperty('--brand-5', iqbPaletteValue("--info-5"));
+        root.style.setProperty('--brand-6', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
+        root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
+        root.style.setProperty('--brand-text', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-text-hover', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-border-soft', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-border-hover', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--radius-default', '6px');
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
@@ -2570,33 +2579,34 @@
           closeProductSelectMenu();
         }
       });
+const centerNavItem = (item, behavior = "smooth") => {
+  if (!item) return;
+  const sidebar = item.closest(".sidebar");
+  if (!sidebar) return;
 
-      const centerNavItem = (item, behavior = 'smooth') => {
-        if (!item) return;
-        const sidebar = item.closest('.sidebar');
-        if (!sidebar) return;
+  const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+  const itemRect = item.getBoundingClientRect();
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const clamp = (value, max) => Math.min(Math.max(value, 0), Math.max(max, 0));
 
-        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
-        const itemRect = item.getBoundingClientRect();
-        const sidebarRect = sidebar.getBoundingClientRect();
+  if (isHorizontal) {
+    const centeredLeft =
+      sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2;
+    const maxScrollLeft = sidebar.scrollWidth - sidebar.clientWidth;
+    sidebar.scrollTo({ left: clamp(centeredLeft, maxScrollLeft), behavior });
+    return;
+  }
 
-        if (isHorizontal) {
-          sidebar.scrollTo({
-            left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2,
-            behavior,
-          });
-          return;
-        }
-
-        sidebar.scrollTo({
-          top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2,
-          behavior,
-        });
-      };
+  const centeredTop =
+    sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2;
+  const maxScrollTop = sidebar.scrollHeight - sidebar.clientHeight;
+  sidebar.scrollTo({ top: clamp(centeredTop, maxScrollTop), behavior });
+};
 
       requestAnimationFrame(() => {
-        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]'), 'auto');
+        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current=page]'), 'auto');
       });
     </script>
+    <script src="../styles/topbar-shared.js"></script>
   </body>
 </html>

@@ -4,7 +4,8 @@ Design System 是面向企业应用平台的静态设计规范站点，当前以
 
 ## 内容
 
-- `index.html`: 组件总览与全局样式入口。
+- `index.html`: 组件总览与各组件规范入口。
+- `styles.html`: 全局样式独立规范页，继承首页完整导航与主题切换。
 - `general/button.html`: Button 按钮独立规范页。
 - `general/typography.html`: Typography 排版独立规范页。
 - `layout/divider.html`: Divider 分割线独立规范页。

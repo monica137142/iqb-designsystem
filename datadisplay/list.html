@@ -1,15 +1,16 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-product-theme="default-theme">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>List 列表 - Design System</title>
+    <script src="../styles/color-mode-init.js"></script>
     <style>
-      :root{--success-green-500: #1cc749;--yellow-500: #ff990a;--red-500: #fe3d33;--blue-500: #31a6ff;--blue-600: #1887f5;--brand-900: #125526;--brand-800: #13682a;--brand-700: #118430;--brand-400: #45e36e;--brand-300: #82f39f;--brand-200: #b9f9c9;--brand-100: #dbfde3;--brand-50: #f0fdf3;--brand-500:#1cc749;--brand-600:#00ae2e;--brand-rgb:28, 199, 73;--gray-950: #0b0d0f;--gray-900: #14171a;--gray-800: #22262a;--gray-700: #343a40;--gray-600: #59616a;--gray-500: #78818c;--gray-400: #a5adb6;--gray-300: #d4d9de;--gray-200: #e7eaee;--gray-100: #f3f5f7;--gray-50: #fafbfc;--white:#fff;--color-text-primary: var(--gray-900);--color-text-default: var(--gray-700);--color-text-secondary: var(--gray-600);--color-text-tertiary: var(--gray-500);--color-text-disabled: var(--gray-400);--color-text-inverse: var(--white);--color-text-link: var(--blue-600);--color-bg-page: var(--gray-50);--color-bg-container: var(--white);--color-bg-subtle: var(--gray-100);--color-bg-hover: var(--gray-100);--color-bg-selected: var(--brand-100);--color-bg-disabled: var(--gray-100);--color-border-default: var(--gray-300);--color-border-subtle: var(--gray-200);--color-border-strong: var(--gray-400);--color-border-focus: var(--brand-500);--color-border-disabled: var(--gray-200);--color-action-primary: var(--brand-500);--color-action-primary-hover: var(--brand-600);--color-action-primary-active: var(--brand-700);--color-action-primary-subtle: var(--brand-100);--color-action-primary-disabled: var(--brand-200);--color-status-success: var(--success-green-500);--color-status-error: var(--red-500);--color-status-warning: var(--yellow-500);--color-status-info: var(--blue-500);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-loading: rgba(255, 255, 255, 0.72);--text-page-title-size: 20px;--text-page-title-weight: 500;--text-page-title-line-height: 1.35;--text-section-title-size: 16px;--text-section-title-weight: 500;--text-section-title-line-height: 1.5;--text-card-title-size: 16px;--text-card-title-weight: 500;--text-card-title-line-height: 1.5;--text-overlay-title-size: 16px;--text-overlay-title-weight: 500;--text-overlay-title-line-height: 1.5;--text-body-size: 14px;--text-body-weight: 400;--text-body-line-height: 1.75;--text-body-strong-size: 14px;--text-body-strong-weight: 500;--text-body-strong-line-height: 1.75;--text-label-size: 14px;--text-label-weight: 500;--text-label-line-height: 1.75;--text-control-size: 13px;--text-control-weight: 400;--text-control-line-height: 1.65;--text-secondary-size: 13px;--text-secondary-weight: 400;--text-secondary-line-height: 1.65;--text-helper-size: 12px;--text-helper-weight: 400;--text-helper-line-height: 1.55;--text-caption-size: 12px;--text-caption-weight: 400;--text-caption-line-height: 1.55;--text-data-size: 24px;--text-data-weight: 500;--text-data-line-height: 1.3;--topbar-height:60px;--sidebar-width:300px;--radius-sm:6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:var(--topbar-height);padding:0 24px;background:rgba(255,255,255,.94);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color:var(--gray-800);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--brand-500),#82f39f);box-shadow:0 3px 10px rgb(var(--brand-rgb)/.22)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-sm);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color:var(--gray-950);background:var(--gray-50)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--text-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.sidebar-footer{margin-top:auto;padding:14px 6px 0;color:var(--color-text-tertiary);border-top:1px solid var(--color-border-subtle);font-size:var(--text-caption-size);line-height:1.5}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--text-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:var(--radius-sm);font-size:var(--text-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--text-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--text-control-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:8px}.list{display:grid;margin:0;padding:0;list-style:none;border:1px solid var(--color-border-subtle);border-radius:8px;overflow:hidden}.list-item{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:14px;min-height:72px;padding:14px 16px;background:var(--color-bg-container);border-bottom:1px solid var(--color-border-subtle)}.list-item:last-child{border-bottom:0}.list-item:hover{background:var(--gray-50)}.list-avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;color:var(--color-text-inverse);background:#666666;border-radius:50%;font-weight:700}.list-avatar.green{background:#078a4f}.list-avatar.blue{background:#1370e2}.list-main{min-width:0}.list-title{display:block;overflow:hidden;color:var(--color-text-primary);font-size:var(--text-body-size);font-weight:600;line-height:1.4;text-overflow:ellipsis;white-space:nowrap}.list-desc{margin-top:3px;overflow:hidden;color:var(--color-text-tertiary);font-size:var(--text-caption-size);line-height:1.5;text-overflow:ellipsis;white-space:nowrap}.list-action{height:30px;padding:0 12px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:6px;cursor:pointer}.list-action.primary{color:var(--color-text-inverse);background:var(--color-action-primary);border-color:var(--color-action-primary)}.list-meta{display:inline-flex;align-items:center;gap:8px;color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.list-card{display:grid;gap:12px}.list-card .list-item{border:1px solid var(--color-border-subtle);border-radius:8px}.list-card .list-item:last-child{border-bottom:1px solid var(--color-border-subtle)}.list-split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.list-split div{padding:16px;background:var(--gray-50);border:1px solid var(--color-border-subtle);border-radius:8px}.list-split strong{display:block;font-size:var(--text-page-title-size)}.list-split span{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.spec-table-wrap{overflow:auto;border:1px solid var(--color-border-subtle);border-radius:8px}.spec-table{width:100%;border-collapse:collapse;font-size:var(--text-control-size)}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top}.spec-table th{color:var(--color-text-default);background:var(--gray-50);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;background:var(--color-bg-subtle);border-radius:4px;font-family:"SFMono-Regular",Consolas,monospace;font-size:var(--text-caption-size)}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.sidebar-footer{display:none}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.list-split{grid-template-columns:1fr}.doc-title{font-size:28px}.list-item{grid-template-columns:36px minmax(0,1fr);align-items:start}.list-avatar{width:36px;height:36px}.list-item .list-action,.list-meta{grid-column:2}}
+      :root{--color-text-primary: var(--neutral-10);--color-text-default: var(--neutral-9);--color-text-secondary: var(--neutral-6);--color-text-tertiary: var(--neutral-5);--color-text-disabled: var(--neutral-4);--color-text-inverse: var(--neutral-0);--color-text-link: var(--info-6);--color-bg-page: var(--neutral-0);--color-bg-container: var(--neutral-0);--color-bg-subtle: var(--neutral-1);--color-bg-hover: var(--neutral-1);--color-bg-selected: var(--brand-1);--color-bg-disabled: var(--neutral-1);--color-border-default: var(--neutral-3);--color-border-subtle: var(--neutral-2);--color-border-strong: var(--neutral-4);--color-border-focus: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-action-primary: var(--brand-5);--color-action-primary-hover: var(--brand-6);--color-action-primary-hover: var(--brand-7);--color-action-primary-bg-hover: var(--brand-0);--color-action-primary-disabled: var(--brand-2);--color-status-success: var(--success-5);--color-status-error: var(--danger-5);--color-status-warning: var(--warning-5);--color-status-info: var(--info-5);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--topbar-height:60px;--sidebar-width:300px;--radius-default: 6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:36px;height:var(--topbar-height);padding:0 24px;background: var(--color-bg-container);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color: var(--color-text-default);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:var(--radius-large);background:linear-gradient(135deg,var(--brand-5),var(--brand-3));box-shadow:0 3px 10px color-mix(in srgb, var(--color-action-primary) 22%, transparent)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-default);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color: var(--color-text-top);background: var(--color-bg-container)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--font-style-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--font-style-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);font-size:var(--font-style-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--font-style-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.list{display:grid;margin:0;padding:0;list-style:none;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large);overflow:hidden}.list-item{display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:14px;min-height:72px;padding:14px 16px;background:var(--color-bg-container);border-bottom:1px solid var(--color-border-subtle)}.list-item:last-child{border-bottom:0}.list-item:hover{background: var(--color-bg-container)}.list-avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;color:var(--color-text-inverse);background:var(--neutral-5);border-radius:var(--radius-full);font-weight:700}.list-avatar.green{background:var(--success-6)}.list-avatar.blue{background:var(--info-6)}.list-main{min-width:0}.list-title{display:block;overflow:hidden;color:var(--color-text-primary);font-size:var(--font-style-body-size);font-weight:600;line-height:1.4;text-overflow:ellipsis;white-space:nowrap}.list-desc{margin-top:3px;overflow:hidden;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size);line-height:1.5;text-overflow:ellipsis;white-space:nowrap}.list-action{height:30px;padding:0 12px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);cursor:pointer}.list-action.primary{color:var(--color-text-inverse);background:var(--color-action-primary);border-color:var(--color-action-primary)}.list-meta{display:inline-flex;align-items:center;gap:8px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.list-card{display:grid;gap:12px}.list-card .list-item{border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.list-card .list-item:last-child{border-bottom:1px solid var(--color-border-subtle)}.list-split{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.list-split div{padding:16px;background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.list-split strong{display:block;font-size:var(--font-style-title-1-size)}.list-split span{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.spec-table-wrap{overflow:auto;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.spec-table{width:100%;border-collapse:collapse;font-size:var(--font-style-body-size)}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top}.spec-table th{color:var(--color-text-default);background: var(--color-bg-container);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;background:var(--color-bg-subtle);border-radius:var(--radius-small);font-family:"SFMono-Regular",Consolas,monospace;font-size:var(--font-style-caption-size)}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.list-split{grid-template-columns:1fr}.doc-title{font-size:28px}.list-item{grid-template-columns:36px minmax(0,1fr);align-items:start}.list-avatar{width:36px;height:36px}.list-item .list-action,.list-meta{grid-column:2}}
       /* Header parity with index.html */
       :root {
-        --brand-400: #45e36e;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+
+
       }
 
       .brand {
@@ -29,7 +30,7 @@
 
       .brand-mark-layer-top {
         fill: url(#brandMarkTop);
-        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+        filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent));
       }
 
       .brand-mark-layer-middle {
@@ -42,7 +43,7 @@
 
       .brand-title {
         overflow: hidden;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         font-size: 17px;
         font-weight: 600;
         letter-spacing: 0;
@@ -50,9 +51,129 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+.nav-section[hidden] { display: none !important; }
+.nav-list > .nav-section:nth-child(2) { margin-top: 0 !important; }
+.sidebar .nav-list { gap: 12px; padding-bottom: 0 !important; }
+.sidebar .nav-section { gap: 8px; }
+.nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+.nav-category {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 32px;
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-category-chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-text-tertiary);
+  transition: transform 0.16s ease;
+}
+.nav-category-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+.nav-category[aria-expanded="false"] + .nav-sublist { display: none !important; }
+.nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.nav-category { color: var(--color-text-tertiary) !important; }
+.nav-category:hover { background: var(--color-bg-container) !important; }
+.nav-category .nav-category-count,
+.nav-category .nav-category-chevron { color: inherit !important; }
 
-      .product-select {
+.topbar-nav {
+  --tabs-height-default: 40px;
+  --tabs-padding-x: 14px;
+  --tabs-gap: 8px;
+  --tabs-font-size: var(--font-style-body-size);
+  --tabs-font-weight-active: var(--font-style-body-medium-weight);
+  --tabs-color: var(--color-text-secondary);
+  --tabs-hover-color: var(--color-text-primary);
+  --tabs-active-color: var(--brand-text);
+  --tabs-indicator-color: var(--color-action-primary);
+  --tabs-indicator-size: 2px;
+  --tabs-bg-hover: var(--color-bg-hover);
+  --tabs-radius: var(--radius-default);
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: var(--tabs-gap);
+}
+
+.topbar-nav-tab {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabs-height-default);
+  padding: 0 var(--tabs-padding-x);
+  color: var(--tabs-color);
+  background: transparent;
+  border: 0;
+  border-radius: var(--tabs-radius);
+  cursor: pointer;
+  font-size: var(--tabs-font-size);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover {
+  color: var(--tabs-hover-color);
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover::before {
+  position: absolute;
+  z-index: -1;
+  inset: 4px;
+  content: "";
+  background: var(--tabs-bg-hover);
+  border-radius: var(--radius-small);
+}
+
+.topbar-nav-tab[aria-selected="true"] {
+  color: var(--tabs-active-color);
+  font-weight: var(--tabs-font-weight-active);
+}
+
+.topbar-nav-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: var(--tabs-indicator-size);
+  content: "";
+  background: var(--tabs-indicator-color);
+  border-radius: var(--radius-full);
+}
+
+.topbar-nav-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-select {
+
+
         position: relative;
+        margin-left: 0;
         flex: 0 0 auto;
         width: 124px;
       }
@@ -66,12 +187,12 @@
         width: 100%;
         min-height: 36px;
         padding: 0 22px 0 10px;
-        color: var(--gray-800);
-        background: var(--gray-50);
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.2;
         text-align: left;
@@ -92,18 +213,20 @@
       .product-select-trigger::after {
         position: absolute;
         top: 50%;
-        right: 9px;
-        width: 5px;
-        height: 5px;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
         content: "";
-        border-right: 1.25px solid var(--gray-500);
-        border-bottom: 1.25px solid var(--gray-500);
-        transform: translateY(-65%) rotate(45deg);
+        background-color: var(--color-text-disabled);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        transform: translateY(-50%);
         transition: transform 0.16s ease;
-      }
+        }
 
       .product-select-trigger[aria-expanded="true"]::after {
-        transform: translateY(-35%) rotate(225deg);
+        transform: translateY(-50%) rotate(180deg);
       }
 
       .product-select-menu {
@@ -119,8 +242,8 @@
         list-style: none;
         background:var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+        border-radius: var(--radius-default);
+        box-shadow: var(--shadow-overlay);
       }
 
       .product-select-menu[hidden] {
@@ -134,9 +257,9 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-align: left;
       }
@@ -144,7 +267,7 @@
       .product-select-option:hover,
       .product-select-option[aria-selected="true"] {
         color:var(--color-action-primary);
-        background: rgb(var(--brand-rgb) / 0.08);
+        background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
       .topbar-actions {
@@ -153,15 +276,15 @@
         margin-left: auto;
         gap: 8px;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .status-dot {
         width: 8px;
         height: 8px;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         background:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+        box-shadow: none;
       }
 
       @media (max-width: 680px) {
@@ -185,10 +308,9 @@
         --list-row-height-small: 36px;
         --list-row-height: 44px;
         --list-row-height-large: 72px;
-        --list-card-radius: 8px;
-        --list-border-color: #e8ebee;
-        --list-divider-color: #eef1f3;
-        --list-hover-bg: #fff;
+        --list-card-radius: var(--radius-large);
+        --list-border-color: var(--color-border-subtle);
+        --list-divider-color: var(--color-border-subtle);
         --list-example-padding: 36px;
         --list-header-padding-x: 18px;
         --list-header-padding-y: 10px;
@@ -211,7 +333,7 @@
       }
 
       .sidebar {
-        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
       }
 
@@ -228,8 +350,8 @@
 
       .sidebar::-webkit-scrollbar-thumb,
       .spec-table-wrap::-webkit-scrollbar-thumb {
-        background: var(--gray-300);
-        border-radius: 999px;
+        background: var(--color-border-default);
+        border-radius: var(--radius-full);
       }
 
       .canvas {
@@ -245,7 +367,7 @@
 
       .doc-page {
         width: min(100%, 1080px);
-        color: var(--gray-800);
+        color: var(--color-text-default);
       }
 
       .doc-hero,
@@ -275,7 +397,7 @@
       .doc-summary {
         max-width: 720px;
         margin: 12px 0 0;
-        line-height:var(--text-body-line-height);
+        line-height:var(--font-style-body-line-height);
       }
 
       .doc-meta-list {
@@ -287,7 +409,7 @@
         color:var(--color-text-secondary);
         background:var(--color-bg-subtle);
         border: 0;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         line-height: 1.4;
       }
 
@@ -310,13 +432,13 @@
 
       .doc-section h3 {
         margin: 0 0 8px;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         font-weight: 500;
         line-height: 1.4;
       }
 
       .doc-section p {
-        line-height:var(--text-body-line-height);
+        line-height:var(--font-style-body-line-height);
       }
 
       .rule-list {
@@ -331,8 +453,8 @@
         position: relative;
         padding-left: 16px;
         color:var(--color-text-default);
-        font-size:var(--text-control-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .rule-list li::before {
@@ -343,7 +465,7 @@
         height: 5px;
         content: "";
         background:var(--color-action-primary);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
 
       .doc-grid {
@@ -355,9 +477,9 @@
       .example-block {
         min-width: 0;
         padding: 16px;
-        background: var(--gray-50);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
       }
 
       .example-block.full {
@@ -388,8 +510,8 @@
         align-items: center;
         gap: 9px;
         margin: 0 0 8px;
-        color: #8a9199;
-        font-size:var(--text-control-size);
+        color: var(--color-text-disabled);
+        font-size:var(--font-style-body-size);
         font-weight: 600;
         line-height: 1.4;
       }
@@ -401,9 +523,9 @@
         flex: 0 0 24px;
         width: 24px;
         height: 24px;
-        color: #2f75d6;
-        background: #eef5ff;
-        border-radius: 8px;
+        color: var(--color-status-info);
+        background: var(--color-status-info-bg);
+        border-radius: var(--radius-large);
         font-size: 11px;
         font-weight: 700;
         line-height: 1;
@@ -411,10 +533,10 @@
 
       .list-spec-badge {
         padding: 2px 8px;
-        color: #969ba1;
+        color: var(--color-text-disabled);
         background:var(--color-bg-container);
         border: 1px solid var(--list-border-color);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         font-size: 11px;
         font-weight: 500;
       }
@@ -446,28 +568,24 @@
         border-bottom-color: var(--list-divider-color);
       }
 
-      .list-item:hover {
-        background: var(--list-hover-bg);
-      }
-
       .list-avatar {
         width: 44px;
         height: 44px;
-        border-radius: 12px;
-        background: #eef5ff;
-        color: #2f75d6;
-        font-size:var(--text-control-size);
+        border-radius: var(--radius-xlarge);
+        background: var(--color-status-info-bg);
+        color: var(--color-status-info);
+        font-size:var(--font-style-body-size);
         line-height: 1;
       }
 
       .list-avatar.green {
-        background: #ecfdf3;
-        color: #087443;
+        background: var(--color-status-success-bg);
+        color: var(--color-status-success-hover);
       }
 
       .list-avatar.blue {
-        background: #eff6ff;
-        color: #1d5fd7;
+        background: var(--color-status-info-bg);
+        color: var(--color-status-info);
       }
 
       .list-title {
@@ -486,16 +604,16 @@
       }
 
       .plain-text-list .list-title {
-        font-size:var(--text-body-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.5;
       }
 
       .plain-text-list .list-desc {
         margin-top: 0;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 400;
-        line-height:var(--text-control-line-height);
+        line-height:var(--font-style-body-line-height);
       }
 
       .single-line-list .list-item {
@@ -505,9 +623,9 @@
       }
 
       .single-line-list .list-title {
-        font-size:var(--text-body-size);
+        font-size:var(--font-style-body-size);
         font-weight: 400;
-        line-height:var(--text-body-line-height);
+        line-height:var(--font-style-body-line-height);
       }
 
       .list-desc {
@@ -517,9 +635,9 @@
       .list-action {
         height: 28px;
         padding: 0 12px;
-        border-color: #dfe4e8;
-        border-radius: var(--radius-sm);
-        font-size:var(--text-caption-size);
+        border-color: var(--color-border-subtle);
+        border-radius: var(--radius-default);
+        font-size:var(--font-style-caption-size);
         line-height: 1.2;
       }
 
@@ -535,7 +653,7 @@
       }
 
       .list-meta {
-        color: #8a9199;
+        color: var(--color-text-disabled);
       }
 
       .list-card {
@@ -578,7 +696,7 @@
       .spec-list-example-head h3 {
         margin: 0;
         color:var(--color-text-primary);
-        font-size:var(--text-body-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -603,8 +721,8 @@
         gap: 12px;
         padding: var(--list-header-padding-y) var(--list-header-padding-x);
         color:var(--color-text-default);
-        font-size:var(--text-control-size);
-        line-height:var(--text-caption-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-caption-line-height);
       }
 
       .spec-list-header {
@@ -615,14 +733,14 @@
 
       .spec-list-header span:last-child {
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         font-weight: 400;
       }
 
       .spec-list-footer {
         color:var(--color-text-tertiary);
-        background: #fcfcfd;
-        font-size:var(--text-caption-size);
+        background: var(--color-bg-container);
+        font-size:var(--font-style-caption-size);
         font-weight: 400;
         border-top: 1px solid var(--list-divider-color);
       }
@@ -643,8 +761,8 @@
         color:var(--color-text-default);
         background:var(--color-bg-container);
         border-bottom: 1px solid var(--list-divider-color);
-        font-size:var(--text-body-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .spec-list-item:last-child {
@@ -661,10 +779,6 @@
       .basic-list-demo .spec-list-footer {
         min-height: 36px;
         padding: 8px var(--list-header-padding-x);
-      }
-
-      .spec-list-hoverable .spec-list-item:hover {
-        background: var(--list-hover-bg);
       }
 
       .spec-list-splitless .spec-list-item {
@@ -685,17 +799,17 @@
         justify-content: center;
         width: 40px;
         height: 40px;
-        color: #2f75d6;
-        background: #eef5ff;
-        border-radius: 50%;
-        font-size:var(--text-control-size);
+        color: var(--color-status-info);
+        background: var(--color-status-info-bg);
+        border-radius: var(--radius-full);
+        font-size:var(--font-style-body-size);
         font-weight: 600;
         line-height: 1;
       }
 
       .spec-list-avatar.green {
-        color: #087443;
-        background: #ecfdf3;
+        color: var(--color-status-success-hover);
+        background: var(--color-status-success-bg);
       }
 
       .spec-list-meta {
@@ -706,7 +820,7 @@
         display: block;
         overflow: hidden;
         color:var(--color-text-primary);
-        font-size:var(--text-body-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.5;
         text-overflow: ellipsis;
@@ -718,9 +832,9 @@
         margin-top: 2px;
         overflow: hidden;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 400;
-        line-height:var(--text-control-line-height);
+        line-height:var(--font-style-body-line-height);
         text-overflow: ellipsis;
         white-space: nowrap;
       }
@@ -736,18 +850,10 @@
       .spec-list-action {
         height: 28px;
         padding: 0 10px;
-        color:var(--color-text-default);
-        background:var(--color-bg-container);
-        border: 1px solid #dfe4e8;
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
         cursor: pointer;
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.2;
-      }
-
-      .spec-list-action:hover {
-        color:var(--color-action-primary);
-        border-color:var(--color-action-primary);
       }
 
       .meta-action-list-demo .spec-list-action {
@@ -757,8 +863,8 @@
         min-height: 32px;
         height: auto;
         padding: 0 14px;
-        border-radius: 8px;
-        font-size:var(--text-control-size);
+        border-radius: var(--radius-large);
+        font-size:var(--font-style-body-size);
       }
 
       .meta-action-list-demo .spec-list-action.icon-only {
@@ -827,8 +933,8 @@
         padding: 10px 14px;
         color:var(--color-text-default);
         border-bottom: 1px solid var(--list-divider-color);
-        font-size:var(--text-control-size);
-        line-height:var(--text-caption-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-caption-line-height);
       }
 
       .spec-list-card-list li:last-child {
@@ -844,7 +950,7 @@
         height: var(--list-scroll-frame-height);
         overflow-y: auto;
         overscroll-behavior: contain;
-        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
       }
 
@@ -857,8 +963,8 @@
       }
 
       .scroll-load-frame::-webkit-scrollbar-thumb {
-        background: var(--gray-300);
-        border-radius: 999px;
+        background: var(--color-border-default);
+        border-radius: var(--radius-full);
       }
 
       .scroll-load-more {
@@ -868,9 +974,9 @@
         justify-content: center;
         gap: 8px;
         color:var(--color-text-tertiary);
-        background: #fcfcfd;
+        background: var(--color-bg-container);
         border-top: 1px solid var(--list-divider-color);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
       }
 
@@ -879,7 +985,7 @@
         height: var(--list-load-indicator-size);
         border:2px solid var(--color-border-subtle);
         border-top-color:var(--color-action-primary);
-        border-radius: 50%;
+        border-radius: var(--radius-full);
         animation: list-spinner 0.72s linear infinite;
       }
 
@@ -932,8 +1038,8 @@
       .list-split div {
         padding: 16px;
         background:var(--color-bg-container);
-        border-color: #e8ebee;
-        border-radius: var(--radius-sm);
+        border-color: var(--color-border-subtle);
+        border-radius: var(--radius-default);
       }
 
       .list-split strong {
@@ -947,7 +1053,7 @@
       .list-split span {
         display: block;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.7;
       }
 
@@ -966,7 +1072,7 @@
         padding: 12px 0;
         border-top:1px solid var(--color-border-subtle);
         color:var(--color-text-default);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.7;
       }
 
@@ -977,8 +1083,8 @@
 
       .spec-table-wrap {
         margin-top: 16px;
-        border-radius: var(--radius-sm);
-        scrollbar-color: var(--gray-300) transparent;
+        border-radius: var(--radius-default);
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
       }
 
@@ -987,7 +1093,7 @@
       }
 
       .spec-table code {
-        color: var(--gray-800);
+        color: var(--color-text-default);
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
       }
 
@@ -1020,7 +1126,7 @@
         }
 
         .doc-title {
-          font-size:var(--text-data-size);
+          font-size:var(--font-style-display-size);
         }
 
         .doc-grid,
@@ -1080,37 +1186,88 @@
           width: min(124px, calc(100vw - 92px));
         }
       }
+
+      /* Data Display component semantic alignment */
+      .demo-item, .demo-caption { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-spec-head { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-spec-avatar, .list-avatar, .spec-list-avatar { color: var(--color-status-info); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-avatar.green, .spec-list-avatar.green { color: var(--color-status-success); background: var(--color-bg-subtle); }
+      .list-avatar.blue, .spec-list-avatar.blue { color: var(--color-status-info); background: var(--color-bg-subtle); }
+      .list-spec-badge, .list-meta { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-title, .list-card .list-title, .spec-list-title { color: var(--color-text-primary); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .list-split strong { color: var(--color-text-primary); font-size: var(--font-style-title-2-size); font-weight: var(--font-style-title-2-weight); line-height: var(--font-style-title-2-line-height); }
+      .timeline-label, .timeline-horizontal-time { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .timeline-title { color: var(--color-text-primary); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .timeline-desc { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .timeline-item.success .timeline-dot, .timeline-item.success .timeline-dot.custom { color: var(--color-status-success); background: var(--color-status-success); }
+      .timeline-item.processing .timeline-dot, .timeline-item.processing .timeline-dot.custom { color: var(--color-status-info); background: var(--color-status-info); }
+      .timeline-item.warning .timeline-dot, .timeline-item.warning .timeline-dot.custom { color: var(--color-status-warning); background: var(--color-status-warning); }
+      .timeline-badge { color: var(--color-status-success); background: var(--color-bg-subtle); border-color: var(--color-status-success); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar.large, .avatar.custom-size, .avatar-responsive { font-size: var(--font-style-body-size); font-weight: var(--font-style-body-medium-weight); }
+      .avatar-group.group-small .avatar, .avatar-group.group-medium .avatar, .avatar-group.group-large .avatar, .avatar-color-spec { font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar-badge, .badge-mark, .badge-mark.small { color: var(--color-text-inverse); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar.icon-brand { color: var(--color-action-primary-hover); background: var(--color-action-primary-bg-hover); }
+      .avatar.icon-info { color: var(--color-status-info); background: var(--color-bg-subtle); }
+      .combined-metric strong, .grid-cell strong { color: var(--color-text-primary); font-size: var(--font-style-title-1-size); font-weight: var(--font-style-title-1-weight); line-height: var(--font-style-title-1-line-height); }
+      .tooltip-trigger, .spec-btn { color: var(--color-text-default); border-color: var(--color-border-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .tooltip-popup { color: var(--color-text-inverse); background: var(--color-bg-inverse); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .carousel-panel { color: var(--color-text-default); }
+      .broken-icon { color: var(--color-text-disabled); }
+      /* DESIGN.md semantic alignment */
+      .content-panel.doc-page, .doc-page { color: var(--color-text-default); }
+      .doc-kicker { color: var(--color-action-primary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .doc-title { color: var(--color-text-primary); font-size: var(--font-style-title-1-size); font-weight: var(--font-style-title-1-weight); line-height: var(--font-style-title-1-line-height); }
+      .doc-summary { color: var(--color-text-secondary); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .doc-meta-list li { color: var(--color-text-secondary); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .doc-section h2 { color: var(--color-text-primary); font-size: var(--font-style-title-2-size); font-weight: var(--font-style-title-2-weight); line-height: var(--font-style-title-2-line-height); }
+      .doc-section h3, .example-block h3 { color: var(--color-text-primary); font-size: var(--font-style-title-3-size); font-weight: var(--font-style-title-3-weight); line-height: var(--font-style-title-3-line-height); }
+      .doc-section p, .example-block p { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .rule-list li { color: var(--color-text-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .example-block { background: var(--color-bg-subtle); border-color: var(--color-border-subtle); }
+      .spec-table { color: var(--color-text-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .spec-table th { color: var(--color-text-default); background: var(--color-bg-subtle); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .spec-table td { color: var(--color-text-default); }
+      .spec-table code { color: var(--color-text-primary); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
     </style>
+    <link rel="stylesheet" href="../styles/component-color-default.css" />
+    <style>
+      .example-block.full { background: var(--color-bg-container); }
+    </style>
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/control-radius.css" />
+    <link rel="stylesheet" href="../styles/topbar-shared.css" />
+    <link rel="stylesheet" href="../styles/typography-standard.css">
+      <link rel="stylesheet" href="../styles/radius-tokens.css" />
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="../index.html" aria-label="返回 IQB DESIGN 首页">
+        <a class="brand" href="../index.html" aria-label="返回 IQ Design System 首页">
           <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-400)" />
-                <stop offset="1" stop-color="var(--brand-600)" />
+                <stop offset="0" stop-color="var(--brand-4)" />
+                <stop offset="1" stop-color="var(--brand-6)" />
               </linearGradient>
               <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.24" />
               </linearGradient>
               <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.1" />
               </linearGradient>
             </defs>
             <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
           </svg>
-          <span class="brand-title">IQB DESIGN</span>
+          <span class="brand-title">IQ Design System</span>
         </a>
-        <div class="topbar-actions" aria-label="组件完成状态">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 46/46</span>
-        </div>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="design">设计</button>
+        </nav>
         <div class="product-select" data-product-select>
           <button
             class="product-select-trigger"
@@ -1163,9 +1320,14 @@
           <nav>
             <ul class="nav-list">
               <li class="nav-section">
-                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
-                  <span class="nav-label">Styles 全局样式</span>
-                </a>
+                <button class="nav-category" type="button" aria-expanded="true" data-nav-scope="global-style">Styles 全局样式<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="../styles/color.html" data-style-page="color"><span class="nav-label">Color 颜色</span></a></li>
+                  <li><a class="nav-button" href="../styles/text.html" data-style-page="text"><span class="nav-label">Text 字体</span></a></li>
+                  <li><a class="nav-button" href="../styles/icon.html" data-style-page="icon"><span class="nav-label">ICON 图标</span></a></li>
+                  <li><a class="nav-button" href="../styles/radius.html" data-style-page="radius"><span class="nav-label">Radius 圆角</span></a></li>
+                  <li><a class="nav-button" href="../styles/theme.html" data-style-page="theme"><span class="nav-label">Theme 主题</span></a></li>
+                </ul>
               </li>
               <li class="nav-section">
                 <a class="nav-button" href="../index.html#overview">
@@ -1173,7 +1335,7 @@
                 </a>
               </li>
               <li class="nav-section">
-                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">General 通用<span class="nav-category-count">2</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../general/button.html">
@@ -1188,7 +1350,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Layout 布局<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../layout/divider.html">
@@ -1218,7 +1380,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Navigation 导航<span class="nav-category-count">6</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../navigation/menu.html">
@@ -1253,7 +1415,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Entry 数据录入<span class="nav-category-count">16</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../dataentry/input.html">
@@ -1338,7 +1500,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Display 数据展示<span class="nav-category-count">14</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../datadisplay/table.html">
@@ -1413,7 +1575,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Feedback 反馈<span class="nav-category-count">9</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../feedback/alert.html">
@@ -1464,7 +1626,6 @@
               </li>
             </ul>
           </nav>
-          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
         </aside>
         <section class="canvas" aria-label="列表组件说明详情区">
           <div class="canvas-inner">
@@ -1498,15 +1659,15 @@
                 <h2>基础用法</h2>
                 <div class="example-block full list-example-block basic-list-demo">
                   <div class="spec-list-example">
-                    <div class="spec-list-example-head">
+                    <div class="spec-list-example-head example-head">
                       <h3>基础文本列表</h3>
                       <p>基础列表只展示普通文本项，适合承载简洁、连续的说明文字。</p>
                     </div>
                     <div class="spec-list-frame">
-                      <ul class="spec-list spec-list-hoverable" aria-label="基础文本列表">
-                        <li class="spec-list-item">Text content describes the item and keeps the message concise.</li>
-                        <li class="spec-list-item">Text content describes the item and keeps the message concise.</li>
-                        <li class="spec-list-item">Text content describes the item and keeps the message concise.</li>
+                      <ul class="spec-list" aria-label="基础文本列表">
+                        <li class="spec-list-item">商品标题优化任务已进入待处理队列。</li>
+                        <li class="spec-list-item">主图质量检测报告已生成。</li>
+                        <li class="spec-list-item">本周关键词增长摘要已更新。</li>
                       </ul>
                     </div>
                   </div>
@@ -1514,19 +1675,19 @@
 
                 <div class="example-block full list-example-block basic-list-demo">
                   <div class="spec-list-example">
-                    <div class="spec-list-example-head">
+                    <div class="spec-list-example-head example-head">
                       <h3>含 Header 的列表</h3>
                       <p>当列表需要展示上下文范围、集合名称或轻量统计时，可在 List frame 顶部使用 header 强化信息归属。</p>
                     </div>
                     <div class="spec-list-frame">
                       <div class="spec-list-header">
-                        <span>Automation queue</span>
-                        <span>4 items</span>
+                        <span>自动化任务队列</span>
+                        <span>共 3 项</span>
                       </div>
-                      <ul class="spec-list spec-list-hoverable" aria-label="含 Header 的列表">
-                        <li class="spec-list-item">Title generation workflow</li>
-                        <li class="spec-list-item">Image quality inspection</li>
-                        <li class="spec-list-item">Keyword growth digest</li>
+                      <ul class="spec-list" aria-label="含 Header 的列表">
+                        <li class="spec-list-item">商品标题生成流程</li>
+                        <li class="spec-list-item">图片质量检测</li>
+                        <li class="spec-list-item">关键词增长摘要</li>
                       </ul>
                     </div>
                   </div>
@@ -1537,18 +1698,18 @@
                 <h2>Meta 与操作</h2>
                 <div class="example-block full list-example-block">
                   <div class="spec-list-example">
-                    <div class="spec-list-example-head">
+                    <div class="spec-list-example-head example-head">
                       <h3>基础Meta列表</h3>
                       <p>Meta 由 avatar、title、description 组成，适合任务、人员、资源等对象摘要。</p>
                     </div>
                     <div class="spec-list-frame spec-list-size-large">
-                      <ul class="spec-list spec-list-hoverable" aria-label="基础Meta列表">
+                      <ul class="spec-list" aria-label="基础Meta列表">
                         <li class="spec-list-item">
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar">A</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Listing Optimization Agent</span>
-                              <span class="spec-list-desc">Generate marketplace-ready titles and listing summaries.</span>
+                              <span class="spec-list-title">商品优化智能体</span>
+                              <span class="spec-list-desc">生成适合平台发布的商品标题与卖点摘要。</span>
                             </span>
                           </div>
                         </li>
@@ -1556,8 +1717,8 @@
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar green">S</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Search Insight Agent</span>
-                              <span class="spec-list-desc">Find growth keywords and update content plans.</span>
+                              <span class="spec-list-title">搜索洞察智能体</span>
+                              <span class="spec-list-desc">发现增长关键词并更新内容计划。</span>
                             </span>
                           </div>
                         </li>
@@ -1568,22 +1729,22 @@
 
                 <div class="example-block full list-example-block meta-action-list-demo">
                   <div class="spec-list-example">
-                    <div class="spec-list-example-head">
+                    <div class="spec-list-example-head example-head">
                       <h3>含操作的Meta列表</h3>
                       <p>在 Meta 信息右侧放置少量高频操作，适合需要直接处理或查看详情的对象列表。</p>
                     </div>
                     <div class="spec-list-frame spec-list-size-large">
-                      <ul class="spec-list spec-list-hoverable" aria-label="含操作的Meta列表">
+                      <ul class="spec-list" aria-label="含操作的Meta列表">
                         <li class="spec-list-item">
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar">A</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Listing Optimization Agent</span>
-                              <span class="spec-list-desc">Generate marketplace-ready titles and listing summaries.</span>
+                              <span class="spec-list-title">商品优化智能体</span>
+                              <span class="spec-list-desc">生成适合平台发布的商品标题与卖点摘要。</span>
                             </span>
                             <span class="spec-list-actions">
-                              <button class="spec-list-action" type="button">Edit</button>
-                              <button class="spec-list-action" type="button">Run</button>
+                              <button class="spec-list-action spec-btn solid" type="button">编辑</button>
+                              <button class="spec-list-action spec-btn solid" type="button">运行</button>
                             </span>
                           </div>
                         </li>
@@ -1591,33 +1752,33 @@
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar green">S</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Search Insight Agent</span>
-                              <span class="spec-list-desc">Find growth keywords and update content plans.</span>
+                              <span class="spec-list-title">搜索洞察智能体</span>
+                              <span class="spec-list-desc">发现增长关键词并更新内容计划。</span>
                             </span>
                             <span class="spec-list-actions">
-                              <button class="spec-list-action" type="button">View</button>
+                              <button class="spec-list-action spec-btn solid" type="button">查看</button>
                             </span>
                           </div>
                         </li>
                       </ul>
                     </div>
                     <div class="spec-list-frame spec-list-size-large">
-                      <ul class="spec-list spec-list-hoverable" aria-label="含图标操作的Meta列表">
+                      <ul class="spec-list" aria-label="含图标操作的Meta列表">
                         <li class="spec-list-item">
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar blue">C</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Creative Quality Agent</span>
-                              <span class="spec-list-desc">Check image clarity and detect visual compliance risks.</span>
+                              <span class="spec-list-title">创意质检智能体</span>
+                              <span class="spec-list-desc">检查图片清晰度并识别视觉合规风险。</span>
                             </span>
                             <span class="spec-list-actions">
-                              <button class="spec-list-action icon-only" type="button" aria-label="编辑">
+                              <button class="spec-list-action spec-btn solid icon-only" type="button" aria-label="编辑">
                                 <svg class="spec-list-icon" viewBox="0 0 24 24" aria-hidden="true">
                                   <path d="M12 20h9"></path>
                                   <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"></path>
                                 </svg>
                               </button>
-                              <button class="spec-list-action icon-only" type="button" aria-label="执行记录">
+                              <button class="spec-list-action spec-btn solid icon-only" type="button" aria-label="执行记录">
                                 <svg class="spec-list-icon" viewBox="0 0 24 24" aria-hidden="true">
                                   <path d="M3 12a9 9 0 1 0 3-6.7"></path>
                                   <path d="M3 4v5h5"></path>
@@ -1631,17 +1792,17 @@
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar">P</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Price Strategy Agent</span>
-                              <span class="spec-list-desc">Review pricing suggestions and compare margin impact.</span>
+                              <span class="spec-list-title">价格策略智能体</span>
+                              <span class="spec-list-desc">审核定价建议并比较利润影响。</span>
                             </span>
                             <span class="spec-list-actions">
-                              <button class="spec-list-action icon-only" type="button" aria-label="查看">
+                              <button class="spec-list-action spec-btn solid icon-only" type="button" aria-label="查看">
                                 <svg class="spec-list-icon" viewBox="0 0 24 24" aria-hidden="true">
                                   <path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6z"></path>
                                   <circle cx="12" cy="12" r="3"></circle>
                                 </svg>
                               </button>
-                              <button class="spec-list-action icon-only" type="button" aria-label="刷新">
+                              <button class="spec-list-action spec-btn solid icon-only" type="button" aria-label="刷新">
                                 <svg class="spec-list-icon" viewBox="0 0 24 24" aria-hidden="true">
                                   <path d="M3 12a9 9 0 0 1 15.2-6.5"></path>
                                   <path d="M18 3v5h-5"></path>
@@ -1662,30 +1823,30 @@
                 <h2>卡片与网格</h2>
                 <div class="example-block full list-example-block">
                   <div class="spec-list-example">
-                    <div class="spec-list-example-head">
+                    <div class="spec-list-example-head example-head">
                       <h3>Grid List</h3>
                       <p>参考 通用的网格列表能力，多个对象可用卡片栅格承载，但仍保持 List 数据源与渲染模型。</p>
                     </div>
                     <div class="spec-list-card-grid" aria-label="网格卡片列表">
                       <div class="spec-list-card grid-list-line-card">
                         <ul class="spec-list-card-list" aria-label="价格策略列表">
-                          <li>Price strategy</li>
-                          <li>Margin review</li>
-                          <li>Competitor scan</li>
+                          <li>价格策略</li>
+                          <li>利润审核</li>
+                          <li>竞品扫描</li>
                         </ul>
                       </div>
                       <div class="spec-list-card grid-list-line-card">
                         <ul class="spec-list-card-list" aria-label="搜索词列表">
-                          <li>Search terms</li>
-                          <li>Keyword growth</li>
-                          <li>Content refresh</li>
+                          <li>搜索词</li>
+                          <li>关键词增长</li>
+                          <li>内容更新</li>
                         </ul>
                       </div>
                       <div class="spec-list-card grid-list-line-card">
                         <ul class="spec-list-card-list" aria-label="日报列表">
-                          <li>Daily digest</li>
-                          <li>Task summary</li>
-                          <li>Risk reminder</li>
+                          <li>每日摘要</li>
+                          <li>任务汇总</li>
+                          <li>风险提醒</li>
                         </ul>
                       </div>
                     </div>
@@ -1694,7 +1855,7 @@
 
                 <div class="example-block full list-example-block">
                   <div class="spec-list-example">
-                    <div class="spec-list-example-head">
+                    <div class="spec-list-example-head example-head">
                       <h3>Grid Card</h3>
                       <p>对象较少且需要独立摘要时，可使用网格卡片展示 avatar、title 与 description。</p>
                     </div>
@@ -1702,22 +1863,22 @@
                       <div class="spec-list-card grid-summary-card">
                         <span class="spec-list-avatar">P</span>
                         <span class="spec-list-meta">
-                          <span class="spec-list-title">Price strategy</span>
-                          <span class="spec-list-desc">6 suggestions are ready for operation review.</span>
+                          <span class="spec-list-title">价格策略</span>
+                          <span class="spec-list-desc">6 条建议等待运营审核。</span>
                         </span>
                       </div>
                       <div class="spec-list-card grid-summary-card">
                         <span class="spec-list-avatar green">S</span>
                         <span class="spec-list-meta">
-                          <span class="spec-list-title">Search terms</span>
-                          <span class="spec-list-desc">12 growth keywords can be added to next week plan.</span>
+                          <span class="spec-list-title">搜索词</span>
+                          <span class="spec-list-desc">12 个增长关键词可加入下周计划。</span>
                         </span>
                       </div>
                       <div class="spec-list-card grid-summary-card">
                         <span class="spec-list-avatar blue">D</span>
                         <span class="spec-list-meta">
-                          <span class="spec-list-title">Daily digest</span>
-                          <span class="spec-list-desc">Summarize completed tasks and pending exceptions.</span>
+                          <span class="spec-list-title">每日摘要</span>
+                          <span class="spec-list-desc">汇总已完成任务与待处理异常。</span>
                         </span>
                       </div>
                     </div>
@@ -1729,18 +1890,18 @@
                 <h2>列表加载</h2>
                 <div class="example-block full list-example-block">
                   <div class="spec-list-example">
-                    <div class="spec-list-example-head">
+                    <div class="spec-list-example-head example-head">
                       <h3>列表加载</h3>
                       <p>当列表内容持续增长时，在固定高度的 List frame 内滚动浏览，滚动到底后触发加载并追加下一组内容。</p>
                     </div>
                     <div class="spec-list-frame scroll-load-frame spec-list-size-large" data-scroll-load-frame>
-                      <ul class="spec-list spec-list-hoverable" aria-label="列表加载" data-scroll-load-list>
+                      <ul class="spec-list" aria-label="列表加载" data-scroll-load-list>
                         <li class="spec-list-item">
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar">A</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Listing Optimization Agent</span>
-                              <span class="spec-list-desc">Generate marketplace-ready titles and listing summaries.</span>
+                              <span class="spec-list-title">商品优化智能体</span>
+                              <span class="spec-list-desc">生成适合平台发布的商品标题与卖点摘要。</span>
                             </span>
                           </div>
                         </li>
@@ -1748,8 +1909,8 @@
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar green">S</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Search Insight Agent</span>
-                              <span class="spec-list-desc">Find growth keywords and update content plans.</span>
+                              <span class="spec-list-title">搜索洞察智能体</span>
+                              <span class="spec-list-desc">发现增长关键词并更新内容计划。</span>
                             </span>
                           </div>
                         </li>
@@ -1757,8 +1918,8 @@
                           <div class="spec-list-meta-row">
                             <span class="spec-list-avatar blue">C</span>
                             <span class="spec-list-meta">
-                              <span class="spec-list-title">Creative Quality Agent</span>
-                              <span class="spec-list-desc">Check image clarity and detect visual compliance risks.</span>
+                              <span class="spec-list-title">创意质检智能体</span>
+                              <span class="spec-list-desc">检查图片清晰度并识别视觉合规风险。</span>
                             </span>
                           </div>
                         </li>
@@ -1776,26 +1937,26 @@
                 <h2>尺寸</h2>
                 <div class="example-block full list-example-block">
                   <div class="spec-list-example">
-                    <div class="spec-list-example-head">
+                    <div class="spec-list-example-head example-head">
                       <h3>Small / Default / Large</h3>
                       <p>small / default / large 分别对应 36 / 44 / 72px；含头像或两行内容优先使用 large。</p>
                     </div>
                     <div class="spec-list-frame spec-list-size-small">
                       <ul class="spec-list" aria-label="Small 尺寸列表">
-                        <li class="spec-list-item">Small list item</li>
-                        <li class="spec-list-item">Small list item</li>
+                        <li class="spec-list-item">小尺寸列表项</li>
+                        <li class="spec-list-item">小尺寸列表项</li>
                       </ul>
                     </div>
                     <div class="spec-list-frame">
                       <ul class="spec-list" aria-label="Default 尺寸列表">
-                        <li class="spec-list-item">Default list item</li>
-                        <li class="spec-list-item">Default list item</li>
+                        <li class="spec-list-item">默认尺寸列表项</li>
+                        <li class="spec-list-item">默认尺寸列表项</li>
                       </ul>
                     </div>
                     <div class="spec-list-frame spec-list-size-large">
                       <ul class="spec-list" aria-label="Large 尺寸列表">
-                        <li class="spec-list-item">Large list item with relaxed vertical rhythm</li>
-                        <li class="spec-list-item">Large list item with relaxed vertical rhythm</li>
+                        <li class="spec-list-item">大尺寸列表项，提供更宽松的垂直间距</li>
+                        <li class="spec-list-item">大尺寸列表项，提供更宽松的垂直间距</li>
                       </ul>
                     </div>
                   </div>
@@ -1822,7 +1983,7 @@
                         <td><code>[]</code></td>
                       </tr>
                       <tr>
-                        <td><code>render</code></td>
+                        <td><code>renderItem</code></td>
                         <td>自定义渲染每一项内容。</td>
                         <td><code>(item, index) =&gt; ReactNode</code></td>
                         <td><code>-</code></td>
@@ -1908,18 +2069,13 @@
                       </tr>
                       <tr>
                         <td><code>--list-border-color</code></td>
-                        <td><code>#e8ebee</code></td>
+                        <td><code>var(--color-border-subtle)</code></td>
                         <td>列表外框颜色。</td>
                       </tr>
                       <tr>
                         <td><code>--list-divider-color</code></td>
-                        <td><code>#eef1f3</code></td>
+                        <td><code>var(--color-border-subtle)</code></td>
                         <td>列表项、header 和加载区分割线。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--list-hover-bg</code></td>
-                        <td><code>#fff</code></td>
-                        <td>列表项 hover 背景；当前规范保持白底。</td>
                       </tr>
                       <tr>
                         <td><code>--list-header-padding-x</code></td>
@@ -1961,101 +2117,123 @@
       </main>
     </div>
     <script>
-      const syncComponentCountLabel = () => {
-        const label = document.querySelector('[data-component-count-label]');
-        if (!label) return;
-        const pendingKeys = new Set([]);
-        const navItems = Array.from(
-          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
-        );
-        const getComponentKey = (item) =>
-          item.dataset.page || (item.getAttribute('href') || '').split('#').pop().replace(/.html$/, '');
-        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
-        label.textContent = `Active components ${activeCount}/${navItems.length}`;
-      };
+const topbarComponentTab = document.querySelector("[data-topbar-nav=components]");
+const topbarDesignTab = document.querySelector("[data-topbar-nav=design]");
+const topbarTabs = [topbarComponentTab, topbarDesignTab].filter(Boolean);
+const sidebarSections = Array.from(document.querySelectorAll(".sidebar > nav > .nav-list > .nav-section"));
+const navMenuStorageKey = "iqb-design-active-nav-menu";
+const componentCategories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+const navCategoryStorageKey = "iqb-design-nav-category-state";
+const getSavedNavCategoryState = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(navCategoryStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+};
+const saveNavCategoryState = (state) => {
+  try {
+    sessionStorage.setItem(navCategoryStorageKey, JSON.stringify(state));
+  } catch {
+    // Local previews may disable storage; toggling still works in the current page.
+  }
+};
+const navCategoryState = getSavedNavCategoryState();
+const navCategoryButtons = Array.from(document.querySelectorAll(".sidebar .nav-category"));
+navCategoryButtons.forEach((button, index) => {
+  const sublist = button.nextElementSibling;
+  if (!sublist?.classList.contains("nav-sublist")) return;
+  const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+  sublist.id ||= `sidebar-category-${index + 1}`;
+  button.setAttribute("aria-controls", sublist.id);
+  button.setAttribute("aria-expanded", String(navCategoryState[categoryKey] !== false));
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const nextExpanded = !isExpanded;
+    button.setAttribute("aria-expanded", String(nextExpanded));
+    navCategoryState[categoryKey] = nextExpanded;
+    saveNavCategoryState(navCategoryState);
+  });
+});
 
-      syncComponentCountLabel();
+const getSectionCategory = (section) =>
+  section.querySelector(":scope > .nav-category")?.textContent.trim() || "";
+const isComponentSection = (section) =>
+  Boolean(section.querySelector(":scope > .nav-button .nav-label")?.textContent.includes("Components")) ||
+  componentCategories.some((category) => getSectionCategory(section).startsWith(category));
+const isDesignSection = (section) =>
+  Boolean(section.querySelector("[data-nav-scope=global-style]")) ||
+  getSectionCategory(section).startsWith("Layout");
+const getSavedNavMenu = () => {
+  try {
+    return sessionStorage.getItem(navMenuStorageKey);
+  } catch {
+    return null;
+  }
+};
+const saveNavMenu = (menu) => {
+  try {
+    sessionStorage.setItem(navMenuStorageKey, menu);
+  } catch {
+    // Local previews may disable storage; in-page switching still works.
+  }
+};
+const selectDefaultNavItem = (menu) => {
+  const defaultItem = menu === "design"
+    ? document.querySelector(".sidebar [data-style-page=color]")
+    : sidebarSections
+        .map((section) => section.querySelector(":scope > .nav-button"))
+        .find((item) => item?.querySelector(".nav-label")?.textContent.includes("Components"));
+  if (!defaultItem) return;
+  document.querySelectorAll(".sidebar .nav-button[aria-current=page]").forEach((item) =>
+    item.removeAttribute("aria-current"),
+  );
+  defaultItem.setAttribute("aria-current", "page");
+  defaultItem.click();
+};
 
-      const initScrollLoadDemo = () => {
-        const frame = document.querySelector('[data-scroll-load-frame]');
-        const list = document.querySelector('[data-scroll-load-list]');
-        const status = document.querySelector('[data-scroll-load-status]');
-        if (!frame || !list || !status) return;
+const applyNavMenu = (menu) => {
+  const activeMenu = menu === "design" ? "design" : "components";
+  topbarTabs.forEach((tab) => {
+    const isSelected = tab.dataset.topbarNav === activeMenu;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+  sidebarSections.forEach((section) => {
+    const shouldShow = activeMenu === "design" ? isDesignSection(section) : isComponentSection(section);
+    section.hidden = !shouldShow;
+    section.style.display = shouldShow ? "" : "none";
+  });
+};
 
-        let hasLoaded = false;
-        let isLoading = false;
+applyNavMenu(getSavedNavMenu() || "components");
+topbarComponentTab?.addEventListener("click", () => {
+  applyNavMenu("components");
+  saveNavMenu("components");
+  selectDefaultNavItem("components");
+});
+topbarDesignTab?.addEventListener("click", () => {
+  applyNavMenu("design");
+  saveNavMenu("design");
+  selectDefaultNavItem("design");
+});
+const topbarNav = document.querySelector(".topbar-nav");
+topbarNav?.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = Math.max(0, topbarTabs.indexOf(document.activeElement));
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? topbarTabs.length - 1
+      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+  topbarTabs[nextIndex]?.click();
+  topbarTabs[nextIndex]?.focus();
+});
 
-        const nextItems = [
-          {
-            avatar: 'P',
-            tone: '',
-            title: 'Price Strategy Agent',
-            desc: 'Review pricing suggestions and compare margin impact.',
-          },
-          {
-            avatar: 'K',
-            tone: 'green',
-            title: 'Keyword Growth Agent',
-            desc: 'Append long-tail keywords from weekly search trends.',
-          },
-          {
-            avatar: 'D',
-            tone: 'blue',
-            title: 'Daily Digest Agent',
-            desc: 'Summarize completed tasks and pending exceptions.',
-          },
-        ];
 
-        const createScrollLoadItem = (item) => {
-          const row = document.createElement('li');
-          row.className = 'spec-list-item scroll-load-new-item';
 
-          const metaRow = document.createElement('div');
-          metaRow.className = 'spec-list-meta-row';
 
-          const avatar = document.createElement('span');
-          avatar.className = item.tone ? `spec-list-avatar ${item.tone}` : 'spec-list-avatar';
-          avatar.textContent = item.avatar;
-
-          const meta = document.createElement('span');
-          meta.className = 'spec-list-meta';
-
-          const title = document.createElement('span');
-          title.className = 'spec-list-title';
-          title.textContent = item.title;
-
-          const desc = document.createElement('span');
-          desc.className = 'spec-list-desc';
-          desc.textContent = item.desc;
-
-          meta.append(title, desc);
-          metaRow.append(avatar, meta);
-          row.append(metaRow);
-          return row;
-        };
-
-        const loadNextItems = () => {
-          if (hasLoaded || isLoading) return;
-          isLoading = true;
-          status.hidden = false;
-
-          window.setTimeout(() => {
-            const fragment = document.createDocumentFragment();
-            nextItems.forEach((item) => fragment.append(createScrollLoadItem(item)));
-            list.append(fragment);
-            hasLoaded = true;
-            isLoading = false;
-            status.hidden = true;
-          }, 1500);
-        };
-
-        frame.addEventListener('scroll', () => {
-          const reachedBottom = frame.scrollTop + frame.clientHeight >= frame.scrollHeight - 2;
-          if (reachedBottom) loadNextItems();
-        });
-      };
-
-      initScrollLoadDemo();
 
       const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
       const productSelect = document.querySelector('[data-product-select]');
@@ -2069,23 +2247,21 @@
         decentralized: '实验主题',
       };
       const defaultProductThemeVars = [
-        '--brand-500',
-        '--brand-50',
-        '--brand-100',
-        '--brand-200',
-        '--brand-300',
-        '--brand-400',
-        '--brand-600',
-        '--brand-700',
-        '--brand-800',
-        '--brand-900',
-        '--brand-rgb',
+        '--brand-5',
+        '--brand-0',
+        '--brand-1',
+        '--brand-2',
+        '--brand-3',
+        '--brand-4',
+        '--brand-6',
+        '--brand-7',
+        '--brand-8',
+        '--brand-9',
         '--brand-text',
         '--brand-text-hover',
         '--brand-border-soft',
         '--brand-border-hover',
-        '--radius-sm',
-        '--shadow-focus',
+        '--radius-default',
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -2098,43 +2274,39 @@
         }
         if (activeProduct === 'business-theme') {
           root.dataset.productTheme = 'business-theme';
-          root.style.setProperty('--brand-50', '#f0fff6');
-          root.style.setProperty('--brand-100', '#ddfbea');
-          root.style.setProperty('--brand-200', '#bef5d5');
-          root.style.setProperty('--brand-300', '#91e9b8');
-          root.style.setProperty('--brand-400', '#5fd897');
-          root.style.setProperty('--brand-500', 'var(--color-status-success)');
-          root.style.setProperty('--brand-600', '#1b9c61');
-          root.style.setProperty('--brand-700', '#147c4d');
-          root.style.setProperty('--brand-800', '#12633f');
-          root.style.setProperty('--brand-900', '#104f34');
-          root.style.setProperty('--brand-rgb', '34, 181, 115');
-          root.style.setProperty('--brand-text', '#1b9c61');
-          root.style.setProperty('--brand-text-hover', '#147c4d');
-          root.style.setProperty('--brand-border-soft', '#bef5d5');
-          root.style.setProperty('--brand-border-hover', '#91e9b8');
-          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          root.style.setProperty('--brand-0', iqbPaletteValue("--brand-0"));
+          root.style.setProperty('--brand-1', iqbPaletteValue("--brand-1"));
+          root.style.setProperty('--brand-2', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-3', iqbPaletteValue("--success-2"));
+          root.style.setProperty('--brand-4', iqbPaletteValue("--success-3"));
+          root.style.setProperty('--brand-5', 'var(--color-status-success)');
+          root.style.setProperty('--brand-6', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
+          root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
+          root.style.setProperty('--brand-text', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-text-hover', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-border-soft', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-border-hover', iqbPaletteValue("--success-2"));
           return;
         }
         if (activeProduct !== 'decentralized') return;
         root.dataset.productTheme = 'test-theme-1';
-        root.style.setProperty('--brand-50', '#eff6ff');
-        root.style.setProperty('--brand-100', '#dbeafe');
-        root.style.setProperty('--brand-200', '#bfdbfe');
-        root.style.setProperty('--brand-300', '#93c5fd');
-        root.style.setProperty('--brand-400', '#60a5fa');
-        root.style.setProperty('--brand-500', '#2672ff');
-        root.style.setProperty('--brand-600', '#1d5fd7');
-        root.style.setProperty('--brand-700', '#1e4fb3');
-        root.style.setProperty('--brand-800', '#1e3f8a');
-        root.style.setProperty('--brand-900', '#172f68');
-        root.style.setProperty('--brand-rgb', '38, 114, 255');
-        root.style.setProperty('--brand-text', '#1d5fd7');
-        root.style.setProperty('--brand-text-hover', '#1e4fb3');
-        root.style.setProperty('--brand-border-soft', '#bfdbfe');
-        root.style.setProperty('--brand-border-hover', '#93c5fd');
-        root.style.setProperty('--radius-sm', '2px');
-        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.setProperty('--brand-0', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-1', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-2', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-3', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--brand-4', iqbPaletteValue("--info-3"));
+        root.style.setProperty('--brand-5', iqbPaletteValue("--info-5"));
+        root.style.setProperty('--brand-6', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
+        root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
+        root.style.setProperty('--brand-text', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-text-hover', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-border-soft', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-border-hover', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--radius-default', '6px');
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
@@ -2198,21 +2370,31 @@
           closeProductSelectMenu();
         }
       });
+const centerNavItem = (item, behavior = "auto") => {
+  if (!item) return;
+  const sidebar = item.closest(".sidebar");
+  if (!sidebar) return;
 
-      const centerNavItem = (item, behavior = 'auto') => {
-        if (!item) return;
-        const sidebar = item.closest('.sidebar');
-        if (!sidebar) return;
-        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
-        const itemRect = item.getBoundingClientRect();
-        const sidebarRect = sidebar.getBoundingClientRect();
-        if (isHorizontal) {
-          sidebar.scrollTo({ left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2, behavior });
-          return;
-        }
-        sidebar.scrollTo({ top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2, behavior });
-      };
-      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]')));
+  const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+  const itemRect = item.getBoundingClientRect();
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const clamp = (value, max) => Math.min(Math.max(value, 0), Math.max(max, 0));
+
+  if (isHorizontal) {
+    const centeredLeft =
+      sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2;
+    const maxScrollLeft = sidebar.scrollWidth - sidebar.clientWidth;
+    sidebar.scrollTo({ left: clamp(centeredLeft, maxScrollLeft), behavior });
+    return;
+  }
+
+  const centeredTop =
+    sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2;
+  const maxScrollTop = sidebar.scrollHeight - sidebar.clientHeight;
+  sidebar.scrollTo({ top: clamp(centeredTop, maxScrollTop), behavior });
+};
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current=page]')));
     </script>
+    <script src="../styles/topbar-shared.js"></script>
   </body>
 </html>

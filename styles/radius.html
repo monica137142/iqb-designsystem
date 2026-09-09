@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="zh-CN" data-product-theme="default-theme">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Radius 圆角 - IQB Design</title>
+    <script src="color-mode-init.js"></script>
+    <style>
+      :root {
+        --brand-0: #f0fdf3;
+        --brand-1: #dbfde3;
+        --brand-4: #45e36e;
+        --brand-5: #1cc749;
+        --brand-6: #00ae2e;
+        --neutral-0: #ffffff;
+        --neutral-1: #f5f5f5;
+        --neutral-2: #eaeaea;
+        --neutral-3: #dddddd;
+        --neutral-4: #a3a3a3;
+        --neutral-5: #737373;
+        --neutral-6: #666666;
+        --neutral-7: #3d3d3d;
+        --neutral-8: #292929;
+        --neutral-9: #1f1f1f;
+        --neutral-10: #171717;
+        --neutral-11: #111111;
+        --neutral-12: #080808;
+        --neutral-13: #000000;
+        --color-text-top: var(--neutral-12);
+        --color-text-primary: var(--neutral-10);
+        --color-text-default: var(--neutral-9);
+        --color-text-secondary: var(--neutral-7);
+        --color-text-tertiary: var(--neutral-6);
+        --color-bg-page: var(--neutral-0);
+        --color-bg-container: var(--neutral-0);
+        --color-bg-elevated: var(--neutral-0);
+        --color-bg-subtle: var(--neutral-1);
+        --color-bg-hover: var(--neutral-1);
+        --color-bg-selected: var(--brand-0);
+        --color-border-default: var(--neutral-3);
+        --color-border-subtle: var(--neutral-2);
+        --color-action-primary: var(--brand-5);
+        --brand-text: var(--brand-6);
+        --topbar-height: 60px;
+        --sidebar-width: 300px;
+        --radius-small: 4px;
+        --radius-default: 6px;
+        --radius-large: 8px;
+        --radius-xlarge: 12px;
+        --radius-full: 9999px;
+        --shadow-focus: 0 0 0 3px color-mix(in srgb, var(--color-action-primary) 18%, transparent);
+        font-family: Inter, "Inter var", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      }
+
+      :root[data-color-mode="dark"] {
+        color-scheme: dark;
+        --color-text-top: var(--neutral-0);
+        --color-text-primary: var(--neutral-1);
+        --color-text-default: var(--neutral-2);
+        --color-text-secondary: var(--neutral-4);
+        --color-text-tertiary: var(--neutral-5);
+        --color-bg-page: var(--neutral-12);
+        --color-bg-container: var(--neutral-11);
+        --color-bg-elevated: var(--neutral-9);
+        --color-bg-subtle: var(--neutral-9);
+        --color-bg-hover: var(--neutral-9);
+        --color-bg-selected: var(--neutral-8);
+        --color-bg-disabled: var(--neutral-8);
+        --color-border-default: var(--neutral-7);
+        --color-border-subtle: var(--neutral-8);
+      }
+
+      * { box-sizing: border-box; }
+      html, body { width: 100%; min-width: 320px; min-height: 100%; margin: 0; }
+      body { overflow: hidden; color: var(--color-text-default); background: var(--color-bg-page); }
+      button { font: inherit; }
+      a { color: inherit; text-decoration: none; }
+      code, pre { font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace; }
+
+      .app-shell { display: grid; grid-template-rows: var(--topbar-height) 1fr; width: 100vw; height: 100vh; }
+      .topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 24px; background: var(--color-bg-container); border-bottom: 1px solid var(--color-border-subtle); }
+      .brand { display: inline-flex; align-items: center; gap: 10px; color: var(--color-text-top); font-weight: 600; }
+      .brand-mark { width: 30px; height: 30px; fill: var(--brand-5); }
+      .topbar-nav { display: flex; align-items: center; gap: 8px; }
+      .topbar-nav a { padding: 9px 14px; color: var(--color-text-secondary); border-radius: var(--radius-default); font-size: var(--font-style-body-size); }
+      .topbar-nav a[aria-current="page"] { color: var(--brand-text); font-weight: 500; }
+      .theme-toggle { min-height: 36px; padding: 0 14px; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-full); cursor: pointer; }
+
+      .workspace { display: grid; grid-template-columns: var(--sidebar-width) minmax(0, 1fr); min-height: 0; }
+      .sidebar { min-height: 0; padding: 24px 16px; overflow: auto; background: var(--color-bg-container); border-right: 1px solid var(--color-border-subtle); }
+      .nav-group + .nav-group { margin-top: 24px; }
+      .nav-group-title { margin: 0 12px 8px; color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: 500; line-height: var(--font-style-caption-line-height); }
+      .nav-list { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
+      .nav-button { display: flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: var(--radius-default); font-size: var(--font-style-body-size); }
+      .nav-button:hover { background: var(--color-bg-hover); }
+      .nav-button[aria-current="page"] { color: var(--brand-text); background: var(--color-bg-selected); font-weight: 500; }
+
+      .canvas { min-width: 0; min-height: 0; overflow: auto; }
+      .doc-page { width: min(1120px, 100%); margin: 0 auto; padding: 48px 48px 80px; }
+      .doc-hero { padding-bottom: 36px; border-bottom: 1px solid var(--color-border-subtle); }
+      .eyebrow { margin: 0 0 8px; color: var(--brand-text); font-size: var(--font-style-caption-size); font-weight: 500; line-height: var(--font-style-caption-line-height); }
+      .doc-title { margin: 0; color: var(--color-text-top); font-size: var(--font-style-title-1-size); font-weight: 600; line-height: var(--font-style-title-1-line-height); }
+      .doc-description { max-width: 720px; margin: 12px 0 0; color: var(--color-text-secondary); font-size: var(--font-style-body-size); line-height: var(--font-style-body-line-height); }
+      .doc-section { padding: 36px 0; border-bottom: 1px solid var(--color-border-subtle); }
+      .doc-section:last-child { border-bottom: 0; }
+      .section-heading { margin-bottom: 20px; }
+      .section-heading h2 { margin: 0; color: var(--color-text-primary); font-size: var(--font-style-title-2-size); font-weight: 600; line-height: var(--font-style-title-2-line-height); }
+      .section-heading p { max-width: 760px; margin: 8px 0 0; color: var(--color-text-secondary); font-size: var(--font-style-body-size); line-height: var(--font-style-body-line-height); }
+
+      .principle-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+      .principle-card { padding: 20px; background: var(--color-bg-container); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-large); }
+      .principle-index { display: grid; place-items: center; width: 28px; height: 28px; margin-bottom: 16px; color: var(--brand-text); background: var(--color-bg-selected); border-radius: var(--radius-full); font-size: var(--font-style-caption-size); font-weight: 600; }
+      .principle-card h3 { margin: 0 0 6px; color: var(--color-text-primary); font-size: var(--font-style-title-3-size); line-height: var(--font-style-title-3-line-height); }
+      .principle-card p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-style-body-size); line-height: var(--font-style-body-line-height); }
+
+      .token-table { overflow: hidden; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-large); }
+      .token-row { display: grid; grid-template-columns: 150px 90px minmax(180px, 1fr) 220px; align-items: center; gap: 20px; min-height: 76px; padding: 12px 20px; background: var(--color-bg-container); border-top: 1px solid var(--color-border-subtle); }
+      .token-row:first-child { border-top: 0; }
+      .token-row.header { min-height: 48px; color: var(--color-text-secondary); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: 500; }
+      .token-name { width: fit-content; padding: 2px 6px; color: var(--color-text-primary); background: var(--color-bg-subtle); border-radius: var(--radius-small); font-size: var(--font-style-caption-size); }
+      .token-value, .token-usage { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); line-height: var(--font-style-caption-line-height); }
+      .token-preview { display: grid; place-items: center; width: 100%; height: 44px; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-default); border-radius: var(--preview-radius); font-size: var(--font-style-caption-size); }
+      .token-preview.circle { width: 44px; justify-self: start; }
+
+      .usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .usage-card { padding: 20px; background: var(--color-bg-container); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-large); }
+      .usage-card h3 { margin: 0 0 8px; color: var(--color-text-primary); font-size: var(--font-style-title-3-size); line-height: var(--font-style-title-3-line-height); }
+      .usage-card p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-style-body-size); line-height: var(--font-style-body-line-height); }
+      .code-block { margin: 16px 0 0; overflow: auto; padding: 16px; color: var(--color-text-default); background: var(--color-bg-subtle); border-radius: var(--radius-small); font-size: var(--font-style-caption-size); line-height: 1.7; }
+      .do-list { margin: 14px 0 0; padding-left: 20px; color: var(--color-text-secondary); font-size: var(--font-style-body-size); line-height: 1.8; }
+
+      @media (max-width: 900px) {
+        body { overflow: auto; }
+        .app-shell { height: auto; min-height: 100vh; }
+        .workspace { grid-template-columns: 1fr; }
+        .sidebar { display: none; }
+        .doc-page { padding: 32px 24px 64px; }
+        .principle-grid { grid-template-columns: 1fr; }
+        .token-row { grid-template-columns: 130px 70px minmax(150px, 1fr); }
+        .token-row > :last-child { display: none; }
+      }
+      @media (max-width: 620px) {
+        .topbar { padding: 0 16px; }
+        .brand span { display: none; }
+        .topbar-nav { margin-left: auto; }
+        .usage-grid { grid-template-columns: 1fr; }
+        .token-row { grid-template-columns: 1fr 64px; gap: 10px; }
+        .token-row > :nth-child(3) { display: none; }
+      }
+
+      /* Keep the site chrome and document frame identical to text.html. */
+      .topbar { gap: 36px; }
+      .brand { min-width: 0; }
+      .brand-mark { flex: 0 0 auto; display: block; transform: translateY(1px); }
+      .brand-mark-layer-top { fill: url(#brandMarkTop); filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent)); }
+      .brand-mark-layer-middle { fill: url(#brandMarkMiddle); }
+      .brand-mark-layer-bottom { fill: url(#brandMarkBottom); }
+      .brand-title { overflow: hidden; color: var(--color-text-primary); font-size: 17px; font-weight: 600; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
+      .sidebar { display: flex; flex-direction: column; gap: 18px; padding: 22px 18px; overflow: hidden; overscroll-behavior: none; scrollbar-gutter: auto; scrollbar-width: none; }
+      .sidebar::-webkit-scrollbar { display: none; }
+      .sidebar .nav-list { display: flex; flex-direction: column; gap: 12px; padding: 0; }
+      .nav-section { display: flex; flex-direction: column; gap: 8px; }
+      .nav-section[hidden] { display: none !important; }
+      .nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+      .nav-section:first-child { padding-top: 0; border-top: 0; }
+      .nav-category { display: inline-flex; align-items: center; justify-content: flex-start; gap: 6px; width: 100%; min-height: 32px; padding: 0 12px; color: var(--color-text-tertiary); background: transparent; border: 0; cursor: pointer; font-size: var(--font-style-caption-size); text-align: left; }
+      .nav-category-count { color: inherit; font-weight: 400; }
+      .nav-category-chevron { display: inline-flex; flex: 0 0 auto; width: 16px; height: 16px; margin-left: auto; color: inherit; transition: transform .16s ease; }
+      .nav-category-chevron svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+      .nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+      .nav-category:hover { background: var(--color-bg-subtle); }
+      .nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+      .nav-sublist {
+        display: flex !important;
+        flex-direction: column;
+        gap: 4px;
+        max-height: var(--nav-sublist-height, 1000px);
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        opacity: 1;
+        list-style: none;
+        transition: max-height .22s cubic-bezier(.4, 0, .2, 1), opacity .16s ease;
+      }
+      .nav-category[aria-expanded="false"] + .nav-sublist { max-height: 0; opacity: 0; pointer-events: none; }
+      .nav-button { position: relative; width: 100%; color: var(--color-text-default); background: transparent; border: 0; border-radius: var(--radius-default); cursor: pointer; font-size: inherit; font-weight: 400; line-height: normal; text-align: left; text-decoration: none; }
+      .nav-button:hover { color: var(--color-text-top); background: var(--color-bg-subtle); }
+      .nav-button:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+      .nav-label { overflow: hidden; font-size: var(--font-style-body-size); font-weight: 400; line-height: 1.2; letter-spacing: 0; text-overflow: ellipsis; white-space: nowrap; }
+      .nav-button.is-selected, .nav-button[aria-current="page"] { color: var(--color-action-primary); background: var(--color-bg-subtle); }
+      .nav-button.is-selected .nav-label, .nav-button[aria-current="page"] .nav-label { font-weight: 400; }
+      .canvas { background: var(--color-bg-container); }
+      .canvas-inner { display: grid; min-height: calc(100vh - var(--topbar-height)); padding: 32px; }
+      .doc-page { width: min(100%, 1080px); margin: 0; padding: 0; color: var(--color-text-primary); }
+      .doc-hero, .doc-section { padding: 28px 32px; }
+      .doc-kicker { margin: 0 0 10px; color: var(--color-action-primary); font-size: var(--font-style-caption-size); font-weight: 400; line-height: 1.4; }
+      .doc-title { font-size: 32px; font-weight: 600; line-height: 40px; }
+      .doc-summary { max-width: 760px; margin: 10px 0 0; color: var(--color-text-secondary); font-size: var(--font-style-body-size); line-height: var(--font-style-body-line-height); }
+      @media (prefers-reduced-motion: reduce) {
+        .nav-sublist, .nav-category-chevron { transition: none; }
+      }
+    </style>
+    <link rel="stylesheet" href="component-color-default.css" />
+    <link rel="stylesheet" href="topbar-shared.css" />
+    <link rel="stylesheet" href="typography-standard.css" />
+      <link rel="stylesheet" href="radius-tokens.css" />
+  </head>
+  <body class="radius-style-default">
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="IQ Design System 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="var(--brand-4)"/><stop offset="1" stop-color="var(--brand-6)"/></linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="var(--brand-5)" stop-opacity=".48"/><stop offset="1" stop-color="var(--brand-5)" stop-opacity=".24"/></linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="var(--brand-5)" stop-opacity=".26"/><stop offset="1" stop-color="var(--brand-5)" stop-opacity=".1"/></linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z"/>
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z"/>
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z"/>
+          </svg>
+          <span class="brand-title">IQ Design System</span>
+        </a>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="design">设计</button>
+        </nav>
+        <div class="product-select" data-product-select>
+          <button class="product-select-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" data-product-select-trigger><span data-product-select-value>默认主题</span></button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li><button class="product-select-option" type="button" role="option" aria-selected="true" data-product-option="default-theme">默认主题</button></li>
+            <li><button class="product-select-option" type="button" role="option" aria-selected="false" data-product-option="business-theme">业务主题</button></li>
+            <li><button class="product-select-option" type="button" role="option" aria-selected="false" data-product-option="decentralized">实验主题</button></li>
+          </ul>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav><ul class="nav-list" data-sidebar-list></ul></nav>
+        </aside>
+
+        <section class="canvas" aria-label="组件说明详情区">
+          <div class="canvas-inner">
+          <article class="content-panel doc-page" data-panel="radius">
+            <header class="doc-hero">
+              <p class="doc-kicker">Styles / Radius</p>
+              <h1 class="doc-title">Radius 圆角</h1>
+              <p class="doc-summary">圆角用于表达组件边界、层级和形态。IQB Design 使用 Small、Default、Large、XLarge 和 Full 五档 Token，其中 Default 为默认圆角。</p>
+            </header>
+
+            <section class="doc-section" aria-labelledby="principles-title">
+              <div class="section-heading">
+                <h2 id="principles-title">使用原则</h2>
+                <p>先判断组件的边界语义，再选择 Token。圆角不能代替层级、间距或组件尺寸本身。</p>
+              </div>
+              <div class="principle-grid">
+                <article class="principle-card"><span class="principle-index">01</span><h3>按语义选择</h3><p>高频操作、内容容器与浮层使用不同层级，避免所有组件采用同一个圆角。</p></article>
+                <article class="principle-card"><span class="principle-index">02</span><h3>只调用 Token</h3><p>组件通过基础圆角变量取值，不在局部样式中新增散落的数值。</p></article>
+                <article class="principle-card"><span class="principle-index">03</span><h3>完整圆角限形态</h3><p><code>radius-full</code> 只用于圆形、胶囊、头像和状态点，不用于普通卡片。</p></article>
+              </div>
+            </section>
+
+            <section class="doc-section" aria-labelledby="tokens-title">
+              <div class="section-heading">
+                <h2 id="tokens-title">基础 Token</h2>
+                <p><code>radius-style-default</code> 提供以下固定映射。切换主题只改变映射，不改变组件尺寸、布局与交互范围。</p>
+              </div>
+              <div class="token-table" role="table" aria-label="圆角 Token">
+                <div class="token-row header" role="row"><span>Token</span><span>Value</span><span>使用场景</span><span>示例</span></div>
+                <div class="token-row" role="row"><code class="token-name">radius-small</code><span class="token-value">4px</span><span class="token-usage">Checkbox、Tag、代码片段</span><span class="token-preview" style="--preview-radius:var(--radius-small)">Small</span></div>
+                <div class="token-row" role="row"><code class="token-name">radius-default</code><span class="token-value">6px</span><span class="token-usage">Button、Side nav item</span><span class="token-preview" style="--preview-radius:var(--radius-default)">Default</span></div>
+                <div class="token-row" role="row"><code class="token-name">radius-large</code><span class="token-value">8px</span><span class="token-usage">Input、Card、Collapse</span><span class="token-preview" style="--preview-radius:var(--radius-large)">Large</span></div>
+                <div class="token-row" role="row"><code class="token-name">radius-xlarge</code><span class="token-value">12px</span><span class="token-usage">Dropdown、Popover、Modal、媒体预览</span><span class="token-preview" style="--preview-radius:var(--radius-xlarge)">XLarge</span></div>
+                <div class="token-row" role="row"><code class="token-name">radius-full</code><span class="token-value">9999px</span><span class="token-usage">Avatar、Icon Button、状态点</span><span class="token-preview circle" style="--preview-radius:var(--radius-full)" aria-label="圆形示例"></span></div>
+              </div>
+            </section>
+
+            <section class="doc-section" aria-labelledby="usage-title">
+              <div class="section-heading"><h2 id="usage-title">调用方式</h2><p>样式主题在应用根节点声明，组件只消费与自身语义对应的基础 Token。</p></div>
+              <div class="usage-grid">
+                <article class="usage-card"><h3>1. 定义默认映射</h3><p>圆角主题集中维护完整的基础变量。</p><pre class="code-block"><code>.radius-style-default {
+  --radius-small: 4px;
+  --radius-default: 6px;
+  --radius-large: 8px;
+  --radius-xlarge: 12px;
+  --radius-full: 9999px;
+}</code></pre></article>
+                <article class="usage-card"><h3>2. 在组件中调用</h3><p>根容器选择主题，业务组件无需感知映射细节。</p><pre class="code-block"><code>&lt;body class="radius-style-default"&gt;
+  &lt;div class="card"&gt;...&lt;/div&gt;
+&lt;/body&gt;
+
+.card {
+  border-radius: var(--radius-large);
+}</code></pre></article>
+              </div>
+            </section>
+
+            <section class="doc-section" aria-labelledby="rules-title">
+              <div class="section-heading"><h2 id="rules-title">维护规则</h2></div>
+              <ul class="do-list">
+                <li>新增组件时优先复用现有 Token；只有形成跨组件的稳定语义后才扩展基础层。</li>
+                <li>拼接结构可直接使用 <code>0</code> 消除相邻边圆角；它是结构性例外，不属于基础圆角档位。</li>
+                <li>主题切换不得改变点击区域、组件高度或内容布局。</li>
+              </ul>
+            </section>
+          </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      const sidebarGroups = [
+        { label: "Styles 全局样式", scope: "global-style", items: [
+          ["color.html", "Color 颜色", "color"], ["text.html", "Text 字体", "text"],
+          ["icon.html", "ICON 图标", "icon"], ["radius.html", "Radius 圆角", "radius"], ["theme.html", "Theme 主题", "theme"]
+        ]},
+        { single: ["../index.html", "Components 组件总览"] },
+        { label: "General 通用", items: [["../general/button.html", "Button 按钮"], ["../general/typography.html", "Typography 排版"]] },
+        { label: "Layout 布局", items: [["../layout/divider.html", "Divider 分割线"], ["../layout/space.html", "Space 间距"], ["../layout/grid.html", "Grid 栅格"], ["../layout/layout.html", "Layout 布局"], ["../layout/splitter.html", "Splitter 分隔面板"]] },
+        { label: "Navigation 导航", items: [["../navigation/menu.html", "Menu 导航菜单"], ["../navigation/tabs.html", "Tabs 标签页"], ["../navigation/breadcrumb.html", "Breadcrumb 面包屑"], ["../navigation/dropdown.html", "Dropdown 下拉菜单"], ["../navigation/pagination.html", "Pagination 分页"], ["../navigation/steps.html", "Steps 步骤条"]] },
+        { label: "Data Entry 数据录入", items: [
+          ["../dataentry/input.html", "Input 输入框"], ["../dataentry/input-number.html", "InputNumber 数字输入框"], ["../dataentry/radio.html", "Radio 单选框"], ["../dataentry/checkbox.html", "Checkbox 复选框"],
+          ["../dataentry/switch.html", "Switch 开关"], ["../dataentry/select.html", "Select 选择器"], ["../dataentry/date-picker.html", "DatePicker 日期选择器"], ["../dataentry/time-picker.html", "TimePicker 时间选择器"],
+          ["../dataentry/upload.html", "Upload 上传"], ["../dataentry/form.html", "Form 表单"], ["../dataentry/autocomplete.html", "AutoComplete 自动补全"], ["../dataentry/cascader.html", "Cascader 联级选择"],
+          ["../dataentry/mentions.html", "Mentions 提及"], ["../dataentry/verification-code.html", "VerficationCode 验证码输入框"], ["../dataentry/rate.html", "Rate 评分"], ["../dataentry/slider.html", "Slider 滑块"]
+        ]},
+        { label: "Data Display 数据展示", items: [
+          ["../datadisplay/table.html", "Table 表格"], ["../datadisplay/list.html", "List 列表"], ["../datadisplay/statistic.html", "Statistic 数值显示"], ["../datadisplay/chart.html", "Chart 图表"],
+          ["../datadisplay/tag.html", "Tag 标签"], ["../datadisplay/tooltip.html", "Tooltip 提示气泡"], ["../datadisplay/avatar.html", "Avatar 头像"], ["../datadisplay/timeline.html", "Timeline 时间轴"],
+          ["../datadisplay/carousel.html", "Carousel 轮播"], ["../datadisplay/collapse.html", "Collapse 折叠面板"], ["../datadisplay/image.html", "Image 图片"], ["../datadisplay/badge.html", "Badge 徽标"],
+          ["../datadisplay/empty.html", "Empty 空状态"], ["../datadisplay/card.html", "Card 卡片"]
+        ]},
+        { label: "Feedback 反馈", items: [
+          ["../feedback/alert.html", "Alert 警告提示"], ["../feedback/drawer.html", "Drawer 抽屉"], ["../feedback/message.html", "Message 全局提示"], ["../feedback/model.html", "Model 模态弹窗"],
+          ["../feedback/popconfirm.html", "Popconfirm 气泡确认框"], ["../feedback/notification.html", "Notification 通知提醒"], ["../feedback/progress.html", "Progress 进度条"], ["../feedback/spin.html", "Spin 加载中"], ["../feedback/skeleton.html", "Skeleton 骨架屏"]
+        ]}
+      ];
+      const chevron = '<span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6"/></svg></span>';
+      const sidebarList = document.querySelector("[data-sidebar-list]");
+      sidebarList.innerHTML = sidebarGroups.map((group) => {
+        if (group.single) return `<li class="nav-section"><a class="nav-button" href="${group.single[0]}"><span class="nav-label">${group.single[1]}</span></a></li>`;
+        const scope = group.scope ? ` data-nav-scope="${group.scope}"` : "";
+        const items = group.items.map(([href, label, stylePage]) => `<li><a class="nav-button" href="${href}"${stylePage ? ` data-style-page="${stylePage}"` : ""}><span class="nav-label">${label}</span></a></li>`).join("");
+        return `<li class="nav-section"><button class="nav-category" type="button" aria-expanded="true"${scope}>${group.label}<span class="nav-category-count">${group.items.length}</span>${chevron}</button><ul class="nav-sublist">${items}</ul></li>`;
+      }).join("");
+
+      const setupSidebar = (sidebar) => {
+        sidebar.querySelectorAll("[data-style-page]").forEach((item) => {
+          const selected = item.dataset.stylePage === "radius";
+          item.classList.toggle("is-selected", selected);
+          selected ? item.setAttribute("aria-current", "page") : item.removeAttribute("aria-current");
+        });
+        const sections = Array.from(sidebar.querySelectorAll(":scope > nav > .nav-list > .nav-section"));
+        const categories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+        const syncSublistHeight = (list) => list.style.setProperty("--nav-sublist-height", `${list.scrollHeight}px`);
+        const applyMenu = (menu) => {
+          sections.forEach((section) => {
+            const label = section.textContent.trim();
+            const isDesign = label.startsWith("Styles") || label.startsWith("Layout");
+            const isComponents = label.includes("Components 组件总览") || categories.some((name) => label.startsWith(name));
+            section.hidden = menu === "design" ? !isDesign : !isComponents;
+          });
+          requestAnimationFrame(() => sidebar.querySelectorAll(".nav-sublist").forEach(syncSublistHeight));
+        };
+        let savedCategoryState = {};
+        try { savedCategoryState = JSON.parse(sessionStorage.getItem("iqb-design-nav-category-state") || "{}"); } catch {}
+        sidebar.querySelectorAll(".nav-category").forEach((button, index) => {
+          const list = button.nextElementSibling;
+          if (!list) return;
+          list.id ||= `radius-nav-${index}`;
+          button.setAttribute("aria-controls", list.id);
+          const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+          const expanded = savedCategoryState[categoryKey] !== false;
+          button.setAttribute("aria-expanded", String(expanded));
+          requestAnimationFrame(() => syncSublistHeight(list));
+          button.addEventListener("click", () => {
+            syncSublistHeight(list);
+            const nextExpanded = button.getAttribute("aria-expanded") !== "true";
+            button.setAttribute("aria-expanded", String(nextExpanded));
+            savedCategoryState[categoryKey] = nextExpanded;
+            try { sessionStorage.setItem("iqb-design-nav-category-state", JSON.stringify(savedCategoryState)); } catch {}
+          });
+        });
+        window.addEventListener("resize", () => sidebar.querySelectorAll(".nav-sublist").forEach(syncSublistHeight));
+        document.querySelectorAll("[data-topbar-nav]").forEach((tab) => tab.addEventListener("click", () => {
+          const menu = tab.dataset.topbarNav;
+          document.querySelectorAll("[data-topbar-nav]").forEach((item) => {
+            const selected = item === tab;
+            item.setAttribute("aria-selected", String(selected));
+            item.tabIndex = selected ? 0 : -1;
+          });
+          applyMenu(menu);
+        }));
+        applyMenu("design");
+      };
+      const sidebar = document.querySelector(".sidebar");
+      setupSidebar(sidebar);
+
+      const topbarTabs = Array.from(document.querySelectorAll("[data-topbar-nav]"));
+      document.querySelector(".topbar-nav").addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        event.preventDefault();
+        const current = Math.max(0, topbarTabs.indexOf(document.activeElement));
+        const next = event.key === "Home" ? 0 : event.key === "End" ? topbarTabs.length - 1 :
+          (current + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+        topbarTabs[next].click();
+        topbarTabs[next].focus();
+      });
+
+      const productOptions = Array.from(document.querySelectorAll("[data-product-option]"));
+      const productValue = document.querySelector("[data-product-select-value]");
+      const applyProduct = (product) => {
+        const normalized = product === "decentralized" ? "decentralized" : "default-theme";
+        document.documentElement.dataset.productTheme = normalized === "decentralized" ? "test-theme-1" : "default-theme";
+        productValue.textContent = normalized === "decentralized" ? "实验主题" : "默认主题";
+        productOptions.forEach((option) => option.setAttribute("aria-selected", String(option.dataset.productOption === normalized)));
+        try { localStorage.setItem("design-system-active-product", normalized); } catch {}
+      };
+      productOptions.forEach((option) => option.addEventListener("click", () => applyProduct(option.dataset.productOption)));
+      try { applyProduct(localStorage.getItem("design-system-active-product")); } catch { applyProduct("default-theme"); }
+    </script>
+    <script src="topbar-shared.js"></script>
+  </body>
+</html>

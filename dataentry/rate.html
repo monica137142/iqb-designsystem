@@ -1,11 +1,12 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-product-theme="default-theme">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>评分 Rate - Design System</title>
+    <script src="../styles/color-mode-init.js"></script>
     <style>
-      :root{--text-data-line-height: 1.3;--text-data-weight: 500;--text-data-size: 24px;--text-caption-line-height: 1.55;--text-caption-weight: 400;--text-caption-size: 12px;--text-helper-line-height: 1.55;--text-helper-weight: 400;--text-helper-size: 12px;--text-secondary-line-height: 1.65;--text-secondary-weight: 400;--text-secondary-size: 13px;--text-control-line-height: 1.65;--text-control-weight: 400;--text-control-size: 13px;--text-label-line-height: 1.75;--text-label-weight: 500;--text-label-size: 14px;--text-body-strong-line-height: 1.75;--text-body-strong-weight: 500;--text-body-strong-size: 14px;--text-body-line-height: 1.75;--text-body-weight: 400;--text-body-size: 14px;--text-overlay-title-line-height: 1.5;--text-overlay-title-weight: 500;--text-overlay-title-size: 16px;--text-card-title-line-height: 1.5;--text-card-title-weight: 500;--text-card-title-size: 16px;--text-section-title-line-height: 1.5;--text-section-title-weight: 500;--text-section-title-size: 16px;--text-page-title-line-height: 1.35;--text-page-title-weight: 500;--text-page-title-size: 20px;--color-overlay-loading: rgba(255, 255, 255, 0.72);--color-overlay-drawer: rgba(0, 0, 0, 0.35);--color-overlay-modal: rgba(0, 0, 0, 0.45);--color-status-info: var(--blue-500);--color-status-warning: var(--yellow-500);--color-status-error: var(--red-500);--color-status-error-text: var(--red-600);--color-status-success: var(--success-green-500);--color-action-primary-disabled: var(--brand-200);--color-action-primary-subtle: var(--brand-100);--color-action-primary-active: var(--brand-700);--color-action-primary-hover: var(--brand-600);--color-action-primary: var(--brand-500);--color-border-disabled: var(--gray-200);--color-border-focus: var(--brand-500);--color-border-strong: var(--gray-400);--color-border-subtle: var(--gray-200);--color-border-default: var(--gray-300);--color-bg-disabled: var(--gray-100);--color-bg-inverse: var(--gray-900);--color-bg-selected: var(--brand-100);--color-bg-hover: var(--gray-100);--color-bg-subtle: var(--gray-100);--color-bg-container: var(--white);--color-bg-page: var(--gray-50);--color-text-link: var(--blue-600);--color-text-inverse: var(--white);--color-text-disabled: var(--gray-400);--color-text-tertiary: var(--gray-500);--color-text-secondary: var(--gray-600);--color-text-default: var(--gray-700);--color-text-primary: var(--gray-900);--success-green-500: #1cc749;--yellow-500: #ff990a;--yellow-400: #ffb232;--red-500: #fe3d33;--red-600: #ec2116;--blue-500: #31a6ff;--blue-600: #1887f5;--blue-700: #1370e2;--brand-900: #125526;--brand-800: #13682a;--brand-700: #118430;--brand-400: #45e36e;--brand-300: #82f39f;--brand-200: #b9f9c9;--brand-100: #dbfde3;--brand-50: #f0fdf3;--brand-500:#1cc749;--brand-rgb:28, 199, 73;--gray-950: #0b0d0f;--gray-900: #14171a;--gray-700: #343a40;--gray-600: #59616a;--gray-500: #78818c;--gray-300: #d4d9de;--gray-200: #e7eaee;--gray-100: #f3f5f7;--gray-50: #fafbfc;font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--color-text-primary)}.app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--color-border-subtle)}.brand{color:var(--color-text-primary);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--color-text-secondary);font-size:var(--text-control-size)}.workspace{display:grid;grid-template-columns:300px 1fr}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--color-border-subtle);background:var(--gray-50)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--color-text-tertiary);font-size:var(--text-caption-size)}.nav-category-count{margin-left:6px}.nav-button{min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:6px;color:var(--color-text-default);font-size:var(--text-control-size);text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--color-action-primary);background:rgb(var(--brand-rgb)/.08)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary);font-size:var(--text-caption-size);font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--text-body-size);line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--color-border-subtle);border-radius:8px}.rate{display:flex;align-items:center;gap:8px;font-size:28px}.star{color:#ffb232}.star.empty{color:var(--gray-200)}.rate-text{margin-left:8px;color:var(--color-text-secondary);font-size:var(--text-control-size)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.content{padding:28px 20px 56px}}
+      :root{--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-status-info: var(--info-5);--color-status-warning: var(--warning-5);--color-status-error: var(--danger-5);--color-status-success: var(--success-5);--color-action-primary-disabled: var(--brand-2);--color-action-primary-bg-hover: var(--brand-0);--color-action-primary-hover: var(--brand-7);--color-action-primary-hover: var(--brand-6);--color-action-primary: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-border-focus: var(--brand-5);--color-border-strong: var(--neutral-4);--color-border-subtle: var(--neutral-2);--color-border-default: var(--neutral-3);--color-bg-disabled: var(--neutral-1);--color-bg-inverse: var(--neutral-9);--color-bg-selected: var(--brand-1);--color-bg-hover: var(--neutral-1);--color-bg-subtle: var(--neutral-1);--color-bg-container: var(--neutral-0);--color-bg-page: var(--neutral-0);--color-text-link: var(--info-6);--color-text-inverse: var(--neutral-0);--color-text-disabled: var(--neutral-4);--color-text-tertiary: var(--neutral-5);--color-text-secondary: var(--neutral-6);--color-text-default: var(--neutral-9);--color-text-primary: var(--neutral-10);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--color-text-primary)}.app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--color-border-subtle)}.brand{color:var(--color-text-primary);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:300px 1fr}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--color-border-subtle);background: var(--color-bg-container)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.nav-category-count{margin-left:6px}.nav-button{min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:var(--radius-default);color:var(--color-text-default);font-size:var(--font-style-body-size);text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--color-action-primary);background:color-mix(in srgb, var(--color-action-primary) 8%, transparent)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary);font-size:var(--font-style-caption-size);font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.rate{display:flex;align-items:center;gap:8px;font-size:28px}.star{color:var(--warning-4)}.star.empty{color: var(--color-text-primary)}.rate-text{margin-left:8px;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.content{padding:28px 20px 56px}}
       /* Shared side navigation */
       html,
       body {
@@ -53,7 +54,7 @@
 
       .sidebar::-webkit-scrollbar-thumb {
         background: var(--color-border-default);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
       .nav-list {
         display: flex;
@@ -86,7 +87,7 @@
         width: fit-content;
         padding: 0 12px 4px;
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
       }
       .nav-category-count {
@@ -104,14 +105,14 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm, 6px);
+        border-radius: var(--radius-default);
         cursor: pointer;
         text-align: left;
         text-decoration: none;
       }
       .nav-button:hover {
         color: var(--color-text-primary);
-        background: var(--gray-50);
+        background: var(--color-bg-container);
       }
       .nav-button[aria-current=page] {
         color:var(--color-action-primary);
@@ -119,18 +120,10 @@
       }
       .nav-label {
         overflow: hidden;
-        font-size:var(--text-body-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-overflow: ellipsis;
         white-space: nowrap;
-      }
-      .sidebar-footer {
-        margin-top: auto;
-        padding: 14px 6px 0;
-        color:var(--color-text-tertiary);
-        border-top:1px solid var(--color-border-subtle);
-        font-size:var(--text-caption-size);
-        line-height: 1.5;
       }
       @media (max-width: 860px) {
         .workspace {
@@ -148,9 +141,6 @@
           overflow-y: hidden;
           border-right: 0;
           border-bottom:1px solid var(--color-border-subtle);
-        }
-        .sidebar-footer {
-          display: none;
         }
         .nav-list,
         .nav-section,
@@ -178,96 +168,60 @@
       }
       /* Shared top navigation */
       :root {
-        --brand-50: #f0fdf3;
-        --brand-100: #dbfde3;
-        --brand-200: #b9f9c9;
-        --brand-300: #82f39f;
-        --brand-400: #45e36e;
-        --brand-600: #00ae2e;
-        --brand-700: #118430;
-        --brand-800: #13682a;
-        --brand-900: #125526;
-        --brand-text: #00ae2e;
-        --brand-text-hover: #118430;
-        --brand-border-soft: #bfead2;
-        --brand-border-hover: #8fd9b3;
-        --gray-800: #22262a;
-        --gray-400: #a5adb6;
-        --white: #ffffff;
-        --color-text-primary:var(--gray-900);
-        --color-text-default:var(--gray-700);
-        --color-text-secondary:var(--gray-600);
-        --color-text-tertiary:var(--gray-500);
-        --color-text-disabled:var(--gray-400);
-        --color-text-inverse:var(--white);
-        --color-text-link: var(--blue-600);
-        --color-bg-page:var(--gray-50);
-        --color-bg-container:var(--white);
-        --color-bg-subtle:var(--gray-100);
-        --color-bg-hover:var(--gray-100);
-        --color-bg-selected: var(--brand-100);
-        --color-bg-disabled:var(--gray-100);--color-bg-inverse: var(--gray-900);
-        --color-border-default: var(--gray-300);
-        --color-border-subtle: var(--gray-200);
-        --color-border-strong: var(--gray-400);
-        --color-border-focus:var(--brand-500);
+
+
+
+
+
+
+
+
+
+        --brand-text: var(--brand-6);
+        --brand-text-hover: var(--brand-7);
+        --brand-border-soft: var(--success-1);
+        --brand-border-hover: var(--success-2);
+
+
+
+        --color-text-primary:var(--neutral-10);
+        --color-text-default:var(--neutral-9);
+        --color-text-secondary:var(--neutral-6);
+        --color-text-tertiary:var(--neutral-5);
+        --color-text-disabled:var(--neutral-4);
+        --color-text-inverse:var(--neutral-0);
+        --color-text-link: var(--info-6);
+        --color-bg-page:var(--neutral-0);
+        --color-bg-container:var(--neutral-0);
+        --color-bg-subtle:var(--neutral-1);
+        --color-bg-hover:var(--neutral-1);
+        --color-bg-selected: var(--brand-1);
+        --color-bg-disabled:var(--neutral-1);--color-bg-inverse: var(--neutral-9);
+        --color-border-default: var(--neutral-3);
+        --color-border-subtle: var(--neutral-2);
+        --color-border-strong: var(--neutral-4);
+        --color-border-focus:var(--brand-5);
         --color-border-disabled:var(--color-border-subtle);
-        --color-action-primary:var(--brand-500);
-        --color-action-primary-hover:var(--brand-600);
-        --color-action-primary-active:var(--brand-700);
-        --color-action-primary-subtle: var(--brand-100);
-        --color-action-primary-disabled:var(--brand-200);
-        --color-status-success: var(--success-green-500);
-        --color-status-error: var(--red-500);--color-status-error-text: var(--red-600);
-        --color-status-warning: var(--yellow-500);
-        --color-status-info: var(--blue-500);
-        --color-overlay-modal:rgba(0,0,0,.45);
-        --color-overlay-drawer:rgba(0,0,0,.35);
-        --color-overlay-loading:rgba(255,255,255,.72);
-        --text-page-title-size:20px;
-        --text-page-title-weight:500;
-        --text-page-title-line-height:1.35;
-        --text-section-title-size:16px;
-        --text-section-title-weight:500;
-        --text-section-title-line-height:1.5;
-        --text-card-title-size:16px;
-        --text-card-title-weight:500;
-        --text-card-title-line-height:1.5;
-        --text-overlay-title-size:16px;
-        --text-overlay-title-weight:500;
-        --text-overlay-title-line-height:1.5;
-        --text-body-size:14px;
-        --text-body-weight:400;
-        --text-body-line-height: 1.75;
-        --text-body-strong-size:14px;
-        --text-body-strong-weight:500;
-        --text-body-strong-line-height: 1.75;
-        --text-label-size:14px;
-        --text-label-weight:500;
-        --text-label-line-height: 1.75;
-        --text-control-size:13px;
-        --text-control-weight:400;
-        --text-control-line-height: 1.65;
-        --text-secondary-size:13px;
-        --text-secondary-weight:400;
-        --text-secondary-line-height: 1.65;
-        --text-helper-size:12px;
-        --text-helper-weight:400;
-        --text-helper-line-height: 1.55;
-        --text-caption-size:12px;
-        --text-caption-weight:400;
-        --text-caption-line-height: 1.55;
-        --text-data-size:24px;
-        --text-data-weight:500;
-        --text-data-line-height:1.3;
+        --color-action-primary:var(--brand-5);
+        --color-action-primary-hover:var(--brand-6);
+        --color-action-primary-hover:var(--brand-7);
+        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-disabled:var(--brand-2);
+        --color-status-success: var(--success-5);
+        --color-status-error: var(--danger-5);
+        --color-status-warning: var(--warning-5);
+        --color-status-info: var(--info-5);
+        --color-overlay-modal:color-mix(in srgb, var(--neutral-10) 45%, transparent);
+        --color-overlay-drawer:color-mix(in srgb, var(--neutral-10) 35%, transparent);
+        --color-overlay-loading:color-mix(in srgb, var(--neutral-0) 72%, transparent);
         --topbar-height: 60px;
-        --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
+        --radius-default: 6px;
+
         --rate-icon-size: 24px;
         --rate-icon-gap: 8px;
         --rate-active-color: var(--color-status-warning);
         --rate-empty-color: var(--color-border-subtle);
-        --rate-disabled-opacity: 0.48;
+        --rate-disabled-opacity: 0.4;
         --rate-hover-scale: 1.2;
       }
 
@@ -275,10 +229,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 36px;
         height: var(--topbar-height);
         padding: 0 24px;
-        background: rgba(255, 255, 255, 0.94);
+        background: var(--color-bg-container);
         border-bottom:1px solid var(--color-border-subtle);
         backdrop-filter: blur(12px);
         z-index: 3;
@@ -302,7 +256,7 @@
 
       .brand-mark-layer-top {
         fill: url(#brandMarkTop);
-        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+        filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent));
       }
 
       .brand-mark-layer-middle {
@@ -315,7 +269,7 @@
 
       .brand-title {
         overflow: hidden;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         font-size: 17px;
         font-weight: 600;
         letter-spacing: 0;
@@ -323,9 +277,128 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+.nav-section[hidden] { display: none !important; }
+.nav-list > .nav-section:nth-child(2) { margin-top: 0 !important; }
+.sidebar .nav-list { gap: 12px; padding-bottom: 0 !important; }
+.sidebar .nav-section { gap: 8px; }
+.nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+.nav-category {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 32px;
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-category-chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-text-tertiary);
+  transition: transform 0.16s ease;
+}
+.nav-category-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+.nav-category[aria-expanded="false"] + .nav-sublist { display: none !important; }
+.nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.nav-category { color: var(--color-text-tertiary) !important; }
+.nav-category:hover { background: var(--color-bg-container) !important; }
+.nav-category .nav-category-count,
+.nav-category .nav-category-chevron { color: inherit !important; }
 
-      .product-select {
+.topbar-nav {
+  --tabs-height-default: 40px;
+  --tabs-padding-x: 14px;
+  --tabs-gap: 8px;
+  --tabs-font-size: var(--font-style-body-size);
+  --tabs-font-weight-active: var(--font-style-body-medium-weight);
+  --tabs-color: var(--color-text-secondary);
+  --tabs-hover-color: var(--color-text-primary);
+  --tabs-active-color: var(--brand-text);
+  --tabs-indicator-color: var(--color-action-primary);
+  --tabs-indicator-size: 2px;
+  --tabs-bg-hover: var(--color-bg-hover);
+  --tabs-radius: var(--radius-default);
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: var(--tabs-gap);
+}
+
+.topbar-nav-tab {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabs-height-default);
+  padding: 0 var(--tabs-padding-x);
+  color: var(--tabs-color);
+  background: transparent;
+  border: 0;
+  border-radius: var(--tabs-radius);
+  cursor: pointer;
+  font-size: var(--tabs-font-size);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover {
+  color: var(--tabs-hover-color);
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover::before {
+  position: absolute;
+  z-index: -1;
+  inset: 4px;
+  content: "";
+  background: var(--tabs-bg-hover);
+  border-radius: var(--radius-small);
+}
+
+.topbar-nav-tab[aria-selected="true"] {
+  color: var(--tabs-active-color);
+  font-weight: var(--tabs-font-weight-active);
+}
+
+.topbar-nav-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: var(--tabs-indicator-size);
+  content: "";
+  background: var(--tabs-indicator-color);
+  border-radius: var(--radius-full);
+}
+
+.topbar-nav-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-select {
+
         position: relative;
+        margin-left: 0;
         flex: 0 0 auto;
         width: 124px;
       }
@@ -339,12 +412,12 @@
         width: 100%;
         min-height: 36px;
         padding: 0 22px 0 10px;
-        color: var(--gray-800);
-        background: var(--gray-50);
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.2;
         text-align: left;
@@ -365,18 +438,20 @@
       .product-select-trigger::after {
         position: absolute;
         top: 50%;
-        right: 9px;
-        width: 5px;
-        height: 5px;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
         content: "";
-        border-right: 1.25px solid var(--gray-500);
-        border-bottom: 1.25px solid var(--gray-500);
-        transform: translateY(-65%) rotate(45deg);
+        background-color: var(--color-text-disabled);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        transform: translateY(-50%);
         transition: transform 0.16s ease;
-      }
+        }
 
       .product-select-trigger[aria-expanded="true"]::after {
-        transform: translateY(-35%) rotate(225deg);
+        transform: translateY(-50%) rotate(180deg);
       }
 
       .product-select-menu {
@@ -392,8 +467,8 @@
         list-style: none;
         background:var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+        border-radius: var(--radius-default);
+        box-shadow: var(--shadow-overlay);
       }
 
       .product-select-menu[hidden] {
@@ -407,9 +482,9 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-align: left;
       }
@@ -417,7 +492,7 @@
       .product-select-option:hover,
       .product-select-option[aria-selected="true"] {
         color:var(--color-action-primary);
-        background: rgb(var(--brand-rgb) / 0.08);
+        background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
       .topbar-actions {
@@ -426,15 +501,15 @@
         margin-left: auto;
         gap: 8px;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .status-dot {
         width: 8px;
         height: 8px;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         background:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+        box-shadow: none;
       }
 
       @media (max-width: 680px) {
@@ -481,7 +556,7 @@
 
       .doc-page {
         width: min(100%, 1080px);
-        color: var(--gray-800);
+        color: var(--color-text-default);
       }
 
       .doc-hero,
@@ -496,7 +571,7 @@
       .doc-kicker {
         margin: 0 0 10px;
         color:var(--color-action-primary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         font-weight: 400;
         line-height: 1.4;
         text-transform: none;
@@ -514,8 +589,8 @@
         max-width: 720px;
         margin: 12px 0 0;
         color:var(--color-text-secondary);
-        font-size:var(--text-body-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .doc-meta-list {
@@ -531,8 +606,8 @@
         padding: 4px 8px;
         color:var(--color-text-secondary);
         background:var(--color-bg-subtle);
-        border-radius: 999px;
-        font-size:var(--text-caption-size);
+        border-radius: var(--radius-full);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
       }
 
@@ -557,8 +632,8 @@
 
       .doc-section h3 {
         margin: 0 0 8px;
-        color: var(--gray-800);
-        font-size:var(--text-body-size);
+        color: var(--color-text-default);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -566,7 +641,7 @@
       .doc-section p {
         margin: 0;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.7;
       }
 
@@ -588,8 +663,8 @@
         position: relative;
         padding-left: 16px;
         color:var(--color-text-default);
-        font-size:var(--text-control-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .rule-list li::before {
@@ -600,7 +675,7 @@
         height: 5px;
         content: "";
         background:var(--color-action-primary);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
 
       .example-block {
@@ -610,8 +685,8 @@
         min-width: 0;
         padding: 16px;
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
-        background: var(--gray-50);
+        border-radius: var(--radius-default);
+        background: var(--color-bg-container);
       }
 
       .example-block.full {
@@ -640,20 +715,20 @@
       .rate-label {
         min-width: 76px;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.4;
       }
 
       .rate-text {
         margin-left: 0;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.4;
       }
 
       .rate-feedback {
         color: var(--brand-text);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.4;
       }
 
@@ -741,18 +816,18 @@
 
       .spec-rate-character.is-selected-hover .spec-rate-character-left,
       .spec-rate-character.is-selected-hover .spec-rate-character-right {
-        color: #e99f00;
-        filter: drop-shadow(0 2px 4px rgba(247, 186, 30, 0.22));
+        color: var(--warning-5);
+        filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--warning-4) 22%, transparent));
       }
 
       .spec-rate-character.is-unselected-hover .spec-rate-character-left,
       .spec-rate-character.is-unselected-hover .spec-rate-character-right {
-        color: rgba(247, 186, 30, 0.42);
+        color: color-mix(in srgb, var(--warning-4) 42%, transparent);
       }
 
       .spec-rate-character.is-half-selected-hover .spec-rate-character-left {
-        color: #e99f00;
-        filter: drop-shadow(0 2px 4px rgba(247, 186, 30, 0.22));
+        color: var(--warning-5);
+        filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--warning-4) 22%, transparent));
       }
 
       .spec-rate-character.is-half-selected-hover .spec-rate-character-right {
@@ -761,7 +836,7 @@
       }
 
       .spec-rate-character.is-half-unselected-hover .spec-rate-character-left {
-        color: rgba(247, 186, 30, 0.42);
+        color: color-mix(in srgb, var(--warning-4) 42%, transparent);
       }
 
       .spec-rate-character.is-half-unselected-hover .spec-rate-character-right {
@@ -775,7 +850,7 @@
 
       .spec-rate-character:focus-visible {
         outline: none;
-        border-radius: 4px;
+        border-radius: var(--radius-small);
         box-shadow: var(--shadow-focus);
       }
 
@@ -786,7 +861,7 @@
 
       .rate-small .spec-rate-inner {
         min-height: 28px;
-        font-size:var(--text-page-title-size);
+        font-size:var(--font-style-title-1-size);
       }
 
       .rate-large .spec-rate-inner {
@@ -799,36 +874,17 @@
         color:var(--color-action-primary);
       }
 
-      .rate-structure {
-        display: grid;
-        gap: 8px;
-        margin: 0;
-        padding: 14px;
-        overflow-x: auto;
-        color:var(--color-text-default);
-        background: var(--gray-50);
-        border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
-        font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size:var(--text-caption-size);
-        line-height: 1.7;
-      }
-
-      .rate-structure span {
-        white-space: nowrap;
-      }
-
       .spec-table-wrap {
         overflow-x: auto;
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
       }
 
       .spec-table {
         width: 100%;
         min-width: 680px;
         border-collapse: collapse;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .spec-table th,
@@ -841,7 +897,7 @@
 
       .spec-table th {
         color:var(--color-text-default);
-        background: var(--gray-50);
+        background: var(--color-bg-container);
         font-weight: 600;
       }
 
@@ -851,17 +907,16 @@
 
       .spec-table code {
         padding: 2px 5px;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         background:var(--color-bg-subtle);
-        border-radius: 4px;
+        border-radius: var(--radius-small);
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
       }
 
       :root[data-product-theme="test-theme-1"] .example-block,
-      :root[data-product-theme="test-theme-1"] .spec-table-wrap,
-      :root[data-product-theme="test-theme-1"] .rate-structure {
-        border-radius: 2px !important;
+      :root[data-product-theme="test-theme-1"] .spec-table-wrap {
+        border-radius: var(--radius-small) !important;
       }
 
       @media (max-width: 760px) {
@@ -890,7 +945,7 @@
         }
 
         .doc-title {
-          font-size:var(--text-data-size);
+          font-size:var(--font-style-display-size);
         }
 
         .doc-grid {
@@ -903,34 +958,43 @@
       }
       /* End shared top navigation */
     </style>
+    <link rel="stylesheet" href="../styles/component-color-default.css" />
+    <style>
+      .example-block.full { background: var(--color-bg-container); }
+    </style>
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/control-radius.css" />
+    <link rel="stylesheet" href="../styles/topbar-shared.css" />
+    <link rel="stylesheet" href="../styles/typography-standard.css">
+      <link rel="stylesheet" href="../styles/radius-tokens.css" />
   </head>
   <body><div class="app-shell"><header class="topbar">
-        <a class="brand" href="#" aria-label="IQB DESIGN 首页">
+        <a class="brand" href="#" aria-label="IQ Design System 首页">
           <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-400)" />
-                <stop offset="1" stop-color="var(--brand-600)" />
+                <stop offset="0" stop-color="var(--brand-4)" />
+                <stop offset="1" stop-color="var(--brand-6)" />
               </linearGradient>
               <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.24" />
               </linearGradient>
               <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.1" />
               </linearGradient>
             </defs>
             <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
           </svg>
-          <span class="brand-title">IQB DESIGN</span>
+          <span class="brand-title">IQ Design System</span>
         </a>
-        <div class="topbar-actions" aria-label="系统状态">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 46/46</span>
-        </div>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="design">设计</button>
+        </nav>
         <div class="product-select" data-product-select>
           <button
             class="product-select-trigger"
@@ -982,9 +1046,14 @@
           <nav>
             <ul class="nav-list">
               <li class="nav-section">
-                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
-                  <span class="nav-label">Styles 全局样式</span>
-                </a>
+                <button class="nav-category" type="button" aria-expanded="true" data-nav-scope="global-style">Styles 全局样式<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="../styles/color.html" data-style-page="color"><span class="nav-label">Color 颜色</span></a></li>
+                  <li><a class="nav-button" href="../styles/text.html" data-style-page="text"><span class="nav-label">Text 字体</span></a></li>
+                  <li><a class="nav-button" href="../styles/icon.html" data-style-page="icon"><span class="nav-label">ICON 图标</span></a></li>
+                  <li><a class="nav-button" href="../styles/radius.html" data-style-page="radius"><span class="nav-label">Radius 圆角</span></a></li>
+                  <li><a class="nav-button" href="../styles/theme.html" data-style-page="theme"><span class="nav-label">Theme 主题</span></a></li>
+                </ul>
               </li>
               <li class="nav-section">
                 <a class="nav-button" href="../index.html#overview">
@@ -992,7 +1061,7 @@
                 </a>
               </li>
               <li class="nav-section">
-                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">General 通用<span class="nav-category-count">2</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../general/button.html">
@@ -1007,7 +1076,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Layout 布局<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../layout/divider.html">
@@ -1037,7 +1106,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Navigation 导航<span class="nav-category-count">6</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../navigation/menu.html">
@@ -1072,7 +1141,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Entry 数据录入<span class="nav-category-count">16</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../dataentry/input.html">
@@ -1157,7 +1226,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Display 数据展示<span class="nav-category-count">14</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../datadisplay/table.html">
@@ -1232,7 +1301,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Feedback 反馈<span class="nav-category-count">9</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../feedback/alert.html">
@@ -1283,8 +1352,6 @@
               </li>
             </ul>
           </nav>
-
-          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
         </aside>
 
         <section class="canvas" aria-label="组件说明详情区">
@@ -1300,7 +1367,7 @@
                   <li>默认 5 项</li>
                   <li>图标 24px</li>
                   <li>间距 8px</li>
-                  <li>激活色 #F7BA1E</li>
+                  <li>激活色 var(--warning-4)</li>
                 </ul>
               </header>
 
@@ -1319,8 +1386,8 @@
                 <h2>基础用法</h2>
                 <div class="doc-grid">
                   <div class="example-block">
-                    <h3>基础评分</h3>
-                    <p>默认 5 个字符，点击已选值可按业务策略决定是否清除。</p>
+                    <div class="example-head"><h3>基础评分</h3>
+                    <p>默认 5 个字符，点击已选值可按业务策略决定是否清除。</p></div>
                     <div class="rate-demo-row">
                       <div class="spec-rate" aria-label="任务输出评分 4 分" data-rate data-rate-value="4" data-rate-allow-clear="true" data-rate-output-format="score">
                         <div class="spec-rate-inner">
@@ -1336,8 +1403,8 @@
                   </div>
 
                   <div class="example-block">
-                    <h3>半星评分</h3>
-                    <p>开启 allowHalf 后，左右半区分别响应 hover 与 click。</p>
+                    <div class="example-head"><h3>半星评分</h3>
+                    <p>开启 allowHalf 后，左右半区分别响应 hover 与 click。</p></div>
                     <div class="rate-demo-row">
                       <div class="spec-rate" aria-label="素材质量评分 3.5 分" data-rate data-rate-value="3.5" data-rate-allow-half="true" data-rate-output-format="score">
                         <div class="spec-rate-inner">
@@ -1353,8 +1420,8 @@
                   </div>
 
                   <div class="example-block">
-                    <h3>文案提示</h3>
-                    <p>tooltips 可映射每个评分含义，当前值可在右侧同步展示。</p>
+                    <div class="example-head"><h3>文案提示</h3>
+                    <p>tooltips 可映射每个评分含义，当前值可在右侧同步展示。</p></div>
                     <div class="rate-demo-row">
                       <div class="spec-rate" aria-label="Agent 响应满意度 很好" data-rate data-rate-value="4" data-rate-tooltips="很差|较差|一般|很好|非常好" data-rate-output-format="tooltip">
                         <div class="spec-rate-inner">
@@ -1370,8 +1437,8 @@
                   </div>
 
                   <div class="example-block">
-                    <h3>自定义字符</h3>
-                    <p>character 可替换为数字、图标或业务等级符号。</p>
+                    <div class="example-head"><h3>自定义字符</h3>
+                    <p>character 可替换为数字、图标或业务等级符号。</p></div>
                     <div class="rate-demo-row">
                       <span class="rate-label">风险等级</span>
                       <div class="spec-rate" aria-label="风险等级 2 级" data-rate data-rate-value="2" data-rate-output-format="none">
@@ -1386,8 +1453,8 @@
                   </div>
 
                   <div class="example-block">
-                    <h3>笑脸分级</h3>
-                    <p>grading 用于情绪化反馈，适合满意度评价而非精确打分。</p>
+                    <div class="example-head"><h3>笑脸分级</h3>
+                    <p>grading 用于情绪化反馈，适合满意度评价而非精确打分。</p></div>
                     <div class="rate-demo-row">
                       <div class="spec-rate rate-grading" aria-label="服务体验评分 5 分" data-rate data-rate-value="5" data-rate-tooltips="非常不满|不满意|一般|满意|非常满意" data-rate-output-format="tooltip">
                         <div class="spec-rate-inner">
@@ -1409,8 +1476,8 @@
                 <h2>状态</h2>
                 <div class="doc-grid">
                   <div class="example-block">
-                    <h3>只读</h3>
-                    <p>readonly 用于展示历史评分、模型评分或不可编辑结果，不响应选择与 hover。</p>
+                    <div class="example-head"><h3>只读</h3>
+                    <p>readonly 用于展示历史评分、模型评分或不可编辑结果，不响应选择与 hover。</p></div>
                     <div class="rate-demo-stack">
                       <div class="rate-demo-row">
                         <span class="rate-label">默认字符</span>
@@ -1453,8 +1520,8 @@
                   </div>
 
                   <div class="example-block">
-                    <h3>禁用</h3>
-                    <p>disabled 用于流程暂不可操作状态，保留当前值但降低整体可操作感。</p>
+                    <div class="example-head"><h3>禁用</h3>
+                    <p>disabled 用于流程暂不可操作状态，保留当前值但降低整体可操作感。</p></div>
                     <div class="rate-demo-stack">
                       <div class="rate-demo-row">
                         <span class="rate-label">默认字符</span>
@@ -1501,8 +1568,8 @@
               <section class="doc-section">
                 <h2>尺寸</h2>
                 <div class="example-block full">
-                  <h3>Size</h3>
-                  <p>默认尺寸与评分组件保持一致；紧凑列表使用 small，重点反馈入口使用 large。</p>
+                  <div class="example-head"><h3>Size</h3>
+                  <p>默认尺寸与评分组件保持一致；紧凑列表使用 small，重点反馈入口使用 large。</p></div>
                   <div class="rate-demo-stack">
                     <div class="rate-demo-row">
                       <span class="rate-label">Small</span>
@@ -1540,24 +1607,6 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </section>
-
-              <section class="doc-section">
-                <h2>结构规范</h2>
-                <div class="example-block full">
-                  <h3>DOM Anatomy</h3>
-                  <p>静态规范页遵循评分组件的核心层级：容器、内部 flex 行、每个评分字符、左右半区。</p>
-                  <div class="rate-structure" aria-label="Rate 结构">
-                    <span>&lt;div class="spec-rate spec-rate-readonly | spec-rate-disabled"&gt;</span>
-                    <span>&nbsp;&nbsp;&lt;div class="spec-rate-inner"&gt;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="spec-rate-character spec-rate-character-full | spec-rate-character-half" role="radio"&gt;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="spec-rate-character-left"&gt;character&lt;/div&gt;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="spec-rate-character-right"&gt;character&lt;/div&gt;</span>
-                    <span>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/div&gt;</span>
-                    <span>&nbsp;&nbsp;&lt;/div&gt;</span>
-                    <span>&lt;/div&gt;</span>
                   </div>
                 </div>
               </section>
@@ -1609,7 +1658,7 @@
                         <td><code>allowClear</code></td>
                         <td>再次点击当前值时是否清除评分。</td>
                         <td><code>boolean</code></td>
-                        <td><code>false</code></td>
+                        <td><code>true</code></td>
                       </tr>
                       <tr>
                         <td><code>tooltips</code></td>
@@ -1686,7 +1735,7 @@
                       </tr>
                       <tr>
                         <td><code>--rate-disabled-opacity</code></td>
-                        <td><code>0.48</code></td>
+                        <td><code>0.4</code></td>
                         <td>禁用态整体透明度。</td>
                       </tr>
                       <tr>
@@ -1704,7 +1753,123 @@
       </main>
     </div>
     <script data-product-theme-script>
-      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+const topbarComponentTab = document.querySelector("[data-topbar-nav=components]");
+const topbarDesignTab = document.querySelector("[data-topbar-nav=design]");
+const topbarTabs = [topbarComponentTab, topbarDesignTab].filter(Boolean);
+const sidebarSections = Array.from(document.querySelectorAll(".sidebar > nav > .nav-list > .nav-section"));
+const navMenuStorageKey = "iqb-design-active-nav-menu";
+const componentCategories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+const navCategoryStorageKey = "iqb-design-nav-category-state";
+const getSavedNavCategoryState = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(navCategoryStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+};
+const saveNavCategoryState = (state) => {
+  try {
+    sessionStorage.setItem(navCategoryStorageKey, JSON.stringify(state));
+  } catch {
+    // Local previews may disable storage; toggling still works in the current page.
+  }
+};
+const navCategoryState = getSavedNavCategoryState();
+const navCategoryButtons = Array.from(document.querySelectorAll(".sidebar .nav-category"));
+navCategoryButtons.forEach((button, index) => {
+  const sublist = button.nextElementSibling;
+  if (!sublist?.classList.contains("nav-sublist")) return;
+  const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+  sublist.id ||= `sidebar-category-${index + 1}`;
+  button.setAttribute("aria-controls", sublist.id);
+  button.setAttribute("aria-expanded", String(navCategoryState[categoryKey] !== false));
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const nextExpanded = !isExpanded;
+    button.setAttribute("aria-expanded", String(nextExpanded));
+    navCategoryState[categoryKey] = nextExpanded;
+    saveNavCategoryState(navCategoryState);
+  });
+});
+
+const getSectionCategory = (section) =>
+  section.querySelector(":scope > .nav-category")?.textContent.trim() || "";
+const isComponentSection = (section) =>
+  Boolean(section.querySelector(":scope > .nav-button .nav-label")?.textContent.includes("Components")) ||
+  componentCategories.some((category) => getSectionCategory(section).startsWith(category));
+const isDesignSection = (section) =>
+  Boolean(section.querySelector("[data-nav-scope=global-style]")) ||
+  getSectionCategory(section).startsWith("Layout");
+const getSavedNavMenu = () => {
+  try {
+    return sessionStorage.getItem(navMenuStorageKey);
+  } catch {
+    return null;
+  }
+};
+const saveNavMenu = (menu) => {
+  try {
+    sessionStorage.setItem(navMenuStorageKey, menu);
+  } catch {
+    // Local previews may disable storage; in-page switching still works.
+  }
+};
+const selectDefaultNavItem = (menu) => {
+  const defaultItem = menu === "design"
+    ? document.querySelector(".sidebar [data-style-page=color]")
+    : sidebarSections
+        .map((section) => section.querySelector(":scope > .nav-button"))
+        .find((item) => item?.querySelector(".nav-label")?.textContent.includes("Components"));
+  if (!defaultItem) return;
+  document.querySelectorAll(".sidebar .nav-button[aria-current=page]").forEach((item) =>
+    item.removeAttribute("aria-current"),
+  );
+  defaultItem.setAttribute("aria-current", "page");
+  defaultItem.click();
+};
+
+const applyNavMenu = (menu) => {
+  const activeMenu = menu === "design" ? "design" : "components";
+  topbarTabs.forEach((tab) => {
+    const isSelected = tab.dataset.topbarNav === activeMenu;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+  sidebarSections.forEach((section) => {
+    const shouldShow = activeMenu === "design" ? isDesignSection(section) : isComponentSection(section);
+    section.hidden = !shouldShow;
+    section.style.display = shouldShow ? "" : "none";
+  });
+};
+
+applyNavMenu(getSavedNavMenu() || "components");
+topbarComponentTab?.addEventListener("click", () => {
+  applyNavMenu("components");
+  saveNavMenu("components");
+  selectDefaultNavItem("components");
+});
+topbarDesignTab?.addEventListener("click", () => {
+  applyNavMenu("design");
+  saveNavMenu("design");
+  selectDefaultNavItem("design");
+});
+const topbarNav = document.querySelector(".topbar-nav");
+topbarNav?.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = Math.max(0, topbarTabs.indexOf(document.activeElement));
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? topbarTabs.length - 1
+      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+  topbarTabs[nextIndex]?.click();
+  topbarTabs[nextIndex]?.focus();
+});
+
+
+
+const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
       const productSelect = document.querySelector('[data-product-select]');
       const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
       const productSelectMenu = document.querySelector('[data-product-select-menu]');
@@ -1716,23 +1881,21 @@
         decentralized: '实验主题',
       };
       const defaultProductThemeVars = [
-        '--brand-500',
-        '--brand-50',
-        '--brand-100',
-        '--brand-200',
-        '--brand-300',
-        '--brand-400',
-        '--brand-600',
-        '--brand-700',
-        '--brand-800',
-        '--brand-900',
-        '--brand-rgb',
+        '--brand-5',
+        '--brand-0',
+        '--brand-1',
+        '--brand-2',
+        '--brand-3',
+        '--brand-4',
+        '--brand-6',
+        '--brand-7',
+        '--brand-8',
+        '--brand-9',
         '--brand-text',
         '--brand-text-hover',
         '--brand-border-soft',
         '--brand-border-hover',
-        '--radius-sm',
-        '--shadow-focus',
+        '--radius-default',
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -1745,43 +1908,39 @@
         }
         if (activeProduct === 'business-theme') {
           root.dataset.productTheme = 'business-theme';
-          root.style.setProperty('--brand-50', '#f0fff6');
-          root.style.setProperty('--brand-100', '#ddfbea');
-          root.style.setProperty('--brand-200', '#bef5d5');
-          root.style.setProperty('--brand-300', '#91e9b8');
-          root.style.setProperty('--brand-400', '#5fd897');
-          root.style.setProperty('--brand-500', 'var(--color-status-success)');
-          root.style.setProperty('--brand-600', '#1b9c61');
-          root.style.setProperty('--brand-700', '#147c4d');
-          root.style.setProperty('--brand-800', '#12633f');
-          root.style.setProperty('--brand-900', '#104f34');
-          root.style.setProperty('--brand-rgb', '34, 181, 115');
-          root.style.setProperty('--brand-text', '#1b9c61');
-          root.style.setProperty('--brand-text-hover', '#147c4d');
-          root.style.setProperty('--brand-border-soft', '#bef5d5');
-          root.style.setProperty('--brand-border-hover', '#91e9b8');
-          root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(34, 181, 115, 0.16)');
+          root.style.setProperty('--brand-0', iqbPaletteValue("--brand-0"));
+          root.style.setProperty('--brand-1', iqbPaletteValue("--brand-1"));
+          root.style.setProperty('--brand-2', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-3', iqbPaletteValue("--success-2"));
+          root.style.setProperty('--brand-4', iqbPaletteValue("--success-3"));
+          root.style.setProperty('--brand-5', 'var(--color-status-success)');
+          root.style.setProperty('--brand-6', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
+          root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
+          root.style.setProperty('--brand-text', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-text-hover', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-border-soft', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-border-hover', iqbPaletteValue("--success-2"));
           return;
         }
         if (activeProduct !== 'decentralized') return;
         root.dataset.productTheme = 'test-theme-1';
-        root.style.setProperty('--brand-50', '#eff6ff');
-        root.style.setProperty('--brand-100', '#dbeafe');
-        root.style.setProperty('--brand-200', '#bfdbfe');
-        root.style.setProperty('--brand-300', '#93c5fd');
-        root.style.setProperty('--brand-400', '#60a5fa');
-        root.style.setProperty('--brand-500', '#2672ff');
-        root.style.setProperty('--brand-600', '#1d5fd7');
-        root.style.setProperty('--brand-700', '#1e4fb3');
-        root.style.setProperty('--brand-800', '#1e3f8a');
-        root.style.setProperty('--brand-900', '#172f68');
-        root.style.setProperty('--brand-rgb', '38, 114, 255');
-        root.style.setProperty('--brand-text', '#1d5fd7');
-        root.style.setProperty('--brand-text-hover', '#1e4fb3');
-        root.style.setProperty('--brand-border-soft', '#bfdbfe');
-        root.style.setProperty('--brand-border-hover', '#93c5fd');
-        root.style.setProperty('--radius-sm', '2px');
-        root.style.setProperty('--shadow-focus', '0 0 0 3px rgba(38, 114, 255, 0.16)');
+        root.style.setProperty('--brand-0', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-1', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-2', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-3', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--brand-4', iqbPaletteValue("--info-3"));
+        root.style.setProperty('--brand-5', iqbPaletteValue("--info-5"));
+        root.style.setProperty('--brand-6', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
+        root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
+        root.style.setProperty('--brand-text', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-text-hover', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-border-soft', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-border-hover', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--radius-default', '6px');
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
@@ -1845,32 +2004,32 @@
           closeProductSelectMenu();
         }
       });
+const centerNavItem = (item, behavior = "smooth") => {
+  if (!item) return;
+  const sidebar = item.closest(".sidebar");
+  if (!sidebar) return;
 
-      const centerNavItem = (item, behavior = 'smooth') => {
-        if (!item) return;
-        const sidebar = item.closest('.sidebar');
-        if (!sidebar) return;
+  const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+  const itemRect = item.getBoundingClientRect();
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const clamp = (value, max) => Math.min(Math.max(value, 0), Math.max(max, 0));
 
-        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith('row');
-        const itemRect = item.getBoundingClientRect();
-        const sidebarRect = sidebar.getBoundingClientRect();
+  if (isHorizontal) {
+    const centeredLeft =
+      sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2;
+    const maxScrollLeft = sidebar.scrollWidth - sidebar.clientWidth;
+    sidebar.scrollTo({ left: clamp(centeredLeft, maxScrollLeft), behavior });
+    return;
+  }
 
-        if (isHorizontal) {
-          sidebar.scrollTo({
-            left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2,
-            behavior,
-          });
-          return;
-        }
-
-        sidebar.scrollTo({
-          top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2,
-          behavior,
-        });
-      };
+  const centeredTop =
+    sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2;
+  const maxScrollTop = sidebar.scrollHeight - sidebar.clientHeight;
+  sidebar.scrollTo({ top: clamp(centeredTop, maxScrollTop), behavior });
+};
 
       requestAnimationFrame(() => {
-        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]'), 'auto');
+        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current=page]'), 'auto');
       });
 
       const rateDemos = document.querySelectorAll('[data-rate]');
@@ -2007,5 +2166,6 @@
         rate.addEventListener('mouseleave', () => renderRate(rate));
       });
     </script>
+    <script src="../styles/topbar-shared.js"></script>
   </body>
 </html>

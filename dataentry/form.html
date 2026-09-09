@@ -1,111 +1,120 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-product-theme="default-theme">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Form 表单 - Design System</title>
+    <script src="../styles/color-mode-init.js"></script>
     <style>
-      :root {--success-green-500: #1cc749;--yellow-500: #ff990a;--yellow-400: #ffb232;--red-500: #fe3d33;--red-600: #ec2116;--blue-500: #31a6ff;--blue-600: #1887f5;--blue-700: #1370e2;
-        --brand-500: #1cc749;
-        --brand-50: #f0fdf3;
-        --brand-100: #dbfde3;
-        --brand-200: #b9f9c9;
-        --brand-300: #82f39f;
-        --brand-400: #45e36e;
-        --brand-600: #00ae2e;
-        --brand-700: #118430;
-        --brand-800: #13682a;
-        --brand-900: #125526;
-        --brand-rgb: 28, 199, 73;
-        --brand-text: #00ae2e;
-        --brand-text-hover: #118430;
-        --brand-border-soft: #bfead2;
-        --brand-border-hover: #8fd9b3;
-        --gray-950: #0b0d0f;
-        --gray-900: #14171a;
-        --gray-800: #22262a;
-        --gray-700: #343a40;
-        --gray-600: #59616a;
-        --gray-500: #78818c;
-        --gray-400: #a5adb6;
-        --gray-300: #d4d9de;
-        --gray-200: #e7eaee;
-        --gray-100: #f3f5f7;
-        --gray-50: #fafbfc;
-        --white: #ffffff;
-        --color-text-primary: var(--gray-900);
-        --color-text-default: var(--gray-700);
-        --color-text-secondary: var(--gray-600);
-        --color-text-tertiary: var(--gray-500);
-        --color-text-disabled: var(--gray-400);
-        --color-text-inverse: var(--white);
-        --color-text-link: var(--blue-600);
-        --color-bg-page: var(--gray-50);
-        --color-bg-container: var(--white);
-        --color-bg-subtle: var(--gray-100);
-        --color-bg-hover: var(--gray-100);
-        --color-bg-selected: var(--brand-100);
-        --color-bg-disabled: var(--gray-100);--color-bg-inverse: var(--gray-900);
-        --color-border-default: var(--gray-300);
-        --color-border-subtle: var(--gray-200);
-        --color-border-strong: var(--gray-400);
-        --color-border-focus: var(--brand-500);
-        --color-border-disabled: var(--gray-200);
-        --color-action-primary: var(--brand-500);
-        --color-action-primary-hover: var(--brand-600);
-        --color-action-primary-active: var(--brand-700);
-        --color-action-primary-subtle: var(--brand-100);
-        --color-action-primary-disabled: var(--brand-200);
-        --color-status-success: var(--success-green-500);
-        --color-status-error: var(--red-500);--color-status-error-text: var(--red-600);
-        --color-status-warning: var(--yellow-500);
-        --color-status-info: var(--blue-500);
-        --color-overlay-modal: rgba(0, 0, 0, 0.45);
-        --color-overlay-drawer: rgba(0, 0, 0, 0.35);
-        --color-overlay-loading: rgba(255, 255, 255, 0.72);
-        --text-page-title-size: 20px;
-        --text-page-title-weight: 500;
-        --text-page-title-line-height: 1.35;
-        --text-section-title-size: 16px;
-        --text-section-title-weight: 500;
-        --text-section-title-line-height: 1.5;
-        --text-card-title-size: 16px;
-        --text-card-title-weight: 500;
-        --text-card-title-line-height: 1.5;
-        --text-overlay-title-size: 16px;
-        --text-overlay-title-weight: 500;
-        --text-overlay-title-line-height: 1.5;
-        --text-body-size: 14px;
-        --text-body-weight: 400;
-        --text-body-line-height: 1.75;
-        --text-body-strong-size: 14px;
-        --text-body-strong-weight: 500;
-        --text-body-strong-line-height: 1.75;
-        --text-label-size: 14px;
-        --text-label-weight: 500;
-        --text-label-line-height: 1.75;
-        --text-control-size: 13px;
-        --text-control-weight: 400;
-        --text-control-line-height: 1.65;
-        --text-secondary-size: 13px;
-        --text-secondary-weight: 400;
-        --text-secondary-line-height: 1.65;
-        --text-helper-size: 12px;
-        --text-helper-weight: 400;
-        --text-helper-line-height: 1.55;
-        --text-caption-size: 12px;
-        --text-caption-weight: 400;
-        --text-caption-line-height: 1.55;
-        --text-data-size: 24px;
-        --text-data-weight: 500;
-        --text-data-line-height: 1.3;
-        --danger-500: #ec2116;
-        --success-500: #1cc749;
+      :root {
+
+
+
+
+
+
+
+
+
+
+
+        --brand-text: var(--brand-6);
+        --brand-text-hover: var(--brand-7);
+        --brand-border-soft: var(--success-1);
+        --brand-border-hover: var(--success-2);
+
+
+
+
+
+
+
+
+
+
+
+
+        --color-text-primary: var(--neutral-10);
+        --color-text-default: var(--neutral-9);
+        --color-text-secondary: var(--neutral-6);
+        --color-text-tertiary: var(--neutral-5);
+        --color-text-disabled: var(--neutral-4);
+        --color-text-inverse: var(--neutral-0);
+        --color-text-link: var(--info-6);
+        --color-bg-page: var(--neutral-0);
+        --color-bg-container: var(--neutral-0);
+        --color-bg-subtle: var(--neutral-1);
+        --color-bg-hover: var(--neutral-1);
+        --color-bg-selected: var(--brand-1);
+        --color-bg-disabled: var(--neutral-1);--color-bg-inverse: var(--neutral-9);
+        --color-border-default: var(--neutral-3);
+        --color-border-subtle: var(--neutral-2);
+        --color-border-strong: var(--neutral-4);
+        --color-border-focus: var(--brand-5);
+        --color-border-disabled: var(--neutral-2);
+        --color-action-primary: var(--brand-5);
+        --color-action-primary-hover: var(--brand-6);
+        --color-action-primary-hover: var(--brand-7);
+        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-disabled: var(--brand-2);
+        --color-status-success: var(--success-5);
+        --color-status-error: var(--danger-5);
+        --color-status-warning: var(--warning-5);
+        --color-status-info: var(--info-5);
+        --color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);
+        --color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);
+        --color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);
+
+
         --topbar-height: 60px;
         --sidebar-width: 300px;
-        --radius-sm: 6px;
-        --shadow-focus: 0 0 0 3px rgb(var(--brand-rgb) / 0.16);
-        --form-error-focus-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
+        --radius-default: 6px;
+
+        --form-control-height: 38px;
+        --form-label-width: 96px;
+        --form-item-gap: 18px;
+        --form-control-radius: var(--radius-large);
+        --form-control-border-color: var(--color-border-default);
+        --form-control-hover-border-color: var(--color-action-primary);
+        --form-focus-shadow: var(--input-focus-shadow);
+        --form-error-focus-shadow: var(--input-error-shadow);
+        --form-required-color: var(--color-status-error);
+        --form-select-chevron-color: var(--color-text-disabled);
+        --form-time-panel-bg: var(--color-bg-elevated);
+        --form-time-clear-color: var(--color-text-disabled);
+        --form-time-clear-hover-bg: var(--color-bg-subtle);
+        --form-time-clear-radius: var(--radius-default);
+
+        --checkbox-size: 14px;
+        --checkbox-radius: var(--radius-small);
+        --checkbox-check-size: 8px;
+        --checkbox-hotspot-height: 24px;
+        --checkbox-disabled-opacity: 0.6;
+        --checkbox-border-color: var(--color-border-default);
+        --checkbox-color-checked: var(--color-action-primary);
+        --checkbox-check-color: var(--color-text-inverse);
+        --checkbox-focus-shadow: var(--shadow-focus);
+        --checkbox-text-color: var(--color-text-tertiary);
+        --checkbox-text-checked: var(--color-text-primary);
+        --checkbox-hover-bg: var(--color-bg-subtle);
+
+        --input-number-border-color: var(--color-border-default);
+        --input-number-bg: var(--color-bg-container);
+        --input-number-text-color: var(--color-text-primary);
+        --input-number-hover-border-color: var(--color-action-primary);
+        --input-number-focus-color: var(--color-action-primary);
+        --input-number-focus-shadow: var(--input-focus-shadow);
+        --input-number-disabled-border-color: var(--color-border-disabled);
+        --input-number-disabled-bg: var(--color-bg-disabled);
+        --input-number-stepper-bg: var(--color-bg-subtle);
+        --input-number-stepper-color: var(--color-text-tertiary);
+        --input-number-stepper-hover-bg: var(--color-bg-hover);
+        --input-number-stepper-hover-color: var(--color-text-secondary);
+        --input-number-radius: var(--control-radius-default);
+        --input-number-height: 38px;
+        --input-number-stepper-width: 28px;
+
+
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -166,7 +175,7 @@
         .table-toolbar,
         .pagination-btn
       ) {
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
       }
 
       .app-shell {
@@ -181,10 +190,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 24px;
+        gap: 36px;
         height: var(--topbar-height);
         padding: 0 24px;
-        background: rgba(255, 255, 255, 0.94);
+        background: var(--color-bg-container);
         border-bottom:1px solid var(--color-border-subtle);
         backdrop-filter: blur(12px);
         z-index: 3;
@@ -208,7 +217,7 @@
 
       .brand-mark-layer-top {
         fill: url(#brandMarkTop);
-        filter: drop-shadow(0 3px 7px rgb(var(--brand-rgb) / 0.2));
+        filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent));
       }
 
       .brand-mark-layer-middle {
@@ -221,7 +230,7 @@
 
       .brand-title {
         overflow: hidden;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         font-size: 17px;
         font-weight: 600;
         letter-spacing: 0;
@@ -229,9 +238,128 @@
         text-overflow: ellipsis;
         white-space: nowrap;
       }
+.nav-section[hidden] { display: none !important; }
+.nav-list > .nav-section:nth-child(2) { margin-top: 0 !important; }
+.sidebar .nav-list { gap: 12px; padding-bottom: 0 !important; }
+.sidebar .nav-section { gap: 8px; }
+.nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+.nav-category {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 32px;
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-category-chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-text-tertiary);
+  transition: transform 0.16s ease;
+}
+.nav-category-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+.nav-category[aria-expanded="false"] + .nav-sublist { display: none !important; }
+.nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.nav-category { color: var(--color-text-tertiary) !important; }
+.nav-category:hover { background: var(--color-bg-container) !important; }
+.nav-category .nav-category-count,
+.nav-category .nav-category-chevron { color: inherit !important; }
 
-      .product-select {
+.topbar-nav {
+  --tabs-height-default: 40px;
+  --tabs-padding-x: 14px;
+  --tabs-gap: 8px;
+  --tabs-font-size: var(--font-style-body-size);
+  --tabs-font-weight-active: var(--font-style-body-medium-weight);
+  --tabs-color: var(--color-text-secondary);
+  --tabs-hover-color: var(--color-text-primary);
+  --tabs-active-color: var(--brand-text);
+  --tabs-indicator-color: var(--color-action-primary);
+  --tabs-indicator-size: 2px;
+  --tabs-bg-hover: var(--color-bg-hover);
+  --tabs-radius: var(--radius-default);
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: var(--tabs-gap);
+}
+
+.topbar-nav-tab {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabs-height-default);
+  padding: 0 var(--tabs-padding-x);
+  color: var(--tabs-color);
+  background: transparent;
+  border: 0;
+  border-radius: var(--tabs-radius);
+  cursor: pointer;
+  font-size: var(--tabs-font-size);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover {
+  color: var(--tabs-hover-color);
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover::before {
+  position: absolute;
+  z-index: -1;
+  inset: 4px;
+  content: "";
+  background: var(--tabs-bg-hover);
+  border-radius: var(--radius-small);
+}
+
+.topbar-nav-tab[aria-selected="true"] {
+  color: var(--tabs-active-color);
+  font-weight: var(--tabs-font-weight-active);
+}
+
+.topbar-nav-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: var(--tabs-indicator-size);
+  content: "";
+  background: var(--tabs-indicator-color);
+  border-radius: var(--radius-full);
+}
+
+.topbar-nav-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-select {
+
         position: relative;
+        margin-left: 0;
         flex: 0 0 auto;
         width: 124px;
       }
@@ -245,12 +373,12 @@
         width: 100%;
         min-height: 36px;
         padding: 0 22px 0 10px;
-        color: var(--gray-800);
-        background: var(--gray-50);
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.2;
         text-align: left;
@@ -271,18 +399,20 @@
       .product-select-trigger::after {
         position: absolute;
         top: 50%;
-        right: 9px;
-        width: 5px;
-        height: 5px;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
         content: "";
-        border-right: 1.25px solid var(--gray-500);
-        border-bottom: 1.25px solid var(--gray-500);
-        transform: translateY(-65%) rotate(45deg);
+        background-color: var(--color-text-disabled);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        transform: translateY(-50%);
         transition: transform 0.16s ease;
-      }
+        }
 
       .product-select-trigger[aria-expanded="true"]::after {
-        transform: translateY(-35%) rotate(225deg);
+        transform: translateY(-50%) rotate(180deg);
       }
 
       .product-select-menu {
@@ -298,8 +428,8 @@
         list-style: none;
         background:var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
-        box-shadow: 0 12px 28px rgba(20, 28, 36, 0.12);
+        border-radius: var(--radius-default);
+        box-shadow: var(--shadow-overlay);
       }
 
       .product-select-menu[hidden] {
@@ -313,9 +443,9 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-align: left;
       }
@@ -323,7 +453,7 @@
       .product-select-option:hover,
       .product-select-option[aria-selected="true"] {
         color:var(--color-action-primary);
-        background: rgb(var(--brand-rgb) / 0.08);
+        background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
       .topbar-actions {
@@ -332,15 +462,15 @@
         margin-left: auto;
         gap: 8px;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .status-dot {
         width: 8px;
         height: 8px;
-        border-radius: 999px;
+        border-radius: var(--radius-full);
         background:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.14);
+        box-shadow: none;
       }
 
       @media (max-width: 680px) {
@@ -385,7 +515,7 @@
         overflow-y: auto;
         overscroll-behavior: contain;
         scrollbar-gutter: stable;
-        scrollbar-color: var(--gray-300) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
         background:var(--color-bg-container);
         border-right:1px solid var(--color-border-subtle);
@@ -401,8 +531,8 @@
       }
 
       .sidebar::-webkit-scrollbar-thumb {
-        background: var(--gray-300);
-        border-radius: 999px;
+        background: var(--color-border-default);
+        border-radius: var(--radius-full);
       }
 
       .nav-list {
@@ -431,7 +561,7 @@
         width: fit-content;
         padding: 0 12px 4px;
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
       }
 
@@ -459,15 +589,15 @@
         color:var(--color-text-default);
         background: transparent;
         border: 0;
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
         cursor: pointer;
         text-align: left;
         text-decoration: none;
       }
 
       .nav-button:hover {
-        color: var(--gray-950);
-        background: var(--gray-50);
+        color: var(--color-text-top);
+        background: var(--color-bg-container);
       }
 
       .nav-button:focus-visible {
@@ -475,26 +605,17 @@
         box-shadow: var(--shadow-focus);
       }
 
-      .nav-button[aria-current="page"] {
+      .nav-button[aria-current=page] {
         color:var(--color-action-primary);
         background:var(--color-bg-subtle);
       }
 
       .nav-label {
         overflow: hidden;
-        font-size:var(--text-body-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.2;
         text-overflow: ellipsis;
         white-space: nowrap;
-      }
-
-      .sidebar-footer {
-        margin-top: auto;
-        padding: 14px 6px 0;
-        color:var(--color-text-tertiary);
-        border-top:1px solid var(--color-border-subtle);
-        font-size:var(--text-caption-size);
-        line-height: 1.5;
       }
 
       .canvas {
@@ -512,7 +633,7 @@
 
       .doc-page {
         width: min(100%, 1080px);
-        color: var(--gray-800);
+        color: var(--color-text-default);
       }
 
       .doc-hero,
@@ -527,7 +648,7 @@
       .doc-kicker {
         margin: 0 0 10px;
         color:var(--color-action-primary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         font-weight: 400;
         line-height: 1.4;
       }
@@ -544,8 +665,8 @@
         max-width: 720px;
         margin: 12px 0 0;
         color:var(--color-text-secondary);
-        font-size:var(--text-body-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .doc-meta-list {
@@ -561,8 +682,8 @@
         padding: 4px 8px;
         color:var(--color-text-secondary);
         background:var(--color-bg-subtle);
-        border-radius: 999px;
-        font-size:var(--text-caption-size);
+        border-radius: var(--radius-full);
+        font-size:var(--font-style-caption-size);
         line-height: 1.4;
       }
 
@@ -584,8 +705,8 @@
 
       .doc-section h3 {
         margin: 0 0 8px;
-        color: var(--gray-800);
-        font-size:var(--text-body-size);
+        color: var(--color-text-default);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 1.4;
       }
@@ -593,8 +714,8 @@
       .doc-section p {
         margin: 0;
         color:var(--color-text-secondary);
-        font-size:var(--text-control-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .rule-list {
@@ -609,8 +730,8 @@
         position: relative;
         padding-left: 16px;
         color:var(--color-text-default);
-        font-size:var(--text-control-size);
-        line-height:var(--text-body-line-height);
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
       }
 
       .rule-list li::before {
@@ -621,7 +742,7 @@
         height: 5px;
         content: "";
         background:var(--color-action-primary);
-        border-radius: 999px;
+        border-radius: var(--radius-full);
       }
 
       .doc-grid {
@@ -633,9 +754,9 @@
       .example-block {
         min-width: 0;
         padding: 16px;
-        background: var(--gray-50);
+        background: var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
       }
 
       .example-block.full {
@@ -673,7 +794,7 @@
 
       .form-label {
         color:var(--color-text-default);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
         line-height: 38px;
       }
@@ -681,7 +802,7 @@
       .form-label.required::before {
         content: "*";
         margin-right: 4px;
-        color: var(--danger-500);
+        color: var(--form-required-color);
       }
 
       .form-control {
@@ -700,11 +821,11 @@
       .spec-select,
       .spec-textarea {
         width: 100%;
-        color: var(--gray-800);
+        color: var(--color-text-default);
         background:var(--color-bg-container);
-        border: 1px solid #dde1e5;
-        border-radius: 8px;
-        font-size:var(--text-control-size);
+        border: 1px solid var(--form-control-border-color);
+        border-radius: var(--form-control-radius);
+        font-size:var(--font-style-body-size);
         line-height: 1.4;
         transition:
           border-color 0.15s ease,
@@ -714,7 +835,7 @@
 
       .spec-input,
       .spec-select {
-        height: 38px;
+        height: var(--form-control-height);
         padding: 0 11px;
       }
 
@@ -738,22 +859,30 @@
 
       .select-chevron {
         position: absolute;
-        right: 12px;
+        right: 8px;
         top: 50%;
-        width: 7px;
-        height: 7px;
-        border-right: 1.5px solid currentColor;
-        border-bottom: 1.5px solid currentColor;
-        color: #969ba1;
+        display: inline-flex;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+        color: var(--form-select-chevron-color);
         pointer-events: none;
-        transform: translateY(-50%) rotate(45deg);
+        transform: translateY(-50%);
         transition:
           opacity 0.15s ease,
           transform 0.15s ease;
       }
 
       .spec-select.open .select-chevron {
-        transform: translateY(-50%) rotate(225deg);
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .select-chevron svg,
+      .select-option-check svg,
+      .form-time-icon svg {
+        display: block;
+        width: 100%;
+        height: 100%;
       }
 
       .select-dropdown {
@@ -765,9 +894,9 @@
         margin-top: 0;
         padding: 6px;
         border:1px solid var(--color-border-subtle);
-        border-radius: 10px;
-        background: rgba(255, 255, 255, 0.94);
-        box-shadow: 0 18px 42px rgba(20, 28, 36, 0.12);
+        border-radius: var(--radius-xlarge);
+        background: color-mix(in srgb, var(--neutral-0) 94%, transparent);
+        box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
 
@@ -790,15 +919,15 @@
         justify-content: space-between;
         gap: 10px;
         padding: 0 9px;
-        border-radius: 7px;
-        color: #33383d;
+        border-radius: var(--radius-default);
+        color: var(--color-text-secondary);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         line-height: 1.4;
       }
 
       .select-option:hover {
-        background: #f5f6f8;
+        background: var(--color-bg-overlay-hover);
       }
 
       .select-option[hidden] {
@@ -812,26 +941,14 @@
 
       .select-option.active:hover {
         color: var(--brand-text);
-        background: #f5f6f8;
+        background: var(--color-bg-overlay-hover);
       }
 
       .select-option-check {
-        position: relative;
-        width: 12px;
-        height: 12px;
+        display: inline-flex;
+        width: 16px;
+        height: 16px;
         flex: 0 0 auto;
-      }
-
-      .select-option-check::after {
-        position: absolute;
-        left: 50%;
-        top: 45%;
-        width: 4px;
-        height: 7px;
-        content: "";
-        border: solid currentColor;
-        border-width: 0 1.5px 1.5px 0;
-        transform: translate(-50%, -50%) rotate(45deg);
       }
 
       .spec-textarea {
@@ -851,7 +968,7 @@
       .spec-input.is-hover,
       .spec-select.is-hover,
       .spec-textarea.is-hover {
-        border-color:var(--color-action-primary);
+        border-color: var(--form-control-hover-border-color);
         box-shadow: none;
       }
 
@@ -861,7 +978,7 @@
       .spec-input.is-focus {
         outline: none;
         border-color:var(--color-action-primary);
-        box-shadow: var(--shadow-focus);
+        box-shadow: var(--form-focus-shadow);
       }
 
       .spec-input:disabled,
@@ -876,14 +993,14 @@
       .spec-input:disabled:hover,
       .spec-select:disabled:hover,
       .spec-textarea:disabled:hover {
-        border-color: #dde1e5;
+        border-color: var(--color-border-default);
         box-shadow: none;
       }
 
       .form-item.error .spec-input,
       .form-item.error .spec-select,
       .form-item.error .spec-textarea {
-        border-color: var(--danger-500);
+        border-color: var(--color-status-error);
       }
 
       .form-item.error .spec-input:focus,
@@ -895,39 +1012,39 @@
       .form-item.error .spec-textarea:focus,
       .form-item.error .spec-textarea.focus,
       .form-item.error .spec-textarea.is-focus {
-        border-color: var(--danger-500);
+        border-color: var(--color-status-error);
         box-shadow: var(--form-error-focus-shadow);
       }
 
       .form-item.success .spec-input,
       .form-item.success .spec-select,
       .form-item.success .spec-textarea {
-        border-color: var(--success-500);
+        border-color: var(--color-status-success);
       }
 
       .form-help {
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.5;
       }
 
       .form-item.error .form-help {
-        color: var(--danger-500);
+        color: var(--color-status-error);
       }
 
       .form-item.success .form-help {
-        color: var(--success-500);
+        color: var(--color-status-success);
       }
 
       .spec-checkbox {
-        min-height: 24px;
+        min-height: var(--checkbox-hotspot-height);
         display: inline-flex;
         align-items: center;
         gap: 8px;
         width: fit-content;
         padding: 3px 8px 3px 4px;
-        border-radius: 8px;
-        color: #4f565d;
+        border-radius: var(--radius-large);
+        color: var(--checkbox-text-color);
         cursor: pointer;
         font-size: 12.5px;
         line-height: 1.5;
@@ -938,18 +1055,18 @@
       }
 
       .spec-checkbox:hover {
-        background: #f5f6f8;
-        color: #33383d;
+        background: var(--checkbox-hover-bg);
+        color: var(--color-text-secondary);
       }
 
       .spec-checkbox input {
-        width: 14px;
-        height: 14px;
+        width: var(--checkbox-size);
+        height: var(--checkbox-size);
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid #cfd6dc;
-        border-radius: 4px;
+        border: 1.4px solid var(--checkbox-border-color);
+        border-radius: var(--checkbox-radius);
         appearance: none;
         background:var(--color-bg-container);
         cursor: pointer;
@@ -964,22 +1081,20 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 8px;
-        height: 8px;
+        width: var(--checkbox-check-size);
+        height: var(--checkbox-check-size);
         content: "";
-        background:var(--color-bg-container);
+        background: var(--checkbox-check-color);
         clip-path: polygon(14% 45%, 0 60%, 38% 96%, 100% 18%, 86% 4%, 36% 68%);
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.7);
-        transition:
-          opacity 0.15s ease,
-          transform 0.15s ease;
+        transition: opacity 0.15s ease, transform 0.15s ease;
       }
 
       .spec-checkbox input:checked,
       .spec-checkbox input[data-indeterminate="true"] {
-        border-color:var(--color-action-primary);
-        background:var(--color-action-primary);
+        border-color: var(--checkbox-color-checked);
+        background: var(--checkbox-color-checked);
       }
 
       .spec-checkbox input:checked::after {
@@ -987,31 +1102,19 @@
         transform: translate(-50%, -50%) scale(1);
       }
 
-      .spec-checkbox input[data-indeterminate="true"]::after {
-        top: 50%;
-        width: 7px;
-        height: 0;
-        background: transparent;
-        clip-path: none;
-        border: solid #fff;
-        border-width: 0 0 1.6px;
-        opacity: 1;
-        transform: translate(-50%, -50%) rotate(0) scale(1);
-      }
-
       .spec-checkbox input:focus-visible {
-        box-shadow: var(--shadow-focus);
+        box-shadow: var(--checkbox-focus-shadow);
       }
 
       .spec-checkbox:has(input:checked),
       .spec-checkbox:has(input[data-indeterminate="true"]) {
-        color: #1a1d1f;
+        color: var(--checkbox-text-checked);
       }
 
       .spec-checkbox.disabled,
       .spec-checkbox:has(input:disabled) {
         cursor: not-allowed;
-        opacity: 0.6;
+        opacity: var(--checkbox-disabled-opacity);
       }
 
       .spec-checkbox:has(input:disabled):hover {
@@ -1021,6 +1124,251 @@
       .spec-checkbox input:disabled {
         cursor: not-allowed;
       }
+
+      .form-time-picker {
+        position: relative;
+        width: 100%;
+        align-self: start;
+      }
+
+      .form-time-trigger {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: var(--form-control-height);
+        padding: 0 11px;
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
+        border: 1px solid var(--form-control-border-color);
+        border-radius: var(--form-control-radius);
+        cursor: pointer;
+        font-size: var(--font-style-body-size);
+        text-align: left;
+        transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease;
+      }
+
+      .form-time-trigger:hover {
+        border-color: var(--form-control-hover-border-color);
+      }
+
+      .form-time-trigger:focus-visible,
+      .form-time-trigger[aria-expanded="true"] {
+        outline: none;
+        border-color: var(--color-border-focus);
+        box-shadow: var(--form-focus-shadow);
+      }
+
+      .form-time-trigger:disabled {
+        color: var(--color-text-tertiary);
+        background: var(--color-bg-disabled);
+        border-color: var(--color-border-disabled);
+        box-shadow: none;
+        cursor: not-allowed;
+      }
+
+      .form-time-value {
+        flex: 1;
+      }
+
+      .form-time-value.is-placeholder {
+        color: var(--color-text-disabled);
+      }
+
+      .form-time-clear {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 26px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+        margin-right: -5px;
+
+        border: 0;
+        border-radius: var(--radius-default);
+        color: var(--form-time-clear-color);
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .form-time-clear:hover,
+      .form-time-clear:focus-visible {
+        outline: none;
+        color: var(--color-text-secondary);
+        background: var(--form-time-clear-hover-bg);
+      }
+
+      .form-time-clear svg {
+        display: block;
+        width: 16px;
+        height: 16px;
+        flex: 0 0 auto;
+      }
+
+      .form-time-trigger:not(.is-empty):hover .form-time-clear,
+      .form-time-trigger:not(.is-empty):focus-within .form-time-clear {
+        display: inline-flex;
+      }
+
+      .form-time-trigger:not(.is-empty):hover .form-time-icon,
+      .form-time-trigger:not(.is-empty):focus-within .form-time-icon {
+        display: none;
+      }
+
+      .form-time-icon {
+        display: inline-flex;
+        flex: 0 0 16px;
+        width: 16px;
+        height: 16px;
+        color: var(--color-text-disabled);
+      }
+
+      .form-time-dropdown {
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        z-index: 31;
+        width: 182px;
+        padding: 12px;
+        background: var(--form-time-panel-bg);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-xlarge);
+        box-shadow: var(--shadow-overlay);
+      }
+
+      .form-time-dropdown[hidden] {
+        display: none;
+      }
+
+      .form-time-columns {
+        display: grid;
+        grid-template-columns: repeat(2, 74px);
+        gap: 8px;
+      }
+
+      .form-time-column-label {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--color-text-disabled);
+        font-size: var(--font-style-caption-size);
+        text-align: center;
+      }
+
+      .form-time-list {
+        display: grid;
+        gap: 4px;
+        max-height: 208px;
+        overflow: auto;
+        scrollbar-color: var(--color-border-default) transparent;
+        scrollbar-width: thin;
+      }
+
+      .form-time-option {
+        min-height: 30px;
+        padding: 0 10px;
+        color: var(--color-text-secondary);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-large);
+        cursor: pointer;
+        font-size: var(--font-style-body-size);
+      }
+
+      .form-time-option:hover,
+      .form-time-option:focus-visible {
+        outline: none;
+        background: var(--color-bg-overlay-hover);
+      }
+
+      .form-time-option.active {
+        color: var(--color-text-inverse);
+        background: var(--color-action-primary);
+      }
+
+      .form-time-option.active:hover {
+        color: var(--brand-text);
+        background: var(--color-bg-overlay-hover);
+      }
+
+      .form-time-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+        margin-top: 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--color-border-subtle);
+      }
+
+      .number-input {
+        width: min(100%, 220px);
+        min-height: var(--input-number-height);
+        display: inline-flex;
+        align-items: stretch;
+        overflow: hidden;
+        border: 1px solid var(--input-number-border-color);
+        border-radius: var(--input-number-radius);
+        background: var(--input-number-bg);
+        color: var(--input-number-text-color);
+        transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+      }
+
+      .number-input:hover {
+        border-color: var(--input-number-hover-border-color);
+        background: var(--color-bg-container);
+      }
+
+      .number-input:focus-within {
+        border-color: var(--input-number-focus-color);
+        box-shadow: var(--input-number-focus-shadow);
+      }
+
+      .number-input .spec-input {
+        height: 36px;
+        flex: 1;
+        min-width: 0;
+        padding: 0 10px 0 12px;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        text-align: left;
+      }
+
+      .number-input .spec-input[type="number"]::-webkit-outer-spin-button,
+      .number-input .spec-input[type="number"]::-webkit-inner-spin-button {
+        appearance: none;
+        margin: 0;
+      }
+
+      .number-input .spec-input[type="number"] {
+        appearance: textfield;
+      }
+
+      .number-stepper {
+        width: var(--input-number-stepper-width);
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        flex: 0 0 auto;
+        border-left: 1px solid var(--input-number-border-color);
+        background: var(--input-number-stepper-bg);
+      }
+
+      .number-step {
+        display: grid;
+        place-items: center;
+        min-width: 0;
+        min-height: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: var(--input-number-stepper-color);
+        cursor: pointer;
+      }
+
+      .number-step + .number-step { border-top: 1px solid var(--input-number-border-color); }
+      .number-step:hover { background: var(--input-number-stepper-hover-bg); color: var(--input-number-stepper-hover-color); }
+      .number-step:disabled { cursor: default; color: var(--color-text-secondary); }
+      .number-step svg { width: 10px; height: 10px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
       .radio-group {
         display: flex;
@@ -1036,8 +1384,8 @@
         gap: 8px;
         width: fit-content;
         padding: 3px 8px 3px 4px;
-        border-radius: 999px;
-        color: #4f565d;
+        border-radius: var(--radius-full);
+        color: var(--color-text-tertiary);
         cursor: pointer;
         font-size: 12.5px;
         line-height: 1.5;
@@ -1048,8 +1396,8 @@
       }
 
       .spec-radio:hover {
-        background: #f5f6f8;
-        color: #33383d;
+        background: var(--color-bg-subtle);
+        color: var(--color-text-secondary);
       }
 
       .spec-radio input {
@@ -1060,8 +1408,8 @@
         margin: 0;
         appearance: none;
         background:var(--color-bg-container);
-        border: 1.4px solid #cfd6dc;
-        border-radius: 50%;
+        border: 1.4px solid var(--color-border-default);
+        border-radius: var(--radius-full);
         cursor: pointer;
         outline: 0;
         transition:
@@ -1078,7 +1426,7 @@
         height: 6px;
         content: "";
         background:var(--color-bg-container);
-        border-radius: 50%;
+        border-radius: var(--radius-full);
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.6);
         transition:
@@ -1089,7 +1437,7 @@
       .spec-radio input:checked {
         background:var(--color-action-primary);
         border-color:var(--color-action-primary);
-        box-shadow: 0 0 0 3px rgb(var(--brand-rgb) / 0.1);
+        box-shadow: none;
       }
 
       .spec-radio input:checked::after {
@@ -1102,7 +1450,7 @@
       }
 
       .spec-radio:has(input:checked) {
-        color: #1a1d1f;
+        color: var(--color-text-primary);
       }
 
       .linkage-summary {
@@ -1112,14 +1460,14 @@
         color:var(--color-text-default);
         background:var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
-        border-radius: 8px;
-        font-size:var(--text-caption-size);
+        border-radius: var(--radius-large);
+        font-size:var(--font-style-caption-size);
         line-height: 1.6;
       }
 
       .linkage-summary strong {
         color:var(--color-text-primary);
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 500;
       }
 
@@ -1147,8 +1495,8 @@
         justify-content: center;
         color:var(--color-text-tertiary);
         background:var(--color-bg-subtle);
-        border-radius: 999px;
-        font-size:var(--text-caption-size);
+        border-radius: var(--radius-full);
+        font-size:var(--font-style-caption-size);
         line-height: 1;
       }
 
@@ -1160,7 +1508,7 @@
       }
 
       .dynamic-remove:hover {
-        color: var(--danger-500);
+        color: var(--danger-5);
       }
 
       .dynamic-actions {
@@ -1172,7 +1520,7 @@
 
       .dynamic-count {
         color:var(--color-text-tertiary);
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
         line-height: 1.5;
       }
 
@@ -1190,12 +1538,12 @@
         justify-content: center;
         gap: 5px;
         padding: 0 14px;
-        border: 1px solid #dde1e5;
-        border-radius: 8px;
+        border: 1px solid var(--color-border-default);
+        border-radius: var(--radius-large);
         background:var(--color-bg-container);
-        color: #33383d;
+        color: var(--color-text-secondary);
         cursor: pointer;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
         font-weight: 400;
         line-height: 1.2;
         transition:
@@ -1237,26 +1585,26 @@
 
       .spec-btn.subtle {
         border-color: transparent;
-        background: #f5f6f8;
-        color: #4f565d;
+        background: var(--color-bg-subtle);
+        color: var(--color-text-tertiary);
       }
 
       .spec-btn.subtle:hover {
-        background: #eef1f3;
-        color: #1a1d1f;
+        background: var(--color-bg-subtle);
+        color: var(--color-text-primary);
       }
 
       .spec-table-wrap {
         overflow-x: auto;
         border:1px solid var(--color-border-subtle);
-        border-radius: var(--radius-sm);
+        border-radius: var(--radius-default);
       }
 
       .spec-table {
         width: 100%;
         min-width: 680px;
         border-collapse: collapse;
-        font-size:var(--text-control-size);
+        font-size:var(--font-style-body-size);
       }
 
       .spec-table th,
@@ -1269,7 +1617,7 @@
 
       .spec-table th {
         color:var(--color-text-default);
-        background: var(--gray-50);
+        background: var(--color-bg-container);
         font-weight: 600;
       }
 
@@ -1278,12 +1626,12 @@
       }
 
       .spec-table code {
-        color: var(--gray-800);
+        color: var(--color-text-default);
         background:var(--color-bg-subtle);
-        border-radius: 4px;
+        border-radius: var(--radius-small);
         padding: 2px 5px;
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
-        font-size:var(--text-caption-size);
+        font-size:var(--font-style-caption-size);
       }
 
       @media (max-width: 880px) {
@@ -1305,10 +1653,6 @@
           overflow-y: hidden;
           border-right: 0;
           border-bottom:1px solid var(--color-border-subtle);
-        }
-
-        .sidebar-footer {
-          display: none;
         }
 
         .nav-list {
@@ -1353,7 +1697,7 @@
         }
 
         .doc-title {
-          font-size:var(--text-data-size);
+          font-size:var(--font-style-display-size);
         }
 
         .doc-grid,
@@ -1413,7 +1757,7 @@
       :root[data-product-theme="default-theme"] .table-spec-select.open,
       :root[data-product-theme="default-theme"] .page-size-select.open .page-size-trigger,
       :root[data-product-theme="default-theme"] .table-select-demo.open .table-spec-select {
-        box-shadow: 0 0 0 3px rgba(28, 199, 73, 0.16);
+        box-shadow: var(--shadow-focus);
       }
 
       :root[data-product-theme="default-theme"] .spec-input-wrap .spec-input:focus,
@@ -1422,7 +1766,7 @@
       :root[data-product-theme="default-theme"] .number-input .spec-input:focus,
       :root[data-product-theme="default-theme"] .number-input .spec-input.focus,
       :root[data-product-theme="default-theme"] .number-input .spec-input.is-focus {
-        box-shadow: none;
+        box-shadow: var(--shadow-focus);
       }
 
       :root[data-product-theme="business-theme"] .spec-select.open,
@@ -1432,7 +1776,7 @@
       :root[data-product-theme="business-theme"] .time-range-inputs:has(.time-range-segment.open),
       :root[data-product-theme="business-theme"] .table-spec-select.open,
       :root[data-product-theme="business-theme"] .table-select-demo.open .table-spec-select {
-        box-shadow: 0 0 0 3px rgba(34, 181, 115, 0.16);
+        box-shadow: none;
       }
 
       :root[data-product-theme] .form-item.error .spec-input:focus,
@@ -1444,11 +1788,11 @@
       :root[data-product-theme] .form-item.error .spec-textarea:focus,
       :root[data-product-theme] .form-item.error .spec-textarea.focus,
       :root[data-product-theme] .form-item.error .spec-textarea.is-focus {
-        border-color: var(--danger-500);
+        border-color: var(--color-status-error);
         box-shadow: var(--form-error-focus-shadow);
       }
 
-      /* 实验主题 使用更克制的 2px 控件圆角。 */
+      /* 实验主题保持统一的 Default 默认圆角。 */
       :root[data-product-theme="test-theme-1"] .spec-btn,
       :root[data-product-theme="test-theme-1"] .spec-btn.small,
       :root[data-product-theme="test-theme-1"] .spec-btn.medium,
@@ -1491,39 +1835,48 @@
       :root[data-product-theme="test-theme-1"] .dynamic-item,
       :root[data-product-theme="test-theme-1"] .dynamic-index,
       :root[data-product-theme="test-theme-1"] .remove-dynamic-item {
-        border-radius: 2px !important;
+        border-radius: var(--radius-small) !important;
       }
 </style>
+    <link rel="stylesheet" href="../styles/component-color-default.css" />
+    <style>
+      .example-block.full { background: var(--color-bg-container); }
+    </style>
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/control-radius.css" />
+    <link rel="stylesheet" href="../styles/topbar-shared.css" />
+    <link rel="stylesheet" href="../styles/typography-standard.css">
+      <link rel="stylesheet" href="../styles/radius-tokens.css" />
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="../index.html#overview" aria-label="IQB DESIGN 首页">
+        <a class="brand" href="../index.html#overview" aria-label="IQ Design System 首页">
           <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
             <defs>
               <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-400)" />
-                <stop offset="1" stop-color="var(--brand-600)" />
+                <stop offset="0" stop-color="var(--brand-4)" />
+                <stop offset="1" stop-color="var(--brand-6)" />
               </linearGradient>
               <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.48" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.24" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.24" />
               </linearGradient>
               <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
-                <stop offset="0" stop-color="var(--brand-500)" stop-opacity="0.26" />
-                <stop offset="1" stop-color="var(--brand-500)" stop-opacity="0.1" />
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.1" />
               </linearGradient>
             </defs>
             <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
             <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
           </svg>
-          <span class="brand-title">IQB DESIGN</span>
+          <span class="brand-title">IQ Design System</span>
         </a>
-        <div class="topbar-actions" aria-label="系统状态">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span data-component-count-label>Active components 46/46</span>
-        </div>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="design">设计</button>
+        </nav>
         <div class="product-select" data-product-select>
           <button
             class="product-select-trigger"
@@ -1577,9 +1930,14 @@
           <nav>
             <ul class="nav-list">
               <li class="nav-section">
-                <a class="nav-button" href="../index.html#color" data-nav-scope="global-style">
-                  <span class="nav-label">Styles 全局样式</span>
-                </a>
+                <button class="nav-category" type="button" aria-expanded="true" data-nav-scope="global-style">Styles 全局样式<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="../styles/color.html" data-style-page="color"><span class="nav-label">Color 颜色</span></a></li>
+                  <li><a class="nav-button" href="../styles/text.html" data-style-page="text"><span class="nav-label">Text 字体</span></a></li>
+                  <li><a class="nav-button" href="../styles/icon.html" data-style-page="icon"><span class="nav-label">ICON 图标</span></a></li>
+                  <li><a class="nav-button" href="../styles/radius.html" data-style-page="radius"><span class="nav-label">Radius 圆角</span></a></li>
+                  <li><a class="nav-button" href="../styles/theme.html" data-style-page="theme"><span class="nav-label">Theme 主题</span></a></li>
+                </ul>
               </li>
               <li class="nav-section">
                 <a class="nav-button" href="../index.html#overview">
@@ -1587,7 +1945,7 @@
                 </a>
               </li>
               <li class="nav-section">
-                <span class="nav-category">General 通用<span class="nav-category-count">2</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">General 通用<span class="nav-category-count">2</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../general/button.html">
@@ -1602,7 +1960,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Layout 布局<span class="nav-category-count">5</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Layout 布局<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../layout/divider.html">
@@ -1632,7 +1990,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Navigation 导航<span class="nav-category-count">6</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Navigation 导航<span class="nav-category-count">6</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../navigation/menu.html">
@@ -1667,7 +2025,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Entry 数据录入<span class="nav-category-count">16</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Entry 数据录入<span class="nav-category-count">16</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../dataentry/input.html">
@@ -1752,7 +2110,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Data Display 数据展示<span class="nav-category-count">14</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Data Display 数据展示<span class="nav-category-count">14</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../datadisplay/table.html">
@@ -1827,7 +2185,7 @@
                 </ul>
               </li>
               <li class="nav-section">
-                <span class="nav-category">Feedback 反馈<span class="nav-category-count">9</span></span>
+                <button class="nav-category" type="button" aria-expanded="true">Feedback 反馈<span class="nav-category-count">9</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
                 <ul class="nav-sublist">
                   <li>
                     <a class="nav-button" href="../feedback/alert.html">
@@ -1878,8 +2236,6 @@
               </li>
             </ul>
           </nav>
-
-          <div class="sidebar-footer">更多组件将在后续版本中逐步补齐。</div>
         </aside>
 
         <section class="canvas" aria-label="组件说明详情区">
@@ -1918,8 +2274,8 @@
                 <h2>基础用法</h2>
                 <div class="doc-grid">
                   <div class="example-block full">
-                    <h3>任务创建表单</h3>
-                    <p>水平表单适合桌面端任务配置，标签固定宽度，输入控件在右侧对齐。</p>
+                    <div class="example-head"><h3>任务创建表单</h3>
+                    <p>水平表单适合桌面端任务配置，标签固定宽度，输入控件在右侧对齐。</p></div>
                     <form class="form-demo horizontal">
                       <label class="form-item">
                         <span class="form-label required">任务名称</span>
@@ -1968,8 +2324,8 @@
                 <h2>布局</h2>
                 <div class="doc-grid">
                   <div class="example-block">
-                    <h3>垂直布局</h3>
-                    <p>适合窄容器、弹窗和移动端，标签位于控件上方。</p>
+                    <div class="example-head"><h3>垂直布局</h3>
+                    <p>适合窄容器、弹窗和移动端，标签位于控件上方。</p></div>
                     <div class="form-demo">
                       <label class="form-item">
                         <span class="form-label required">店铺名称</span>
@@ -1986,8 +2342,8 @@
                     </div>
                   </div>
                   <div class="example-block">
-                    <h3>行内布局</h3>
-                    <p>适合表格上方筛选，不承载复杂帮助信息。</p>
+                    <div class="example-head"><h3>行内布局</h3>
+                    <p>适合表格上方筛选，不承载复杂帮助信息。</p></div>
                     <div class="form-demo inline">
                       <div class="form-item">
                         <span class="form-label">业务域</span>
@@ -2039,8 +2395,8 @@
                 <h2>表单控件联动</h2>
                 <div class="doc-grid">
                   <div class="example-block">
-                    <h3>级联选择</h3>
-                    <p>前置单选框变化后，后续选择器只展示当前上下文可用选项，并自动同步默认值。</p>
+                    <div class="example-head"><h3>级联选择</h3>
+                    <p>前置单选框变化后，后续选择器只展示当前上下文可用选项，并自动同步默认值。</p></div>
                     <div class="form-demo" data-linked-form>
                       <div class="form-item">
                         <span class="form-label">业务域</span>
@@ -2095,24 +2451,44 @@
                     </div>
                   </div>
                   <div class="example-block">
-                    <h3>条件启用</h3>
-                    <p>勾选配置项后启用后续字段；关闭时字段禁用并保留当前值，避免误提交。</p>
+                    <div class="example-head"><h3>条件启用</h3>
+                    <p>勾选配置项后启用后续字段；关闭时字段禁用并保留当前值，避免误提交。</p></div>
                     <div class="form-demo" data-conditional-form>
                       <label class="spec-checkbox">
                         <input type="checkbox" checked data-conditional-toggle />
                         <span>开启定时执行</span>
                       </label>
-                      <label class="form-item">
+                      <div class="form-item">
                         <span class="form-label">执行时间</span>
-                        <span class="form-control">
-                          <input class="spec-input" type="text" value="每天 09:30" data-conditional-control />
+                        <span class="form-control form-time-picker" data-form-time-picker data-time-value="09:30">
+                          <button class="form-time-trigger" type="button" aria-haspopup="dialog" aria-expanded="false" data-form-time-trigger data-conditional-control>
+                            <span class="form-time-value" data-form-time-value>09:30</span>
+                            <span class="form-time-clear" role="button" tabindex="0" aria-label="清除执行时间" data-form-time-clear><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M18 6 6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            <span class="form-time-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" focusable="false"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                          </button>
+                          <span class="form-time-dropdown" role="dialog" aria-label="选择小时分钟" hidden data-form-time-dropdown>
+                            <span class="form-time-columns">
+                              <span><span class="form-time-column-label">小时</span><span class="form-time-list" data-form-time-unit="hour"></span></span>
+                              <span><span class="form-time-column-label">分钟</span><span class="form-time-list" data-form-time-unit="minute"></span></span>
+                            </span>
+                            <span class="form-time-actions">
+                              <button class="spec-btn subtle" type="button" data-form-time-cancel>取消</button>
+                              <button class="spec-btn primary" type="button" data-form-time-confirm>确认</button>
+                            </span>
+                          </span>
                           <span class="form-help" data-conditional-help>任务将在设定时间自动触发。</span>
                         </span>
-                      </label>
+                      </div>
                       <label class="form-item">
                         <span class="form-label">失败重试</span>
                         <span class="form-control">
-                          <input class="spec-input" type="text" value="最多 3 次" data-conditional-control />
+                          <span class="number-input" data-number-demo data-min="0" data-max="10" data-step="1">
+                            <input class="spec-input" type="number" value="3" data-conditional-control />
+                            <span class="number-stepper" aria-hidden="true">
+                              <button class="number-step" type="button" data-number-step="up" aria-label="增加" data-conditional-control><svg viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"></path></svg></button>
+                              <button class="number-step" type="button" data-number-step="down" aria-label="减少" data-conditional-control><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"></path></svg></button>
+                            </span>
+                          </span>
                         </span>
                       </label>
                     </div>
@@ -2124,8 +2500,8 @@
                 <h2>动态增减表单项</h2>
                 <div class="doc-grid">
                   <div class="example-block full">
-                    <h3>动态参数值</h3>
-                    <p>用于维护同一参数下的可变取值列表；输入 tab 宽度 260px，Tab 顺序按编号流转到新增按钮。</p>
+                    <div class="example-head"><h3>动态参数值</h3>
+                    <p>用于维护同一参数下的可变取值列表；输入 tab 宽度 260px，Tab 顺序按编号流转到新增按钮。</p></div>
                     <div class="form-demo" data-dynamic-form data-dynamic-tab-order data-dynamic-min="1" data-dynamic-max="4" data-dynamic-type="single">
                       <div class="dynamic-list" data-dynamic-list>
                         <div class="dynamic-item single" data-dynamic-item>
@@ -2146,8 +2522,8 @@
                     </div>
                   </div>
                   <div class="example-block full">
-                    <h3>动态参数值对</h3>
-                    <p>用于配置可变数量的参数名与参数值；两列 tab 宽度 180px，新增后自动编号。</p>
+                    <div class="example-head"><h3>动态参数值对</h3>
+                    <p>用于配置可变数量的参数名与参数值；两列 tab 宽度 180px，新增后自动编号。</p></div>
                     <div class="form-demo" data-dynamic-form data-dynamic-min="1" data-dynamic-max="5" data-dynamic-type="pair">
                       <div class="dynamic-list" data-dynamic-list>
                         <div class="dynamic-item" data-dynamic-item>
@@ -2176,8 +2552,8 @@
                 <h2>表单校验</h2>
                 <div class="doc-grid">
                   <div class="example-block">
-                    <h3>实时字段校验</h3>
-                    <p>输入变化时同步字段状态，错误信息贴近控件展示，修正后立即恢复成功反馈。</p>
+                    <div class="example-head"><h3>实时字段校验</h3>
+                    <p>输入变化时同步字段状态，错误信息贴近控件展示，修正后立即恢复成功反馈。</p></div>
                     <div class="form-demo" data-field-validation-demo>
                       <label class="form-item success" data-validation-item data-validation-rule="required" data-validation-message="请输入任务名称">
                         <span class="form-label required">任务名称</span>
@@ -2196,8 +2572,8 @@
                     </div>
                   </div>
                   <div class="example-block">
-                    <h3>提交校验</h3>
-                    <p>点击提交后批量校验必填、格式和数值范围，错误信息贴近对应字段展示。</p>
+                    <div class="example-head"><h3>提交校验</h3>
+                    <p>点击提交后批量校验必填与 URL 格式，错误信息贴近对应字段展示。</p></div>
                     <div class="form-demo" data-submit-validation-demo>
                       <label class="form-item" data-validation-item data-validation-rule="required" data-validation-message="请输入授权 Token">
                         <span class="form-label required">授权 Token</span>
@@ -2206,11 +2582,11 @@
                           <span class="form-help" data-validation-help>用于调用外部平台接口。</span>
                         </span>
                       </label>
-                      <label class="form-item" data-validation-item data-validation-rule="range" data-validation-min="1" data-validation-max="5" data-validation-message="重试次数需在 1-5 次之间">
-                        <span class="form-label">失败重试</span>
+                      <label class="form-item" data-validation-item data-validation-rule="url" data-validation-message="请输入 https:// 开头的 Webhook 地址">
+                        <span class="form-label required">Webhook 地址</span>
                         <span class="form-control">
-                          <input class="spec-input" type="text" value="8" inputmode="numeric" data-validation-input />
-                          <span class="form-help" data-validation-help>建议设置 1-5 次。</span>
+                          <input class="spec-input" type="url" value="http://hooks.example" placeholder="https://hooks.example.com/task" data-validation-input />
+                          <span class="form-help" data-validation-help>仅支持安全的 HTTPS 回调地址。</span>
                         </span>
                       </label>
                       <button class="spec-btn primary" type="button" data-submit-validation>提交校验</button>
@@ -2223,8 +2599,8 @@
                 <h2>状态</h2>
                 <div class="doc-grid">
                   <div class="example-block">
-                    <h3>Default / Focus</h3>
-                    <p>默认使用轻边框；聚焦时使用品牌绿描边和外发光。</p>
+                    <div class="example-head"><h3>Default / Focus</h3>
+                    <p>默认使用轻边框；聚焦时使用品牌绿描边和外发光。</p></div>
                     <div class="form-demo">
                       <label class="form-item">
                         <span class="form-label">默认字段</span>
@@ -2241,13 +2617,13 @@
                     </div>
                   </div>
                   <div class="example-block">
-                    <h3>Error / Success / Disabled</h3>
-                    <p>校验状态跟随字段展示；禁用态保持可读但不可编辑。</p>
+                    <div class="example-head"><h3>Error / Success / Disabled</h3>
+                    <p>校验状态跟随字段展示；禁用态保持可读但不可编辑。</p></div>
                     <div class="form-demo">
                       <label class="form-item error">
                         <span class="form-label required">授权 Token</span>
                         <span class="form-control">
-                          <input class="spec-input" type="text" value="expired-token" />
+                          <input class="spec-input" type="text" value="expired-token" aria-invalid="true" />
                           <span class="form-help">Token 已过期，请重新授权。</span>
                         </span>
                       </label>
@@ -2323,6 +2699,48 @@
                         <td><code>false</code></td>
                       </tr>
                       <tr>
+                        <td><code>controlType</code></td>
+                        <td>字段控件类型；time 使用与 Time Picker 小时分钟模式一致的双列选择面板。</td>
+                        <td><code>input | textarea | select | radio | checkbox | time</code></td>
+                        <td><code>input</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>timePrecision</code></td>
+                        <td>执行时间精度；表单定时执行场景固定使用小时分钟。</td>
+                        <td><code>minute</code></td>
+                        <td><code>minute</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>onTimeChange</code></td>
+                        <td>执行时间确认后触发，返回规范化的 24 小时制值。</td>
+                        <td><code>(value: HH:mm) =&gt; void</code></td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>allowClear</code></td>
+                        <td>时间 Trigger 有值时，hover 或键盘聚焦显示清除操作。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>min / max / step</code></td>
+                        <td>数字输入框的最小值、最大值与步进值；失败重试使用标准 Stepper。</td>
+                        <td><code>number</code></td>
+                        <td><code>- / - / 1</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>controls</code></td>
+                        <td>是否显示数字输入框右侧上下步进器。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>checked</code></td>
+                        <td>条件启用复选框的受控选中状态。</td>
+                        <td><code>boolean</code></td>
+                        <td><code>false</code></td>
+                      </tr>
+                      <tr>
                         <td><code>dependencies</code></td>
                         <td>字段联动关系。前置字段变化后，可过滤后续选项、重置默认值或启停相关字段。</td>
                         <td><code>FormDependency[]</code></td>
@@ -2375,7 +2793,7 @@
                 </div>
               </section>
 
-              <section class="doc-section">
+<section class="doc-section">
                 <h2>设计 Token</h2>
                 <div class="spec-table-wrap">
                   <table class="spec-table">
@@ -2404,8 +2822,13 @@
                       </tr>
                       <tr>
                         <td><code>--form-control-radius</code></td>
-                        <td><code>8px</code></td>
+                        <td><code>var(--radius-large)</code></td>
                         <td>输入、选择和文本域圆角。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-control-border-color</code></td>
+                        <td><code>var(--color-border-default)</code></td>
+                        <td>所有表单 Trigger 的默认语义描边。</td>
                       </tr>
                       <tr>
                         <td><code>--form-control-hover-border-color</code></td>
@@ -2414,18 +2837,53 @@
                       </tr>
                       <tr>
                         <td><code>--form-required-color</code></td>
-                        <td><code>var(--color-status-error-text)</code></td>
+                        <td><code>var(--color-status-error)</code></td>
                         <td>必填星号与错误状态颜色。</td>
                       </tr>
                       <tr>
                         <td><code>--form-focus-shadow</code></td>
-                        <td><code>var(--shadow-focus)</code></td>
+                        <td><code>var(--input-focus-shadow)</code></td>
                         <td>聚焦态外发光。</td>
                       </tr>
                       <tr>
                         <td><code>--form-error-focus-shadow</code></td>
-                        <td><code>0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent)</code></td>
+                        <td><code>var(--input-error-shadow)</code></td>
                         <td>错误字段聚焦态外发光。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-select-chevron-color</code></td>
+                        <td><code>var(--color-text-disabled)</code></td>
+                        <td>选择器 ChevronDown 图标颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-time-panel-bg</code></td>
+                        <td><code>var(--color-bg-elevated)</code></td>
+                        <td>执行时间小时分钟选择浮层背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-time-clear-color</code></td>
+                        <td><code>var(--color-text-disabled)</code></td>
+                        <td>时间 Trigger 清除图标默认颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-time-clear-hover-bg</code></td>
+                        <td><code>var(--color-bg-subtle)</code></td>
+                        <td>时间 Trigger 清除按钮 hover 背景。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--form-time-clear-radius</code></td>
+                        <td><code>var(--radius-default)</code></td>
+                        <td>时间 Trigger 清除按钮圆角，与 TimePicker 清除按钮一致。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--checkbox-border-color / --checkbox-color-checked</code></td>
+                        <td><code>var(--color-border-default) / var(--color-action-primary)</code></td>
+                        <td>条件启用复选框默认及选中态颜色。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--input-number-stepper-bg / --input-number-stepper-hover-bg</code></td>
+                        <td><code>var(--color-bg-subtle) / var(--color-bg-hover)</code></td>
+                        <td>失败重试 Stepper 默认与 hover 背景。</td>
                       </tr>
                       <tr>
                         <td><code>--form-inline-action-height</code></td>
@@ -2477,28 +2935,123 @@
       </main>
     </div>
     <script>
-      const syncComponentCountLabel = () => {
-        const label = document.querySelector("[data-component-count-label]");
-        if (!label) return;
+const topbarComponentTab = document.querySelector("[data-topbar-nav=components]");
+const topbarDesignTab = document.querySelector("[data-topbar-nav=design]");
+const topbarTabs = [topbarComponentTab, topbarDesignTab].filter(Boolean);
+const sidebarSections = Array.from(document.querySelectorAll(".sidebar > nav > .nav-list > .nav-section"));
+const navMenuStorageKey = "iqb-design-active-nav-menu";
+const componentCategories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+const navCategoryStorageKey = "iqb-design-nav-category-state";
+const getSavedNavCategoryState = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(navCategoryStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+};
+const saveNavCategoryState = (state) => {
+  try {
+    sessionStorage.setItem(navCategoryStorageKey, JSON.stringify(state));
+  } catch {
+    // Local previews may disable storage; toggling still works in the current page.
+  }
+};
+const navCategoryState = getSavedNavCategoryState();
+const navCategoryButtons = Array.from(document.querySelectorAll(".sidebar .nav-category"));
+navCategoryButtons.forEach((button, index) => {
+  const sublist = button.nextElementSibling;
+  if (!sublist?.classList.contains("nav-sublist")) return;
+  const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+  sublist.id ||= `sidebar-category-${index + 1}`;
+  button.setAttribute("aria-controls", sublist.id);
+  button.setAttribute("aria-expanded", String(navCategoryState[categoryKey] !== false));
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const nextExpanded = !isExpanded;
+    button.setAttribute("aria-expanded", String(nextExpanded));
+    navCategoryState[categoryKey] = nextExpanded;
+    saveNavCategoryState(navCategoryState);
+  });
+});
 
-        const indexItems = Array.from(document.querySelectorAll(".component-index-button"));
-        if (indexItems.length > 0) {
-          const activeCount = document.querySelectorAll(".component-status.done").length;
-          label.textContent = `Active components ${activeCount}/${indexItems.length}`;
-          return;
-        }
+const getSectionCategory = (section) =>
+  section.querySelector(":scope > .nav-category")?.textContent.trim() || "";
+const isComponentSection = (section) =>
+  Boolean(section.querySelector(":scope > .nav-button .nav-label")?.textContent.includes("Components")) ||
+  componentCategories.some((category) => getSectionCategory(section).startsWith(category));
+const isDesignSection = (section) =>
+  Boolean(section.querySelector("[data-nav-scope=global-style]")) ||
+  getSectionCategory(section).startsWith("Layout");
+const getSavedNavMenu = () => {
+  try {
+    return sessionStorage.getItem(navMenuStorageKey);
+  } catch {
+    return null;
+  }
+};
+const saveNavMenu = (menu) => {
+  try {
+    sessionStorage.setItem(navMenuStorageKey, menu);
+  } catch {
+    // Local previews may disable storage; in-page switching still works.
+  }
+};
+const selectDefaultNavItem = (menu) => {
+  const defaultItem = menu === "design"
+    ? document.querySelector(".sidebar [data-style-page=color]")
+    : sidebarSections
+        .map((section) => section.querySelector(":scope > .nav-button"))
+        .find((item) => item?.querySelector(".nav-label")?.textContent.includes("Components"));
+  if (!defaultItem) return;
+  document.querySelectorAll(".sidebar .nav-button[aria-current=page]").forEach((item) =>
+    item.removeAttribute("aria-current"),
+  );
+  defaultItem.setAttribute("aria-current", "page");
+  defaultItem.click();
+};
 
-        const pendingKeys = new Set([]);
-        const navItems = Array.from(
-          document.querySelectorAll('.nav-sublist .nav-button:not([data-nav-scope="global-style"])'),
-        );
-        const getComponentKey = (item) =>
-          item.dataset.page || (item.getAttribute("href") || "").split("#").pop().replace(/\.html$/, "");
-        const activeCount = navItems.filter((item) => !pendingKeys.has(getComponentKey(item))).length;
-        label.textContent = `Active components ${activeCount}/${navItems.length}`;
-      };
+const applyNavMenu = (menu) => {
+  const activeMenu = menu === "design" ? "design" : "components";
+  topbarTabs.forEach((tab) => {
+    const isSelected = tab.dataset.topbarNav === activeMenu;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+  sidebarSections.forEach((section) => {
+    const shouldShow = activeMenu === "design" ? isDesignSection(section) : isComponentSection(section);
+    section.hidden = !shouldShow;
+    section.style.display = shouldShow ? "" : "none";
+  });
+};
 
-      syncComponentCountLabel();
+applyNavMenu(getSavedNavMenu() || "components");
+topbarComponentTab?.addEventListener("click", () => {
+  applyNavMenu("components");
+  saveNavMenu("components");
+  selectDefaultNavItem("components");
+});
+topbarDesignTab?.addEventListener("click", () => {
+  applyNavMenu("design");
+  saveNavMenu("design");
+  selectDefaultNavItem("design");
+});
+const topbarNav = document.querySelector(".topbar-nav");
+topbarNav?.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = Math.max(0, topbarTabs.indexOf(document.activeElement));
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? topbarTabs.length - 1
+      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+  topbarTabs[nextIndex]?.click();
+  topbarTabs[nextIndex]?.focus();
+});
+
+
+
+
 
       const productOptions = Array.from(document.querySelectorAll("[data-product-option]"));
       const productSelect = document.querySelector("[data-product-select]");
@@ -2512,29 +3065,25 @@
         decentralized: "实验主题",
       };
       const defaultProductThemeVars = [
-        "--brand-500",
-        "--brand-50",
-        "--brand-100",
-        "--brand-200",
-        "--brand-300",
-        "--brand-400",
-        "--brand-600",
-        "--brand-700",
-        "--brand-800",
-        "--brand-900",
-        "--brand-rgb",
+        "--brand-5",
+        "--brand-0",
+        "--brand-1",
+        "--brand-2",
+        "--brand-3",
+        "--brand-4",
+        "--brand-6",
+        "--brand-7",
+        "--brand-8",
+        "--brand-9",
         "--brand-text",
         "--brand-text-hover",
         "--brand-border-soft",
         "--brand-border-hover",
-        "--radius-sm",
-        "--shadow-focus",
+        "--radius-default",
         "--input-hover-border-color",
         "--input-focus-color",
-        "--input-focus-shadow",
         "--input-number-hover-border-color",
         "--input-number-focus-color",
-        "--input-number-focus-shadow",
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -2548,57 +3097,49 @@
 
         if (activeProduct === "business-theme") {
           root.dataset.productTheme = "business-theme";
-          root.style.setProperty("--brand-50", "#f0fff6");
-          root.style.setProperty("--brand-100", "#ddfbea");
-          root.style.setProperty("--brand-200", "#bef5d5");
-          root.style.setProperty("--brand-300", "#91e9b8");
-          root.style.setProperty("--brand-400", "#5fd897");
-          root.style.setProperty("--brand-500", "#22b573");
-          root.style.setProperty("--brand-600", "#1b9c61");
-          root.style.setProperty("--brand-700", "#147c4d");
-          root.style.setProperty("--brand-800", "#12633f");
-          root.style.setProperty("--brand-900", "#104f34");
-          root.style.setProperty("--brand-rgb", "34, 181, 115");
-          root.style.setProperty("--brand-text", "#1b9c61");
-          root.style.setProperty("--brand-text-hover", "#147c4d");
-          root.style.setProperty("--brand-border-soft", "#bef5d5");
-          root.style.setProperty("--brand-border-hover", "#91e9b8");
-          root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(34, 181, 115, 0.16)");
+          root.style.setProperty("--brand-0", iqbPaletteValue("--brand-0"));
+          root.style.setProperty("--brand-1", iqbPaletteValue("--brand-1"));
+          root.style.setProperty("--brand-2", iqbPaletteValue("--success-1"));
+          root.style.setProperty("--brand-3", iqbPaletteValue("--success-2"));
+          root.style.setProperty("--brand-4", iqbPaletteValue("--success-3"));
+          root.style.setProperty("--brand-5", iqbPaletteValue("--success-4"));
+          root.style.setProperty("--brand-6", iqbPaletteValue("--success-6"));
+          root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
+          root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
+          root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
+          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
+          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
+          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
+          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
           root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-color", "var(--color-status-success)");
-          root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
           root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
           root.style.setProperty("--input-number-focus-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-focus-shadow", "0 0 0 3px rgba(34, 181, 115, 0.1)");
           return;
         }
 
         if (activeProduct !== "decentralized") return;
 
         root.dataset.productTheme = "test-theme-1";
-        root.style.setProperty("--brand-50", "#eff6ff");
-        root.style.setProperty("--brand-100", "#dbeafe");
-        root.style.setProperty("--brand-200", "#bfdbfe");
-        root.style.setProperty("--brand-300", "#93c5fd");
-        root.style.setProperty("--brand-400", "#60a5fa");
-        root.style.setProperty("--brand-500", "#2672ff");
-        root.style.setProperty("--brand-600", "#1d5fd7");
-        root.style.setProperty("--brand-700", "#1e4fb3");
-        root.style.setProperty("--brand-800", "#1e3f8a");
-        root.style.setProperty("--brand-900", "#172f68");
-        root.style.setProperty("--brand-rgb", "38, 114, 255");
-        root.style.setProperty("--brand-text", "#1d5fd7");
-        root.style.setProperty("--brand-text-hover", "#1e4fb3");
-        root.style.setProperty("--brand-border-soft", "#bfdbfe");
-        root.style.setProperty("--brand-border-hover", "#93c5fd");
-        root.style.setProperty("--radius-sm", "2px");
-        root.style.setProperty("--shadow-focus", "0 0 0 3px rgba(38, 114, 255, 0.16)");
-        root.style.setProperty("--input-hover-border-color", "#2672ff");
-        root.style.setProperty("--input-focus-color", "#2672ff");
-        root.style.setProperty("--input-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
-        root.style.setProperty("--input-number-hover-border-color", "#2672ff");
-        root.style.setProperty("--input-number-focus-color", "#2672ff");
-        root.style.setProperty("--input-number-focus-shadow", "0 0 0 3px rgba(38, 114, 255, 0.1)");
+        root.style.setProperty("--brand-0", iqbPaletteValue("--info-0"));
+        root.style.setProperty("--brand-1", iqbPaletteValue("--info-0"));
+        root.style.setProperty("--brand-2", iqbPaletteValue("--info-1"));
+        root.style.setProperty("--brand-3", iqbPaletteValue("--info-2"));
+        root.style.setProperty("--brand-4", iqbPaletteValue("--info-3"));
+        root.style.setProperty("--brand-5", iqbPaletteValue("--info-5"));
+        root.style.setProperty("--brand-6", iqbPaletteValue("--info-6"));
+        root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
+        root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
+        root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
+        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
+        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
+        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
+        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
+        root.style.setProperty("--radius-default", "6px");
+        root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
+        root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));
+        root.style.setProperty("--input-number-hover-border-color", iqbPaletteValue("--info-5"));
+        root.style.setProperty("--input-number-focus-color", iqbPaletteValue("--info-5"));
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
@@ -2662,35 +3203,44 @@
           closeProductSelectMenu();
         }
       });
+const centerNavItem = (item, behavior = "smooth") => {
+  if (!item) return;
+  const sidebar = item.closest(".sidebar");
+  if (!sidebar) return;
 
-      const centerNavItem = (item, behavior = "smooth") => {
-        if (!item) return;
-        const sidebar = item.closest(".sidebar");
-        if (!sidebar) return;
+  const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+  const itemRect = item.getBoundingClientRect();
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const clamp = (value, max) => Math.min(Math.max(value, 0), Math.max(max, 0));
 
-        const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
-        const itemRect = item.getBoundingClientRect();
-        const sidebarRect = sidebar.getBoundingClientRect();
+  if (isHorizontal) {
+    const centeredLeft =
+      sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2;
+    const maxScrollLeft = sidebar.scrollWidth - sidebar.clientWidth;
+    sidebar.scrollTo({ left: clamp(centeredLeft, maxScrollLeft), behavior });
+    return;
+  }
 
-        if (isHorizontal) {
-          sidebar.scrollTo({
-            left: sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2,
-            behavior,
-          });
-          return;
-        }
-
-        sidebar.scrollTo({
-          top: sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2,
-          behavior,
-        });
-      };
+  const centeredTop =
+    sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2;
+  const maxScrollTop = sidebar.scrollHeight - sidebar.clientHeight;
+  sidebar.scrollTo({ top: clamp(centeredTop, maxScrollTop), behavior });
+};
 
       requestAnimationFrame(() => {
-        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current="page"]'), "auto");
+        centerNavItem(document.querySelector('.sidebar .nav-button[aria-current=page]'), "auto");
       });
 
       const selectDemos = document.querySelectorAll("[data-select-demo]");
+      const chevronDownIconMarkup = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      const checkIconMarkup = '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+      document.querySelectorAll(".select-chevron").forEach((icon) => {
+        icon.innerHTML = chevronDownIconMarkup;
+      });
+      document.querySelectorAll(".select-option-check").forEach((icon) => {
+        icon.innerHTML = checkIconMarkup;
+      });
 
       const syncSelectOption = (option, selected) => {
         option.classList.toggle("active", selected);
@@ -2701,6 +3251,7 @@
           const check = document.createElement("span");
           check.className = "select-option-check";
           check.setAttribute("aria-hidden", "true");
+          check.innerHTML = checkIconMarkup;
           option.appendChild(check);
         }
 
@@ -2805,6 +3356,12 @@
           controls.forEach((control) => {
             control.disabled = !enabled;
           });
+          form.querySelector("[data-number-demo]")?.syncNumberButtons?.();
+          if (!enabled) {
+            form.querySelector("[data-form-time-trigger]")?.setAttribute("aria-expanded", "false");
+            const timeDropdown = form.querySelector("[data-form-time-dropdown]");
+            if (timeDropdown) timeDropdown.hidden = true;
+          }
           if (help) {
             help.textContent = enabled ? "任务将在设定时间自动触发。" : "开启定时执行后可编辑时间和重试规则。";
           }
@@ -2812,6 +3369,137 @@
 
         toggle?.addEventListener("change", syncConditionalControls);
         syncConditionalControls();
+      });
+
+      document.querySelectorAll("[data-form-time-picker]").forEach((picker) => {
+        const trigger = picker.querySelector("[data-form-time-trigger]");
+        const dropdown = picker.querySelector("[data-form-time-dropdown]");
+        const valueNode = picker.querySelector("[data-form-time-value]");
+        const clearButton = picker.querySelector("[data-form-time-clear]");
+        const parseValue = (value) => {
+          const [hour = "09", minute = "30"] = String(value || "09:30").split(":");
+          return { hour, minute };
+        };
+        let committed = parseValue(picker.dataset.timeValue);
+        let selected = { ...committed };
+
+        const syncValue = () => {
+          const value = picker.dataset.timeValue || "";
+          if (valueNode) {
+            valueNode.textContent = value || "请选择时间";
+            valueNode.classList.toggle("is-placeholder", !value);
+          }
+          trigger?.classList.toggle("is-empty", !value);
+        };
+
+        const renderOptions = () => {
+          picker.querySelectorAll("[data-form-time-unit]").forEach((list) => {
+            const unit = list.dataset.formTimeUnit;
+            const count = unit === "hour" ? 24 : 60;
+            list.replaceChildren(...Array.from({ length: count }, (_, index) => {
+              const value = String(index).padStart(2, "0");
+              const option = document.createElement("button");
+              option.type = "button";
+              option.className = "form-time-option";
+              option.dataset.formTimeOption = unit;
+              option.dataset.value = value;
+              option.textContent = value;
+              option.classList.toggle("active", selected[unit] === value);
+              option.setAttribute("aria-pressed", String(selected[unit] === value));
+              return option;
+            }));
+          });
+        };
+        const closePicker = (restore = true) => {
+          if (restore) selected = { ...committed };
+          trigger?.setAttribute("aria-expanded", "false");
+          if (dropdown) dropdown.hidden = true;
+          renderOptions();
+        };
+        const openPicker = () => {
+          if (!trigger || trigger.disabled) return;
+          selected = { ...committed };
+          trigger.setAttribute("aria-expanded", "true");
+          if (dropdown) dropdown.hidden = false;
+          renderOptions();
+          requestAnimationFrame(() => {
+            picker.querySelectorAll(".form-time-list").forEach((list) => {
+              const active = list.querySelector(".active");
+              if (active) list.scrollTop = active.offsetTop - list.offsetTop;
+            });
+          });
+        };
+
+        renderOptions();
+        syncValue();
+        trigger?.addEventListener("click", () => {
+          if (trigger.getAttribute("aria-expanded") === "true") closePicker();
+          else openPicker();
+        });
+        dropdown?.addEventListener("click", (event) => {
+          event.stopPropagation();
+          const option = event.target.closest("[data-form-time-option]");
+          if (!option) return;
+          selected[option.dataset.formTimeOption] = option.dataset.value;
+          renderOptions();
+        });
+        picker.querySelector("[data-form-time-confirm]")?.addEventListener("click", () => {
+          committed = { ...selected };
+          picker.dataset.timeValue = `${committed.hour}:${committed.minute}`;
+          syncValue();
+          picker.dispatchEvent(new CustomEvent("time-change", { detail: { value: picker.dataset.timeValue } }));
+          closePicker(false);
+        });
+        const clearTime = (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          picker.dataset.timeValue = "";
+          syncValue();
+          closePicker(false);
+          picker.dispatchEvent(new CustomEvent("time-change", { detail: { value: "" } }));
+        };
+        clearButton?.addEventListener("click", clearTime);
+        clearButton?.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") clearTime(event);
+        });
+        picker.querySelector("[data-form-time-cancel]")?.addEventListener("click", () => closePicker());
+        document.addEventListener("click", (event) => {
+          if (!picker.contains(event.target)) closePicker();
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closePicker();
+        });
+      });
+
+      document.querySelectorAll("[data-number-demo]").forEach((demo) => {
+        const input = demo.querySelector(".spec-input");
+        const upButton = demo.querySelector('[data-number-step="up"]');
+        const downButton = demo.querySelector('[data-number-step="down"]');
+        const min = Number(demo.dataset.min ?? Number.NEGATIVE_INFINITY);
+        const max = Number(demo.dataset.max ?? Number.POSITIVE_INFINITY);
+        const step = Number(demo.dataset.step || 1);
+        const currentValue = () => Number(input?.value || 0);
+        const formatValue = (value) => String(Math.min(max, Math.max(min, value)));
+        const syncButtons = () => {
+          const value = currentValue();
+          if (upButton) upButton.disabled = input?.disabled || value >= max;
+          if (downButton) downButton.disabled = input?.disabled || value <= min;
+        };
+        upButton?.addEventListener("click", () => {
+          if (!input || input.disabled) return;
+          input.value = formatValue(currentValue() + step);
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+          syncButtons();
+        });
+        downButton?.addEventListener("click", () => {
+          if (!input || input.disabled) return;
+          input.value = formatValue(currentValue() - step);
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+          syncButtons();
+        });
+        input?.addEventListener("input", syncButtons);
+        demo.syncNumberButtons = syncButtons;
+        syncButtons();
       });
 
       document.querySelectorAll("[data-dynamic-form]").forEach((form) => {
@@ -2972,5 +3660,6 @@
         });
       });
     </script>
+    <script src="../styles/topbar-shared.js"></script>
   </body>
 </html>
