@@ -192,7 +192,7 @@
   const options = Array.from(dropdown.querySelectorAll(".topbar-template-option:not(:disabled)"));
   options.forEach((option) => {
     option.addEventListener("click", () => {
-      window.open("https://monica137142.github.io/creator-center/", "_blank", "noopener");
+      window.location.assign("https://monica137142.github.io/creator-center/");
       dropdown.classList.add("is-menu-dismissed");
       option.blur();
     });
