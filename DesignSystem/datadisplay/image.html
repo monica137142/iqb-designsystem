@@ -1,0 +1,1374 @@
+<!doctype html>
+<html lang="zh-CN" data-product-theme="default-theme">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image 图片 - Design System</title>
+    <script src="../styles/color-mode-init.js"></script>
+    <style>
+      :root{--color-text-primary: var(--neutral-10);--color-text-default: var(--neutral-9);--color-text-secondary: var(--neutral-6);--color-text-tertiary: var(--neutral-5);--color-text-disabled: var(--neutral-4);--color-text-inverse: var(--neutral-0);--color-text-link: var(--info-6);--color-bg-page: var(--neutral-0);--color-bg-container: var(--neutral-0);--color-bg-subtle: var(--neutral-1);--color-bg-hover: var(--neutral-1);--color-bg-selected: var(--brand-0);--color-bg-disabled: var(--neutral-1);--color-border-default: var(--neutral-3);--color-border-subtle: var(--neutral-2);--color-border-strong: var(--neutral-4);--color-border-focus: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-action-primary: var(--brand-5);--color-action-primary-hover: var(--brand-6);--color-action-primary-hover: var(--brand-7);--color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);--color-action-primary-disabled: var(--brand-2);--color-status-success: var(--success-5);--color-status-error: var(--danger-5);--color-status-warning: var(--warning-5);--color-status-info: var(--info-5);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--topbar-height:60px;--sidebar-width:300px;--radius-default: 6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:36px;height:var(--topbar-height);padding:0 24px;background: var(--color-bg-container);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color: var(--color-text-default);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:var(--radius-large);background:linear-gradient(135deg,var(--color-action-primary),var(--color-action-primary));box-shadow:0 3px 10px color-mix(in srgb, var(--color-action-primary) 22%, transparent)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-default);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color: var(--color-text-top);background: var(--color-bg-container)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--font-style-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--font-style-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);font-size:var(--font-style-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--font-style-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--font-style-body-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color: var(--color-status-success)}.warning{color: var(--color-status-warning-hover)}.danger{color: var(--color-status-error)}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background: var(--color-bg-container);border-radius:var(--radius-default)}.metric-row span{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.metric-row strong{font-size:var(--font-style-display-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke: var(--color-text-primary);stroke-width:1}.chart-area{fill:color-mix(in srgb, var(--color-action-primary) 12%, transparent)}.chart-line{fill:none;stroke:var(--color-action-primary);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,var(--color-action-primary),var(--color-status-success-bg));border-radius:var(--radius-default) var(--radius-default) 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:var(--radius-full);background:conic-gradient(var(--color-action-primary) 0 72%,var(--color-border-subtle) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:var(--radius-full)}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--font-style-body-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);font-size:var(--font-style-caption-size);text-decoration:none}.tag.success{color: var(--color-status-success-hover);background: var(--color-action-primary-bg-hover);border-color:var(--color-action-primary)}.tag.processing{color: var(--color-status-info);background: var(--color-status-info-bg);border-color:var(--color-status-info-border)}.tag.warning{color: var(--color-status-warning-hover);background: var(--color-status-warning-bg);border-color:var(--color-status-warning-border)}.tag.danger{color: var(--color-status-error-hover);background: var(--color-status-error-bg);border-color:var(--color-status-error-border)}.tag.selected{color:var(--color-action-primary-hover);background:color-mix(in srgb, var(--color-action-primary) 10%, transparent);border-color:color-mix(in srgb, var(--color-action-primary) 32%, transparent)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-full);cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background: var(--color-bg-inverse);border-radius:var(--radius-default);font-size:var(--font-style-caption-size);line-height:1.4;box-shadow: var(--shadow-overlay)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default)}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:var(--color-text-secondary);border-radius:var(--radius-full);font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:var(--radius-large);background:var(--color-text-link-hover)}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:var(--color-status-success-hover)}.avatar.blue{background: var(--color-status-info)}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid var(--color-text-inverse)}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--font-style-body-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background: var(--color-bg-disabled)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--color-border-default);border:3px solid var(--color-text-inverse);border-radius:var(--radius-full);box-shadow:0 0 0 1px var(--color-border-default)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow: none;box-shadow:0 0 0 4px var(--color-status-info-bg)}.timeline time{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.timeline strong{font-size:var(--font-style-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,var(--color-action-primary-bg),var(--color-text-inverse))}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:color-mix(in srgb, var(--color-text-inverse) 72%, transparent);border:1px solid color-mix(in srgb, var(--color-text-inverse) 90%, transparent);border-radius:var(--radius-large)}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--font-style-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-full);cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--color-border-default);border-radius:var(--radius-full)}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:var(--radius-full)}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background: var(--color-bg-container);border-radius:var(--radius-default);object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default)}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid var(--color-text-inverse);border-radius:var(--radius-full);font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:var(--radius-full);background:var(--color-border-default)}.status-dot.success{background: var(--color-action-primary)}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,var(--color-bg-subtle),var(--color-bg-subtle));border:1px solid var(--color-border-subtle);border-radius:var(--radius-xlarge)}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:var(--radius-default)}.empty-state strong{font-size:var(--font-style-title-2-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:var(--radius-default)}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      :root {
+
+
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--color-text-default);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+.nav-section[hidden] { display: none !important; }
+.nav-list > .nav-section:nth-child(2) { margin-top: 0 !important; }
+.sidebar .nav-list { gap: 12px; padding-bottom: 0 !important; }
+.sidebar .nav-section { gap: 8px; }
+.nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+.nav-category {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 32px;
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-category-chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-text-tertiary);
+  transition: transform 0.16s ease;
+}
+.nav-category-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+.nav-category[aria-expanded="false"] + .nav-sublist { display: none !important; }
+.nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.nav-category { color: var(--color-text-tertiary) !important; }
+.nav-category:hover { background: var(--color-bg-container) !important; }
+.nav-category .nav-category-count,
+.nav-category .nav-category-chevron { color: inherit !important; }
+
+.topbar-nav {
+  --tabs-height-default: 40px;
+  --tabs-padding-x: 14px;
+  --tabs-gap: 8px;
+  --tabs-font-size: var(--font-style-body-size);
+  --tabs-font-weight-active: var(--font-style-body-medium-weight);
+  
+  
+  
+  
+  --tabs-indicator-size: 2px;
+  
+  --tabs-radius: var(--radius-default);
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: var(--tabs-gap);
+}
+
+.topbar-nav-tab {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabs-height-default);
+  padding: 0 var(--tabs-padding-x);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: var(--tabs-radius);
+  cursor: pointer;
+  font-size: var(--tabs-font-size);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover {
+  color: var(--color-text-primary);
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover::before {
+  position: absolute;
+  z-index: -1;
+  inset: 4px;
+  content: "";
+  background: var(--color-bg-hover);
+  border-radius: var(--radius-small);
+}
+
+.topbar-nav-tab[aria-selected="true"] {
+  color: var(--color-action-primary);
+  font-weight: var(--tabs-font-weight-active);
+}
+
+.topbar-nav-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: var(--tabs-indicator-size);
+  content: "";
+  background: var(--color-action-primary);
+  border-radius: var(--radius-full);
+}
+
+.topbar-nav-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-select {
+
+
+        position: relative;
+        margin-left: 0;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        font-size:var(--font-style-body-size);
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color:var(--color-action-primary);
+        background:var(--color-bg-container);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+        content: "";
+        background-color: var(--color-text-disabled);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        transform: translateY(-50%);
+        transition: transform 0.16s ease;
+        }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+        box-shadow: var(--shadow-overlay);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color:var(--color-text-default);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        font-size:var(--font-style-body-size);
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color:var(--color-action-primary);
+        background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color:var(--color-text-secondary);
+        font-size:var(--font-style-body-size);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: var(--radius-full);
+        background:var(--color-action-primary);
+        box-shadow: none;
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      /* Image documentation: follows the shared component document shell. */
+      :root {
+
+
+
+
+
+        --image-radius: var(--radius-large);
+        --image-hover-opacity: .75;
+        
+        
+        --image-loading-icon-size: 28px;
+        
+        
+        
+        
+        
+        
+        --image-motion-duration: 200ms;
+        --image-loading-min-duration: 1000ms;
+        --image-flow-blur: 40px;
+        
+        
+        
+      }
+      .canvas{background:var(--color-bg-container)}
+      .canvas-inner{display:grid;width:auto;min-height:calc(100vh - var(--topbar-height));padding:32px}
+      .doc-page{width:min(100%,1080px);color: var(--color-text-default)}
+      .doc-hero,.doc-section{padding:28px 32px}
+      .doc-hero{border-bottom:1px solid var(--color-border-subtle)}
+      .doc-kicker{margin:0 0 10px;color:var(--color-action-primary);font-size:var(--font-style-caption-size);font-weight:400;line-height:1.4;letter-spacing:0;text-transform:none}
+      .doc-title{font-size:28px;font-weight:500;line-height:1.25}
+      .doc-summary{max-width:720px;margin-top:12px;line-height:var(--font-style-body-line-height)}
+      .doc-meta-list{margin-top:18px}
+      .doc-meta-list li{padding:4px 8px;color:var(--color-text-secondary);background:var(--color-bg-subtle);border:0;border-radius:var(--radius-full);line-height:1.4}
+      .doc-section{margin-top:0;padding-top:28px;border-top:0;border-bottom:1px solid var(--color-border-subtle)}
+      .doc-section:last-child{border-bottom:0}
+      .doc-section h2{margin:0 0 14px;color:var(--color-text-primary);font-size:18px;font-weight:500;line-height:1.35}
+      .doc-section h3{margin:0 0 8px;color: var(--color-text-default);font-size:var(--font-style-body-size);font-weight:500;line-height:1.4}
+      .doc-section p{line-height:var(--font-style-body-line-height)}
+      .example-block.full{grid-column:1/-1}
+      .example-block{min-width:0;padding:16px;background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default)}
+      .example-block>p{margin-bottom:18px}
+      .rule-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+      .rule-list li{position:relative;padding-left:16px;color:var(--color-text-default);font-size:var(--font-style-body-size);line-height:var(--font-style-body-line-height)}
+      .rule-list li:before{position:absolute;top:10px;left:0;width:5px;height:5px;content:"";background:var(--color-action-primary);border-radius:var(--radius-full)}
+      .demo-stage{display:flex;align-items:center;justify-content:flex-start;min-height:0;padding:0;background:transparent;border:0}
+      .spec-btn{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:0 14px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-default);border-radius:var(--radius-large);cursor:pointer;font-size:var(--font-style-body-size);transition:.15s ease}
+      .spec-btn:hover{color:var(--color-action-primary);border-color:var(--color-action-primary)}
+      .spec-btn:focus-visible{outline:0;box-shadow: var(--shadow-focus);}
+      .spec-table-wrap{overflow-x:auto;border:1px solid var(--color-border-subtle);border-radius:var(--radius-default)}
+      .spec-table{width:100%;min-width:680px;border-collapse:collapse;font-size:var(--font-style-body-size);text-align:left}
+      .spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top;line-height:normal}
+      .spec-table th{color:var(--color-text-default);background: var(--color-bg-container);font-weight:600}
+      .spec-table tr:last-child td{border-bottom:0}
+      .spec-table code{padding:2px 5px;color: var(--color-text-default);background:var(--color-bg-subtle);border-radius:var(--radius-small);font-family:"Roboto Mono","Cascadia Mono",Consolas,monospace;font-size:var(--font-style-caption-size)}
+      .sidebar{scrollbar-color:var(--color-border-default) transparent;scrollbar-width:thin}
+      .sidebar::-webkit-scrollbar{width:6px;height:6px}.sidebar::-webkit-scrollbar-track{background:transparent}.sidebar::-webkit-scrollbar-thumb{background:var(--color-border-default);border-radius:var(--radius-full)}
+
+      .image-demo-row{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:flex-start;gap:24px;width:100%}
+      .image-demo-item{display:grid;justify-items:center;gap:10px;margin:0}
+      .image-demo-item figcaption{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size);line-height:1.5}
+      .image-frame{position:relative;width:160px;height:160px;overflow:hidden;background:var(--color-bg-inverse);border-radius:var(--image-radius)}
+      .image-frame img{display:block;width:100%;height:100%}
+      .image-frame.fill img{object-fit:cover}.image-frame.fit img{object-fit:contain}
+      .image-frame.fit.color-light{background: var(--color-bg-disabled)}
+      .image-frame.fit.dominant-1{background:var(--color-text-disabled)}.image-frame.fit.dominant-2{background:var(--color-text-disabled)}.image-frame.fit.dominant-3{background:var(--color-text-disabled)}.image-frame.fit.dominant-4{background:var(--color-text-tertiary)}
+      .image-frame.fit.blur-fill:before{position:absolute;inset:-16px;content:"";background:var(--demo-image) center/cover;filter:blur(14px);transform:scale(1.12)}
+      .image-frame.fit.blur-fill:after{position:absolute;inset:0;content:"";background:color-mix(in srgb, var(--color-text-primary) 38%, transparent)}
+      .image-frame.fit.blur-fill img{position:relative;z-index:1}
+      .radius-square{border-radius:0}.radius-default{border-radius:var(--image-radius)}.radius-custom{border-radius:var(--radius-xlarge)}.radius-circle{border-radius:var(--radius-full)}
+      .loading-stage{position:relative;display:grid;width:160px;height:160px;place-items:center;overflow:hidden;background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:var(--image-radius);isolation:isolate}
+      .spinner{flex:0 0 var(--image-loading-icon-size);width:var(--image-loading-icon-size);height:var(--image-loading-icon-size);border:3px solid var(--color-border-default);border-top-color:var(--color-action-primary);border-radius:var(--radius-full);animation:spin .8s linear infinite}
+      .flow-loader{position:absolute;top:50%;left:50%;width:320px;height:320px;filter:blur(var(--image-flow-blur)) saturate(1.08);isolation:isolate;transform:translate(-50%,-50%)}
+      .flow-loader:after{position:absolute;inset:92px;content:"";background:color-mix(in srgb,var(--color-action-primary) 16%,var(--color-text-inverse));border-radius:48% 52% 46% 54%;opacity:.08;filter:blur(48px);animation:ink-breathe 3.2s ease-in-out infinite}
+      .flow-loader span{position:absolute;top:100px;left:86px;width:148px;height:120px;background:color-mix(in srgb,var(--color-action-primary) 54%,var(--color-text-inverse));border-radius:58% 42% 64% 36%/46% 60% 40% 54%;opacity:.25;transform-origin:center;animation:ink-flow 3.35s cubic-bezier(.45,0,.55,1) infinite}
+      .flow-loader span:nth-child(2){width:126px;height:154px;background:color-mix(in srgb,color-mix(in srgb, var(--color-action-primary) 38%, var(--color-category-blue)) 62%,var(--color-text-inverse));opacity:.28;animation-name:ink-flow-reverse;animation-delay:-1.25s;animation-duration:3.8s}
+      .flow-loader span:nth-child(3){width:170px;height:104px;background:color-mix(in srgb,color-mix(in srgb, var(--color-action-primary) 45%, var(--color-category-orange)) 58%,var(--color-text-inverse));opacity:.24;animation-delay:-2.4s;animation-duration:4.25s}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      @keyframes ink-flow{0%,100%{border-radius:58% 42% 64% 36%/46% 60% 40% 54%;transform:translate(-72px,28px) rotate(-14deg) scale(.82,1.08)}32%{border-radius:35% 65% 42% 58%/62% 38% 61% 39%;transform:translate(4px,-50px) rotate(7deg) scale(1.16,.86)}66%{border-radius:66% 34% 55% 45%/38% 57% 43% 62%;transform:translate(76px,22px) rotate(18deg) scale(.88,1.14)}}
+      @keyframes ink-flow-reverse{0%,100%{border-radius:42% 58% 38% 62%/64% 36% 58% 42%;transform:translate(68px,-30px) rotate(12deg) scale(.84,1.1)}36%{border-radius:65% 35% 61% 39%/43% 62% 38% 57%;transform:translate(-12px,46px) rotate(-9deg) scale(1.12,.88)}70%{border-radius:38% 62% 48% 52%/58% 42% 66% 34%;transform:translate(-70px,-18px) rotate(-20deg) scale(.9,1.14)}}
+      @keyframes ink-breathe{0%,100%{opacity:.08;transform:scale(.82)}50%{opacity:.16;transform:scale(1.18,.9)}}
+      .load-demo{display:grid;justify-items:center;gap:14px}
+      .loading-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;background:var(--color-bg-subtle);filter:blur(14px);transform:scale(1.06);transition:filter .75s ease,opacity .4s ease,transform .75s ease;will-change:filter,opacity,transform}
+      .loading-image.is-loaded{opacity:1;filter:blur(0);transform:scale(1)}
+      .loading-image.is-loaded~.loading-placeholder{opacity:0}
+      .loading-placeholder{position:relative;z-index:1;transition:opacity .4s ease}
+      .color-placeholder{position:absolute;inset:0;background:var(--color-bg-subtle);transition:opacity .18s ease}
+      .flow-stage .loading-image{z-index:2}.flow-stage .flow-loader{z-index:1}.flow-stage .loading-image.is-loaded~.flow-loader{opacity:0}
+      .flow-loader{transition:opacity .3s ease}
+      .fit-fill-group{display:grid;gap:12px;width:100%}.fit-fill-group+ .fit-fill-group{margin-top:22px}.fit-fill-label{color:var(--color-text-primary);font-size:var(--font-style-body-size);font-weight:500}
+      .replay-row{display:flex;justify-content:flex-start;margin-top:14px}
+      .centered-demo .image-demo-row,.centered-demo.image-demo-row{justify-content:flex-start}.centered-demo .replay-row{justify-content:center}.inline-replay{margin-top:2px}
+      .example-block:has([data-replay-flow]) .replay-row{width:528px;margin-left:184px}
+      .example-block:has([data-replay-lazy]) .replay-row{width:528px}
+      .example-block:has([data-replay-failure]) .replay-row{width:160px}
+      .broken-icon{display:block;width:var(--image-loading-icon-size);height:var(--image-loading-icon-size);color:var(--color-text-disabled)}.broken-icon svg{display:block;width:100%;height:100%}
+      .failure-stage .broken-icon{display:none}.failure-stage.is-failed .spinner{display:none}.failure-stage.is-failed .broken-icon{display:grid}
+      .hover-frame:after{position:absolute;inset:0;display:grid;content:attr(data-hover-label);place-items:center;color:var(--color-text-inverse);background:var(--color-overlay-black-strong);font-size:var(--font-style-caption-size);font-weight:var(--font-style-caption-weight);line-height:var(--font-style-caption-line-height);opacity:0;transition:opacity var(--image-motion-duration) ease}
+      .hover-frame{cursor:pointer}.hover-frame:hover:after,.hover-frame:focus-visible:after{opacity:1}.hover-frame:focus-visible{outline:0;box-shadow: var(--shadow-focus);}
+      .image-preview-overlay{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--color-overlay-black-strong);opacity:1;transition:opacity var(--image-motion-duration) ease}
+      .image-preview-overlay[hidden]{display:none}
+      .image-preview-media{display:block;width:min(70vw,70vh);height:min(70vw,70vh);object-fit:contain;background: var(--color-bg-inverse);border-radius:0;box-shadow:none}
+      .image-preview-close{position:fixed;top:24px;right:24px;display:grid;width:36px;height:36px;padding:0;place-items:center;color: var(--color-text-inverse);background:color-mix(in srgb, var(--color-text-primary) 28%, transparent);border:1px solid color-mix(in srgb, var(--color-text-inverse) 30%, transparent);border-radius:var(--radius-full);cursor:pointer}
+      .image-preview-close:hover{background:color-mix(in srgb, var(--color-text-primary) 50%, transparent)}.image-preview-close:focus-visible{outline:0;box-shadow:0 0 0 3px color-mix(in srgb, var(--color-text-inverse) 28%, transparent)}.image-preview-close svg{width:18px;height:18px}
+      @media(prefers-reduced-motion:reduce){.spinner,.flow-loader span,.flow-loader:after{animation:none}.loading-image,.image-preview-overlay{transition:none}}
+      @media(min-width:761px) and (max-width:860px){body{overflow:hidden}.app-shell{height:100vh;min-height:0}.workspace{grid-template-columns:var(--sidebar-width) minmax(0,1fr)}.sidebar{flex-direction:column;align-items:stretch;gap:18px;min-height:0;padding:22px 18px;overflow-x:hidden;overflow-y:auto;border-right:1px solid var(--color-border-subtle);border-bottom:0}.nav-list,.nav-section,.nav-sublist{flex-direction:column;align-items:stretch}.nav-list{padding-bottom:calc((100vh - var(--topbar-height))/2)}.nav-category{padding:0 12px 4px}.nav-button{width:100%}.canvas-inner{padding:32px}}
+      @media(max-width:760px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.canvas-inner{width:auto;min-height:560px;padding:18px}.doc-hero,.doc-section{padding:22px 18px}.doc-title{font-size:var(--font-style-display-size)}.image-demo-row{gap:18px}.example-block:has([data-replay-flow]) .replay-row,.example-block:has([data-replay-lazy]) .replay-row,.example-block:has([data-replay-failure]) .replay-row{width:100%;margin-left:0}}
+
+
+      /* Data Display component semantic alignment */
+      .demo-item, .demo-caption { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-spec-head { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-spec-avatar, .list-avatar, .spec-list-avatar { color: var(--color-status-info); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-avatar.green, .spec-list-avatar.green { color: var(--color-status-success); background: var(--color-bg-subtle); }
+      .list-avatar.blue, .spec-list-avatar.blue { color: var(--color-status-info); background: var(--color-bg-subtle); }
+      .list-spec-badge, .list-meta { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-title, .list-card .list-title, .spec-list-title { color: var(--color-text-primary); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .list-split strong { color: var(--color-text-primary); font-size: var(--font-style-title-2-size); font-weight: var(--font-style-title-2-weight); line-height: var(--font-style-title-2-line-height); }
+      .timeline-label, .timeline-horizontal-time { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .timeline-title { color: var(--color-text-primary); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .timeline-desc { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .timeline-item.success .timeline-dot, .timeline-item.success .timeline-dot.custom { color: var(--color-status-success); background: var(--color-status-success); }
+      .timeline-item.processing .timeline-dot, .timeline-item.processing .timeline-dot.custom { color: var(--color-status-info); background: var(--color-status-info); }
+      .timeline-item.warning .timeline-dot, .timeline-item.warning .timeline-dot.custom { color: var(--color-status-warning); background: var(--color-status-warning); }
+      .timeline-badge { color: var(--color-status-success); background: var(--color-bg-subtle); border-color: var(--color-status-success); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar.large, .avatar.custom-size, .avatar-responsive { font-size: var(--font-style-body-size); font-weight: var(--font-style-body-medium-weight); }
+      .avatar-group.group-small .avatar, .avatar-group.group-medium .avatar, .avatar-group.group-large .avatar, .avatar-color-spec { font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar-badge, .badge-mark, .badge-mark.small { color: var(--color-text-inverse); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar.icon-brand { color: var(--color-action-primary-hover); background: var(--color-action-primary-bg-hover); }
+      .avatar.icon-info { color: var(--color-status-info); background: var(--color-bg-subtle); }
+      .combined-metric strong, .grid-cell strong { color: var(--color-text-primary); font-size: var(--font-style-title-1-size); font-weight: var(--font-style-title-1-weight); line-height: var(--font-style-title-1-line-height); }
+      .tooltip-trigger, .spec-btn { color: var(--color-text-default); border-color: var(--color-border-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .tooltip-popup { color: var(--color-text-inverse); background: var(--color-bg-inverse); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .carousel-panel { color: var(--color-text-default); }
+      .broken-icon { color: var(--color-text-disabled); }
+      /* DESIGN.md semantic alignment */
+      .content-panel.doc-page, .doc-page { color: var(--color-text-default); }
+      .doc-kicker { color: var(--color-action-primary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .doc-title { color: var(--color-text-primary); font-size: var(--font-style-title-1-size); font-weight: var(--font-style-title-1-weight); line-height: var(--font-style-title-1-line-height); }
+      .doc-summary { color: var(--color-text-secondary); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .doc-meta-list li { color: var(--color-text-secondary); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .doc-section h2 { color: var(--color-text-primary); font-size: var(--font-style-title-2-size); font-weight: var(--font-style-title-2-weight); line-height: var(--font-style-title-2-line-height); }
+      .doc-section h3, .example-block h3 { color: var(--color-text-primary); font-size: var(--font-style-title-3-size); font-weight: var(--font-style-title-3-weight); line-height: var(--font-style-title-3-line-height); }
+      .doc-section p, .example-block p { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .rule-list li { color: var(--color-text-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .example-block { background: var(--color-bg-subtle); border-color: var(--color-border-subtle); }
+      .spec-table { color: var(--color-text-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .spec-table th { color: var(--color-text-default); background: var(--color-bg-subtle); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .spec-table td { color: var(--color-text-default); }
+      .spec-table code { color: var(--color-text-primary); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+    
+      .flow-loader[data-custom-flow-colors] span:nth-child(2) { background: color-mix(in srgb, color-mix(in srgb, var(--color-action-primary) 70%, var(--color-category-blue)) 62%, var(--color-text-inverse)); }
+      .flow-loader[data-custom-flow-colors] span:nth-child(3) { background: color-mix(in srgb, color-mix(in srgb, var(--color-action-primary) 78%, var(--color-category-orange)) 58%, var(--color-text-inverse)); }
+</style>
+    <link rel="stylesheet" href="../styles/component-color-default.css" />
+    <style>
+      .example-block.full { background: var(--color-bg-container); }
+    </style>
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/control-radius.css" />
+    <link rel="stylesheet" href="../styles/topbar-shared.css" />
+    <style>
+      /* Cover scrolled image edges at the workspace boundary with one stable semantic divider. */
+      .app-shell > .topbar {
+        border-bottom: 0;
+      }
+
+      .app-shell > .topbar::after {
+        position: absolute;
+        right: 0;
+        bottom: -1px;
+        left: 0;
+        z-index: 1;
+        height: 1px;
+        content: "";
+        background: var(--color-border-subtle);
+        pointer-events: none;
+      }
+    </style>
+    <link rel="stylesheet" href="../styles/typography-standard.css">
+      <link rel="stylesheet" href="../styles/radius-tokens.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 IQ Design System 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-4)" />
+                <stop offset="1" stop-color="var(--brand-6)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQ Design System</span>
+        </a>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="design">设计</button>
+        </nav>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true" data-nav-scope="global-style">Styles 全局样式<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="../styles/color.html" data-style-page="color"><span class="nav-label">Color 颜色</span></a></li>
+                  <li><a class="nav-button" href="../styles/text.html" data-style-page="text"><span class="nav-label">Text 字体</span></a></li>
+                  <li><a class="nav-button" href="../styles/icon.html" data-style-page="icon"><span class="nav-label">ICON 图标</span></a></li>
+                  <li><a class="nav-button" href="../styles/radius.html" data-style-page="radius"><span class="nav-label">Radius 圆角</span></a></li>
+                  <li><a class="nav-button" href="../styles/theme.html" data-style-page="theme"><span class="nav-label">Theme 主题</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">General 通用<span class="nav-category-count">2</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Layout 布局<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Navigation 导航<span class="nav-category-count">6</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Data Entry 数据录入<span class="nav-category-count">16</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Data Display 数据展示<span class="nav-category-count">14</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html" aria-current="page">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/card.html">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Feedback 反馈<span class="nav-category-count">9</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+        <section class="canvas" aria-label="图片组件说明详情区">
+          <div class="canvas-inner">
+            <article class="doc-page">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Display / Image</p>
+                <h1 class="doc-title">Image 图片</h1>
+                <p class="doc-summary">图片用于承载商品、内容、人物与场景等视觉信息，提供统一的填充、圆角、加载、失败和悬停反馈规范。</p>
+                <ul class="doc-meta-list" aria-label="Image 图片基础规格"><li>默认 Fill</li><li>默认圆角 8px</li><li>支持懒加载</li><li>支持失败回退</li></ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>何时使用</h2>
+                <ul class="rule-list"><li>需要在卡片、列表、详情或媒体浏览场景中稳定展示图片资源时使用。</li><li>图片尺寸与容器比例不一致时，应明确选择 Fill 或 Fit，并保持同一业务区域策略一致。</li><li>图片是内容主体时提供加载、失败与重试反馈；纯装饰图片不应抢占阅读焦点，并使用空 alt。</li><li>头像等具有明确形状语义的内容可使用纯圆；普通内容图片默认使用 8px 圆角。</li></ul>
+              </section>
+
+              <section class="doc-section"><h2>基础用法</h2><div class="example-block full"><p>为图片提供明确的容器尺寸和替代文本。组件默认采用 Fill 填充容器，并使用 8px 圆角。</p><div class="demo-stage"><figure class="image-demo-item"><div class="image-frame fill"><img src="../assets/demo-media/landscape.jpg" alt="山谷与河流风景" /></div><figcaption>160 × 160 · Fill · Radius 8</figcaption></figure></div></div></section>
+
+              <section class="doc-section"><h2>填充方式</h2><div class="example-block full"><p>Fill（填充）为默认模式，图片等比放大并裁切溢出内容，横向原图的左右区域会被裁切并保持主体居中；Fit（适合）完整展示图片，并在比例不一致时保留未填充区域。</p><div class="demo-stage"><div class="image-demo-row"><figure class="image-demo-item"><div class="image-frame fill"><img src="../assets/demo-media/portrait.jpg" alt="Fill 模式下被裁切的狗" /></div><figcaption>Fill 填充（默认）</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit"><img src="../assets/demo-media/portrait.jpg" alt="Fit 模式完整展示的狗" /></div><figcaption>Fit 适合</figcaption></figure></div></div></div></section>
+
+              <section class="doc-section"><h2>图片为 Fit 时未填充区域</h2><div class="example-block full"><p>Fit 模式可使用默认黑色、指定颜色、图片主色或当前图片的模糊副本填充留白。以下四组均使用相同四张图片，比例依次为 16:9、16:9、9:16、9:16，便于直接比较不同背景策略。</p><div class="fit-fill-group"><div class="fit-fill-label">黑色填充（默认）</div><div class="image-demo-row"><figure class="image-demo-item"><div class="image-frame fit"><img src="../assets/demo-media/landscape.jpg" alt="16比9海岸图片，黑色背景填充" /></div><figcaption>16:9</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit"><img src="../assets/demo-media/landscape.jpg" alt="16比9山谷图片，黑色背景填充" /></div><figcaption>16:9</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit"><img src="../assets/demo-media/portrait.jpg" alt="9比16人物图片，黑色背景填充" /></div><figcaption>9:16</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit"><img src="../assets/demo-media/portrait.jpg" alt="9比16动物图片，黑色背景填充" /></div><figcaption>9:16</figcaption></figure></div></div><div class="fit-fill-group"><div class="fit-fill-label">颜色填充</div><div class="image-demo-row"><figure class="image-demo-item"><div class="image-frame fit color-light"><img src="../assets/demo-media/landscape.jpg" alt="16比9海岸图片，指定颜色背景填充" /></div><figcaption>16:9</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit color-light"><img src="../assets/demo-media/landscape.jpg" alt="16比9山谷图片，指定颜色背景填充" /></div><figcaption>16:9</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit color-light"><img src="../assets/demo-media/portrait.jpg" alt="9比16人物图片，指定颜色背景填充" /></div><figcaption>9:16</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit color-light"><img src="../assets/demo-media/portrait.jpg" alt="9比16动物图片，指定颜色背景填充" /></div><figcaption>9:16</figcaption></figure></div></div><div class="fit-fill-group"><div class="fit-fill-label">取色填充（图片主色）</div><div class="image-demo-row"><figure class="image-demo-item"><div class="image-frame fit dominant-1"><img src="../assets/demo-media/landscape.jpg" alt="16比9海岸图片，主色背景填充" /></div><figcaption>16:9</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit dominant-2"><img src="../assets/demo-media/landscape.jpg" alt="16比9山谷图片，主色背景填充" /></div><figcaption>16:9</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit dominant-3"><img src="../assets/demo-media/portrait.jpg" alt="9比16人物图片，主色背景填充" /></div><figcaption>9:16</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit dominant-4"><img src="../assets/demo-media/portrait.jpg" alt="9比16动物图片，主色背景填充" /></div><figcaption>9:16</figcaption></figure></div></div><div class="fit-fill-group"><div class="fit-fill-label">模糊填充</div><div class="image-demo-row"><figure class="image-demo-item"><div class="image-frame fit blur-fill" style="--demo-image:url('../assets/demo-media/landscape.jpg')"><img src="../assets/demo-media/landscape.jpg" alt="16比9海岸图片，模糊背景填充" /></div><figcaption>16:9</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit blur-fill" style="--demo-image:url('../assets/demo-media/landscape.jpg')"><img src="../assets/demo-media/landscape.jpg" alt="16比9山谷图片，模糊背景填充" /></div><figcaption>16:9</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit blur-fill" style="--demo-image:url('../assets/demo-media/portrait.jpg')"><img src="../assets/demo-media/portrait.jpg" alt="9比16人物图片，模糊背景填充" /></div><figcaption>9:16</figcaption></figure><figure class="image-demo-item"><div class="image-frame fit blur-fill" style="--demo-image:url('../assets/demo-media/portrait.jpg')"><img src="../assets/demo-media/portrait.jpg" alt="9比16动物图片，模糊背景填充" /></div><figcaption>9:16</figcaption></figure></div></div></div></section>
+
+              <section class="doc-section"><h2>圆角</h2><div class="example-block full"><p>内容图片默认圆角为 8px，也支持直角和自定义圆角；头像、品牌徽记等等宽高且具有圆形语义的内容可使用纯圆。</p><div class="demo-stage"><div class="image-demo-row"><figure class="image-demo-item"><div class="image-frame fill radius-square"><img src="../assets/demo-media/portrait.jpg" alt="直角人物图片" /></div><figcaption>Square · 0</figcaption></figure><figure class="image-demo-item"><div class="image-frame fill radius-default"><img src="../assets/demo-media/portrait.jpg" alt="默认圆角人物图片" /></div><figcaption>Rounded · 8px（默认）</figcaption></figure><figure class="image-demo-item"><div class="image-frame fill radius-custom"><img src="../assets/demo-media/portrait.jpg" alt="自定义圆角人物图片" /></div><figcaption>XLarge · 12px</figcaption></figure><figure class="image-demo-item"><div class="image-frame fill radius-circle"><img src="../assets/demo-media/portrait.jpg" alt="纯圆人物图片" /></div><figcaption>Circle · 50%</figcaption></figure></div></div></div></section>
+
+              <section class="doc-section"><h2>图片加载</h2><div class="example-block full"><div class="example-head"><h3>纯色占位</h3><p>图片未加载完成时使用纯色占位，默认使用浅灰色并支持自定义颜色。适合小尺寸图片、圆形头像，或图片尺寸小于 Loading 图标的场景。</p></div><div class="image-demo-row"><figure class="image-demo-item"><div class="loading-stage"><span class="color-placeholder loading-placeholder"></span></div><figcaption>浅灰色占位（默认）</figcaption></figure><figure class="image-demo-item"><div class="loading-stage"><img class="loading-image" data-color-load src="../assets/demo-media/portrait.jpg" alt="从纯色占位加载完成的黑色小狗" /><span class="color-placeholder loading-placeholder"></span></div><figcaption>占位 → 加载成功</figcaption><button class="spec-btn inline-replay" type="button" data-replay-color>重新演示</button></figure></div></div><div class="example-block full" style="margin-top:18px"><div class="example-head"><h3>Loading 图标占位</h3><p>中等及以上尺寸图片可在浅灰底上展示 Loading 图标，明确告知用户资源仍在请求中。</p></div><div class="image-demo-row"><figure class="image-demo-item"><div class="loading-stage"><span class="spinner" aria-label="加载中"></span></div><figcaption>Loading 占位</figcaption></figure><figure class="image-demo-item"><div class="loading-stage"><img class="loading-image" data-spinner-load src="../assets/demo-media/landscape.jpg" alt="从Loading图标加载完成的湖泊风景" /><span class="spinner loading-placeholder" aria-label="加载中"></span></div><figcaption>Loading → 加载成功</figcaption><button class="spec-btn inline-replay" type="button" data-replay-spinner>重新演示</button></figure></div></div><div class="example-block full centered-demo" style="margin-top:18px"><div class="example-head"><h3>流动渐变</h3><p>使用一种主色（默认为品牌色）与两种邻近色形成缓慢流动的渐变，避免单色过于单调，常用于 AI Chat 图片生成场景。默认演示持续流动；重新演示会同时控制三张生成图片。</p></div><div class="image-demo-row"><figure class="image-demo-item"><div class="loading-stage flow-stage"><span class="flow-loader"  aria-label="默认流动渐变"><span></span><span></span><span></span></span></div><figcaption>默认流动渐变</figcaption></figure><figure class="image-demo-item"><div class="loading-stage flow-stage"><img class="loading-image" data-flow-load src="../assets/demo-media/landscape.jpg" alt="流动渐变后生成的山景" /><span class="flow-loader" aria-label="流动渐变加载中"><span></span><span></span><span></span></span></div><figcaption>生成图片 1</figcaption></figure><figure class="image-demo-item"><div class="loading-stage flow-stage"><img class="loading-image" data-flow-load src="../assets/demo-media/landscape.jpg" alt="流动渐变后生成的树林" /><span class="flow-loader" aria-label="流动渐变加载中"><span></span><span></span><span></span></span></div><figcaption>生成图片 2</figcaption></figure><figure class="image-demo-item"><div class="loading-stage flow-stage"><img class="loading-image" data-flow-load src="../assets/demo-media/portrait.jpg" alt="流动渐变后生成的动物" /><span class="flow-loader" aria-label="流动渐变加载中"><span></span><span></span><span></span></span></div><figcaption>生成图片 3</figcaption></figure></div><div class="replay-row"><button class="spec-btn" type="button" data-replay-flow>重新演示三张图片</button></div></div><div class="example-block full centered-demo" style="margin-top:18px"><div class="example-head"><h3>图片懒加载</h3><p>图片进入可视区域时先展示默认浅灰纯色占位，资源可用后由模糊图平滑过渡为清晰图。重新演示会同时控制三张图片。</p></div><div class="image-demo-row"><figure class="image-demo-item"><div class="loading-stage"><img class="loading-image" data-lazy-image src="../assets/demo-media/landscape.jpg" alt="懒加载山景" /><span class="color-placeholder loading-placeholder"></span></div><figcaption>懒加载图片 1</figcaption></figure><figure class="image-demo-item"><div class="loading-stage"><img class="loading-image" data-lazy-image src="../assets/demo-media/landscape.jpg" alt="懒加载海岸" /><span class="color-placeholder loading-placeholder"></span></div><figcaption>懒加载图片 2</figcaption></figure><figure class="image-demo-item"><div class="loading-stage"><img class="loading-image" data-lazy-image src="../assets/demo-media/landscape.jpg" alt="懒加载城市" /><span class="color-placeholder loading-placeholder"></span></div><figcaption>懒加载图片 3</figcaption></figure></div><div class="replay-row"><button class="spec-btn" type="button" data-replay-lazy>重新演示三张图片</button></div></div><div class="example-block full centered-demo" style="margin-top:18px"><div class="example-head"><h3>图片加载失败</h3><p>加载失败前保持 Loading 状态；失败后在浅灰底上展示与 Loading 图标同尺寸的浅色裂图图标，并允许用户重新请求。</p></div><div class="image-demo-row"><figure class="image-demo-item"><div class="loading-stage failure-stage is-failed" data-failure-stage><span class="spinner" aria-label="加载中"></span><span class="broken-icon" role="img" aria-label="图片加载失败"><svg viewBox="0 0 28 28" fill="none" aria-hidden="true"><path d="M5.5 3.5h17a2 2 0 0 1 2 2v17a2 2 0 0 1-2 2h-17a2 2 0 0 1-2-2v-17a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.6"/><circle cx="9.2" cy="9" r="2" fill="currentColor"/><path d="m5 21 5.8-6 3.5 3.2 2.2-2.4 7 6.2M15.8 4l-2.6 6 3 2.4-3.5 5.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><figcaption>加载失败</figcaption></figure></div><div class="replay-row"><button class="spec-btn" type="button" data-replay-failure>重新演示</button></div></div></section>
+
+              <section class="doc-section"><h2>图片 Hover 及查看</h2><div class="example-block full"><p>鼠标悬停或键盘聚焦时覆盖黑色遮罩，默认不透明度为 75%，并居中展示“查看”小字。点击图片后进入全屏查看，使用 75% 黑色蒙层聚焦内容，预览图保持默认容器比例，最大宽度和高度均不超过视口的 70%。</p><div class="demo-stage"><div class="image-demo-row"><figure class="image-demo-item"><div class="image-frame fill hover-frame" role="button" tabindex="0" data-hover-label="查看" aria-label="全屏查看海边人物图片"><img src="../assets/demo-media/portrait.jpg" alt="海边人物" /></div><figcaption>默认 · 75% · 查看</figcaption></figure><figure class="image-demo-item"><div class="image-frame fill hover-frame" role="button" tabindex="0" data-hover-label="预览原图" aria-label="全屏预览海边风景图片" style="--hover-opacity:.5"><img src="../assets/demo-media/portrait.jpg" alt="海边风景" /></div><figcaption>自定义 · 50% · 预览原图</figcaption></figure></div></div></div></section>
+
+              <section class="doc-section"><h2>API</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody><tr><td><code>src</code></td><td>图片资源地址。</td><td><code>string</code></td><td><code>-</code></td></tr><tr><td><code>alt</code></td><td>替代文本；装饰图片传空字符串。</td><td><code>string</code></td><td><code>''</code></td></tr><tr><td><code>fit</code></td><td>图片在容器内的填充方式。</td><td><code>'fill' | 'fit'</code></td><td><code>'fill'</code></td></tr><tr><td><code>width</code></td><td>容器宽度；number 按 px 处理。</td><td><code>number | string</code></td><td><code>'auto'</code></td></tr><tr><td><code>height</code></td><td>容器高度；number 按 px 处理。</td><td><code>number | string</code></td><td><code>'auto'</code></td></tr><tr><td><code>radius</code></td><td>圆角预设或自定义 CSS 长度。</td><td><code>'square' | 'rounded' | 'circle' | string</code></td><td><code>'rounded'</code></td></tr><tr><td><code>fitBackground</code></td><td>Fit 模式未填充区域的背景策略或自定义颜色。</td><td><code>'black' | 'dominant' | 'blur' | string</code></td><td><code>'black'</code></td></tr><tr><td><code>lazy</code></td><td>是否在进入视口后加载。</td><td><code>boolean</code></td><td><code>false</code></td></tr><tr><td><code>loading</code></td><td>加载占位类型或自定义内容。</td><td><code>'color' | 'spinner' | 'flow-gradient' | ReactNode</code></td><td><code>'color'</code></td></tr><tr><td><code>placeholderColor</code></td><td>纯色占位背景，仅在 loading 为 color 时生效。</td><td><code>string</code></td><td><code>var(--color-bg-subtle)</code></td></tr><tr><td><code>minLoadingDuration</code></td><td>Loading 图标的最短可见时间，单位 ms；设为 0 可关闭最短时长。</td><td><code>number</code></td><td><code>1000</code></td></tr><tr><td><code>flowColors</code></td><td>流动渐变的主色与两种邻近色；未传时根据品牌色生成。</td><td><code>[string, string, string]</code></td><td><code>自动生成</code></td></tr><tr><td><code>fallback</code></td><td>加载失败时展示的内容。</td><td><code>ReactNode</code></td><td><code>BrokenImageIcon</code></td></tr><tr><td><code>hoverLabel</code></td><td>悬停遮罩文案；为空时不展示遮罩。</td><td><code>string</code></td><td><code>'查看'</code></td></tr><tr><td><code>hoverOpacity</code></td><td>悬停黑色遮罩透明度，取值 0–1。</td><td><code>number</code></td><td><code>0.75</code></td></tr><tr><td><code>onLoad</code></td><td>图片成功加载后触发。</td><td><code>(event) =&gt; void</code></td><td><code>-</code></td></tr><tr><td><code>onError</code></td><td>图片加载失败后触发。</td><td><code>(event) =&gt; void</code></td><td><code>-</code></td></tr></tbody></table></div></section>
+
+              <section class="doc-section"><h2>设计 Token</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Token</th><th>值（颜色为 Light / Dark）</th><th>说明</th></tr></thead><tbody><tr><td><code>--image-radius</code></td><td><code>var(--radius-large)</code></td><td>图片、加载容器的默认语义圆角。</td></tr><tr><td><code>--image-hover-opacity</code></td><td><code>.75</code></td><td>悬停查看遮罩的默认透明度。</td></tr><tr><td><code>--image-loading-icon-size</code></td><td><code>28px</code></td><td>Loading 与失败图标尺寸。</td></tr><tr><td><code>--image-loading-min-duration</code></td><td><code>1000ms</code></td><td>Loading 图标默认最短可见时间。</td></tr><tr><td><code>--image-flow-blur</code></td><td><code>40px</code></td><td>流动渐变的模糊强度。</td></tr><tr><td><code>--color-border-subtle</code></td><td><code>语义细边框色</code></td><td>示例卡片、加载容器、表格及 Topbar 内分割线。</td></tr><tr><td><code>--font-style-caption-*</code></td><td><code>Caption text style</code></td><td>图片说明、悬停标签及代码文本样式。</td></tr><tr><td><code>--font-style-body-*</code></td><td><code>Body text style</code></td><td>正文、按钮及表格文本样式。</td></tr>
+<tr><td><code>--color-bg-inverse</code></td><td><code>neutral-9 / neutral-0</code></td><td>Contain 模式未填充区域的默认反色背景。</td></tr>
+<tr><td><code>--color-bg-subtle</code></td><td><code>neutral-1 / neutral-9</code></td><td>纯色占位及加载失败状态的语义背景。</td></tr>
+<tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>流动渐变主色；由品牌色与蓝色分类色混合生成的冷色邻近色。 使用 <code>color-mix(in srgb, var(--color-action-primary) 38%, var(--color-category-blue))</code>；由品牌色与橙色分类色混合生成的暖色邻近色。 使用 <code>color-mix(in srgb, var(--color-action-primary) 45%, var(--color-category-orange))</code>。</td></tr>
+<tr><td><code>--color-category-blue</code></td><td><code>#2563EB / #4096FF</code></td><td>由品牌色与蓝色分类色混合生成的冷色邻近色。 使用 <code>color-mix(in srgb, var(--color-action-primary) 38%, var(--color-category-blue))</code>。</td></tr>
+<tr><td><code>--color-category-orange</code></td><td><code>#C2410C / #FB923C</code></td><td>由品牌色与橙色分类色混合生成的暖色邻近色。 使用 <code>color-mix(in srgb, var(--color-action-primary) 45%, var(--color-category-orange))</code>。</td></tr>
+</tbody></table></div></section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <section class="doc-section" aria-labelledby="image-api-supplement"><h2 id="image-api-supplement">API 补充与约束</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>属性</th><th>说明</th><th>类型</th><th>默认值</th></tr></thead><tbody><tr><td><code>fit</code></td><td>对应 CSS <code>object-fit</code>；完整展示图片时使用 <code>'contain'</code>。</td><td><code>'fill' | 'contain' | 'cover' | 'none' | 'scale-down'</code></td><td><code>'fill'</code></td></tr><tr><td><code>radius</code></td><td>圆角预设映射至设计系统语义圆角；默认使用 <code>--radius-large</code>，纯圆使用 <code>--radius-full</code>。</td><td><code>'square' | 'rounded' | 'circle' | string</code></td><td><code>'rounded'</code></td></tr><tr><td><code>loading</code></td><td>加载占位类型；Spinner 底环和进度段分别使用语义边框色与主操作色 Token。</td><td><code>'color' | 'spinner' | 'flow-gradient' | ReactNode</code></td><td><code>'color'</code></td></tr><tr><td><code>preview</code></td><td>是否启用大图预览，或传入预览配置；遮罩与文字使用语义色 Token。</td><td><code>boolean | ImagePreviewConfig</code></td><td><code>false</code></td></tr><tr><td><code>srcSet</code></td><td>响应式图片候选集。</td><td><code>string</code></td><td><code>-</code></td></tr><tr><td><code>sizes</code></td><td>与 <code>srcSet</code> 配合描述显示宽度。</td><td><code>string</code></td><td><code>-</code></td></tr><tr><td><code>crossOrigin</code></td><td>跨域资源凭据策略。</td><td><code>'anonymous' | 'use-credentials'</code></td><td><code>-</code></td></tr><tr><td><code>referrerPolicy</code></td><td>图片请求的 Referrer 策略。</td><td><code>ReferrerPolicy</code></td><td><code>-</code></td></tr><tr><td><code>onPreviewOpenChange</code></td><td>预览开闭状态变化时触发。</td><td><code>(open: boolean) =&gt; void</code></td><td><code>-</code></td></tr></tbody></table></div></section>
+    <section class="doc-section" aria-labelledby="image-token-supplement"><h2 id="image-token-supplement">设计 Token 补充</h2><div class="spec-table-wrap"><table class="spec-table"><thead><tr><th>Token</th><th>值（颜色为 Light / Dark）</th><th>说明</th></tr></thead><tbody><tr><td><code>--image-radius</code></td><td><code>var(--radius-large)</code></td><td>图片、占位及加载容器的默认语义圆角。</td></tr><tr><td><code>--font-style-caption-*</code></td><td><code>Caption text style</code></td><td>图片说明、Hover 标签及代码文字样式。</td></tr><tr><td><code>--font-style-body-*</code></td><td><code>Body text style</code></td><td>正文、按钮和表格内容文字样式。</td></tr><tr><td><code>--image-preview-z-index</code></td><td><code>1100</code></td><td>全屏预览层级。</td></tr><tr><td><code>--image-motion-duration</code></td><td><code>200ms</code></td><td>加载与遮罩的过渡时长。</td></tr>
+<tr><td><code>--color-border-default</code></td><td><code>neutral-3 / neutral-7</code></td><td>Spinner 灰色底环的语义边框色。</td></tr>
+<tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>Spinner 进度段的主操作语义色。</td></tr>
+<tr><td><code>--color-text-disabled</code></td><td><code>neutral-4 / neutral-6</code></td><td>失败图标的禁用态语义文字色。</td></tr>
+<tr><td><code>--color-overlay-black-strong</code></td><td><code>neutral-10 / 75% / neutral-10 / 75%</code></td><td>悬停预览遮罩的强黑色语义层；全屏预览背景的语义遮罩色。</td></tr>
+<tr><td><code>--color-text-inverse</code></td><td><code>neutral-0 / neutral-12</code></td><td>遮罩文字与图标的反色语义文字色。</td></tr>
+</tbody></table></div></section>
+    <div class="image-preview-overlay" role="dialog" aria-modal="true" aria-label="图片全屏查看" hidden data-image-preview>
+      <button class="image-preview-close" type="button" aria-label="关闭图片预览" data-close-image-preview>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+      <img class="image-preview-media" src="" alt="" data-image-preview-media />
+    </div>
+    <script>
+const topbarComponentTab = document.querySelector("[data-topbar-nav=components]");
+const topbarDesignTab = document.querySelector("[data-topbar-nav=design]");
+const topbarTabs = [topbarComponentTab, topbarDesignTab].filter(Boolean);
+const sidebarSections = Array.from(document.querySelectorAll(".sidebar > nav > .nav-list > .nav-section"));
+const navMenuStorageKey = "iqb-design-active-nav-menu";
+const componentCategories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+const navCategoryStorageKey = "iqb-design-nav-category-state";
+const getSavedNavCategoryState = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(navCategoryStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+};
+const saveNavCategoryState = (state) => {
+  try {
+    sessionStorage.setItem(navCategoryStorageKey, JSON.stringify(state));
+  } catch {
+    // Local previews may disable storage; toggling still works in the current page.
+  }
+};
+const navCategoryState = getSavedNavCategoryState();
+const navCategoryButtons = Array.from(document.querySelectorAll(".sidebar .nav-category"));
+navCategoryButtons.forEach((button, index) => {
+  const sublist = button.nextElementSibling;
+  if (!sublist?.classList.contains("nav-sublist")) return;
+  const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+  sublist.id ||= `sidebar-category-${index + 1}`;
+  button.setAttribute("aria-controls", sublist.id);
+  button.setAttribute("aria-expanded", String(navCategoryState[categoryKey] !== false));
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const nextExpanded = !isExpanded;
+    button.setAttribute("aria-expanded", String(nextExpanded));
+    navCategoryState[categoryKey] = nextExpanded;
+    saveNavCategoryState(navCategoryState);
+  });
+});
+
+const getSectionCategory = (section) =>
+  section.querySelector(":scope > .nav-category")?.textContent.trim() || "";
+const isComponentSection = (section) =>
+  Boolean(section.querySelector(":scope > .nav-button .nav-label")?.textContent.includes("Components")) ||
+  componentCategories.some((category) => getSectionCategory(section).startsWith(category));
+const isDesignSection = (section) =>
+  Boolean(section.querySelector("[data-nav-scope=global-style]")) ||
+  getSectionCategory(section).startsWith("Layout");
+const getSavedNavMenu = () => {
+  try {
+    return sessionStorage.getItem(navMenuStorageKey);
+  } catch {
+    return null;
+  }
+};
+const saveNavMenu = (menu) => {
+  try {
+    sessionStorage.setItem(navMenuStorageKey, menu);
+  } catch {
+    // Local previews may disable storage; in-page switching still works.
+  }
+};
+const selectDefaultNavItem = (menu) => {
+  const defaultItem = menu === "design"
+    ? document.querySelector(".sidebar [data-style-page=color]")
+    : sidebarSections
+        .map((section) => section.querySelector(":scope > .nav-button"))
+        .find((item) => item?.querySelector(".nav-label")?.textContent.includes("Components"));
+  if (!defaultItem) return;
+  document.querySelectorAll(".sidebar .nav-button[aria-current=page]").forEach((item) =>
+    item.removeAttribute("aria-current"),
+  );
+  defaultItem.setAttribute("aria-current", "page");
+  defaultItem.click();
+};
+
+const applyNavMenu = (menu) => {
+  const activeMenu = menu === "design" ? "design" : "components";
+  topbarTabs.forEach((tab) => {
+    const isSelected = tab.dataset.topbarNav === activeMenu;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+  sidebarSections.forEach((section) => {
+    const shouldShow = activeMenu === "design" ? isDesignSection(section) : isComponentSection(section);
+    section.hidden = !shouldShow;
+    section.style.display = shouldShow ? "" : "none";
+  });
+};
+
+applyNavMenu(getSavedNavMenu() || "components");
+topbarComponentTab?.addEventListener("click", () => {
+  applyNavMenu("components");
+  saveNavMenu("components");
+  selectDefaultNavItem("components");
+});
+topbarDesignTab?.addEventListener("click", () => {
+  applyNavMenu("design");
+  saveNavMenu("design");
+  selectDefaultNavItem("design");
+});
+const topbarNav = document.querySelector(".topbar-nav");
+topbarNav?.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = Math.max(0, topbarTabs.indexOf(document.activeElement));
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? topbarTabs.length - 1
+      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+  topbarTabs[nextIndex]?.click();
+  topbarTabs[nextIndex]?.focus();
+});
+
+
+
+
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-5',
+        '--brand-0',
+        '--brand-1',
+        '--brand-2',
+        '--brand-3',
+        '--brand-4',
+        '--brand-6',
+        '--brand-7',
+        '--brand-8',
+        '--brand-9',
+        '--radius-default',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-0', iqbPaletteValue("--brand-0"));
+          root.style.setProperty('--brand-1', iqbPaletteValue("--brand-1"));
+          root.style.setProperty('--brand-2', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-3', iqbPaletteValue("--success-2"));
+          root.style.setProperty('--brand-4', iqbPaletteValue("--success-3"));
+          root.style.setProperty('--brand-5', 'var(--color-status-success)');
+          root.style.setProperty('--brand-6', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
+          root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-0', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-1', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-2', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-3', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--brand-4', iqbPaletteValue("--info-3"));
+        root.style.setProperty('--brand-5', iqbPaletteValue("--info-5"));
+        root.style.setProperty('--brand-6', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
+        root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
+        root.style.setProperty('--radius-default', '6px');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+const centerNavItem = (item, behavior = "auto") => {
+  if (!item) return;
+  const sidebar = item.closest(".sidebar");
+  if (!sidebar) return;
+
+  const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+  const itemRect = item.getBoundingClientRect();
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const clamp = (value, max) => Math.min(Math.max(value, 0), Math.max(max, 0));
+
+  if (isHorizontal) {
+    const centeredLeft =
+      sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2;
+    const maxScrollLeft = sidebar.scrollWidth - sidebar.clientWidth;
+    sidebar.scrollTo({ left: clamp(centeredLeft, maxScrollLeft), behavior });
+    return;
+  }
+
+  const centeredTop =
+    sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2;
+  const maxScrollTop = sidebar.scrollHeight - sidebar.clientHeight;
+  sidebar.scrollTo({ top: clamp(centeredTop, maxScrollTop), behavior });
+};
+      const centerCurrentSidebarItem = (behavior = 'auto') => {
+        const currentItem = document.querySelector('.sidebar .nav-button[aria-current=page]');
+        requestAnimationFrame(() => requestAnimationFrame(() => centerNavItem(currentItem, behavior)));
+      };
+
+      document.querySelectorAll('.sidebar .nav-button').forEach((item) => {
+        item.addEventListener('click', () => {
+          document.querySelectorAll('.sidebar .nav-button[aria-current=page]').forEach((current) => {
+            current.removeAttribute('aria-current');
+          });
+          item.setAttribute('aria-current', 'page');
+          centerNavItem(item, 'smooth');
+        });
+      });
+
+      window.addEventListener('load', () => centerCurrentSidebarItem());
+
+      const DEFAULT_LOADING_MIN_DURATION = Number.parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('--image-loading-min-duration'),
+      ) || 1000;
+      const replayImageGroup = (selector, delay, minimumVisible = 0) => {
+        const images = Array.from(document.querySelectorAll(selector));
+        images.forEach((image) => image.classList.remove('is-loaded'));
+        images.forEach((image) => {
+          const customMinimum = Number(image.dataset.minLoadingDuration);
+          const resolvedMinimum = Number.isFinite(customMinimum) && customMinimum >= 0
+            ? customMinimum
+            : minimumVisible;
+          window.setTimeout(() => image.classList.add('is-loaded'), Math.max(delay, resolvedMinimum));
+        });
+      };
+
+      const spinnerExample = document.querySelector('[data-spinner-load]')?.closest('.example-block');
+      const spinnerDescription = spinnerExample?.querySelector('p');
+      if (spinnerDescription) {
+        spinnerDescription.textContent = '中等及以上尺寸图片可使用 Loading 图标明确反馈加载状态。为避免资源快速返回时图标一闪而过，Loading 默认至少展示 1 秒；可通过 minLoadingDuration 自定义最短可见时间。小尺寸图片建议优先使用纯色占位。';
+      }
+
+
+
+      window.addEventListener('load', () => {
+        replayImageGroup('[data-color-load]', 2000);
+        replayImageGroup('[data-spinner-load]', 1000, DEFAULT_LOADING_MIN_DURATION);
+        replayImageGroup('[data-flow-load]', 3000);
+      });
+      document.querySelector('[data-replay-color]')?.addEventListener('click', () => replayImageGroup('[data-color-load]', 2000));
+      document.querySelector('[data-replay-spinner]')?.addEventListener('click', () => replayImageGroup('[data-spinner-load]', 1000, DEFAULT_LOADING_MIN_DURATION));
+      document.querySelector('[data-replay-flow]')?.addEventListener('click', () => replayImageGroup('[data-flow-load]', 3000));
+
+      const lazyGroup = document.querySelectorAll('[data-lazy-image]');
+      const lazyObserver = 'IntersectionObserver' in window
+        ? new IntersectionObserver((entries, observer) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            replayImageGroup('[data-lazy-image]', 1000);
+            observer.disconnect();
+          }, { rootMargin: '80px' })
+        : null;
+      if (lazyObserver && lazyGroup[0]) lazyObserver.observe(lazyGroup[0]);
+      else window.addEventListener('load', () => replayImageGroup('[data-lazy-image]', 1000));
+      document.querySelector('[data-replay-lazy]')?.addEventListener('click', () => replayImageGroup('[data-lazy-image]', 1000));
+
+      const failureStage = document.querySelector('[data-failure-stage]');
+      document.querySelector('[data-replay-failure]')?.addEventListener('click', () => {
+        failureStage?.classList.remove('is-failed');
+        window.setTimeout(() => failureStage?.classList.add('is-failed'), 1000);
+      });
+
+      const imagePreview = document.querySelector('[data-image-preview]');
+      const imagePreviewMedia = document.querySelector('[data-image-preview-media]');
+      const imagePreviewClose = document.querySelector('[data-close-image-preview]');
+      let imagePreviewTrigger = null;
+      const openImagePreview = (trigger) => {
+        const sourceImage = trigger.querySelector('img');
+        if (!imagePreview || !imagePreviewMedia || !sourceImage) return;
+        imagePreviewTrigger = trigger;
+        imagePreviewMedia.src = sourceImage.currentSrc || sourceImage.src;
+        imagePreviewMedia.alt = sourceImage.alt;
+        imagePreview.hidden = false;
+        imagePreviewClose?.focus();
+      };
+      const closeImagePreview = () => {
+        if (!imagePreview || imagePreview.hidden) return;
+        imagePreview.hidden = true;
+        imagePreviewMedia?.removeAttribute('src');
+        imagePreviewTrigger?.focus();
+        imagePreviewTrigger = null;
+      };
+      document.querySelectorAll('.hover-frame').forEach((trigger) => {
+        trigger.addEventListener('click', () => openImagePreview(trigger));
+        trigger.addEventListener('keydown', (event) => {
+          if (event.key !== 'Enter' && event.key !== ' ') return;
+          event.preventDefault();
+          openImagePreview(trigger);
+        });
+      });
+      imagePreviewClose?.addEventListener('click', closeImagePreview);
+      imagePreview?.addEventListener('click', (event) => {
+        if (event.target === imagePreview) closeImagePreview();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeImagePreview();
+      });
+
+      const getDominantImageColor = (image) => {
+        const canvas = document.createElement('canvas');
+        const size = 36;
+        canvas.width = size;
+        canvas.height = size;
+        const context = canvas.getContext('2d', { willReadFrequently: true });
+        if (!context) return null;
+        context.drawImage(image, 0, 0, size, size);
+        const pixels = context.getImageData(0, 0, size, size).data;
+        const samples = [];
+        for (let index = 0; index < pixels.length; index += 4) {
+          const red = pixels[index];
+          const green = pixels[index + 1];
+          const blue = pixels[index + 2];
+          const alpha = pixels[index + 3];
+          const lightness = (Math.max(red, green, blue) + Math.min(red, green, blue)) / 510;
+          if (alpha < 220 || lightness < .08 || lightness > .94) continue;
+          samples.push([red, green, blue]);
+        }
+        if (samples.length < 8) return null;
+
+        const clusterCount = Math.min(5, samples.length);
+        let centers = Array.from({ length: clusterCount }, (_, index) =>
+          samples[Math.floor(index * (samples.length - 1) / Math.max(1, clusterCount - 1))].slice(),
+        );
+        let assignments = [];
+        for (let iteration = 0; iteration < 8; iteration += 1) {
+          assignments = samples.map((sample) => {
+            let nearest = 0;
+            let nearestDistance = Infinity;
+            centers.forEach((center, centerIndex) => {
+              const distance = sample.reduce((sum, channel, channelIndex) => sum + (channel - center[channelIndex]) ** 2, 0);
+              if (distance < nearestDistance) {
+                nearest = centerIndex;
+                nearestDistance = distance;
+              }
+            });
+            return nearest;
+          });
+          centers = centers.map((center, centerIndex) => {
+            const members = samples.filter((_, sampleIndex) => assignments[sampleIndex] === centerIndex);
+            if (!members.length) return center;
+            return [0, 1, 2].map((channel) => members.reduce((sum, sample) => sum + sample[channel], 0) / members.length);
+          });
+        }
+
+        const ranked = centers.map((center, centerIndex) => {
+          const population = assignments.filter((assignment) => assignment === centerIndex).length;
+          const maximum = Math.max(...center);
+          const minimum = Math.min(...center);
+          const saturation = maximum ? (maximum - minimum) / maximum : 0;
+          return { center, score: population * (.82 + saturation * .18) };
+        }).sort((a, b) => b.score - a.score);
+        const selected = ranked[0].center.map((channel) => Math.round(channel * .88 + 255 * .12));
+        return `rgb(${selected.join(', ')})`;
+      };
+
+      document.querySelectorAll('.image-frame[class*="dominant-"] img').forEach((image) => {
+        const sampler = new Image();
+        sampler.crossOrigin = 'anonymous';
+        sampler.addEventListener('load', () => {
+          try {
+            const color = getDominantImageColor(sampler);
+            if (color) image.parentElement.style.backgroundColor = color;
+          } catch {
+            // Cross-origin restrictions keep the predefined representative color as a safe fallback.
+          }
+        }, { once: true });
+        sampler.src = image.currentSrc || image.src;
+      });
+    </script>
+    <script src="../styles/topbar-shared.js"></script>
+  </body>
+</html>

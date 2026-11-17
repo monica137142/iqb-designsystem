@@ -1,0 +1,1581 @@
+<!doctype html>
+<html lang="zh-CN" data-product-theme="default-theme">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Progress 进度条 - Design System</title>
+    <script src="../styles/color-mode-init.js"></script>
+    <link rel="stylesheet" href="../styles/component-color-default.css" />
+    <style>
+      :root{--topbar-height:60px;--sidebar-width:300px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:36px;height:var(--topbar-height);padding:0 24px;background: var(--color-bg-container);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color: var(--color-text-default);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:var(--radius-large);background:linear-gradient(135deg,var(--color-action-primary),var(--color-action-primary));box-shadow:0 3px 10px color-mix(in srgb, var(--color-action-primary) 22%, transparent)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-default);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color: var(--color-text-top);background: var(--color-bg-container)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--font-style-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--font-style-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);font-size:var(--font-style-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--font-style-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.stat-card{display:grid;gap:8px}.stat-label,.stat-help,.stat-suffix,.stat-prefix{color:var(--color-text-tertiary);font-size:var(--font-style-body-size)}.stat-value{color:var(--color-text-primary);font-size:34px;line-height:1}.stat-value span{font-size:18px}.positive{color: var(--color-status-success)}.warning{color: var(--color-status-warning)}.danger{color:var(--color-status-error)}.stat-card.compact{display:flex;align-items:baseline;gap:8px}.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric-row div{display:grid;gap:6px;padding:14px;background: var(--color-bg-container);border-radius:var(--radius-default)}.metric-row span{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.metric-row strong{font-size:var(--font-style-display-size)}.chart-card{min-height:260px}.line-chart svg{width:100%;height:180px}.grid-line{fill:none;stroke: var(--color-text-primary);stroke-width:1}.chart-area{fill:color-mix(in srgb, var(--color-action-primary) 12%, transparent)}.chart-line{fill:none;stroke:var(--color-action-primary);stroke-width:4;stroke-linecap:round}.bar-chart{display:flex;align-items:end;gap:18px;height:178px;padding:18px 10px 0}.bar-chart span{flex:1;min-width:24px;background:linear-gradient(180deg,var(--color-action-primary),var(--color-status-success-bg));border-radius:var(--radius-default) var(--radius-default) 0 0}.donut-wrap{display:flex;align-items:center;gap:20px}.donut{width:112px;height:112px;border-radius:var(--radius-full);background:conic-gradient(var(--color-action-primary) 0 72%,var(--color-border-subtle) 72% 100%);position:relative}.donut:after{position:absolute;inset:18px;content:"";background:var(--color-bg-container);border-radius:var(--radius-full)}.donut-wrap strong{display:block;font-size:28px}.donut-wrap span{color:var(--color-text-tertiary);font-size:var(--font-style-body-size)}.tag-cloud,.avatar-row,.badge-row,.status-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}.tag{display:inline-flex;align-items:center;min-height:24px;padding:0 9px;color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);font-size:var(--font-style-caption-size);text-decoration:none}.tag.success{color: var(--color-status-success-hover);background: var(--color-action-primary-bg-hover);border-color:var(--color-action-primary)}.tag.processing{color: var(--color-status-info);background: var(--color-status-info-bg);border-color:var(--color-status-info-bg)}.tag.warning{color: var(--color-status-warning);background: var(--color-status-warning-bg);border-color:var(--color-status-warning-bg)}.tag.danger{color: var(--color-status-error);background: var(--color-status-error-bg);border-color:var(--color-status-error-bg)}.tag.selected{color:var(--color-action-primary-hover);background:color-mix(in srgb, var(--color-action-primary) 10%, transparent);border-color:color-mix(in srgb, var(--color-action-primary) 32%, transparent)}.tag.closable{gap:6px}.tooltip-stage{display:flex;align-items:center;justify-content:center;min-height:160px}.icon-button{width:36px;height:36px;color:var(--color-text-default);background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-full);cursor:pointer}.tooltip-bubble{position:absolute;z-index:1;max-width:220px;padding:8px 10px;color:var(--color-text-inverse);background: var(--color-bg-inverse);border-radius:var(--radius-default);font-size:var(--font-style-caption-size);line-height:1.4;box-shadow: var(--shadow-overlay)}.tooltip-bubble.top{left:50%;bottom:calc(50% + 28px);transform:translateX(-50%)}.tooltip-bubble.bottom{left:50%;top:calc(50% + 18px);transform:translateX(-50%)}.tooltip-bubble.right{left:calc(50% + 44px);top:50%;transform:translateY(-50%)}.tooltip-target{display:inline-flex;align-items:center;justify-content:center;width:72px;height:36px;background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default)}.tooltip-grid .example-block{display:flex;align-items:center;justify-content:center;min-height:128px}.avatar{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;overflow:hidden;color:var(--color-text-inverse);background:var(--color-text-secondary);border-radius:var(--radius-full);font-weight:700}.avatar img{width:100%;height:100%;object-fit:cover}.avatar.square{border-radius:var(--radius-large);background:var(--color-status-info-hover)}.avatar.muted{color:var(--color-text-default);background:var(--color-bg-subtle)}.avatar.green{background:var(--color-status-success-hover)}.avatar.blue{background: var(--color-status-info)}.avatar.more{color:var(--color-text-default);background:var(--color-bg-subtle);border:1px solid var(--color-border-subtle)}.avatar-group{display:flex}.avatar-group .avatar{margin-left:-10px;border:2px solid var(--color-text-inverse)}.avatar-group .avatar:first-child{margin-left:0}.avatar-group-wrap{display:flex;align-items:center;gap:16px}.group-note{color:var(--color-text-tertiary);font-size:var(--font-style-body-size)}.timeline{display:grid;gap:0}.timeline-item{position:relative;display:grid;grid-template-columns:58px 22px minmax(0,1fr);gap:10px;padding-bottom:24px}.timeline-item:not(:last-child):after{position:absolute;top:24px;bottom:0;left:68px;width:2px;content:"";background: var(--color-bg-disabled)}.timeline-dot{z-index:1;width:12px;height:12px;margin-top:4px;background:var(--color-border-default);border:3px solid var(--color-text-inverse);border-radius:var(--radius-full);box-shadow:0 0 0 1px var(--color-border-default)}.timeline-item.done .timeline-dot{background:var(--color-action-primary);box-shadow: none;box-shadow:0 0 0 4px var(--color-status-info-bg)}.timeline time{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.timeline strong{font-size:var(--font-style-body-size)}.carousel{display:grid;grid-template-columns:36px minmax(0,1fr) 36px;align-items:center;gap:16px;min-height:260px;background:linear-gradient(135deg,var(--color-action-primary-bg),var(--color-text-inverse))}.carousel-slide{min-height:168px;padding:28px;color:var(--color-text-primary);background:color-mix(in srgb, var(--color-text-inverse) 72%, transparent);border:1px solid color-mix(in srgb, var(--color-text-inverse) 90%, transparent);border-radius:var(--radius-large)}.carousel-slide span{color:var(--color-action-primary-hover);font-size:var(--font-style-caption-size);font-weight:700}.carousel-slide strong{display:block;margin-top:10px;font-size:26px}.carousel-arrow{width:36px;height:36px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-full);cursor:pointer}.carousel-dots{position:absolute;left:50%;bottom:18px;display:flex;gap:8px;transform:translateX(-50%)}.carousel-dots span{width:8px;height:8px;background:var(--color-border-default);border-radius:var(--radius-full)}.carousel-dots .active{width:22px;background:var(--color-action-primary);border-radius:var(--radius-full)}.collapse-list{padding:0;overflow:hidden}.collapse-list details{padding:0 18px;border-bottom:1px solid var(--color-border-subtle)}.collapse-list details:last-child{border-bottom:0}.collapse-list summary{min-height:48px;display:flex;align-items:center;cursor:pointer;font-weight:600}.collapse-list p{padding:0 0 16px}.image-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.image-card{padding:12px}.image-card img,.image-card div{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;background: var(--color-bg-container);border-radius:var(--radius-default);object-fit:contain}.image-card.cover img{object-fit:cover}.image-card.fallback div{color:var(--color-text-disabled);border:1px dashed var(--color-border-default);font-weight:700}.image-card figcaption{margin-top:10px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.badge-wrap{position:relative;display:inline-flex}.badge-wrap button{height:36px;padding:0 14px;background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default)}.badge{position:absolute;top:-8px;right:-10px;min-width:18px;height:18px;padding:0 5px;color:var(--color-text-inverse);background:var(--color-status-error);border:2px solid var(--color-text-inverse);border-radius:var(--radius-full);font-size:11px;line-height:14px;text-align:center}.badge.dot{top:1px;right:1px;min-width:10px;width:10px;height:10px;padding:0}.status-dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:var(--radius-full);background:var(--color-border-default)}.status-dot.success{background: var(--color-action-primary)}.status-dot.warning{background:var(--color-status-warning)}.status-dot.danger{background:var(--color-status-error)}.empty-state{display:grid;justify-items:center;gap:12px;padding:40px 24px;text-align:center}.empty-illustration{width:88px;height:66px;display:grid;place-items:center;background:linear-gradient(180deg,var(--color-bg-subtle),var(--color-bg-subtle));border:1px solid var(--color-border-subtle);border-radius:var(--radius-xlarge)}.empty-illustration span{width:42px;height:28px;border:2px solid var(--color-border-default);border-radius:var(--radius-default)}.empty-state strong{font-size:var(--font-style-title-2-size)}.empty-state button{height:34px;padding:0 14px;color:var(--color-text-inverse);background:var(--color-action-primary);border:0;border-radius:var(--radius-default)}.empty-state.small{padding:28px 20px}.empty-state.small p{max-width:360px}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid,.image-grid,.metric-row{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--color-text-default);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+.nav-section[hidden] { display: none !important; }
+.nav-list > .nav-section:nth-child(2) { margin-top: 0 !important; }
+.sidebar .nav-list { gap: 12px; padding-bottom: 0 !important; }
+.sidebar .nav-section { gap: 8px; }
+.nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+.nav-category {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 32px;
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-category-chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-text-tertiary);
+  transition: transform 0.16s ease;
+}
+.nav-category-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+.nav-category[aria-expanded="false"] + .nav-sublist { display: none !important; }
+.nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.nav-category { color: var(--color-text-tertiary) !important; }
+.nav-category:hover { background: var(--color-bg-container) !important; }
+.nav-category .nav-category-count,
+.nav-category .nav-category-chevron { color: inherit !important; }
+
+.topbar-nav {
+  --tabs-height-default: 40px;
+  --tabs-padding-x: 14px;
+  --tabs-gap: 8px;
+  --tabs-font-size: var(--font-style-body-size);
+  --tabs-font-weight-active: var(--font-style-body-medium-weight);
+  
+  
+  
+  
+  --tabs-indicator-size: 2px;
+  
+  --tabs-radius: var(--radius-default);
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: var(--tabs-gap);
+}
+
+.topbar-nav-tab {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabs-height-default);
+  padding: 0 var(--tabs-padding-x);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: var(--tabs-radius);
+  cursor: pointer;
+  font-size: var(--tabs-font-size);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover {
+  color: var(--color-text-primary);
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover::before {
+  position: absolute;
+  z-index: -1;
+  inset: 4px;
+  content: "";
+  background: var(--color-bg-hover);
+  border-radius: var(--radius-small);
+}
+
+.topbar-nav-tab[aria-selected="true"] {
+  color: var(--color-action-primary);
+  font-weight: var(--tabs-font-weight-active);
+}
+
+.topbar-nav-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: var(--tabs-indicator-size);
+  content: "";
+  background: var(--color-action-primary);
+  border-radius: var(--radius-full);
+}
+
+.topbar-nav-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-select {
+
+
+        position: relative;
+        margin-left: 0;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        font-size:var(--font-style-body-size);
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color:var(--color-action-primary);
+        background:var(--color-bg-container);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+        content: "";
+        background-color: var(--color-text-disabled);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        transform: translateY(-50%);
+        transition: transform 0.16s ease;
+        }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+        box-shadow: var(--shadow-overlay);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color:var(--color-text-default);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        font-size:var(--font-style-body-size);
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color:var(--color-action-primary);
+        background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color:var(--color-text-secondary);
+        font-size:var(--font-style-body-size);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: var(--radius-full);
+        background:var(--color-action-primary);
+        box-shadow: none;
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+
+      /* Feedback component examples */
+      .example-block.full {
+        grid-column: 1 / -1;
+      }
+
+      .feedback-stack {
+        display: grid;
+        gap: 12px;
+      }
+
+      .feedback-alert,
+      .feedback-message,
+      .feedback-notification,
+      .feedback-popconfirm,
+      .feedback-modal,
+      .feedback-drawer,
+      .feedback-progress,
+      .feedback-skeleton-card {
+        color: var(--color-text-default);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+      }
+
+      .feedback-alert {
+        display: grid;
+        grid-template-columns: 112px minmax(0, 1fr);
+        gap: 12px;
+        min-height: 44px;
+        padding: 12px 14px;
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
+      }
+
+      .feedback-alert strong {
+        font-weight: 600;
+      }
+
+      .feedback-alert span,
+      .feedback-alert em,
+      .feedback-notification p,
+      .feedback-modal p,
+      .spin-stage p {
+        margin: 0;
+        color:var(--color-text-secondary);
+        font-style: normal;
+      }
+
+      .feedback-alert.success { border-left: 3px solid var(--color-action-primary); }
+      .feedback-alert.info { border-left: 3px solid var(--color-status-info); }
+      .feedback-alert.warning { border-left: 3px solid var(--color-status-warning); }
+      .feedback-alert.error { border-left: 3px solid var(--color-status-error); }
+
+      .feedback-alert.with-action {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+      }
+
+      .feedback-alert.with-action span {
+        display: grid;
+        gap: 2px;
+      }
+
+      .feedback-stage {
+        position: relative;
+        min-height: 260px;
+        overflow: hidden;
+        background: var(--color-bg-container);
+      }
+
+      .drawer-page-mock {
+        display: grid;
+        gap: 10px;
+        width: min(100%, 520px);
+        padding: 18px;
+      }
+
+      .drawer-page-mock span {
+        display: block;
+        height: 38px;
+        padding: 10px 12px;
+        color:var(--color-text-tertiary);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+        font-size:var(--font-style-body-size);
+      }
+
+      .drawer-page-mock.muted {
+        opacity: 0.58;
+      }
+
+      .feedback-drawer {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        width: min(380px, 72%);
+        height: 100%;
+        box-shadow: var(--shadow-overlay);
+      }
+
+      .feedback-layer-head,
+      .feedback-layer-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px 16px;
+        border-bottom:1px solid var(--color-border-subtle);
+      }
+
+      .feedback-layer-foot {
+        justify-content: flex-end;
+        border-top:1px solid var(--color-border-subtle);
+        border-bottom: 0;
+      }
+
+      .feedback-layer-head button,
+      .feedback-layer-foot button,
+      .feedback-inline-actions button,
+      .feedback-alert button,
+      .feedback-notification button,
+      .feedback-trigger {
+        min-height: 30px;
+        padding: 0 12px;
+        color:var(--color-text-default);
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        font-size:var(--font-style-caption-size);
+      }
+
+      .feedback-layer-foot .primary,
+      .feedback-notification button,
+      .feedback-alert button {
+        color:var(--color-action-primary);
+        border-color:var(--color-action-primary);
+      }
+
+      .feedback-inline-actions .danger {
+        color: var(--color-status-error);
+        border-color: var(--color-status-error-bg);
+      }
+
+      .feedback-form-line {
+        display: grid;
+        gap: 6px;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--color-bg-subtle);
+        font-size:var(--font-style-body-size);
+      }
+
+      .feedback-form-line span {
+        color:var(--color-text-tertiary);
+      }
+
+      .message-stage {
+        display: grid;
+        align-content: start;
+        justify-items: center;
+        gap: 10px;
+        padding-top: 26px;
+      }
+
+      .feedback-message {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 38px;
+        padding: 0 14px;
+        box-shadow: var(--shadow-overlay);
+        font-size:var(--font-style-body-size);
+      }
+
+      .feedback-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--color-status-info);
+        border-radius: var(--radius-full);
+      }
+
+      .feedback-message.success .feedback-dot { background: var(--color-action-primary); }
+      .feedback-message.error .feedback-dot { background: var(--color-status-error); }
+
+      .modal-stage {
+        display: grid;
+        place-items: center;
+      }
+
+      .feedback-mask {
+        position: absolute;
+        inset: 0;
+        background: color-mix(in srgb, var(--color-text-primary) 38%, transparent);
+      }
+
+      .feedback-modal {
+        position: relative;
+        z-index: 1;
+        width: min(420px, 92%);
+        box-shadow: var(--shadow-overlay);
+      }
+
+      .feedback-modal p {
+        padding: 16px;
+        font-size:var(--font-style-body-size);
+        line-height:var(--font-style-body-line-height);
+      }
+
+      .popconfirm-stage {
+        position: relative;
+        min-height: 190px;
+        padding: 56px 48px;
+      }
+
+      .feedback-popconfirm {
+        position: absolute;
+        top: 34px;
+        left: 140px;
+        display: grid;
+        gap: 8px;
+        width: 244px;
+        padding: 12px;
+        box-shadow: var(--shadow-overlay);
+        font-size:var(--font-style-body-size);
+      }
+
+      .feedback-popconfirm::before {
+        position: absolute;
+        top: 26px;
+        left: -6px;
+        width: 10px;
+        height: 10px;
+        content: "";
+        background:var(--color-bg-container);
+        border-left:1px solid var(--color-border-subtle);
+        border-bottom:1px solid var(--color-border-subtle);
+        transform: rotate(45deg);
+      }
+
+      .feedback-popconfirm p {
+        margin: 0;
+        color:var(--color-text-secondary);
+        line-height: 1.6;
+      }
+
+      .feedback-inline-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+
+      .notification-stage {
+        display: grid;
+        justify-content: end;
+        gap: 12px;
+        min-height: 240px;
+        background: var(--color-bg-container);
+      }
+
+      .feedback-notification {
+        display: grid;
+        gap: 8px;
+        width: min(100%, 340px);
+        padding: 14px;
+        box-shadow: var(--shadow-overlay);
+        font-size:var(--font-style-body-size);
+        border-top: 3px solid var(--color-status-info);
+      }
+
+      .feedback-notification.success { border-top-color: var(--color-action-primary); }
+      .feedback-notification.warning { border-top-color: var(--color-status-warning); }
+      .feedback-notification button {
+        justify-self: start;
+      }
+
+      .progress-demo {
+        max-width: 680px;
+      }
+
+      .feedback-progress {
+        display: grid;
+        gap: 9px;
+        padding: 14px;
+      }
+
+      .feedback-progress > span {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        font-size:var(--font-style-body-size);
+      }
+
+      .feedback-progress em {
+        color:var(--color-text-tertiary);
+        font-style: normal;
+      }
+
+      .progress-track {
+        height: 8px;
+        overflow: hidden;
+        background:var(--color-bg-subtle);
+        border-radius: var(--radius-full);
+      }
+
+      .progress-track i {
+        display: block;
+        height: 100%;
+        background:var(--color-action-primary);
+        border-radius: inherit;
+      }
+
+      .feedback-progress.success .progress-track i { background: var(--color-action-primary); }
+      .feedback-progress.warning .progress-track i { background: var(--color-status-warning); }
+
+      .spin-stage {
+        display: grid;
+        justify-items: center;
+        gap: 10px;
+        padding: 38px;
+        text-align: center;
+      }
+
+      .feedback-spinner {
+        width: 32px;
+        height: 32px;
+        border:3px solid var(--color-border-subtle);
+        border-top-color:var(--color-action-primary);
+        border-radius: var(--radius-full);
+        animation: feedback-spin 0.8s linear infinite;
+      }
+
+      .spin-container-stage {
+        display: grid;
+        place-items: center;
+      }
+
+      .feedback-loading-cover {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        align-content: center;
+        gap: 10px;
+        color:var(--color-text-secondary);
+        background: color-mix(in srgb, var(--color-text-inverse) 74%, transparent);
+        font-size:var(--font-style-body-size);
+      }
+
+      @keyframes feedback-spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .feedback-skeleton-row {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        align-items: center;
+        gap: 12px;
+        padding: 14px;
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+      }
+
+      .skeleton-avatar,
+      .skeleton-lines i,
+      .feedback-skeleton-card i {
+        display: block;
+        background: linear-gradient(90deg, var(--color-bg-subtle), var(--color-border-subtle), var(--color-bg-subtle));
+        background-size: 200% 100%;
+        animation: skeleton-shimmer 1.2s ease-in-out infinite;
+      }
+
+      .skeleton-avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: var(--radius-full);
+      }
+
+      .skeleton-lines {
+        display: grid;
+        gap: 8px;
+      }
+
+      .skeleton-lines i,
+      .feedback-skeleton-card i {
+        height: 12px;
+        border-radius: var(--radius-full);
+      }
+
+      .skeleton-lines .short,
+      .feedback-skeleton-card .short {
+        width: 58%;
+      }
+
+      .skeleton-card-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .feedback-skeleton-card {
+        display: grid;
+        gap: 10px;
+        padding: 16px;
+      }
+
+      @keyframes skeleton-shimmer {
+        to { background-position: -200% 0; }
+      }
+
+      @media (max-width: 860px) {
+        .feedback-alert,
+        .feedback-alert.with-action,
+        .feedback-skeleton-row {
+          grid-template-columns: 1fr;
+        }
+
+        .feedback-drawer {
+          width: min(340px, 82%);
+        }
+
+        .feedback-popconfirm {
+          left: 36px;
+          top: 96px;
+          width: calc(100% - 72px);
+        }
+
+        .skeleton-card-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Progress documentation — aligned with design.md semantic tokens. */
+      :root{
+        
+        --progress-line-size-small:4px;--progress-line-size-medium:8px;--progress-line-size-large:12px;--progress-label-size-small:var(--font-style-caption-size);--progress-label-size-medium:var(--font-style-body-size);--progress-label-size-large:var(--font-style-body-size);
+        --progress-circle-size-small:48px;--progress-circle-size-medium:80px;--progress-circle-size-large:120px;--progress-circle-stroke-small:4px;--progress-circle-stroke-medium:6px;--progress-circle-stroke-large:8px;--progress-circle-label-size-small:var(--font-style-caption-size);--progress-circle-label-size-medium:var(--font-style-body-size);--progress-circle-label-size-large:var(--font-style-title-2-size);
+        --progress-mini-size:22px;--progress-mini-stroke:4px;--progress-transition-duration:240ms;--progress-active-duration:1.5s;--progress-indeterminate-duration:1.4s;
+        --radio-size:14px;--radio-dot-size:6px;--radio-radius:var(--radius-large);--radio-disabled-opacity:.6;
+      }
+      .doc-page{width:min(100%,1080px);color:var(--color-text-default)}.doc-hero{padding-bottom:28px;border-bottom:1px solid var(--color-border-subtle)}
+      .doc-kicker{margin:0 0 10px;color:var(--color-action-primary);font-size:var(--font-style-caption-size);font-weight:400;line-height:var(--font-style-caption-line-height);text-transform:none;letter-spacing:0}.doc-title{font-size:var(--font-style-title-1-size);font-weight:var(--font-style-title-1-weight);line-height:var(--font-style-title-1-line-height)}.doc-summary{max-width:720px;margin-top:12px;line-height:var(--font-style-body-line-height)}.doc-meta-list{margin-top:18px}.doc-meta-list li{padding:4px 8px;color:var(--color-text-secondary);background:var(--color-bg-subtle);border:0;border-radius:var(--radius-full);line-height:var(--font-style-caption-line-height)}
+      .doc-section{margin-top:0;padding:28px 0;border-top:0;border-bottom:1px solid var(--color-border-subtle)}.doc-section:last-child{border-bottom:0}.doc-section h2{margin:0 0 14px;color:var(--color-text-primary);font-size:var(--font-style-title-2-size);font-weight:var(--font-style-title-2-weight);line-height:var(--font-style-title-2-line-height)}.doc-section h3{margin:0 0 8px;color:var(--color-text-primary);font-size:var(--font-style-title-3-size);font-weight:var(--font-style-title-3-weight);line-height:var(--font-style-title-3-line-height)}.doc-section p{line-height:var(--font-style-body-line-height)}
+      .rule-list{display:grid;gap:10px;margin:0;padding:0;list-style:none}.rule-list li{position:relative;padding-left:16px;color:var(--color-text-default);font-size:var(--font-style-body-size);line-height:var(--font-style-body-line-height)}.rule-list li::before{position:absolute;top:10px;left:0;width:5px;height:5px;content:"";background:var(--color-action-primary);border-radius:var(--radius-full)}
+      .demo-grid{gap:18px}.example-block{padding:16px;background:var(--color-bg-subtle);border-radius:var(--radius-default)}.demo-title{margin-bottom:14px}.demo-title p{margin-top:2px;font-size:var(--font-style-caption-size)}
+      .demo-card{min-width:0;padding:18px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default)}
+      .progress-stack{display:grid;gap:18px}.progress-item{display:grid;gap:8px}.progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--color-text-default);font-size:var(--font-style-body-size)}.progress-head strong{color:var(--color-text-primary);font-weight:500}.progress-head output{min-width:42px;color:var(--color-text-secondary);font-variant-numeric:tabular-nums;text-align:right}.progress-track{height:8px;overflow:hidden;background:var(--color-border-default);border-radius:var(--radius-full)}.progress-track>i{display:block;height:100%;background:var(--color-action-primary);border-radius:inherit;transition:width .24s ease}.progress-item.success .progress-track>i{background:var(--color-status-success)}.progress-item.warning .progress-track>i{background:var(--color-status-warning)}.progress-item.error .progress-track>i{background:var(--color-status-error)}.progress-track.gradient>i{background:linear-gradient(90deg,var(--color-status-info),var(--color-action-primary))}.progress-track.thin{height:4px}.progress-track.thick{height:12px}.progress-track.square,.progress-track.square>i{border-radius:0}
+      .progress-shapes{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-around;gap:22px;padding:8px}.progress-ring{--value:72;position:relative;display:grid;place-items:center;width:112px;height:112px;border-radius:var(--radius-full);background:conic-gradient(var(--color-action-primary) calc(var(--value)*1%),var(--color-border-subtle) 0)}.progress-ring::before{position:absolute;inset:10px;content:"";background:var(--color-bg-subtle);border-radius:var(--radius-full)}.progress-ring-inner{position:relative;z-index:1;display:grid;justify-items:center}.progress-ring strong{font-size:var(--font-style-title-2-size);font-weight:500}.progress-ring span{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.progress-ring.dashboard{clip-path:polygon(0 0,100% 0,100% 78%,50% 100%,0 78%)}
+      .step-progress{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}.step-progress i{height:8px;background:var(--color-border-subtle);border-radius:var(--radius-full)}.step-progress i.done{background:var(--color-action-primary)}.buffer-track{position:relative;height:8px;background:var(--color-border-subtle);border-radius:var(--radius-full)}.buffer-track i,.buffer-track b{position:absolute;inset:0 auto 0 0;border-radius:inherit}.buffer-track b{width:78%;background:var(--color-border-default)}.buffer-track i{z-index:1;width:52%;background:var(--color-action-primary)}
+      .progress-controls{display:flex;align-items:center;gap:8px;margin-top:14px}.progress-controls button{min-width:34px;height:32px;color:var(--color-text-default);background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);cursor:pointer}.progress-controls button:hover{color:var(--color-action-primary);border-color:var(--color-action-primary)}.progress-controls button:focus-visible{outline:0;box-shadow:var(--shadow-focus)}
+      .progress-mini-row{display:flex;flex-wrap:wrap;align-items:center;gap:22px}.progress-mini-line{display:grid;gap:6px;width:min(100%,220px)}.progress-mini-line .progress-track{height:4px}.progress-mini-line span{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.progress-ring.mini{width:52px;height:52px}.progress-ring.mini::before{inset:5px}.progress-ring.mini strong{font-size:var(--font-style-caption-size)}
+      .progress-text-layout{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:12px}.progress-text-layout .progress-track{grid-column:1}.progress-text-layout output{grid-column:2;grid-row:1;color:var(--color-text-secondary);font-size:var(--font-style-body-size);font-variant-numeric:tabular-nums}.progress-text-layout .progress-note{grid-column:1/-1;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}
+      .progress-track.animated>i{position:relative;overflow:hidden}.progress-track.animated>i::after{position:absolute;inset:0;content:"";background:linear-gradient(110deg,transparent 25%,var(--color-overlay-white-default) 45%,transparent 65%);transform:translateX(-100%);animation:progress-sweep 1.5s ease-in-out infinite}@keyframes progress-sweep{to{transform:translateX(100%)}}@media(prefers-reduced-motion:reduce){.progress-track>i{transition:none}.progress-track.animated>i::after{animation:none}}
+      .progress-status-grid,.progress-custom-grid{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:18px}.progress-ring-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-start;gap:18px}.ring-demo-item{position:relative;display:grid;place-items:center;width:80px;height:80px}.ring-demo-item .ring-svg{position:absolute;inset:0}.ring-demo-item span{position:relative;z-index:1;display:grid;place-items:center;max-width:52px;overflow:hidden;color:var(--color-text-default);font-size:var(--font-style-body-size);line-height:1.5;font-variant-numeric:tabular-nums;text-overflow:ellipsis;white-space:nowrap}.ring-demo-item .success{color:var(--color-status-success)}.ring-demo-item .error{color:var(--color-status-error)}.progress-ring.status-ring{width:72px;height:72px}.progress-ring.status-ring::before{inset:6px}.progress-ring.status-ring strong{font-size:var(--font-style-body-size)}.progress-ring.status-ring.error{}
+      .step-examples{display:grid;gap:18px}.progress-item.success .step-progress i.done{background:var(--color-status-success)}.step-progress.mini{gap:4px}.step-progress.mini i{height:4px}.status-icon{display:inline-grid;place-items:center;width:20px;height:20px;color:var(--color-text-inverse);background:var(--color-status-success);border-radius:var(--radius-full);font-size:12px;font-weight:700}.status-icon.error{background:var(--color-status-error)}
+      .size-selector{display:inline-flex;gap:4px;margin-bottom:18px;padding:4px;background:var(--color-bg-subtle);border-radius:var(--radius-full)}.size-selector label{position:relative}.size-selector input{position:absolute;opacity:0;pointer-events:none}.size-selector span{display:grid;place-items:center;min-width:76px;height:30px;padding:0 12px;color:var(--color-text-secondary);border-radius:var(--radius-full);cursor:pointer;font-size:var(--font-style-body-size)}.size-selector input:checked+span{color:var(--color-text-primary);background:var(--color-bg-container);box-shadow:0 1px 3px color-mix(in srgb, var(--color-text-primary) 12%, transparent)}.size-selector input:focus-visible+span{box-shadow:var(--shadow-focus)}
+      .size-demo{--line-size:8px;--label-size:14px;--circle-size:80px;--circle-stroke:6px;--circle-label:14px}.size-demo[data-size="small"]{--line-size:4px;--label-size:12px;--circle-size:48px;--circle-stroke:4px;--circle-label:12px}.size-demo[data-size="large"]{--line-size:12px;--label-size:14px;--circle-size:120px;--circle-stroke:8px;--circle-label:20px}.size-preview-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.size-line-preview .progress-head{font-size:var(--label-size)}.size-line-preview .progress-track{height:var(--line-size)}.size-circle-preview{display:grid;place-items:center}.size-circle-preview .progress-ring{width:var(--circle-size);height:var(--circle-size)}.size-circle-preview .progress-ring::before{inset:var(--circle-stroke)}.size-circle-preview .progress-ring strong{font-size:var(--circle-label)}.size-note{margin-top:14px!important}.size-table-group{display:grid;gap:18px;margin-top:18px}.size-table-group h3{margin-bottom:8px}.size-flow{display:flex;align-items:center;gap:10px;margin-top:10px;color:var(--color-text-default);font-size:var(--font-style-body-size)}.size-flow b{color:var(--color-action-primary);font-weight:500}
+      .progress-track,.progress-track>i,.step-progress i{border-radius:var(--radius-full)}
+      .size-ring-wrap{position:relative;display:grid;place-items:center;width:var(--circle-size);height:var(--circle-size)}.size-ring-wrap .ring-svg{position:absolute;inset:0;--ring-size:100%;--ring-stroke:var(--circle-stroke)}.size-ring-wrap strong{color:var(--color-text-default);font-size:var(--circle-label);font-weight:400;line-height:1.5}
+      .ring-svg{--ring-size:80px;--ring-stroke:6;width:var(--ring-size);height:var(--ring-size);transform:rotate(-90deg)}.ring-svg circle{fill:none;stroke-width:var(--ring-stroke);stroke-linecap:round}.ring-svg .ring-rail{stroke:var(--color-border-subtle)}.ring-svg .ring-value{stroke:var(--color-action-primary)}.ring-svg.error{}
+      .status-demo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.status-demo-item{display:grid;gap:12px}.status-demo-item h3{margin:0}.info-demo-list{display:grid;gap:14px}.info-demo-row{display:grid;grid-template-columns:minmax(0,1fr) fit-content(112px);align-items:center;gap:8px;color:var(--color-text-default);font-size:var(--font-style-body-size);line-height:1.5}.info-demo-row .progress-track{height:8px}.info-demo-value{display:grid;place-items:center end;min-width:0;max-width:112px;min-height:20px;overflow:hidden;color:var(--color-text-default);font-variant-numeric:tabular-nums;text-align:right;text-overflow:ellipsis;white-space:nowrap}.progress-status-icon{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.info-demo-value.success,.progress-status-icon.success{color:var(--color-status-success)}.info-demo-value.error,.progress-status-icon.error{color:var(--color-status-error)}.micro-progress-list{display:grid;gap:14px}.micro-progress-item{display:grid;gap:6px}.micro-progress-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.micro-progress-head span,.micro-progress-head output{color:var(--color-text-default);font-size:var(--font-style-body-size);line-height:1.5}.micro-progress-head output{font-variant-numeric:tabular-nums}.micro-progress-item .progress-track{height:4px}.indeterminate>i{width:34%;animation:progress-indeterminate 1.4s ease-in-out infinite}@keyframes progress-indeterminate{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+      .radio-group{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;padding:0;border:0}.spec-radio{display:inline-flex;align-items:center;gap:8px;width:fit-content;min-height:24px;padding:3px 8px 3px 4px;color:var(--color-text-secondary);border-radius:var(--radio-radius);cursor:pointer;font-size:var(--font-style-caption-size);line-height:1.5;transition:background-color .15s ease,color .15s ease,opacity .15s ease}.spec-radio:hover{color:var(--color-text-secondary);background:var(--color-bg-hover)}.spec-radio input{position:relative;flex:0 0 auto;width:var(--radio-size);height:var(--radio-size);margin:0;background:var(--color-bg-container);border:1.4px solid var(--color-border-strong);border-radius:var(--radius-full);appearance:none;cursor:pointer;outline:0;transition:border-color .15s ease,background-color .15s ease,box-shadow .15s ease}.spec-radio input::after{position:absolute;top:50%;left:50%;width:var(--radio-dot-size);height:var(--radio-dot-size);content:"";background:var(--color-bg-container);border-radius:var(--radius-full);opacity:0;transform:translate(-50%,-50%) scale(.6);transition:opacity .15s ease,transform .15s ease}.spec-radio input:checked{background:var(--color-action-primary);border-color:var(--color-action-primary);box-shadow:none}.spec-radio input:checked::after{opacity:1;transform:translate(-50%,-50%) scale(1)}.spec-radio input:focus-visible{box-shadow:var(--radio-focus-shadow)}.spec-radio:has(input:checked){color:var(--color-text-primary)}.spec-radio:has(input:disabled){cursor:not-allowed;opacity:var(--radio-disabled-opacity)}.spec-radio:has(input:disabled):hover{background:transparent}.spec-radio input:disabled{cursor:not-allowed}
+      /* Progress colors reference global semantic tokens directly. */
+      .progress-track{height:var(--progress-line-size-medium);background:var(--color-border-default)}.progress-track>i{background:var(--color-action-primary);transition-duration:var(--progress-transition-duration)}.progress-item.success .progress-track>i{background:var(--color-status-success)}.progress-item.error .progress-track>i{background:var(--color-status-error)}
+      .size-demo{--line-size:var(--progress-line-size-medium);--label-size:var(--progress-label-size-medium);--circle-size:var(--progress-circle-size-medium);--circle-stroke:var(--progress-circle-stroke-medium);--circle-label:var(--progress-circle-label-size-medium)}.size-demo[data-size="small"]{--line-size:var(--progress-line-size-small);--label-size:var(--progress-label-size-small);--circle-size:var(--progress-circle-size-small);--circle-stroke:var(--progress-circle-stroke-small);--circle-label:var(--progress-circle-label-size-small)}.size-demo[data-size="large"]{--line-size:var(--progress-line-size-large);--label-size:var(--progress-label-size-large);--circle-size:var(--progress-circle-size-large);--circle-stroke:var(--progress-circle-stroke-large);--circle-label:var(--progress-circle-label-size-large)}.ring-svg .ring-rail{stroke:var(--color-border-default)}.ring-svg.error{}.micro-ring{width:var(--progress-mini-size);height:var(--progress-mini-size)}.micro-ring circle{stroke-width:var(--progress-mini-stroke)}.micro-ring.error{}
+      .progress-track.animated>i::after{animation-duration:var(--progress-active-duration)}.indeterminate>i{animation-duration:var(--progress-indeterminate-duration)}
+      .product-select-trigger::after{display:none}.product-select-chevron{flex:0 0 auto;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .16s ease}.product-select-trigger[aria-expanded="true"] .product-select-chevron{transform:rotate(180deg)}
+      .size-line-preview{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:8px}.size-line-preview output{min-width:36px;color:var(--color-text-default);font-size:var(--label-size);line-height:1.5;font-variant-numeric:tabular-nums;text-align:right}
+      .micro-status-row{display:flex;flex-wrap:wrap;align-items:center;gap:24px}.micro-status-item{display:inline-flex;align-items:center;gap:8px;color:var(--color-text-default);font-size:var(--font-style-body-size);line-height:1.5}.micro-ring{width:22px;height:22px;transform:rotate(-90deg)}.micro-ring circle{fill:none;stroke-width:4;stroke-linecap:round}.micro-ring .micro-rail{stroke:var(--color-border-subtle)}.micro-ring .micro-value{stroke:var(--color-action-primary)}.micro-ring.error{}
+      .spec-table-wrap{overflow-x:auto;border:1px solid var(--color-border-subtle);border-radius:var(--radius-default)}.spec-table{width:100%;min-width:680px;border-collapse:collapse;font-size:var(--font-style-body-size)}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top}.spec-table th{color:var(--color-text-default);background:var(--color-bg-subtle);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;color:var(--color-text-primary);background:var(--color-bg-subtle);border-radius:4px;font-family:"Roboto Mono","Cascadia Mono",Consolas,monospace;font-size:var(--font-style-caption-size)}
+      @media(max-width:760px){.doc-hero,.doc-section{padding:22px 0}.demo-grid,.size-preview-grid,.status-demo-grid,.progress-status-grid,.progress-custom-grid{grid-template-columns:1fr}.size-selector{display:flex;overflow-x:auto}.size-selector label{flex:1}.size-selector span{min-width:64px}.info-demo-row{grid-template-columns:minmax(0,1fr) fit-content(96px)}.info-demo-value{max-width:96px}}
+    </style>
+    <style>
+      .example-block.full { background: var(--color-bg-container); }
+    
+      .ring-svg.success .ring-value { stroke: var(--color-status-success); }
+      .micro-ring.success .micro-value { stroke: var(--color-status-success); }
+      .ring-svg.error .ring-value { stroke: var(--color-status-error); }
+      .micro-ring.error .micro-value { stroke: var(--color-status-error); }
+    </style>
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/control-radius.css" />
+    <link rel="stylesheet" href="../styles/topbar-shared.css" />
+    <link rel="stylesheet" href="../styles/typography-standard.css">
+      <link rel="stylesheet" href="../styles/radius-tokens.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 IQ Design System 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-4)" />
+                <stop offset="1" stop-color="var(--brand-6)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQ Design System</span>
+        </a>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="design">设计</button>
+        </nav>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+            <svg class="product-select-chevron" data-icon-semantic="ChevronDown" width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true" data-nav-scope="global-style">Styles 全局样式<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="../styles/color.html" data-style-page="color"><span class="nav-label">Color 颜色</span></a></li>
+                  <li><a class="nav-button" href="../styles/text.html" data-style-page="text"><span class="nav-label">Text 字体</span></a></li>
+                  <li><a class="nav-button" href="../styles/icon.html" data-style-page="icon"><span class="nav-label">ICON 图标</span></a></li>
+                  <li><a class="nav-button" href="../styles/radius.html" data-style-page="radius"><span class="nav-label">Radius 圆角</span></a></li>
+                  <li><a class="nav-button" href="../styles/theme.html" data-style-page="theme"><span class="nav-label">Theme 主题</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">General 通用<span class="nav-category-count">2</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Layout 布局<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Navigation 导航<span class="nav-category-count">6</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Data Entry 数据录入<span class="nav-category-count">16</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Data Display 数据展示<span class="nav-category-count">14</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/card.html">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Feedback 反馈<span class="nav-category-count">9</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html" aria-current="page">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+        <section class="canvas" aria-label="Progress 进度条组件说明详情区">
+          <div class="canvas-inner">
+            <article class="doc-page">
+              <header class="doc-hero">
+                <p class="doc-kicker">Feedback / Progress</p>
+                <h1 class="doc-title">Progress 进度条</h1>
+                <p class="doc-summary">Progress 用于反馈任务的完成程度与执行状态，帮助用户判断当前进展和最终结果。</p>
+                <ul class="doc-meta-list" aria-label="Progress 进度条 基础规格">
+                  <li>条形 / 环形 / 微型</li><li>Small / Medium / Large</li><li>3 种语义状态</li>
+                </ul>
+              </header>
+
+              <section class="doc-section">
+                <h2>何时使用</h2>
+                <ul class="rule-list">
+                  <li>任务进度可量化时展示完成比例；上传、导出、批处理等长任务应同时给出任务名称。</li><li>无法估计完成比例时使用 Spin；跨多个明确步骤的流程应使用 Steps。</li><li>进度值限制在 0–100，完成后及时切换为成功状态；失败时保留现场并提供重试入口。</li><li>文字应补充进度条无法表达的信息，例如剩余时间、已处理数量或当前阶段。</li>
+                </ul>
+              </section>
+
+              <section class="doc-section">
+                <h2>基础用法</h2>
+                <div class="example-block full"><div class="demo-title example-head"><h3>基础进度条</h3><p>用于展示任务当前的完成进度。</p></div><div class="demo-card"><div class="progress-track" role="progressbar" aria-label="当前进度 75%，进行中" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75"><i style="width:75%"></i></div></div></div>
+              </section>
+              <section class="doc-section">
+                <h2>进度信息</h2>
+                <div class="demo-grid">
+                  <div class="example-block"><div class="demo-title example-head"><h3>定量信息</h3><p>通过百分比或任务数量，准确说明已完成的进度。</p></div><div class="demo-card"><div class="info-demo-list"><div class="info-demo-row"><div class="progress-track"><i style="width:75%"></i></div><span class="info-demo-value">75%</span></div><div class="info-demo-row"><div class="progress-track"><i style="width:60%"></i></div><span class="info-demo-value">3 / 5</span></div></div></div></div>
+                  <div class="example-block"><div class="demo-title example-head"><h3>状态信息</h3><p>使用文字或状态图标，帮助用户快速判断任务结果。</p></div><div class="demo-card"><div class="info-demo-list"><div class="info-demo-row"><div class="progress-track"><i style="width:64%"></i></div><span class="info-demo-value">进行中</span></div><div class="info-demo-row"><div class="progress-item success"><div class="progress-track"><i style="width:100%"></i></div></div><span class="info-demo-value success" aria-label="成功"><svg class="progress-status-icon success" data-icon-semantic="Check" width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M5 12l4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="info-demo-row"><div class="progress-item error"><div class="progress-track"><i style="width:36%"></i></div></div><span class="info-demo-value error" aria-label="失败"><svg class="progress-status-icon error" data-icon-semantic="Close" width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></div></div>
+                </div>
+              </section>
+              <section class="doc-section"><h2>形态</h2><div class="demo-grid"><div class="example-block"><div class="demo-title example-head"><h3>环形进度条</h3><p>适合独立指标或紧凑卡片，在有限空间内突出任务完成度。</p></div><div class="demo-card"><div class="progress-ring-row"><div class="ring-demo-item"><svg class="ring-svg" viewBox="0 0 100 100" aria-label="进行中 64%"><circle class="ring-rail" cx="50" cy="50" r="42" pathLength="100"/><circle class="ring-value" cx="50" cy="50" r="42" pathLength="100" stroke-dasharray="64 100"/></svg><span>64%</span></div><div class="ring-demo-item"><svg class="ring-svg success" viewBox="0 0 100 100" aria-label="成功"><circle class="ring-rail" cx="50" cy="50" r="42" pathLength="100"/><circle class="ring-value" cx="50" cy="50" r="42" pathLength="100" stroke-dasharray="99.8 100"/></svg><span class="success" aria-label="成功"><svg class="progress-status-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4 10-10"/></svg></span></div><div class="ring-demo-item"><svg class="ring-svg error" viewBox="0 0 100 100" aria-label="失败"><circle class="ring-rail" cx="50" cy="50" r="42" pathLength="100"/><circle class="ring-value" cx="50" cy="50" r="42" pathLength="100" stroke-dasharray="36 100"/></svg><span class="error" aria-label="失败"><svg class="progress-status-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></span></div></div></div></div><div class="example-block"><div class="demo-title example-head"><h3>微型进度条</h3><p>用于列表、表格等内容级场景，以轻量形式补充任务状态。</p></div><div class="demo-card"><div class="micro-status-row"><div class="micro-status-item"><svg class="micro-ring" viewBox="0 0 24 24" aria-hidden="true"><circle class="micro-rail" cx="12" cy="12" r="8" pathLength="100"/><circle class="micro-value" cx="12" cy="12" r="8" pathLength="100" stroke-dasharray="68 100"/></svg><span>进行中</span></div><div class="micro-status-item"><svg class="micro-ring success" viewBox="0 0 24 24" aria-hidden="true"><circle class="micro-rail" cx="12" cy="12" r="8" pathLength="100"/><circle class="micro-value" cx="12" cy="12" r="8" pathLength="100" stroke-dasharray="99.5 100"/></svg><span>已完成</span></div><div class="micro-status-item"><svg class="micro-ring error" viewBox="0 0 24 24" aria-hidden="true"><circle class="micro-rail" cx="12" cy="12" r="8" pathLength="100"/><circle class="micro-value" cx="12" cy="12" r="8" pathLength="100" stroke-dasharray="68 100"/></svg><span>异常</span></div></div></div></div></div></section>
+              <section class="doc-section"><h2>尺寸</h2><div class="example-block full size-demo" data-size-demo data-size="medium"><div class="demo-title example-head"><h3>Size</h3><p>统一使用 small / medium / large 三档语义尺寸；选择器复用 Radio 组件规范，并与预览实时联动。</p></div><fieldset class="radio-group" aria-label="进度条尺寸"><label class="spec-radio"><input type="radio" name="progress-size" value="small"><span>Small</span></label><label class="spec-radio"><input type="radio" name="progress-size" value="medium" checked><span>Medium</span></label><label class="spec-radio"><input type="radio" name="progress-size" value="large"><span>Large</span></label></fieldset><div class="demo-card"><div class="size-preview-grid"><div class="size-line-preview"><div class="progress-track"><i style="width:68%"></i></div><output>68%</output></div><div class="size-circle-preview"><div class="size-ring-wrap"><svg class="ring-svg" viewBox="0 0 100 100" aria-hidden="true"><circle class="ring-rail" cx="50" cy="50" r="42" pathLength="100"/><circle class="ring-value" cx="50" cy="50" r="42" pathLength="100" stroke-dasharray="68 100"/></svg><strong>68%</strong></div></div></div></div></div></section>
+              <section class="doc-section"><h2>动画</h2><div class="demo-grid"><div class="example-block"><div class="demo-title example-head"><h3>确定进度动画</h3><p>实时反馈明确进度，数值变化时平滑过渡。</p></div><div class="demo-card"><div class="progress-track animated" role="progressbar" aria-label="确定进度 66%" aria-valuemin="0" aria-valuemax="100" aria-valuenow="66"><i style="width:66%"></i></div></div></div><div class="example-block"><div class="demo-title example-head"><h3>持续加载动画</h3><p>无法计算进度时，以循环动画表示任务仍在执行；结束后停止。</p></div><div class="demo-card"><div class="progress-track indeterminate" role="progressbar" aria-label="任务正在执行"><i></i></div></div></div></div></section>
+              <section class="doc-section">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>属性</th>
+                        <th>说明</th>
+                        <th>类型</th>
+                        <th>默认值</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr><td><code>percent</code></td><td>当前进度，组件内部将数值限制在 0–100；持续加载模式下忽略。</td><td><code>number</code></td><td><code>0</code></td></tr>
+                      <tr><td><code>type</code></td><td>进度条形态。</td><td><code>"line" | "circle" | "mini"</code></td><td><code>"line"</code></td></tr>
+                      <tr><td><code>status</code></td><td>任务语义状态，决定进度色及默认状态图标。</td><td><code>"processing" | "success" | "error"</code></td><td><code>"processing"</code></td></tr>
+                      <tr><td><code>showInfo</code></td><td>是否展示进度值、状态文字或状态图标。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
+                      <tr><td><code>format</code></td><td>自定义信息内容；仅在 <code>showInfo</code> 为 true 时生效。</td><td><code>(percent, status) =&gt; ReactNode</code></td><td><code>percent =&gt; `${percent}%`</code></td></tr>
+                      <tr><td><code>statusIcon</code></td><td>覆盖状态图标；默认按 Icon 语义映射为 <code>Check</code> / <code>Close</code>。</td><td><code>IconSemantic | false</code></td><td><code>由 status 决定</code></td></tr>
+                      <tr><td><code>size</code></td><td>语义尺寸，联动轨道或直径、描边和文字字号；<code>mini</code> 使用固定规格。</td><td><code>"small" | "medium" | "large"</code></td><td><code>"medium"</code></td></tr>
+                      <tr><td><code>strokeWidth</code></td><td>覆盖默认轨道粗细或环形描边，单位为 px，取值必须大于 0。</td><td><code>number</code></td><td><code>由 type 与 size 决定</code></td></tr>
+                      <tr><td><code>width</code></td><td>条形长度或环形直径；数字按 px 处理，字符串须为合法 CSS 长度。</td><td><code>number | string</code></td><td><code>条形 "100%"；环形由 size 决定</code></td></tr>
+                      <tr><td><code>color</code></td><td>自定义进度色；渐变色映射仅适用于条形进度条。</td><td><code>string | Record&lt;string, string&gt;</code></td><td><code>由 status 决定</code></td></tr>
+                      <tr><td><code>trailColor</code></td><td>未完成轨道颜色，各状态默认保持一致。</td><td><code>string</code></td><td><code>var(--color-border-subtle)</code></td></tr>
+                      <tr><td><code>animation</code></td><td>条形进度条的动画模式；<code>indeterminate</code> 不展示具体进度，并忽略 <code>percent</code>。</td><td><code>"none" | "active" | "indeterminate"</code></td><td><code>"none"</code></td></tr>
+                      <tr><td><code>className</code></td><td>组件根节点类名。</td><td><code>string</code></td><td><code>—</code></td></tr>
+                      <tr><td><code>style</code></td><td>组件根节点行内样式。</td><td><code>CSSProperties</code></td><td><code>—</code></td></tr>
+                      <tr><td><code>aria-label</code></td><td>无可见任务名称时提供可访问名称。</td><td><code>string</code></td><td><code>—</code></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+              <section class="doc-section">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead><tr><th>Token</th><th>值（颜色为 Light / Dark）</th><th>说明</th></tr></thead>
+                    <tbody>
+                      
+                      
+                      
+                      
+                      
+                      <tr><td><code>--progress-line-size-small</code></td><td><code>4px</code></td><td>Small 条形轨道粗细</td></tr>
+                      <tr><td><code>--progress-line-size-medium</code></td><td><code>8px</code></td><td>Medium 条形轨道粗细</td></tr>
+                      <tr><td><code>--progress-line-size-large</code></td><td><code>12px</code></td><td>Large 条形轨道粗细</td></tr>
+                      <tr><td><code>--progress-label-size-small</code></td><td><code>var(--font-style-caption-size)</code></td><td>Small 进度信息字号</td></tr>
+                      <tr><td><code>--progress-label-size-medium</code></td><td><code>var(--font-style-body-size)</code></td><td>Medium 进度信息字号</td></tr>
+                      <tr><td><code>--progress-label-size-large</code></td><td><code>var(--font-style-body-size)</code></td><td>Large 进度信息字号</td></tr>
+                      <tr><td><code>--progress-circle-size-small</code></td><td><code>48px</code></td><td>Small 环形直径</td></tr>
+                      <tr><td><code>--progress-circle-size-medium</code></td><td><code>80px</code></td><td>Medium 环形直径</td></tr>
+                      <tr><td><code>--progress-circle-size-large</code></td><td><code>120px</code></td><td>Large 环形直径</td></tr>
+                      <tr><td><code>--progress-circle-stroke-small</code></td><td><code>4px</code></td><td>Small 环形描边粗细</td></tr>
+                      <tr><td><code>--progress-circle-stroke-medium</code></td><td><code>6px</code></td><td>Medium 环形描边粗细</td></tr>
+                      <tr><td><code>--progress-circle-stroke-large</code></td><td><code>8px</code></td><td>Large 环形描边粗细</td></tr>
+                      <tr><td><code>--progress-circle-label-size-small</code></td><td><code>var(--font-style-caption-size)</code></td><td>Small 环形信息字号</td></tr>
+                      <tr><td><code>--progress-circle-label-size-medium</code></td><td><code>var(--font-style-body-size)</code></td><td>Medium 环形信息字号</td></tr>
+                      <tr><td><code>--progress-circle-label-size-large</code></td><td><code>var(--font-style-title-2-size)</code></td><td>Large 环形信息字号</td></tr>
+                      <tr><td><code>--progress-mini-size</code></td><td><code>22px</code></td><td>微型进度条直径</td></tr>
+                      <tr><td><code>--progress-mini-stroke</code></td><td><code>4px</code></td><td>微型进度条描边粗细</td></tr>
+                      <tr><td><code>--progress-transition-duration</code></td><td><code>240ms</code></td><td>进度值过渡时长</td></tr>
+                      <tr><td><code>--progress-active-duration</code></td><td><code>1.5s</code></td><td>确定进度动画周期</td></tr>
+                      <tr><td><code>--progress-indeterminate-duration</code></td><td><code>1.4s</code></td><td>持续加载动画周期</td></tr>
+                    
+<tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>Processing 语义进度色。</td></tr>
+<tr><td><code>--color-status-success</code></td><td><code>success-5 / success-5</code></td><td>Success 语义进度色。</td></tr>
+<tr><td><code>--color-status-error</code></td><td><code>danger-5 / danger-5</code></td><td>Error 语义进度色。</td></tr>
+<tr><td><code>--color-border-default</code></td><td><code>neutral-3 / neutral-7</code></td><td>未完成轨道语义色。</td></tr>
+<tr><td><code>--color-text-default</code></td><td><code>neutral-9 / neutral-2</code></td><td>进度值与状态文字语义色。</td></tr></tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+const topbarComponentTab = document.querySelector("[data-topbar-nav=components]");
+const topbarDesignTab = document.querySelector("[data-topbar-nav=design]");
+const topbarTabs = [topbarComponentTab, topbarDesignTab].filter(Boolean);
+const sidebarSections = Array.from(document.querySelectorAll(".sidebar > nav > .nav-list > .nav-section"));
+const navMenuStorageKey = "iqb-design-active-nav-menu";
+const componentCategories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+const navCategoryStorageKey = "iqb-design-nav-category-state";
+const getSavedNavCategoryState = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(navCategoryStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+};
+const saveNavCategoryState = (state) => {
+  try {
+    sessionStorage.setItem(navCategoryStorageKey, JSON.stringify(state));
+  } catch {
+    // Local previews may disable storage; toggling still works in the current page.
+  }
+};
+const navCategoryState = getSavedNavCategoryState();
+const navCategoryButtons = Array.from(document.querySelectorAll(".sidebar .nav-category"));
+navCategoryButtons.forEach((button, index) => {
+  const sublist = button.nextElementSibling;
+  if (!sublist?.classList.contains("nav-sublist")) return;
+  const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+  sublist.id ||= `sidebar-category-${index + 1}`;
+  button.setAttribute("aria-controls", sublist.id);
+  button.setAttribute("aria-expanded", String(navCategoryState[categoryKey] !== false));
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const nextExpanded = !isExpanded;
+    button.setAttribute("aria-expanded", String(nextExpanded));
+    navCategoryState[categoryKey] = nextExpanded;
+    saveNavCategoryState(navCategoryState);
+  });
+});
+
+const getSectionCategory = (section) =>
+  section.querySelector(":scope > .nav-category")?.textContent.trim() || "";
+const isComponentSection = (section) =>
+  Boolean(section.querySelector(":scope > .nav-button .nav-label")?.textContent.includes("Components")) ||
+  componentCategories.some((category) => getSectionCategory(section).startsWith(category));
+const isDesignSection = (section) =>
+  Boolean(section.querySelector("[data-nav-scope=global-style]")) ||
+  getSectionCategory(section).startsWith("Layout");
+const getSavedNavMenu = () => {
+  try {
+    return sessionStorage.getItem(navMenuStorageKey);
+  } catch {
+    return null;
+  }
+};
+const saveNavMenu = (menu) => {
+  try {
+    sessionStorage.setItem(navMenuStorageKey, menu);
+  } catch {
+    // Local previews may disable storage; in-page switching still works.
+  }
+};
+const selectDefaultNavItem = (menu) => {
+  const defaultItem = menu === "design"
+    ? document.querySelector(".sidebar [data-style-page=color]")
+    : sidebarSections
+        .map((section) => section.querySelector(":scope > .nav-button"))
+        .find((item) => item?.querySelector(".nav-label")?.textContent.includes("Components"));
+  if (!defaultItem) return;
+  document.querySelectorAll(".sidebar .nav-button[aria-current=page]").forEach((item) =>
+    item.removeAttribute("aria-current"),
+  );
+  defaultItem.setAttribute("aria-current", "page");
+  defaultItem.click();
+};
+
+const applyNavMenu = (menu) => {
+  const activeMenu = menu === "design" ? "design" : "components";
+  topbarTabs.forEach((tab) => {
+    const isSelected = tab.dataset.topbarNav === activeMenu;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+  sidebarSections.forEach((section) => {
+    const shouldShow = activeMenu === "design" ? isDesignSection(section) : isComponentSection(section);
+    section.hidden = !shouldShow;
+    section.style.display = shouldShow ? "" : "none";
+  });
+};
+
+applyNavMenu(getSavedNavMenu() || "components");
+topbarComponentTab?.addEventListener("click", () => {
+  applyNavMenu("components");
+  saveNavMenu("components");
+  selectDefaultNavItem("components");
+});
+topbarDesignTab?.addEventListener("click", () => {
+  applyNavMenu("design");
+  saveNavMenu("design");
+  selectDefaultNavItem("design");
+});
+const topbarNav = document.querySelector(".topbar-nav");
+topbarNav?.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = Math.max(0, topbarTabs.indexOf(document.activeElement));
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? topbarTabs.length - 1
+      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+  topbarTabs[nextIndex]?.click();
+  topbarTabs[nextIndex]?.focus();
+});
+
+
+
+
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-5',
+        '--brand-0',
+        '--brand-1',
+        '--brand-2',
+        '--brand-3',
+        '--brand-4',
+        '--brand-6',
+        '--brand-7',
+        '--brand-8',
+        '--brand-9',
+        '--radius-default',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-0', iqbPaletteValue("--brand-0"));
+          root.style.setProperty('--brand-1', iqbPaletteValue("--brand-1"));
+          root.style.setProperty('--brand-2', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-3', iqbPaletteValue("--success-2"));
+          root.style.setProperty('--brand-4', iqbPaletteValue("--success-3"));
+          root.style.setProperty('--brand-5', 'var(--color-status-success)');
+          root.style.setProperty('--brand-6', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
+          root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-0', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-1', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-2', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-3', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--brand-4', iqbPaletteValue("--info-3"));
+        root.style.setProperty('--brand-5', iqbPaletteValue("--info-5"));
+        root.style.setProperty('--brand-6', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
+        root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
+        root.style.setProperty('--radius-default', '6px');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+const centerNavItem = (item, behavior = "auto") => {
+  if (!item) return;
+  const sidebar = item.closest(".sidebar");
+  if (!sidebar) return;
+
+  const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+  const itemRect = item.getBoundingClientRect();
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const clamp = (value, max) => Math.min(Math.max(value, 0), Math.max(max, 0));
+
+  if (isHorizontal) {
+    const centeredLeft =
+      sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2;
+    const maxScrollLeft = sidebar.scrollWidth - sidebar.clientWidth;
+    sidebar.scrollTo({ left: clamp(centeredLeft, maxScrollLeft), behavior });
+    return;
+  }
+
+  const centeredTop =
+    sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2;
+  const maxScrollTop = sidebar.scrollHeight - sidebar.clientHeight;
+  sidebar.scrollTo({ top: clamp(centeredTop, maxScrollTop), behavior });
+};
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current=page]')));
+      const sizeDemo = document.querySelector("[data-size-demo]");
+      sizeDemo?.addEventListener("change", (event) => {
+        if (!event.target.matches("input[type=radio][name=progress-size]")) return;
+        sizeDemo.dataset.size = event.target.value;
+        sizeDemo.dispatchEvent(new CustomEvent("progresssizechange", {
+          bubbles: true,
+          detail: { size: event.target.value },
+        }));
+      });
+      document.querySelectorAll(".nav-category-chevron svg").forEach((icon) => {
+        icon.dataset.iconSemantic = "ChevronDown";
+        icon.setAttribute("aria-hidden", "true");
+        icon.setAttribute("focusable", "false");
+      });
+      document.querySelectorAll(".progress-status-icon:not([data-icon-semantic])").forEach((icon) => {
+        icon.dataset.iconSemantic = icon.closest(".error") ? "Close" : "Check";
+        icon.setAttribute("fill", "none");
+        icon.setAttribute("aria-hidden", "true");
+        icon.setAttribute("focusable", "false");
+      });
+    </script>
+    <script src="../styles/topbar-shared.js"></script>
+  </body>
+</html>

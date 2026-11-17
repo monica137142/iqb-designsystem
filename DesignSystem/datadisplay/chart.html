@@ -1,0 +1,2344 @@
+<!doctype html>
+<html lang="zh-CN" data-product-theme="default-theme">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chart 图表 - Design System</title>
+    <script src="../styles/color-mode-init.js"></script>
+    <style>
+      :root{--color-text-primary: var(--neutral-10);--color-text-default: var(--neutral-9);--color-text-secondary: var(--neutral-6);--color-text-tertiary: var(--neutral-5);--color-text-disabled: var(--neutral-4);--color-text-inverse: var(--neutral-0);--color-text-link: var(--info-6);--color-bg-page: var(--neutral-0);--color-bg-container: var(--neutral-0);--color-bg-subtle: var(--neutral-1);--color-bg-hover: var(--neutral-1);--color-bg-selected: var(--brand-1);--color-bg-disabled: var(--neutral-1);--color-border-default: var(--neutral-3);--color-border-subtle: var(--neutral-2);--color-border-strong: var(--neutral-4);--color-border-focus: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-action-primary: var(--brand-5);--color-action-primary-hover: var(--brand-6);--color-action-primary-hover: var(--brand-7);--color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);--color-action-primary-disabled: var(--brand-2);--color-status-success: var(--success-5);--color-status-error: var(--danger-5);--color-status-warning: var(--warning-5);--color-status-info: var(--info-5);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--topbar-height:60px;--sidebar-width:300px;--radius-default: 6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:36px;height:var(--topbar-height);padding:0 24px;background: var(--color-bg-container);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color: var(--color-text-default);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:var(--radius-large);background:linear-gradient(135deg,var(--color-action-primary),var(--color-action-primary));box-shadow:0 3px 10px color-mix(in srgb, var(--color-action-primary) 22%, transparent)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-default);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color: var(--color-text-top);background: var(--color-bg-container)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--font-style-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--font-style-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);font-size:var(--font-style-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--font-style-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.spec-table-wrap{overflow:auto;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.spec-table{width:100%;border-collapse:collapse;font-size:var(--font-style-body-size)}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top}.spec-table th{color:var(--color-text-default);background: var(--color-bg-container);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;background:var(--color-bg-subtle);border-radius:var(--radius-small);font-family:"SFMono-Regular",Consolas,monospace;font-size:var(--font-style-caption-size)}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      /* Header parity with index.html */
+      :root {
+
+
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-mark {
+        flex: 0 0 auto;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: translateY(1px);
+      }
+
+      .brand-mark-layer-top {
+        fill: url(#brandMarkTop);
+        filter: drop-shadow(0 3px 7px color-mix(in srgb, var(--color-action-primary) 20%, transparent));
+      }
+
+      .brand-mark-layer-middle {
+        fill: url(#brandMarkMiddle);
+      }
+
+      .brand-mark-layer-bottom {
+        fill: url(#brandMarkBottom);
+      }
+
+      .brand-title {
+        overflow: hidden;
+        color: var(--color-text-default);
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: 0;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+.nav-section[hidden] { display: none !important; }
+.nav-list > .nav-section:nth-child(2) { margin-top: 0 !important; }
+.sidebar .nav-list { gap: 12px; padding-bottom: 0 !important; }
+.sidebar .nav-section { gap: 8px; }
+.nav-section:has(> .nav-category) { padding-top: 12px; border-top: 1px solid var(--color-border-subtle); }
+.nav-category {
+  align-items: center !important;
+  justify-content: flex-start !important;
+  width: 100% !important;
+  min-height: 32px;
+  padding: 0 12px !important;
+  background: transparent !important;
+  border: 0 !important;
+  cursor: pointer;
+  text-align: left;
+}
+.nav-category-chevron {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+  color: var(--color-text-tertiary);
+  transition: transform 0.16s ease;
+}
+.nav-category-chevron svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.nav-category[aria-expanded="false"] .nav-category-chevron { transform: rotate(-90deg); }
+.nav-category[aria-expanded="false"] + .nav-sublist { display: none !important; }
+.nav-category:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
+.nav-category { color: var(--color-text-tertiary) !important; }
+.nav-category:hover { background: var(--color-bg-container) !important; }
+.nav-category .nav-category-count,
+.nav-category .nav-category-chevron { color: inherit !important; }
+
+.topbar-nav {
+  --tabs-height-default: 40px;
+  --tabs-padding-x: 14px;
+  --tabs-gap: 8px;
+  --tabs-font-size: var(--font-style-body-size);
+  --tabs-font-weight-active: var(--font-style-body-medium-weight);
+  
+  
+  
+  
+  --tabs-indicator-size: 2px;
+  
+  --tabs-radius: var(--radius-default);
+  display: flex;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 0 0 auto;
+  margin-left: auto;
+  gap: var(--tabs-gap);
+}
+
+.topbar-nav-tab {
+  position: relative;
+  z-index: 0;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-self: stretch;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tabs-height-default);
+  padding: 0 var(--tabs-padding-x);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: var(--tabs-radius);
+  cursor: pointer;
+  font-size: var(--tabs-font-size);
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover {
+  color: var(--color-text-primary);
+}
+
+.topbar-nav-tab:not([aria-selected="true"]):hover::before {
+  position: absolute;
+  z-index: -1;
+  inset: 4px;
+  content: "";
+  background: var(--color-bg-hover);
+  border-radius: var(--radius-small);
+}
+
+.topbar-nav-tab[aria-selected="true"] {
+  color: var(--color-action-primary);
+  font-weight: var(--tabs-font-weight-active);
+}
+
+.topbar-nav-tab[aria-selected="true"]::after {
+  position: absolute;
+  right: 12px;
+  bottom: -1px;
+  left: 12px;
+  height: var(--tabs-indicator-size);
+  content: "";
+  background: var(--color-action-primary);
+  border-radius: var(--radius-full);
+}
+
+.topbar-nav-tab:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+}
+
+.product-select {
+
+
+        position: relative;
+        margin-left: 0;
+        flex: 0 0 auto;
+        width: 124px;
+      }
+
+      .product-select-trigger {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 22px 0 10px;
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-full);
+        cursor: pointer;
+        font-size:var(--font-style-body-size);
+        font-weight: 500;
+        line-height: 1.2;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .product-select-trigger:hover,
+      .product-select-trigger[aria-expanded="true"] {
+        border-color:var(--color-action-primary);
+        background:var(--color-bg-container);
+      }
+
+      .product-select-trigger:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
+      .product-select-trigger::after {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        width: 24px;
+        height: 24px;
+        padding: 4px;
+        content: "";
+        background-color: var(--color-text-disabled);
+        -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M6 9l6 6 6-6%27/%3E%3C/svg%3E") center / 16px 16px no-repeat;
+        transform: translateY(-50%);
+        transition: transform 0.16s ease;
+        }
+
+      .product-select-trigger[aria-expanded="true"]::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .product-select-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 0;
+        z-index: 6;
+        display: grid;
+        width: 100%;
+        min-width: 124px;
+        margin: 0;
+        padding: 6px;
+        list-style: none;
+        background:var(--color-bg-container);
+        border:1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+        box-shadow: var(--shadow-overlay);
+      }
+
+      .product-select-menu[hidden] {
+        display: none;
+      }
+
+      .product-select-option {
+        width: 100%;
+        min-height: 32px;
+        padding: 0 10px;
+        color:var(--color-text-default);
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-default);
+        cursor: pointer;
+        font-size:var(--font-style-body-size);
+        line-height: 1.2;
+        text-align: left;
+      }
+
+      .product-select-option:hover,
+      .product-select-option[aria-selected="true"] {
+        color:var(--color-action-primary);
+        background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
+      }
+
+      .topbar-actions {
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+        gap: 8px;
+        color:var(--color-text-secondary);
+        font-size:var(--font-style-body-size);
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: var(--radius-full);
+        background:var(--color-action-primary);
+        box-shadow: none;
+      }
+
+      @media (max-width: 680px) {
+        .topbar {
+          gap: 12px;
+          padding: 0 16px;
+        }
+
+        .product-select {
+          width: 124px;
+          margin-left: auto;
+        }
+
+        .topbar-actions {
+          display: none;
+        }
+      }
+
+      /* Chart page rhythm follows List page */
+      html,
+      body {
+        min-height: 100%;
+        height: auto;
+      }
+
+      button,
+      input,
+      select {
+        font: inherit;
+      }
+
+      .sidebar {
+        scrollbar-color: var(--color-border-default) transparent;
+        scrollbar-width: thin;
+      }
+
+      .sidebar::-webkit-scrollbar,
+      .spec-table-wrap::-webkit-scrollbar,
+      .code-panel pre::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+
+      .sidebar::-webkit-scrollbar-track,
+      .spec-table-wrap::-webkit-scrollbar-track,
+      .code-panel pre::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      .sidebar::-webkit-scrollbar-thumb,
+      .spec-table-wrap::-webkit-scrollbar-thumb,
+      .code-panel pre::-webkit-scrollbar-thumb {
+        background: var(--color-border-default);
+        border-radius: var(--radius-full);
+      }
+
+      .canvas {
+        background: var(--color-bg-container);
+      }
+
+      .canvas-inner {
+        display: grid;
+        width: auto;
+        min-height: calc(100vh - var(--topbar-height));
+        padding: 32px;
+      }
+
+      .doc-page {
+        width: min(100%, 1080px);
+        color: var(--color-text-default);
+      }
+
+      .doc-hero,
+      .doc-section {
+        padding: 28px 32px;
+      }
+
+      .doc-hero {
+        border-bottom: 1px solid var(--color-border-subtle);
+      }
+
+      .doc-kicker {
+        margin: 0 0 10px;
+        color: var(--color-action-primary);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.4;
+        text-transform: none;
+      }
+
+      .doc-title {
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+      }
+
+      .doc-summary {
+        max-width: 720px;
+        margin: 12px 0 0;
+        line-height: var(--font-style-body-line-height);
+      }
+
+      .doc-meta-list {
+        margin: 18px 0 0;
+      }
+
+      .doc-meta-list li {
+        padding: 4px 8px;
+        color: var(--color-text-secondary);
+        background: var(--color-bg-subtle);
+        border: 0;
+        border-radius: var(--radius-full);
+        line-height: 1.4;
+      }
+
+      .doc-section {
+        margin-top: 0;
+        padding-top: 28px;
+        border-top: 0;
+        border-bottom: 1px solid var(--color-border-subtle);
+      }
+
+      .doc-section:last-child {
+        border-bottom: 0;
+      }
+
+      .doc-section h2 {
+        color: var(--color-text-primary);
+        font-size: var(--font-style-title-2-size);
+        font-weight: var(--font-style-title-2-weight);
+        line-height: var(--font-style-title-2-line-height);
+      }
+
+      .doc-section h3 {
+        margin: 0;
+        color: var(--color-text-primary);
+        font-size: var(--font-style-body-size);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section p {
+        line-height: var(--font-style-body-line-height);
+      }
+
+      .chart-demo-grid,
+      .chart-element-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      :root {
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      }
+
+      .chart-demo-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .chart-element-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .chart-example-block {
+        display: grid;
+        gap: 16px;
+        padding: 16px;
+      }
+
+      .chart-example-head {
+        display: grid;
+        gap: 4px;
+      }
+
+      .chart-example-head h3 {
+        font-size: var(--font-style-body-medium-size);
+        font-weight: var(--font-style-body-medium-weight);
+        line-height: var(--font-style-body-medium-line-height);
+      }
+
+      .chart-frame {
+        width: 100%;
+        height: 260px;
+        min-width: 0;
+        padding: 12px;
+        overflow: hidden;
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+      }
+
+      .chart-frame.compact {
+        height: 236px;
+      }
+
+      .chart-placeholder {
+        display: grid;
+        place-items: center;
+        width: 100%;
+        height: 100%;
+        color: var(--color-text-tertiary);
+        font-size: var(--font-style-caption-size);
+      }
+
+      .code-panel {
+        overflow: hidden;
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+      }
+
+      .code-panel summary {
+        min-height: 36px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        color: var(--color-text-default);
+        cursor: pointer;
+        font-size: var(--font-style-body-size);
+        font-weight: 500;
+        line-height: 1.2;
+      }
+
+      .code-panel summary::marker {
+        color: var(--color-text-tertiary);
+      }
+
+      .code-panel pre {
+        max-height: 220px;
+        margin: 0;
+        padding: 14px;
+        overflow: auto;
+        color: var(--color-text-default);
+        background: var(--color-bg-container);
+        border-top: 1px solid var(--color-border-subtle);
+        font-family: "SFMono-Regular", Consolas, monospace;
+        font-size: var(--font-style-caption-size);
+        line-height: 1.7;
+      }
+
+      .overview-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .overview-list li,
+      .chart-element-card {
+        min-width: 0;
+        padding: 16px;
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+      }
+
+      .overview-list strong,
+      .chart-element-card strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--color-text-primary);
+        font-size: var(--font-style-body-size);
+        font-weight: 500;
+        line-height: 1.5;
+      }
+
+      .color-swatch-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+        margin-top: 12px;
+      }
+
+      .color-swatch {
+        display: inline-grid;
+        grid-template-columns: 20px max-content;
+        align-items: center;
+        gap: 10px;
+        color: var(--color-text-default);
+        font-size: var(--font-style-body-size);
+        line-height: 1.4;
+      }
+
+      .color-swatch::before {
+        width: 20px;
+        height: 20px;
+        content: "";
+        background: currentColor;
+        border: 1px solid color-mix(in srgb, var(--color-text-default) 8%, transparent);
+        border-radius: var(--radius-default);
+      }
+
+      .element-preview {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+      }
+
+      .axis-preview-line,
+      .tooltip-preview,
+      .legend-preview {
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+      }
+
+      .axis-preview-line {
+        height: 42px;
+        background-image:
+          linear-gradient(to right, transparent 0, transparent calc(25% - 1px), var(--color-border-subtle) 25%, transparent calc(25% + 1px)),
+          linear-gradient(to bottom, transparent 0, transparent calc(50% - 1px), var(--color-border-subtle) 50%, transparent calc(50% + 1px));
+      }
+
+      .legend-preview {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 12px;
+        color: var(--color-text-secondary);
+        font-size: var(--font-style-caption-size);
+      }
+
+      .legend-preview span {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .legend-preview span::before {
+        width: 8px;
+        height: 8px;
+        content: "";
+        background: currentColor;
+        border-radius: var(--radius-full);
+      }
+
+      .tooltip-preview {
+        width: fit-content;
+        padding: 9px 10px;
+        color: var(--color-text-inverse);
+        background: var(--color-bg-inverse);
+        border: 0;
+        box-shadow: var(--shadow-overlay);
+        font-size: var(--font-style-caption-size);
+        line-height: 1.5;
+      }
+
+      @media (max-width: 980px) {
+        .chart-demo-grid,
+        .chart-element-grid,
+        .overview-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 860px) {
+        .canvas-inner {
+          padding: 24px 16px 56px;
+        }
+
+        .doc-hero,
+        .doc-section {
+          padding: 24px 4px;
+        }
+
+        .chart-frame {
+          height: 240px;
+        }
+      }
+
+
+      /* Data Display component semantic alignment */
+      .demo-item, .demo-caption { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-spec-head { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-spec-avatar, .list-avatar, .spec-list-avatar { color: var(--color-status-info); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-avatar.green, .spec-list-avatar.green { color: var(--color-status-success); background: var(--color-bg-subtle); }
+      .list-avatar.blue, .spec-list-avatar.blue { color: var(--color-status-info); background: var(--color-bg-subtle); }
+      .list-spec-badge, .list-meta { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .list-title, .list-card .list-title, .spec-list-title { color: var(--color-text-primary); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .list-split strong { color: var(--color-text-primary); font-size: var(--font-style-title-2-size); font-weight: var(--font-style-title-2-weight); line-height: var(--font-style-title-2-line-height); }
+      .timeline-label, .timeline-horizontal-time { color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .timeline-title { color: var(--color-text-primary); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .timeline-desc { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .timeline-item.success .timeline-dot, .timeline-item.success .timeline-dot.custom { color: var(--color-status-success); background: var(--color-status-success); }
+      .timeline-item.processing .timeline-dot, .timeline-item.processing .timeline-dot.custom { color: var(--color-status-info); background: var(--color-status-info); }
+      .timeline-item.warning .timeline-dot, .timeline-item.warning .timeline-dot.custom { color: var(--color-status-warning); background: var(--color-status-warning); }
+      .timeline-badge { color: var(--color-status-success); background: var(--color-bg-subtle); border-color: var(--color-status-success); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar.large, .avatar.custom-size, .avatar-responsive { font-size: var(--font-style-body-size); font-weight: var(--font-style-body-medium-weight); }
+      .avatar-group.group-small .avatar, .avatar-group.group-medium .avatar, .avatar-group.group-large .avatar, .avatar-color-spec { font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar-badge, .badge-mark, .badge-mark.small { color: var(--color-text-inverse); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .avatar.icon-brand { color: var(--color-action-primary-hover); background: var(--color-action-primary-bg-hover); }
+      .avatar.icon-info { color: var(--color-status-info); background: var(--color-bg-subtle); }
+      .combined-metric strong, .grid-cell strong { color: var(--color-text-primary); font-size: var(--font-style-title-1-size); font-weight: var(--font-style-title-1-weight); line-height: var(--font-style-title-1-line-height); }
+      .tooltip-trigger, .spec-btn { color: var(--color-text-default); border-color: var(--color-border-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .tooltip-popup { color: var(--color-text-inverse); background: var(--color-bg-inverse); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .carousel-panel { color: var(--color-text-default); }
+      .broken-icon { color: var(--color-text-disabled); }
+      /* DESIGN.md semantic alignment */
+      .content-panel.doc-page, .doc-page { color: var(--color-text-default); }
+      .doc-kicker { color: var(--color-action-primary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .doc-title { color: var(--color-text-primary); font-size: var(--font-style-title-1-size); font-weight: var(--font-style-title-1-weight); line-height: var(--font-style-title-1-line-height); }
+      .doc-summary { color: var(--color-text-secondary); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .doc-meta-list li { color: var(--color-text-secondary); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .doc-section h2 { color: var(--color-text-primary); font-size: var(--font-style-title-2-size); font-weight: var(--font-style-title-2-weight); line-height: var(--font-style-title-2-line-height); }
+      .doc-section h3, .example-block h3 { color: var(--color-text-primary); font-size: var(--font-style-title-3-size); font-weight: var(--font-style-title-3-weight); line-height: var(--font-style-title-3-line-height); }
+      .doc-section p, .example-block p { color: var(--color-text-secondary); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+      .rule-list li { color: var(--color-text-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .example-block { background: var(--color-bg-subtle); border-color: var(--color-border-subtle); }
+      .chart-example-head h3 { font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .spec-table { color: var(--color-text-default); font-size: var(--font-style-body-size); font-weight: var(--font-style-body-weight); line-height: var(--font-style-body-line-height); }
+      .spec-table th { color: var(--color-text-default); background: var(--color-bg-subtle); font-size: var(--font-style-body-medium-size); font-weight: var(--font-style-body-medium-weight); line-height: var(--font-style-body-medium-line-height); }
+      .spec-table td { color: var(--color-text-default); }
+      .spec-table code { color: var(--color-text-primary); background: var(--color-bg-subtle); font-size: var(--font-style-caption-size); font-weight: var(--font-style-caption-weight); line-height: var(--font-style-caption-line-height); }
+    </style>
+    <link rel="stylesheet" href="../styles/component-color-default.css" />
+    <link rel="stylesheet" href="../styles/button.css" />
+    <link rel="stylesheet" href="../styles/control-radius.css" />
+    <link rel="stylesheet" href="../styles/topbar-shared.css" />
+    <link rel="stylesheet" href="../styles/typography-standard.css">
+      <link rel="stylesheet" href="../styles/radius-tokens.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html" aria-label="返回 IQ Design System 首页">
+          <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="brandMarkTop" x1="7" y1="2" x2="30" y2="18" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-4)" />
+                <stop offset="1" stop-color="var(--brand-6)" />
+              </linearGradient>
+              <linearGradient id="brandMarkMiddle" x1="7" y1="10" x2="30" y2="25" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.48" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.24" />
+              </linearGradient>
+              <linearGradient id="brandMarkBottom" x1="7" y1="18" x2="30" y2="31" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="var(--brand-5)" stop-opacity="0.26" />
+                <stop offset="1" stop-color="var(--brand-5)" stop-opacity="0.1" />
+              </linearGradient>
+            </defs>
+            <path class="brand-mark-layer-bottom" d="M18 16.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2l-10.36 5.98c-2.38 1.37-6.22 1.37-8.6 0L3.34 27.82c-1.8-1.04-1.8-3.16 0-4.2l10.36-5.98c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-middle" d="M18 8.6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 25.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 19.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 9.64c1.2-.7 2.6-1.04 4.3-1.04Z" />
+            <path class="brand-mark-layer-top" d="M18 .6c1.7 0 3.1.34 4.3 1.04l10.36 5.98c1.8 1.04 1.8 3.16 0 4.2L22.3 17.8c-2.38 1.37-6.22 1.37-8.6 0L3.34 11.82c-1.8-1.04-1.8-3.16 0-4.2L13.7 1.64C14.9.94 16.3.6 18 .6Z" />
+          </svg>
+          <span class="brand-title">IQ Design System</span>
+        </a>
+        <nav class="topbar-nav" role="tablist" aria-label="导航菜单">
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="true" tabindex="0" data-topbar-nav="components">组件</button>
+          <button class="topbar-nav-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-topbar-nav="design">设计</button>
+        </nav>
+        <div class="product-select" data-product-select>
+          <button
+            class="product-select-trigger"
+            type="button"
+            aria-haspopup="listbox"
+            aria-expanded="false"
+            data-product-select-trigger
+          >
+            <span data-product-select-value>默认主题</span>
+          </button>
+          <ul class="product-select-menu" role="listbox" aria-label="产品切换" hidden data-product-select-menu>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="true"
+                data-product-option="default-theme"
+              >
+                默认主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="business-theme"
+              >
+                业务主题
+              </button>
+            </li>
+            <li>
+              <button
+                class="product-select-option"
+                type="button"
+                role="option"
+                aria-selected="false"
+                data-product-option="decentralized"
+              >
+                实验主题
+              </button>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <main class="workspace">
+
+        <aside class="sidebar" aria-label="设计规范导航">
+          <nav>
+            <ul class="nav-list">
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true" data-nav-scope="global-style">Styles 全局样式<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li><a class="nav-button" href="../styles/color.html" data-style-page="color"><span class="nav-label">Color 颜色</span></a></li>
+                  <li><a class="nav-button" href="../styles/text.html" data-style-page="text"><span class="nav-label">Text 字体</span></a></li>
+                  <li><a class="nav-button" href="../styles/icon.html" data-style-page="icon"><span class="nav-label">ICON 图标</span></a></li>
+                  <li><a class="nav-button" href="../styles/radius.html" data-style-page="radius"><span class="nav-label">Radius 圆角</span></a></li>
+                  <li><a class="nav-button" href="../styles/theme.html" data-style-page="theme"><span class="nav-label">Theme 主题</span></a></li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <a class="nav-button" href="../index.html#overview">
+                  <span class="nav-label">Components 组件总览</span>
+                </a>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">General 通用<span class="nav-category-count">2</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../general/button.html">
+                      <span class="nav-label">Button 按钮</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../general/typography.html">
+                      <span class="nav-label">Typography 排版</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Layout 布局<span class="nav-category-count">5</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../layout/divider.html">
+                      <span class="nav-label">Divider 分割线</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/space.html">
+                      <span class="nav-label">Space 间距</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/grid.html">
+                      <span class="nav-label">Grid 栅格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/layout.html">
+                      <span class="nav-label">Layout 布局</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../layout/splitter.html">
+                      <span class="nav-label">Splitter 分隔面板</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Navigation 导航<span class="nav-category-count">6</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../navigation/menu.html">
+                      <span class="nav-label">Menu 导航菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/tabs.html">
+                      <span class="nav-label">Tabs 标签页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/breadcrumb.html">
+                      <span class="nav-label">Breadcrumb 面包屑</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/dropdown.html">
+                      <span class="nav-label">Dropdown 下拉菜单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/pagination.html">
+                      <span class="nav-label">Pagination 分页</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../navigation/steps.html">
+                      <span class="nav-label">Steps 步骤条</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Data Entry 数据录入<span class="nav-category-count">16</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../dataentry/input.html">
+                      <span class="nav-label">Input 输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/input-number.html">
+                      <span class="nav-label">InputNumber 数字输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/radio.html">
+                      <span class="nav-label">Radio 单选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/checkbox.html">
+                      <span class="nav-label">Checkbox 复选框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/switch.html">
+                      <span class="nav-label">Switch 开关</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/select.html">
+                      <span class="nav-label">Select 选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/date-picker.html">
+                      <span class="nav-label">DatePicker 日期选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/time-picker.html">
+                      <span class="nav-label">TimePicker 时间选择器</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/upload.html">
+                      <span class="nav-label">Upload 上传</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/form.html">
+                      <span class="nav-label">Form 表单</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/autocomplete.html">
+                      <span class="nav-label">AutoComplete 自动补全</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/cascader.html">
+                      <span class="nav-label">Cascader 联级选择</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/mentions.html">
+                      <span class="nav-label">Mentions 提及</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/verification-code.html">
+                      <span class="nav-label">VerficationCode 验证码输入框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/rate.html">
+                      <span class="nav-label">Rate 评分</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../dataentry/slider.html">
+                      <span class="nav-label">Slider 滑块</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Data Display 数据展示<span class="nav-category-count">14</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../datadisplay/table.html">
+                      <span class="nav-label">Table 表格</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/list.html">
+                      <span class="nav-label">List 列表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/statistic.html">
+                      <span class="nav-label">Statistic 数值显示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/chart.html" aria-current="page">
+                      <span class="nav-label">Chart 图表</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tag.html">
+                      <span class="nav-label">Tag 标签</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/tooltip.html">
+                      <span class="nav-label">Tooltip 提示气泡</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/avatar.html">
+                      <span class="nav-label">Avatar 头像</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/timeline.html">
+                      <span class="nav-label">Timeline 时间轴</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/carousel.html">
+                      <span class="nav-label">Carousel 轮播</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/collapse.html">
+                      <span class="nav-label">Collapse 折叠面板</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/image.html">
+                      <span class="nav-label">Image 图片</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/badge.html">
+                      <span class="nav-label">Badge 徽标</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/empty.html">
+                      <span class="nav-label">Empty 空状态</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../datadisplay/card.html">
+                      <span class="nav-label">Card 卡片</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-section">
+                <button class="nav-category" type="button" aria-expanded="true">Feedback 反馈<span class="nav-category-count">9</span><span class="nav-category-chevron" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="m6 9 6 6 6-6" /></svg></span></button>
+                <ul class="nav-sublist">
+                  <li>
+                    <a class="nav-button" href="../feedback/alert.html">
+                      <span class="nav-label">Alert 警告提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/drawer.html">
+                      <span class="nav-label">Drawer 抽屉</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/message.html">
+                      <span class="nav-label">Message 全局提示</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/popconfirm.html">
+                      <span class="nav-label">Popconfirm 气泡确认框</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/notification.html">
+                      <span class="nav-label">Notification 通知提醒</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/progress.html">
+                      <span class="nav-label">Progress 进度条</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/spin.html">
+                      <span class="nav-label">Spin 加载中</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-button" href="../feedback/skeleton.html">
+                      <span class="nav-label">Skeleton 骨架屏</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+        </aside>
+        <section class="canvas" aria-label="图表组件说明详情区">
+          <div class="canvas-inner">
+            <article class="doc-page">
+              <header class="doc-hero">
+                <p class="doc-kicker">Data Display / Chart</p>
+                <h1 class="doc-title">Chart 图表</h1>
+                <p class="doc-summary">Chart 用于呈现趋势、对比和占比。页面底层统一使用 VChart 渲染，视觉样式继承当前 Design Token，便于设计验收和研发复用。</p>
+                <ul class="doc-meta-list" aria-label="图表基础规格">
+                  <li>VChart renderer</li>
+                  <li>100% responsive</li>
+                  <li>Token based theme</li>
+                  <li>Unified tooltip</li>
+                </ul>
+              </header>
+
+              <section class="doc-section" id="when-to-use">
+                <h2>何时使用</h2>
+                <ul class="overview-list">
+                  <li>
+                    <strong>Basic Charts</strong>
+                    <p>折线、柱状、面积、饼图和环图均为真实 VChart Demo。</p>
+                  </li>
+                  <li>
+                    <strong>Theme Mapping</strong>
+                    <p>分类色、字体、边框、背景和圆角读取 design.md 中的全局 Token。</p>
+                  </li>
+                  <li>
+                    <strong>Implementation</strong>
+                    <p>页面内仅保留简单公共配置、Demo 数据和 VChart 初始化逻辑。</p>
+                  </li>
+                </ul>
+              </section>
+
+              <section class="doc-section" id="basic-charts">
+                <h2>Basic Charts</h2>
+                <div class="chart-demo-grid">
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Line Chart / Single Line</h3>
+                      <p>用于展示连续时间维度下的单一指标变化趋势。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-line-single" role="img" aria-label="Single Line Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ ruler: true }),
+  type: 'line',
+  data: [{ id: 'lineSingle', values: lineSingleData }],
+  xField: 'date',
+  yField: 'value',
+  line: { style: { lineWidth: 2 } },
+  point: commonPointConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Line Chart / Multi Line</h3>
+                      <p>用于比较多个系列在同一时间维度下的变化。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-line-multi" role="img" aria-label="Multi Line Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ legend: true, ruler: true }),
+  type: 'line',
+  data: [{ id: 'lineMulti', values: lineMultiData }],
+  xField: 'date',
+  yField: 'value',
+  seriesField: 'series',
+  point: commonPointConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Area Chart</h3>
+                      <p>用于强调趋势走势，同时以低透明度区域辅助阅读。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-area" role="img" aria-label="Area Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ ruler: true }),
+  type: 'area',
+  data: [{ id: 'area', values: areaData }],
+  xField: 'date',
+  yField: 'value',
+  area: { style: { fillOpacity: 0.16 } },
+  point: commonPointConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Area Chart / Multi Line</h3>
+                      <p>用于比较多个趋势系列，并保留面积层次辅助判断波动。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-area-multi" role="img" aria-label="Area Chart Multi Line">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ legend: true, ruler: true }),
+  type: 'area',
+  data: [{ id: 'areaMulti', values: areaMultiData }],
+  xField: 'date',
+  yField: 'value',
+  seriesField: 'series',
+  stack: false,
+  area: { style: { fillOpacity: 0.12 } },
+  point: commonPointConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Bar Chart / Basic Bar</h3>
+                      <p>用于展示离散分类之间的数值对比。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-bar-basic" role="img" aria-label="Basic Bar Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig(),
+  type: 'bar',
+  data: [{ id: 'barBasic', values: barBasicData }],
+  xField: 'name',
+  yField: 'value',
+  bar: { style: { cornerRadius: 0 } },
+  label: commonLabelConfig()
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Bar Chart / Grouped Bar</h3>
+                      <p>用于比较多个系列在相同分类下的差异。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-bar-grouped" role="img" aria-label="Grouped Bar Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ legend: true }),
+  type: 'bar',
+  data: [{ id: 'barGrouped', values: barGroupedData }],
+  xField: ['name', 'series'],
+  yField: 'value',
+  seriesField: 'series',
+  bar: { style: { cornerRadius: 0 } }
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Stacked Bar Chart</h3>
+                      <p>用于展示总量结构，以及各组成部分的占比变化。</p>
+                    </div>
+                    <div class="chart-frame" id="chart-bar-stacked" role="img" aria-label="Stacked Bar Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonChartConfig({ legend: true }),
+  type: 'bar',
+  data: [{ id: 'barStacked', values: barStackedData }],
+  xField: 'name',
+  yField: 'value',
+  seriesField: 'series',
+  stack: true
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Pie Chart</h3>
+                      <p>用于展示 5 到 6 个以内分类的占比关系。</p>
+                    </div>
+                    <div class="chart-frame compact" id="chart-pie" role="img" aria-label="Pie Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonPolarChartConfig({ legend: true }),
+  type: 'pie',
+  data: [{ id: 'pie', values: pieData }],
+  categoryField: 'category',
+  valueField: 'value',
+  outerRadius: 0.82
+};</code></pre>
+                    </details>
+                  </div>
+
+                  <div class="example-block full chart-example-block">
+                    <div class="chart-example-head">
+                      <h3>Donut Chart</h3>
+                      <p>用于展示占比结构，中心保留总量或核心数值。</p>
+                    </div>
+                    <div class="chart-frame compact" id="chart-donut" role="img" aria-label="Donut Chart">
+                      <span class="chart-placeholder">Loading chart</span>
+                    </div>
+                    <details class="code-panel">
+                      <summary>Code</summary>
+                      <pre><code>const spec = {
+  ...commonPolarChartConfig({ legend: true }),
+  type: 'pie',
+  data: [{ id: 'donut', values: donutData }],
+  categoryField: 'category',
+  valueField: 'value',
+  innerRadius: 0.62,
+  outerRadius: 0.86,
+  indicator: { visible: true, title: { text: 'Total' } }
+};</code></pre>
+                    </details>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section" id="chart-elements">
+                <h2>Chart Elements</h2>
+                <div class="chart-element-grid">
+                  <div class="chart-element-card">
+                    <strong>Color</strong>
+                    <p>数据系列直接引用 color-category-* 分类色，最多支持 10 个分类。</p>
+                    <div class="color-swatch-list" data-chart-swatches aria-label="Chart color swatches"></div>
+                  </div>
+                  <div class="chart-element-card">
+                    <strong>Axis &amp; Grid</strong>
+                    <p>坐标轴文字使用 Secondary Text，轴线和网格线使用 Subtle Border，整体弱于数据图形。</p>
+                    <div class="element-preview">
+                      <div class="axis-preview-line" aria-hidden="true"></div>
+                    </div>
+                  </div>
+                  <div class="chart-element-card">
+                    <strong>Legend</strong>
+                    <p>图例使用 Caption 字号和 Secondary Text，未选中态降低透明度，Marker 跟随系列色。</p>
+                    <div class="legend-preview" aria-hidden="true">
+                      <span style="color: var(--color-category-green)">Revenue</span>
+                      <span style="color: var(--color-category-blue)">Cost</span>
+                      <span style="color: var(--color-category-cyan)">Profit</span>
+                    </div>
+                  </div>
+                  <div class="chart-element-card">
+                    <strong>Tooltip</strong>
+                    <p>Tooltip 采用深色浮层、6px 圆角和轻量阴影，文本继承 Caption 规格。</p>
+                    <div class="element-preview">
+                      <div class="tooltip-preview" aria-hidden="true">2026 Q2<br />Revenue 126.4k</div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section" id="api">
+                <h2>API</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>配置</th>
+                        <th>说明</th>
+                        <th>默认</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><code>type</code></td>
+                        <td>VChart 图表类型，例如 <code>line</code>、<code>bar</code>、<code>area</code>、<code>pie</code>。</td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>data</code></td>
+                        <td>VChart 数据源配置，Demo 统一使用扁平数据对象。</td>
+                        <td><code>[]</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>xField / yField</code></td>
+                        <td>笛卡尔坐标系的数据映射字段。</td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>categoryField / valueField</code></td>
+                        <td>饼图和环图的分类和值映射字段。</td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>seriesField</code></td>
+                        <td>多系列图表的颜色映射字段，并用于图例展示。</td>
+                        <td><code>-</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>commonChartConfig()</code></td>
+                        <td>笛卡尔图表公共配置，统一 10 色色板、坐标轴、网格、Legend、Tooltip 与 Crosshair。</td>
+                        <td><code>Token based</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>commonPolarChartConfig()</code></td>
+                        <td>饼图与环图公共配置，复用 10 色色板、Legend、Tooltip 和语义背景。</td>
+                        <td><code>Token based</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>commonLegendConfig()</code></td>
+                        <td>底部 Legend 配置；<code>selectedHover</code> 与 <code>unSelectedHover</code> 使用语义文字、Hover 背景及 6px 语义圆角。</td>
+                        <td><code>visible: false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>commonTooltipConfig()</code></td>
+                        <td>Tooltip 面板、文字与阴影均读取语义 Token，并随明暗模式切换。</td>
+                        <td><code>Inverse surface</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>commonCrosshairConfig()</code></td>
+                        <td>折线图提供左侧数值 Tooltip；柱状图光标区域使用语义 Hover 背景。</td>
+                        <td><code>ruler: false</code></td>
+                      </tr>
+                      <tr>
+                        <td><code>commonLabelConfig()</code></td>
+                        <td>Basic Bar 顶部数值标签，文字使用 Tertiary，2px 描边跟随容器背景语义色。</td>
+                        <td><code>position: top</code></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section class="doc-section" id="tokens">
+                <h2>设计 Token</h2>
+                <div class="spec-table-wrap">
+                  <table class="spec-table">
+                    <thead>
+                      <tr>
+                        <th>Token</th>
+                        <th>值（颜色为 Light / Dark）</th>
+                        <th>Chart 用途</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      <tr>
+                        <td><code>--radius-default</code></td>
+                        <td><code>6px</code></td>
+                        <td>Tooltip、Legend Hover 背景及容器圆角。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--font-style-caption-size</code></td>
+                        <td><code>12px</code></td>
+                        <td>Legend、Tooltip、Axis Label 字号。</td>
+                      </tr>
+                      <tr>
+                        <td><code>--font-style-body-medium-*</code></td>
+                        <td><code>14px / 500 / 22px</code></td>
+                        <td>各图表 Example 标题的字号、字重与行高。</td>
+                      </tr>
+                    
+<tr><td><code>--color-category-green</code></td><td><code>#15803D / #4ADE80</code></td><td>Series 1 / Green。</td></tr>
+<tr><td><code>--color-category-blue</code></td><td><code>#2563EB / #4096FF</code></td><td>Series 2 / Blue。</td></tr>
+<tr><td><code>--color-category-cyan</code></td><td><code>#0E7490 / #22D3EE</code></td><td>Series 3 / Cyan。</td></tr>
+<tr><td><code>--color-category-purple</code></td><td><code>#7C3AED / #A78BFA</code></td><td>Series 4 / Purple。</td></tr>
+<tr><td><code>--color-category-magenta</code></td><td><code>#A21CAF / #E879F9</code></td><td>Series 5 / Magenta。</td></tr>
+<tr><td><code>--color-category-teal</code></td><td><code>#0F766E / #2DD4BF</code></td><td>Series 6 / Teal。</td></tr>
+<tr><td><code>--color-category-yellow</code></td><td><code>#A16207 / #FACC15</code></td><td>Series 7 / Yellow。</td></tr>
+<tr><td><code>--color-category-red</code></td><td><code>#DC2626 / #F87171</code></td><td>Series 8 / Red。</td></tr>
+<tr><td><code>--color-category-orange</code></td><td><code>#C2410C / #FB923C</code></td><td>Series 9 / Orange。</td></tr>
+<tr><td><code>--color-category-lime</code></td><td><code>#4D7C0F / #A3E635</code></td><td>Series 10 / Lime。</td></tr>
+</tbody>
+                  </table>
+                </div>
+              </section>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="https://unpkg.com/@visactor/vchart/build/index.min.js"></script>
+    <script>
+const topbarComponentTab = document.querySelector("[data-topbar-nav=components]");
+const topbarDesignTab = document.querySelector("[data-topbar-nav=design]");
+const topbarTabs = [topbarComponentTab, topbarDesignTab].filter(Boolean);
+const sidebarSections = Array.from(document.querySelectorAll(".sidebar > nav > .nav-list > .nav-section"));
+const navMenuStorageKey = "iqb-design-active-nav-menu";
+const componentCategories = ["General", "Navigation", "Data Entry", "Data Display", "Feedback"];
+const navCategoryStorageKey = "iqb-design-nav-category-state";
+const getSavedNavCategoryState = () => {
+  try {
+    return JSON.parse(sessionStorage.getItem(navCategoryStorageKey) || "{}");
+  } catch {
+    return {};
+  }
+};
+const saveNavCategoryState = (state) => {
+  try {
+    sessionStorage.setItem(navCategoryStorageKey, JSON.stringify(state));
+  } catch {
+    // Local previews may disable storage; toggling still works in the current page.
+  }
+};
+const navCategoryState = getSavedNavCategoryState();
+const navCategoryButtons = Array.from(document.querySelectorAll(".sidebar .nav-category"));
+navCategoryButtons.forEach((button, index) => {
+  const sublist = button.nextElementSibling;
+  if (!sublist?.classList.contains("nav-sublist")) return;
+  const categoryKey = button.textContent.trim().replace(/\s+/g, " ");
+  sublist.id ||= `sidebar-category-${index + 1}`;
+  button.setAttribute("aria-controls", sublist.id);
+  button.setAttribute("aria-expanded", String(navCategoryState[categoryKey] !== false));
+  button.addEventListener("click", () => {
+    const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const nextExpanded = !isExpanded;
+    button.setAttribute("aria-expanded", String(nextExpanded));
+    navCategoryState[categoryKey] = nextExpanded;
+    saveNavCategoryState(navCategoryState);
+  });
+});
+
+const getSectionCategory = (section) =>
+  section.querySelector(":scope > .nav-category")?.textContent.trim() || "";
+const isComponentSection = (section) =>
+  Boolean(section.querySelector(":scope > .nav-button .nav-label")?.textContent.includes("Components")) ||
+  componentCategories.some((category) => getSectionCategory(section).startsWith(category));
+const isDesignSection = (section) =>
+  Boolean(section.querySelector("[data-nav-scope=global-style]")) ||
+  getSectionCategory(section).startsWith("Layout");
+const getSavedNavMenu = () => {
+  try {
+    return sessionStorage.getItem(navMenuStorageKey);
+  } catch {
+    return null;
+  }
+};
+const saveNavMenu = (menu) => {
+  try {
+    sessionStorage.setItem(navMenuStorageKey, menu);
+  } catch {
+    // Local previews may disable storage; in-page switching still works.
+  }
+};
+const selectDefaultNavItem = (menu) => {
+  const defaultItem = menu === "design"
+    ? document.querySelector(".sidebar [data-style-page=color]")
+    : sidebarSections
+        .map((section) => section.querySelector(":scope > .nav-button"))
+        .find((item) => item?.querySelector(".nav-label")?.textContent.includes("Components"));
+  if (!defaultItem) return;
+  document.querySelectorAll(".sidebar .nav-button[aria-current=page]").forEach((item) =>
+    item.removeAttribute("aria-current"),
+  );
+  defaultItem.setAttribute("aria-current", "page");
+  defaultItem.click();
+};
+
+const applyNavMenu = (menu) => {
+  const activeMenu = menu === "design" ? "design" : "components";
+  topbarTabs.forEach((tab) => {
+    const isSelected = tab.dataset.topbarNav === activeMenu;
+    tab.setAttribute("aria-selected", String(isSelected));
+    tab.tabIndex = isSelected ? 0 : -1;
+  });
+  sidebarSections.forEach((section) => {
+    const shouldShow = activeMenu === "design" ? isDesignSection(section) : isComponentSection(section);
+    section.hidden = !shouldShow;
+    section.style.display = shouldShow ? "" : "none";
+  });
+};
+
+applyNavMenu(getSavedNavMenu() || "components");
+topbarComponentTab?.addEventListener("click", () => {
+  applyNavMenu("components");
+  saveNavMenu("components");
+  selectDefaultNavItem("components");
+});
+topbarDesignTab?.addEventListener("click", () => {
+  applyNavMenu("design");
+  saveNavMenu("design");
+  selectDefaultNavItem("design");
+});
+const topbarNav = document.querySelector(".topbar-nav");
+topbarNav?.addEventListener("keydown", (event) => {
+  if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+  event.preventDefault();
+  const currentIndex = Math.max(0, topbarTabs.indexOf(document.activeElement));
+  const nextIndex = event.key === "Home"
+    ? 0
+    : event.key === "End"
+      ? topbarTabs.length - 1
+      : (currentIndex + (event.key === "ArrowRight" ? 1 : -1) + topbarTabs.length) % topbarTabs.length;
+  topbarTabs[nextIndex]?.click();
+  topbarTabs[nextIndex]?.focus();
+});
+
+
+
+
+
+      const productOptions = Array.from(document.querySelectorAll('[data-product-option]'));
+      const productSelect = document.querySelector('[data-product-select]');
+      const productSelectTrigger = document.querySelector('[data-product-select-trigger]');
+      const productSelectMenu = document.querySelector('[data-product-select-menu]');
+      const productSelectValue = document.querySelector('[data-product-select-value]');
+      const productStorageKey = 'design-system-active-product';
+      const productLabels = {
+        'default-theme': '默认主题',
+        'business-theme': '业务主题',
+        decentralized: '实验主题',
+      };
+      const defaultProductThemeVars = [
+        '--brand-5',
+        '--brand-0',
+        '--brand-1',
+        '--brand-2',
+        '--brand-3',
+        '--brand-4',
+        '--brand-6',
+        '--brand-7',
+        '--brand-8',
+        '--brand-9',
+        '--radius-default',
+      ];
+      const applyProductTheme = (activeProduct) => {
+        const root = document.documentElement;
+        defaultProductThemeVars.forEach((name) => root.style.removeProperty(name));
+        root.style.removeProperty('font-family');
+        root.removeAttribute('data-product-theme');
+        if (activeProduct === 'default-theme') {
+          root.dataset.productTheme = 'default-theme';
+          return;
+        }
+        if (activeProduct === 'business-theme') {
+          root.dataset.productTheme = 'business-theme';
+          root.style.setProperty('--brand-0', iqbPaletteValue("--brand-0"));
+          root.style.setProperty('--brand-1', iqbPaletteValue("--brand-1"));
+          root.style.setProperty('--brand-2', iqbPaletteValue("--success-1"));
+          root.style.setProperty('--brand-3', iqbPaletteValue("--success-2"));
+          root.style.setProperty('--brand-4', iqbPaletteValue("--success-3"));
+          root.style.setProperty('--brand-5', 'var(--color-status-success)');
+          root.style.setProperty('--brand-6', iqbPaletteValue("--success-6"));
+          root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
+          root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
+          root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
+          return;
+        }
+        if (activeProduct !== 'decentralized') return;
+        root.dataset.productTheme = 'test-theme-1';
+        root.style.setProperty('--brand-0', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-1', iqbPaletteValue("--info-0"));
+        root.style.setProperty('--brand-2', iqbPaletteValue("--info-1"));
+        root.style.setProperty('--brand-3', iqbPaletteValue("--info-2"));
+        root.style.setProperty('--brand-4', iqbPaletteValue("--info-3"));
+        root.style.setProperty('--brand-5', iqbPaletteValue("--info-5"));
+        root.style.setProperty('--brand-6', iqbPaletteValue("--info-6"));
+        root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
+        root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
+        root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
+        root.style.setProperty('--radius-default', '6px');
+        root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
+      };
+      const syncProductSelect = (activeProduct) => {
+        if (productSelectValue) {
+          productSelectValue.textContent = productLabels[activeProduct] || productLabels['default-theme'];
+        }
+        productOptions.forEach((option) => {
+          option.setAttribute('aria-selected', String(option.dataset.productOption === activeProduct));
+        });
+        applyProductTheme(activeProduct);
+        window.dispatchEvent(new CustomEvent('productthemechange'));
+      };
+      const getSavedProduct = () => {
+        try {
+          return localStorage.getItem(productStorageKey);
+        } catch {
+          return null;
+        }
+      };
+      const saveProductSelection = (product) => {
+        try {
+          localStorage.setItem(productStorageKey, product);
+        } catch {
+          // Local previews may disable storage; the selector should still switch visually.
+        }
+      };
+      const closeProductSelectMenu = () => {
+        productSelectTrigger?.setAttribute('aria-expanded', 'false');
+        if (productSelectMenu) {
+          productSelectMenu.hidden = true;
+        }
+      };
+      const savedProduct = getSavedProduct();
+      const initialProduct = productOptions.some((option) => option.dataset.productOption === savedProduct)
+        ? savedProduct
+        : 'default-theme';
+      syncProductSelect(initialProduct);
+      productSelectTrigger?.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const isOpen = productSelectTrigger.getAttribute('aria-expanded') === 'true';
+        productSelectTrigger.setAttribute('aria-expanded', String(!isOpen));
+        if (productSelectMenu) {
+          productSelectMenu.hidden = isOpen;
+        }
+      });
+      productOptions.forEach((option) => {
+        option.addEventListener('click', (event) => {
+          event.stopPropagation();
+          const product = option.dataset.productOption;
+          syncProductSelect(product);
+          saveProductSelection(product);
+          closeProductSelectMenu();
+        });
+      });
+      document.addEventListener('click', (event) => {
+        if (!productSelect?.contains(event.target)) {
+          closeProductSelectMenu();
+        }
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeProductSelectMenu();
+        }
+      });
+
+      const readCssValue = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+      const readCssColor = (name) => {
+        const probe = document.createElement('span');
+        probe.style.color = `var(${name})`;
+        probe.style.position = 'absolute';
+        probe.style.pointerEvents = 'none';
+        probe.style.visibility = 'hidden';
+        document.body.appendChild(probe);
+        const value = getComputedStyle(probe).color;
+        probe.remove();
+        return value || readCssValue(name);
+      };
+      const toAlpha = (color, alpha) => {
+        const channels = color.match(/[\d.]+/g);
+        if (!channels || channels.length < 3) return color;
+        const [r, g, b] = channels.map((part) => Number.parseFloat(part));
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+      };
+      const chartSeriesTokens = [
+        '--color-category-green',
+        '--color-category-blue',
+        '--color-category-cyan',
+        '--color-category-purple',
+        '--color-category-magenta',
+        '--color-category-teal',
+        '--color-category-yellow',
+        '--color-category-red',
+        '--color-category-orange',
+        '--color-category-lime',
+      ];
+      const getChartTheme = () => {
+        const textPrimary = readCssColor('--color-text-primary');
+        const textSecondary = readCssColor('--color-text-secondary');
+        const textTertiary = readCssColor('--color-text-tertiary');
+        const textDisabled = readCssColor('--color-text-disabled');
+        const background = readCssColor('--color-bg-container');
+        const border = readCssColor('--color-border-subtle');
+        const radius = Number.parseInt(readCssValue('--radius-default'), 10) || 6;
+        const captionSize = Number.parseInt(readCssValue('--font-style-caption-size'), 10) || 12;
+        const controlSize = Number.parseInt(readCssValue('--font-style-body-size'), 10) || 13;
+        return {
+          textPrimary,
+          textSecondary,
+          textTertiary,
+          textDisabled,
+          background,
+          border,
+          grid: toAlpha(border, 0.72),
+          radius,
+          captionSize,
+          controlSize,
+          fontFamily: readCssValue('font-family') || 'Inter, "Inter var", "PingFang SC", "Microsoft YaHei", Arial, sans-serif',
+          seriesColors: chartSeriesTokens.map((token) => readCssColor(token)),
+        };
+      };
+      const commonTooltipConfig = (theme) => ({
+        style: {
+          panel: {
+            padding: { top: 9, right: 10, bottom: 9, left: 10 },
+            backgroundColor: readCssColor('--color-bg-inverse'),
+            border: { color: readCssColor('--color-bg-inverse'), width: 0, radius: theme.radius },
+            shadow: { x: 0, y: 10, blur: 24, spread: 0, color: toAlpha(readCssColor('--color-bg-inverse'), 0.18) },
+          },
+          titleLabel: {
+            fontFamily: theme.fontFamily,
+            fontSize: theme.captionSize,
+            fill: readCssColor('--color-text-inverse'),
+            lineHeight: 18,
+          },
+          keyLabel: {
+            fontFamily: theme.fontFamily,
+            fontSize: theme.captionSize,
+            fill: readCssColor('--color-text-secondary'),
+            lineHeight: 18,
+            spacing: 8,
+          },
+          valueLabel: {
+            fontFamily: theme.fontFamily,
+            fontSize: theme.captionSize,
+            fill: readCssColor('--color-text-inverse'),
+            lineHeight: 18,
+            spacing: 8,
+          },
+          shape: { size: 8, spacing: 8 },
+          spaceRow: 6,
+        },
+      });
+      const commonLegendConfig = (theme, visible) => ({
+        visible,
+        orient: 'bottom',
+        position: 'middle',
+        padding: { top: 12, bottom: 0 },
+        item: {
+          spaceCol: 14,
+          spaceRow: 8,
+          background: {
+            visible: true,
+            style: {
+              fill: readCssColor('--color-bg-hover'),
+              fillOpacity: 0,
+              cornerRadius: theme.radius,
+            },
+            state: {
+              selectedHover: {
+                fill: readCssColor('--color-bg-hover'),
+                fillOpacity: 1,
+                cornerRadius: theme.radius,
+              },
+              unSelectedHover: {
+                fill: readCssColor('--color-bg-hover'),
+                fillOpacity: 1,
+                cornerRadius: theme.radius,
+              },
+            },
+          },
+          shape: {
+            space: 6,
+            style: { symbolType: 'circle', size: 8, lineWidth: 0 },
+            state: {
+              selectedHover: { fillOpacity: 1 },
+              unSelectedHover: { fillOpacity: 1 },
+              unSelected: { fillOpacity: 0.28 },
+            },
+          },
+          label: {
+            style: {
+              fill: theme.textSecondary,
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+              lineHeight: 16,
+            },
+            state: {
+              selectedHover: { fill: theme.textPrimary },
+              unSelectedHover: { fill: theme.textPrimary },
+              unSelected: { fill: theme.textDisabled },
+            },
+          },
+        },
+      });
+      const commonAxisConfig = (theme) => [
+        {
+          orient: 'left',
+          tick: { visible: false },
+          domainLine: { visible: false },
+          label: {
+            style: {
+              fill: theme.textSecondary,
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+            },
+          },
+          grid: {
+            visible: true,
+            style: { stroke: theme.grid, lineWidth: 1 },
+          },
+        },
+        {
+          orient: 'bottom',
+          tick: { visible: false },
+          domainLine: { visible: true, style: { stroke: theme.border, lineWidth: 1 } },
+          label: {
+            style: {
+              fill: theme.textSecondary,
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+            },
+          },
+          grid: { visible: false },
+        },
+      ];
+      const commonCrosshairConfig = (theme, ruler) => ({
+        xField: {
+          visible: !ruler,
+          line: {
+            type: 'rect',
+            style: {
+              fill: readCssColor('--color-bg-hover'),
+              stroke: theme.border,
+              lineDash: [4, 4],
+            },
+          },
+        },
+        yField: {
+          visible: ruler,
+          line: {
+            type: 'line',
+            style: {
+              stroke: theme.textTertiary,
+              lineWidth: 1,
+              lineDash: [4, 4],
+              opacity: 0.86,
+            },
+          },
+          label: {
+            visible: ruler,
+            formatMethod: (value) => {
+              const numeric = Number(Array.isArray(value) ? value[0] : value);
+              return Number.isFinite(numeric) ? numeric.toFixed(2) : String(value);
+            },
+            labelBackground: {
+              padding: { top: 3, right: 6, bottom: 3, left: 6 },
+              style: {
+                fill: readCssColor('--color-bg-inverse'),
+                stroke: readCssColor('--color-bg-inverse'),
+                cornerRadius: theme.radius,
+              },
+            },
+            style: {
+              fill: readCssColor('--color-text-inverse'),
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+            },
+          },
+        },
+      });
+      const commonChartConfig = ({ legend = false, ruler = false } = {}) => {
+        const theme = getChartTheme();
+        return {
+          animation: false,
+          color: theme.seriesColors,
+          background: theme.background,
+          padding: { top: 12, right: 16, bottom: legend ? 8 : 4, left: 4 },
+          axes: commonAxisConfig(theme),
+          legends: commonLegendConfig(theme, legend),
+          tooltip: commonTooltipConfig(theme),
+          crosshair: commonCrosshairConfig(theme, ruler),
+        };
+      };
+      const commonPolarChartConfig = ({ legend = false } = {}) => {
+        const theme = getChartTheme();
+        return {
+          animation: false,
+          color: theme.seriesColors,
+          background: theme.background,
+          padding: { top: 6, right: 6, bottom: legend ? 2 : 6, left: 6 },
+          legends: commonLegendConfig(theme, legend),
+          tooltip: commonTooltipConfig(theme),
+          label: {
+            visible: true,
+            style: {
+              fill: theme.textSecondary,
+              fontFamily: theme.fontFamily,
+              fontSize: theme.captionSize,
+            },
+          },
+          pie: {
+            style: { stroke: theme.background, lineWidth: 2 },
+            state: { hover: { outerRadius: 0.88 } },
+          },
+        };
+      };
+      const commonLabelConfig = () => {
+        const theme = getChartTheme();
+        return {
+          visible: true,
+          position: 'top',
+          style: {
+            fill: theme.textTertiary,
+            stroke: theme.background,
+            lineWidth: 2,
+            fontFamily: theme.fontFamily,
+            fontSize: theme.captionSize,
+          },
+        };
+      };
+      const commonPointConfig = () => {
+        const theme = getChartTheme();
+        return {
+          visible: true,
+          style: {
+            size: 8,
+            lineWidth: 0,
+            outerBorder: {
+              distance: 0,
+              stroke: theme.background,
+              lineWidth: 2,
+            },
+          },
+          state: {
+            hover: {
+              size: 10,
+              lineWidth: 0,
+              outerBorder: { distance: 0, stroke: theme.background, lineWidth: 2 },
+            },
+            dimension_hover: {
+              size: 10,
+              lineWidth: 0,
+              outerBorder: { distance: 0, stroke: theme.background, lineWidth: 2 },
+            },
+          },
+        };
+      };
+
+      const lineSingleData = [
+        { date: 'Jan', value: 18 },
+        { date: 'Feb', value: 92 },
+        { date: 'Mar', value: 36 },
+        { date: 'Apr', value: 118 },
+        { date: 'May', value: 54 },
+        { date: 'Jun', value: 132 },
+      ];
+      const lineMultiData = ['Revenue', 'Cost', 'Profit'].flatMap((series, seriesIndex) =>
+        ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'].map((date, index) => ({
+          date,
+          series,
+          value:
+            [
+              [30, 96, 44, 122, 68, 136],
+              [82, 28, 76, 34, 94, 52],
+              [12, 58, 24, 78, 36, 92],
+            ][seriesIndex][index],
+        })),
+      );
+      const barBasicData = [
+        { name: 'Agent', value: 86 },
+        { name: 'Store', value: 72 },
+        { name: 'Asset', value: 58 },
+        { name: 'Order', value: 94 },
+        { name: 'Report', value: 67 },
+        { name: 'Media', value: 81 },
+        { name: 'Campaign', value: 49 },
+        { name: 'Keyword', value: 76 },
+        { name: 'Lead', value: 62 },
+      ];
+      const barGroupedData = ['Agent', 'Store', 'Asset', 'Order'].flatMap((name, index) => [
+        { name, series: 'Current', value: [68, 76, 54, 88][index] },
+        { name, series: 'Previous', value: [52, 64, 49, 74][index] },
+      ]);
+      const barStackedData = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'].flatMap((name, index) => [
+        { name, series: 'Create', value: [24, 30, 28, 36, 32][index] },
+        { name, series: 'Review', value: [18, 22, 20, 24, 27][index] },
+        { name, series: 'Publish', value: [12, 16, 18, 21, 24][index] },
+      ]);
+      const areaData = [
+        { date: 'Jan', value: 22 },
+        { date: 'Feb', value: 74 },
+        { date: 'Mar', value: 46 },
+        { date: 'Apr', value: 108 },
+        { date: 'May', value: 64 },
+        { date: 'Jun', value: 126 },
+        { date: 'Jul', value: 88 },
+      ];
+      const areaMultiData = ['Active', 'Queued', 'Closed'].flatMap((series, seriesIndex) =>
+        ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'].map((date, index) => ({
+          date,
+          series,
+          value:
+            [
+              [28, 86, 42, 116, 70, 132, 96],
+              [58, 34, 82, 48, 100, 62, 118],
+              [16, 44, 22, 68, 36, 84, 52],
+            ][seriesIndex][index],
+        })),
+      );
+      const pieData = [
+        { category: 'Agent', value: 34 },
+        { category: 'Store', value: 24 },
+        { category: 'Asset', value: 18 },
+        { category: 'Order', value: 14 },
+        { category: 'Report', value: 10 },
+      ];
+      const donutData = [
+        { category: 'Created', value: 126 },
+        { category: 'Reviewed', value: 84 },
+        { category: 'Published', value: 66 },
+        { category: 'Queued', value: 38 },
+        { category: 'Paused', value: 18 },
+      ];
+      const getChartSpecs = () => {
+        const theme = getChartTheme();
+        return {
+          'chart-line-single': {
+            ...commonChartConfig({ ruler: true }),
+            type: 'line',
+            data: [{ id: 'lineSingle', values: lineSingleData }],
+            xField: 'date',
+            yField: 'value',
+            line: { style: { lineWidth: 2, lineCap: 'round', lineJoin: 'round' } },
+            point: commonPointConfig(),
+          },
+          'chart-line-multi': {
+            ...commonChartConfig({ legend: true, ruler: true }),
+            type: 'line',
+            data: [{ id: 'lineMulti', values: lineMultiData }],
+            xField: 'date',
+            yField: 'value',
+            seriesField: 'series',
+            line: { style: { lineWidth: 2, lineCap: 'round', lineJoin: 'round' } },
+            point: commonPointConfig(),
+          },
+          'chart-area': {
+            ...commonChartConfig({ ruler: true }),
+            type: 'area',
+            data: [{ id: 'area', values: areaData }],
+            xField: 'date',
+            yField: 'value',
+            line: { style: { lineWidth: 2, lineCap: 'round', lineJoin: 'round' } },
+            area: { style: { fillOpacity: 0.16 } },
+            point: commonPointConfig(),
+          },
+          'chart-area-multi': {
+            ...commonChartConfig({ legend: true, ruler: true }),
+            type: 'area',
+            data: [{ id: 'areaMulti', values: areaMultiData }],
+            xField: 'date',
+            yField: 'value',
+            seriesField: 'series',
+            stack: false,
+            line: { style: { lineWidth: 2, lineCap: 'round', lineJoin: 'round' } },
+            area: { style: { fillOpacity: 0.12 } },
+            point: commonPointConfig(),
+          },
+          'chart-bar-basic': {
+            ...commonChartConfig(),
+            type: 'bar',
+            data: [{ id: 'barBasic', values: barBasicData }],
+            xField: 'name',
+            yField: 'value',
+            bar: {
+              style: { cornerRadius: 0, fillOpacity: 0.94 },
+              state: { hover: { fillOpacity: 0.78 } },
+            },
+            label: commonLabelConfig(),
+          },
+          'chart-bar-grouped': {
+            ...commonChartConfig({ legend: true }),
+            type: 'bar',
+            data: [{ id: 'barGrouped', values: barGroupedData }],
+            xField: ['name', 'series'],
+            yField: 'value',
+            seriesField: 'series',
+            bar: {
+              style: { cornerRadius: 0, fillOpacity: 0.94 },
+              state: { hover: { fillOpacity: 0.78 } },
+            },
+          },
+          'chart-bar-stacked': {
+            ...commonChartConfig({ legend: true }),
+            type: 'bar',
+            data: [{ id: 'barStacked', values: barStackedData }],
+            xField: 'name',
+            yField: 'value',
+            seriesField: 'series',
+            stack: true,
+            bar: {
+              style: { cornerRadius: 0, fillOpacity: 0.94 },
+              state: { hover: { fillOpacity: 0.78 } },
+            },
+          },
+          'chart-pie': {
+            ...commonPolarChartConfig({ legend: true }),
+            type: 'pie',
+            data: [{ id: 'pie', values: pieData }],
+            categoryField: 'category',
+            valueField: 'value',
+            seriesField: 'category',
+            outerRadius: 0.82,
+            label: { visible: true, position: 'outside', style: { fill: theme.textSecondary, fontSize: theme.captionSize } },
+          },
+          'chart-donut': {
+            ...commonPolarChartConfig({ legend: true }),
+            type: 'pie',
+            data: [{ id: 'donut', values: donutData }],
+            categoryField: 'category',
+            valueField: 'value',
+            seriesField: 'category',
+            innerRadius: 0.62,
+            outerRadius: 0.86,
+            indicator: {
+              visible: true,
+              fixed: true,
+              trigger: 'none',
+              title: {
+                visible: true,
+                style: {
+                  text: '332',
+                  fill: theme.textPrimary,
+                  fontFamily: theme.fontFamily,
+                  fontSize: 24,
+                  fontWeight: 500,
+                  textAlign: 'center',
+                },
+              },
+              content: [
+                {
+                  visible: true,
+                  style: {
+                    text: 'Total',
+                    fill: theme.textTertiary,
+                    fontFamily: theme.fontFamily,
+                    fontSize: theme.captionSize,
+                    textAlign: 'center',
+                  },
+                },
+              ],
+            },
+          },
+        };
+      };
+      const chartInstances = new Map();
+      const getChartFrameSize = (dom) => {
+        const rect = dom.getBoundingClientRect();
+        const styles = getComputedStyle(dom);
+        const paddingX = Number.parseFloat(styles.paddingLeft) + Number.parseFloat(styles.paddingRight);
+        const paddingY = Number.parseFloat(styles.paddingTop) + Number.parseFloat(styles.paddingBottom);
+        const width = Math.round((rect.width || dom.clientWidth || Number.parseFloat(styles.width) || 320) - paddingX);
+        const height = Math.round((rect.height || dom.clientHeight || Number.parseFloat(styles.height) || 240) - paddingY);
+        return {
+          width: Math.max(width, 320),
+          height: Math.max(height, 200),
+        };
+      };
+      const renderChartSwatches = () => {
+        const container = document.querySelector('[data-chart-swatches]');
+        if (!container) return;
+        container.innerHTML = chartSeriesTokens
+          .map((token) => `<span class="color-swatch" style="color:var(${token})">${token.replace('--color-category-', '')}</span>`)
+          .join('');
+      };
+      const renderChartDemos = () => {
+        const VChartCtor = window.VChart?.default || window.VChart;
+        renderChartSwatches();
+        if (!VChartCtor) {
+          document.querySelectorAll('.chart-placeholder').forEach((placeholder) => {
+            placeholder.textContent = 'VChart failed to load';
+          });
+          return;
+        }
+        const specs = getChartSpecs();
+        Object.entries(specs).forEach(([id, spec]) => {
+          const dom = document.getElementById(id);
+          if (!dom) return;
+          const previous = chartInstances.get(id);
+          if (previous && typeof previous.release === 'function') {
+            previous.release();
+          }
+          const size = getChartFrameSize(dom);
+          dom.innerHTML = '';
+          const chart = new VChartCtor({ ...spec, ...size }, { dom, autoFit: false });
+          chart.renderSync();
+          chartInstances.set(id, chart);
+        });
+      };
+      let chartRenderFrame = 0;
+      let chartRenderTimer = 0;
+      const scheduleChartRender = () => {
+        cancelAnimationFrame(chartRenderFrame);
+        clearTimeout(chartRenderTimer);
+        chartRenderTimer = setTimeout(renderChartDemos, 0);
+        chartRenderFrame = requestAnimationFrame(() => {
+          chartRenderFrame = requestAnimationFrame(renderChartDemos);
+        });
+      };
+      scheduleChartRender();
+      window.addEventListener('load', scheduleChartRender);
+      window.addEventListener('productthemechange', scheduleChartRender);
+      window.addEventListener('resize', scheduleChartRender);
+      if ('ResizeObserver' in window) {
+        const chartResizeObserver = new ResizeObserver(scheduleChartRender);
+        document.querySelectorAll('.chart-frame').forEach((frame) => chartResizeObserver.observe(frame));
+      }
+const centerNavItem = (item, behavior = "auto") => {
+  if (!item) return;
+  const sidebar = item.closest(".sidebar");
+  if (!sidebar) return;
+
+  const isHorizontal = getComputedStyle(sidebar).flexDirection.startsWith("row");
+  const itemRect = item.getBoundingClientRect();
+  const sidebarRect = sidebar.getBoundingClientRect();
+  const clamp = (value, max) => Math.min(Math.max(value, 0), Math.max(max, 0));
+
+  if (isHorizontal) {
+    const centeredLeft =
+      sidebar.scrollLeft + itemRect.left - sidebarRect.left - (sidebar.clientWidth - itemRect.width) / 2;
+    const maxScrollLeft = sidebar.scrollWidth - sidebar.clientWidth;
+    sidebar.scrollTo({ left: clamp(centeredLeft, maxScrollLeft), behavior });
+    return;
+  }
+
+  const centeredTop =
+    sidebar.scrollTop + itemRect.top - sidebarRect.top - (sidebar.clientHeight - itemRect.height) / 2;
+  const maxScrollTop = sidebar.scrollHeight - sidebar.clientHeight;
+  sidebar.scrollTo({ top: clamp(centeredTop, maxScrollTop), behavior });
+};
+      window.addEventListener('load', () => centerNavItem(document.querySelector('.sidebar .nav-button[aria-current=page]')));
+    </script>
+    <script src="../styles/topbar-shared.js"></script>
+  </body>
+</html>

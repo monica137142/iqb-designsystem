@@ -1,0 +1,120 @@
+:root {
+  --font-sans: "Inter", "Inter var", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+
+  --font-style-display-size: 32px;
+  --font-style-display-weight: 600;
+  --font-style-display-line-height: 40px;
+  --font-style-title-1-size: 24px;
+  --font-style-title-1-weight: 600;
+  --font-style-title-1-line-height: 32px;
+  --font-style-title-2-size: 20px;
+  --font-style-title-2-weight: 600;
+  --font-style-title-2-line-height: 28px;
+  --font-style-title-3-size: 16px;
+  --font-style-title-3-weight: 600;
+  --font-style-title-3-line-height: 24px;
+  --font-style-body-large-size: 16px;
+  --font-style-body-large-weight: 400;
+  --font-style-body-large-line-height: 24px;
+  --font-style-body-size: 14px;
+  --font-style-body-weight: 400;
+  --font-style-body-line-height: 22px;
+  --font-style-body-medium-size: 14px;
+  --font-style-body-medium-weight: 500;
+  --font-style-body-medium-line-height: 22px;
+  --font-style-caption-size: 12px;
+  --font-style-caption-weight: 400;
+  --font-style-caption-line-height: 20px;
+  --font-style-caption-medium-size: 12px;
+  --font-style-caption-medium-weight: 500;
+  --font-style-caption-medium-line-height: 20px;
+
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+}
+
+.font-style-display {
+  font-size: var(--font-style-display-size) !important;
+  font-weight: var(--font-style-display-weight) !important;
+  line-height: var(--font-style-display-line-height) !important;
+}
+
+.font-style-title-1,
+.doc-title {
+  font-size: var(--font-style-title-1-size);
+  font-weight: var(--font-style-title-1-weight);
+  line-height: var(--font-style-title-1-line-height);
+}
+
+.font-style-title-2,
+.doc-section > h2 {
+  font-size: var(--font-style-title-2-size) !important;
+  font-weight: var(--font-style-title-2-weight) !important;
+  line-height: var(--font-style-title-2-line-height) !important;
+}
+
+.font-style-title-3,
+.doc-section > h3 {
+  font-size: var(--font-style-title-3-size) !important;
+  font-weight: var(--font-style-title-3-weight) !important;
+  line-height: var(--font-style-title-3-line-height) !important;
+}
+
+.example-block h3 {
+  font-size: var(--font-style-body-medium-size) !important;
+  font-weight: var(--font-style-body-medium-weight) !important;
+  line-height: var(--font-style-body-medium-line-height) !important;
+}
+
+.example-block {
+  padding: 16px !important;
+}
+
+.example-head {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 6px !important;
+}
+
+.example-head > h3,
+.example-head > p {
+  margin: 0 !important;
+}
+
+.font-style-body-large {
+  font-size: var(--font-style-body-large-size);
+  font-weight: var(--font-style-body-large-weight);
+  line-height: var(--font-style-body-large-line-height);
+}
+
+.font-style-body,
+.doc-summary,
+.doc-section > p,
+.rule-list li {
+  font-size: var(--font-style-body-size) !important;
+  font-weight: var(--font-style-body-weight) !important;
+  line-height: var(--font-style-body-line-height) !important;
+}
+
+.font-style-body-medium {
+  font-size: var(--font-style-body-medium-size);
+  font-weight: var(--font-style-body-medium-weight);
+  line-height: var(--font-style-body-medium-line-height);
+}
+
+.font-style-caption,
+.doc-meta-list li,
+.nav-category {
+  font-size: var(--font-style-caption-size) !important;
+  font-weight: var(--font-style-caption-weight) !important;
+  line-height: var(--font-style-caption-line-height) !important;
+}
+
+.font-style-caption-medium {
+  font-size: var(--font-style-caption-medium-size);
+  font-weight: var(--font-style-caption-medium-weight);
+  line-height: var(--font-style-caption-medium-line-height);
+}

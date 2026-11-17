@@ -1,0 +1,4 @@
+interface:
+  display_name: "IQB Icon Skill"
+  short_description: "Search, reuse, generate, and validate IQB UI icons"
+  default_prompt: "Use $icon to select or create a Design System-compliant icon for this interface."
