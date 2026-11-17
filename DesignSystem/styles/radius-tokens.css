@@ -1,8 +1,0 @@
-:root,
-.radius-style-default {
-  --radius-small: 4px;
-  --radius-default: 6px;
-  --radius-large: 8px;
-  --radius-xlarge: 12px;
-  --radius-full: 9999px;
-}
