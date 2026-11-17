@@ -3,6 +3,15 @@
   const topbarNav = document.querySelector(".topbar-nav");
   const productSelect = document.querySelector(".topbar > .product-select");
   const sharedScriptUrl = document.currentScript?.src || window.location.href;
+  const brand = topbar?.querySelector(".brand");
+  const brandTitle = brand?.querySelector(".brand-title");
+  if (brandTitle) brandTitle.textContent = "IQB Design";
+  if (brand) brand.setAttribute("aria-label", "IQB Design 首页");
+  const favicon = document.createElement("link");
+  favicon.rel = "icon";
+  favicon.type = "image/svg+xml";
+  favicon.href = new URL("../favicon.svg", sharedScriptUrl).href;
+  document.head.appendChild(favicon);
   if (!topbar || !topbarNav || !productSelect) return;
 
   const componentsTab = topbarNav.querySelector('[data-topbar-nav="components"]');
