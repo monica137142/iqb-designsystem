@@ -26,19 +26,20 @@ interface TabsProps {
 
 ## 语义映射
 
-| 角色 | Component Token | 全局 Semantic Token |
-| --- | --- | --- |
-| 默认文字 | `tabs-color` | `color-text-secondary` |
-| Hover 文字 | `tabs-hover-color` | `color-text-primary` |
-| Line / Capsule / Card 激活文字 | `tabs-active-color` | `color-text-primary` |
-| Text 选中文字 | `tabs-text-active-color` | `color-action-primary` |
-| 实色背景激活文字 | `tabs-active-color-inverse` | `color-text-inverse` |
-| 禁用文字 | `tabs-disabled-color` | `color-text-disabled` |
-| 指示器 / 实色激活背景 | `tabs-indicator-color` / `tabs-bg-active` | `color-action-primary` |
-| Hover / 弱背景 | `tabs-bg-hover` / `tabs-bg-subtle` | `color-bg-hover` / `color-bg-subtle` |
-| 边界 | `tabs-border-color` | `color-border-subtle` |
-| 面板正文 | `tabs-panel-color` | `color-text-default` |
-| 附加操作 | `tabs-action-*` | 对应 Text / Background / Border Semantic Token |
+| 角色 | 全局 Semantic Token |
+| --- | --- |
+| 默认文字 | `color-text-secondary` |
+| Hover 文字 | `color-text-primary` |
+| Line / Card 激活文字 | `color-text-primary` |
+| Capsule 激活文字 | `color-action-primary` |
+| Text 选中文字 | `color-action-primary` |
+| 实色背景激活文字 | `color-text-inverse` |
+| 禁用文字 | `color-text-disabled` |
+| 指示器 / 实色激活背景 | `color-action-primary` |
+| Hover / 弱背景 | `color-bg-hover` / `color-bg-subtle` |
+| 边界 | `color-border-subtle` |
+| 面板正文 | `color-text-default` |
+| 附加操作 | 对应 Text / Background / Border Semantic Token |
 
 组件选择器不得直接引用 Primitive Color，也不得写 HEX、RGB 或 RGBA。
 
@@ -69,7 +70,7 @@ interface TabsProps {
 ## 生成前检查清单
 
 - Size、Type、Position 均来自合法枚举。
-- 颜色只经过 `--tabs-*` Component Token 映射到全局 Semantic Token。
+- 颜色直接引用 `design.md` 中的全局 Semantic Token。
 - 字号、字重、行高完整绑定既有 Font Style，不拆分或临时写值。
 - 圆角只使用 `radius-small`、`radius-default`、`radius-full` 的语义映射。
 - 激活、Hover、Focus、Disabled 状态不冲突。

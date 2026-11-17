@@ -40,7 +40,7 @@
         --color-border-default: var(--neutral-3);
         --color-border-subtle: var(--neutral-2);
         --color-action-primary: var(--brand-5);
-        --brand-text: var(--brand-6);
+
         --topbar-height: 60px;
         --sidebar-width: 300px;
         --radius-small: 4px;
@@ -83,7 +83,7 @@
       .brand-mark { width: 30px; height: 30px; fill: var(--brand-5); }
       .topbar-nav { display: flex; align-items: center; gap: 8px; }
       .topbar-nav a { padding: 9px 14px; color: var(--color-text-secondary); border-radius: var(--radius-default); font-size: var(--font-style-body-size); }
-      .topbar-nav a[aria-current="page"] { color: var(--brand-text); font-weight: 500; }
+      .topbar-nav a[aria-current="page"] { color: var(--color-action-primary); font-weight: 500; }
       .theme-toggle { min-height: 36px; padding: 0 14px; color: var(--color-text-secondary); background: var(--color-bg-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-full); cursor: pointer; }
 
       .workspace { display: grid; grid-template-columns: var(--sidebar-width) minmax(0, 1fr); min-height: 0; }
@@ -93,12 +93,12 @@
       .nav-list { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
       .nav-button { display: flex; align-items: center; min-height: 40px; padding: 0 12px; border-radius: var(--radius-default); font-size: var(--font-style-body-size); }
       .nav-button:hover { background: var(--color-bg-hover); }
-      .nav-button[aria-current="page"] { color: var(--brand-text); background: var(--color-bg-selected); font-weight: 500; }
+      .nav-button[aria-current="page"] { color: var(--color-action-primary); background: var(--color-bg-selected); font-weight: 500; }
 
       .canvas { min-width: 0; min-height: 0; overflow: auto; }
       .doc-page { width: min(1120px, 100%); margin: 0 auto; padding: 48px 48px 80px; }
       .doc-hero { padding-bottom: 36px; border-bottom: 1px solid var(--color-border-subtle); }
-      .eyebrow { margin: 0 0 8px; color: var(--brand-text); font-size: var(--font-style-caption-size); font-weight: 500; line-height: var(--font-style-caption-line-height); }
+      .eyebrow { margin: 0 0 8px; color: var(--color-action-primary); font-size: var(--font-style-caption-size); font-weight: 500; line-height: var(--font-style-caption-line-height); }
       .doc-title { margin: 0; color: var(--color-text-top); font-size: var(--font-style-title-1-size); font-weight: 600; line-height: var(--font-style-title-1-line-height); }
       .doc-description { max-width: 720px; margin: 12px 0 0; color: var(--color-text-secondary); font-size: var(--font-style-body-size); line-height: var(--font-style-body-line-height); }
       .doc-section { padding: 36px 0; border-bottom: 1px solid var(--color-border-subtle); }
@@ -109,7 +109,7 @@
 
       .principle-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
       .principle-card { padding: 20px; background: var(--color-bg-container); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-large); }
-      .principle-index { display: grid; place-items: center; width: 28px; height: 28px; margin-bottom: 16px; color: var(--brand-text); background: var(--color-bg-selected); border-radius: var(--radius-full); font-size: var(--font-style-caption-size); font-weight: 600; }
+      .principle-index { display: grid; place-items: center; width: 28px; height: 28px; margin-bottom: 16px; color: var(--color-action-primary); background: var(--color-bg-selected); border-radius: var(--radius-full); font-size: var(--font-style-caption-size); font-weight: 600; }
       .principle-card h3 { margin: 0 0 6px; color: var(--color-text-primary); font-size: var(--font-style-title-3-size); line-height: var(--font-style-title-3-line-height); }
       .principle-card p { margin: 0; color: var(--color-text-secondary); font-size: var(--font-style-body-size); line-height: var(--font-style-body-line-height); }
 
@@ -332,7 +332,7 @@
           ["../datadisplay/empty.html", "Empty 空状态"], ["../datadisplay/card.html", "Card 卡片"]
         ]},
         { label: "Feedback 反馈", items: [
-          ["../feedback/alert.html", "Alert 警告提示"], ["../feedback/drawer.html", "Drawer 抽屉"], ["../feedback/message.html", "Message 全局提示"], ["../feedback/model.html", "Model 模态弹窗"],
+          ["../feedback/alert.html", "Alert 警告提示"], ["../feedback/drawer.html", "Drawer 抽屉"], ["../feedback/message.html", "Message 全局提示"], ["../feedback/modal.html", "Modal 模态弹窗"],
           ["../feedback/popconfirm.html", "Popconfirm 气泡确认框"], ["../feedback/notification.html", "Notification 通知提醒"], ["../feedback/progress.html", "Progress 进度条"], ["../feedback/spin.html", "Spin 加载中"], ["../feedback/skeleton.html", "Skeleton 骨架屏"]
         ]}
       ];

@@ -81,10 +81,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
         --link-color: var(--info-5);
         --link-hover-color: var(--info-6);
         --link-disabled-color: var(--neutral-2);
@@ -158,7 +158,7 @@
         --color-action-primary: var(--brand-5);
         --color-action-primary-hover: var(--brand-6);
         --color-action-primary-hover: var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled: var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -360,7 +360,7 @@
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
   --tabs-color: var(--color-text-secondary);
   --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
+  --tabs-active-color: var(--color-action-primary);
   --tabs-indicator-color: var(--color-action-primary);
   --tabs-indicator-size: 2px;
   --tabs-bg-hover: var(--color-bg-hover);
@@ -728,12 +728,12 @@
       }
 
       .doc-hero {
-        border-bottom: 0;
+        border-bottom: 1px solid var(--color-border-subtle);
       }
 
       .doc-kicker {
         margin: 0 0 10px;
-        color:var(--brand-text);
+        color:var(--color-action-primary);
         font-size:var(--font-style-caption-size);
         font-weight:var(--font-style-caption-weight);
         line-height:var(--font-style-caption-line-height);
@@ -1915,7 +1915,7 @@
       .icon-contract code {
         width: fit-content;
         padding: 2px 5px;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: var(--color-action-primary-bg-hover);
         border-radius: var(--radius-small);
         font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace;
@@ -1975,7 +1975,7 @@
       }
 
       .icon-state-row.selected {
-        --state-color: var(--brand-text);
+        --state-color: var(--color-action-primary);
         --state-bg: var(--color-action-primary-bg-hover);
         --state-border: var(--color-action-primary-bg-hover);
       }
@@ -2006,7 +2006,168 @@
       }
 
       .icon-compare-card strong {
-        margin-bottom: 8px;
+        display: block;
+        margin-bottom: 12px;
+      }
+
+      .icon-guide-tags,
+      .icon-guide-samples,
+      .icon-guide-params,
+      .icon-guide-usage {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .icon-guide-tag {
+        padding: 5px 10px;
+        color: var(--color-text-default);
+        background: var(--color-bg-subtle);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-full);
+        font-size: var(--font-style-caption-size);
+        line-height: var(--font-style-caption-line-height);
+      }
+
+      .icon-guide-principle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 16px;
+        padding: 16px;
+        background: var(--color-bg-subtle);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-large);
+      }
+
+      .icon-guide-principle strong { color: var(--color-action-primary); font-size: var(--font-style-title-3-size); }
+      .icon-guide-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--color-text-secondary); }
+      .icon-guide-flow b { color: var(--color-text-tertiary); font-weight: 400; }
+
+      .icon-guide-samples { margin-bottom: 16px; }
+      .icon-guide-sample {
+        display: grid;
+        place-items: center;
+        width: 72px;
+        height: 72px;
+        color: var(--color-text-primary);
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-large);
+      }
+      .icon-guide-sample svg { width: 28px; height: 28px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+      .icon-guide-params { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .icon-guide-param { padding: 12px 14px; border-bottom: 1px solid var(--color-border-subtle); }
+      .icon-guide-param span { display: block; margin-bottom: 3px; color: var(--color-text-tertiary); font-size: var(--font-style-caption-size); }
+      .icon-guide-param strong { color: var(--color-text-primary); font-size: var(--font-style-body-medium-size); }
+
+      .icon-guide-usage { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .icon-guide-usage article { min-width: 0; padding: 16px 0; border-top: 1px solid var(--color-border-subtle); }
+      .icon-guide-usage h3 { margin: 0 0 6px; }
+      .icon-guide-usage p { margin: 0; }
+      .icon-text-example { display: inline-flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--color-text-primary); font-size: 14px; }
+      .icon-text-example svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+      .icon-guide-table-wrap { overflow-x: auto; border: 1px solid var(--color-border-subtle); border-radius: var(--radius-default); }
+      .icon-guide-table { width: 100%; border-collapse: collapse; font-size: var(--font-style-body-size); line-height: var(--font-style-body-line-height); }
+      .icon-guide-table th,
+      .icon-guide-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--color-border-subtle); }
+      .icon-guide-table th { color: var(--color-text-secondary); background: var(--color-bg-subtle); font-weight: var(--font-style-body-medium-weight); }
+      .icon-guide-table tr:last-child td { border-bottom: 0; }
+      .icon-guide-table code { color: var(--color-action-primary); }
+      .icon-guide-table-icon { display: flex; align-items: center; justify-content: flex-start; gap: 8px; width: 100%; color: var(--color-text-default); }
+      .icon-guide-table-icon svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+      .icon-skill-flow { display: grid; justify-items: center; gap: 7px; width: min(100%, 420px); margin: 18px auto; }
+      .icon-skill-step { width: 100%; padding: 9px 14px; text-align: center; background: var(--color-bg-subtle); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-default); }
+      .icon-skill-branch { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; }
+      .icon-skill-arrow { color: var(--color-text-tertiary); line-height: 1; }
+      .icon-skill-role { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+      .icon-skill-role div { padding: 14px; background: var(--color-bg-container); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-default); }
+
+      /* Icon guide follows the document rhythm and typography used by text.html. */
+      .doc-section.icon-guideline-section {
+        margin-top: 0;
+        padding: 28px 32px;
+        border-top: 0;
+        border-bottom: 0;
+      }
+
+      .doc-section.icon-guideline-section + .doc-section.icon-guideline-section {
+        border-top: 1px solid var(--color-border-subtle);
+      }
+
+      .doc-section.icon-guideline-section.style-module-start {
+        margin-top: 0;
+        border-top: 0;
+      }
+
+      .doc-section.icon-guideline-section.style-module-start > h2::before {
+        display: none;
+        content: none;
+      }
+
+      .doc-section.icon-guideline-section > h2 {
+        margin-bottom: 14px;
+        color: var(--color-text-primary);
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 1.35;
+      }
+
+      .doc-section.icon-guideline-section > h3 {
+        margin: 0 0 8px;
+        color: var(--color-text-default);
+        font-size: var(--font-style-body-size);
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .doc-section.icon-guideline-section p,
+      .icon-guide-principle,
+      .icon-guide-flow,
+      .icon-guide-table,
+      .icon-skill-step,
+      .icon-skill-role {
+        font-size: var(--font-style-body-size);
+        font-weight: var(--font-style-body-weight);
+        line-height: var(--font-style-body-line-height);
+      }
+
+      .doc-section.icon-guideline-section > p + *,
+      .doc-section.icon-guideline-section > h3 + p + *,
+      .doc-section.icon-guideline-section > .icon-guide-table-wrap + *,
+      .doc-section.icon-guideline-section > .icon-guide-params + * {
+        margin-top: 16px;
+      }
+
+      .icon-guide-samples {
+        margin-top: 18px;
+        margin-bottom: 18px;
+      }
+
+      .icon-guide-tags { margin-top: 16px; }
+
+      .icon-rule-list {
+        gap: 10px;
+        color: var(--color-text-default);
+        font-size: var(--font-style-body-size);
+        font-weight: var(--font-style-body-weight);
+        line-height: var(--font-style-body-line-height);
+      }
+
+      .icon-guide-usage h3 { margin-bottom: 8px; }
+      .icon-guide-usage article { padding: 16px 4px 0 0; }
+      .icon-skill-role p { margin-top: 6px; }
+      .icon-compare-card > strong { font-size: var(--font-style-body-medium-size); line-height: var(--font-style-body-medium-line-height); }
+
+      @media (max-width: 760px) {
+        .icon-guide-principle { align-items: flex-start; flex-direction: column; }
+        .icon-guide-params,
+        .icon-guide-usage,
+        .icon-skill-role { grid-template-columns: 1fr; }
       }
 
       .radius-grid {
@@ -2170,7 +2331,7 @@
 
       .spec-btn:hover {
         border-color:var(--color-action-primary);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn:focus-visible {
@@ -2185,8 +2346,8 @@
       }
 
       .spec-btn.primary:hover {
-        border-color: var(--brand-text);
-        background: var(--brand-text);
+        border-color: var(--color-action-primary);
+        background: var(--color-action-primary);
         color:var(--color-text-inverse);
       }
 
@@ -2211,12 +2372,12 @@
       .spec-btn.ghost-primary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.ghost-primary:hover {
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text-hover);
+        color: var(--color-action-primary-hover);
       }
 
       .spec-btn.solid {
@@ -2231,16 +2392,16 @@
         border-color: var(--color-border-default);
       }
 
-      .spec-btn.permission {
+      .spec-btn.secondary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
-      .spec-btn.permission:hover {
+      .spec-btn.secondary:hover {
         border-color:var(--color-action-primary);
         background: var(--color-action-primary-bg-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.warning {
@@ -2465,10 +2626,10 @@
         color:var(--color-text-inverse);
       }
 
-      .spec-btn.permission[disabled]:hover {
+      .spec-btn.secondary[disabled]:hover {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.subtle[disabled]:hover {
@@ -2590,7 +2751,7 @@
 
       .loading-dot.brand {
         border-color: color-mix(in srgb, var(--color-action-primary) 24%, transparent);
-        border-top-color: var(--brand-text);
+        border-top-color: var(--color-action-primary);
       }
 
       .loading-dot.neutral {
@@ -2892,7 +3053,7 @@
       }
 
       .spec-field.success .spec-field-help {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .count-demo-grid {
@@ -3316,12 +3477,12 @@
       }
 
       .select-option.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: transparent;
       }
 
       .select-option.active:hover {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: var(--color-bg-overlay-hover);
       }
 
@@ -3630,7 +3791,7 @@
 
       .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-time-actions {
@@ -3910,7 +4071,7 @@
 
       .range-scope-tab.active {
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-tab:focus,
@@ -3918,7 +4079,7 @@
         outline: none;
         border-color: transparent;
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -3972,13 +4133,13 @@
       .range-scope-body .select-option.active,
       .range-scope-body .date-time-option.active {
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .select-option.active:hover,
       .range-scope-body .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .time-filter-panel .date-time-option.active,
@@ -4043,7 +4204,7 @@
 
       .date-shortcut:hover,
       .date-shortcut.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
@@ -4142,7 +4303,7 @@
       }
 
       .date-cell.today {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.active,
@@ -4153,17 +4314,17 @@
 
       .date-cell.in-range {
         background:var(--color-bg-subtle);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview {
         background: color-mix(in srgb, var(--color-action-primary) 10%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview-edge {
         background: color-mix(in srgb, var(--color-action-primary) 16%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-edge.range-preview-edge {
@@ -4530,7 +4691,7 @@
       .radio-card:has(input:checked) {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .radio-card.disabled,
@@ -4548,7 +4709,7 @@
       .radio-card:has(input:checked:disabled):hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .checkbox-demo-stack {
@@ -5593,8 +5754,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -5634,9 +5795,15 @@
 
             <article class="content-panel doc-page" data-panel="color">
               <header class="doc-hero">
-                <p class="doc-kicker">Styles</p>
+                <p class="doc-kicker">Styles / ICON</p>
                 <h1 class="doc-title">ICON 图标</h1>
-                <p class="doc-summary">图标规范定义尺寸、描边、语义与 SVG 使用原则。</p>
+                <p class="doc-summary">统一的线性 Icon 使用指南，帮助设计师与 AI Coding 使用者正确理解语义、复用图标并保持一致性。</p>
+                <ul class="doc-meta-list" aria-label="Icon 规范摘要">
+                  <li>Outline 线性风格</li>
+                  <li>24×24 标准画布</li>
+                  <li>Existing Icon First</li>
+                  <li>Icon Skill 唯一执行入口</li>
+                </ul>
               </header>
 
               <section class="doc-section style-module-start style-module-first">
@@ -6451,298 +6618,121 @@
                 </div>
               </section>
 
+
               <section class="doc-section style-module-start icon-guideline-section" data-style-section="icon">
-                <div class="icon-spec-grid" aria-label="图标规范">
-                  <div class="icon-spec-card full">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">IQB Icon Skill</h2>
-                      <p>完整执行规范位于 <code>skills/icon/SKILL.md</code>。页面、组件与 Pattern 不直接生成 Icon，而是调用 Skill 决定复用、映射或生成。</p>
-                    </div>
-                    <div class="semantic-map" aria-label="Icon Skill 完整执行流程">
-                      <span>Detect Requirement</span><strong>→</strong><span>Semantic Intent</span><strong>→</strong><span>Search Existing</span><strong>→</strong><span>Reuse / Generate</span><strong>→</strong><span>Validate</span><strong>→</strong><span>SVG</span>
-                    </div>
-                    <div class="icon-contract">
-                      <code>Existing Icon First</code>
-                      <span>禁止从需求直接跳到 SVG。Exact semantic → Equivalent semantic → Suitable similar → Generate new。</span>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Skill Trigger</h2>
-                      <p>只要界面需求包含 Icon 的选择、使用、生成或检查，就必须调用 Icon Skill。</p>
-                    </div>
-                    <ul class="icon-rule-list">
-                      <li>页面、Button、Menu、Navigation 或 Component 需要 Icon。</li>
-                      <li>Input、Select 等控件包含 Prefix / Suffix Icon。</li>
-                      <li>Status / Action 需要图形表达。</li>
-                      <li>需要生成 SVG 或检查已有 Icon 是否合规。</li>
-                      <li>需要判断某个业务语义应使用哪个 Icon。</li>
-                    </ul>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Semantic First</h2>
-                      <p>先识别用户行为、对象、状态与真实后果，再匹配 Icon；不根据业务字段名直接创造图形。</p>
-                    </div>
-                    <ul class="icon-rule-list">
-                      <li>“保存修改”映射为 <code>Save</code>，不创建 SaveEdit。</li>
-                      <li>“导出数据”按实际行为匹配 <code>Export</code> 或 <code>Download</code>。</li>
-                      <li>“移除成员”需区分 Remove、Delete 与 Unbind 的实际后果。</li>
-                      <li>新名称使用 Add、Search、Refresh、ChevronDown 等通用语义。</li>
-                    </ul>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Icon Canvas</h2>
-                      <p>统一使用 24×24 标准画布与 2px 安全边距；实际显示尺寸跟随相邻文字字号、组件高度和视觉平衡调整。</p>
-                    </div>
-                    <div class="icon-canvas-demo">
-                      <div class="icon-canvas-box" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="3" y="4" width="18" height="16" rx="3" />
-                          <path d="M8 9H16" />
-                          <path d="M8 13H14" />
-                        </svg>
-                      </div>
-                      <ul class="icon-rule-list">
-                        <li>Canvas：<code>24 × 24</code></li>
-                        <li>Safe area：<code>2px</code></li>
-                        <li>主要图形保持视觉居中，避免贴边。</li>
-                        <li>不要因为显示尺寸变化改变 <code>viewBox</code>。</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Icon Size</h2>
-                      <p>Icon 尺寸默认与相邻文字字号保持一致或接近，并根据组件高度和视觉平衡进行调整。</p>
-                    </div>
-                    <ul class="icon-rule-list">
-                      <li>Icon 尺寸不设置推荐的固定尺寸阶梯。</li>
-                      <li>图文组合中，Icon 与相邻文字字号保持一致或接近。</li>
-                      <li>Button、Menu、Navigation、Form、Toolbar 等组件内的 Icon，按组件高度、内边距和视觉重量进行微调。</li>
-                      <li>独立操作入口、空状态或功能入口中的 Icon，可根据版面层级放大，但仍以语义角色和视觉平衡为准。</li>
-                    </ul>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Stroke Style</h2>
-                      <p>默认线性 Icon 固定使用 2px 描边、圆角线帽和圆角连接。Icon 尺寸变化时不改变描边粗细。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M5 12H19" />
-                          <path d="M12 5V19" />
-                        </svg>
-                        2px stroke
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M7 7L17 17" />
-                          <path d="M17 7L7 17" />
-                        </svg>
-                        round cap
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <path d="M7 17L17 7" />
-                          <path d="M9 7H17V15" />
-                        </svg>
-                        round join
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Geometry</h2>
-                      <p>AI 绘制 Icon 时优先使用 Line、Circle、Rounded Rect、Polyline 和简单 Path，保持几何、清晰、视觉重量一致。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12H20" /></svg>
-                        Line
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7" /></svg>
-                        Circle
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="14" height="12" rx="3" /></svg>
-                        Rounded rect
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5L9.5 17.5L19.5 6.5" /></svg>
-                        Polyline
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Color & Semantic Color</h2>
-                      <p>Icon 禁止写死 HEX，默认使用 <code>currentColor</code>，由父组件或父级文字语义色控制。</p>
-                    </div>
-                    <pre class="icon-code-block"><code>.icon {
-  color: var(--color-text-primary);
-}
+                <h2>Overview</h2>
+                <p>IQB Design System 使用统一的线性 Icon 风格。页面与组件中的 Icon 统一通过 Icon Skill 进行语义匹配、复用、生成与校验，不调用外部 Icon Font。</p>
+                <div class="icon-guide-tags" aria-label="Icon 核心特征">
+                  <span class="icon-guide-tag">Outline</span>
+                  <span class="icon-guide-tag">24×24 Canvas</span>
+                  <span class="icon-guide-tag">Icon Skill</span>
+                </div>
+                <div class="icon-guide-principle">
+                  <strong>Existing Icon First</strong>
+                  <div class="icon-guide-flow" aria-label="简化 Icon 使用流程"><span>理解语义</span><b>→</b><span>查找已有 Icon</span><b>→</b><span>复用</span><b>→</b><span>必要时生成</span></div>
+                </div>
+              </section>
 
-.icon svg {
-  stroke: currentColor;
-}</code></pre>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Interaction State</h2>
-                      <p>Icon 自身不独立维护 Hover、Active、Selected、Disabled。状态优先由父组件控制，SVG 只继承当前文字颜色。</p>
-                    </div>
-                    <div class="icon-state-demo">
-                      <div class="icon-state-row">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19" /><path d="M12 5V19" /></svg>
-                        Default inherits component color
-                      </div>
-                      <div class="icon-state-row selected">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19" /><path d="M12 5V19" /></svg>
-                        Selected inherits action color
-                      </div>
-                      <div class="icon-state-row disabled">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12H19" /><path d="M12 5V19" /></svg>
-                        Disabled inherits disabled color
-                      </div>
-                      <div class="icon-state-row error">
-                        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V13" /><path d="M12 17H12.01" /><circle cx="12" cy="12" r="8" /></svg>
-                        Error inherits status color
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Outline / Filled 使用规则</h2>
-                      <p>当前 Design System 默认采用 Line / Outline Icon。Filled Icon 只在 Selected、Status、Badge 或已定义业务规范中使用。</p>
-                    </div>
-                    <div class="icon-demo-grid" aria-hidden="true">
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5L14.2 9.5L19 10.2L15.5 13.6L16.3 18.4L12 16.1L7.7 18.4L8.5 13.6L5 10.2L9.8 9.5L12 5Z" /></svg>
-                        Default outline
-                      </div>
-                      <div class="icon-spec-preview">
-                        <svg viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5L14.2 9.5L19 10.2L15.5 13.6L16.3 18.4L12 16.1L7.7 18.4L8.5 13.6L5 10.2L9.8 9.5L12 5Z" /></svg>
-                        Selected filled
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card full">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Search / Reuse / Generate Decision</h2>
-                      <p>检索不仅匹配名称，还要检查 SVG、组件引用、上下文标签和等价语义。只有没有准确候选时才进入生成流程。</p>
-                    </div>
-                    <div class="semantic-map" aria-label="Icon 检索与决策顺序">
-                      <span>Exact Match</span><strong>→</strong><span>Equivalent Match</span><strong>→</strong><span>Suitable Similar</span><strong>→</strong><span>Generate New</span>
-                    </div>
-                    <div class="icon-contract">
-                      <code>ICON Contract</code>
-                      <span>Reuse first. Generate only when necessary. 同一语义不得因页面名称或业务文案不同而重复绘制。</span>
-                      <span>生成时使用 24px canvas + 2px rounded stroke + simple geometry + currentColor + consistent visual weight。</span>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card full">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Component Contract / Icon Skill 职责边界</h2>
-                      <p>组件决定 Icon 如何摆放；Icon Skill 决定应该使用哪个图形以及图形本身是否合规。</p>
-                    </div>
-                    <div class="icon-compare-grid">
-                      <div class="icon-compare-card">
-                        <strong>Component Contract</strong>
-                        <ul class="icon-rule-list">
-                          <li>Icon Position</li>
-                          <li>Rendered Size</li>
-                          <li>Gap</li>
-                          <li>Interaction State</li>
-                        </ul>
-                      </div>
-                      <div class="icon-compare-card">
-                        <strong>Icon Skill</strong>
-                        <ul class="icon-rule-list">
-                          <li>Semantic / Naming</li>
-                          <li>Search / Reuse / Generate</li>
-                          <li>Shape / Stroke / SVG</li>
-                          <li>Contract Validation</li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="icon-contract">
-                      <code>Example</code>
-                      <span>Button 可规定 Start / 16px / 8px Gap；Icon 原始绘制仍保持 <code>viewBox="0 0 24 24"</code>，由组件控制最终显示尺寸。</span>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card full">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Do / Don't 示例</h2>
-                      <p>生成 Icon 时保持简单、几何、统一视觉重量，不用 Emoji、Unicode 符号、CSS 拼接或网络图片替代正式 Icon。</p>
-                    </div>
-                    <div class="icon-compare-grid">
-                      <div class="icon-compare-card">
-                        <strong>DO</strong>
-                        <ul class="icon-rule-list">
-                          <li>24×24 Canvas</li>
-                          <li>2px Stroke</li>
-                          <li>Round Linecap / Round Linejoin</li>
-                          <li><code>currentColor</code></li>
-                          <li>简洁几何结构与统一视觉重量</li>
-                          <li>优先复用现有 Icon</li>
-                        </ul>
-                      </div>
-                      <div class="icon-compare-card">
-                        <strong>DON'T</strong>
-                        <ul class="icon-rule-list">
-                          <li>混用 1px / 1.5px / 2.5px 描边</li>
-                          <li>用 Emoji 或 Unicode Symbol 代替 Icon</li>
-                          <li>随机使用 Filled Icon</li>
-                          <li>写死 HEX Color</li>
-                          <li>绘制复杂细碎 SVG</li>
-                          <li>为相同语义重复生成不同图形</li>
-                          <li>用 CSS Border 或大量 div 临时拼接 Icon</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">SVG 示例代码</h2>
-                      <p>AI 自动生成 Icon 默认遵循此模板。多个 Path 必须保持相同描边、端点、连接和颜色规则。</p>
-                    </div>
-                    <pre class="icon-code-block"><code>&lt;svg
-  width="1em"
-  height="1em"
-  viewBox="0 0 24 24"
-  fill="none"
-  xmlns="http://www.w3.org/2000/svg"
-  aria-hidden="true"
-  focusable="false"
-&gt;
-  &lt;path
-    d="..."
-    stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  /&gt;
-&lt;/svg&gt;</code></pre>
-                  </div>
-                  <div class="icon-spec-card">
-                    <div class="icon-spec-copy">
-                      <h2 class="icon-category-title">Validation Gate</h2>
-                      <p>任何新 Icon 在交付前都必须逐项通过检查；失败项应先修正，不能直接输出。</p>
-                    </div>
+              <section class="doc-section icon-guideline-section">
+                <h2>Core Style 基础风格</h2>
+                <p>Icon 默认保持简洁、几何与统一视觉重量。下面的参数定义共同的视觉语言，不是业务页面中的逐项实现说明。</p>
+                <div class="icon-guide-samples" aria-label="线性 Icon 风格示例">
+                  <span class="icon-guide-sample"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg></span>
+                  <span class="icon-guide-sample"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span>
+                  <span class="icon-guide-sample"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3M7 8l5-5 5 5M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></span>
+                  <span class="icon-guide-sample"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></svg></span>
+                </div>
+                <div class="icon-guide-params" aria-label="Icon 核心参数">
+                  <div class="icon-guide-param"><span>Canvas</span><strong>24 × 24</strong></div>
+                  <div class="icon-guide-param"><span>Style</span><strong>Outline</strong></div>
+                  <div class="icon-guide-param"><span>Stroke</span><strong>2px</strong></div>
+                  <div class="icon-guide-param"><span>Linecap</span><strong>Round</strong></div>
+                  <div class="icon-guide-param"><span>Linejoin</span><strong>Round</strong></div>
+                  <div class="icon-guide-param"><span>Color</span><strong>currentColor</strong></div>
+                </div>
+                <ul class="icon-rule-list">
+                  <li>实际显示尺寸由所在组件决定，不设置固定的 Icon Size 阶梯。</li>
+                  <li>显示尺寸变化时，不改变原始 <code>viewBox="0 0 24 24"</code>。</li>
+                  <li>Safe Area 2px 作为辅助绘制规则，主要图形保持视觉居中并避免贴边。</li>
+                </ul>
+              </section>
+
+              <section class="doc-section icon-guideline-section">
+                <h2>Usage 使用规则</h2>
+                <div class="icon-guide-usage">
+                  <article>
+                    <h3>Icon + Text</h3>
+                    <p>图文组合时，Icon 尺寸应与相邻文字保持视觉协调。尺寸关系仅作为视觉参考，不形成强制阶梯。</p>
+                    <span class="icon-text-example"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>14px Text → ≈14–16px Icon</span>
+                  </article>
+                  <article>
+                    <h3>Icon in Component</h3>
+                    <p>Button、Input、Select、Menu、Navigation、Toolbar 中的 Position、Rendered Size 与 Gap 由对应 Component Contract 决定。Icon Skill 不负责组件布局。</p>
+                  </article>
+                  <article>
+                    <h3>Interaction State</h3>
+                    <p>Icon 不独立维护 Hover、Active、Selected、Disabled 或 Error。状态由父组件控制，Icon 继承所在组件的颜色与状态。</p>
+                  </article>
+                </div>
+              </section>
+
+              <section class="doc-section icon-guideline-section">
+                <h2>Semantic &amp; Naming</h2>
+                <p><strong>按真实行为语义选择 Icon，而不是按照业务字段名称创造 Icon。</strong>业务名称不同不代表需要创建新图形；相同语义必须复用同一个 Icon。</p>
+                <div class="icon-guide-table-wrap">
+                  <table class="icon-guide-table">
+                    <thead><tr><th>业务需求</th><th>Icon Semantic</th><th>Icon 案例</th></tr></thead>
+                    <tbody>
+                      <tr><td>新建任务</td><td><code>Add</code></td><td><span class="icon-guide-table-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>Add</span></td></tr>
+                      <tr><td>搜索成员</td><td><code>Search</code></td><td><span class="icon-guide-table-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>Search</span></td></tr>
+                      <tr><td>保存修改</td><td><code>Save</code></td><td><span class="icon-guide-table-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2ZM17 21v-8H7v8M7 3v5h8"/></svg>Save</span></td></tr>
+                      <tr><td>删除内容</td><td><code>Delete</code></td><td><span class="icon-guide-table-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6M10 11v6M14 11v6"/></svg>Delete</span></td></tr>
+                      <tr><td>下载文件</td><td><code>Download</code></td><td><span class="icon-guide-table-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg>Download</span></td></tr>
+                      <tr><td>导出数据</td><td><code>Export</code></td><td><span class="icon-guide-table-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7M10 14 21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>Export</span></td></tr>
+                      <tr><td>刷新数据</td><td><code>Refresh</code></td><td><span class="icon-guide-table-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.34 5.66"/><path d="M21 4v7h-7"/></svg>Refresh</span></td></tr>
+                      <tr><td>展开菜单</td><td><code>ChevronDown</code></td><td><span class="icon-guide-table-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>ChevronDown</span></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="icon-guide-principle">
+                  <span><strong>DO</strong>　保存修改 → <code>Save</code></span>
+                  <span><strong>DON'T</strong>　保存修改 → <code>SaveEdit</code></span>
+                </div>
+              </section>
+
+              <section class="doc-section icon-guideline-section">
+                <h2>Icon Skill Workflow</h2>
+                <p>页面、组件或 Pattern 中出现 Icon 需求时，统一调用 <code>skills/icon/SKILL.md</code>。本页面不重新定义 Icon 绘制算法，也不复制完整的 Skill 实现细节。</p>
+                <div class="icon-skill-flow" aria-label="Icon Skill 执行流程">
+                  <div class="icon-skill-step">Requirement</div><span class="icon-skill-arrow">↓</span>
+                  <div class="icon-skill-step">Semantic Intent</div><span class="icon-skill-arrow">↓</span>
+                  <div class="icon-skill-step">Search Existing Icon</div><span class="icon-skill-arrow">↓</span>
+                  <div class="icon-skill-branch"><div class="icon-skill-step">Found → Reuse</div><div class="icon-skill-step">Not Found → Generate</div></div><span class="icon-skill-arrow">↓</span>
+                  <div class="icon-skill-step">Validate</div><span class="icon-skill-arrow">↓</span>
+                  <div class="icon-skill-step">Output</div>
+                </div>
+                <div class="icon-skill-role">
+                  <div><strong>ICON 页面</strong><p>人看的使用规范：解释如何理解、选择与使用 Icon。</p></div>
+                  <div><strong>Icon Skill</strong><p>AI 执行规范：负责语义匹配、检索、复用、生成与校验。</p></div>
+                </div>
+                <div class="icon-guide-principle"><strong>Existing Icon First</strong><span>找到准确或等价语义的已有 Icon 时，必须优先复用。</span></div>
+              </section>
+
+              <section class="doc-section icon-guideline-section">
+                <h2>Do / Don't</h2>
+                <div class="icon-compare-grid">
+                  <div class="icon-compare-card">
+                    <strong>DO</strong>
                     <ul class="icon-rule-list">
-                      <li>已确认不存在相同或等价语义 Icon，且确实需要新增。</li>
-                      <li>使用 24×24 Canvas 与推荐 2px Safe Area。</li>
-                      <li>默认 Outline、2px Stroke、Round Cap / Join。</li>
-                      <li>使用 <code>currentColor</code>，不存在写死 HEX。</li>
-                      <li>路径不过度复杂，视觉重量与现有 Icon 一致。</li>
-                      <li>Filled 只表达已定义状态；输出为真实、可访问的 SVG。</li>
+                      <li>优先复用已有 Icon</li><li>使用通用语义命名</li><li>保持统一 Outline 风格</li><li>保持视觉重量一致</li><li>Icon 状态跟随 Component</li><li>新增 Icon 必须经过 Icon Skill 校验</li>
                     </ul>
                   </div>
-
+                  <div class="icon-compare-card">
+                    <strong>DON'T</strong>
+                    <ul class="icon-rule-list">
+                      <li>不调用 Google Icon Font、Material Symbols 或其他外部 Icon Font</li><li>不使用 Emoji / Unicode Symbol 代替正式 Icon</li><li>不为相同语义重复绘制 Icon</li><li>不因业务字段不同创造新的 Icon</li><li>不随意混用 Filled / Outline</li><li>不写死 Icon HEX Color</li><li>不使用 CSS Border 或大量 div 拼接正式 Icon</li>
+                    </ul>
+                  </div>
                 </div>
               </section>
 
@@ -7062,10 +7052,6 @@ topbarNav?.addEventListener("keydown", (event) => {
         "--brand-7",
         "--brand-8",
         "--brand-9",
-        "--brand-text",
-        "--brand-text-hover",
-        "--brand-border-soft",
-        "--brand-border-hover",
         "--radius-default",
         "--input-hover-border-color",
         "--input-focus-color",
@@ -7094,10 +7080,6 @@ topbarNav?.addEventListener("keydown", (event) => {
           root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
           root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
           root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
-          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
-          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
-          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
-          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
           root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-color", "var(--color-status-success)");
           root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
@@ -7118,10 +7100,6 @@ topbarNav?.addEventListener("keydown", (event) => {
         root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
         root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
         root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
-        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
-        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
-        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
-        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
         root.style.setProperty("--radius-default", "6px");
         root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
         root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));

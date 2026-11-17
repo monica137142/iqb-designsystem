@@ -18,10 +18,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
 
 
 
@@ -55,7 +55,7 @@
         --color-action-primary: var(--brand-5);
         --color-action-primary-hover: var(--brand-6);
         --color-action-primary-hover: var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled: var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -101,33 +101,33 @@
         --table-row-height-compact: 36px;
         --table-row-height-default: 44px;
         --table-row-height-relaxed: 56px;
-        --table-border-color: var(--color-border-subtle);
-        --table-header-bg: var(--color-bg-subtle);
-        --table-row-hover-bg: var(--color-bg-page);
-        --table-row-selected-bg: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
-        --table-row-selected-hover-bg: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
+        
+        
+        
+        
+        
         --table-card-radius: var(--radius-large);
-        --table-card-border: var(--color-border-subtle);
+        
         /* Table text roles: key data / body data / supporting metadata / disabled. */
-        --table-text-color: var(--color-text-default);
-        --table-title-text: var(--color-text-primary);
-        --table-header-text: var(--color-text-secondary);
-        --table-muted-text: var(--color-text-secondary);
-        --table-disabled-text: var(--color-text-disabled);
-        --table-control-border: var(--color-border-default);
-        --table-control-bg: var(--color-bg-container);
-        --table-control-hover-bg: var(--color-bg-hover);
-        --table-control-active-bg: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
-        --table-control-active-text: var(--color-action-primary-hover);
-        --table-overlay-bg: var(--color-bg-container);
-        --table-overlay-border: var(--color-border-subtle);
-        --table-tooltip-bg: var(--color-bg-inverse);
-        --table-scrollbar-thumb: var(--color-border-default);
-        --skeleton-color: var(--neutral-1);
-        --skeleton-highlight-color: var(--neutral-2);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         --skeleton-radius: var(--radius-small);
         --skeleton-animation-duration: 2.2s;
-        --table-placeholder-text: var(--color-text-disabled);
+        
         --table-example-padding: 36px;
         --table-example-gap: 18px;
         --table-icon-size: 13px;
@@ -138,39 +138,39 @@
         --table-sort-icon-size: 16px;
         --table-sort-icon-gap: 4px;
         --table-filter-icon-size: 14px;
-        --table-primary-action-bg: var(--color-action-primary);
+        
         --table-select-control-size: 14px;
         --table-expand-frame-size: 24px;
         --table-filter-menu-width: 236px;
         --table-filter-menu-padding: 6px;
         --table-filter-menu-radius: var(--radius-xlarge);
-        --table-filter-menu-bg: var(--color-bg-elevated);
+        
         --table-filter-menu-item-height: 32px;
         --table-filter-menu-item-gap: 9px;
         --table-search-popover-width: 260px;
         --table-search-action-size: 24px;
         --table-search-icon-size: 13px;
-        --table-search-action-hover-bg: var(--color-border-subtle);
+        
         --table-editable-focus-shadow: var(--shadow-focus);
-        --table-editable-select-icon-color: var(--color-text-disabled);
+        
         --table-empty-min-height: 128px;
         --table-skeleton-height: 10px;
         --table-drag-handle-size: 24px;
         --table-drag-dot-radius: 2px;
-        --table-drag-handle-hover-bg: var(--color-bg-subtle);
+        
         --table-drag-motion-duration: 0.18s;
         --table-fixed-left-width: 160px;
         --table-fixed-right-width: 112px;
-        --table-fixed-column-shadow: 5px 0 10px color-mix(in srgb, var(--neutral-10) 6%, transparent);
+        --table-fixed-column-shadow: 5px 0 10px color-mix(in srgb, var(--color-text-primary) 6%, transparent);
         --table-expand-content-offset: 54px;
         --switch-width: 36px;
         --switch-height: 20px;
         --switch-thumb-size: 16px;
         --switch-radius: var(--radius-full);
-        --switch-color-on: var(--color-action-primary);
-        --switch-color-off: var(--color-border-strong);
-        --switch-color-off-hover: var(--color-border-strong);
-        --switch-thumb-color: var(--neutral-0);
+        
+        
+        
+        
         --switch-thumb-shadow: none;
 
         font-family:
@@ -345,12 +345,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--color-text-primary);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -370,7 +370,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -382,7 +382,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -390,12 +390,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-text-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -406,7 +406,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -857,7 +857,7 @@
         gap: 18px;
         min-width: 0;
         padding: 0 12px 12px;
-        color: var(--table-muted-text);
+        color: var(--color-text-secondary);
         font-size:var(--font-style-body-size);
         line-height: var(--font-style-body-line-height);
       }
@@ -870,14 +870,14 @@
       }
 
       .automation-demo-stat .num {
-        color: var(--table-title-text);
+        color: var(--color-text-primary);
         font-size: var(--font-style-body-medium-size);
         font-weight: var(--font-style-body-medium-weight);
         line-height: var(--font-style-body-medium-line-height);
       }
 
       .automation-demo-stat .lbl {
-        color: var(--table-muted-text);
+        color: var(--color-text-secondary);
         font-size:var(--font-style-caption-size);
         line-height: var(--font-style-caption-line-height);
       }
@@ -887,7 +887,7 @@
         align-items: center;
         gap: 9px;
         margin: 0 0 8px;
-        color: var(--table-header-text);
+        color: var(--color-text-secondary);
         font-size:var(--font-style-body-medium-size);
         font-weight: var(--font-style-body-medium-weight);
         line-height: var(--font-style-body-medium-line-height);
@@ -925,7 +925,7 @@
       .automation-spec-card {
         position: relative;
         overflow: hidden;
-        border: 1px solid var(--table-card-border);
+        border: 1px solid var(--color-border-subtle);
         border-radius: var(--table-card-radius);
         background:var(--color-bg-container);
       }
@@ -944,7 +944,7 @@
         z-index: 4;
         content: "";
         pointer-events: none;
-        border: 1px solid var(--table-card-border);
+        border: 1px solid var(--color-border-subtle);
         border-radius: var(--table-card-radius);
       }
 
@@ -961,7 +961,7 @@
       .data-table-wrap::-webkit-scrollbar-thumb,
       .spec-table-wrap::-webkit-scrollbar-thumb {
         border-radius: var(--radius-full);
-        background: var(--table-scrollbar-thumb);
+        background: var(--color-border-default);
       }
 
       .automation-spec-table {
@@ -976,7 +976,7 @@
         gap: 10px;
         min-height: var(--table-row-height-default);
         padding: 8px 16px;
-        border-bottom: 1px solid var(--table-border-color);
+        border-bottom: 1px solid var(--color-border-subtle);
         color: var(--color-text-tertiary);
         font-size: var(--font-style-body-size);
         line-height: var(--font-style-body-line-height);
@@ -1059,17 +1059,17 @@
       }
 
       .automation-spec-row:not(.automation-spec-row-head):hover {
-        background: var(--table-row-hover-bg);
+        background: var(--color-bg-hover);
       }
 
       .automation-spec-row.is-highlight {
-        background: var(--table-row-selected-bg);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
         border-left: 3px solid var(--color-action-primary);
         padding-left: 13px;
       }
 
       .automation-spec-row.is-highlight:hover {
-        background: var(--table-row-selected-hover-bg);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
       }
 
       .automation-spec-row.is-highlight.no-marker {
@@ -1079,7 +1079,7 @@
       }
 
       .automation-spec-row.status-hover-row {
-        background: var(--table-row-hover-bg);
+        background: var(--color-bg-hover);
       }
 
       .status-empty-panel {
@@ -1090,18 +1090,18 @@
         justify-content: center;
         gap: 6px;
         padding: 28px 16px;
-        color: var(--table-muted-text);
+        color: var(--color-text-secondary);
         text-align: center;
       }
 
       .status-empty-title {
-        color: var(--table-text-color);
+        color: var(--color-text-default);
         font-size:var(--font-style-body-size);
         font-weight: var(--font-style-body-medium-weight);
       }
 
       .status-empty-desc {
-        color: var(--table-muted-text);
+        color: var(--color-text-secondary);
         font-size:var(--font-style-caption-size);
       }
 
@@ -1116,7 +1116,7 @@
         max-width: 120px;
         height: var(--table-skeleton-height);
         border-radius: var(--skeleton-radius);
-        background: linear-gradient(90deg, var(--skeleton-color) 32%, var(--skeleton-highlight-color) 50%, var(--skeleton-color) 68%);
+        background: linear-gradient(90deg, var(--color-bg-subtle) 32%, var(--color-border-subtle) 50%, var(--color-bg-subtle) 68%);
         background-size: 300% 100%;
         animation: skeleton-shimmer var(--skeleton-animation-duration) ease-in-out infinite;
       }
@@ -1144,18 +1144,18 @@
       .automation-spec-row.is-dragging {
         position: relative;
         z-index: 3;
-        background: var(--table-row-selected-bg);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
         opacity: 0.72;
       }
 
       .automation-spec-row.is-drag-over {
-        background: var(--table-row-hover-bg);
+        background: var(--color-bg-hover);
       }
 
       .fixed-column-scroll {
         width: 100%;
         overflow-x: auto;
-        scrollbar-color: var(--table-scrollbar-thumb) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
       }
 
@@ -1169,7 +1169,7 @@
 
       .fixed-column-scroll::-webkit-scrollbar-thumb {
         border-radius: var(--radius-full);
-        background: var(--table-scrollbar-thumb);
+        background: var(--color-border-default);
       }
 
       .fixed-column-table {
@@ -1177,14 +1177,14 @@
         min-width: 1080px;
         border-collapse: separate;
         border-spacing: 0;
-        color: var(--table-text-color);
+        color: var(--color-text-default);
         font-size: var(--font-style-body-size);
       }
 
       .fixed-column-table th,
       .fixed-column-table td {
         padding: 0 14px;
-        border-bottom: 1px solid var(--table-border-color);
+        border-bottom: 1px solid var(--color-border-subtle);
         background:var(--color-bg-container);
         text-align: left;
         vertical-align: middle;
@@ -1193,8 +1193,8 @@
 
       .fixed-column-table th {
         height: var(--table-header-height);
-        background: var(--table-header-bg);
-        color: var(--table-header-text);
+        background: var(--color-bg-subtle);
+        color: var(--color-text-secondary);
         font-size:var(--font-style-caption-size);
         font-weight: var(--font-style-body-medium-weight);
         line-height: var(--font-style-caption-line-height);
@@ -1205,7 +1205,7 @@
       }
 
       .fixed-column-table tbody tr:hover td {
-        background: var(--table-row-hover-bg);
+        background: var(--color-bg-hover);
       }
 
       .fixed-column-table tbody tr:last-child td {
@@ -1229,7 +1229,7 @@
         z-index: 3;
         width: var(--table-fixed-right-width);
         min-width: var(--table-fixed-right-width);
-        box-shadow: -5px 0 10px color-mix(in srgb, var(--neutral-10) 6%, transparent);
+        box-shadow: -5px 0 10px color-mix(in srgb, var(--color-text-primary) 6%, transparent);
       }
 
       .fixed-column-table th:first-child,
@@ -1249,8 +1249,8 @@
         position: relative;
         z-index: 2;
         min-height: var(--table-header-height);
-        background: var(--table-header-bg);
-        color: var(--table-header-text);
+        background: var(--color-bg-subtle);
+        color: var(--color-text-secondary);
         font-size:var(--font-style-caption-size);
         font-weight: var(--font-style-body-medium-weight);
         line-height: var(--font-style-caption-line-height);
@@ -1314,7 +1314,7 @@
         padding: 5px 8px;
         content: attr(data-tooltip);
         border-radius: var(--radius-default);
-        background: var(--table-tooltip-bg);
+        background: var(--color-bg-inverse);
         color:var(--color-text-inverse);
         font-size: var(--font-style-caption-size);
         font-weight: var(--font-style-caption-weight);
@@ -1326,7 +1326,7 @@
       .table-head-action[data-tooltip]::after {
         bottom: calc(100% + 3px);
         content: "";
-        border-top: 5px solid var(--table-tooltip-bg);
+        border-top: 5px solid var(--color-bg-inverse);
         border-right: 5px solid transparent;
         border-left: 5px solid transparent;
       }
@@ -1340,14 +1340,14 @@
       }
 
       .table-head-action:hover {
-        background: var(--table-control-hover-bg);
-        color: var(--table-title-text);
+        background: var(--color-bg-hover);
+        color: var(--color-text-primary);
       }
 
       .table-head-action.active {
         height: var(--table-head-action-height);
         background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
-        color: var(--table-control-active-text);
+        color: var(--color-action-primary-hover);
       }
 
       .table-head-tools {
@@ -1384,7 +1384,7 @@
 
       .table-head-action.icon-only:hover {
         background: var(--color-border-subtle);
-        color: var(--table-title-text);
+        color: var(--color-text-primary);
       }
 
       .table-head-action.icon-only.active {
@@ -1431,7 +1431,7 @@
 
       .table-sort-mark.desc .sort-down,
       .table-sort-mark.asc .sort-up {
-        color: var(--table-control-active-text);
+        color: var(--color-action-primary-hover);
       }
 
       .table-filter-mark {
@@ -1448,8 +1448,8 @@
         gap: 4px;
         padding: 0 7px;
         border-radius: var(--radius-full);
-        background: var(--table-control-active-bg);
-        color: var(--table-control-active-text);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
+        color: var(--color-action-primary-hover);
         font-size: var(--font-style-caption-size);
         font-weight: var(--font-style-body-medium-weight);
         line-height: var(--font-style-caption-line-height);
@@ -1474,7 +1474,7 @@
         padding: var(--table-filter-menu-padding);
         border: 1px solid var(--color-border-subtle);
         border-radius: var(--table-filter-menu-radius);
-        background: var(--table-filter-menu-bg);
+        background: var(--color-bg-elevated);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -1498,7 +1498,7 @@
         border: 0;
         border-radius: var(--control-radius-menu-item);
         background: transparent;
-        color: var(--table-text-color);
+        color: var(--color-text-default);
         cursor: pointer;
         font-size: var(--font-style-body-size);
         text-align: left;
@@ -1512,7 +1512,7 @@
       }
 
       .table-filter-option:hover {
-        background: var(--table-row-hover-bg);
+        background: var(--color-bg-hover);
       }
 
       .table-filter-option input {
@@ -1520,7 +1520,7 @@
       }
 
       .table-filter-option.selected {
-        color: var(--table-control-active-text);
+        color: var(--color-action-primary-hover);
         font-weight: var(--font-style-body-medium-weight);
       }
 
@@ -1529,7 +1529,7 @@
         justify-content: flex-end;
         gap: 6px;
         padding-top: 8px;
-        border-top: 1px solid var(--table-border-color);
+        border-top: 1px solid var(--color-border-subtle);
       }
 
       .table-filter-menu-btn {
@@ -1540,8 +1540,8 @@
         padding: 0 10px;
         border: 0;
         border-radius: var(--radius-default);
-        background: var(--table-control-hover-bg);
-        color: var(--table-text-color);
+        background: var(--color-bg-hover);
+        color: var(--color-text-default);
         cursor: pointer;
         font-size:var(--font-style-caption-size);
         font-weight: 500;
@@ -1552,8 +1552,8 @@
       }
 
       .table-filter-menu-btn.primary {
-        background: var(--table-control-active-bg);
-        color: var(--table-control-active-text);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
+        color: var(--color-action-primary-hover);
       }
 
       .table-search-control {
@@ -1564,10 +1564,10 @@
         align-items: center;
         gap: 6px;
         padding: 8px;
-        border: 1px solid var(--table-control-border);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-large);
-        background: var(--table-control-bg);
-        color: var(--table-text-color);
+        background: var(--color-bg-container);
+        color: var(--color-text-default);
       }
 
       .table-head-search {
@@ -1590,19 +1590,19 @@
         border: 0;
         border-radius: var(--radius-default);
         background: transparent;
-        color: var(--table-header-text);
+        color: var(--color-text-secondary);
         cursor: pointer;
       }
 
       .table-search-icon-btn:hover,
       .table-search-icon-btn.open {
-        background: var(--table-search-action-hover-bg);
-        color: var(--table-title-text);
+        background: var(--color-border-subtle);
+        color: var(--color-text-primary);
       }
 
       .table-search-icon-btn.active {
-        background: var(--table-control-active-bg);
-        color: var(--table-control-active-text);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
+        color: var(--color-action-primary-hover);
       }
 
       .table-search-icon-btn svg {
@@ -1631,7 +1631,7 @@
       }
 
       .table-head-search.open .table-search-control {
-        border-color: var(--table-overlay-border);
+        border-color: var(--color-border-subtle);
         box-shadow: var(--shadow-overlay);
         pointer-events: auto;
         opacity: 1;
@@ -1651,7 +1651,7 @@
         z-index: 1;
         width: var(--table-icon-size);
         height: var(--table-icon-size);
-        color: var(--table-muted-text);
+        color: var(--color-text-secondary);
         pointer-events: none;
         transform: translateY(-50%);
       }
@@ -1661,11 +1661,11 @@
         width: 100%;
         height: 30px;
         padding: 0 30px;
-        border: 1px solid var(--table-control-border);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-default);
         outline: 0;
-        background: var(--table-control-bg);
-        color: var(--table-title-text);
+        background: var(--color-bg-container);
+        color: var(--color-text-primary);
         font-size: var(--font-style-body-size);
         font-weight: var(--font-style-body-weight);
         line-height: var(--font-style-body-line-height);
@@ -1681,7 +1681,7 @@
       }
 
       .table-search-input::placeholder {
-        color: var(--table-placeholder-text);
+        color: var(--color-text-disabled);
       }
 
       .input-clear-icon {
@@ -1697,7 +1697,7 @@
         border: 0;
         border-radius: var(--radius-full);
         background: transparent;
-        color: var(--table-muted-text);
+        color: var(--color-text-secondary);
         cursor: pointer;
         transform: translateY(-50%);
       }
@@ -1707,8 +1707,8 @@
       }
 
       .input-clear-icon:hover {
-        background: var(--table-control-hover-bg);
-        color: var(--table-text-color);
+        background: var(--color-bg-hover);
+        color: var(--color-text-default);
       }
 
       .input-clear-icon svg {
@@ -1731,8 +1731,8 @@
         padding: 0 10px;
         border: 0;
         border-radius: var(--radius-default);
-        background: var(--table-control-hover-bg);
-        color: var(--table-text-color);
+        background: var(--color-bg-hover);
+        color: var(--color-text-default);
         cursor: pointer;
         font-size: var(--font-style-body-size);
         font-weight: var(--font-style-body-weight);
@@ -1744,13 +1744,13 @@
       }
 
       .table-search-action.primary {
-        background: var(--table-control-active-bg);
-        color: var(--table-control-active-text);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
+        color: var(--color-action-primary-hover);
       }
 
       .table-search-empty {
         display: none;
-        border-bottom: 1px solid var(--table-border-color);
+        border-bottom: 1px solid var(--color-border-subtle);
       }
 
       .table-search-empty.visible {
@@ -1758,7 +1758,7 @@
       }
 
       .automation-task-title {
-        color: var(--table-title-text);
+        color: var(--color-text-primary);
         font-size: var(--font-style-body-size);
         font-weight: var(--font-style-body-medium-weight);
       }
@@ -1774,7 +1774,7 @@
       }
 
       .automation-spec-row.is-disabled {
-        color: var(--table-disabled-text);
+        color: var(--color-text-disabled);
       }
 
       .automation-spec-row.is-disabled .automation-task-title,
@@ -1811,7 +1811,7 @@
 
       .table-expand-btn:hover {
         background: color-mix(in srgb, var(--color-text-primary) 10%, transparent);
-        color: var(--table-title-text);
+        color: var(--color-text-primary);
       }
 
       .table-expand-btn svg {
@@ -1837,12 +1837,12 @@
         border: 0;
         border-radius: var(--radius-small);
         background: transparent;
-        color: var(--table-muted-text);
+        color: var(--color-text-secondary);
         cursor: grab;
       }
 
       .table-drag-handle:hover {
-        background: var(--table-drag-handle-hover-bg);
+        background: var(--color-action-neutral-bg-hover);
         color: var(--color-text-primary);
       }
 
@@ -1868,7 +1868,7 @@
 
       .automation-expand-panel {
         padding: 14px 16px 16px var(--table-expand-content-offset);
-        border-bottom: 1px solid var(--table-border-color);
+        border-bottom: 1px solid var(--color-border-subtle);
         background: var(--color-bg-subtle);
       }
 
@@ -1897,7 +1897,7 @@
       .automation-expand-value {
         display: block;
         overflow: hidden;
-        color: var(--table-text-color);
+        color: var(--color-text-default);
         font-size: var(--font-style-body-size);
         line-height: var(--font-style-body-line-height);
         text-overflow: ellipsis;
@@ -1924,7 +1924,7 @@
         border-radius: var(--radius-default);
         outline: 0;
         background: transparent;
-        color: var(--table-title-text);
+        color: var(--color-text-primary);
         font-size: var(--font-style-body-size);
       }
 
@@ -1940,7 +1940,7 @@
         margin-left: 0;
         padding: 0 8px;
         border-color: var(--color-border-focus);
-        background: var(--table-control-bg);
+        background: var(--color-bg-container);
         box-shadow: var(--table-editable-focus-shadow);
       }
 
@@ -1978,7 +1978,7 @@
         border-radius: var(--radius-large);
         outline: 0;
         background: transparent;
-        color: var(--table-title-text);
+        color: var(--color-text-primary);
         cursor: text;
         font-size: var(--font-style-body-size);
         line-height: var(--font-style-body-line-height);
@@ -1993,20 +1993,20 @@
         margin-left: 0;
         padding: 0 32px 0 12px;
         border-color: var(--color-border-default);
-        background: var(--table-control-bg);
+        background: var(--color-bg-container);
         cursor: pointer;
       }
 
       .table-spec-select.open,
       .table-select-demo.open .table-spec-select {
         border-color: var(--color-border-focus);
-        background: var(--table-control-bg);
+        background: var(--color-bg-container);
         box-shadow: var(--table-editable-focus-shadow);
       }
 
       .table-spec-select:focus-visible {
         border-color: var(--color-border-focus);
-        background: var(--table-control-bg);
+        background: var(--color-bg-container);
         box-shadow: var(--table-editable-focus-shadow);
       }
 
@@ -2030,7 +2030,7 @@
         width: 24px;
         height: 24px;
         padding: 4px;
-        color: var(--table-editable-select-icon-color);
+        color: var(--color-text-disabled);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%);
@@ -2060,9 +2060,9 @@
         z-index: 70;
         width: max(100%, 180px);
         padding: 6px;
-        border:1px solid var(--table-overlay-border);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-large);
-        background: var(--table-overlay-bg);
+        background: var(--color-bg-container);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -2087,24 +2087,24 @@
         gap: 10px;
         padding: 0 8px;
         border-radius: var(--radius-default);
-        color: var(--table-title-text);
+        color: var(--color-text-primary);
         cursor: pointer;
         font-size: var(--font-style-body-size);
         line-height: var(--font-style-body-line-height);
       }
 
       .table-select-option:hover {
-        background: var(--table-control-hover-bg);
+        background: var(--color-bg-hover);
       }
 
       .table-select-option.active {
         background: transparent;
-        color: var(--table-control-active-text);
+        color: var(--color-action-primary-hover);
       }
 
       .table-select-option.active:hover {
-        background: var(--table-control-hover-bg);
-        color: var(--table-control-active-text);
+        background: var(--color-bg-hover);
+        color: var(--color-action-primary-hover);
       }
 
       .table-select-option span:first-child {
@@ -2127,7 +2127,7 @@
         max-width: 100%;
         padding: 0 8px;
         overflow: hidden;
-        color: var(--table-text-color);
+        color: var(--color-text-default);
         font-size: var(--font-style-body-size);
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -2140,8 +2140,8 @@
         width: fit-content;
         padding: 3px 9px;
         border-radius: var(--radius-full);
-        background: var(--table-control-active-bg);
-        color: var(--table-control-active-text);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
+        color: var(--color-action-primary-hover);
         font-size:var(--font-style-caption-size);
         font-weight: var(--font-style-caption-weight);
         line-height: var(--font-style-caption-line-height);
@@ -2154,8 +2154,8 @@
       }
 
       .automation-inline-status.paused {
-        background: var(--table-control-hover-bg);
-        color: var(--table-muted-text);
+        background: var(--color-bg-hover);
+        color: var(--color-text-secondary);
       }
 
       .automation-switch {
@@ -2167,23 +2167,23 @@
         padding: 0;
         border: 0;
         border-radius: var(--switch-radius);
-        background: var(--switch-color-on);
+        background: var(--color-action-primary);
         cursor: pointer;
         transition: background-color 0.18s ease;
       }
 
       .automation-switch[aria-checked="false"],
       .automation-switch.paused {
-        background: var(--switch-color-off);
+        background: var(--color-border-strong);
       }
 
       .automation-switch[aria-checked="false"]:hover,
       .automation-switch.paused:hover {
-        background: var(--switch-color-off-hover);
+        background: var(--color-border-strong);
       }
 
       .automation-switch[aria-checked="true"]:hover {
-        background: var(--switch-color-on);
+        background: var(--color-action-primary);
       }
 
       .automation-switch:focus-visible {
@@ -2199,7 +2199,7 @@
         width: var(--switch-thumb-size);
         height: var(--switch-thumb-size);
         border-radius: var(--switch-radius);
-        background: var(--switch-thumb-color);
+        background: var(--color-bg-container);
         box-shadow: var(--switch-thumb-shadow);
         transform: translateX(calc(var(--switch-width) - var(--switch-thumb-size) - 4px));
         transition: transform 0.18s ease;
@@ -2227,7 +2227,7 @@
         padding: 0 14px;
         border: 1px solid var(--color-border-default);
         border-radius: var(--radius-large);
-        background: var(--table-control-bg);
+        background: var(--color-bg-container);
         color:var(--color-text-default);
         cursor: pointer;
         font-size:var(--font-style-body-size);
@@ -2265,9 +2265,9 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--table-control-border);
+        border: 1.4px solid var(--color-border-default);
         appearance: none;
-        background: var(--table-control-bg);
+        background: var(--color-bg-container);
         cursor: pointer;
         outline: 0;
         transition:
@@ -2281,7 +2281,7 @@
         left: 50%;
         top: 50%;
         content: "";
-        background: var(--table-control-bg);
+        background: var(--color-bg-container);
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.7);
         transition:
@@ -2306,18 +2306,18 @@
       .table-select-control[type="checkbox"]::after {
         width: 8px;
         height: 8px;
-        background: var(--neutral-0);
+        background: var(--color-text-inverse);
         clip-path: polygon(14% 45%, 0 60%, 38% 96%, 100% 18%, 86% 4%, 36% 68%);
       }
 
       .table-select-control:checked {
         border-color:var(--color-action-primary);
-        background: var(--table-primary-action-bg);
+        background: var(--color-action-primary);
       }
 
       .table-select-control[type="checkbox"]:indeterminate {
         border-color:var(--color-action-primary);
-        background: var(--table-primary-action-bg);
+        background: var(--color-action-primary);
       }
 
       .table-select-control:checked::after {
@@ -2329,7 +2329,7 @@
         width: 7px;
         height: 0;
         clip-path: none;
-        border: solid var(--neutral-0);
+        border: solid var(--color-text-inverse);
         border-width: 0 0 1.6px;
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
@@ -2379,10 +2379,10 @@
         justify-content: center;
         gap: 5px;
         padding: 0 14px;
-        border: 1px solid var(--table-control-border);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-large);
-        background: var(--table-control-bg);
-        color: var(--table-title-text);
+        background: var(--color-bg-container);
+        color: var(--color-text-primary);
         cursor: pointer;
         font-size:var(--font-style-body-size);
         font-weight: 400;
@@ -2391,7 +2391,7 @@
 
       .spec-btn:hover {
         border-color:var(--color-action-primary);
-        color: var(--table-control-active-text);
+        color: var(--color-action-primary-hover);
       }
 
       .spec-btn:focus-visible,
@@ -2404,14 +2404,14 @@
 
       .spec-btn.primary {
         border-color:var(--color-action-primary);
-        background: var(--table-primary-action-bg);
+        background: var(--color-action-primary);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.subtle {
         border-color: transparent;
-        background: var(--table-control-hover-bg);
-        color: var(--table-text-color);
+        background: var(--color-bg-hover);
+        color: var(--color-text-default);
       }
 
       .segmented-tabs {
@@ -2423,9 +2423,9 @@
         height: 40px;
         padding: 3px;
         overflow-x: auto;
-        border: 1px solid var(--table-border-color);
+        border: 1px solid var(--color-border-subtle);
         border-radius: var(--radius-large);
-        background: var(--table-control-hover-bg);
+        background: var(--color-bg-hover);
       }
 
       .segmented-tab {
@@ -2437,7 +2437,7 @@
         border: 0;
         border-radius: var(--radius-large);
         background: transparent;
-        color: var(--table-text-color);
+        color: var(--color-text-default);
         cursor: pointer;
         font-size:var(--font-style-body-size);
         font-weight: 500;
@@ -2445,12 +2445,12 @@
       }
 
       .segmented-tab:hover {
-        color: var(--table-control-active-text);
+        color: var(--color-action-primary-hover);
       }
 
       .segmented-tab.active {
-        background: var(--table-control-bg);
-        color: var(--table-title-text);
+        background: var(--color-bg-container);
+        color: var(--color-text-primary);
       }
 
       .segmented-tab-count {
@@ -2464,7 +2464,7 @@
         margin-top: 14px;
         overflow: hidden;
         background:var(--color-bg-container);
-        border:1px solid var(--table-border-color);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-default);
       }
 
@@ -2474,7 +2474,7 @@
         justify-content: space-between;
         gap: 12px;
         padding: 12px;
-        border-bottom:1px solid var(--table-border-color);
+        border-bottom:1px solid var(--color-border-subtle);
       }
 
       .table-toolbar-left,
@@ -2489,9 +2489,9 @@
         width: 180px;
         height: 32px;
         padding: 0 10px;
-        color: var(--table-title-text);
-        background: var(--table-control-bg);
-        border: 1px solid var(--table-control-border);
+        color: var(--color-text-primary);
+        background: var(--color-bg-container);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-default);
       }
 
@@ -2550,7 +2550,7 @@
 
       .data-table-wrap {
         overflow-x: auto;
-        scrollbar-color: var(--table-scrollbar-thumb) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
       }
 
@@ -2559,7 +2559,7 @@
         min-width: 760px;
         border-collapse: separate;
         border-spacing: 0;
-        color: var(--table-text-color);
+        color: var(--color-text-default);
         font-size:var(--font-style-body-size);
       }
 
@@ -2567,7 +2567,7 @@
       .data-table td {
         height: 44px;
         padding: 0 14px;
-        border-bottom:1px solid var(--table-border-color);
+        border-bottom:1px solid var(--color-border-subtle);
         text-align: left;
         vertical-align: middle;
         white-space: nowrap;
@@ -2575,18 +2575,18 @@
 
       .data-table th {
         height: 40px;
-        color: var(--table-header-text);
-        background: var(--table-header-bg);
+        color: var(--color-text-secondary);
+        background: var(--color-bg-subtle);
         font-size:var(--font-style-caption-size);
         font-weight: 500;
       }
 
       .data-table tbody tr:hover td {
-        background: var(--table-row-hover-bg);
+        background: var(--color-bg-hover);
       }
 
       .data-table tr.selected td {
-        background: var(--table-row-selected-bg);
+        background: color-mix(in srgb, var(--color-action-primary) 20%, transparent);
       }
 
       .data-table tr:last-child td {
@@ -2637,7 +2637,7 @@
         align-items: center;
         justify-content: center;
         padding: 0;
-        color: var(--table-control-active-text);
+        color: var(--color-action-primary-hover);
         background: transparent;
         border: 0;
         cursor: pointer;
@@ -2658,7 +2658,7 @@
         border-collapse: separate;
         border-spacing: 0;
         background:var(--color-bg-container);
-        border:1px solid var(--table-border-color);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-default);
         overflow: hidden;
       }
@@ -2666,15 +2666,15 @@
       .density-demo th,
       .density-demo td {
         padding: 0 12px;
-        border-bottom:1px solid var(--table-border-color);
+        border-bottom:1px solid var(--color-border-subtle);
         text-align: left;
         font-size:var(--font-style-body-size);
       }
 
       .density-demo th {
         height: var(--table-row-height-default);
-        color: var(--table-header-text);
-        background: var(--table-header-bg);
+        color: var(--color-text-secondary);
+        background: var(--color-bg-subtle);
         font-size:var(--font-style-caption-size);
         font-weight: 500;
       }
@@ -2721,7 +2721,7 @@
         overflow-x: auto;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-default);
-        scrollbar-color: var(--table-scrollbar-thumb) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
       }
 
@@ -2741,8 +2741,8 @@
       }
 
       .spec-table th {
-        color: var(--table-header-text);
-        background: var(--table-header-bg);
+        color: var(--color-text-secondary);
+        background: var(--color-bg-subtle);
         font-weight: var(--font-style-body-medium-weight);
       }
 
@@ -2751,7 +2751,7 @@
       }
 
       .spec-table code {
-        color: var(--table-title-text);
+        color: var(--color-text-primary);
         background:var(--color-bg-subtle);
         border-radius: var(--radius-small);
         padding: 2px 5px;
@@ -3374,8 +3374,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -4236,7 +4236,7 @@
                 <div class="doc-grid">
                   <div class="example-block full table-example-block">
                     <div class="example-head"><h3>Hover</h3>
-                    <p>任务行 hover 只使用 <code>--table-row-hover-bg</code> 对应的浅灰背景，不增加阴影，不改变行高和列宽。</p></div>
+                    <p>任务行 hover 只使用 <code>--color-bg-hover</code> 对应的浅灰背景，不增加阴影，不改变行高和列宽。</p></div>
                     <div class="automation-spec-group" aria-label="Hover 状态案例示意">
                       <div class="automation-spec-card">
                         <div class="automation-spec-table">
@@ -4599,91 +4599,27 @@
                         <td><code>44px</code></td>
                         <td>默认行高别名，指向 <code>--table-row-height-default</code>。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-border-color</code></td>
-                        <td><code>var(--color-border-subtle)</code></td>
-                        <td>表格外框、表头和行分割线颜色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-header-bg</code></td>
-                        <td><code>var(--color-bg-subtle)</code></td>
-                        <td>表头背景色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-row-hover-bg</code></td>
-                        <td><code>var(--color-bg-hover)</code></td>
-                        <td>数据行 hover 背景色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-row-selected-bg</code></td>
-                        <td><code>color-mix(in srgb, var(--color-action-primary) 20%, transparent)</code></td>
-                        <td>新建或详情联动行的 20% 品牌色背景；不附加左侧色条。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-row-selected-hover-bg</code></td>
-                        <td><code>color-mix(in srgb, var(--color-action-primary) 20%, transparent)</code></td>
-                        <td>选中行 hover 背景色。</td>
-                      </tr>
+                      
+                      
+                      
+                      
+                      
                       <tr>
                         <td><code>--table-card-radius</code></td>
                         <td><code>var(--radius-large)</code></td>
                         <td>自动化表格卡片圆角。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-card-border</code></td>
-                        <td><code>var(--color-border-subtle)</code></td>
-                        <td>表格卡片外描边；浮层场景使用覆盖层保持圆角描边可见。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-text-color</code></td>
-                        <td><code>var(--color-text-default)</code></td>
-                        <td>表格正文、单元格内容主色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-title-text</code></td>
-                        <td><code>var(--color-text-primary)</code></td>
-                        <td>任务名称、重要字段和输入值颜色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-header-text</code></td>
-                        <td><code>var(--color-text-tertiary)</code></td>
-                        <td>表头文字、列工具图标默认色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-muted-text</code></td>
-                        <td><code>var(--color-text-tertiary)</code></td>
-                        <td>辅助信息、统计标签和空状态说明色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-disabled-text</code></td>
-                        <td><code>var(--color-text-disabled)</code></td>
-                        <td>禁用行和禁用操作文字色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-control-border</code></td>
-                        <td><code>var(--color-border-default)</code></td>
-                        <td>表格内筛选、分页、勾选控件默认描边。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-control-bg</code></td>
-                        <td><code>var(--color-bg-container)</code></td>
-                        <td>表格内轻量控件默认背景。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-control-hover-bg</code></td>
-                        <td><code>var(--color-bg-hover)</code></td>
-                        <td>表头操作、分页、下拉选项 hover 背景。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-control-active-bg</code></td>
-                        <td><code>color-mix(in srgb, var(--color-action-primary) 20%, transparent)</code></td>
-                        <td>排序、筛选、当前分页和轻量激活态的 20% 品牌色背景。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-control-active-text</code></td>
-                        <td><code>var(--color-action-primary-hover)</code></td>
-                        <td>排序、筛选、行内主操作等激活态文字色。</td>
-                      </tr>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
                       <tr>
                         <td><code>--table-example-padding</code></td>
                         <td><code>36px</code></td>
@@ -4694,11 +4630,7 @@
                         <td><code>32px</code></td>
                         <td>行内操作按钮使用 Button default 尺寸。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-primary-action-bg</code></td>
-                        <td><code>var(--color-action-primary)</code></td>
-                        <td>表格右上角 primary 添加按钮背景。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--table-select-control-size</code></td>
                         <td><code>14px</code></td>
@@ -4724,11 +4656,7 @@
                         <td><code>var(--radius-xlarge)</code></td>
                         <td>筛选浮层圆角，复用 Dropdown 浮层圆角。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-filter-menu-bg</code></td>
-                        <td><code>var(--color-bg-elevated)</code></td>
-                        <td>筛选浮层背景语义色。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--table-filter-menu-item-height</code></td>
                         <td><code>32px</code></td>
@@ -4739,21 +4667,9 @@
                         <td><code>9px</code></td>
                         <td>筛选菜单项中选择控件与文字的间距。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-overlay-bg</code></td>
-                        <td><code>var(--color-bg-container)</code></td>
-                        <td>表头筛选、搜索、页数选择等浮层背景。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-overlay-border</code></td>
-                        <td><code>var(--color-border-subtle)</code></td>
-                        <td>表格浮层描边。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-tooltip-bg</code></td>
-                        <td><code>var(--color-bg-inverse)</code></td>
-                        <td>表头工具提示背景。</td>
-                      </tr>
+                      
+                      
+                      
                       <tr>
                         <td><code>--table-search-popover-width</code></td>
                         <td><code>260px</code></td>
@@ -4769,21 +4685,13 @@
                         <td><code>13px</code></td>
                         <td>表头 Search 语义图标的显示尺寸。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-search-action-hover-bg</code></td>
-                        <td><code>var(--color-border-subtle)</code></td>
-                        <td>搜索入口 hover/open 背景，比表头背景深一级。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--table-editable-focus-shadow</code></td>
                         <td><code>var(--shadow-focus)</code></td>
                         <td>可编辑文本输入激活时的焦点投影。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-editable-select-icon-color</code></td>
-                        <td><code>var(--color-text-disabled)</code></td>
-                        <td>可编辑调度规则 Select Trigger 的下拉箭头语义色。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--table-empty-min-height</code></td>
                         <td><code>128px</code></td>
@@ -4794,31 +4702,15 @@
                         <td><code>10px</code></td>
                         <td>Loading 骨架屏线条高度。</td>
                       </tr>
-                      <tr>
-                        <td><code>--skeleton-color</code></td>
-                        <td><code>var(--neutral-1)</code></td>
-                        <td>复用 Skeleton 的骨架基础色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--skeleton-highlight-color</code></td>
-                        <td><code>var(--neutral-2)</code></td>
-                        <td>复用 Skeleton 的扫光高亮色。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--skeleton-animation-duration</code></td>
                         <td><code>2.2s</code></td>
                         <td>复用 Skeleton 的单次扫光周期。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-scrollbar-thumb</code></td>
-                        <td><code>var(--color-border-default)</code></td>
-                        <td>横向滚动表格的滚动条滑块色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--table-placeholder-text</code></td>
-                        <td><code>var(--color-text-disabled)</code></td>
-                        <td>搜索输入 placeholder 和空值提示色。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--table-drag-handle-size</code></td>
                         <td><code>24px</code></td>
@@ -4829,11 +4721,7 @@
                         <td><code>2px</code></td>
                         <td>Grip Symbol 中 6 个实心圆点的半径。</td>
                       </tr>
-                      <tr>
-                        <td><code>--table-drag-handle-hover-bg</code></td>
-                        <td><code>var(--color-bg-subtle)</code></td>
-                        <td>拖拽锚点无描边 Icon Button 的 hover 背景。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--table-drag-motion-duration</code></td>
                         <td><code>0.18s</code></td>
@@ -4874,27 +4762,31 @@
                         <td><code>16px</code></td>
                         <td>Switch default 滑块尺寸。</td>
                       </tr>
-                      <tr>
-                        <td><code>--switch-color-on</code></td>
-                        <td><code>var(--color-action-primary)</code></td>
-                        <td>Switch 开启态轨道背景。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--switch-color-off</code></td>
-                        <td><code>var(--color-border-strong)</code></td>
-                        <td>Switch 关闭态轨道背景。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--switch-thumb-color</code></td>
-                        <td><code>var(--neutral-0)</code></td>
-                        <td>Switch 旋钮颜色，沿用 Switch 组件规范。</td>
-                      </tr>
+                      
+                      
+                      
                       <tr>
                         <td><code>--switch-focus-shadow</code></td>
                         <td><code>var(--shadow-focus)</code></td>
                         <td>Switch 获焦投影，沿用选择器类控件固定焦点语义。</td>
                       </tr>
-                    </tbody>
+                    
+<tr><td><code>--color-border-subtle</code></td><td><code>neutral-2 / neutral-8</code></td><td>表格外框、表头和行分割线颜色；表格卡片外描边；浮层场景使用覆盖层保持圆角描边可见；表格浮层描边；搜索入口 hover/open 背景，比表头背景深一级；复用 Skeleton 的扫光高亮色。</td></tr>
+<tr><td><code>--color-bg-subtle</code></td><td><code>neutral-1 / neutral-9</code></td><td>表头背景色；复用 Skeleton 的骨架基础色。</td></tr>
+<tr><td><code>--color-bg-hover</code></td><td><code>neutral-1 / neutral-9</code></td><td>数据行 hover 背景色；表头操作、分页、下拉选项 hover 背景。</td></tr>
+<tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>新建或详情联动行的 20% 品牌色背景；不附加左侧色条。 使用 <code>color-mix(in srgb, var(--color-action-primary) 20%, transparent)</code>；选中行 hover 背景色。 使用 <code>color-mix(in srgb, var(--color-action-primary) 20%, transparent)</code>；排序、筛选、当前分页和轻量激活态的 20% 品牌色背景。 使用 <code>color-mix(in srgb, var(--color-action-primary) 20%, transparent)</code>；表格右上角 primary 添加按钮背景；Switch 开启态轨道背景。</td></tr>
+<tr><td><code>--color-text-default</code></td><td><code>neutral-9 / neutral-2</code></td><td>表格正文、单元格内容主色。</td></tr>
+<tr><td><code>--color-text-primary</code></td><td><code>neutral-10 / neutral-1</code></td><td>任务名称、重要字段和输入值颜色。</td></tr>
+<tr><td><code>--color-text-secondary</code></td><td><code>neutral-7 / neutral-4</code></td><td>表头文字、列工具图标默认色；辅助信息、统计标签和空状态说明色。</td></tr>
+<tr><td><code>--color-text-disabled</code></td><td><code>neutral-4 / neutral-6</code></td><td>禁用行和禁用操作文字色；可编辑调度规则 Select Trigger 的下拉箭头语义色；搜索输入 placeholder 和空值提示色。</td></tr>
+<tr><td><code>--color-border-default</code></td><td><code>neutral-3 / neutral-7</code></td><td>表格内筛选、分页、勾选控件默认描边；横向滚动表格的滚动条滑块色。</td></tr>
+<tr><td><code>--color-bg-container</code></td><td><code>neutral-0 / neutral-11</code></td><td>表格内轻量控件默认背景；表头筛选、搜索、页数选择等浮层背景；Switch 旋钮颜色，沿用 Switch 组件规范。</td></tr>
+<tr><td><code>--color-action-primary-hover</code></td><td><code>brand-6 / brand-6</code></td><td>排序、筛选、行内主操作等激活态文字色。</td></tr>
+<tr><td><code>--color-bg-elevated</code></td><td><code>neutral-0 / neutral-10</code></td><td>筛选浮层背景语义色。</td></tr>
+<tr><td><code>--color-bg-inverse</code></td><td><code>neutral-9 / neutral-0</code></td><td>表头工具提示背景。</td></tr>
+<tr><td><code>--color-action-neutral-bg-hover</code></td><td><code>color-text-primary 10% / color-text-primary 10%</code></td><td>拖拽锚点无描边 Icon Button 的 hover 背景。</td></tr>
+<tr><td><code>--color-border-strong</code></td><td><code>neutral-4 / neutral-6</code></td><td>Switch 关闭态轨道背景。</td></tr>
+</tbody>
                   </table>
                 </div>
               </section>
@@ -5045,15 +4937,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         "--brand-7",
         "--brand-8",
         "--brand-9",
-        "--brand-text",
-        "--brand-text-hover",
-        "--brand-border-soft",
-        "--brand-border-hover",
         "--radius-default",
-        "--input-hover-border-color",
-        "--input-focus-color",
-        "--input-number-hover-border-color",
-        "--input-number-focus-color",
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -5077,14 +4961,6 @@ topbarNav?.addEventListener("keydown", (event) => {
           root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
           root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
           root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
-          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
-          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
-          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
-          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
-          root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-focus-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-focus-color", "var(--color-status-success)");
           return;
         }
 
@@ -5101,15 +4977,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
         root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
         root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
-        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
-        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
-        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
-        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
         root.style.setProperty("--radius-default", "6px");
-        root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-focus-color", iqbPaletteValue("--info-5"));
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {

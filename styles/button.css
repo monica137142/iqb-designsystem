@@ -92,13 +92,13 @@ button[class].primary-solid:hover {
   border-color: var(--button-color-primary-hover);
 }
 
-button[class]:is(.permission, .secondary, .subtle) {
+button[class]:is(.secondary, .subtle) {
   color: var(--color-text-primary);
   background: var(--button-color-secondary-bg);
   border-color: transparent;
 }
 
-button[class]:is(.permission, .secondary, .subtle):hover {
+button[class]:is(.secondary, .subtle):hover {
   color: var(--color-text-primary);
   background: var(--button-color-secondary-bg-hover);
   border-color: transparent;
@@ -362,7 +362,7 @@ button[class].primary-solid:disabled:hover {
   border-color: var(--button-color-primary);
 }
 
-button[class]:is(.permission, .secondary, .subtle):disabled:hover {
+button[class]:is(.secondary, .subtle):disabled:hover {
   color: var(--color-text-primary);
   background: var(--button-color-secondary-bg);
   border-color: transparent;

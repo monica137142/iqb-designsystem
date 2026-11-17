@@ -18,10 +18,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
 
 
 
@@ -55,7 +55,7 @@
         --color-action-primary: var(--brand-5);
         --color-action-primary-hover: var(--brand-6);
         --color-action-primary-hover: var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled: var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -72,28 +72,28 @@
         --input-height-default: 38px;
         --input-height-large: 44px;
         --input-radius: var(--radius-large);
-        --input-border-color: var(--color-border-default);
-        --input-hover-border-color:var(--color-action-primary);
-        --input-focus-color:var(--color-action-primary);
+        
+        
+        
 
-        --input-error-color: var(--color-status-error);
+        
         --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
-        --input-text-color: var(--color-text-primary);
-        --input-placeholder-color: var(--color-text-tertiary);
-        --input-disabled-border-color: var(--color-border-default);
-        --input-disabled-bg: var(--color-bg-subtle);
-        --input-disabled-color: var(--color-text-disabled);
+        
+        
+        
+        
+        
         --input-disabled-opacity: 0.6;
-        --autocomplete-disabled-border-color: var(--color-border-default);
-        --autocomplete-option-selected-bg: var(--color-bg-hover);
+        
+        
         --autocomplete-dropdown-shadow: var(--shadow-overlay);
         --autocomplete-dropdown-offset: 8px;
         --autocomplete-option-height: 34px;
         --autocomplete-agent-option-height: 64px;
         --autocomplete-group-label-padding: 6px 10px 4px;
         --scrollbar-width-thin: 4px;
-        --scrollbar-track-color: transparent;
-        --scrollbar-thumb-color: var(--color-border-default);
+        
+        
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -248,12 +248,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -273,7 +273,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -285,7 +285,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -293,12 +293,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-action-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -309,7 +309,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -736,7 +736,7 @@
       .spec-label.required::after {
         content: "*";
         margin-left: 4px;
-        color: var(--input-error-color);
+        color: var(--color-status-error);
       }
 
       .spec-field-help {
@@ -746,7 +746,7 @@
       }
 
       .spec-field.error .spec-field-help {
-        color: var(--input-error-color);
+        color: var(--color-status-error);
       }
 
       .spec-input,
@@ -754,9 +754,9 @@
       .spec-input-wrap {
         width: 100%;
         min-height: var(--input-height-default);
-        color: var(--input-text-color);
+        color: var(--color-text-default);
         background:var(--color-bg-container);
-        border: 1px solid var(--input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--input-radius);
         outline: none;
         transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
@@ -774,6 +774,23 @@
         font-size:var(--font-style-body-size);
         line-height: 1.6;
         resize: vertical;
+        scrollbar-color: var(--color-border-default) transparent;
+        scrollbar-width: thin;
+      }
+
+      .spec-textarea::-webkit-scrollbar {
+        width: var(--scrollbar-width-thin);
+        height: var(--scrollbar-width-thin);
+      }
+
+      .spec-textarea::-webkit-scrollbar-track,
+      .spec-textarea::-webkit-scrollbar-corner {
+        background: transparent;
+      }
+
+      .spec-textarea::-webkit-scrollbar-thumb {
+        background: var(--color-border-default);
+        border-radius: 999px;
       }
 
       .spec-textarea.two-line {
@@ -792,7 +809,7 @@
       .spec-input-wrap.hover,
       .spec-textarea:hover,
       .spec-textarea.hover {
-        border-color: var(--input-hover-border-color);
+        border-color: var(--color-action-primary);
       }
 
       .spec-input:focus,
@@ -801,7 +818,7 @@
       .spec-input-wrap.focus,
       .spec-textarea:focus,
       .spec-textarea.focus {
-        border-color: var(--input-focus-color);
+        border-color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -809,16 +826,16 @@
       .auto-complete.is-focus .spec-input-wrap,
       .auto-complete:focus-within .spec-textarea,
       .auto-complete.is-focus .spec-textarea {
-        border-color: var(--input-focus-color);
+        border-color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
       .spec-input:disabled,
       .spec-input.disabled,
       .spec-input-wrap.disabled {
-        color: var(--input-disabled-color);
-        background: var(--input-disabled-bg);
-        border-color: var(--autocomplete-disabled-border-color);
+        color: var(--color-text-disabled);
+        background: var(--color-bg-disabled);
+        border-color: var(--color-border-disabled);
         cursor: not-allowed;
         opacity: var(--input-disabled-opacity);
         box-shadow: none;
@@ -826,14 +843,14 @@
 
       .spec-field.error .spec-input,
       .spec-field.error .spec-input-wrap {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-field.error .spec-input:focus,
       .spec-field.error .spec-input-wrap:focus-within,
       .spec-field.error .spec-input.focus,
       .spec-field.error .spec-input-wrap.focus {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-error-shadow);
       }
 
@@ -879,7 +896,7 @@
         flex: 0 0 auto;
         width: 15px;
         height: 15px;
-        color: var(--color-text-disabled);
+        color: var(--input-icon-color);
         fill: none;
         stroke: currentColor;
         stroke-linecap: round;
@@ -895,7 +912,7 @@
         width: 20px;
         height: 20px;
         padding: 0;
-        color:var(--color-text-disabled);
+        color:var(--input-icon-color);
         background: transparent;
         border: 0;
         border-radius: var(--radius-full);
@@ -903,7 +920,7 @@
       }
 
       .input-clear:hover {
-        color:var(--color-text-default);
+        color:var(--input-icon-color);
         background:var(--color-bg-hover);
       }
 
@@ -926,6 +943,12 @@
         width: min(100%, 360px);
       }
 
+      .example-head + .auto-complete,
+      .example-head + .spec-field,
+      .example-head + .size-row {
+        margin-top: 14px;
+      }
+
       .auto-complete.wide {
         width: min(100%, 620px);
       }
@@ -944,7 +967,7 @@
         overflow-x: hidden;
         overflow-y: auto;
         list-style: none;
-        scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
         background:var(--color-bg-container);
         border:1px solid var(--color-border-subtle);
@@ -958,11 +981,11 @@
       }
 
       .autocomplete-dropdown::-webkit-scrollbar-track {
-        background: var(--scrollbar-track-color);
+        background: transparent;
       }
 
       .autocomplete-dropdown::-webkit-scrollbar-thumb {
-        background: var(--scrollbar-thumb-color);
+        background: var(--color-border-default);
         border-radius: var(--radius-full);
       }
 
@@ -989,13 +1012,13 @@
       .autocomplete-option.is-selected,
       .autocomplete-option[aria-selected="true"] {
         color:var(--color-text-primary);
-        background: var(--autocomplete-option-selected-bg);
+        background: var(--color-bg-hover);
       }
 
       .auto-complete.simple-options .autocomplete-option.active,
       .auto-complete.simple-options .autocomplete-option[aria-selected="true"] {
         color:var(--color-text-primary);
-        background: var(--autocomplete-option-selected-bg);
+        background: var(--color-bg-hover);
       }
 
       .auto-complete.simple-options .autocomplete-option:hover {
@@ -1027,6 +1050,12 @@
         color:var(--color-text-tertiary);
         font-size: 11px;
         font-weight: 600;
+      }
+
+      [data-autocomplete-demo="query-fixed"] .autocomplete-group-label,
+      [data-autocomplete-demo="complex"] .autocomplete-group-label {
+        color: var(--color-text-disabled);
+        font-weight: var(--font-style-body-medium-weight);
       }
 
       .autocomplete-empty {
@@ -1063,7 +1092,7 @@
       .autocomplete-agent.is-selected,
       .autocomplete-agent[aria-selected="true"] {
         border-color: transparent;
-        background: var(--autocomplete-option-selected-bg);
+        background: var(--color-bg-hover);
       }
 
       .autocomplete-agent.is-selected,
@@ -1077,7 +1106,7 @@
         width: 38px;
         height: 38px;
         overflow: hidden;
-        color: var(--brand-7);
+        color: var(--color-action-primary-hover);
         background: var(--color-action-primary-bg-hover);
         border-radius: var(--radius-xlarge);
         font-size: 15px;
@@ -1132,7 +1161,7 @@
         min-height: 20px;
         padding: 0 8px;
         overflow: hidden;
-        color: var(--brand-7);
+        color: var(--color-action-primary-hover);
         background: var(--color-action-primary-bg-hover);
         border-radius: var(--radius-full);
         font-size: 10.5px;
@@ -1142,7 +1171,7 @@
       }
 
       .tag.blue {
-        color: var(--info-4);
+        color: var(--color-category-blue);
         background: var(--color-status-info-bg);
       }
 
@@ -1212,8 +1241,8 @@
 
 
 
-        --input-hover-border-color: var(--color-status-success);
-        --input-focus-color: var(--color-status-success);
+        
+        
 
       }
 
@@ -1229,8 +1258,8 @@
 
 
 
-        --input-hover-border-color: var(--color-action-primary);
-        --input-focus-color: var(--color-action-primary);
+        
+        
 
       }
 
@@ -1674,8 +1703,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -1730,10 +1759,10 @@
             <section class="doc-section">
               <h2>何时使用</h2>
               <ul class="rule-list">
-                <li>用户知道大致关键词，但完整名称、ID、描述或对象分类较多，需要边输入边缩小范围。</li>
-                <li>候选项可以被搜索、过滤、分组或实时计算结果数量，例如 Agent、任务、报告、连接和模板。</li>
-                <li>候选项随输入动态变化，或需要在输入框内保留自由文本时使用；仅从固定集合选择且无需输入时使用 Select。</li>
-                <li>候选项是层级路径时使用 Cascader；需要在长文本中插入对象时使用 Mentions。</li>
+                <li>适合按关键词查找 Agent、任务等对象，支持动态建议、分组查询和自由文本；固定选项用 Select，层级路径用 Cascader，长文本插入对象用 Mentions。</li>
+                <li>建议菜单在输入或聚焦时悬浮展开，不占布局空间；无结果时在浮层内展示空状态，分组标题不可选。</li>
+                <li>支持方向键切换、Enter 选择、Escape 收起和 Tab 离开；清除内容后保留输入焦点。</li>
+                <li>悬停与选中使用灰底反馈，命中文本保持默认颜色和字重。</li>
               </ul>
             </section>
 
@@ -1862,9 +1891,9 @@
                   <div class="auto-complete" data-autocomplete-demo="query-open">
                     <label class="spec-input-wrap" aria-label="跨类目查询">
                       <input class="spec-input" type="text" placeholder="搜索名称、ID 或描述" autocomplete="off" data-autocomplete-input />
-                      <svg class="input-icon" viewBox="0 0 20 20" aria-hidden="true">
-                        <circle cx="9" cy="9" r="5.5"></circle>
-                        <path d="m13.2 13.2 3.3 3.3"></path>
+                      <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <circle cx="11" cy="11" r="7"/>
+                        <path d="m16 16 5 5"/>
                       </svg>
                     </label>
                     <ul class="autocomplete-dropdown" role="listbox" aria-label="跨类目查询结果" data-autocomplete-dropdown>
@@ -1885,9 +1914,9 @@
                   <div class="auto-complete" data-autocomplete-demo="query-fixed">
                     <label class="spec-input-wrap" aria-label="类目内查询">
                       <input class="spec-input" type="text" placeholder="搜索名称、任务或报告" autocomplete="off" data-autocomplete-input />
-                      <svg class="input-icon" viewBox="0 0 20 20" aria-hidden="true">
-                        <circle cx="9" cy="9" r="5.5"></circle>
-                        <path d="m13.2 13.2 3.3 3.3"></path>
+                      <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                        <circle cx="11" cy="11" r="7"/>
+                        <path d="m16 16 5 5"/>
                       </svg>
                     </label>
                     <ul class="autocomplete-dropdown" role="listbox" aria-label="类目内查询结果" data-autocomplete-dropdown>
@@ -1991,18 +2020,6 @@
                   <input class="spec-input large" type="text" value="Large 44" />
                 </div>
               </div>
-            </section>
-
-            <section class="doc-section">
-              <h2>交互规则</h2>
-              <ul class="rule-list">
-                <li>下拉菜单始终悬浮在输入框下方，不占用示例卡片或表单布局高度。</li>
-                <li>输入显示类示例在有输入时打开浮层；获焦显示类示例聚焦即展示推荐，输入后筛选匹配项。</li>
-                <li>上下方向键移动 active 选项，Enter 选择，Escape 关闭浮层，Tab 按正常表单焦点顺序离开。</li>
-                <li>命中文本不使用绿色高亮或加粗；候选项选中后使用灰底高亮，复杂选项悬停和选中不增加描边。</li>
-                <li>查询模式可在输入框右侧展示搜索图标；不确定类目展示实时 results，确定类目使用不可选分组标题。</li>
-                <li>搜索类输入建议开启 allowClear；清除后输入框保留焦点，浮层同步切换为空态、最近使用或收起状态。</li>
-              </ul>
             </section>
 
             <section class="doc-section">
@@ -2162,7 +2179,7 @@
                   <thead>
                     <tr>
                       <th>Token</th>
-                      <th>值</th>
+                      <th>值（颜色为 Light / Dark）</th>
                       <th>用途</th>
                     </tr>
                   </thead>
@@ -2177,26 +2194,10 @@
                       <td><code>var(--radius-large)</code></td>
                       <td>输入框与浮层圆角。</td>
                     </tr>
-                    <tr>
-                      <td><code>--input-border-color</code></td>
-                      <td><code>var(--color-border-default)</code></td>
-                      <td>默认边框。</td>
-                    </tr>
-                    <tr>
-                      <td><code>--input-disabled-bg</code></td>
-                      <td><code>var(--color-bg-subtle)</code></td>
-                      <td>禁用态背景，与 Select disabled 一致。</td>
-                    </tr>
-                    <tr>
-                      <td><code>--input-disabled-color</code></td>
-                      <td><code>var(--color-text-disabled)</code></td>
-                      <td>禁用态文字与图标颜色。</td>
-                    </tr>
-                    <tr>
-                      <td><code>--autocomplete-disabled-border-color</code></td>
-                      <td><code>var(--color-border-default)</code></td>
-                      <td>禁用态边框颜色。</td>
-                    </tr>
+                    
+                    
+                    
+                    
                     <tr>
                       <td><code>--input-disabled-opacity</code></td>
                       <td><code>0.6</code></td>
@@ -2207,11 +2208,7 @@
                       <td><code>0 0 0 3px color-mix(in srgb, var(--color-action-primary) 10%, transparent)</code></td>
                       <td>聚焦态外层浅品牌色描边。</td>
                     </tr>
-                    <tr>
-                      <td><code>--autocomplete-option-selected-bg</code></td>
-                      <td><code>var(--color-bg-hover)</code></td>
-                      <td>候选项选中后的灰底高亮。</td>
-                    </tr>
+                    
                     <tr>
                       <td><code>--autocomplete-dropdown-shadow</code></td>
                       <td><code>var(--shadow-overlay)</code></td>
@@ -2240,19 +2237,17 @@
                     <tr>
                       <td><code>--scrollbar-width-thin</code></td>
                       <td><code>4px</code></td>
-                      <td>下拉菜单和浮层列表使用的细滚动条宽度。</td>
+                      <td>多行输入框、下拉菜单和浮层列表使用的细滚动条宽度。</td>
                     </tr>
-                    <tr>
-                      <td><code>--scrollbar-track-color</code></td>
-                      <td><code>transparent</code></td>
-                      <td>滚动条轨道透明，不出现底色。</td>
-                    </tr>
-                    <tr>
-                      <td><code>--scrollbar-thumb-color</code></td>
-                      <td><code>var(--color-border-default)</code></td>
-                      <td>滚动条滑块颜色。</td>
-                    </tr>
-                  </tbody>
+                    
+                    
+                  
+                      <tr><td><code>--color-border-default</code></td><td><code>neutral-3 / neutral-7</code></td><td>默认边框；滚动条滑块颜色。</td></tr>
+                      <tr><td><code>--color-bg-disabled</code></td><td><code>neutral-2 / neutral-8</code></td><td>禁用态背景，与 Select disabled 一致。</td></tr>
+                      <tr><td><code>--color-text-disabled</code></td><td><code>neutral-4 / neutral-6</code></td><td>禁用态文字与图标颜色。</td></tr>
+                      <tr><td><code>--color-border-disabled</code></td><td><code>neutral-2 / neutral-8</code></td><td>禁用态边框颜色。</td></tr>
+                      <tr><td><code>--color-bg-hover</code></td><td><code>neutral-1 / neutral-9</code></td><td>候选项选中后的灰底高亮。</td></tr>
+                    </tbody>
                 </table>
               </div>
             </section>
@@ -2401,13 +2396,7 @@ const productOptions = Array.from(document.querySelectorAll("[data-product-optio
         "--brand-7",
         "--brand-8",
         "--brand-9",
-        "--brand-text",
-        "--brand-text-hover",
-        "--brand-border-soft",
-        "--brand-border-hover",
         "--radius-default",
-        "--input-hover-border-color",
-        "--input-focus-color",
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -2430,12 +2419,6 @@ const productOptions = Array.from(document.querySelectorAll("[data-product-optio
           root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
           root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
           root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
-          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
-          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
-          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
-          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
-          root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-focus-color", "var(--color-status-success)");
           return;
         }
         if (activeProduct !== "decentralized") return;
@@ -2450,13 +2433,7 @@ const productOptions = Array.from(document.querySelectorAll("[data-product-optio
         root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
         root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
         root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
-        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
-        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
-        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
-        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
         root.style.setProperty("--radius-default", "6px");
-        root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {

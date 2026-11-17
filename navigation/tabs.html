@@ -8,10 +8,10 @@
     <style>
       :root {
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--success-6);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
         --color-text-primary: var(--neutral-10);
         --color-text-default: var(--neutral-9);
         --color-text-secondary: var(--neutral-6);
@@ -33,7 +33,7 @@
         --color-action-primary: var(--brand-5);
         --color-action-primary-hover: var(--brand-6);
         --color-action-primary-hover: var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled: var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -46,30 +46,30 @@
         --sidebar-width: 300px;
         --radius-default: 6px;
 
-        --input-border-color: var(--neutral-3);
-        --input-hover-border-color:var(--color-action-primary);
-        --input-focus-color:var(--color-action-primary);
+        
+        
+        
 
-        --input-error-color: var(--color-status-error);
-        --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-4) 12%, transparent);
-        --input-text-color: var(--neutral-7);
-        --input-placeholder-color: var(--neutral-4);
-        --input-disabled-border-color: var(--neutral-3);
-        --input-disabled-bg: var(--neutral-1);
-        --input-disabled-color: var(--neutral-4);
-        --input-number-hover-border-color:var(--color-action-primary);
-        --input-number-focus-color:var(--color-action-primary);
+        
+        --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
+        
+        
+        
+        
+        
+        
+        
 
-        --input-number-error-color: var(--color-status-error);
-        --input-number-error-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-4) 12%, transparent);
-        --input-number-disabled-border-color: var(--neutral-3);
-        --input-number-disabled-bg: var(--neutral-1);
-        --input-number-disabled-color: var(--neutral-4);
-        --divider-color: var(--neutral-2);
-        --divider-dot-color: var(--neutral-3);
+        
+        --input-number-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
+        
+        
+        
+        
+        
         --divider-dot-radius: 0.75px;
         --divider-dot-gap: 5px;
-        --divider-text-color:var(--color-text-tertiary);
+        
         --divider-margin: 18px 0;
         --divider-card-title-gap: 20px;
         --divider-list-inset: 48px;
@@ -244,12 +244,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--color-text-primary);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -269,7 +269,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -281,7 +281,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -289,12 +289,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: transparent;
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-text-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -305,7 +305,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -597,7 +597,7 @@
         min-height: 440px;
         border:1px dashed var(--color-border-default);
         border-radius: var(--radius-default);
-        background: color-mix(in srgb, var(--neutral-0) 76%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 76%, transparent);
       }
 
       .content-panel[hidden] {
@@ -720,7 +720,7 @@
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-default);
         background:
-          linear-gradient(180deg, color-mix(in srgb, var(--neutral-0) 82%, transparent), color-mix(in srgb, var(--neutral-0) 64%, transparent));
+          linear-gradient(180deg, color-mix(in srgb, var(--color-bg-container) 82%, transparent), color-mix(in srgb, var(--color-bg-container) 64%, transparent));
         color: inherit;
         cursor: pointer;
         text-align: left;
@@ -902,19 +902,19 @@
       .divider-demo-line {
         width: 100%;
         height: 1px;
-        background: var(--divider-color);
+        background: var(--color-border-subtle);
       }
 
       .divider-demo-line.dot-matrix {
         height: 2px;
         background:
-          radial-gradient(circle, var(--divider-dot-color) var(--divider-dot-radius), transparent 1.1px)
+          radial-gradient(circle, var(--color-border-default) var(--divider-dot-radius), transparent 1.1px)
           left center / var(--divider-dot-gap) 2px repeat-x;
       }
 
       .divider-demo-label {
         margin-bottom: calc(var(--divider-card-title-gap) - 14px);
-        color: var(--divider-text-color);
+        color: var(--color-text-tertiary);
         font-size:var(--font-style-caption-size);
         line-height: 1.4;
       }
@@ -923,7 +923,7 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        color: var(--divider-text-color);
+        color: var(--color-text-tertiary);
         font-size:var(--font-style-caption-size);
       }
 
@@ -932,7 +932,7 @@
         flex: 1;
         height: 1px;
         content: "";
-        background: var(--divider-color);
+        background: var(--color-border-subtle);
       }
 
       .divider-inline-demo {
@@ -947,7 +947,7 @@
       .divider-inline-demo span[aria-hidden="true"] {
         width: 1px;
         height: 18px;
-        background: var(--divider-color);
+        background: var(--color-border-subtle);
       }
 
       .divider-list-demo {
@@ -972,7 +972,7 @@
         border-radius: var(--radius-full);
         background:
           linear-gradient(135deg, color-mix(in srgb, var(--color-action-primary) 18%, transparent), color-mix(in srgb, var(--color-action-primary) 4%, transparent)),
-          var(--neutral-1);
+          var(--color-bg-subtle);
         border:1px solid var(--color-border-subtle);
       }
 
@@ -1004,7 +1004,7 @@
       .divider-list-divider {
         height: 1px;
         margin-left: var(--divider-list-inset);
-        background: var(--divider-color);
+        background: var(--color-border-subtle);
       }
 
       .color-system-group {
@@ -1256,7 +1256,7 @@
         justify-content: center;
         gap: 5px;
         padding: 0 14px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-large);
         background:var(--color-bg-container);
         color: var(--color-text-secondary);
@@ -1273,7 +1273,7 @@
 
       .spec-btn:hover {
         border-color:var(--color-action-primary);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn:focus-visible {
@@ -1288,8 +1288,8 @@
       }
 
       .spec-btn.primary:hover {
-        border-color: var(--brand-text);
-        background: var(--brand-text);
+        border-color: var(--color-action-primary);
+        background: var(--color-action-primary);
         color:var(--color-text-inverse);
       }
 
@@ -1314,12 +1314,12 @@
       .spec-btn.ghost-primary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.ghost-primary:hover {
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text-hover);
+        color: var(--color-action-primary-hover);
       }
 
       .spec-btn.solid {
@@ -1334,26 +1334,26 @@
         border-color: var(--color-border-default);
       }
 
-      .spec-btn.permission {
+      .spec-btn.secondary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
-      .spec-btn.permission:hover {
+      .spec-btn.secondary:hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.warning {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning-bg);
         color: var(--color-status-warning-hover);
       }
 
       .spec-btn.warning-primary {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
@@ -1365,13 +1365,13 @@
       }
 
       .spec-btn.warning-secondary {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: transparent;
         color: var(--color-status-warning-hover);
       }
 
       .spec-btn.warning-secondary:hover {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning-bg-hover);
         color: var(--warning-8);
       }
@@ -1399,25 +1399,25 @@
       }
 
       .spec-btn.info-primary {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-primary:hover {
-        border-color: var(--info-5);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-secondary:hover {
-        border-color: var(--info-5);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info-bg);
         color: var(--color-status-info);
       }
@@ -1425,7 +1425,7 @@
       .spec-btn.info-subtle {
         border-color: transparent;
         background: var(--color-status-info-bg);
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-subtle:hover {
@@ -1436,7 +1436,7 @@
       .spec-btn.info-text {
         border-color: transparent;
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-text:hover {
@@ -1445,7 +1445,7 @@
       }
 
       .spec-btn.danger {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
@@ -1457,7 +1457,7 @@
       }
 
       .spec-btn.danger-secondary {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: transparent;
         color: var(--color-status-error);
       }
@@ -1568,10 +1568,10 @@
         color:var(--color-text-inverse);
       }
 
-      .spec-btn.permission[disabled]:hover {
+      .spec-btn.secondary[disabled]:hover {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.subtle[disabled]:hover {
@@ -1600,13 +1600,13 @@
       }
 
       .spec-btn.warning-primary[disabled]:hover {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary[disabled]:hover {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: transparent;
         color: var(--color-status-warning-hover);
       }
@@ -1624,37 +1624,37 @@
       }
 
       .spec-btn.info-primary[disabled]:hover {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary[disabled]:hover {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-subtle[disabled]:hover {
         border-color: transparent;
         background: var(--color-status-info-bg);
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.danger[disabled]:hover {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary[disabled]:hover {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: transparent;
         color: var(--color-status-error);
       }
@@ -1685,7 +1685,7 @@
         width: 12px;
         height: 12px;
         flex: 0 0 auto;
-        border: 1.5px solid color-mix(in srgb, var(--neutral-0) 50%, transparent);
+        border: 1.5px solid color-mix(in srgb, var(--color-bg-container) 50%, transparent);
         border-top-color:var(--color-text-inverse);
         border-radius: var(--radius-full);
         animation: button-spin 0.72s linear infinite;
@@ -1693,7 +1693,7 @@
 
       .loading-dot.brand {
         border-color: color-mix(in srgb, var(--color-action-primary) 24%, transparent);
-        border-top-color: var(--brand-text);
+        border-top-color: var(--color-action-primary);
       }
 
       .loading-dot.neutral {
@@ -1733,16 +1733,16 @@
       .spec-label.required::before {
         content: "*";
         margin-right: 5px;
-        color: var(--danger-4);
+        color: var(--color-status-error);
       }
 
       .spec-input,
       .spec-textarea {
         width: 100%;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
-        color: var(--input-text-color);
+        color: var(--color-text-default);
         font-size:var(--font-style-body-size);
         outline: 0;
         transition:
@@ -1766,7 +1766,7 @@
 
       .spec-input::placeholder,
       .spec-textarea::placeholder {
-        color: var(--input-placeholder-color);
+        color: var(--color-text-tertiary);
       }
 
       .spec-input[type="search"]::-webkit-search-cancel-button {
@@ -1793,7 +1793,7 @@
       .spec-input-wrap:hover,
       .spec-input-wrap.hover,
       .spec-input-wrap.is-hover {
-        border-color: var(--input-hover-border-color);
+        border-color: var(--color-action-primary);
         background:var(--color-bg-container);
         box-shadow: none;
       }
@@ -1807,21 +1807,21 @@
       .spec-input-wrap:focus-within,
       .spec-input-wrap.focus,
       .spec-input-wrap.is-focus {
-        border-color: var(--input-focus-color);
+        border-color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
       .spec-input:disabled,
       .spec-textarea:disabled {
-        border-color: var(--input-disabled-border-color);
-        background: var(--input-disabled-bg);
-        color: var(--input-disabled-color);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
+        color: var(--color-text-disabled);
         cursor: not-allowed;
       }
 
       .spec-input-wrap:has(.spec-input:disabled):hover {
-        border-color: var(--input-disabled-border-color);
-        background: var(--input-disabled-bg);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
         box-shadow: none;
       }
 
@@ -1831,7 +1831,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         padding: 0 12px;
@@ -1962,7 +1962,7 @@
       .spec-field.over-limit .spec-input,
       .spec-field.over-limit .spec-textarea,
       .spec-input-wrap.error {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-field.error .spec-input:focus,
@@ -1980,7 +1980,7 @@
       .spec-input-wrap.error:focus-within,
       .spec-input-wrap.error.focus,
       .spec-input-wrap.error.is-focus {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-error-shadow);
       }
 
@@ -1995,7 +1995,7 @@
       }
 
       .spec-field.success .spec-field-help {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .count-demo-grid {
@@ -2043,7 +2043,7 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         color: var(--color-text-secondary);
@@ -2072,13 +2072,13 @@
       }
 
       .spec-select.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-select.error.open,
       .spec-select.error.focus {
-        border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-4) 12%, transparent);
+        border-color: var(--color-status-error-border);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-select.disabled {
@@ -2344,7 +2344,7 @@
         padding: 6px;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-xlarge);
-        background: color-mix(in srgb, var(--neutral-0) 94%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 94%, transparent);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -2420,12 +2420,12 @@
       }
 
       .select-option.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: transparent;
       }
 
       .select-option.active:hover {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: var(--color-bg-overlay-hover);
       }
 
@@ -2487,7 +2487,7 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         color: var(--color-text-secondary);
@@ -2515,11 +2515,11 @@
       }
 
       .spec-date.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-date.error.focus {
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-4) 12%, transparent);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-date.disabled {
@@ -2599,7 +2599,7 @@
         padding: 12px;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-xlarge);
-        background: color-mix(in srgb, var(--neutral-0) 94%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 94%, transparent);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -2693,7 +2693,7 @@
         display: grid;
         gap: 4px;
         overflow: auto;
-        scrollbar-color: color-mix(in srgb, var(--neutral-8) 22%, transparent) transparent;
+        scrollbar-color: color-mix(in srgb, var(--color-text-default) 22%, transparent) transparent;
         scrollbar-width: thin;
       }
 
@@ -2707,7 +2707,7 @@
 
       .date-time-list::-webkit-scrollbar-thumb {
         border-radius: var(--radius-full);
-        background: color-mix(in srgb, var(--neutral-8) 22%, transparent);
+        background: color-mix(in srgb, var(--color-text-default) 22%, transparent);
       }
 
       .date-time-option {
@@ -2734,7 +2734,7 @@
 
       .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-time-actions {
@@ -3014,7 +3014,7 @@
 
       .range-scope-tab.active {
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-tab:focus,
@@ -3022,7 +3022,7 @@
         outline: none;
         border-color: transparent;
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -3076,13 +3076,13 @@
       .range-scope-body .select-option.active,
       .range-scope-body .date-time-option.active {
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .select-option.active:hover,
       .range-scope-body .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .time-filter-panel .date-time-option.active,
@@ -3147,7 +3147,7 @@
 
       .date-shortcut:hover,
       .date-shortcut.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
@@ -3246,7 +3246,7 @@
       }
 
       .date-cell.today {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.active,
@@ -3257,17 +3257,17 @@
 
       .date-cell.in-range {
         background:var(--color-bg-subtle);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview {
         background: color-mix(in srgb, var(--color-action-primary) 10%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview-edge {
         background: color-mix(in srgb, var(--color-action-primary) 16%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-edge.range-preview-edge {
@@ -3331,7 +3331,7 @@
         display: inline-flex;
         align-items: stretch;
         overflow: hidden;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         transition:
@@ -3343,7 +3343,7 @@
       .number-input:hover,
       .number-input.hover,
       .number-input.is-hover {
-        border-color: var(--input-number-hover-border-color);
+        border-color: var(--color-action-primary);
         background:var(--color-bg-container);
         box-shadow: none;
       }
@@ -3351,7 +3351,7 @@
       .number-input:focus-within,
       .number-input.focus,
       .number-input.is-focus {
-        border-color: var(--input-number-focus-color);
+        border-color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -3393,7 +3393,7 @@
         display: grid;
         grid-template-rows: 1fr 1fr;
         flex: 0 0 auto;
-        border-left: 1px solid var(--neutral-3);
+        border-left: 1px solid var(--color-border-default);
         background: var(--color-bg-container);
       }
 
@@ -3410,7 +3410,7 @@
       }
 
       .number-step + .number-step {
-        border-top: 1px solid var(--neutral-3);
+        border-top: 1px solid var(--color-border-default);
       }
 
       .number-step:hover {
@@ -3452,23 +3452,23 @@
       }
 
       .number-input.error {
-        border-color: var(--input-number-error-color);
+        border-color: var(--color-status-error-border);
       }
 
       .number-input.error:focus-within,
       .number-input.error.focus,
       .number-input.error.is-focus {
-        border-color: var(--input-number-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-number-error-shadow);
       }
 
       .number-input.disabled {
-        border-color: var(--input-number-disabled-border-color);
-        background: var(--input-number-disabled-bg);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
       }
 
       .number-input.disabled .spec-input {
-        color: var(--input-number-disabled-color);
+        color: var(--color-text-disabled);
         cursor: not-allowed;
       }
 
@@ -3529,7 +3529,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--neutral-3);
+        border: 1.4px solid var(--color-border-default);
         border-radius: var(--radius-full);
         appearance: none;
         background:var(--color-bg-container);
@@ -3607,7 +3607,7 @@
         align-items: center;
         justify-content: center;
         padding: 5px 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-full);
         background:var(--color-bg-container);
         color: var(--color-text-tertiary);
@@ -3634,7 +3634,7 @@
       .radio-card:has(input:checked) {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .radio-card.disabled,
@@ -3652,7 +3652,7 @@
       .radio-card:has(input:checked:disabled):hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .checkbox-demo-stack {
@@ -3702,7 +3702,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--neutral-3);
+        border: 1.4px solid var(--color-border-default);
         border-radius: var(--radius-small);
         appearance: none;
         background:var(--color-bg-container);
@@ -3747,7 +3747,7 @@
         height: 0;
         background: transparent;
         clip-path: none;
-        border: solid var(--neutral-0);
+        border: solid var(--color-bg-container);
         border-width: 0 0 1.6px;
         opacity: 1;
         transform: translate(-50%, -50%) rotate(0) scale(1);
@@ -3829,8 +3829,8 @@
         position: relative;
         flex: 0 0 auto;
         border-radius: var(--radius-full);
-        background: var(--neutral-3);
-        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--neutral-9) 4%, transparent);
+        background: var(--color-border-default);
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-default) 4%, transparent);
         transition:
           background-color 0.18s ease,
           box-shadow 0.18s ease;
@@ -3845,7 +3845,7 @@
         content: "";
         border-radius: var(--radius-full);
         background:var(--color-bg-container);
-        box-shadow: 0 1px 3px color-mix(in srgb, var(--neutral-9) 22%, transparent);
+        box-shadow: 0 1px 3px color-mix(in srgb, var(--color-text-default) 22%, transparent);
         transition:
           transform 0.18s ease,
           box-shadow 0.18s ease;
@@ -3858,7 +3858,7 @@
         width: 10px;
         height: 10px;
         content: "";
-        border: 2px solid color-mix(in srgb, var(--neutral-6) 18%, transparent);
+        border: 2px solid color-mix(in srgb, var(--color-text-tertiary) 18%, transparent);
         border-top-color: var(--color-border-strong);
         border-radius: var(--radius-full);
         opacity: 0;
@@ -3867,7 +3867,7 @@
       }
 
       .spec-switch:hover .switch-track {
-        background: var(--neutral-4);
+        background: var(--color-text-disabled);
       }
 
       .spec-switch input:checked + .switch-track {
@@ -3881,7 +3881,7 @@
 
       .spec-switch input:checked + .switch-track::after {
         left: 26px;
-        border-color: color-mix(in srgb, var(--neutral-6) 18%, transparent);
+        border-color: color-mix(in srgb, var(--color-text-tertiary) 18%, transparent);
         border-top-color:var(--color-action-primary);
       }
 
@@ -4144,12 +4144,12 @@
       }
 
       .typography-prose a {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         text-decoration: none;
       }
 
       .typography-prose a:hover {
-        color: var(--brand-text-hover);
+        color: var(--color-action-primary-hover);
         text-decoration: underline;
       }
 
@@ -4249,75 +4249,101 @@
         --tabs-font-weight-large: var(--font-style-body-large-weight);
         --tabs-line-height-large: var(--font-style-body-large-line-height);
         --tabs-font-weight-active: var(--font-style-body-medium-weight);
-        --tabs-color: var(--color-text-secondary);
-        --tabs-hover-color: var(--color-text-primary);
-        --tabs-active-color: var(--color-text-primary);
-        --tabs-text-active-color: var(--color-action-primary);
-        --tabs-capsule-active-color: var(--brand-text);
-        --tabs-active-color-inverse: var(--color-text-inverse);
-        --tabs-disabled-color: var(--color-text-disabled);
-        --tabs-indicator-color: var(--color-action-primary);
+        
+        
+        
+        
+        
+        
+        
+        
         --tabs-indicator-size: 2px;
-        --tabs-border-color: var(--color-border-subtle);
-        --tabs-bg-hover: var(--color-bg-hover);
-        --tabs-bg-subtle: var(--color-bg-subtle);
-        --tabs-bg-active: var(--color-action-primary);
-        --tabs-card-bg: var(--color-bg-container);
-        --tabs-panel-color: var(--color-text-default);
-        --tabs-action-color: var(--color-text-secondary);
-        --tabs-action-hover-color: var(--color-text-primary);
-        --tabs-action-bg: var(--color-bg-container);
-        --tabs-action-hover-bg: var(--color-bg-hover);
-        --tabs-action-border-color: var(--color-border-subtle);
-        --tabs-action-hover-border-color: var(--color-border-default);
+        
+        
+        
+        
+        --tabs-option-gap: 4px;
+        --tabs-indicator-duration: 260ms;
+        --tabs-indicator-easing: cubic-bezier(0.22, 1, 0.36, 1);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         --tabs-radius: var(--radius-default);
         --tabs-hover-radius: var(--radius-small);
         --tabs-capsule-container-radius: var(--radius-large);
         --tabs-capsule-radius: var(--radius-default);
         --tabs-rounded-radius: var(--radius-full);
         --tabs-indicator-radius: var(--radius-full);
-        --tabs-capsule-border-selected: color-mix(in srgb, var(--color-border-subtle) 55%, var(--color-bg-container));
+        
         --tabs-scroll-button-size-x: 30px;
         --tabs-scroll-button-size-y: 40px;
       }
       .tabs-demo { margin-top: 14px; }
-      .tabs-bar { display: flex; align-items: center; min-width: 0; gap: var(--tabs-gap); border-bottom: 1px solid var(--tabs-border-color); }
+      .tabs-demo-frame {
+        min-width: 0;
+        min-height: 72px;
+        margin-top: 14px;
+        padding: 18px;
+        overflow: visible;
+        border: 1px solid var(--color-border-subtle);
+        border-radius: var(--radius-default);
+        background: var(--color-bg-container);
+      }
+      .tabs-bar { display: flex; align-items: center; min-width: 0; gap: var(--tabs-gap); border-bottom: 1px solid var(--color-border-subtle); }
       .tabs-list { display: flex; align-items: center; min-width: 0; gap: var(--tabs-gap); overflow: auto hidden; scrollbar-width: none; }
       .tabs-list::-webkit-scrollbar { display: none; }
-      .tab-item { position: relative; z-index: 0; display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: var(--tabs-icon-gap); min-height: var(--tabs-height-default); padding: 0 var(--tabs-padding-x); color: var(--tabs-color); background: transparent; border: 0; border-radius: var(--tabs-radius); cursor: pointer; font-size: var(--tabs-font-size); font-weight: var(--tabs-font-weight); line-height: var(--tabs-line-height); white-space: nowrap; }
-      .tab-item:not(:disabled):not([aria-selected="true"]):hover { color: var(--tabs-hover-color); background: transparent; }
-      .tab-item:not(:disabled):not([aria-selected="true"]):hover::before { position: absolute; z-index: -1; inset: 4px; content: ""; background: var(--tabs-bg-hover); border-radius: var(--tabs-hover-radius); }
+      .tab-item { position: relative; z-index: 0; display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: var(--tabs-icon-gap); min-height: var(--tabs-height-default); padding: 0 var(--tabs-padding-x); color: var(--color-text-secondary); background: transparent; border: 0; border-radius: var(--tabs-radius); cursor: pointer; font-size: var(--tabs-font-size); font-weight: var(--tabs-font-weight); line-height: var(--tabs-line-height); white-space: nowrap; }
+      .tab-item:not(:disabled):not([aria-selected="true"]):hover { color: var(--color-text-primary); background: transparent; }
+      .tab-item:not(:disabled):not([aria-selected="true"]):hover::before { display: none; }
       .tab-item:focus-visible { outline: none; box-shadow: var(--shadow-focus); }
-      .tab-item[aria-selected="true"] { color: var(--tabs-active-color); font-weight: var(--tabs-font-weight-active); }
-      .tab-item[aria-selected="true"]::after { position: absolute; right: 12px; bottom: 0; left: 12px; height: var(--tabs-indicator-size); content: ""; background: var(--tabs-indicator-color); border-radius: var(--tabs-indicator-radius); }
-      .tab-item:disabled { color: var(--tabs-disabled-color); cursor: not-allowed; background: transparent; }
+      .tab-item[aria-selected="true"] { color: var(--color-text-primary); font-weight: var(--tabs-font-weight-active); }
+      .tab-item[aria-selected="true"]::after { position: absolute; right: 12px; bottom: 0; left: 12px; height: var(--tabs-indicator-size); content: ""; background: var(--color-action-primary); border-radius: var(--tabs-indicator-radius); }
+      .tab-item.is-indicator-moving[aria-selected="true"]::after {
+        transform-origin: top left;
+        animation: tabs-indicator-slide var(--tabs-indicator-duration) var(--tabs-indicator-easing);
+      }
+      @keyframes tabs-indicator-slide {
+        from { transform: translate(var(--indicator-from-x), var(--indicator-from-y)) scale(var(--indicator-scale-x), var(--indicator-scale-y)); }
+        to { transform: translate(0, 0) scale(1, 1); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .tab-item.is-indicator-moving[aria-selected="true"]::after { animation: none; }
+      }
+      .tab-item:disabled { color: var(--color-text-disabled); cursor: not-allowed; background: transparent; }
       .tab-icon { width: var(--tabs-icon-size); height: var(--tabs-icon-size); fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-      .tab-panel { min-height: 72px; padding: var(--tabs-content-padding); color: var(--tabs-panel-color); font-size: var(--tabs-font-size); font-weight: var(--tabs-font-weight); line-height: var(--tabs-line-height); }
+      .tab-panel { min-height: 72px; padding: var(--tabs-content-padding); color: var(--color-text-default); font-size: var(--tabs-font-size); font-weight: var(--tabs-font-weight); line-height: var(--tabs-line-height); }
       .tabs-rounded .tabs-bar, .tabs-capsule .tabs-bar, .tabs-text .tabs-bar { border-bottom: 0; }
-      .tabs-card .tabs-bar { border-bottom: 1px solid var(--tabs-border-color); }
+      .tabs-card .tabs-bar { border-bottom: 1px solid var(--color-border-subtle); }
       .tabs-card .tabs-bar, .tabs-card .tabs-list { gap: var(--tabs-card-gap); }
-      .tabs-card .tab-item { margin-bottom: -1px; border: 1px solid var(--tabs-border-color); border-radius: var(--tabs-radius) var(--tabs-radius) 0 0; }
+      .tabs-card .tab-item { margin-bottom: -1px; border: 1px solid var(--color-border-subtle); border-radius: var(--tabs-radius) var(--tabs-radius) 0 0; }
       .tabs-card .tab-item + .tab-item { margin-left: 0; }
-      .tabs-card .tab-item[aria-selected="true"] { z-index: 1; background: var(--tabs-card-bg); border-bottom-color: var(--tabs-card-bg); }
+      .tabs-card .tab-item[aria-selected="true"] { z-index: 1; background: var(--color-bg-container); border-bottom-color: var(--color-bg-container); }
       .tabs-size-stage.tabs-card .tabs-list { overflow: visible; }
       .tabs-card .tab-item[aria-selected="true"]::after, .tabs-text .tab-item[aria-selected="true"]::after, .tabs-rounded .tab-item[aria-selected="true"]::after, .tabs-capsule .tab-item[aria-selected="true"]::after { display: none; }
       .tabs-text .tabs-bar, .tabs-text .tabs-list { gap: var(--tabs-text-gap); }
       .tabs-text .tab-item { padding-inline: 12px; }
-      .tabs-text .tab-item[aria-selected="true"] { color: var(--tabs-text-active-color); }
+      .tabs-text .tab-item[aria-selected="true"] { color: var(--color-action-primary); }
       .tabs-text .tab-item:not(:disabled):not([aria-selected="true"]):hover { background: transparent; }
       .tabs-text .tab-item:first-child:not(:disabled):not([aria-selected="true"]):hover::before { display: none; }
-      .tabs-text .tab-item:not(:disabled):not([aria-selected="true"]):hover::after { position: absolute; z-index: -1; inset: 4px 0; display: block; content: ""; background: var(--tabs-bg-hover); border-radius: var(--tabs-hover-radius); }
-      .tabs-text .tab-item + .tab-item::before, .tabs-text .tab-item + .tab-item:not(:disabled):not([aria-selected="true"]):hover::before { position: absolute; z-index: 1; top: 50%; right: auto; bottom: auto; left: calc(var(--tabs-text-gap) / -2); display: block; width: 1px; height: 14px; content: ""; background: var(--tabs-border-color); border-radius: 0; transform: translateY(-50%); pointer-events: none; }
+      .tabs-text .tab-item:not(:disabled):not([aria-selected="true"]):hover::after { display: none; }
+      .tabs-text .tab-item + .tab-item::before, .tabs-text .tab-item + .tab-item:not(:disabled):not([aria-selected="true"]):hover::before { position: absolute; z-index: 1; top: 50%; right: auto; bottom: auto; left: calc(var(--tabs-text-gap) / -2); display: block; width: 1px; height: 14px; content: ""; background: var(--color-border-subtle); border-radius: 0; transform: translateY(-50%); pointer-events: none; }
       .tabs-rounded .tabs-bar, .tabs-rounded .tabs-list { width: fit-content; gap: 8px; padding: 0; background: transparent; border-radius: 0; }
-      .tabs-capsule .tabs-bar { width: fit-content; padding: 4px; background: var(--tabs-bg-subtle); border-radius: var(--tabs-capsule-container-radius); }
-      .tabs-rounded .tab-item { min-height: var(--tabs-height-compact-default); padding-inline: 12px; color: var(--tabs-color); background: transparent; border: 1px solid transparent; border-radius: var(--tabs-rounded-radius); }
+      .tabs-capsule .tabs-bar { width: fit-content; padding: 4px; background: var(--color-bg-subtle); border-radius: var(--tabs-capsule-container-radius); }
+      .tabs-rounded .tab-item { min-height: var(--tabs-height-compact-default); padding-inline: 12px; color: var(--color-text-secondary); background: transparent; border: 1px solid transparent; border-radius: var(--tabs-rounded-radius); }
       .tabs-capsule .tab-item { min-height: var(--tabs-height-compact-default); border: 1px solid transparent; border-radius: var(--tabs-capsule-radius); }
-      .tabs-rounded .tab-item:not(:disabled):not([aria-selected="true"]):hover { color: var(--tabs-hover-color); background: var(--tabs-bg-hover); }
+      .tabs-rounded .tab-item:not(:disabled):not([aria-selected="true"]):hover { color: var(--color-text-primary); background: var(--color-bg-hover); }
       .tabs-rounded .tab-item:not(:disabled):not([aria-selected="true"]):hover::before { display: none; }
-      .tabs-rounded .tab-item[aria-selected="true"] { color: var(--tabs-active-color-inverse); background: var(--tabs-bg-active); }
-      .tabs-capsule .tab-item:not(:disabled):not([aria-selected="true"]):hover { background: var(--tabs-card-bg); border-color: var(--tabs-capsule-border-selected); }
+      .tabs-rounded .tab-item[aria-selected="true"] { color: var(--color-text-inverse); background: var(--color-action-primary); }
+      .tabs-capsule .tab-item:not(:disabled):not([aria-selected="true"]):hover { background: var(--color-bg-overlay-hover); border-color: color-mix(in srgb, var(--color-border-subtle) 55%, var(--color-bg-container)); }
       .tabs-capsule .tab-item:not(:disabled):not([aria-selected="true"]):hover::before { display: none; }
-      .tabs-capsule .tab-item[aria-selected="true"] { color: var(--tabs-capsule-active-color); background: var(--tabs-card-bg); border-color: var(--tabs-capsule-border-selected); }
+      .tabs-capsule .tab-item[aria-selected="true"] { color: var(--color-action-primary); background: var(--color-bg-container); border-color: color-mix(in srgb, var(--color-border-subtle) 55%, var(--color-bg-container)); }
       .tabs-small .tab-item { min-height: var(--tabs-height-small); padding-inline: 10px; font-size: var(--tabs-font-size-small); font-weight: var(--tabs-font-weight-small); line-height: var(--tabs-line-height-small); }
       .tabs-large .tab-item { min-height: var(--tabs-height-large); padding: 0 18px; font-size: var(--tabs-font-size-large); font-weight: var(--tabs-font-weight-large); line-height: var(--tabs-line-height-large); }
       .tabs-size-stage:not(.tabs-small):not(.tabs-large) .tab-item { font-size: var(--tabs-font-size); font-weight: var(--tabs-font-weight); line-height: var(--tabs-line-height); }
@@ -4336,14 +4362,14 @@
       .tabs-extra { display: flex; align-items: center; gap: 8px; margin-left: auto; }
       .tabs-extra-left { margin-right: 8px; margin-left: 0; }
       .tabs-extra .tabs-action { font-size: var(--font-style-body-size); font-weight: 400; }
-      .tabs-action { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 30px; padding: 0 9px; color: var(--tabs-action-color); background: var(--tabs-action-bg); border: 1px solid var(--tabs-action-border-color); border-radius: var(--tabs-radius); cursor: pointer; }
-      .tabs-action:hover { color: var(--tabs-action-hover-color); border-color: var(--tabs-action-hover-border-color); }
+      .tabs-action { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 30px; padding: 0 9px; color: var(--color-text-secondary); background: var(--color-bg-container); border: 1px solid var(--color-border-subtle); border-radius: var(--tabs-radius); cursor: pointer; }
+      .tabs-action:hover { color: var(--color-text-primary); border-color: var(--color-border-default); }
       .tabs-action svg, .tab-close svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
       .tabs-action svg { margin-right: 6px; }
       .tabs-action.icon-only { flex: 0 0 var(--tabs-scroll-button-size-x); width: var(--tabs-scroll-button-size-x); min-width: var(--tabs-scroll-button-size-x); padding: 0; }
       .tabs-action.icon-only svg { margin-right: 0; }
-      .tab-close { display: inline-grid; width: 18px; height: 18px; margin-right: -4px; place-items: center; color: var(--tabs-color); border-radius: var(--tabs-rounded-radius); cursor: pointer; }
-      .tab-close:hover { color: var(--tabs-action-hover-color); background: var(--tabs-action-hover-bg); }
+      .tab-close { display: inline-grid; width: 18px; height: 18px; margin-right: -4px; place-items: center; color: var(--color-text-secondary); border-radius: var(--tabs-hover-radius); cursor: pointer; }
+      .tab-close:hover { color: var(--color-text-primary); background: var(--color-action-neutral-bg-hover); }
       .tabs-card [data-dynamic-tab-list] { overflow: visible; }
       .nested-tabs { margin-top: 14px; padding: 14px; background: var(--color-bg-container); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-default); }
       .tabs-scroll-shell { display: grid; grid-template-columns: var(--tabs-scroll-button-size-x) minmax(0, 1fr) var(--tabs-scroll-button-size-x); align-items: center; gap: 6px; }
@@ -4363,13 +4389,13 @@
       .type-use-item code { color: var(--color-text-default); font-family: "Roboto Mono", "Cascadia Mono", Consolas, monospace; font-size: var(--font-style-caption-size); }
       .tabs-config-stack { display: grid; gap: 10px; margin-bottom: 18px; }
       .tabs-config-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; color: var(--color-text-secondary); font-size: var(--font-style-body-size); }
-      .tabs-config-row .tabs-option-tabs { gap: 4px; margin-bottom: 0; padding: 4px; background: var(--color-bg-subtle); border-radius: var(--tabs-capsule-container-radius); }
+      .tabs-config-row .tabs-option-tabs { gap: var(--tabs-option-gap); margin-bottom: 0; padding: 4px; background: var(--color-bg-subtle); border-radius: var(--tabs-capsule-container-radius); }
       .tabs-config-row .tabs-option-tab { min-height: 32px; padding-inline: 14px; color: var(--color-text-secondary); background: transparent; border-radius: var(--tabs-capsule-radius); font-size: var(--font-style-body-size); }
-      .tabs-config-row .tabs-option-tab:not(:disabled):not([aria-selected="true"]):hover { color: var(--color-text-primary); background: var(--color-bg-container); }
-      .tabs-config-row .tabs-option-tab[aria-selected="true"] { color: var(--tabs-capsule-active-color); background: var(--color-bg-container); box-shadow: none; }
-      .tabs-option-tabs { display: flex; width: max-content; max-width: 100%; margin: 0 0 18px; padding: 3px; overflow-x: auto; background: var(--color-bg-subtle); border-radius: var(--tabs-capsule-container-radius); }
+      .tabs-option-tab:not(:disabled):not([aria-selected="true"]):hover { color: var(--color-text-primary); background: var(--color-bg-overlay-hover); }
+      .tabs-config-row .tabs-option-tab[aria-selected="true"] { color: var(--color-action-primary); background: var(--color-bg-container); box-shadow: none; }
+      .tabs-option-tabs { display: flex; gap: var(--tabs-option-gap); width: max-content; max-width: 100%; margin: 0 0 18px; padding: 3px; overflow-x: auto; background: var(--color-bg-subtle); border-radius: var(--tabs-capsule-container-radius); }
       .tabs-option-tab { min-height: 30px; padding: 0 12px; color: var(--color-text-secondary); background: transparent; border: 0; border-radius: var(--tabs-capsule-radius); cursor: pointer; font-size: var(--font-style-body-size); white-space: nowrap; }
-      .tabs-option-tab[aria-selected="true"] { color: var(--tabs-capsule-active-color); background: var(--color-bg-container); box-shadow: 0 1px 3px color-mix(in srgb, var(--neutral-9) 10%, transparent); }
+      .tabs-option-tab[aria-selected="true"] { color: var(--color-action-primary); background: var(--color-bg-container); box-shadow: 0 1px 3px color-mix(in srgb, var(--color-text-default) 10%, transparent); }
       .tabs-placement-stage, .tabs-size-stage { min-height: 150px; }
       .tabs-placement-stage.is-bottom { display: flex; flex-direction: column-reverse; }
       .tabs-placement-stage.is-left { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 18px; }
@@ -4576,7 +4602,7 @@
       :root[data-product-theme] .spec-input-wrap.error:focus-within,
       :root[data-product-theme] .spec-input-wrap.error.focus,
       :root[data-product-theme] .spec-input-wrap.error.is-focus {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-error-shadow);
       }
 
@@ -5009,8 +5035,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -5092,9 +5118,9 @@
                 <h2>基础样式</h2>
                 <p>线型标签适合同一页面内的同级内容切换；激活指示器紧邻内容区域，层级轻且清晰。</p>
                 <div class="doc-grid tabs-demo">
-                  <div class="example-block" data-tabs-demo><div class="example-head"><h3>默认状态</h3></div><div class="tabs-bar" role="tablist"><div class="tabs-list"><button class="tab-item" role="tab" aria-selected="true">全部</button><button class="tab-item" role="tab" aria-selected="false">进行中</button><button class="tab-item" role="tab" aria-selected="false">已完成</button></div></div><div class="tab-panel">共 24 条任务。</div></div>
-                  <div class="example-block" data-tabs-demo><div class="example-head"><h3>禁用样式</h3></div><div class="tabs-bar" role="tablist"><div class="tabs-list"><button class="tab-item" role="tab" aria-selected="true">可用</button><button class="tab-item" role="tab" aria-selected="false" disabled>无权限</button><button class="tab-item" role="tab" aria-selected="false">设置</button></div></div><div class="tab-panel">禁用项不可聚焦和切换。</div></div>
-                  <div class="example-block full" data-tabs-demo><div class="example-head"><h3>带图标页签</h3></div><div class="tabs-bar" role="tablist"><div class="tabs-list"><button class="tab-item" role="tab" aria-selected="true"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>仪表盘</button><button class="tab-item" role="tab" aria-selected="false"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V12"/><path d="M10 20V4"/><path d="M16 20v-6"/><path d="M22 20V8"/></svg>分析</button><button class="tab-item" role="tab" aria-selected="false"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></svg>日志</button></div></div><div class="tab-panel">线性图标用于强化识别，不单独替代标签文案。</div></div>
+                  <div class="example-block" data-tabs-demo><div class="example-head"><h3>默认状态</h3></div><div class="tabs-demo-frame"><div class="tabs-bar" role="tablist"><div class="tabs-list"><button class="tab-item" role="tab" aria-selected="true">全部</button><button class="tab-item" role="tab" aria-selected="false">进行中</button><button class="tab-item" role="tab" aria-selected="false">已完成</button></div></div><div class="tab-panel">共 24 条任务。</div></div></div>
+                  <div class="example-block" data-tabs-demo><div class="example-head"><h3>禁用样式</h3></div><div class="tabs-demo-frame"><div class="tabs-bar" role="tablist"><div class="tabs-list"><button class="tab-item" role="tab" aria-selected="true">可用</button><button class="tab-item" role="tab" aria-selected="false" disabled>无权限</button><button class="tab-item" role="tab" aria-selected="false">设置</button></div></div><div class="tab-panel">禁用项不可聚焦和切换。</div></div></div>
+                  <div class="example-block full" data-tabs-demo><div class="example-head"><h3>带图标页签</h3></div><div class="tabs-demo-frame"><div class="tabs-bar" role="tablist"><div class="tabs-list"><button class="tab-item" role="tab" aria-selected="true"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>仪表盘</button><button class="tab-item" role="tab" aria-selected="false"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V12"/><path d="M10 20V4"/><path d="M16 20v-6"/><path d="M22 20V8"/></svg>分析</button><button class="tab-item" role="tab" aria-selected="false"><svg class="tab-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h6"/></svg>日志</button></div></div><div class="tab-panel">线性图标用于强化识别，不单独替代标签文案。</div></div></div>
                 </div>
               </section>
 
@@ -5111,11 +5137,11 @@
                 <h2>不同样式</h2>
                 <p>按信息层级与容器关系选择样式，避免只为装饰而混用。</p>
                 <div class="doc-grid tabs-demo">
-                  <div class="example-block" data-tabs-demo><div class="example-head"><h3>Line</h3><p>页面级或内容区的常规同级切换，视觉最轻。</p></div><div class="tabs-bar"><button class="tab-item" aria-selected="true">概览</button><button class="tab-item" aria-selected="false">数据</button><button class="tab-item" aria-selected="false">设置</button></div><div class="tab-panel">线型内容区</div></div>
-                  <div class="example-block tabs-text" data-tabs-demo><div class="example-head"><h3>Text</h3><p>工具栏、筛选栏中的轻量状态切换。</p></div><div class="tabs-bar"><button class="tab-item" aria-selected="true">tab 1</button><button class="tab-item" aria-selected="false">tab 2</button><button class="tab-item" aria-selected="false">tab 3</button></div><div class="tab-panel">轻量内容切换</div></div>
-                  <div class="example-block tabs-rounded" data-tabs-demo><div class="example-head"><h3>Rounded</h3><p>低密度筛选或局部视图模式切换。</p></div><div class="tabs-bar"><button class="tab-item" aria-selected="true">列表</button><button class="tab-item" aria-selected="false">网格</button><button class="tab-item" aria-selected="false">看板</button></div><div class="tab-panel">视图模式</div></div>
-                  <div class="example-block tabs-capsule" data-tabs-demo><div class="example-head"><h3>Capsule</h3><p>选项较少且当前状态需要强强调。</p></div><div class="tabs-bar"><button class="tab-item" aria-selected="true">企业</button><button class="tab-item" aria-selected="false">个人</button><button class="tab-item" aria-selected="false">访客</button></div><div class="tab-panel">用户类型</div></div>
-                  <div class="example-block full tabs-card" data-tabs-demo><div class="example-head"><h3>Card</h3><p>与下方内容容器紧密连接的模块切换。</p></div><div class="tabs-bar"><button class="tab-item" aria-selected="true">Prompt</button><button class="tab-item" aria-selected="false">Tools</button><button class="tab-item" aria-selected="false">Memory</button></div><div class="tab-panel">卡片内容区</div></div>
+                  <div class="example-block" data-tabs-demo><div class="example-head"><h3>Line</h3><p>页面级或内容区的常规同级切换，视觉最轻。</p></div><div class="tabs-demo-frame"><div class="tabs-bar"><button class="tab-item" aria-selected="true">概览</button><button class="tab-item" aria-selected="false">数据</button><button class="tab-item" aria-selected="false">设置</button></div><div class="tab-panel">线型内容区</div></div></div>
+                  <div class="example-block tabs-text" data-tabs-demo><div class="example-head"><h3>Text</h3><p>工具栏、筛选栏中的轻量状态切换。</p></div><div class="tabs-demo-frame"><div class="tabs-bar"><button class="tab-item" aria-selected="true">tab 1</button><button class="tab-item" aria-selected="false">tab 2</button><button class="tab-item" aria-selected="false">tab 3</button></div><div class="tab-panel">轻量内容切换</div></div></div>
+                  <div class="example-block tabs-rounded" data-tabs-demo><div class="example-head"><h3>Rounded</h3><p>低密度筛选或局部视图模式切换。</p></div><div class="tabs-demo-frame"><div class="tabs-bar"><button class="tab-item" aria-selected="true">列表</button><button class="tab-item" aria-selected="false">网格</button><button class="tab-item" aria-selected="false">看板</button></div><div class="tab-panel">视图模式</div></div></div>
+                  <div class="example-block tabs-capsule" data-tabs-demo><div class="example-head"><h3>Capsule</h3><p>选项较少且当前状态需要强强调。</p></div><div class="tabs-demo-frame"><div class="tabs-bar"><button class="tab-item" aria-selected="true">企业</button><button class="tab-item" aria-selected="false">个人</button><button class="tab-item" aria-selected="false">访客</button></div><div class="tab-panel">用户类型</div></div></div>
+                  <div class="example-block full tabs-card" data-tabs-demo><div class="example-head"><h3>Card</h3><p>与下方内容容器紧密连接的模块切换。</p></div><div class="tabs-demo-frame"><div class="tabs-bar"><button class="tab-item" aria-selected="true">Prompt</button><button class="tab-item" aria-selected="false">Tools</button><button class="tab-item" aria-selected="false">Memory</button></div><div class="tab-panel">卡片内容区</div></div></div>
                 </div>
               </section>
 
@@ -5155,8 +5181,8 @@
                 <h2>滑动与滚动偏移</h2>
                 <p>溢出时保留当前页签可见。水平或垂直滚动可通过两端按钮控制，偏移量可根据容器宽度自定义。</p>
                 <div class="doc-grid tabs-demo">
-                  <div class="example-block full" data-tabs-demo><div class="example-head"><h3>横向滑动</h3></div><div class="tabs-scroll-shell" data-scroll-tabs><button class="tabs-action icon-only" data-scroll="-1" aria-label="向前滚动"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="tabs-bar"><div class="tabs-list" data-scroll-list data-center-active><button class="tab-item" aria-selected="true">标签一</button><button class="tab-item" aria-selected="false">标签二</button><button class="tab-item" aria-selected="false">标签三</button><button class="tab-item" aria-selected="false">标签四</button><button class="tab-item" aria-selected="false">标签五</button><button class="tab-item" aria-selected="false">标签六</button><button class="tab-item" aria-selected="false">标签七</button><button class="tab-item" aria-selected="false">标签八</button><button class="tab-item" aria-selected="false">标签九</button><button class="tab-item" aria-selected="false">标签十</button><button class="tab-item" aria-selected="false">标签十一</button><button class="tab-item" aria-selected="false">标签十二</button><button class="tab-item" aria-selected="false">标签十三</button><button class="tab-item" aria-selected="false">标签十四</button><button class="tab-item" aria-selected="false">标签十五</button></div></div><button class="tabs-action icon-only" data-scroll="1" aria-label="向后滚动"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div><div class="tab-panel">标签一内容已激活。</div></div>
-                  <div class="example-block full"><div class="example-head"><h3>纵向滚动</h3></div><div class="tabs-vertical tabs-vertical-scroll" data-tabs-demo data-vertical-scroll><div class="tabs-bar"><button class="tabs-action vertical-scroll-action" type="button" data-scroll-y="-1" aria-label="向上滚动"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button><div class="tabs-list" data-center-active data-vertical-scroll-list><button class="tab-item" aria-selected="true">概览</button><button class="tab-item" aria-selected="false">数据源</button><button class="tab-item" aria-selected="false">权限</button><button class="tab-item" aria-selected="false">通知</button><button class="tab-item" aria-selected="false">审计日志</button><button class="tab-item" aria-selected="false">归档</button></div><button class="tabs-action vertical-scroll-action" type="button" data-scroll-y="1" aria-label="向下滚动"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="tab-panel">概览内容已激活。</div></div></div>
+                  <div class="example-block full" data-tabs-demo><div class="example-head"><h3>横向滑动</h3></div><div class="tabs-demo-frame"><div class="tabs-scroll-shell" data-scroll-tabs><button class="tabs-action icon-only" data-scroll="-1" aria-label="向前滚动"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button><div class="tabs-bar"><div class="tabs-list" data-scroll-list data-center-active><button class="tab-item" aria-selected="true">标签一</button><button class="tab-item" aria-selected="false">标签二</button><button class="tab-item" aria-selected="false">标签三</button><button class="tab-item" aria-selected="false">标签四</button><button class="tab-item" aria-selected="false">标签五</button><button class="tab-item" aria-selected="false">标签六</button><button class="tab-item" aria-selected="false">标签七</button><button class="tab-item" aria-selected="false">标签八</button><button class="tab-item" aria-selected="false">标签九</button><button class="tab-item" aria-selected="false">标签十</button><button class="tab-item" aria-selected="false">标签十一</button><button class="tab-item" aria-selected="false">标签十二</button><button class="tab-item" aria-selected="false">标签十三</button><button class="tab-item" aria-selected="false">标签十四</button><button class="tab-item" aria-selected="false">标签十五</button></div></div><button class="tabs-action icon-only" data-scroll="1" aria-label="向后滚动"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button></div><div class="tab-panel">标签一内容已激活。</div></div></div>
+                  <div class="example-block full"><div class="example-head"><h3>纵向滚动</h3></div><div class="tabs-demo-frame"><div class="tabs-vertical tabs-vertical-scroll" data-tabs-demo data-vertical-scroll><div class="tabs-bar"><button class="tabs-action vertical-scroll-action" type="button" data-scroll-y="-1" aria-label="向上滚动"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg></button><div class="tabs-list" data-center-active data-vertical-scroll-list><button class="tab-item" aria-selected="true">概览</button><button class="tab-item" aria-selected="false">数据源</button><button class="tab-item" aria-selected="false">权限</button><button class="tab-item" aria-selected="false">通知</button><button class="tab-item" aria-selected="false">审计日志</button><button class="tab-item" aria-selected="false">归档</button></div><button class="tabs-action vertical-scroll-action" type="button" data-scroll-y="1" aria-label="向下滚动"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div><div class="tab-panel">概览内容已激活。</div></div></div></div>
                 </div>
               </section>
 
@@ -5171,13 +5197,13 @@
                       <tr><td>children</td><td>页签面板集合。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
                       <tr><td>activeTab</td><td>受控模式下当前激活页签的 key。</td><td><code>string</code></td><td><code>-</code></td></tr>
                       <tr><td>defaultActiveTab</td><td>非受控模式下默认激活页签。</td><td><code>string</code></td><td><code>首项</code></td></tr>
-                      <tr><td>animation</td><td>是否启用指示器与内容切换动画。</td><td><code>boolean | { inkBar?, tabPane? }</code></td><td><code>-</code></td></tr>
+                      <tr><td>animation</td><td>控制指示器与内容切换动画。默认启用 Line 指示器的位置及长度过渡，持续 260ms；点击和方向键切换均生效，遵循 prefers-reduced-motion 设置。</td><td><code>boolean | { inkBar?, tabPane? }</code></td><td><code>{ inkBar: true, tabPane: false }</code></td></tr>
                       <tr><td>tabPosition</td><td>页签栏位置。</td><td><code>left | right | top | bottom</code></td><td><code>top</code></td></tr>
                       <tr><td>size</td><td>页签尺寸；依次使用 Caption、Body、Body-Large 语义文字样式。</td><td><code>small | default | large</code></td><td><code>default</code></td></tr>
-                      <tr><td>type</td><td>页签视觉样式；颜色与圆角由 Tabs Component Token 映射，不接受直接色值。</td><td><code>line | text | rounded | capsule | card</code></td><td><code>line</code></td></tr>
+                      <tr><td>type</td><td>页签视觉样式。Line、Text、Card 未选中项悬停时仅更新文字色；Rounded 使用中性悬停底色，Capsule 使用浮层悬停语义色。颜色与圆角由 Tabs Component Token 映射。</td><td><code>line | text | rounded | capsule | card</code></td><td><code>line</code></td></tr>
                       <tr><td>inkBarSize</td><td>自定义 Line 激活指示器尺寸。</td><td><code>{ width?, height? }</code></td><td><code>-</code></td></tr>
                       <tr><td>headerPadding</td><td>Line、Text 标签头是否保留水平边距。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
-                      <tr><td>editable</td><td>是否允许动态新增和关闭页签，仅 Card 样式生效。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
+                      <tr><td>editable</td><td>是否允许动态新增和关闭页签，仅 Card 样式生效。关闭按钮悬停背景采用 radius-small 圆角方形。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
                       <tr><td>showAddButton</td><td>editable 开启时是否显示新增图标按钮。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
                       <tr><td>icons</td><td>自定义新增、删除及横向/纵向滚动图标。</td><td><code>{ add?, delete?, prev?, next?, up?, down? }</code></td><td><code>-</code></td></tr>
                       <tr><td>scrollAfterEdit</td><td>增删后是否自动滚动至选中项。</td><td><code>{ add?: boolean, delete?: boolean }</code></td><td><code>{ add: true, delete: true }</code></td></tr>
@@ -5191,6 +5217,8 @@
                       <tr><td>onDeleteTab</td><td>关闭页签时触发。</td><td><code>(key: string) =&gt; void</code></td><td><code>-</code></td></tr>
                       <tr><td>renderTabHeader</td><td>自定义整个标签栏。</td><td><code>(props, DefaultHeader) =&gt; ReactElement</code></td><td><code>-</code></td></tr>
                       <tr><td>renderTabTitle</td><td>自定义单个标签头。</td><td><code>(title, info) =&gt; ReactNode</code></td><td><code>-</code></td></tr>
+                    
+
                     </tbody>
                   </table>
                 </div>
@@ -5207,6 +5235,8 @@
                       <tr><td>closable</td><td>editable 开启时是否允许关闭。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
                       <tr><td>lazyload</td><td>是否延迟渲染当前面板。</td><td><code>boolean</code></td><td><code>-</code></td></tr>
                       <tr><td>children</td><td>面板内容。</td><td><code>ReactNode</code></td><td><code>-</code></td></tr>
+                    
+
                     </tbody>
                   </table>
                 </div>
@@ -5214,6 +5244,7 @@
 
               <section class="doc-section" id="design-token">
                 <h2>设计 Token</h2>
+                <p>组件颜色直接引用 design.md 中的全局语义色。示例中带 example-head 的内容组使用 tabs-demo-frame，边框、圆角与背景分别引用 color-border-subtle、radius-default 和 color-bg-container，内边距为 18px。</p>
                 <div class="spec-table-wrap">
                   <table class="spec-table">
                     <thead><tr><th>Token</th><th>值</th><th>说明</th></tr></thead>
@@ -5235,36 +5266,55 @@
                       <tr><td><code>--tabs-font-size / -weight / -line-height</code></td><td><code>var(--font-style-body-*)</code></td><td>default 标签的 Body 语义文字样式。</td></tr>
                       <tr><td><code>--tabs-font-size-large / -weight-large / -line-height-large</code></td><td><code>var(--font-style-body-large-*)</code></td><td>large 标签的 Body-Large 语义文字样式。</td></tr>
                       <tr><td><code>--tabs-font-weight-active</code></td><td><code>var(--font-style-body-medium-weight)</code></td><td>激活标签使用 Body-Medium 的强调字重。</td></tr>
-                      <tr><td><code>--tabs-color</code></td><td><code>var(--color-text-secondary)</code></td><td>默认标签文字色。</td></tr>
-                      <tr><td><code>--tabs-hover-color</code></td><td><code>var(--color-text-primary)</code></td><td>未选中标签悬停文字色。</td></tr>
-                      <tr><td><code>--tabs-active-color</code></td><td><code>var(--color-text-primary)</code></td><td>Line 与 Card 的激活文字色。</td></tr>
-                      <tr><td><code>--tabs-text-active-color</code></td><td><code>var(--color-action-primary)</code></td><td>Text 样式的选中文字色。</td></tr>
-                      <tr><td><code>--tabs-capsule-active-color</code></td><td><code>var(--brand-text)</code></td><td>所有 Capsule 页签及胶囊型选项控件的绿色选中文字色。</td></tr>
-                      <tr><td><code>--tabs-active-color-inverse</code></td><td><code>var(--color-text-inverse)</code></td><td>实色选中背景上的激活文字色。</td></tr>
-                      <tr><td><code>--tabs-disabled-color</code></td><td><code>var(--color-text-disabled)</code></td><td>禁用标签文字色。</td></tr>
-                      <tr><td><code>--tabs-indicator-color</code></td><td><code>var(--color-action-primary)</code></td><td>Line 激活指示器颜色。</td></tr>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
                       <tr><td><code>--tabs-indicator-size</code></td><td><code>2px</code></td><td>激活指示器厚度。</td></tr>
-                      <tr><td><code>--tabs-border-color</code></td><td><code>var(--color-border-subtle)</code></td><td>分割线与 Card 边框色。</td></tr>
-                      <tr><td><code>--tabs-capsule-border-selected</code></td><td><code>color-mix(in srgb, var(--color-border-subtle) 55%, var(--color-bg-container))</code></td><td>Capsule 选中与悬停描边色。</td></tr>
-                      <tr><td><code>--tabs-bg-hover</code></td><td><code>var(--color-bg-hover)</code></td><td>未选中标签悬停背景色。</td></tr>
-                      <tr><td><code>--tabs-bg-subtle</code></td><td><code>var(--color-bg-subtle)</code></td><td>Capsule 轨道弱背景。</td></tr>
-                      <tr><td><code>--tabs-bg-active</code></td><td><code>var(--color-action-primary)</code></td><td>Rounded 激活项实色背景。</td></tr>
-                      <tr><td><code>--tabs-card-bg</code></td><td><code>var(--color-bg-container)</code></td><td>Card 与 Capsule 选中背景。</td></tr>
-                      <tr><td><code>--tabs-panel-color</code></td><td><code>var(--color-text-default)</code></td><td>内容面板正文颜色。</td></tr>
-                      <tr><td><code>--tabs-action-color</code></td><td><code>var(--color-text-secondary)</code></td><td>新增、关闭与滚动按钮默认文字及图标颜色。</td></tr>
-                      <tr><td><code>--tabs-action-hover-color</code></td><td><code>var(--color-text-primary)</code></td><td>操作按钮 Hover 文字及图标颜色。</td></tr>
-                      <tr><td><code>--tabs-action-bg</code></td><td><code>var(--color-bg-container)</code></td><td>操作按钮默认背景。</td></tr>
-                      <tr><td><code>--tabs-action-hover-bg</code></td><td><code>var(--color-bg-hover)</code></td><td>关闭按钮 Hover 背景。</td></tr>
-                      <tr><td><code>--tabs-action-border-color</code></td><td><code>var(--color-border-subtle)</code></td><td>操作按钮默认边框。</td></tr>
-                      <tr><td><code>--tabs-action-hover-border-color</code></td><td><code>var(--color-border-default)</code></td><td>操作按钮 Hover 边框。</td></tr>
+                      
+                      
+                      
+                      
+                      
+                      <tr><td><code>--tabs-option-gap</code></td><td><code>4px</code></td><td>选项控件中相邻项的间距，分隔选中与悬停背景。</td></tr>
+                      <tr><td><code>--tabs-indicator-duration</code></td><td><code>260ms</code></td><td>Line 指示器滑动及长度变化的过渡时长，减少动态效果模式下关闭动画。</td></tr>
+                      <tr><td><code>--tabs-indicator-easing</code></td><td><code>cubic-bezier(0.22, 1, 0.36, 1)</code></td><td>Line 指示器切换的缓动曲线。</td></tr>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
                       <tr><td><code>--tabs-radius</code></td><td><code>var(--radius-default)</code></td><td>Card 与按钮圆角。</td></tr>
-                      <tr><td><code>--tabs-hover-radius</code></td><td><code>var(--radius-small)</code></td><td>Line、Text 的悬停背景圆角。</td></tr>
+                      <tr><td><code>--tabs-hover-radius</code></td><td><code>var(--radius-small)</code></td><td>关闭按钮悬停背景的圆角方形圆角。</td></tr>
                       <tr><td><code>--tabs-capsule-container-radius</code></td><td><code>var(--radius-large)</code></td><td>所有 Capsule 外层容器的 8px 语义圆角。</td></tr>
                       <tr><td><code>--tabs-capsule-radius</code></td><td><code>var(--radius-default)</code></td><td>Capsule 内部 Tab（含选中态）的 6px 语义圆角。</td></tr>
                       <tr><td><code>--tabs-rounded-radius</code></td><td><code>var(--radius-full)</code></td><td>Rounded 页签的胶囊圆角。</td></tr>
                       <tr><td><code>--tabs-indicator-radius</code></td><td><code>var(--radius-full)</code></td><td>Line 激活指示器圆角。</td></tr>
                       <tr><td><code>--tabs-scroll-button-size-x</code></td><td><code>30px</code></td><td>横向滚动图标按钮尺寸。</td></tr>
                       <tr><td><code>--tabs-scroll-button-size-y</code></td><td><code>40px</code></td><td>纵向滚动图标按钮高度。</td></tr>
+                    
+                      <tr><td><code>--color-text-secondary</code></td><td><code>neutral-7 / neutral-4</code></td><td>默认标签文字色。；新增、关闭与滚动按钮默认文字及图标颜色。</td></tr>
+                      <tr><td><code>--color-text-primary</code></td><td><code>neutral-10 / neutral-1</code></td><td>未选中标签悬停文字色。；Line 与 Card 的激活文字色。；操作按钮 Hover 文字及图标颜色。</td></tr>
+                      <tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>Text 样式的选中文字色。；Capsule 页签及胶囊型选项控件的主题语义选中文字色。；Line 激活指示器颜色。；Rounded 激活项实色背景。</td></tr>
+                      <tr><td><code>--color-text-inverse</code></td><td><code>neutral-0 / neutral-12</code></td><td>实色选中背景上的激活文字色。</td></tr>
+                      <tr><td><code>--color-text-disabled</code></td><td><code>neutral-4 / neutral-6</code></td><td>禁用标签文字色。</td></tr>
+                      <tr><td><code>--color-border-subtle</code></td><td><code>neutral-2 / neutral-8</code></td><td>分割线与 Card 边框色。；Capsule 选中与悬停描边色。 使用 <code>color-mix(in srgb, var(--color-border-subtle) 55%, var(--color-bg-container))</code>。；操作按钮默认边框。</td></tr>
+                      <tr><td><code>--color-bg-container</code></td><td><code>neutral-0 / neutral-11</code></td><td>Capsule 选中与悬停描边色。 使用 <code>color-mix(in srgb, var(--color-border-subtle) 55%, var(--color-bg-container))</code>。；Card 与 Capsule 选中背景。；操作按钮默认背景。</td></tr>
+                      <tr><td><code>--color-bg-hover</code></td><td><code>neutral-1 / neutral-9</code></td><td>Rounded 未选中标签悬停背景色。</td></tr>
+                      <tr><td><code>--color-bg-overlay-hover</code></td><td><code>neutral-2 / neutral-8</code></td><td>Capsule 未选中页签悬停背景，直接映射语义色。；位置、尺寸与样式选项控件的未选中项悬停背景。</td></tr>
+                      <tr><td><code>--color-bg-subtle</code></td><td><code>neutral-1 / neutral-9</code></td><td>Capsule 轨道弱背景。</td></tr>
+                      <tr><td><code>--color-text-default</code></td><td><code>neutral-9 / neutral-2</code></td><td>内容面板正文颜色。</td></tr>
+                      <tr><td><code>--color-action-neutral-bg-hover</code></td><td><code>color-text-primary 10% / color-text-primary 10%</code></td><td>关闭按钮 Hover 背景。</td></tr>
+                      <tr><td><code>--color-border-default</code></td><td><code>neutral-3 / neutral-7</code></td><td>操作按钮 Hover 边框。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -5420,15 +5470,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         "--brand-7",
         "--brand-8",
         "--brand-9",
-        "--brand-text",
-        "--brand-text-hover",
-        "--brand-border-soft",
-        "--brand-border-hover",
         "--radius-default",
-        "--input-hover-border-color",
-        "--input-focus-color",
-        "--input-number-hover-border-color",
-        "--input-number-focus-color",
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -5452,14 +5494,6 @@ topbarNav?.addEventListener("keydown", (event) => {
           root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
           root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
           root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
-          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
-          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
-          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
-          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
-          root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-focus-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-focus-color", "var(--color-status-success)");
           return;
         }
 
@@ -5476,15 +5510,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
         root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
         root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
-        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
-        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
-        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
-        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
         root.style.setProperty("--radius-default", "6px");
-        root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-focus-color", iqbPaletteValue("--info-5"));
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
@@ -7426,14 +7452,40 @@ const centerNavItem = (item, behavior = "smooth") => {
         if (shouldScroll) list.scrollTo(scrollOptions);
       };
 
+      const getTabIndicatorRect = (tab) => {
+        if (!tab) return null;
+        const indicator = getComputedStyle(tab, "::after");
+        if (indicator.display === "none" || indicator.content === "none") return null;
+        const rect = tab.getBoundingClientRect();
+        return {
+          x: rect.left + tab.clientLeft + parseFloat(indicator.left),
+          y: rect.top + tab.clientTop + parseFloat(indicator.top),
+          width: parseFloat(indicator.width),
+          height: parseFloat(indicator.height),
+        };
+      };
+
       const activateDemoTab = (tab) => {
         if (!tab || tab.disabled) return;
         const demo = tab.closest("[data-tabs-demo]");
         if (!demo) return;
         const tabGroup = tab.closest(".tabs-list, .tabs-bar");
         const tabs = Array.from(tabGroup?.querySelectorAll(".tab-item") || []);
+        const previous = tabs.find((item) => item.getAttribute("aria-selected") === "true");
+        const previousIndicator = getTabIndicatorRect(previous);
+        tabs.forEach((item) => item.classList.remove("is-indicator-moving"));
         tabs.forEach((item) => item.setAttribute("aria-selected", String(item === tab)));
-        const panel = demo.querySelector(":scope > .tab-panel, :scope > .tabs-placement-bottom > .tab-panel, :scope > .tabs-placement-right > .tab-panel");
+        const nextIndicator = getTabIndicatorRect(tab);
+        if (previous !== tab && previousIndicator && nextIndicator?.width > 0 && nextIndicator.height > 0) {
+          tab.style.setProperty("--indicator-from-x", `${previousIndicator.x - nextIndicator.x}px`);
+          tab.style.setProperty("--indicator-from-y", `${previousIndicator.y - nextIndicator.y}px`);
+          tab.style.setProperty("--indicator-scale-x", previousIndicator.width / nextIndicator.width);
+          tab.style.setProperty("--indicator-scale-y", previousIndicator.height / nextIndicator.height);
+          // Commit the reset so consecutive switches restart the underline animation.
+          void tab.offsetWidth;
+          tab.classList.add("is-indicator-moving");
+        }
+        const panel = Array.from(demo.querySelectorAll(".tab-panel")).find((item) => item.closest("[data-tabs-demo]") === demo);
         if (panel) panel.textContent = `${tab.textContent.trim().replace("×", "")}内容已激活。`;
         requestAnimationFrame(() => centerTabInList(tab));
       };

@@ -81,10 +81,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
         --link-color: var(--info-5);
         --link-hover-color: var(--info-6);
         --link-disabled-color: var(--neutral-2);
@@ -158,7 +158,7 @@
         --color-action-primary: var(--brand-5);
         --color-action-primary-hover: var(--brand-6);
         --color-action-primary-hover: var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled: var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -360,7 +360,7 @@
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
   --tabs-color: var(--color-text-secondary);
   --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
+  --tabs-active-color: var(--color-action-primary);
   --tabs-indicator-color: var(--color-action-primary);
   --tabs-indicator-size: 2px;
   --tabs-bg-hover: var(--color-bg-hover);
@@ -2109,7 +2109,7 @@
 
       .spec-btn:hover {
         border-color:var(--color-action-primary);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn:focus-visible {
@@ -2124,8 +2124,8 @@
       }
 
       .spec-btn.primary:hover {
-        border-color: var(--brand-text);
-        background: var(--brand-text);
+        border-color: var(--color-action-primary);
+        background: var(--color-action-primary);
         color:var(--color-text-inverse);
       }
 
@@ -2150,12 +2150,12 @@
       .spec-btn.ghost-primary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.ghost-primary:hover {
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text-hover);
+        color: var(--color-action-primary-hover);
       }
 
       .spec-btn.solid {
@@ -2170,16 +2170,16 @@
         border-color: var(--color-border-default);
       }
 
-      .spec-btn.permission {
+      .spec-btn.secondary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
-      .spec-btn.permission:hover {
+      .spec-btn.secondary:hover {
         border-color:var(--color-action-primary);
         background: var(--color-action-primary-bg-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.warning {
@@ -2404,10 +2404,10 @@
         color:var(--color-text-inverse);
       }
 
-      .spec-btn.permission[disabled]:hover {
+      .spec-btn.secondary[disabled]:hover {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.subtle[disabled]:hover {
@@ -2529,7 +2529,7 @@
 
       .loading-dot.brand {
         border-color: color-mix(in srgb, var(--color-action-primary) 24%, transparent);
-        border-top-color: var(--brand-text);
+        border-top-color: var(--color-action-primary);
       }
 
       .loading-dot.neutral {
@@ -2831,7 +2831,7 @@
       }
 
       .spec-field.success .spec-field-help {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .count-demo-grid {
@@ -3255,12 +3255,12 @@
       }
 
       .select-option.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: transparent;
       }
 
       .select-option.active:hover {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: var(--color-bg-overlay-hover);
       }
 
@@ -3569,7 +3569,7 @@
 
       .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-time-actions {
@@ -3849,7 +3849,7 @@
 
       .range-scope-tab.active {
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-tab:focus,
@@ -3857,7 +3857,7 @@
         outline: none;
         border-color: transparent;
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -3911,13 +3911,13 @@
       .range-scope-body .select-option.active,
       .range-scope-body .date-time-option.active {
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .select-option.active:hover,
       .range-scope-body .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .time-filter-panel .date-time-option.active,
@@ -3982,7 +3982,7 @@
 
       .date-shortcut:hover,
       .date-shortcut.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
@@ -4081,7 +4081,7 @@
       }
 
       .date-cell.today {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.active,
@@ -4092,17 +4092,17 @@
 
       .date-cell.in-range {
         background:var(--color-bg-subtle);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview {
         background: color-mix(in srgb, var(--color-action-primary) 10%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview-edge {
         background: color-mix(in srgb, var(--color-action-primary) 16%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-edge.range-preview-edge {
@@ -4469,7 +4469,7 @@
       .radio-card:has(input:checked) {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .radio-card.disabled,
@@ -4487,7 +4487,7 @@
       .radio-card:has(input:checked:disabled):hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .checkbox-demo-stack {
@@ -5532,8 +5532,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -6936,10 +6936,6 @@ topbarNav?.addEventListener("keydown", (event) => {
         "--brand-7",
         "--brand-8",
         "--brand-9",
-        "--brand-text",
-        "--brand-text-hover",
-        "--brand-border-soft",
-        "--brand-border-hover",
         "--radius-default",
         "--input-hover-border-color",
         "--input-focus-color",
@@ -6968,10 +6964,6 @@ topbarNav?.addEventListener("keydown", (event) => {
           root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
           root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
           root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
-          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
-          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
-          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
-          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
           root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
           root.style.setProperty("--input-focus-color", "var(--color-status-success)");
           root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
@@ -6992,10 +6984,6 @@ topbarNav?.addEventListener("keydown", (event) => {
         root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
         root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
         root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
-        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
-        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
-        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
-        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
         root.style.setProperty("--radius-default", "6px");
         root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
         root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));

@@ -18,10 +18,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
 
 
 
@@ -55,7 +55,7 @@
         --color-action-primary: var(--brand-5);
         --color-action-primary-hover: var(--brand-6);
         --color-action-primary-hover: var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled: var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -68,25 +68,25 @@
         --sidebar-width: 300px;
         --radius-default: 6px;
 
-        --input-border-color: var(--color-border-default);
-        --input-hover-border-color:var(--color-action-primary);
-        --input-focus-color:var(--color-action-primary);
+        
+        
+        
 
-        --input-error-color: var(--color-status-error);
+        
         --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
-        --input-text-color: var(--color-text-primary);
-        --input-placeholder-color: var(--color-text-tertiary);
-        --input-disabled-border-color: var(--color-border-disabled);
-        --input-disabled-bg: var(--color-bg-disabled);
-        --input-disabled-color: var(--color-text-disabled);
-        --input-number-hover-border-color:var(--color-action-primary);
-        --input-number-focus-color:var(--color-action-primary);
+        
+        
+        
+        
+        
+        
+        
 
-        --input-number-error-color: var(--color-status-error);
+        
         --input-number-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
-        --input-number-disabled-border-color: var(--color-border-disabled);
-        --input-number-disabled-bg: var(--color-bg-disabled);
-        --input-number-disabled-color: var(--color-text-disabled);
+        
+        
+        
         --checkbox-size: 14px;
         --checkbox-radius: var(--radius-small);
         --checkbox-check-size: 8px;
@@ -265,12 +265,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -290,7 +290,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -302,7 +302,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -310,12 +310,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-action-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -326,7 +326,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -616,7 +616,7 @@
         min-height: 440px;
         border:1px dashed var(--color-border-default);
         border-radius: var(--radius-default);
-        background: color-mix(in srgb, var(--neutral-0) 76%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 76%, transparent);
       }
 
       .content-panel[hidden] {
@@ -739,7 +739,7 @@
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-default);
         background:
-          linear-gradient(180deg, color-mix(in srgb, var(--neutral-0) 82%, transparent), color-mix(in srgb, var(--neutral-0) 64%, transparent));
+          linear-gradient(180deg, color-mix(in srgb, var(--color-bg-container) 82%, transparent), color-mix(in srgb, var(--color-bg-container) 64%, transparent));
         color: inherit;
         cursor: pointer;
         text-align: left;
@@ -1148,7 +1148,7 @@
         justify-content: center;
         gap: 5px;
         padding: 0 14px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-large);
         background:var(--color-bg-container);
         color: var(--color-text-secondary);
@@ -1165,7 +1165,7 @@
 
       .spec-btn:hover {
         border-color:var(--color-action-primary);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn:focus-visible {
@@ -1180,8 +1180,8 @@
       }
 
       .spec-btn.primary:hover {
-        border-color: var(--brand-text);
-        background: var(--brand-text);
+        border-color: var(--color-action-primary);
+        background: var(--color-action-primary);
         color:var(--color-text-inverse);
       }
 
@@ -1206,12 +1206,12 @@
       .spec-btn.ghost-primary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.ghost-primary:hover {
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text-hover);
+        color: var(--color-action-primary-hover);
       }
 
       .spec-btn.solid {
@@ -1226,44 +1226,44 @@
         border-color: var(--color-border-default);
       }
 
-      .spec-btn.permission {
+      .spec-btn.secondary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
-      .spec-btn.permission:hover {
+      .spec-btn.secondary:hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.warning {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning-bg);
         color: var(--color-status-warning);
       }
 
       .spec-btn.warning-primary {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-primary:hover {
-        border-color: var(--warning-5);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: transparent;
         color: var(--color-status-warning);
       }
 
       .spec-btn.warning-secondary:hover {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning-bg);
         color: var(--color-status-warning-hover);
       }
@@ -1291,25 +1291,25 @@
       }
 
       .spec-btn.info-primary {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-primary:hover {
-        border-color: var(--info-5);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-secondary:hover {
-        border-color: var(--info-5);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info-bg);
         color: var(--color-status-info);
       }
@@ -1317,7 +1317,7 @@
       .spec-btn.info-subtle {
         border-color: transparent;
         background: var(--color-status-info-bg);
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-subtle:hover {
@@ -1328,7 +1328,7 @@
       .spec-btn.info-text {
         border-color: transparent;
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-text:hover {
@@ -1337,25 +1337,25 @@
       }
 
       .spec-btn.danger {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger:hover {
-        border-color: var(--danger-5);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-secondary:hover {
-        border-color: var(--danger-5);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error-bg);
         color: var(--color-status-error);
       }
@@ -1363,7 +1363,7 @@
       .spec-btn.danger-subtle {
         border-color: transparent;
         background: var(--color-status-error-bg);
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-subtle:hover {
@@ -1374,7 +1374,7 @@
       .spec-btn.danger-text {
         border-color: transparent;
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-text:hover {
@@ -1460,10 +1460,10 @@
         color:var(--color-text-inverse);
       }
 
-      .spec-btn.permission[disabled]:hover {
+      .spec-btn.secondary[disabled]:hover {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.subtle[disabled]:hover {
@@ -1492,13 +1492,13 @@
       }
 
       .spec-btn.warning-primary[disabled]:hover {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary[disabled]:hover {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: transparent;
         color: var(--color-status-warning);
       }
@@ -1516,51 +1516,51 @@
       }
 
       .spec-btn.info-primary[disabled]:hover {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary[disabled]:hover {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-subtle[disabled]:hover {
         border-color: transparent;
         background: var(--color-status-info-bg);
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.danger[disabled]:hover {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary[disabled]:hover {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-subtle[disabled]:hover {
         border-color: transparent;
         background: var(--color-status-error-bg);
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .disabled-groups {
@@ -1577,7 +1577,7 @@
         width: 12px;
         height: 12px;
         flex: 0 0 auto;
-        border: 1.5px solid color-mix(in srgb, var(--neutral-0) 50%, transparent);
+        border: 1.5px solid color-mix(in srgb, var(--color-bg-container) 50%, transparent);
         border-top-color:var(--color-text-inverse);
         border-radius: var(--radius-full);
         animation: button-spin 0.72s linear infinite;
@@ -1585,7 +1585,7 @@
 
       .loading-dot.brand {
         border-color: color-mix(in srgb, var(--color-action-primary) 24%, transparent);
-        border-top-color: var(--brand-text);
+        border-top-color: var(--color-action-primary);
       }
 
       .loading-dot.neutral {
@@ -1625,16 +1625,16 @@
       .spec-label.required::before {
         content: "*";
         margin-right: 5px;
-        color: var(--danger-4);
+        color: var(--color-status-error);
       }
 
       .spec-input,
       .spec-textarea {
         width: 100%;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
-        color: var(--input-text-color);
+        color: var(--color-text-default);
         font-size:var(--font-style-body-size);
         outline: 0;
         transition:
@@ -1658,7 +1658,7 @@
 
       .spec-input::placeholder,
       .spec-textarea::placeholder {
-        color: var(--input-placeholder-color);
+        color: var(--color-text-tertiary);
       }
 
       .spec-input[type="search"]::-webkit-search-cancel-button {
@@ -1685,7 +1685,7 @@
       .spec-input-wrap:hover,
       .spec-input-wrap.hover,
       .spec-input-wrap.is-hover {
-        border-color: var(--input-hover-border-color);
+        border-color: var(--color-action-primary);
         background:var(--color-bg-container);
         box-shadow: none;
       }
@@ -1699,21 +1699,21 @@
       .spec-input-wrap:focus-within,
       .spec-input-wrap.focus,
       .spec-input-wrap.is-focus {
-        border-color: var(--input-focus-color);
+        border-color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
       .spec-input:disabled,
       .spec-textarea:disabled {
-        border-color: var(--input-disabled-border-color);
-        background: var(--input-disabled-bg);
-        color: var(--input-disabled-color);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
+        color: var(--color-text-disabled);
         cursor: not-allowed;
       }
 
       .spec-input-wrap:has(.spec-input:disabled):hover {
-        border-color: var(--input-disabled-border-color);
-        background: var(--input-disabled-bg);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
         box-shadow: none;
       }
 
@@ -1723,7 +1723,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         padding: 0 12px;
@@ -1802,7 +1802,7 @@
       }
 
       .input-count.over-limit {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .count-input-wrap,
@@ -1840,7 +1840,7 @@
 
       .count-input-wrap .input-count.over-limit,
       .count-textarea-wrap .input-count.over-limit {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-field-help {
@@ -1854,7 +1854,7 @@
       .spec-field.over-limit .spec-input,
       .spec-field.over-limit .spec-textarea,
       .spec-input-wrap.error {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-field.error .spec-input:focus,
@@ -1872,12 +1872,12 @@
       .spec-input-wrap.error:focus-within,
       .spec-input-wrap.error.focus,
       .spec-input-wrap.error.is-focus {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-error-shadow);
       }
 
       .spec-field.error .spec-field-help {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-field.success .spec-input,
@@ -1887,7 +1887,7 @@
       }
 
       .spec-field.success .spec-field-help {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .count-demo-grid {
@@ -1935,7 +1935,7 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         color: var(--color-text-primary);
@@ -1964,13 +1964,13 @@
       }
 
       .spec-select.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-select.error.open,
       .spec-select.error.focus {
-        border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-5) 12%, transparent);
+        border-color: var(--color-status-error-border);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-select.disabled {
@@ -2236,7 +2236,7 @@
         padding: 6px;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-xlarge);
-        background: color-mix(in srgb, var(--neutral-0) 94%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 94%, transparent);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -2312,12 +2312,12 @@
       }
 
       .select-option.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: transparent;
       }
 
       .select-option.active:hover {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: var(--color-bg-overlay-hover);
       }
 
@@ -2379,7 +2379,7 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         color: var(--color-text-primary);
@@ -2407,11 +2407,11 @@
       }
 
       .spec-date.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-date.error.focus {
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-5) 12%, transparent);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-date.disabled {
@@ -2491,7 +2491,7 @@
         padding: 12px;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-xlarge);
-        background: color-mix(in srgb, var(--neutral-0) 94%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 94%, transparent);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -2585,7 +2585,7 @@
         display: grid;
         gap: 4px;
         overflow: auto;
-        scrollbar-color: color-mix(in srgb, var(--neutral-8) 22%, transparent) transparent;
+        scrollbar-color: color-mix(in srgb, var(--color-text-default) 22%, transparent) transparent;
         scrollbar-width: thin;
       }
 
@@ -2599,7 +2599,7 @@
 
       .date-time-list::-webkit-scrollbar-thumb {
         border-radius: var(--radius-full);
-        background: color-mix(in srgb, var(--neutral-8) 22%, transparent);
+        background: color-mix(in srgb, var(--color-text-default) 22%, transparent);
       }
 
       .date-time-option {
@@ -2626,7 +2626,7 @@
 
       .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-time-actions {
@@ -2906,7 +2906,7 @@
 
       .range-scope-tab.active {
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-tab:focus,
@@ -2914,7 +2914,7 @@
         outline: none;
         border-color: transparent;
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -2968,13 +2968,13 @@
       .range-scope-body .select-option.active,
       .range-scope-body .date-time-option.active {
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .select-option.active:hover,
       .range-scope-body .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .time-filter-panel .date-time-option.active,
@@ -3039,7 +3039,7 @@
 
       .date-shortcut:hover,
       .date-shortcut.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
@@ -3138,7 +3138,7 @@
       }
 
       .date-cell.today {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.active,
@@ -3149,17 +3149,17 @@
 
       .date-cell.in-range {
         background:var(--color-bg-subtle);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview {
         background: color-mix(in srgb, var(--color-action-primary) 10%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview-edge {
         background: color-mix(in srgb, var(--color-action-primary) 16%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-edge.range-preview-edge {
@@ -3223,7 +3223,7 @@
         display: inline-flex;
         align-items: stretch;
         overflow: hidden;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         transition:
@@ -3235,7 +3235,7 @@
       .number-input:hover,
       .number-input.hover,
       .number-input.is-hover {
-        border-color: var(--input-number-hover-border-color);
+        border-color: var(--color-action-primary);
         background:var(--color-bg-container);
         box-shadow: none;
       }
@@ -3243,7 +3243,7 @@
       .number-input:focus-within,
       .number-input.focus,
       .number-input.is-focus {
-        border-color: var(--input-number-focus-color);
+        border-color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -3285,7 +3285,7 @@
         display: grid;
         grid-template-rows: 1fr 1fr;
         flex: 0 0 auto;
-        border-left: 1px solid var(--neutral-3);
+        border-left: 1px solid var(--color-border-default);
         background: var(--color-bg-subtle);
       }
 
@@ -3302,7 +3302,7 @@
       }
 
       .number-step + .number-step {
-        border-top: 1px solid var(--neutral-3);
+        border-top: 1px solid var(--color-border-default);
       }
 
       .number-step:hover {
@@ -3344,23 +3344,23 @@
       }
 
       .number-input.error {
-        border-color: var(--input-number-error-color);
+        border-color: var(--color-status-error-border);
       }
 
       .number-input.error:focus-within,
       .number-input.error.focus,
       .number-input.error.is-focus {
-        border-color: var(--input-number-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-number-error-shadow);
       }
 
       .number-input.disabled {
-        border-color: var(--input-number-disabled-border-color);
-        background: var(--input-number-disabled-bg);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
       }
 
       .number-input.disabled .spec-input {
-        color: var(--input-number-disabled-color);
+        color: var(--color-text-disabled);
         cursor: not-allowed;
       }
 
@@ -3421,7 +3421,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--neutral-3);
+        border: 1.4px solid var(--color-border-default);
         border-radius: var(--radius-full);
         appearance: none;
         background:var(--color-bg-container);
@@ -3499,7 +3499,7 @@
         align-items: center;
         justify-content: center;
         padding: 5px 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-full);
         background:var(--color-bg-container);
         color: var(--color-text-tertiary);
@@ -3526,7 +3526,7 @@
       .radio-card:has(input:checked) {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .radio-card.disabled,
@@ -3544,7 +3544,7 @@
       .radio-card:has(input:checked:disabled):hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .checkbox-demo-stack {
@@ -3573,7 +3573,7 @@
         width: fit-content;
         padding: 3px 8px 3px 4px;
         border-radius: var(--radius-large);
-        color: var(--checkbox-text-color);
+        color: var(--color-text-secondary);
         cursor: pointer;
         font-size: 12.5px;
         line-height: 1.5;
@@ -3584,7 +3584,7 @@
       }
 
       .spec-checkbox:hover {
-        background: var(--checkbox-hover-bg);
+        background: var(--color-bg-hover);
         color: var(--color-text-secondary);
       }
 
@@ -3594,7 +3594,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--checkbox-border-color);
+        border: 1.4px solid var(--color-border-strong);
         border-radius: var(--checkbox-radius);
         appearance: none;
         background:var(--color-bg-container);
@@ -3613,7 +3613,7 @@
         width: var(--checkbox-check-size);
         height: var(--checkbox-check-size);
         content: "";
-        background: var(--checkbox-check-color);
+        background: var(--color-text-inverse);
         clip-path: polygon(14% 45%, 0 60%, 38% 96%, 100% 18%, 86% 4%, 36% 68%);
         opacity: 0;
         transform: translate(-50%, -50%) scale(0.7);
@@ -3624,8 +3624,8 @@
 
       .spec-checkbox input:checked,
       .spec-checkbox input[data-indeterminate="true"] {
-        border-color: var(--checkbox-color-checked);
-        background: var(--checkbox-color-checked);
+        border-color: var(--color-action-primary);
+        background: var(--color-action-primary);
       }
 
       .spec-checkbox input:checked::after {
@@ -3639,7 +3639,7 @@
         height: 0;
         background: transparent;
         clip-path: none;
-        border: solid var(--checkbox-indeterminate-color);
+        border: solid var(--color-text-inverse);
         border-width: 0 0 var(--checkbox-indeterminate-stroke);
         opacity: 1;
         transform: translate(-50%, -50%) rotate(0) scale(1);
@@ -3721,8 +3721,8 @@
         position: relative;
         flex: 0 0 auto;
         border-radius: var(--radius-full);
-        background: var(--neutral-3);
-        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--neutral-9) 4%, transparent);
+        background: var(--color-border-default);
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-default) 4%, transparent);
         transition:
           background-color 0.18s ease,
           box-shadow 0.18s ease;
@@ -3737,7 +3737,7 @@
         content: "";
         border-radius: var(--radius-full);
         background:var(--color-bg-container);
-        box-shadow: 0 1px 3px color-mix(in srgb, var(--neutral-9) 22%, transparent);
+        box-shadow: 0 1px 3px color-mix(in srgb, var(--color-text-default) 22%, transparent);
         transition:
           transform 0.18s ease,
           box-shadow 0.18s ease;
@@ -3750,7 +3750,7 @@
         width: 10px;
         height: 10px;
         content: "";
-        border: 2px solid color-mix(in srgb, var(--neutral-6) 18%, transparent);
+        border: 2px solid color-mix(in srgb, var(--color-text-tertiary) 18%, transparent);
         border-top-color: var(--color-border-strong);
         border-radius: var(--radius-full);
         opacity: 0;
@@ -3759,7 +3759,7 @@
       }
 
       .spec-switch:hover .switch-track {
-        background: var(--neutral-3);
+        background: var(--color-border-default);
       }
 
       .spec-switch input:checked + .switch-track {
@@ -3773,7 +3773,7 @@
 
       .spec-switch input:checked + .switch-track::after {
         left: 26px;
-        border-color: color-mix(in srgb, var(--neutral-6) 18%, transparent);
+        border-color: color-mix(in srgb, var(--color-text-tertiary) 18%, transparent);
         border-top-color:var(--color-action-primary);
       }
 
@@ -4109,7 +4109,7 @@
       :root[data-product-theme] .spec-input-wrap.error:focus-within,
       :root[data-product-theme] .spec-input-wrap.error.focus,
       :root[data-product-theme] .spec-input-wrap.error.is-focus {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-error-shadow);
       }
 
@@ -4542,8 +4542,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -4590,7 +4590,7 @@
                 <ul class="doc-meta-list" aria-label="复选框基础规格">
                   <li>方框尺寸 14px</li>
                   <li>圆角 4px</li>
-                  <li>选中主色 var(--brand-5)</li>
+                  <li>选中主色 var(--color-action-primary)</li>
                   <li>支持半选状态</li>
                 </ul>
               </header>
@@ -4828,7 +4828,7 @@
                     <thead>
                       <tr>
                         <th>Token</th>
-                        <th>值</th>
+                        <th>值（颜色为 Light / Dark）</th>
                         <th>用途</th>
                       </tr>
                     </thead>
@@ -4843,31 +4843,15 @@
                         <td><code>var(--radius-small)</code></td>
                         <td>方框圆角，复用小型控件圆角语义。</td>
                       </tr>
-                      <tr>
-                        <td><code>--checkbox-border-color</code></td>
-                        <td><code>var(--color-border-strong)</code></td>
-                        <td>未选中态方框描边，引用全局强边界语义色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--checkbox-color-checked</code></td>
-                        <td><code>var(--color-action-primary)</code></td>
-                        <td>选中与半选态填充。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--checkbox-check-size</code></td>
                         <td><code>8px</code></td>
                         <td>选中态内部对勾图标尺寸。</td>
                       </tr>
-                      <tr>
-                        <td><code>--checkbox-check-color</code></td>
-                        <td><code>var(--color-text-inverse)</code></td>
-                        <td>选中态内部对勾颜色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--checkbox-indeterminate-color</code></td>
-                        <td><code>var(--color-text-inverse)</code></td>
-                        <td>部分已选态内部横线颜色。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--checkbox-indeterminate-width</code></td>
                         <td><code>7px</code></td>
@@ -4883,21 +4867,13 @@
                         <td><code>var(--shadow-focus)</code></td>
                         <td>键盘聚焦外发光，复用共享焦点语义。</td>
                       </tr>
-                      <tr>
-                        <td><code>--checkbox-text-color</code></td>
-                        <td><code>var(--color-text-secondary)</code></td>
-                        <td>默认文本。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--checkbox-text-checked</code></td>
                         <td><code>var(--color-text-primary)</code></td>
                         <td>选中态文本。</td>
                       </tr>
-                      <tr>
-                        <td><code>--checkbox-hover-bg</code></td>
-                        <td><code>var(--color-bg-hover)</code></td>
-                        <td>hover 背景。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--checkbox-hotspot-height</code></td>
                         <td><code>24px</code></td>
@@ -4908,6 +4884,12 @@
                         <td><code>0.6</code></td>
                         <td>禁用态透明度。</td>
                       </tr>
+                    
+                      <tr><td><code>--color-border-strong</code></td><td><code>neutral-4 / neutral-6</code></td><td>未选中态方框描边，引用全局强边界语义色。</td></tr>
+                      <tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>选中与半选态填充。</td></tr>
+                      <tr><td><code>--color-text-inverse</code></td><td><code>neutral-0 / neutral-12</code></td><td>选中态内部对勾颜色；部分已选态内部横线颜色。</td></tr>
+                      <tr><td><code>--color-text-secondary</code></td><td><code>neutral-7 / neutral-4</code></td><td>默认文本。</td></tr>
+                      <tr><td><code>--color-bg-hover</code></td><td><code>neutral-1 / neutral-9</code></td><td>hover 背景。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -5072,15 +5054,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         "--brand-7",
         "--brand-8",
         "--brand-9",
-        "--brand-text",
-        "--brand-text-hover",
-        "--brand-border-soft",
-        "--brand-border-hover",
         "--radius-default",
-        "--input-hover-border-color",
-        "--input-focus-color",
-        "--input-number-hover-border-color",
-        "--input-number-focus-color",
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -5104,14 +5078,6 @@ topbarNav?.addEventListener("keydown", (event) => {
           root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
           root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
           root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
-          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
-          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
-          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
-          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
-          root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-focus-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-focus-color", "var(--color-status-success)");
           return;
         }
 
@@ -5128,15 +5094,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
         root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
         root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
-        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
-        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
-        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
-        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
         root.style.setProperty("--radius-default", "6px");
-        root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-focus-color", iqbPaletteValue("--info-5"));
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {

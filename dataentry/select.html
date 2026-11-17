@@ -18,10 +18,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
 
 
 
@@ -55,7 +55,7 @@
         --color-action-primary: var(--brand-5);
         --color-action-primary-hover: var(--brand-6);
         --color-action-primary-hover: var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled: var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -68,25 +68,25 @@
         --sidebar-width: 300px;
         --radius-default: 6px;
 
-        --input-border-color: var(--color-border-default);
-        --input-hover-border-color:var(--color-action-primary);
-        --input-focus-color:var(--color-action-primary);
+        
+        
+        
 
-        --input-error-color: var(--color-status-error);
+        
         --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
-        --input-text-color: var(--color-text-primary);
-        --input-placeholder-color: var(--color-text-tertiary);
-        --input-disabled-border-color: var(--color-border-disabled);
-        --input-disabled-bg: var(--color-bg-disabled);
-        --input-disabled-color: var(--color-text-disabled);
-        --input-number-hover-border-color:var(--color-action-primary);
-        --input-number-focus-color:var(--color-action-primary);
+        
+        
+        
+        
+        
+        
+        
 
-        --input-number-error-color: var(--color-status-error);
+        
         --input-number-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
-        --input-number-disabled-border-color: var(--color-border-disabled);
-        --input-number-disabled-bg: var(--color-bg-disabled);
-        --input-number-disabled-color: var(--color-text-disabled);
+        
+        
+        
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -258,12 +258,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -283,7 +283,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -295,7 +295,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -303,12 +303,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-action-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -319,7 +319,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -609,7 +609,7 @@
         min-height: 440px;
         border:1px dashed var(--color-border-default);
         border-radius: var(--radius-default);
-        background: color-mix(in srgb, var(--neutral-0) 76%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 76%, transparent);
       }
 
       .content-panel[hidden] {
@@ -732,7 +732,7 @@
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-default);
         background:
-          linear-gradient(180deg, color-mix(in srgb, var(--neutral-0) 82%, transparent), color-mix(in srgb, var(--neutral-0) 64%, transparent));
+          linear-gradient(180deg, color-mix(in srgb, var(--color-bg-container) 82%, transparent), color-mix(in srgb, var(--color-bg-container) 64%, transparent));
         color: inherit;
         cursor: pointer;
         text-align: left;
@@ -1141,7 +1141,7 @@
         justify-content: center;
         gap: 5px;
         padding: 0 14px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-large);
         background:var(--color-bg-container);
         color: var(--color-text-secondary);
@@ -1158,7 +1158,7 @@
 
       .spec-btn:hover {
         border-color:var(--color-action-primary);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn:focus-visible {
@@ -1173,8 +1173,8 @@
       }
 
       .spec-btn.primary:hover {
-        border-color: var(--brand-text);
-        background: var(--brand-text);
+        border-color: var(--color-action-primary);
+        background: var(--color-action-primary);
         color:var(--color-text-inverse);
       }
 
@@ -1199,12 +1199,12 @@
       .spec-btn.ghost-primary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.ghost-primary:hover {
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text-hover);
+        color: var(--color-action-primary-hover);
       }
 
       .spec-btn.solid {
@@ -1219,44 +1219,44 @@
         border-color: var(--color-border-default);
       }
 
-      .spec-btn.permission {
+      .spec-btn.secondary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
-      .spec-btn.permission:hover {
+      .spec-btn.secondary:hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.warning {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning-bg);
         color: var(--color-status-warning);
       }
 
       .spec-btn.warning-primary {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-primary:hover {
-        border-color: var(--warning-5);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: transparent;
         color: var(--color-status-warning);
       }
 
       .spec-btn.warning-secondary:hover {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning-bg);
         color: var(--color-status-warning-hover);
       }
@@ -1284,25 +1284,25 @@
       }
 
       .spec-btn.info-primary {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-primary:hover {
-        border-color: var(--info-5);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-secondary:hover {
-        border-color: var(--info-5);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info-bg);
         color: var(--color-status-info);
       }
@@ -1310,7 +1310,7 @@
       .spec-btn.info-subtle {
         border-color: transparent;
         background: var(--color-status-info-bg);
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-subtle:hover {
@@ -1321,7 +1321,7 @@
       .spec-btn.info-text {
         border-color: transparent;
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-text:hover {
@@ -1330,25 +1330,25 @@
       }
 
       .spec-btn.danger {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger:hover {
-        border-color: var(--danger-5);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-secondary:hover {
-        border-color: var(--danger-5);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error-bg);
         color: var(--color-status-error);
       }
@@ -1356,7 +1356,7 @@
       .spec-btn.danger-subtle {
         border-color: transparent;
         background: var(--color-status-error-bg);
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-subtle:hover {
@@ -1367,7 +1367,7 @@
       .spec-btn.danger-text {
         border-color: transparent;
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-text:hover {
@@ -1453,10 +1453,10 @@
         color:var(--color-text-inverse);
       }
 
-      .spec-btn.permission[disabled]:hover {
+      .spec-btn.secondary[disabled]:hover {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.subtle[disabled]:hover {
@@ -1485,13 +1485,13 @@
       }
 
       .spec-btn.warning-primary[disabled]:hover {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary[disabled]:hover {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: transparent;
         color: var(--color-status-warning);
       }
@@ -1509,51 +1509,51 @@
       }
 
       .spec-btn.info-primary[disabled]:hover {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary[disabled]:hover {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-subtle[disabled]:hover {
         border-color: transparent;
         background: var(--color-status-info-bg);
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.danger[disabled]:hover {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary[disabled]:hover {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-subtle[disabled]:hover {
         border-color: transparent;
         background: var(--color-status-error-bg);
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .disabled-groups {
@@ -1570,7 +1570,7 @@
         width: 12px;
         height: 12px;
         flex: 0 0 auto;
-        border: 1.5px solid color-mix(in srgb, var(--neutral-0) 50%, transparent);
+        border: 1.5px solid color-mix(in srgb, var(--color-bg-container) 50%, transparent);
         border-top-color:var(--color-text-inverse);
         border-radius: var(--radius-full);
         animation: button-spin 0.72s linear infinite;
@@ -1578,7 +1578,7 @@
 
       .loading-dot.brand {
         border-color: color-mix(in srgb, var(--color-action-primary) 24%, transparent);
-        border-top-color: var(--brand-text);
+        border-top-color: var(--color-action-primary);
       }
 
       .loading-dot.neutral {
@@ -1618,16 +1618,16 @@
       .spec-label.required::before {
         content: "*";
         margin-right: 5px;
-        color: var(--danger-4);
+        color: var(--color-status-error);
       }
 
       .spec-input,
       .spec-textarea {
         width: 100%;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
-        color: var(--input-text-color);
+        color: var(--color-text-default);
         font-size:var(--font-style-body-size);
         outline: 0;
         transition:
@@ -1651,7 +1651,7 @@
 
       .spec-input::placeholder,
       .spec-textarea::placeholder {
-        color: var(--input-placeholder-color);
+        color: var(--color-text-tertiary);
       }
 
       .spec-input[type="search"]::-webkit-search-cancel-button {
@@ -1678,7 +1678,7 @@
       .spec-input-wrap:hover,
       .spec-input-wrap.hover,
       .spec-input-wrap.is-hover {
-        border-color: var(--input-hover-border-color);
+        border-color: var(--color-action-primary);
         background:var(--color-bg-container);
         box-shadow: none;
       }
@@ -1692,21 +1692,21 @@
       .spec-input-wrap:focus-within,
       .spec-input-wrap.focus,
       .spec-input-wrap.is-focus {
-        border-color: var(--input-focus-color);
+        border-color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
       .spec-input:disabled,
       .spec-textarea:disabled {
-        border-color: var(--input-disabled-border-color);
-        background: var(--input-disabled-bg);
-        color: var(--input-disabled-color);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
+        color: var(--color-text-disabled);
         cursor: not-allowed;
       }
 
       .spec-input-wrap:has(.spec-input:disabled):hover {
-        border-color: var(--input-disabled-border-color);
-        background: var(--input-disabled-bg);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
         box-shadow: none;
       }
 
@@ -1716,7 +1716,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid var(--input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         padding: 0 12px;
@@ -1795,7 +1795,7 @@
       }
 
       .input-count.over-limit {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .count-input-wrap,
@@ -1833,7 +1833,7 @@
 
       .count-input-wrap .input-count.over-limit,
       .count-textarea-wrap .input-count.over-limit {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-field-help {
@@ -1847,7 +1847,7 @@
       .spec-field.over-limit .spec-input,
       .spec-field.over-limit .spec-textarea,
       .spec-input-wrap.error {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-field.error .spec-input:focus,
@@ -1865,12 +1865,12 @@
       .spec-input-wrap.error:focus-within,
       .spec-input-wrap.error.focus,
       .spec-input-wrap.error.is-focus {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-error-shadow);
       }
 
       .spec-field.error .spec-field-help {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-field.success .spec-input,
@@ -1880,7 +1880,7 @@
       }
 
       .spec-field.success .spec-field-help {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .count-demo-grid {
@@ -1957,13 +1957,13 @@
       }
 
       .spec-select.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-select.error.open,
       .spec-select.error.focus {
-        border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-5) 12%, transparent);
+        border-color: var(--color-status-error-border);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-select.disabled {
@@ -1981,17 +1981,18 @@
 
       .spec-select.small {
         min-height: 30px;
-        border-radius: var(--radius-large);
+        border-radius: var(--radius-default);
         font-size:var(--font-style-caption-size);
       }
 
       .spec-select.large {
+        height: 44px;
         min-height: 44px;
         font-size:var(--font-style-body-size);
       }
 
       [data-select-multiple] .spec-select {
-        padding-block: 6px;
+        padding-block: 0;
       }
 
       .select-value {
@@ -2035,6 +2036,19 @@
         color: var(--color-text-disabled);
       }
 
+      .select-prefix {
+        display: inline-flex;
+        flex: 0 0 auto;
+        align-items: center;
+        color: var(--color-text-secondary);
+      }
+
+      .select-prefix svg {
+        display: block;
+        width: 16px;
+        height: 16px;
+      }
+
       .select-chevron {
         position: absolute;
         right: 8px;
@@ -2045,7 +2059,7 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         background: none;
         pointer-events: none;
         transform: translateY(-50%);
@@ -2059,6 +2073,11 @@
         width: 16px;
         height: 16px;
         display: block;
+      }
+
+      .spec-select.disabled .select-chevron,
+      .spec-select:disabled .select-chevron {
+        color: var(--color-text-secondary);
       }
 
       .spec-select.open .select-chevron {
@@ -2079,7 +2098,7 @@
         justify-content: center;
 
         border-radius: var(--radius-default);
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%);
@@ -2109,7 +2128,7 @@
         width: 24px;
         height: 24px;
         padding: 4px;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%);
@@ -2159,7 +2178,7 @@
 
       .select-clear:hover {
         background:var(--color-bg-subtle);
-        color:var(--color-text-disabled);
+        color: var(--color-text-secondary);
       }
 
       .select-tags {
@@ -2180,8 +2199,8 @@
         align-items: center;
         gap: 5px;
         max-width: 112px;
-        min-height: 24px;
-        padding: 2px 7px;
+        min-height: 28px;
+        padding: 2px 8px;
         border-radius: var(--radius-default);
         background:var(--color-bg-subtle);
         color:var(--color-text-default);
@@ -2196,7 +2215,7 @@
 
       .select-tags.nowrap .select-tag-more {
         flex: 0 0 auto;
-        color: var(--color-text-tertiary);
+        color: var(--color-text-primary);
       }
 
       .select-tag > span:first-child {
@@ -2212,7 +2231,7 @@
         align-items: center;
         justify-content: center;
         flex: 0 0 auto;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         font-size:var(--font-style-body-size);
         line-height: 14px;
       }
@@ -2233,7 +2252,7 @@
         padding: 6px;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-xlarge);
-        background: color-mix(in srgb, var(--neutral-0) 94%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 94%, transparent);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -2328,12 +2347,12 @@
       }
 
       .select-option.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: transparent;
       }
 
       .select-option.active:hover {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: var(--color-bg-overlay-hover);
       }
 
@@ -2353,6 +2372,7 @@
       }
 
       .select-option-check {
+        color: var(--color-text-secondary);
         width: 16px;
         height: 16px;
         flex: 0 0 auto;
@@ -2385,7 +2405,7 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         color: var(--color-text-primary);
@@ -2413,11 +2433,11 @@
       }
 
       .spec-date.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-date.error.focus {
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-5) 12%, transparent);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-date.disabled {
@@ -2462,7 +2482,7 @@
         width: 24px;
         height: 24px;
         padding: 4px;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         pointer-events: none;
         transform: translateY(-50%);
       }
@@ -2497,7 +2517,7 @@
         padding: 12px;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-xlarge);
-        background: color-mix(in srgb, var(--neutral-0) 94%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 94%, transparent);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -2591,7 +2611,7 @@
         display: grid;
         gap: 4px;
         overflow: auto;
-        scrollbar-color: color-mix(in srgb, var(--neutral-8) 22%, transparent) transparent;
+        scrollbar-color: color-mix(in srgb, var(--color-text-default) 22%, transparent) transparent;
         scrollbar-width: thin;
       }
 
@@ -2605,7 +2625,7 @@
 
       .date-time-list::-webkit-scrollbar-thumb {
         border-radius: var(--radius-full);
-        background: color-mix(in srgb, var(--neutral-8) 22%, transparent);
+        background: color-mix(in srgb, var(--color-text-default) 22%, transparent);
       }
 
       .date-time-option {
@@ -2632,7 +2652,7 @@
 
       .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-time-actions {
@@ -2721,7 +2741,7 @@
         border: 0;
         border-radius: var(--radius-default);
         background: transparent;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         cursor: pointer;
         transform: translateY(-50%);
       }
@@ -2733,7 +2753,7 @@
 
       .time-clear-btn:hover {
         background:var(--color-bg-subtle);
-        color: var(--color-text-tertiary);
+        color: var(--color-text-secondary);
       }
 
       .time-clear-btn::before,
@@ -2802,7 +2822,7 @@
         border: 1.5px solid currentColor;
         border-radius: var(--radius-full);
         box-sizing: border-box;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         pointer-events: none;
         transform: translateY(-50%);
       }
@@ -2912,7 +2932,7 @@
 
       .range-scope-tab.active {
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-tab:focus,
@@ -2920,7 +2940,7 @@
         outline: none;
         border-color: transparent;
         background-color: color-mix(in srgb, var(--color-action-primary) 14.000%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -2974,13 +2994,13 @@
       .range-scope-body .select-option.active,
       .range-scope-body .date-time-option.active {
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .select-option.active:hover,
       .range-scope-body .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .time-filter-panel .date-time-option.active,
@@ -3045,7 +3065,7 @@
 
       .date-shortcut:hover,
       .date-shortcut.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
       }
 
@@ -3079,13 +3099,13 @@
         border: 0;
         border-radius: var(--radius-default);
         background: transparent;
-        color: var(--color-text-tertiary);
+        color: var(--color-text-secondary);
         cursor: pointer;
       }
 
       .date-nav-btn:hover {
         background:var(--color-bg-subtle);
-        color:var(--color-text-primary);
+        color: var(--color-text-secondary);
       }
 
       .date-nav-btn::before {
@@ -3144,7 +3164,7 @@
       }
 
       .date-cell.today {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.active,
@@ -3155,17 +3175,17 @@
 
       .date-cell.in-range {
         background:var(--color-bg-subtle);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview {
         background: color-mix(in srgb, var(--color-action-primary) 10%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-preview-edge {
         background: color-mix(in srgb, var(--color-action-primary) 16%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.range-edge.range-preview-edge {
@@ -3229,7 +3249,7 @@
         display: inline-flex;
         align-items: stretch;
         overflow: hidden;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         transition:
@@ -3241,7 +3261,7 @@
       .number-input:hover,
       .number-input.hover,
       .number-input.is-hover {
-        border-color: var(--input-number-hover-border-color);
+        border-color: var(--color-action-primary);
         background:var(--color-bg-container);
         box-shadow: none;
       }
@@ -3249,7 +3269,7 @@
       .number-input:focus-within,
       .number-input.focus,
       .number-input.is-focus {
-        border-color: var(--input-number-focus-color);
+        border-color: var(--color-action-primary);
         box-shadow: var(--shadow-focus);
       }
 
@@ -3291,7 +3311,7 @@
         display: grid;
         grid-template-rows: 1fr 1fr;
         flex: 0 0 auto;
-        border-left: 1px solid var(--neutral-3);
+        border-left: 1px solid var(--color-border-default);
         background: var(--color-bg-subtle);
       }
 
@@ -3308,7 +3328,7 @@
       }
 
       .number-step + .number-step {
-        border-top: 1px solid var(--neutral-3);
+        border-top: 1px solid var(--color-border-default);
       }
 
       .number-step:hover {
@@ -3350,23 +3370,23 @@
       }
 
       .number-input.error {
-        border-color: var(--input-number-error-color);
+        border-color: var(--color-status-error-border);
       }
 
       .number-input.error:focus-within,
       .number-input.error.focus,
       .number-input.error.is-focus {
-        border-color: var(--input-number-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-number-error-shadow);
       }
 
       .number-input.disabled {
-        border-color: var(--input-number-disabled-border-color);
-        background: var(--input-number-disabled-bg);
+        border-color: var(--color-border-disabled);
+        background: var(--color-bg-disabled);
       }
 
       .number-input.disabled .spec-input {
-        color: var(--input-number-disabled-color);
+        color: var(--color-text-disabled);
         cursor: not-allowed;
       }
 
@@ -3427,7 +3447,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--neutral-3);
+        border: 1.4px solid var(--color-border-default);
         border-radius: var(--radius-full);
         appearance: none;
         background:var(--color-bg-container);
@@ -3505,7 +3525,7 @@
         align-items: center;
         justify-content: center;
         padding: 5px 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-full);
         background:var(--color-bg-container);
         color: var(--color-text-tertiary);
@@ -3532,7 +3552,7 @@
       .radio-card:has(input:checked) {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .radio-card.disabled,
@@ -3550,7 +3570,7 @@
       .radio-card:has(input:checked:disabled):hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .checkbox-demo-stack {
@@ -3600,7 +3620,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--neutral-3);
+        border: 1.4px solid var(--color-border-default);
         border-radius: var(--radius-small);
         appearance: none;
         background:var(--color-bg-container);
@@ -3645,7 +3665,7 @@
         height: 0;
         background: transparent;
         clip-path: none;
-        border: solid var(--neutral-0);
+        border: solid var(--color-bg-container);
         border-width: 0 0 1.6px;
         opacity: 1;
         transform: translate(-50%, -50%) rotate(0) scale(1);
@@ -3727,8 +3747,8 @@
         position: relative;
         flex: 0 0 auto;
         border-radius: var(--radius-full);
-        background: var(--neutral-3);
-        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--neutral-9) 4%, transparent);
+        background: var(--color-border-default);
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-default) 4%, transparent);
         transition:
           background-color 0.18s ease,
           box-shadow 0.18s ease;
@@ -3743,7 +3763,7 @@
         content: "";
         border-radius: var(--radius-full);
         background:var(--color-bg-container);
-        box-shadow: 0 1px 3px color-mix(in srgb, var(--neutral-9) 22%, transparent);
+        box-shadow: 0 1px 3px color-mix(in srgb, var(--color-text-default) 22%, transparent);
         transition:
           transform 0.18s ease,
           box-shadow 0.18s ease;
@@ -3756,7 +3776,7 @@
         width: 10px;
         height: 10px;
         content: "";
-        border: 2px solid color-mix(in srgb, var(--neutral-6) 18%, transparent);
+        border: 2px solid color-mix(in srgb, var(--color-text-tertiary) 18%, transparent);
         border-top-color: var(--color-border-strong);
         border-radius: var(--radius-full);
         opacity: 0;
@@ -3765,7 +3785,7 @@
       }
 
       .spec-switch:hover .switch-track {
-        background: var(--neutral-3);
+        background: var(--color-border-default);
       }
 
       .spec-switch input:checked + .switch-track {
@@ -3779,7 +3799,7 @@
 
       .spec-switch input:checked + .switch-track::after {
         left: 26px;
-        border-color: color-mix(in srgb, var(--neutral-6) 18%, transparent);
+        border-color: color-mix(in srgb, var(--color-text-tertiary) 18%, transparent);
         border-top-color:var(--color-action-primary);
       }
 
@@ -4115,7 +4135,7 @@
       :root[data-product-theme] .spec-input-wrap.error:focus-within,
       :root[data-product-theme] .spec-input-wrap.error.focus,
       :root[data-product-theme] .spec-input-wrap.error.is-focus {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-error-shadow);
       }
 
@@ -4548,8 +4568,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -4606,9 +4626,9 @@
                 <ul class="rule-list">
                   <li>用于从有限集合中选择值，例如 Agent 类型、浏览器环境、任务状态、标签或团队成员。</li>
                   <li>选项数量较少且互斥时可使用 Radio；选项需要搜索、分组或动态加载时优先使用 Select。</li>
-                  <li>多选标签可换行并使 Trigger 自适应增高；增高后始终保持 6px 上下内边距。空间受限时使用响应式折叠，将其余标签收拢为 <code>+n</code>。</li>
+                  <li>多选标签可换行并使 Trigger 自适应增高；默认高度为 38px，上下内边距为 0px。空间受限时使用响应式折叠，将其余标签收拢为 <code>+n</code>。</li>
                   <li>选项文案应短而可扫读；长说明放在下拉项副信息或详情面板中承载。</li>
-                  <li>浮层选中项在右侧显示 16px Check；Trigger 内箭头、搜索、清除与标签移除图标统一使用浅层文字语义色。</li>
+                  <li>浮层选中项在右侧显示 16px Check；Trigger 内展开／收起箭头、清除与标签移除图标使用 <code>--color-text-primary</code>；搜索图标使用浅层文字语义色。</li>
                 </ul>
               </section>
 
@@ -4652,6 +4672,52 @@
                       </div>
                     </div>
                   </div>
+                  <div class="example-block">
+                    <div class="example-head"><h3>前置 Prefix Icon</h3>
+                    <p>Prefix Icon 位于值文本前，作为识别性图标，帮助用户识别字段的对象或类别。示例使用 User 表示成员选择，图标随字段保持固定，点击后展开选择列表。</p></div>
+                    <div class="select-demo-stack" data-select-demo data-select-placeholder="请选择成员">
+                      <button class="spec-select" type="button" aria-label="选择成员" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="select-prefix" aria-hidden="true">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M4 21c1.8-5 4.5-7 8-7s6.2 2 8 7" />
+                          </svg>
+                        </span>
+                        <span class="select-value" data-select-value>张明</span>
+                        <span class="select-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+                      </button>
+                      <div class="select-dropdown" role="listbox" aria-label="成员" hidden>
+                        <ul class="select-option-list">
+                          <li class="select-option active" role="option" data-value="张明" aria-selected="true">
+                            <span>张明</span>
+                            <span class="select-option-check" aria-hidden="true"></span>
+                          </li>
+                          <li class="select-option" role="option" data-value="李华"><span>李华</span></li>
+                          <li class="select-option" role="option" data-value="王芳"><span>王芳</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="example-block">
+                    <div class="example-head"><h3>后置 Suffix Icon</h3>
+                    <p>Suffix Icon 位于值文本后，作为功能性图标，提示当前可执行的操作。示例使用 ChevronDown 表示展开列表，展开时箭头旋转；支持搜索、清除时，按对应功能使用 Search、Clear 图标。</p></div>
+                    <div class="select-demo-stack" data-select-demo data-select-placeholder="请选择 Agent">
+                      <button class="spec-select" type="button" aria-label="选择 Agent 类型" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="select-value" data-select-value>Browser Agent</span>
+                        <span class="select-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
+                      </button>
+                      <div class="select-dropdown" role="listbox" aria-label="Agent 类型" hidden>
+                        <ul class="select-option-list">
+                          <li class="select-option active" role="option" data-value="Browser Agent" aria-selected="true">
+                            <span>Browser Agent</span>
+                            <span class="select-option-check" aria-hidden="true"></span>
+                          </li>
+                          <li class="select-option" role="option" data-value="Product Agent"><span>Product Agent</span></li>
+                          <li class="select-option" role="option" data-value="Message Agent"><span>Message Agent</span></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </section>
 
@@ -4660,7 +4726,7 @@
                 <div class="doc-grid">
                   <div class="example-block">
                     <div class="example-head"><h3>多选</h3>
-                    <p>用于标签、渠道等可同时选择多个值的配置。标签换行时 Trigger 自适应增高，并保持 6px 上下内边距不变。</p></div>
+                    <p>用于标签、渠道等可同时选择多个值的配置。标签换行时 Trigger 自适应增高，默认高度为 38px，上下内边距为 0px。</p></div>
                     <div class="select-demo-stack" data-select-demo data-select-multiple data-select-placeholder="请选择任务标签">
                       <button class="spec-select" type="button" aria-label="选择任务标签" aria-haspopup="listbox" aria-expanded="false">
                         <span class="select-tags" data-select-tags>
@@ -4732,13 +4798,13 @@
                     <div class="example-head"><h3>搜索选择</h3>
                     <p>选项较多或需要按关键词定位时，展开后在选择器主区域内直接输入搜索关键词。</p></div>
                     <div class="select-demo-stack" data-select-demo data-select-searchable data-select-placeholder="请选择 Agent">
-                      <div class="spec-select open" role="combobox" tabindex="0" aria-haspopup="listbox" aria-expanded="true">
+                      <div class="spec-select" role="combobox" tabindex="0" aria-haspopup="listbox" aria-expanded="false">
                         <input class="select-trigger-search" type="text" placeholder="Tiktok Agent" aria-label="搜索 Agent" data-select-search />
                         <span class="select-value" data-select-value>Tiktok Agent</span>
                         <span class="select-chevron" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span>
                         <span class="select-search-icon" aria-hidden="true"></span>
                       </div>
-                      <div class="select-dropdown" role="listbox" aria-label="Agent 选择">
+                      <div class="select-dropdown" role="listbox" aria-label="Agent 选择" hidden>
                         <ul class="select-option-list">
                           <li class="select-option active" role="option" data-value="Tiktok Agent" aria-selected="true">
                             <span>Tiktok Agent</span>
@@ -5002,12 +5068,7 @@
                         <td><code>string</code></td>
                         <td><code>-</code></td>
                       </tr>
-                      <tr>
-                        <td><code>allowClear</code></td>
-                        <td>是否允许清除已选值；仅在有选项且 hover 时显示语义 Close 图标。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>false</code></td>
-                      </tr>
+                                            <tr><td><code>allowClear</code></td><td>允许清除已选值。有值时 Hover 显示 Close 图标，颜色与前后置图标统一为 text-secondary。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
                       <tr>
                         <td><code>showSearch</code></td>
                         <td>是否启用搜索；展开后在主 tab 内输入关键词并实时过滤下拉内容。</td>
@@ -5056,6 +5117,8 @@
                         <td><code>(open) =&gt; void</code></td>
                         <td><code>-</code></td>
                       </tr>
+                                          <tr><td><code>prefix</code></td><td>Trigger 前置图标，用于表达字段语义，颜色使用 <code>--color-text-secondary</code>。</td><td><code>Icon | null</code></td><td><code>null</code></td></tr>
+                      <tr><td><code>suffixIcon</code></td><td>Trigger 后置图标，可使用下拉箭头。箭头随展开状态旋转 180°，过渡时长 160ms。</td><td><code>Icon | null</code></td><td><code>ChevronDown</code></td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -5068,7 +5131,7 @@
                     <thead>
                       <tr>
                         <th>Token</th>
-                        <th>值</th>
+                        <th>值（颜色为 Light / Dark）</th>
                         <th>用途</th>
                       </tr>
                     </thead>
@@ -5103,36 +5166,16 @@
                         <td><code>8px</code></td>
                         <td>Small 尺寸圆角。</td>
                       </tr>
-                      <tr>
-                        <td><code>--select-border-color</code></td>
-                        <td><code>var(--color-border-default)</code></td>
-                        <td>默认边框。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--select-hover-border-color</code></td>
-                        <td><code>var(--color-action-primary)</code></td>
-                        <td>触发器 hover 边框，无外发光。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--select-focus-color</code></td>
-                        <td><code>var(--color-action-primary)</code></td>
-                        <td>聚焦与展开边框。</td>
-                      </tr>
+                      
+                      
+                      
                       <tr>
                         <td><code>--select-focus-shadow</code></td>
                         <td><code>none</code></td>
                         <td>聚焦与展开不使用外发光，仅通过语义描边反馈。</td>
                       </tr>
-                      <tr>
-                        <td><code>--select-placeholder-color</code></td>
-                        <td><code>var(--color-text-disabled)</code></td>
-                        <td>占位提示文字与搜索输入占位文字。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--select-icon-color</code></td>
-                        <td><code>var(--color-text-disabled)</code></td>
-                        <td>Trigger 内展开、收起、搜索、清除及标签移除图标颜色。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--select-trigger-icon-size</code></td>
                         <td><code>16px</code></td>
@@ -5163,25 +5206,17 @@
                         <td><code>32px</code></td>
                         <td>选项最小高度。</td>
                       </tr>
-                      <tr>
-                        <td><code>--select-option-active-bg</code></td>
-                        <td><code>transparent</code></td>
-                        <td>选中项默认背景；Hover 时使用语义 Hover 背景。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--select-option-check-size</code></td>
                         <td><code>16px</code></td>
                         <td>浮层内图标的默认尺寸；当前用于选中项右侧语义 Check。</td>
                       </tr>
-                      <tr>
-                        <td><code>--select-option-check-color</code></td>
-                        <td><code>var(--brand-text)</code></td>
-                        <td>浮层选中项右侧 Check 图标颜色，继承选中项文字色。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--select-tag-height</code></td>
-                        <td><code>24px</code></td>
-                        <td>多选标签高度。</td>
+                        <td><code>28px</code></td>
+                        <td>多选标签最小高度。</td>
                       </tr>
                       <tr>
                         <td><code>--select-tag-gap</code></td>
@@ -5190,24 +5225,23 @@
                       </tr>
                       <tr>
                         <td><code>--select-multiple-padding-block</code></td>
-                        <td><code>6px</code></td>
+                        <td><code>0px</code></td>
                         <td>多选 Trigger 的上下内边距，标签换行增高时保持不变。</td>
                       </tr>
-                      <tr>
-                        <td><code>--select-tag-more-color</code></td>
-                        <td><code>var(--color-text-tertiary)</code></td>
-                        <td>多选折叠 <code>+n</code> 标签文字颜色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--select-empty-color</code></td>
-                        <td><code>var(--color-text-disabled)</code></td>
-                        <td>搜索无结果空状态文字颜色。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--select-disabled-opacity</code></td>
                         <td><code>0.6</code></td>
                         <td>禁用态透明度。</td>
                       </tr>
+                    
+                      <tr><td><code>--color-border-default</code></td><td><code>neutral-3 / neutral-7</code></td><td>默认边框。</td></tr>
+                                            <tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>Trigger Hover、聚焦与展开描边，以及浮层选中项文字颜色。</td></tr>
+                                            <tr><td><code>--color-text-disabled</code></td><td><code>neutral-4 / neutral-6</code></td><td>占位提示、搜索输入占位与搜索无结果文字颜色。</td></tr>
+                                            <tr><td><code>--color-text-primary</code></td><td><code>neutral-10 / neutral-1</code></td><td>多选折叠 <code>+n</code> 标签文字颜色。</td></tr>
+                                          <tr><td><code>--color-text-secondary</code></td><td><code>neutral-7 / neutral-4</code></td><td>Trigger 前后置图标、Hover 关闭图标与浮层 Check 图标的默认颜色。</td></tr>
+                      <tr><td><code>--color-bg-overlay-hover</code></td><td><code>neutral-1 / neutral-8</code></td><td>浮层菜单项的 Hover 底色。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -5372,15 +5406,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         "--brand-7",
         "--brand-8",
         "--brand-9",
-        "--brand-text",
-        "--brand-text-hover",
-        "--brand-border-soft",
-        "--brand-border-hover",
         "--radius-default",
-        "--input-hover-border-color",
-        "--input-focus-color",
-        "--input-number-hover-border-color",
-        "--input-number-focus-color",
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -5404,14 +5430,6 @@ topbarNav?.addEventListener("keydown", (event) => {
           root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
           root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
           root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
-          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
-          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
-          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
-          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
-          root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-focus-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-focus-color", "var(--color-status-success)");
           return;
         }
 
@@ -5428,15 +5446,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
         root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
         root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
-        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
-        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
-        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
-        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
         root.style.setProperty("--radius-default", "6px");
-        root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-focus-color", iqbPaletteValue("--info-5"));
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {

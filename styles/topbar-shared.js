@@ -35,7 +35,7 @@
     document.documentElement.dataset.productTheme = "default-theme";
     [
       "--brand-0", "--brand-1", "--brand-2", "--brand-3", "--brand-4",
-      "--brand-5", "--brand-6", "--brand-7", "--brand-8", "--brand-9", "--brand-text", "--brand-text-hover", "--brand-border-soft", "--brand-border-hover",
+      "--brand-5", "--brand-6", "--brand-7", "--brand-8", "--brand-9", "--color-action-primary", "--color-action-primary-hover", "--color-border-subtle", "--color-border-default",
       "--input-hover-border-color", "--input-focus-color",
       "--input-number-hover-border-color", "--input-number-focus-color",
     ].forEach((name) => document.documentElement.style.removeProperty(name));
@@ -192,7 +192,7 @@
   const options = Array.from(dropdown.querySelectorAll(".topbar-template-option:not(:disabled)"));
   options.forEach((option) => {
     option.addEventListener("click", () => {
-      window.open("https://monica137142.github.io/creator-center/", "_blank", "noopener");
+      window.open("https://monica137142.github.io/iqb-designsystem/Template/CreatorStudio/", "_blank", "noopener");
       dropdown.classList.add("is-menu-dismissed");
       option.blur();
     });

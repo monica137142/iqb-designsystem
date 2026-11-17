@@ -26,7 +26,7 @@
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
   --tabs-color: var(--color-text-secondary);
   --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
+  --tabs-active-color: var(--color-action-primary);
   --tabs-bg-hover: var(--color-bg-hover);
   --tabs-radius: var(--radius-default);
   position: absolute;

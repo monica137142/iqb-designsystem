@@ -6,7 +6,7 @@
     <title>Chart 图表 - Design System</title>
     <script src="../styles/color-mode-init.js"></script>
     <style>
-      :root{--color-text-primary: var(--neutral-10);--color-text-default: var(--neutral-9);--color-text-secondary: var(--neutral-6);--color-text-tertiary: var(--neutral-5);--color-text-disabled: var(--neutral-4);--color-text-inverse: var(--neutral-0);--color-text-link: var(--info-6);--color-bg-page: var(--neutral-0);--color-bg-container: var(--neutral-0);--color-bg-subtle: var(--neutral-1);--color-bg-hover: var(--neutral-1);--color-bg-selected: var(--brand-1);--color-bg-disabled: var(--neutral-1);--color-border-default: var(--neutral-3);--color-border-subtle: var(--neutral-2);--color-border-strong: var(--neutral-4);--color-border-focus: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-action-primary: var(--brand-5);--color-action-primary-hover: var(--brand-6);--color-action-primary-hover: var(--brand-7);--color-action-primary-bg-hover: var(--brand-0);--color-action-primary-disabled: var(--brand-2);--color-status-success: var(--success-5);--color-status-error: var(--danger-5);--color-status-warning: var(--warning-5);--color-status-info: var(--info-5);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--topbar-height:60px;--sidebar-width:300px;--radius-default: 6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:36px;height:var(--topbar-height);padding:0 24px;background: var(--color-bg-container);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color: var(--color-text-default);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:var(--radius-large);background:linear-gradient(135deg,var(--brand-5),var(--brand-3));box-shadow:0 3px 10px color-mix(in srgb, var(--color-action-primary) 22%, transparent)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-default);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color: var(--color-text-top);background: var(--color-bg-container)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--font-style-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--font-style-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);font-size:var(--font-style-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--font-style-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.spec-table-wrap{overflow:auto;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.spec-table{width:100%;border-collapse:collapse;font-size:var(--font-style-body-size)}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top}.spec-table th{color:var(--color-text-default);background: var(--color-bg-container);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;background:var(--color-bg-subtle);border-radius:var(--radius-small);font-family:"SFMono-Regular",Consolas,monospace;font-size:var(--font-style-caption-size)}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid{grid-template-columns:1fr}.doc-title{font-size:28px}}
+      :root{--color-text-primary: var(--neutral-10);--color-text-default: var(--neutral-9);--color-text-secondary: var(--neutral-6);--color-text-tertiary: var(--neutral-5);--color-text-disabled: var(--neutral-4);--color-text-inverse: var(--neutral-0);--color-text-link: var(--info-6);--color-bg-page: var(--neutral-0);--color-bg-container: var(--neutral-0);--color-bg-subtle: var(--neutral-1);--color-bg-hover: var(--neutral-1);--color-bg-selected: var(--brand-1);--color-bg-disabled: var(--neutral-1);--color-border-default: var(--neutral-3);--color-border-subtle: var(--neutral-2);--color-border-strong: var(--neutral-4);--color-border-focus: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-action-primary: var(--brand-5);--color-action-primary-hover: var(--brand-6);--color-action-primary-hover: var(--brand-7);--color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);--color-action-primary-disabled: var(--brand-2);--color-status-success: var(--success-5);--color-status-error: var(--danger-5);--color-status-warning: var(--warning-5);--color-status-info: var(--info-5);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--topbar-height:60px;--sidebar-width:300px;--radius-default: 6px;font-family:Inter,"Inter var","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif}*{box-sizing:border-box}html,body{width:100%;height:100%;min-width:320px;margin:0;color:var(--color-text-primary);background:var(--color-bg-container)}body{overflow:hidden}button{font:inherit}.app-shell{display:grid;grid-template-rows:var(--topbar-height) 1fr;width:100vw;height:100vh}.topbar{display:flex;align-items:center;justify-content:space-between;gap:36px;height:var(--topbar-height);padding:0 24px;background: var(--color-bg-container);border-bottom:1px solid var(--color-border-subtle);backdrop-filter:blur(12px);z-index:3}.brand{display:inline-flex;align-items:center;gap:10px;color: var(--color-text-default);font-size:17px;font-weight:600;text-decoration:none}.brand-mark{width:30px;height:30px;border-radius:var(--radius-large);background:linear-gradient(135deg,var(--color-action-primary),var(--color-action-primary));box-shadow:0 3px 10px color-mix(in srgb, var(--color-action-primary) 22%, transparent)}.topbar-actions{color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:var(--sidebar-width) minmax(0,1fr);min-height:0}.sidebar{display:flex;flex-direction:column;gap:18px;min-width:0;min-height:0;padding:22px 18px;overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;background:var(--color-bg-container);border-right:1px solid var(--color-border-subtle)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:flex;flex-direction:column;gap:20px;padding-bottom:calc((100vh - var(--topbar-height)) / 2)}.nav-section{display:flex;flex-direction:column;gap:4px}.nav-list>.nav-section:nth-child(2){margin-top:-16px}.nav-sublist{display:flex;flex-direction:column;gap:4px}.nav-category{display:inline-flex;align-items:center;gap:6px;width:fit-content;padding:0 12px 4px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size);line-height:1.4}.nav-category-count{color:var(--color-text-disabled);font-weight:400}.nav-button{position:relative;display:flex;align-items:center;width:100%;min-height:40px;padding:0 12px;color:var(--color-text-default);background:transparent;border:0;border-radius:var(--radius-default);cursor:pointer;text-align:left;text-decoration:none}.nav-button:hover{color: var(--color-text-top);background: var(--color-bg-container)}.nav-button[aria-current=page]{color:var(--color-action-primary);background:var(--color-bg-subtle)}.nav-label{overflow:hidden;font-size:var(--font-style-body-size);line-height:1.2;text-overflow:ellipsis;white-space:nowrap}.canvas{min-width:0;min-height:0;overflow:auto}.canvas-inner{width:min(100%,1120px);padding:44px 56px 80px}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary-hover);font-size:var(--font-style-caption-size);font-weight:700;letter-spacing:.04em;text-transform:uppercase}.doc-title{margin:0;color:var(--color-text-primary);font-size:32px;line-height:1.2}.doc-summary{max-width:760px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-meta-list{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 0;padding:0;list-style:none}.doc-meta-list li{padding:6px 10px;color:var(--color-text-default);background: var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-default);font-size:var(--font-style-caption-size)}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:600}.doc-section h3{margin:0 0 10px;font-size:var(--font-style-body-size);font-weight:600}.doc-section p{margin:0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.7}.demo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.example-block{position:relative;min-width:0;padding:20px;background:var(--color-bg-container);border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.spec-table-wrap{overflow:auto;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.spec-table{width:100%;border-collapse:collapse;font-size:var(--font-style-body-size)}.spec-table th,.spec-table td{padding:12px 14px;border-bottom:1px solid var(--color-border-subtle);text-align:left;vertical-align:top}.spec-table th{color:var(--color-text-default);background: var(--color-bg-container);font-weight:600}.spec-table tr:last-child td{border-bottom:0}.spec-table code{padding:2px 5px;background:var(--color-bg-subtle);border-radius:var(--radius-small);font-family:"SFMono-Regular",Consolas,monospace;font-size:var(--font-style-caption-size)}@media(max-width:860px){body{overflow:auto}.app-shell{height:auto;min-height:100vh}.workspace{grid-template-columns:1fr}.sidebar{flex-direction:row;align-items:center;gap:12px;width:100%;min-height:auto;max-height:none;padding:12px 14px;overflow-x:auto;overflow-y:hidden;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.nav-list,.nav-section,.nav-sublist{flex-direction:row;align-items:center;gap:8px}.nav-list{padding-bottom:0}.nav-category{padding:0 2px;white-space:nowrap}.nav-button{width:auto;white-space:nowrap}.canvas-inner{padding:28px 20px 56px}.demo-grid{grid-template-columns:1fr}.doc-title{font-size:28px}}
       /* Header parity with index.html */
       :root {
 
@@ -99,12 +99,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -124,7 +124,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -136,7 +136,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -144,12 +144,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-action-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -160,7 +160,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -437,16 +437,16 @@
       }
 
       :root {
-        --chart-series-1: var(--color-action-primary);
-        --chart-series-2: var(--info-6);
-        --chart-series-3: var(--info-4);
-        --chart-series-4: var(--brand-7);
-        --chart-series-5: var(--brand-3);
-        --chart-series-6: var(--success-6);
-        --chart-series-7: var(--warning-6);
-        --chart-series-8: var(--danger-5);
-        --chart-series-9: var(--danger-3);
-        --chart-series-10: var(--neutral-5);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
       }
 
       .chart-demo-grid {
@@ -584,8 +584,8 @@
         width: 20px;
         height: 20px;
         content: "";
-        background: var(--swatch-color);
-        border: 1px solid color-mix(in srgb, var(--neutral-9) 8%, transparent);
+        background: currentColor;
+        border: 1px solid color-mix(in srgb, var(--color-text-default) 8%, transparent);
         border-radius: var(--radius-default);
       }
 
@@ -629,7 +629,7 @@
         width: 8px;
         height: 8px;
         content: "";
-        background: var(--legend-color);
+        background: currentColor;
         border-radius: var(--radius-full);
       }
 
@@ -1073,8 +1073,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -1131,7 +1131,7 @@
                   </li>
                   <li>
                     <strong>Theme Mapping</strong>
-                    <p>品牌色、字体、边框、背景、圆角优先读取现有 CSS Variable。</p>
+                    <p>分类色、字体、边框、背景和圆角读取 design.md 中的全局 Token。</p>
                   </li>
                   <li>
                     <strong>Implementation</strong>
@@ -1350,7 +1350,7 @@
                 <div class="chart-element-grid">
                   <div class="chart-element-card">
                     <strong>Color</strong>
-                    <p>Series 1 使用当前主题的 Primary，其余 9 个系列色提供清晰区分，最多支持 10 个分类。</p>
+                    <p>数据系列直接引用 color-category-* 分类色，最多支持 10 个分类。</p>
                     <div class="color-swatch-list" data-chart-swatches aria-label="Chart color swatches"></div>
                   </div>
                   <div class="chart-element-card">
@@ -1364,9 +1364,9 @@
                     <strong>Legend</strong>
                     <p>图例使用 Caption 字号和 Secondary Text，未选中态降低透明度，Marker 跟随系列色。</p>
                     <div class="legend-preview" aria-hidden="true">
-                      <span style="--legend-color: var(--color-action-primary)">Revenue</span>
-                      <span style="--legend-color: var(--info-6)">Cost</span>
-                      <span style="--legend-color: var(--info-4)">Profit</span>
+                      <span style="color: var(--color-category-green)">Revenue</span>
+                      <span style="color: var(--color-category-blue)">Cost</span>
+                      <span style="color: var(--color-category-cyan)">Profit</span>
                     </div>
                   </div>
                   <div class="chart-element-card">
@@ -1458,21 +1458,21 @@
                     <thead>
                       <tr>
                         <th>Token</th>
-                        <th>默认映射</th>
+                        <th>值（颜色为 Light / Dark）</th>
                         <th>Chart 用途</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr><td><code>--chart-series-1</code></td><td><code>var(--color-action-primary)</code></td><td>Series 1 / Primary</td></tr>
-                      <tr><td><code>--chart-series-2</code></td><td><code>var(--info-6)</code></td><td>Series 2 / Blue</td></tr>
-                      <tr><td><code>--chart-series-3</code></td><td><code>var(--info-4)</code></td><td>Series 3 / Sky</td></tr>
-                      <tr><td><code>--chart-series-4</code></td><td><code>var(--brand-7)</code></td><td>Series 4 / Indigo</td></tr>
-                      <tr><td><code>--chart-series-5</code></td><td><code>var(--brand-3)</code></td><td>Series 5 / Lavender</td></tr>
-                      <tr><td><code>--chart-series-6</code></td><td><code>var(--success-6)</code></td><td>Series 6 / Green</td></tr>
-                      <tr><td><code>--chart-series-7</code></td><td><code>var(--warning-6)</code></td><td>Series 7 / Amber</td></tr>
-                      <tr><td><code>--chart-series-8</code></td><td><code>var(--danger-5)</code></td><td>Series 8 / Red</td></tr>
-                      <tr><td><code>--chart-series-9</code></td><td><code>var(--danger-3)</code></td><td>Series 9 / Rose</td></tr>
-                      <tr><td><code>--chart-series-10</code></td><td><code>var(--neutral-5)</code></td><td>Series 10 / Slate</td></tr>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
                       <tr>
                         <td><code>--radius-default</code></td>
                         <td><code>6px</code></td>
@@ -1488,7 +1488,18 @@
                         <td><code>14px / 500 / 22px</code></td>
                         <td>各图表 Example 标题的字号、字重与行高。</td>
                       </tr>
-                    </tbody>
+                    
+<tr><td><code>--color-category-green</code></td><td><code>#15803D / #4ADE80</code></td><td>Series 1 / Green。</td></tr>
+<tr><td><code>--color-category-blue</code></td><td><code>#2563EB / #4096FF</code></td><td>Series 2 / Blue。</td></tr>
+<tr><td><code>--color-category-cyan</code></td><td><code>#0E7490 / #22D3EE</code></td><td>Series 3 / Cyan。</td></tr>
+<tr><td><code>--color-category-purple</code></td><td><code>#7C3AED / #A78BFA</code></td><td>Series 4 / Purple。</td></tr>
+<tr><td><code>--color-category-magenta</code></td><td><code>#A21CAF / #E879F9</code></td><td>Series 5 / Magenta。</td></tr>
+<tr><td><code>--color-category-teal</code></td><td><code>#0F766E / #2DD4BF</code></td><td>Series 6 / Teal。</td></tr>
+<tr><td><code>--color-category-yellow</code></td><td><code>#A16207 / #FACC15</code></td><td>Series 7 / Yellow。</td></tr>
+<tr><td><code>--color-category-red</code></td><td><code>#DC2626 / #F87171</code></td><td>Series 8 / Red。</td></tr>
+<tr><td><code>--color-category-orange</code></td><td><code>#C2410C / #FB923C</code></td><td>Series 9 / Orange。</td></tr>
+<tr><td><code>--color-category-lime</code></td><td><code>#4D7C0F / #A3E635</code></td><td>Series 10 / Lime。</td></tr>
+</tbody>
                   </table>
                 </div>
               </section>
@@ -1639,10 +1650,6 @@ topbarNav?.addEventListener("keydown", (event) => {
         '--brand-7',
         '--brand-8',
         '--brand-9',
-        '--brand-text',
-        '--brand-text-hover',
-        '--brand-border-soft',
-        '--brand-border-hover',
         '--radius-default',
       ];
       const applyProductTheme = (activeProduct) => {
@@ -1666,10 +1673,6 @@ topbarNav?.addEventListener("keydown", (event) => {
           root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
           root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
           root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
-          root.style.setProperty('--brand-text', iqbPaletteValue("--success-6"));
-          root.style.setProperty('--brand-text-hover', iqbPaletteValue("--brand-7"));
-          root.style.setProperty('--brand-border-soft', iqbPaletteValue("--success-1"));
-          root.style.setProperty('--brand-border-hover', iqbPaletteValue("--success-2"));
           return;
         }
         if (activeProduct !== 'decentralized') return;
@@ -1684,10 +1687,6 @@ topbarNav?.addEventListener("keydown", (event) => {
         root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
         root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
         root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
-        root.style.setProperty('--brand-text', iqbPaletteValue("--info-6"));
-        root.style.setProperty('--brand-text-hover', iqbPaletteValue("--info-7"));
-        root.style.setProperty('--brand-border-soft', iqbPaletteValue("--info-1"));
-        root.style.setProperty('--brand-border-hover', iqbPaletteValue("--info-2"));
         root.style.setProperty('--radius-default', '6px');
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
@@ -1772,6 +1771,18 @@ topbarNav?.addEventListener("keydown", (event) => {
         const [r, g, b] = channels.map((part) => Number.parseFloat(part));
         return `rgba(${r}, ${g}, ${b}, ${alpha})`;
       };
+      const chartSeriesTokens = [
+        '--color-category-green',
+        '--color-category-blue',
+        '--color-category-cyan',
+        '--color-category-purple',
+        '--color-category-magenta',
+        '--color-category-teal',
+        '--color-category-yellow',
+        '--color-category-red',
+        '--color-category-orange',
+        '--color-category-lime',
+      ];
       const getChartTheme = () => {
         const textPrimary = readCssColor('--color-text-primary');
         const textSecondary = readCssColor('--color-text-secondary');
@@ -1794,9 +1805,7 @@ topbarNav?.addEventListener("keydown", (event) => {
           captionSize,
           controlSize,
           fontFamily: readCssValue('font-family') || 'Inter, "Inter var", "PingFang SC", "Microsoft YaHei", Arial, sans-serif',
-          seriesColors: Array.from({ length: 10 }, (_, index) =>
-            readCssColor(`--chart-series-${index + 1}`),
-          ),
+          seriesColors: chartSeriesTokens.map((token) => readCssColor(token)),
         };
       };
       const commonTooltipConfig = (theme) => ({
@@ -2259,10 +2268,8 @@ topbarNav?.addEventListener("keydown", (event) => {
       const renderChartSwatches = () => {
         const container = document.querySelector('[data-chart-swatches]');
         if (!container) return;
-        const colors = getChartTheme().seriesColors;
-        const labels = ['Primary', 'Blue', 'Sky', 'Indigo', 'Lavender', 'Teal', 'Amber', 'Red', 'Rose', 'Slate'];
-        container.innerHTML = colors
-          .map((color, index) => `<span class="color-swatch" style="--swatch-color:${color}">${labels[index]}</span>`)
+        container.innerHTML = chartSeriesTokens
+          .map((token) => `<span class="color-swatch" style="color:var(${token})">${token.replace('--color-category-', '')}</span>`)
           .join('');
       };
       const renderChartDemos = () => {

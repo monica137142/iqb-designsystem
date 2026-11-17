@@ -18,10 +18,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
 
 
 
@@ -55,7 +55,7 @@
         --color-action-primary: var(--brand-5);
         --color-action-primary-hover: var(--brand-6);
         --color-action-primary-hover: var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled: var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -68,19 +68,25 @@
         --sidebar-width: 300px;
         --radius-default: 6px;
 
-        --input-error-color: var(--color-status-error);
+        
         --input-error-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
-        --date-picker-border-color: var(--color-border-default);
-        --date-picker-icon-color: var(--color-text-disabled);
+        
+        
+        --date-picker-range-trigger-width: 300px;
+        --date-picker-range-field-height: 30px;
+        --date-picker-range-field-gap: 8px;
+        --date-picker-range-field-padding: 6px 4px 6px 8px;
+        --date-picker-range-trigger-padding-left: 4px;
+        --date-picker-range-selected-bg: color-mix(in srgb, var(--color-action-primary) 10%, transparent);
         --date-picker-radius: var(--radius-large);
         --date-picker-panel-radius: var(--radius-xlarge);
-        --date-picker-panel-bg: color-mix(in srgb, var(--color-bg-elevated) 94%, transparent);
-        --date-picker-panel-border-color: var(--color-border-subtle);
+        
+        
         --date-picker-panel-shadow: var(--shadow-overlay);
-        --date-picker-scrollbar-color: var(--color-border-strong);
+        
         --date-picker-clear-size: 24px;
         --date-picker-clear-radius: var(--radius-default);
-        --date-picker-clear-hover-bg: var(--color-bg-subtle);
+        
         font-family:
           Inter, "Inter var", "PingFang SC", "Hiragino Sans GB",
           "Microsoft YaHei", Arial, sans-serif;
@@ -252,12 +258,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -277,7 +283,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -289,7 +295,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -297,12 +303,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-action-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -313,7 +319,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -602,7 +608,7 @@
         min-height: 440px;
         border:1px dashed var(--color-border-default);
         border-radius: var(--radius-default);
-        background: color-mix(in srgb, var(--neutral-0) 76%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 76%, transparent);
       }
 
       .content-panel[hidden] {
@@ -725,7 +731,7 @@
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-default);
         background:
-          linear-gradient(180deg, color-mix(in srgb, var(--neutral-0) 82%, transparent), color-mix(in srgb, var(--neutral-0) 64%, transparent));
+          linear-gradient(180deg, color-mix(in srgb, var(--color-bg-container) 82%, transparent), color-mix(in srgb, var(--color-bg-container) 64%, transparent));
         color: inherit;
         cursor: pointer;
         text-align: left;
@@ -853,6 +859,10 @@
         gap: 18px;
       }
 
+      .doc-grid.single-column {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .example-block {
         min-width: 0;
         padding: 16px;
@@ -880,7 +890,7 @@
         justify-content: center;
         gap: 5px;
         padding: 0 14px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-large);
         background:var(--color-bg-container);
         color: var(--color-text-secondary);
@@ -897,7 +907,7 @@
 
       .spec-btn:hover {
         border-color:var(--color-action-primary);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn:focus-visible {
@@ -912,8 +922,8 @@
       }
 
       .spec-btn.primary:hover {
-        border-color: var(--brand-text);
-        background: var(--brand-text);
+        border-color: var(--color-action-primary);
+        background: var(--color-action-primary);
         color:var(--color-text-inverse);
       }
 
@@ -938,12 +948,12 @@
       .spec-btn.ghost-primary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.ghost-primary:hover {
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text-hover);
+        color: var(--color-action-primary-hover);
       }
 
       .spec-btn.solid {
@@ -958,44 +968,44 @@
         border-color: var(--color-border-default);
       }
 
-      .spec-btn.permission {
+      .spec-btn.secondary {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
-      .spec-btn.permission:hover {
+      .spec-btn.secondary:hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 6%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.warning {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning-bg);
         color: var(--color-status-warning);
       }
 
       .spec-btn.warning-primary {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-primary:hover {
-        border-color: var(--warning-5);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: transparent;
         color: var(--color-status-warning);
       }
 
       .spec-btn.warning-secondary:hover {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning-bg);
         color: var(--color-status-warning-hover);
       }
@@ -1023,25 +1033,25 @@
       }
 
       .spec-btn.info-primary {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-primary:hover {
-        border-color: var(--info-5);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-secondary:hover {
-        border-color: var(--info-5);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info-bg);
         color: var(--color-status-info);
       }
@@ -1049,7 +1059,7 @@
       .spec-btn.info-subtle {
         border-color: transparent;
         background: var(--color-status-info-bg);
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-subtle:hover {
@@ -1060,7 +1070,7 @@
       .spec-btn.info-text {
         border-color: transparent;
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-text:hover {
@@ -1069,25 +1079,25 @@
       }
 
       .spec-btn.danger {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger:hover {
-        border-color: var(--danger-5);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-secondary:hover {
-        border-color: var(--danger-5);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error-bg);
         color: var(--color-status-error);
       }
@@ -1095,7 +1105,7 @@
       .spec-btn.danger-subtle {
         border-color: transparent;
         background: var(--color-status-error-bg);
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-subtle:hover {
@@ -1106,7 +1116,7 @@
       .spec-btn.danger-text {
         border-color: transparent;
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-text:hover {
@@ -1192,10 +1202,10 @@
         color:var(--color-text-inverse);
       }
 
-      .spec-btn.permission[disabled]:hover {
+      .spec-btn.secondary[disabled]:hover {
         border-color:var(--color-action-primary);
         background: transparent;
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .spec-btn.subtle[disabled]:hover {
@@ -1224,13 +1234,13 @@
       }
 
       .spec-btn.warning-primary[disabled]:hover {
-        border-color: var(--color-status-warning);
+        border-color: var(--color-status-warning-border);
         background: var(--color-status-warning);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.warning-secondary[disabled]:hover {
-        border-color: var(--warning-4);
+        border-color: var(--color-status-warning-border);
         background: transparent;
         color: var(--color-status-warning);
       }
@@ -1248,51 +1258,51 @@
       }
 
       .spec-btn.info-primary[disabled]:hover {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: var(--color-status-info);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.info-secondary[disabled]:hover {
-        border-color: var(--color-status-info);
+        border-color: var(--color-status-info-border);
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-subtle[disabled]:hover {
         border-color: transparent;
         background: var(--color-status-info-bg);
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.info-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: var(--info-5);
+        color: var(--color-status-info);
       }
 
       .spec-btn.danger[disabled]:hover {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: var(--color-status-error);
         color:var(--color-text-inverse);
       }
 
       .spec-btn.danger-secondary[disabled]:hover {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-subtle[disabled]:hover {
         border-color: transparent;
         background: var(--color-status-error-bg);
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-btn.danger-text[disabled]:hover {
         border-color: transparent;
         background: transparent;
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .disabled-groups {
@@ -1309,7 +1319,7 @@
         width: 12px;
         height: 12px;
         flex: 0 0 auto;
-        border: 1.5px solid color-mix(in srgb, var(--neutral-0) 50%, transparent);
+        border: 1.5px solid color-mix(in srgb, var(--color-bg-container) 50%, transparent);
         border-top-color:var(--color-text-inverse);
         border-radius: var(--radius-full);
         animation: button-spin 0.72s linear infinite;
@@ -1317,7 +1327,7 @@
 
       .loading-dot.brand {
         border-color: color-mix(in srgb, var(--color-action-primary) 24%, transparent);
-        border-top-color: var(--brand-text);
+        border-top-color: var(--color-action-primary);
       }
 
       .loading-dot.neutral {
@@ -1357,13 +1367,13 @@
       .spec-label.required::before {
         content: "*";
         margin-right: 5px;
-        color: var(--danger-4);
+        color: var(--color-status-error);
       }
 
       .spec-input,
       .spec-textarea {
         width: 100%;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         color: var(--color-text-primary);
@@ -1434,7 +1444,7 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         padding: 0 12px;
@@ -1513,7 +1523,7 @@
       }
 
       .input-count.over-limit {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .count-input-wrap,
@@ -1551,7 +1561,7 @@
 
       .count-input-wrap .input-count.over-limit,
       .count-textarea-wrap .input-count.over-limit {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-field-help {
@@ -1565,7 +1575,7 @@
       .spec-field.over-limit .spec-input,
       .spec-field.over-limit .spec-textarea,
       .spec-input-wrap.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-field.error .spec-input:focus,
@@ -1583,12 +1593,12 @@
       .spec-input-wrap.error:focus-within,
       .spec-input-wrap.error.focus,
       .spec-input-wrap.error.is-focus {
-        border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-5) 12%, transparent);
+        border-color: var(--color-status-error-border);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-field.error .spec-field-help {
-        color: var(--danger-5);
+        color: var(--color-status-error);
       }
 
       .spec-field.success .spec-input,
@@ -1598,7 +1608,7 @@
       }
 
       .spec-field.success .spec-field-help {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .count-demo-grid {
@@ -1646,7 +1656,7 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         color: var(--color-text-primary);
@@ -1675,13 +1685,13 @@
       }
 
       .spec-select.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-select.error.open,
       .spec-select.error.focus {
-        border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-5) 12%, transparent);
+        border-color: var(--color-status-error-border);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-select.disabled {
@@ -1756,7 +1766,7 @@
         width: 24px;
         height: 24px;
         padding: 4px;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         fill: none;
         stroke: currentColor;
         stroke-width: 2;
@@ -1786,7 +1796,7 @@
         align-items: center;
         justify-content: center;
         border-radius: var(--radius-default);
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%);
@@ -1816,7 +1826,7 @@
         width: 24px;
         height: 24px;
         padding: 4px;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         opacity: 0;
         pointer-events: none;
         transform: translateY(-50%);
@@ -1875,7 +1885,7 @@
 
       .select-clear:hover {
         background:var(--color-bg-subtle);
-        color:var(--color-text-default);
+        color: var(--color-text-secondary);
       }
 
       .select-tags {
@@ -1923,7 +1933,7 @@
 
       .select-tag-remove {
         flex: 0 0 auto;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         font-size:var(--font-style-body-size);
         line-height: 16px;
       }
@@ -1938,7 +1948,7 @@
         padding: 6px;
         border:1px solid var(--color-border-subtle);
         border-radius: var(--radius-xlarge);
-        background: color-mix(in srgb, var(--neutral-0) 94%, transparent);
+        background: color-mix(in srgb, var(--color-bg-container) 94%, transparent);
         box-shadow: var(--shadow-overlay);
         backdrop-filter: blur(12px);
       }
@@ -2014,12 +2024,12 @@
       }
 
       .select-option.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: transparent;
       }
 
       .select-option.active:hover {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: var(--color-bg-overlay-hover);
       }
 
@@ -2039,6 +2049,7 @@
       }
 
       .select-option-check {
+        color: var(--color-text-secondary);
         width: 16px;
         height: 16px;
         flex: 0 0 auto;
@@ -2073,7 +2084,7 @@
         align-items: center;
         gap: 8px;
         padding: 0 36px 0 12px;
-        border: 1px solid var(--date-picker-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--date-picker-radius);
         background:var(--color-bg-container);
         color: var(--color-text-primary);
@@ -2101,11 +2112,11 @@
       }
 
       .spec-date.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .spec-date.error.focus {
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-5) 12%, transparent);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .spec-date.disabled {
@@ -2139,18 +2150,71 @@
         white-space: nowrap;
       }
 
+      .spec-date.date-range-trigger {
+        width: min(100%, var(--date-picker-range-trigger-width));
+        padding-left: var(--date-picker-range-trigger-padding-left);
+      }
+
+      .spec-date.date-range-trigger.has-value {
+        padding-left: var(--date-picker-range-trigger-padding-left);
+      }
+
+      .date-range-trigger .date-clear {
+        border: 0;
+        background: transparent;
+      }
+
+      .date-range-values {
+        display: flex;
+        align-items: center;
+        gap: var(--date-picker-range-field-gap);
+      }
+
+      .date-range-values > [aria-hidden="true"] {
+        color: var(--color-text-secondary);
+      }
+
+      .date-range-field {
+        flex: 1;
+        min-width: 0;
+        height: var(--date-picker-range-field-height);
+        padding: var(--date-picker-range-field-padding);
+        border: 0;
+        border-radius: var(--radius-small);
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .date-range-field:hover {
+        background: var(--color-bg-hover);
+      }
+
+      .date-range-field[aria-pressed="true"] {
+        background: var(--date-picker-range-selected-bg);
+      }
+
+      .date-range-field:focus-visible {
+        outline: none;
+        box-shadow: var(--shadow-focus);
+      }
+
       .date-placeholder {
         color: var(--color-text-disabled);
       }
 
-      .date-icon {
+      .date-icon,
+      .date-prefix {
         position: absolute;
         right: 8px;
         top: 50%;
         width: 24px;
         height: 24px;
         padding: 4px;
-        color: var(--date-picker-icon-color);
+        color: var(--color-text-secondary);
         fill: none;
         stroke: currentColor;
         stroke-width: 2;
@@ -2159,6 +2223,29 @@
         pointer-events: none;
         transform: translateY(-50%);
         transition: opacity 0.15s ease;
+      }
+
+      .spec-date.with-prefix {
+        padding-left: 38px;
+      }
+
+      .spec-date.with-prefix .date-icon {
+        transition: opacity 0.15s ease, transform 0.16s ease;
+      }
+
+      .spec-date.with-prefix[aria-expanded="true"] .date-icon {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      .spec-date.with-prefix .date-prefix,
+      .spec-date.with-prefix .date-icon,
+      .spec-date.with-prefix .date-clear {
+        color: var(--color-text-secondary);
+      }
+
+      .date-prefix {
+        right: auto;
+        left: 8px;
       }
 
       .date-clear {
@@ -2174,7 +2261,7 @@
         align-items: center;
         justify-content: center;
         border-radius: var(--radius-default);
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         cursor: pointer;
         opacity: 0;
         pointer-events: none;
@@ -2210,8 +2297,8 @@
       }
 
       .date-clear:hover {
-        background: var(--date-picker-clear-hover-bg);
-        color: var(--color-text-tertiary);
+        background: var(--color-action-neutral-bg-hover);
+        color: var(--color-text-secondary);
       }
 
       .date-dropdown {
@@ -2221,9 +2308,9 @@
         left: 0;
         z-index: 32;
         padding: 12px;
-        border:1px solid var(--date-picker-panel-border-color);
+        border:1px solid var(--color-border-subtle);
         border-radius: var(--date-picker-panel-radius);
-        background: var(--date-picker-panel-bg);
+        background: color-mix(in srgb, var(--color-bg-elevated) 94%, transparent);
         box-shadow: var(--date-picker-panel-shadow);
         backdrop-filter: blur(12px);
       }
@@ -2317,7 +2404,7 @@
         display: grid;
         gap: 4px;
         overflow: auto;
-        scrollbar-color: var(--date-picker-scrollbar-color) transparent;
+        scrollbar-color: var(--color-border-default) transparent;
         scrollbar-width: thin;
       }
 
@@ -2331,7 +2418,7 @@
 
       .date-time-list::-webkit-scrollbar-thumb {
         border-radius: var(--radius-full);
-        background: var(--date-picker-scrollbar-color);
+        background: var(--color-border-default);
       }
 
       .date-time-option {
@@ -2358,7 +2445,7 @@
 
       .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-time-actions {
@@ -2449,7 +2536,7 @@
         border: 0;
         border-radius: var(--radius-default);
         background: transparent;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         cursor: pointer;
         transform: translateY(-50%);
       }
@@ -2472,7 +2559,7 @@
 
       .time-clear-btn:hover {
         background:var(--color-bg-subtle);
-        color: var(--color-text-tertiary);
+        color: var(--color-text-secondary);
       }
 
       .time-picker-basic-row .time-picker-stack.time-range-stack {
@@ -2503,7 +2590,7 @@
         width: 24px;
         height: 24px;
         padding: 4px;
-        color: var(--color-text-disabled);
+        color: var(--color-text-secondary);
         fill: none;
         stroke: currentColor;
         stroke-width: 2;
@@ -2591,7 +2678,7 @@
       .range-scope-tab.active {
         border-color: color-mix(in srgb, var(--color-border-subtle) 55%, var(--color-bg-container));
         background:var(--color-bg-container);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-tab:focus,
@@ -2607,12 +2694,12 @@
       .range-scope-tab.active:focus-visible,
       .range-scope-tab.active:active,
       .range-scope-tab[aria-selected="true"]:active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         box-shadow: none;
       }
 
       .range-scope-tab:active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         box-shadow: none;
       }
 
@@ -2666,19 +2753,23 @@
       .range-scope-body .select-option.active,
       .range-scope-body .date-time-option.active {
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .range-scope-body .select-option.active:hover,
       .range-scope-body .date-time-option.active:hover {
         background:var(--color-bg-overlay-hover);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
-      .range-scope-body .time-filter-panel .date-time-option.active,
-      .range-scope-body .time-filter-panel .date-time-option.active:hover {
+      .range-scope-body .time-filter-panel .date-time-option.active {
         background:var(--color-action-primary);
         color:var(--color-text-inverse);
+      }
+
+      .range-scope-body .time-filter-panel .date-time-option.active:hover {
+        background: var(--color-bg-overlay-hover);
+        color: var(--color-action-primary);
       }
 
       .time-filter-panel {
@@ -2736,10 +2827,14 @@
         text-align: left;
       }
 
-      .date-shortcut:hover,
       .date-shortcut.active {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
+      }
+
+      .date-shortcut:hover {
+        color: var(--color-action-primary);
+        background: var(--color-bg-overlay-hover);
       }
 
       .date-calendar {
@@ -2772,13 +2867,13 @@
         border: 0;
         border-radius: var(--radius-default);
         background: transparent;
-        color: var(--color-text-tertiary);
+        color: var(--color-text-secondary);
         cursor: pointer;
       }
 
       .date-nav-btn:hover {
-        background:var(--color-bg-subtle);
-        color:var(--color-text-primary);
+        background: var(--color-bg-overlay-hover);
+        color: var(--color-text-secondary);
       }
 
       .date-nav-icon {
@@ -2823,7 +2918,7 @@
       }
 
       .date-cell:hover {
-        background:var(--color-bg-subtle);
+        background: var(--color-bg-overlay-hover);
       }
 
       .date-cell.muted {
@@ -2831,7 +2926,7 @@
       }
 
       .date-cell.today {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .date-cell.active,
@@ -2841,18 +2936,18 @@
       }
 
       .date-cell.in-range {
-        background:var(--color-bg-subtle);
-        color: var(--brand-text);
+        background: var(--date-picker-range-selected-bg);
+        color: var(--color-text-secondary);
       }
 
       .date-cell.range-preview {
-        background: color-mix(in srgb, var(--color-action-primary) 10%, transparent);
-        color: var(--brand-text);
+        background: var(--color-bg-overlay-hover);
+        color: var(--color-text-secondary);
       }
 
       .date-cell.range-preview-edge {
-        background: color-mix(in srgb, var(--color-action-primary) 16%, transparent);
-        color: var(--brand-text);
+        background: var(--color-bg-overlay-hover);
+        color: var(--color-text-secondary);
       }
 
       .date-cell.range-edge.range-preview-edge {
@@ -2880,7 +2975,7 @@
       }
 
       .date-days.week-picker .date-cell.week-hover {
-        background:var(--color-bg-subtle);
+        background: var(--color-bg-overlay-hover);
         color: var(--color-text-secondary);
       }
 
@@ -2916,7 +3011,7 @@
         display: inline-flex;
         align-items: stretch;
         overflow: hidden;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         background:var(--color-bg-container);
         transition:
@@ -2968,7 +3063,7 @@
         display: grid;
         grid-template-rows: 1fr 1fr;
         flex: 0 0 auto;
-        border-left: 1px solid var(--neutral-3);
+        border-left: 1px solid var(--color-border-default);
         background: var(--color-bg-subtle);
       }
 
@@ -2985,7 +3080,7 @@
       }
 
       .number-step + .number-step {
-        border-top: 1px solid var(--neutral-3);
+        border-top: 1px solid var(--color-border-default);
       }
 
       .number-step:hover {
@@ -3027,12 +3122,12 @@
       }
 
       .number-input.error {
-        border-color: var(--color-status-error);
+        border-color: var(--color-status-error-border);
       }
 
       .number-input.error:focus-within {
-        border-color: var(--color-status-error);
-        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger-5) 12%, transparent);
+        border-color: var(--color-status-error-border);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-status-error) 12%, transparent);
       }
 
       .number-input.disabled {
@@ -3101,7 +3196,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--neutral-3);
+        border: 1.4px solid var(--color-border-default);
         border-radius: var(--radius-full);
         appearance: none;
         background:var(--color-bg-container);
@@ -3179,7 +3274,7 @@
         align-items: center;
         justify-content: center;
         padding: 5px 12px;
-        border: 1px solid var(--neutral-3);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-full);
         background:var(--color-bg-container);
         color: var(--color-text-tertiary);
@@ -3206,7 +3301,7 @@
       .radio-card:has(input:checked) {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .radio-card.disabled,
@@ -3224,7 +3319,7 @@
       .radio-card:has(input:checked:disabled):hover {
         border-color:var(--color-action-primary);
         background: color-mix(in srgb, var(--color-action-primary) 8%, transparent);
-        color: var(--brand-text);
+        color: var(--color-action-primary);
       }
 
       .checkbox-demo-stack {
@@ -3274,7 +3369,7 @@
         position: relative;
         flex: 0 0 auto;
         margin: 0;
-        border: 1.4px solid var(--neutral-3);
+        border: 1.4px solid var(--color-border-default);
         border-radius: var(--radius-small);
         appearance: none;
         background:var(--color-bg-container);
@@ -3319,7 +3414,7 @@
         height: 0;
         background: transparent;
         clip-path: none;
-        border: solid var(--neutral-0);
+        border: solid var(--color-bg-container);
         border-width: 0 0 1.6px;
         opacity: 1;
         transform: translate(-50%, -50%) rotate(0) scale(1);
@@ -3401,8 +3496,8 @@
         position: relative;
         flex: 0 0 auto;
         border-radius: var(--radius-full);
-        background: var(--neutral-3);
-        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--neutral-9) 4%, transparent);
+        background: var(--color-border-default);
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-text-default) 4%, transparent);
         transition:
           background-color 0.18s ease,
           box-shadow 0.18s ease;
@@ -3417,7 +3512,7 @@
         content: "";
         border-radius: var(--radius-full);
         background:var(--color-bg-container);
-        box-shadow: 0 1px 3px color-mix(in srgb, var(--neutral-9) 22%, transparent);
+        box-shadow: 0 1px 3px color-mix(in srgb, var(--color-text-default) 22%, transparent);
         transition:
           transform 0.18s ease,
           box-shadow 0.18s ease;
@@ -3430,7 +3525,7 @@
         width: 10px;
         height: 10px;
         content: "";
-        border: 2px solid color-mix(in srgb, var(--neutral-6) 18%, transparent);
+        border: 2px solid color-mix(in srgb, var(--color-text-tertiary) 18%, transparent);
         border-top-color: var(--color-border-strong);
         border-radius: var(--radius-full);
         opacity: 0;
@@ -3439,7 +3534,7 @@
       }
 
       .spec-switch:hover .switch-track {
-        background: var(--neutral-3);
+        background: var(--color-border-default);
       }
 
       .spec-switch input:checked + .switch-track {
@@ -3453,7 +3548,7 @@
 
       .spec-switch input:checked + .switch-track::after {
         left: 26px;
-        border-color: color-mix(in srgb, var(--neutral-6) 18%, transparent);
+        border-color: color-mix(in srgb, var(--color-text-tertiary) 18%, transparent);
         border-top-color:var(--color-action-primary);
       }
 
@@ -3776,7 +3871,7 @@
       :root[data-product-theme] .spec-input-wrap.error:focus-within,
       :root[data-product-theme] .spec-input-wrap.error.focus,
       :root[data-product-theme] .spec-input-wrap.error.is-focus {
-        border-color: var(--input-error-color);
+        border-color: var(--color-status-error-border);
         box-shadow: var(--input-error-shadow);
       }
 
@@ -4189,8 +4284,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -4317,12 +4412,16 @@
                   </div>
                   <div class="example-block">
                     <div class="example-head"><h3>范围选择</h3>
-                    <p>用于筛选执行记录、报表周期和任务有效期，起止日期必须保持顺序。</p></div>
+                    <p>用于筛选执行记录、报表周期和任务有效期。开始、结束日期可分别选中，选择开始日期后自动切换至结束日期。</p></div>
                     <div class="date-demo-stack" data-date-demo data-date-mode="range">
-                      <button class="spec-date" type="button" aria-haspopup="dialog" aria-expanded="false">
-                        <span class="date-value" data-date-value>2026-07-12 ~ 2026-07-18</span>
+                      <div class="spec-date date-range-trigger" aria-haspopup="dialog" aria-expanded="false">
+                        <span class="date-value date-range-values" data-date-value>
+                          <button class="date-range-field" type="button" data-date-range-field="start" aria-label="开始日期" aria-pressed="false">2026-07-12</button>
+                          <span aria-hidden="true">~</span>
+                          <button class="date-range-field" type="button" data-date-range-field="end" aria-label="结束日期" aria-pressed="false">2026-07-18</button>
+                        </span>
                         <svg class="date-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
-                      </button>
+                      </div>
                       <div class="date-dropdown range-panel" role="dialog" aria-label="选择日期范围" hidden>
                         <div class="date-range-calendars">
                           <div class="date-calendar" data-date-panel-offset="0">
@@ -4584,6 +4683,49 @@
               </section>
 
               <section class="doc-section">
+                <h2>更多用法</h2>
+                <div class="doc-grid single-column">
+                  <div class="example-block">
+                    <div class="example-head"><h3>Prefix 与 Suffix 图标</h3>
+                    <p>Trigger 前置 Prefix 日历图标表达日期范围语义，后置 Suffix 下拉图标提示展开范围面板，起止日期在同一入口中展示。</p></div>
+                    <div class="date-demo-stack" data-date-demo data-date-mode="range">
+                      <button class="spec-date with-prefix" type="button" aria-haspopup="dialog" aria-expanded="false">
+                        <svg class="date-prefix" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+                        <span class="date-value" data-date-value>2026-07-12 ~ 2026-07-18</span>
+                        <svg class="date-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 9 6 6 6-6"/></svg>
+                      </button>
+                      <div class="date-dropdown range-panel" role="dialog" aria-label="选择日期范围" hidden>
+                        <div class="date-range-calendars">
+                          <div class="date-calendar" data-date-panel-offset="0">
+                            <div class="date-calendar-row">
+                              <button class="date-nav-btn prev" type="button" aria-label="上个月"><svg class="date-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+                              <h4 class="date-panel-title">2026 年 7 月</h4>
+                              <button class="date-nav-btn next" type="button" aria-label="下个月"><svg class="date-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
+                            </div>
+                            <div class="date-weekdays" aria-hidden="true">
+                              <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                            </div>
+                            <div class="date-days"></div>
+                          </div>
+                          <div class="date-calendar" data-date-panel-offset="1">
+                            <div class="date-calendar-row">
+                              <button class="date-nav-btn prev" type="button" aria-label="上个月"><svg class="date-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button>
+                              <h4 class="date-panel-title">2026 年 8 月</h4>
+                              <button class="date-nav-btn next" type="button" aria-label="下个月"><svg class="date-nav-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button>
+                            </div>
+                            <div class="date-weekdays" aria-hidden="true">
+                              <span class="date-weekday">日</span><span class="date-weekday">一</span><span class="date-weekday">二</span><span class="date-weekday">三</span><span class="date-weekday">四</span><span class="date-weekday">五</span><span class="date-weekday">六</span>
+                            </div>
+                            <div class="date-days"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="doc-section">
                 <h2>状态</h2>
                 <div class="doc-grid">
                   <div class="example-block">
@@ -4737,12 +4879,7 @@
                         <td><code>date | week | month | quarter | year</code></td>
                         <td><code>date</code></td>
                       </tr>
-                      <tr>
-                        <td><code>range</code></td>
-                        <td>是否启用双日期范围选择；选择起止两个日期后自动确认并收起。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>false</code></td>
-                      </tr>
+                                            <tr><td><code>range</code></td><td>启用双日历范围面板。基础范围 Trigger 支持独立选中起止日期，Prefix / Suffix 示例使用合并展示入口。打开时保留已有范围，重选开始日期后清空结束项，选定结束日期后确认并收起，取消未完成选择时恢复已提交范围。</td><td><code>boolean</code></td><td><code>false</code></td></tr>
                       <tr>
                         <td><code>rangeScope</code></td>
                         <td>联动选择的周期类型，用于每小时、每日、每周筛选场景。</td>
@@ -4803,12 +4940,7 @@
                         <td><code>string | [string, string]</code></td>
                         <td><code>请选择日期</code></td>
                       </tr>
-                      <tr>
-                        <td><code>allowClear</code></td>
-                        <td>是否允许清空。有值时 Hover trigger，右侧日历图标切换为圆角矩形关闭按钮，点击后清空当前值且不展开面板。</td>
-                        <td><code>boolean</code></td>
-                        <td><code>true</code></td>
-                      </tr>
+                                            <tr><td><code>allowClear</code></td><td>有值时 Hover Trigger，后置图标切换为 text-secondary 的 Close 图标。点击后清空日期或完整范围并收起面板。</td><td><code>boolean</code></td><td><code>true</code></td></tr>
                       <tr>
                         <td><code>size</code></td>
                         <td>日期选择器尺寸，切换尺寸仅改变高度与字号，触发器宽度保持一致。</td>
@@ -4857,6 +4989,8 @@
                         <td><code>(open) =&gt; void</code></td>
                         <td><code>-</code></td>
                       </tr>
+                                          <tr><td><code>prefix</code></td><td>Trigger 前置图标，用于表达字段语义，颜色使用 <code>--color-text-secondary</code>。</td><td><code>Icon | null</code></td><td><code>null</code></td></tr>
+                      <tr><td><code>suffixIcon</code></td><td>Trigger 后置图标，可使用下拉箭头。箭头随展开状态旋转 180°，过渡时长 160ms。</td><td><code>Icon | null</code></td><td><code>Calendar</code></td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -4869,7 +5003,7 @@
                     <thead>
                       <tr>
                         <th>Token</th>
-                        <th>值</th>
+                        <th>值（颜色为 Light / Dark）</th>
                         <th>用途</th>
                       </tr>
                     </thead>
@@ -4904,21 +5038,9 @@
                         <td><code>var(--radius-xlarge)</code>（12px）</td>
                         <td>所有下拉面板统一使用的语义圆角。</td>
                       </tr>
-                      <tr>
-                        <td><code>--date-picker-border-color</code></td>
-                        <td><code>var(--color-border-default)</code></td>
-                        <td>默认边框。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--date-picker-hover-border-color</code></td>
-                        <td><code>var(--color-action-primary)</code></td>
-                        <td>触发器 hover 边框，无外发光。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--date-picker-focus-color</code></td>
-                        <td><code>var(--color-action-primary)</code></td>
-                        <td>聚焦、选中与范围端点颜色。</td>
-                      </tr>
+                      
+                      
+                      
                       <tr>
                         <td><code>--date-picker-panel-width</code></td>
                         <td><code>284px</code></td>
@@ -4964,16 +5086,8 @@
                         <td><code>34px</code></td>
                         <td>月份、年份、季度选项高度。</td>
                       </tr>
-                      <tr>
-                        <td><code>--date-picker-cell-hover-bg</code></td>
-                        <td><code>var(--color-bg-hover)</code></td>
-                        <td>日期与周选择 hover 背景。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--date-picker-range-bg</code></td>
-                        <td><code>var(--color-bg-subtle)</code></td>
-                        <td>范围中间态背景。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--date-picker-shortcut-width</code></td>
                         <td><code>120px</code></td>
@@ -4999,26 +5113,14 @@
                         <td><code>0.6</code></td>
                         <td>禁用态透明度。</td>
                       </tr>
-                      <tr>
-                        <td><code>--date-picker-panel-bg</code></td>
-                        <td><code>color-mix(in srgb, var(--color-bg-elevated) 94%, transparent)</code></td>
-                        <td>浮层面板语义背景，适配不同颜色模式。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--date-picker-panel-border-color</code></td>
-                        <td><code>var(--color-border-subtle)</code></td>
-                        <td>浮层面板语义描边。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--date-picker-panel-shadow</code></td>
                         <td><code>0 8px 24px color-mix(in srgb, var(--color-bg-inverse) 4%, transparent)</code></td>
                         <td>浮层面板语义阴影。</td>
                       </tr>
-                      <tr>
-                        <td><code>--date-picker-icon-color</code></td>
-                        <td><code>var(--color-text-disabled)</code></td>
-                        <td>Trigger 内日历图标的默认文字语义色。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--date-picker-clear-size</code></td>
                         <td><code>24px</code></td>
@@ -5029,16 +5131,26 @@
                         <td><code>var(--radius-default)</code></td>
                         <td>关闭按钮 Hover 背景的圆角矩形半径。</td>
                       </tr>
-                      <tr>
-                        <td><code>--date-picker-clear-hover-bg</code></td>
-                        <td><code>var(--color-bg-subtle)</code></td>
-                        <td>关闭按钮 Hover 时的语义背景色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--date-picker-scrollbar-color</code></td>
-                        <td><code>var(--color-border-strong)</code></td>
-                        <td>浮层时间列表滚动条语义颜色。</td>
-                      </tr>
+                      
+                      
+                    
+                      <tr><td><code>--color-border-default</code></td><td><code>neutral-3 / neutral-7</code></td><td>默认边框；浮层时间列表滚动条语义颜色。</td></tr>
+                      <tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>触发器 hover 边框，无外发光；聚焦、选中与范围端点颜色。</td></tr>
+                                            <tr><td><code>--color-bg-hover</code></td><td><code>neutral-1 / neutral-9</code></td><td>Trigger 内起止日期字段的 Hover 底色。</td></tr>
+                                            <tr><td><code>--color-bg-subtle</code></td><td><code>neutral-1 / neutral-9</code></td><td>弱背景与禁用态容器底色。</td></tr>
+                      <tr><td><code>--color-bg-elevated</code></td><td><code>neutral-0 / neutral-10</code></td><td>浮层面板语义背景，适配不同颜色模式。 使用 <code>color-mix(in srgb, var(--color-bg-elevated) 94%, transparent)</code>。</td></tr>
+                      <tr><td><code>--color-border-subtle</code></td><td><code>neutral-2 / neutral-8</code></td><td>浮层面板语义描边。</td></tr>
+                                            <tr><td><code>--color-text-disabled</code></td><td><code>neutral-4 / neutral-6</code></td><td>日期为空时的占位提示文字颜色。</td></tr>
+                      <tr><td><code>--color-action-neutral-bg-hover</code></td><td><code>color-text-primary 10% / color-text-primary 10%</code></td><td>关闭按钮 Hover 时的语义背景色。</td></tr>
+                                          <tr><td><code>--color-text-secondary</code></td><td><code>neutral-7 / neutral-4</code></td><td>Trigger 前后置图标、Hover 关闭图标与浮层 Check 图标的默认颜色。</td></tr>
+                      <tr><td><code>--color-bg-overlay-hover</code></td><td><code>neutral-1 / neutral-8</code></td><td>浮层菜单项、日期单元格、快捷选项与翻页按钮的 Hover 底色。</td></tr>
+                                          <tr><td><code>--date-picker-range-trigger-width</code></td><td><code>300px</code></td><td>分段日期范围 Trigger 宽度，合并展示入口沿用 260px。</td></tr>
+                      <tr><td><code>--date-picker-range-field-height</code></td><td><code>30px</code></td><td>起止日期字段高度。</td></tr>
+                      <tr><td><code>--date-picker-range-field-gap</code></td><td><code>8px</code></td><td>起止日期与分隔符之间的间距。</td></tr>
+                      <tr><td><code>--date-picker-range-field-padding</code></td><td><code>6px 4px 6px 8px</code></td><td>起止日期字段内距，文字左对齐。</td></tr>
+                      <tr><td><code>--date-picker-range-trigger-padding-left</code></td><td><code>4px</code></td><td>分段范围 Trigger 左内距。</td></tr>
+                      <tr><td><code>--date-picker-range-selected-bg</code></td><td><code>color-action-primary 10%</code></td><td>范围内日期与当前选中 Trigger 字段的底色，区间文字使用 text-secondary。</td></tr>
+                      <tr><td><code>--color-text-inverse</code></td><td><code>neutral-0 / neutral-10</code></td><td>选中日期及范围端点的文字颜色。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -5192,15 +5304,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         "--brand-7",
         "--brand-8",
         "--brand-9",
-        "--brand-text",
-        "--brand-text-hover",
-        "--brand-border-soft",
-        "--brand-border-hover",
         "--radius-default",
-        "--input-hover-border-color",
-        "--input-focus-color",
-        "--input-number-hover-border-color",
-        "--input-number-focus-color",
       ];
       const applyProductTheme = (activeProduct) => {
         const root = document.documentElement;
@@ -5224,14 +5328,6 @@ topbarNav?.addEventListener("keydown", (event) => {
           root.style.setProperty("--brand-7", iqbPaletteValue("--brand-7"));
           root.style.setProperty("--brand-8", iqbPaletteValue("--brand-8"));
           root.style.setProperty("--brand-9", iqbPaletteValue("--brand-9"));
-          root.style.setProperty("--brand-text", iqbPaletteValue("--success-6"));
-          root.style.setProperty("--brand-text-hover", iqbPaletteValue("--brand-7"));
-          root.style.setProperty("--brand-border-soft", iqbPaletteValue("--success-1"));
-          root.style.setProperty("--brand-border-hover", iqbPaletteValue("--success-2"));
-          root.style.setProperty("--input-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-focus-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-hover-border-color", "var(--color-status-success)");
-          root.style.setProperty("--input-number-focus-color", "var(--color-status-success)");
           return;
         }
 
@@ -5248,15 +5344,7 @@ topbarNav?.addEventListener("keydown", (event) => {
         root.style.setProperty("--brand-7", iqbPaletteValue("--info-7"));
         root.style.setProperty("--brand-8", iqbPaletteValue("--info-8"));
         root.style.setProperty("--brand-9", iqbPaletteValue("--info-9"));
-        root.style.setProperty("--brand-text", iqbPaletteValue("--info-6"));
-        root.style.setProperty("--brand-text-hover", iqbPaletteValue("--info-7"));
-        root.style.setProperty("--brand-border-soft", iqbPaletteValue("--info-1"));
-        root.style.setProperty("--brand-border-hover", iqbPaletteValue("--info-2"));
         root.style.setProperty("--radius-default", "6px");
-        root.style.setProperty("--input-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-focus-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-hover-border-color", iqbPaletteValue("--info-5"));
-        root.style.setProperty("--input-number-focus-color", iqbPaletteValue("--info-5"));
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };
       const syncProductSelect = (activeProduct) => {
@@ -5718,7 +5806,8 @@ const centerNavItem = (item, behavior = "smooth") => {
         const valueNode = trigger.querySelector(".date-value");
         if (!valueNode || trigger.disabled || trigger.classList.contains("disabled")) return;
         trigger.classList.add("has-value");
-        const clear = document.createElement("span");
+        const clear = document.createElement(trigger.classList.contains("date-range-trigger") ? "button" : "span");
+        if (clear.tagName === "BUTTON") clear.type = "button";
         clear.className = "date-clear";
         clear.dataset.dateClear = "";
         clear.setAttribute("role", "button");
@@ -5779,6 +5868,9 @@ const centerNavItem = (item, behavior = "smooth") => {
         const trigger = demo.querySelector(".spec-date");
         const dropdown = demo.querySelector(".date-dropdown");
         trigger?.classList.remove("open");
+        demo.querySelectorAll("[data-date-range-field]").forEach((field) => {
+          field.setAttribute("aria-pressed", "false");
+        });
         trigger?.setAttribute("aria-expanded", "false");
         if (dropdown) dropdown.hidden = true;
       };
@@ -5869,10 +5961,17 @@ const centerNavItem = (item, behavior = "smooth") => {
       const syncDateRange = (demo, start, end) => {
         const valueNode = demo.querySelector("[data-date-value]");
         if (!valueNode) return;
-        if (start && end) {
-          valueNode.textContent = `${formatDateValue(start)} ~ ${formatDateValue(end)}`;
-        } else if (start) {
-          valueNode.textContent = `${formatDateValue(start)} ~`;
+        const startField = valueNode.querySelector('[data-date-range-field="start"]');
+        const endField = valueNode.querySelector('[data-date-range-field="end"]');
+        if (startField && endField) {
+          startField.textContent = start ? formatDateValue(start) : "开始日期";
+          endField.textContent = end ? formatDateValue(end) : "结束日期";
+          startField.classList.toggle("date-placeholder", !start);
+          endField.classList.toggle("date-placeholder", !end);
+        } else {
+          valueNode.textContent = start
+            ? `${formatDateValue(start)} ~ ${end ? formatDateValue(end) : ""}`
+            : getDatePlaceholder(demo);
         }
         renderDateCalendar(demo);
       };
@@ -5880,6 +5979,8 @@ const centerNavItem = (item, behavior = "smooth") => {
       const restoreCommittedRange = (demo) => {
         demo.dataset.rangeStart = demo.dataset.committedRangeStart || "";
         demo.dataset.rangeEnd = demo.dataset.committedRangeEnd || "";
+        demo.dataset.rangeHover = "";
+        syncDateTriggerState(demo.querySelector(".spec-date"), !!demo.dataset.rangeStart);
         const start = demo.dataset.rangeStart ? parseDateValue(demo.dataset.rangeStart) : null;
         const end = demo.dataset.rangeEnd ? parseDateValue(demo.dataset.rangeEnd) : null;
         syncDateRange(demo, start, end);
@@ -5991,12 +6092,19 @@ const centerNavItem = (item, behavior = "smooth") => {
         }
         renderDateCalendar(demo);
 
+        const selectRangeField = (part) => {
+          demo.dataset.activeRangeField = part;
+          demo.querySelectorAll("[data-date-range-field]").forEach((field) => {
+            field.setAttribute("aria-pressed", String(field.dataset.dateRangeField === part));
+          });
+        };
+
         trigger?.addEventListener("click", (event) => {
           if (trigger.disabled) return;
           if (event.target.closest("[data-date-clear]")) {
             event.stopPropagation();
             closeDateDemo(demo, { restoreRange: false, restoreDateTime: false });
-            if (valueNode) valueNode.textContent = getDatePlaceholder(demo);
+            if (mode !== "range" && valueNode) valueNode.textContent = getDatePlaceholder(demo);
             syncDateTriggerState(trigger, false);
             demo.dataset.selectedDate = "";
             demo.dataset.rangeStart = "";
@@ -6005,10 +6113,23 @@ const centerNavItem = (item, behavior = "smooth") => {
             demo.dataset.committedRangeStart = "";
             demo.dataset.committedRangeEnd = "";
             demo.dataset.committedDate = "";
+            if (mode === "range") syncDateRange(demo, null, null);
             renderDateCalendar(demo);
             return;
           }
-          const isOpen = !trigger.classList.contains("open");
+          const rangeField = event.target.closest("[data-date-range-field]");
+          if (mode === "range") {
+            const part = rangeField?.dataset.dateRangeField || "start";
+            selectRangeField(part);
+            const value = part === "end" ? demo.dataset.rangeEnd : demo.dataset.rangeStart;
+            if (value) {
+              const date = parseDateValue(value);
+              demo.dataset.viewYear = String(date.getFullYear());
+              demo.dataset.viewMonth = String(date.getMonth());
+              renderDateCalendar(demo);
+            }
+          }
+          const isOpen = mode === "range" && rangeField ? true : !trigger.classList.contains("open");
           if (!isOpen) {
             closeDateDemo(demo);
             return;
@@ -6045,13 +6166,13 @@ const centerNavItem = (item, behavior = "smooth") => {
 
             if (mode === "range") {
               const currentStart = demo.dataset.rangeStart ? parseDateValue(demo.dataset.rangeStart) : null;
-              const currentEnd = demo.dataset.rangeEnd ? parseDateValue(demo.dataset.rangeEnd) : null;
-
-              if (!currentStart || currentEnd) {
+              if (demo.dataset.activeRangeField !== "end" || !currentStart) {
                 demo.dataset.rangeStart = formatDateValue(nextDate);
                 demo.dataset.rangeEnd = "";
                 demo.dataset.rangeHover = "";
                 syncDateRange(demo, nextDate, null);
+                syncDateTriggerState(trigger, true);
+                selectRangeField("end");
                 return;
               }
 

@@ -6,7 +6,7 @@
     <title>评分 Rate - Design System</title>
     <script src="../styles/color-mode-init.js"></script>
     <style>
-      :root{--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-status-info: var(--info-5);--color-status-warning: var(--warning-5);--color-status-error: var(--danger-5);--color-status-success: var(--success-5);--color-action-primary-disabled: var(--brand-2);--color-action-primary-bg-hover: var(--brand-0);--color-action-primary-hover: var(--brand-7);--color-action-primary-hover: var(--brand-6);--color-action-primary: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-border-focus: var(--brand-5);--color-border-strong: var(--neutral-4);--color-border-subtle: var(--neutral-2);--color-border-default: var(--neutral-3);--color-bg-disabled: var(--neutral-1);--color-bg-inverse: var(--neutral-9);--color-bg-selected: var(--brand-1);--color-bg-hover: var(--neutral-1);--color-bg-subtle: var(--neutral-1);--color-bg-container: var(--neutral-0);--color-bg-page: var(--neutral-0);--color-text-link: var(--info-6);--color-text-inverse: var(--neutral-0);--color-text-disabled: var(--neutral-4);--color-text-tertiary: var(--neutral-5);--color-text-secondary: var(--neutral-6);--color-text-default: var(--neutral-9);--color-text-primary: var(--neutral-10);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--color-text-primary)}.app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--color-border-subtle)}.brand{color:var(--color-text-primary);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:300px 1fr}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--color-border-subtle);background: var(--color-bg-container)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.nav-category-count{margin-left:6px}.nav-button{min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:var(--radius-default);color:var(--color-text-default);font-size:var(--font-style-body-size);text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--color-action-primary);background:color-mix(in srgb, var(--color-action-primary) 8%, transparent)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary);font-size:var(--font-style-caption-size);font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.rate{display:flex;align-items:center;gap:8px;font-size:28px}.star{color:var(--warning-4)}.star.empty{color: var(--color-text-primary)}.rate-text{margin-left:8px;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.content{padding:28px 20px 56px}}
+      :root{--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-status-info: var(--info-5);--color-status-warning: var(--warning-5);--color-status-error: var(--danger-5);--color-status-success: var(--success-5);--color-action-primary-disabled: var(--brand-2);--color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);--color-action-primary-hover: var(--brand-7);--color-action-primary-hover: var(--brand-6);--color-action-primary: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-border-focus: var(--brand-5);--color-border-strong: var(--neutral-4);--color-border-subtle: var(--neutral-2);--color-border-default: var(--neutral-3);--color-bg-disabled: var(--neutral-1);--color-bg-inverse: var(--neutral-9);--color-bg-selected: var(--brand-1);--color-bg-hover: var(--neutral-1);--color-bg-subtle: var(--neutral-1);--color-bg-container: var(--neutral-0);--color-bg-page: var(--neutral-0);--color-text-link: var(--info-6);--color-text-inverse: var(--neutral-0);--color-text-disabled: var(--neutral-4);--color-text-tertiary: var(--neutral-5);--color-text-secondary: var(--neutral-6);--color-text-default: var(--neutral-9);--color-text-primary: var(--neutral-10);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--color-text-primary)}.app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--color-border-subtle)}.brand{color:var(--color-text-primary);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:300px 1fr}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--color-border-subtle);background: var(--color-bg-container)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.nav-category-count{margin-left:6px}.nav-button{min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:var(--radius-default);color:var(--color-text-default);font-size:var(--font-style-body-size);text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--color-action-primary);background:color-mix(in srgb, var(--color-action-primary) 8%, transparent)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary);font-size:var(--font-style-caption-size);font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.rate{display:flex;align-items:center;gap:8px;font-size:28px}.star{color:var(--color-status-warning)}.star.empty{color: var(--color-text-primary)}.rate-text{margin-left:8px;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.content{padding:28px 20px 56px}}
       /* Shared side navigation */
       html,
       body {
@@ -177,10 +177,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
 
 
 
@@ -205,7 +205,7 @@
         --color-action-primary:var(--brand-5);
         --color-action-primary-hover:var(--brand-6);
         --color-action-primary-hover:var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled:var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -219,8 +219,8 @@
 
         --rate-icon-size: 24px;
         --rate-icon-gap: 8px;
-        --rate-active-color: var(--color-status-warning);
-        --rate-empty-color: var(--color-border-subtle);
+        
+        
         --rate-disabled-opacity: 0.4;
         --rate-hover-scale: 1.2;
       }
@@ -325,12 +325,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -350,7 +350,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -362,7 +362,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -370,12 +370,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-action-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -386,7 +386,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -727,14 +727,14 @@
       }
 
       .rate-feedback {
-        color: var(--brand-text);
+        color: var(--color-action-primary);
         font-size:var(--font-style-body-size);
         line-height: 1.4;
       }
 
       .spec-rate {
         display: inline-block;
-        color: var(--rate-empty-color);
+        color: var(--color-border-subtle);
         user-select: none;
       }
 
@@ -752,7 +752,7 @@
 
       .spec-rate-character {
         position: relative;
-        color: var(--rate-empty-color);
+        color: var(--color-border-subtle);
         transition:
           color 0.16s ease,
           filter 0.16s ease,
@@ -797,11 +797,11 @@
       }
 
       .spec-rate-character-full .spec-rate-character-right {
-        color: var(--rate-active-color);
+        color: var(--color-status-warning);
       }
 
       .spec-rate-character-half .spec-rate-character-left {
-        color: var(--rate-active-color);
+        color: var(--color-status-warning);
         opacity: 1;
       }
 
@@ -816,31 +816,31 @@
 
       .spec-rate-character.is-selected-hover .spec-rate-character-left,
       .spec-rate-character.is-selected-hover .spec-rate-character-right {
-        color: var(--warning-5);
-        filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--warning-4) 22%, transparent));
+        color: var(--color-status-warning);
+        filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--color-status-warning) 22%, transparent));
       }
 
       .spec-rate-character.is-unselected-hover .spec-rate-character-left,
       .spec-rate-character.is-unselected-hover .spec-rate-character-right {
-        color: color-mix(in srgb, var(--warning-4) 42%, transparent);
+        color: color-mix(in srgb, var(--color-status-warning) 42%, transparent);
       }
 
       .spec-rate-character.is-half-selected-hover .spec-rate-character-left {
-        color: var(--warning-5);
-        filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--warning-4) 22%, transparent));
+        color: var(--color-status-warning);
+        filter: drop-shadow(0 2px 4px color-mix(in srgb, var(--color-status-warning) 22%, transparent));
       }
 
       .spec-rate-character.is-half-selected-hover .spec-rate-character-right {
-        color: var(--rate-empty-color);
+        color: var(--color-border-subtle);
         filter: none;
       }
 
       .spec-rate-character.is-half-unselected-hover .spec-rate-character-left {
-        color: color-mix(in srgb, var(--warning-4) 42%, transparent);
+        color: color-mix(in srgb, var(--color-status-warning) 42%, transparent);
       }
 
       .spec-rate-character.is-half-unselected-hover .spec-rate-character-right {
-        color: var(--rate-empty-color);
+        color: var(--color-border-subtle);
       }
 
       .spec-rate-character.is-half-selected-hover,
@@ -1319,8 +1319,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -1367,7 +1367,7 @@
                   <li>默认 5 项</li>
                   <li>图标 24px</li>
                   <li>间距 8px</li>
-                  <li>激活色 var(--warning-4)</li>
+                  <li>激活色 var(--color-status-warning)</li>
                 </ul>
               </header>
 
@@ -1708,7 +1708,7 @@
                     <thead>
                       <tr>
                         <th>Token</th>
-                        <th>值</th>
+                        <th>值（颜色为 Light / Dark）</th>
                         <th>说明</th>
                       </tr>
                     </thead>
@@ -1723,16 +1723,8 @@
                         <td><code>8px</code></td>
                         <td>评分字符之间的间距。</td>
                       </tr>
-                      <tr>
-                        <td><code>--rate-active-color</code></td>
-                        <td><code>var(--color-status-warning)</code></td>
-                        <td>激活、半选和 hover 预览色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--rate-empty-color</code></td>
-                        <td><code>var(--color-border-subtle)</code></td>
-                        <td>未选字符颜色。</td>
-                      </tr>
+                      
+                      
                       <tr>
                         <td><code>--rate-disabled-opacity</code></td>
                         <td><code>0.4</code></td>
@@ -1743,6 +1735,9 @@
                         <td><code>1.2</code></td>
                         <td>可交互字符悬停放大比例。</td>
                       </tr>
+                    
+                      <tr><td><code>--color-status-warning</code></td><td><code>warning-5 / warning-5</code></td><td>激活、半选和 hover 预览色。</td></tr>
+                      <tr><td><code>--color-border-subtle</code></td><td><code>neutral-2 / neutral-8</code></td><td>未选字符颜色。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -1891,10 +1886,6 @@ const productOptions = Array.from(document.querySelectorAll('[data-product-optio
         '--brand-7',
         '--brand-8',
         '--brand-9',
-        '--brand-text',
-        '--brand-text-hover',
-        '--brand-border-soft',
-        '--brand-border-hover',
         '--radius-default',
       ];
       const applyProductTheme = (activeProduct) => {
@@ -1918,10 +1909,6 @@ const productOptions = Array.from(document.querySelectorAll('[data-product-optio
           root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
           root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
           root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
-          root.style.setProperty('--brand-text', iqbPaletteValue("--success-6"));
-          root.style.setProperty('--brand-text-hover', iqbPaletteValue("--brand-7"));
-          root.style.setProperty('--brand-border-soft', iqbPaletteValue("--success-1"));
-          root.style.setProperty('--brand-border-hover', iqbPaletteValue("--success-2"));
           return;
         }
         if (activeProduct !== 'decentralized') return;
@@ -1936,10 +1923,6 @@ const productOptions = Array.from(document.querySelectorAll('[data-product-optio
         root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
         root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
         root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
-        root.style.setProperty('--brand-text', iqbPaletteValue("--info-6"));
-        root.style.setProperty('--brand-text-hover', iqbPaletteValue("--info-7"));
-        root.style.setProperty('--brand-border-soft', iqbPaletteValue("--info-1"));
-        root.style.setProperty('--brand-border-hover', iqbPaletteValue("--info-2"));
         root.style.setProperty('--radius-default', '6px');
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };

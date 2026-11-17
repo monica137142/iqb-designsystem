@@ -6,7 +6,7 @@
     <title>滑块 Slider - Design System</title>
     <script src="../styles/color-mode-init.js"></script>
     <style>
-      :root{--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-status-info: var(--info-5);--color-status-warning: var(--warning-5);--color-status-error: var(--danger-5);--color-status-success: var(--success-5);--color-action-primary-disabled: var(--brand-2);--color-action-primary-bg-hover: var(--brand-0);--color-action-primary-hover: var(--brand-7);--color-action-primary-hover: var(--brand-6);--color-action-primary: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-border-focus: var(--brand-5);--color-border-strong: var(--neutral-4);--color-border-subtle: var(--neutral-2);--color-border-default: var(--neutral-3);--color-bg-disabled: var(--neutral-1);--color-bg-inverse: var(--neutral-9);--color-bg-selected: var(--brand-1);--color-bg-hover: var(--neutral-1);--color-bg-subtle: var(--neutral-1);--color-bg-container: var(--neutral-0);--color-bg-page: var(--neutral-0);--color-text-link: var(--info-6);--color-text-inverse: var(--neutral-0);--color-text-disabled: var(--neutral-4);--color-text-tertiary: var(--neutral-5);--color-text-secondary: var(--neutral-6);--color-text-default: var(--neutral-9);--color-text-primary: var(--neutral-10);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--color-text-primary)}.app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--color-border-subtle)}.brand{color:var(--color-text-primary);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:300px 1fr}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--color-border-subtle);background: var(--color-bg-container)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.nav-category-count{margin-left:6px}.nav-button{min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:var(--radius-default);color:var(--color-text-default);font-size:var(--font-style-body-size);text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--color-action-primary);background:color-mix(in srgb, var(--color-action-primary) 8%, transparent)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary);font-size:var(--font-style-caption-size);font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.slider{width:min(100%,420px);padding:14px 4px}.track{height:6px;border-radius:var(--radius-full);background:linear-gradient(90deg,var(--brand-5) 0 62%,var(--neutral-2) 62%)}.thumb{width:18px;height:18px;margin-top:-12px;margin-left:62%;border:3px solid var(--brand-5);border-radius:var(--radius-full);background:var(--color-bg-container);box-shadow: none;justify-content:space-between;margin-top:12px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.content{padding:28px 20px 56px}}
+      :root{--color-overlay-loading: color-mix(in srgb, var(--neutral-0) 72%, transparent);--color-overlay-drawer: color-mix(in srgb, var(--neutral-10) 35%, transparent);--color-overlay-modal: color-mix(in srgb, var(--neutral-10) 45%, transparent);--color-status-info: var(--info-5);--color-status-warning: var(--warning-5);--color-status-error: var(--danger-5);--color-status-success: var(--success-5);--color-action-primary-disabled: var(--brand-2);--color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);--color-action-primary-hover: var(--brand-7);--color-action-primary-hover: var(--brand-6);--color-action-primary: var(--brand-5);--color-border-disabled: var(--neutral-2);--color-border-focus: var(--brand-5);--color-border-strong: var(--neutral-4);--color-border-subtle: var(--neutral-2);--color-border-default: var(--neutral-3);--color-bg-disabled: var(--neutral-1);--color-bg-inverse: var(--neutral-9);--color-bg-selected: var(--brand-1);--color-bg-hover: var(--neutral-1);--color-bg-subtle: var(--neutral-1);--color-bg-container: var(--neutral-0);--color-bg-page: var(--neutral-0);--color-text-link: var(--info-6);--color-text-inverse: var(--neutral-0);--color-text-disabled: var(--neutral-4);--color-text-tertiary: var(--neutral-5);--color-text-secondary: var(--neutral-6);--color-text-default: var(--neutral-9);--color-text-primary: var(--neutral-10);font-family:Inter,"PingFang SC","Microsoft YaHei",sans-serif}*{box-sizing:border-box}body{margin:0;color:var(--color-text-primary)}.app-shell{min-height:100vh;display:grid;grid-template-rows:60px 1fr}.topbar{display:flex;align-items:center;padding:0 24px;border-bottom:1px solid var(--color-border-subtle)}.brand{color:var(--color-text-primary);font-weight:600;text-decoration:none}.topbar-actions{margin-left:auto;color:var(--color-text-secondary);font-size:var(--font-style-body-size)}.workspace{display:grid;grid-template-columns:300px 1fr}.sidebar{padding:22px 18px;overflow:auto;border-right:1px solid var(--color-border-subtle);background: var(--color-bg-container)}.nav-list,.nav-sublist{margin:0;padding:0;list-style:none}.nav-list{display:grid;gap:18px}.nav-sublist{display:grid;gap:4px;margin-top:8px}.nav-category{color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}.nav-category-count{margin-left:6px}.nav-button{min-height:34px;display:flex;align-items:center;padding:0 10px;border-radius:var(--radius-default);color:var(--color-text-default);font-size:var(--font-style-body-size);text-decoration:none}.nav-button:hover,.nav-button[aria-current=page]{color:var(--color-action-primary);background:color-mix(in srgb, var(--color-action-primary) 8%, transparent)}.content{overflow:auto;padding:44px 56px 80px}.doc-page{width:min(100%,960px)}.doc-kicker{margin:0 0 8px;color:var(--color-action-primary);font-size:var(--font-style-caption-size);font-weight:600;text-transform:uppercase}.doc-title{margin:0;font-size:30px}.doc-summary{max-width:720px;margin:14px 0 0;color:var(--color-text-secondary);font-size:var(--font-style-body-size);line-height:1.8}.doc-section{margin-top:34px;padding-top:24px;border-top:1px solid var(--color-border-subtle)}.doc-section h2{margin:0 0 14px;font-size:18px;font-weight:500}.example-block{padding:18px;border:1px solid var(--color-border-subtle);border-radius:var(--radius-large)}.slider{width:min(100%,420px);padding:14px 4px}.track{height:6px;border-radius:var(--radius-full);background:linear-gradient(90deg,var(--color-action-primary) 0 62%,var(--color-border-subtle) 62%)}.thumb{width:18px;height:18px;margin-top:-12px;margin-left:62%;border:3px solid var(--color-action-primary);border-radius:var(--radius-full);background:var(--color-bg-container);box-shadow: none;justify-content:space-between;margin-top:12px;color:var(--color-text-tertiary);font-size:var(--font-style-caption-size)}@media(max-width:860px){.workspace{grid-template-columns:1fr}.sidebar{max-height:280px;border-right:0;border-bottom:1px solid var(--color-border-subtle)}.content{padding:28px 20px 56px}}
       /* Shared side navigation */
       html,
       body {
@@ -177,10 +177,10 @@
 
 
 
-        --brand-text: var(--brand-6);
-        --brand-text-hover: var(--brand-7);
-        --brand-border-soft: var(--success-1);
-        --brand-border-hover: var(--success-2);
+
+
+
+
 
 
 
@@ -205,7 +205,7 @@
         --color-action-primary:var(--brand-5);
         --color-action-primary-hover:var(--brand-6);
         --color-action-primary-hover:var(--brand-7);
-        --color-action-primary-bg-hover: var(--brand-0);
+        --color-action-primary-bg-hover: color-mix(in srgb, var(--brand-5) 20%, transparent);
         --color-action-primary-disabled:var(--brand-2);
         --color-status-success: var(--success-5);
         --color-status-error: var(--danger-5);
@@ -319,12 +319,12 @@
   --tabs-gap: 8px;
   --tabs-font-size: var(--font-style-body-size);
   --tabs-font-weight-active: var(--font-style-body-medium-weight);
-  --tabs-color: var(--color-text-secondary);
-  --tabs-hover-color: var(--color-text-primary);
-  --tabs-active-color: var(--brand-text);
-  --tabs-indicator-color: var(--color-action-primary);
+  
+  
+  
+  
   --tabs-indicator-size: 2px;
-  --tabs-bg-hover: var(--color-bg-hover);
+  
   --tabs-radius: var(--radius-default);
   display: flex;
   align-items: stretch;
@@ -344,7 +344,7 @@
   justify-content: center;
   min-height: var(--tabs-height-default);
   padding: 0 var(--tabs-padding-x);
-  color: var(--tabs-color);
+  color: var(--color-text-secondary);
   background: transparent;
   border: 0;
   border-radius: var(--tabs-radius);
@@ -356,7 +356,7 @@
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover {
-  color: var(--tabs-hover-color);
+  color: var(--color-text-primary);
 }
 
 .topbar-nav-tab:not([aria-selected="true"]):hover::before {
@@ -364,12 +364,12 @@
   z-index: -1;
   inset: 4px;
   content: "";
-  background: var(--tabs-bg-hover);
+  background: var(--color-bg-hover);
   border-radius: var(--radius-small);
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--tabs-active-color);
+  color: var(--color-action-primary);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -380,7 +380,7 @@
   left: 12px;
   height: var(--tabs-indicator-size);
   content: "";
-  background: var(--tabs-indicator-color);
+  background: var(--color-action-primary);
   border-radius: var(--radius-full);
 }
 
@@ -713,13 +713,12 @@
         --slider-max: 62%;
         --slider-rail-size: 4px;
         --slider-thumb-size: 16px;
-        --slider-color-track: var(--color-action-primary);
-        --slider-color-rail: var(--color-bg-subtle);
-        --slider-color-thumb-bg: var(--neutral-0);
-        --slider-color-disabled: var(--color-text-disabled);
-        --slider-color-disabled-bg: var(--color-bg-disabled);
-        --slider-input-border-color: var(--color-border-default);
-        --slider-thumb-disabled-hover-shadow: 0 0 0 3px color-mix(in srgb, var(--color-text-tertiary) 16%, transparent);
+        
+        
+        
+        
+        
+        
         --slider-thumb-hover-scale: 1.18;
 
 
@@ -746,13 +745,13 @@
       .spec-slider::before {
         right: 0;
         left: 0;
-        background: var(--slider-color-rail);
+        background: var(--color-bg-subtle);
       }
 
       .spec-slider::after {
         left: var(--slider-min);
         width: calc(var(--slider-max) - var(--slider-min));
-        background: var(--slider-color-track);
+        background: var(--color-action-primary);
       }
 
       .slider-thumb {
@@ -762,8 +761,8 @@
         z-index: 1;
         width: var(--slider-thumb-size);
         height: var(--slider-thumb-size);
-        background: var(--slider-color-thumb-bg);
-        border: 2px solid var(--slider-color-track);
+        background: var(--color-bg-container);
+        border: 2px solid var(--color-action-primary);
         border-radius: var(--radius-full);
         box-shadow: none;
         transform: translate(-50%, -50%);
@@ -792,7 +791,7 @@
         left: var(--slider-min);
       }
 
-      .spec-slider:not(.is-post-drag) .slider-thumb:hover:not(.is-post-drag),
+      .spec-slider:not(.disabled):not(.is-post-drag) .slider-thumb:hover:not(.is-post-drag),
       .slider-thumb.is-active,
       .spec-slider[role="slider"].is-active .slider-thumb,
       .spec-slider.hover .slider-thumb {
@@ -808,25 +807,26 @@
       }
 
       .spec-slider.disabled {
-        --slider-color-track: var(--slider-color-disabled);
-        --slider-color-rail: var(--slider-color-disabled-bg);
+        
+        
         cursor: not-allowed;
       }
 
+      .spec-slider.disabled::after { background: var(--color-text-disabled); }
+      .spec-slider.disabled .slider-tick { border-color: var(--color-bg-subtle); }
+      .spec-slider.disabled .slider-tick.active { border-color: var(--color-text-disabled); }
+
       .spec-slider.disabled .slider-thumb {
-        background: var(--slider-color-thumb-bg);
-        border-color: var(--slider-color-disabled);
+        background: var(--color-bg-container);
+        border-color: var(--color-text-disabled);
         box-shadow: none;
         cursor: not-allowed;
         transform: translate(-50%, -50%);
       }
 
-      .spec-slider.disabled .slider-thumb:hover {
-        box-shadow: var(--slider-thumb-disabled-hover-shadow);
-      }
-
       .slider-ticks {
         position: absolute;
+        z-index: 1;
         inset: 0;
         pointer-events: none;
       }
@@ -838,13 +838,13 @@
         width: 6px;
         height: 6px;
         background: var(--color-bg-container);
-        border: 1px solid var(--slider-color-rail);
+        border: 1px solid var(--color-bg-subtle);
         border-radius: var(--radius-full);
         transform: translate(-50%, -50%);
       }
 
       .slider-tick.active {
-        border-color: var(--slider-color-track);
+        border-color: var(--color-action-primary);
       }
 
       .slider-marks {
@@ -939,7 +939,7 @@
         padding: 0 12px;
         color: var(--color-text-primary);
         background: var(--color-bg-container);
-        border: 1px solid var(--slider-input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         font-size:var(--font-style-body-size);
         outline: 0;
@@ -965,7 +965,7 @@
         align-items: stretch;
         overflow: hidden;
         background: var(--color-bg-container);
-        border: 1px solid var(--slider-input-border-color);
+        border: 1px solid var(--color-border-default);
         border-radius: var(--radius-xlarge);
         transition:
           border-color 0.15s ease,
@@ -1007,7 +1007,7 @@
         flex: 0 0 auto;
         width: var(--slider-number-stepper-width);
         background: var(--color-bg-subtle);
-        border-left: 1px solid var(--slider-input-border-color);
+        border-left: 1px solid var(--color-border-default);
       }
 
       .number-step {
@@ -1023,7 +1023,7 @@
       }
 
       .number-step + .number-step {
-        border-top: 1px solid var(--slider-input-border-color);
+        border-top: 1px solid var(--color-border-default);
       }
 
       .number-step:hover {
@@ -1493,8 +1493,8 @@
                     </a>
                   </li>
                   <li>
-                    <a class="nav-button" href="../feedback/model.html">
-                      <span class="nav-label">Model 模态弹窗</span>
+                    <a class="nav-button" href="../feedback/modal.html">
+                      <span class="nav-label">Modal 模态弹窗</span>
                     </a>
                   </li>
                   <li>
@@ -1682,7 +1682,7 @@
                   </div>
                   <div class="example-block">
                     <div class="example-head"><h3>Disabled</h3>
-                    <p>禁用态降低轨道与控制点对比度，不响应拖拽；圆形控制点 hover 时仅显示浅灰 shadow。</p></div>
+                    <p>禁用态轨道底色与默认态一致，已选进度与控制点描边使用禁用色；不响应拖拽，悬停无阴影或放大。</p></div>
                     <div class="slider-demo-stack">
                       <div class="spec-slider disabled" style="--slider-max: 48%" role="slider" tabindex="0" aria-valuemin="0" aria-valuemax="100" aria-valuenow="48" aria-disabled="true" aria-label="禁用滑块">
                         <span class="slider-thumb"></span>
@@ -1862,7 +1862,7 @@
                     <thead>
                       <tr>
                         <th>Token</th>
-                        <th>值</th>
+                        <th>值（颜色为 Light / Dark）</th>
                         <th>用途</th>
                       </tr>
                     </thead>
@@ -1882,31 +1882,11 @@
                         <td><code>1.18</code></td>
                         <td>Hover、Focus 和拖动中当前圆形控制点放大比例；范围选择只作用于当前控制点。</td>
                       </tr>
-                      <tr>
-                        <td><code>--slider-color-track</code></td>
-                        <td><code>var(--color-action-primary)</code></td>
-                        <td>已选择轨道和控制点描边。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--slider-color-rail</code></td>
-                        <td><code>var(--color-bg-subtle)</code></td>
-                        <td>未选择轨道。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--slider-color-thumb-bg</code></td>
-                        <td><code>var(--neutral-0)</code></td>
-                        <td>控制点背景，亮色与暗色主题均保持白色。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--slider-color-disabled</code></td>
-                        <td><code>var(--color-text-disabled)</code></td>
-                        <td>禁用态已选轨道和控制点描边。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--slider-color-disabled-bg</code></td>
-                        <td><code>var(--color-bg-disabled)</code></td>
-                        <td>禁用态未选轨道。</td>
-                      </tr>
+                      
+                      
+                      
+                      
+                      
                       <tr>
                         <td><code>--slider-thumb-focus-shadow</code></td>
                         <td><code>var(--shadow-focus)</code></td>
@@ -1917,16 +1897,7 @@
                         <td><code>var(--shadow-focus)</code></td>
                         <td>Focus 和拖动中圆形控制点反馈；拖动释放后恢复默认。</td>
                       </tr>
-                      <tr>
-                        <td><code>--slider-thumb-disabled-hover-shadow</code></td>
-                        <td><code>0 0 0 3px color-mix(in srgb, var(--color-text-tertiary) 16%, transparent)</code></td>
-                        <td>Disabled 态圆形控制点 hover 浅灰反馈，不放大。</td>
-                      </tr>
-                      <tr>
-                        <td><code>--slider-input-border-color</code></td>
-                        <td><code>var(--color-border-default)</code></td>
-                        <td>showInput 数字输入框与步进器的默认描边语义色。</td>
-                      </tr>
+                      
                       <tr>
                         <td><code>--slider-input-number-width</code></td>
                         <td><code>80px</code></td>
@@ -1937,6 +1908,12 @@
                         <td><code>28px</code></td>
                         <td>showInput 数字输入框右侧步进器宽度。</td>
                       </tr>
+                    
+                      <tr><td><code>--color-action-primary</code></td><td><code>brand-5 / brand-5</code></td><td>已选择轨道和控制点描边。</td></tr>
+                      <tr><td><code>--color-bg-subtle</code></td><td><code>neutral-1 / neutral-9</code></td><td>默认态与禁用态的未选择轨道。</td></tr>
+                      <tr><td><code>--color-bg-container</code></td><td><code>neutral-0 / neutral-11</code></td><td>控制点背景，随亮暗模式使用容器背景语义色。</td></tr>
+                      <tr><td><code>--color-text-disabled</code></td><td><code>neutral-4 / neutral-6</code></td><td>禁用态已选轨道和控制点描边。</td></tr>
+                      <tr><td><code>--color-border-default</code></td><td><code>neutral-3 / neutral-7</code></td><td>showInput 数字输入框与步进器的默认描边语义色。</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -2085,10 +2062,6 @@ const productOptions = Array.from(document.querySelectorAll('[data-product-optio
         '--brand-7',
         '--brand-8',
         '--brand-9',
-        '--brand-text',
-        '--brand-text-hover',
-        '--brand-border-soft',
-        '--brand-border-hover',
         '--radius-default',
       ];
       const applyProductTheme = (activeProduct) => {
@@ -2112,10 +2085,6 @@ const productOptions = Array.from(document.querySelectorAll('[data-product-optio
           root.style.setProperty('--brand-7', iqbPaletteValue("--brand-7"));
           root.style.setProperty('--brand-8', iqbPaletteValue("--brand-8"));
           root.style.setProperty('--brand-9', iqbPaletteValue("--brand-9"));
-          root.style.setProperty('--brand-text', iqbPaletteValue("--success-6"));
-          root.style.setProperty('--brand-text-hover', iqbPaletteValue("--brand-7"));
-          root.style.setProperty('--brand-border-soft', iqbPaletteValue("--success-1"));
-          root.style.setProperty('--brand-border-hover', iqbPaletteValue("--success-2"));
           return;
         }
         if (activeProduct !== 'decentralized') return;
@@ -2130,10 +2099,6 @@ const productOptions = Array.from(document.querySelectorAll('[data-product-optio
         root.style.setProperty('--brand-7', iqbPaletteValue("--info-7"));
         root.style.setProperty('--brand-8', iqbPaletteValue("--info-8"));
         root.style.setProperty('--brand-9', iqbPaletteValue("--info-9"));
-        root.style.setProperty('--brand-text', iqbPaletteValue("--info-6"));
-        root.style.setProperty('--brand-text-hover', iqbPaletteValue("--info-7"));
-        root.style.setProperty('--brand-border-soft', iqbPaletteValue("--info-1"));
-        root.style.setProperty('--brand-border-hover', iqbPaletteValue("--info-2"));
         root.style.setProperty('--radius-default', '6px');
         root.style.fontFamily = 'Inter, "Inter var", "Pingfang FC", "PingFang SC", "Microsoft YaHei", Arial, sans-serif';
       };

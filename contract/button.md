@@ -30,12 +30,14 @@ interface ButtonProps {
 
 默认值：`variant="neutralOutline"`、`status="default"`、`size="default"`、`type="button"`。
 
+Secondary 的唯一合法 HTML / CSS 类名为 `spec-btn secondary`，不再提供历史别名。
+
 ## 类名映射
 
 | API 值 | HTML / CSS 类名 | 中文名称 |
 | --- | --- | --- |
 | `primary` | `spec-btn primary` | 主要按钮 |
-| `secondary` | `spec-btn permission` | 次要按钮 |
+| `secondary` | `spec-btn secondary` | 次要按钮 |
 | `brandOutline` | `spec-btn ghost-primary` | 实线按钮（彩） |
 | `neutralOutline` | `spec-btn solid` | 实线按钮（灰） |
 | `neutralDashed` | `spec-btn dashed` | 虚线按钮（灰） |
@@ -115,7 +117,7 @@ border-color: color-mix(in srgb, var(--color-action-primary) 50%, transparent);
 
 ```html
 <button class="spec-btn primary" type="button">保存</button>
-<button class="spec-btn permission" type="button">取消</button>
+<button class="spec-btn secondary" type="button">取消</button>
 <button class="spec-btn ghost-primary" type="button">查看详情</button>
 <button class="spec-btn dashed" type="button">添加标签</button>
 <button class="spec-btn success-secondary" type="button">验证通过</button>
