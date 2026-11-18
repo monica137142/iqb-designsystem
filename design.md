@@ -1,6 +1,6 @@
 # Design System Design Notes
 
-> 当前默认主题：IQ 默认主题。品牌色为 iQIYI 标准绿色；`brand-rgb` 为 `28, 199, 73`。本文件是全局设计规范的唯一入口。
+> 当前默认主题：IQ 默认主题。品牌色为 iQIYI 标准绿色；`brand-rgb` 为 `28, 199, 73`。本文件是全局共享规范与主题索引的统一入口；主题差异由对应主题文档维护。
 
 ## 定位
 
@@ -108,10 +108,28 @@ Primitive Color → Semantic Color → Component Token
 
 Primitive Color 是基础色板，Semantic Color 是用途命名，Component Token 是组件私有映射。页面和组件开发必须优先根据用途选择 Semantic Token，不直接根据视觉相似度调用 `brand-5`、`neutral-6` 等 Primitive Token。
 
+#### Theme 与 Mode
+
+- Theme 定义品牌色、中性色调及必要的语义映射差异；Mode 定义 Light / Dark 下的语义映射。新增主题不新增与 Light / Dark 并列的模式。
+- 本文件统一维护 Token 名称、用途、Light / Dark 默认映射与共享组件规范，并保留 IQ 默认主题的基础色值。
+- 新主题文档只维护主题身份、支持模式、Primitive 色板及必要的 Semantic 覆盖；字体、尺寸、交互等共享规范引用本文件，不复制整套规范。
+- 颜色解析顺序：先选择主题色板，再使用本文件对应 Mode 的语义映射，最后应用该主题明确声明的 Semantic 覆盖；未声明覆盖的 Token 均继承主规范。
+- Semantic 覆盖必须保留原 Token 的名称与用途，并引用 Primitive Token；不得通过主题覆盖改变颜色语义。
+- 主规范保留 Light / Dark 两列；单个主题可以只支持其中一种模式，不因存在另一列而自动获得另一模式支持。
+
+| 主题 | Theme / Mode | 色值文档 | 状态 |
+| --- | --- | --- | --- |
+| 主题 1 | IQ 默认 / Light | 本文件 Primitive Color + Light 映射 | 已有配置 |
+| 主题 2 | IQ 默认 / Dark | 本文件 Primitive Color + Dark 映射 | 已有配置 |
+| 主题 3 · 蓝调明亮 | IQ Blue Night / Light | [蓝调主题规范](theme/DESIGN-blue.md) | 已接入 DS 主题选择器 |
+| 主题 4 · 蓝调暗夜 | IQ Blue Night / Dark | [蓝调主题规范](theme/DESIGN-blue.md) | 已接入 DS 主题选择器 |
+
+运行时主题 3、4 分别使用 `blue-night-light` / `blue-night-dark`，共享蓝调 Neutral 色板并分别继承 Light / Dark 映射。原主题 3 的 Dark 持久化选择保留，并显示为主题 4；历史实验主题配置不自动迁移为蓝调主题。
+
 #### Primitive Color
 
 - Brand、Success、Danger、Warning、Info 使用 `0–9` 共 10 档色阶，`5` 为默认基准色；Neutral 使用 `0–13` 共 14 档色阶，深色端专门承载多级表面。
-- Neutral 采用无色相中性灰，RGB 三通道保持一致，避免偏绿或偏蓝。
+- IQ 默认主题的 Neutral 采用无色相中性灰，RGB 三通道保持一致；其他主题可定义低饱和、带色相的中性色板，但须保留 0–13 档及从亮到暗的顺序。
 - Primitive Color 仅作为基础色板和 Semantic Token 的取值来源。
 - Brand 相关色阶通过 `brand-0` 到 `brand-9` 暴露；本文件中的取值固定为当前默认主题。
 - Status Color 表达固定状态含义，不随 Brand Theme 改变。
@@ -280,7 +298,7 @@ Overlay 基于 Neutral Primitive Color 与透明度生成，按黑白与强度�
 - 页面和组件优先使用 Semantic Token，不直接调用 Primitive Color。
 - 禁止根据 HEX 或 Primitive Token 猜颜色；必须先判断 UI 语义，再查找对应 Semantic Token，最后由 Semantic Token 映射到 Primitive Color。
 - Component Token 应优先引用 Semantic Token。
-- Brand / Action Semantic Token 使用本文件定义的当前默认主题映射。
+- Brand / Action Semantic Token 使用当前主题的 Brand 色板，并继承本文件对应 Mode 的映射；主题差异必须在对应主题文档中明确声明。
 - Semantic Token 必须同时定义 Light 与 Dark 映射；模式切换只改变映射，不改变组件调用方式。
 - Warning / Error / Info 表达固定状态含义，不随 Brand Theme 改变；成功操作使用 Brand / Action Token，跟随 Brand Theme。
 - 不要因为单个组件需求随意增加 Semantic Token；只有出现跨组件、重复使用的颜色语义时才新增。
