@@ -19,6 +19,14 @@
   } catch {
     // Storage can be unavailable in local previews.
   }
+  try {
+    if (localStorage.getItem("iqb-design-palette-theme") === "blue-night") {
+      document.documentElement.dataset.paletteTheme = "blue-night";
+      if (savedMode !== "light" && savedMode !== "dark") savedMode = "dark";
+    }
+  } catch {
+    // Storage can be unavailable in local previews.
+  }
   const preferredMode = window.matchMedia?.("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   document.documentElement.dataset.colorMode = savedMode === "dark" || savedMode === "light" ? savedMode : preferredMode;
 })();

@@ -75,7 +75,7 @@
 }
 
 .topbar-nav-tab[aria-selected="true"] {
-  color: var(--color-status-success, var(--brand-5));
+  color: var(--tabs-active-color);
   font-weight: var(--tabs-font-weight-active);
 }
 
@@ -738,4 +738,18 @@
 
 :root .sidebar::-webkit-scrollbar-thumb:hover {
   background: var(--color-border-strong) !important;
+}
+
+.combined-theme-icon[data-theme-preview="blue-night-dark"] {
+  --theme-preview-bg: #070A0F;
+  --theme-preview-text: #F3F5F8;
+  --theme-preview-border: #26292E;
+  --theme-preview-brand: #2563EB;
+}
+
+.combined-theme-icon[data-theme-preview="blue-night-light"] {
+  --theme-preview-bg: #ffffff;
+  --theme-preview-text: #14171c;
+  --theme-preview-border: #d9dde2;
+  --theme-preview-brand: #2563EB;
 }

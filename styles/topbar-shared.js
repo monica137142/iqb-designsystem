@@ -7,6 +7,7 @@
   const brandTitle = brand?.querySelector(".brand-title");
   if (brandTitle) brandTitle.textContent = "IQB Design";
   if (brand) brand.setAttribute("aria-label", "IQB Design 首页");
+  document.head.querySelectorAll('link[rel~="icon"]').forEach((link) => link.remove());
   const favicon = document.createElement("link");
   favicon.rel = "icon";
   favicon.type = "image/svg+xml";
@@ -119,17 +120,19 @@
   const combinedThemes = [
     { id: "default-light", label: "主题1", product: "default-theme", mode: "light" },
     { id: "default-dark", label: "主题2", product: "default-theme", mode: "dark" },
-    { id: "pure-light", label: "主题3", product: "decentralized", mode: "light" },
-    { id: "pure-dark", label: "主题4", product: "decentralized", mode: "dark" },
+    { id: "blue-night-light", label: "主题3", product: "default-theme", mode: "light" },
+    { id: "blue-night-dark", label: "主题4", product: "default-theme", mode: "dark" },
   ];
   const themeIcon = (theme) => `<span class="combined-theme-icon" data-theme-preview="${theme.id}" aria-hidden="true"><i></i><b>Aa</b></span>`;
   const activeCombinedTheme = () => {
-    const family = document.documentElement.dataset.productTheme === "test-theme-1" ? "pure" : "default";
+    const family = document.documentElement.dataset.paletteTheme === "blue-night" ? "blue-night" : "default";
     const mode = document.documentElement.dataset.colorMode === "dark" ? "dark" : "light";
     return combinedThemes.find((theme) => theme.id === `${family}-${mode}`) || combinedThemes[0];
   };
   const syncCombinedTheme = () => {
     const active = activeCombinedTheme();
+    const faviconFile = active.id.startsWith("blue-night-") ? "../favicon-blue.svg" : "../favicon.svg";
+    favicon.href = new URL(faviconFile, sharedScriptUrl).href;
     productSelectValue?.closest("button")?.setAttribute("aria-label", `当前主题：${active.label}`);
     if (productSelectValue) productSelectValue.innerHTML = `${themeIcon(active)}<span>${active.label}</span>`;
     productSelectMenu?.querySelectorAll("[data-combined-theme]").forEach((option) => {
@@ -138,9 +141,9 @@
   };
   if (productSelectMenu) {
     productSelectMenu.setAttribute("aria-label", "主题与亮暗模式");
-    productSelectMenu.innerHTML = combinedThemes.map((theme, index) => `
+    productSelectMenu.innerHTML = combinedThemes.map((theme) => `
       <li>
-        <button class="product-select-option combined-theme-option" type="button" role="option" aria-selected="false" data-combined-theme="${theme.id}"${index >= 2 ? " disabled" : ""}>
+        <button class="product-select-option combined-theme-option" type="button" role="option" aria-selected="false" data-combined-theme="${theme.id}">
           ${themeIcon(theme)}<span>${theme.label}</span><span class="combined-theme-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </button>
       </li>`).join("");
@@ -152,10 +155,20 @@
       const theme = combinedThemes.find((item) => item.id === option.dataset.combinedTheme);
       if (!theme) return;
       legacyProductOptions[theme.product]?.click();
+      document.documentElement.dataset.paletteTheme = theme.id.startsWith("blue-night-") ? "blue-night" : "default";
+      try {
+        localStorage.setItem("iqb-design-palette-theme", document.documentElement.dataset.paletteTheme);
+      } catch {
+        // The palette still switches when storage is unavailable.
+      }
       applyColorMode(theme.mode, true);
       syncCombinedTheme();
       closeProductSelectMenu();
     });
+  }
+  if (document.documentElement.dataset.paletteTheme === "blue-night") {
+    legacyProductOptions["default-theme"]?.click();
+    applyColorMode(initialColorMode);
   }
   syncCombinedTheme();
   let productSelectCloseTimer = 0;

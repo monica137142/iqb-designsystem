@@ -378,3 +378,31 @@
 :root .input-clear:hover {
   color: var(--input-icon-color);
 }
+
+/* Themes 3 (Light) and 4 (Dark): shared cool palette, standard mode semantics. */
+:root[data-palette-theme="blue-night"] {
+  --brand-rgb: 37, 99, 235;
+  --brand-0: #EFF6FF;
+  --brand-1: #DBEAFE;
+  --brand-2: #BFDBFE;
+  --brand-3: #93C5FD;
+  --brand-4: #60A5FA;
+  --brand-5: #2563EB;
+  --brand-6: #1D4ED8;
+  --brand-7: #1E40AF;
+  --brand-8: #1E3A8A;
+  --brand-9: #172554;
+  --neutral-1: #F3F5F8;
+  --neutral-2: #E7EAEE;
+  --neutral-3: #D9DDE2;
+  --neutral-4: #9FA3AA;
+  --neutral-5: #6F737B;
+  --neutral-6: #62666E;
+  --neutral-7: #3A3D42;
+  --neutral-8: #26292E;
+  --neutral-9: #1C1F24;
+  --neutral-10: #14171C;
+  --neutral-11: #0E1116;
+  --neutral-12: #070A0F;
+  --neutral-13: #03060B;
+}
